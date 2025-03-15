@@ -15,8 +15,8 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler("domain_llm.log"),
-        logging.StreamHandler()
+        logging.StreamHandler(),
+        logging.FileHandler("purpose.log"),
     ]
 )
 logger = logging.getLogger("domain-llm")
