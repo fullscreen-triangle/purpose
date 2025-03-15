@@ -1,0 +1,89 @@
+{
+  "event": "200m",
+  "date": "2023-11-02",
+  "location": "London, BRA",
+  "competition": "Diamond League",
+  "round": "Final",
+  "results": [
+    {
+      "pos": 1,
+      "athlete": "Ferdinand Coleman",
+      "country": "NGR",
+      "mark": "19.76",
+      "time": "19.76",
+      "lane": 1,
+      "reaction_time": 0.147,
+      "wind": 0.6
+    },
+    {
+      "pos": 2,
+      "athlete": "Francis Omanyala",
+      "country": "AUS",
+      "mark": "19.94",
+      "time": "19.94",
+      "lane": 2,
+      "reaction_time": 0.197,
+      "wind": 1.4
+    },
+    {
+      "pos": 3,
+      "athlete": "Akani Van Niekerk",
+      "country": "JAM",
+      "mark": "20.3",
+      "time": "20.3",
+      "lane": 3,
+      "reaction_time": 0.146,
+      "wind": 0.1
+    },
+    {
+      "pos": 4,
+      "athlete": "Michael Van Niekerk",
+      "country": "ITA",
+      "mark": "20.68",
+      "time": "20.68",
+      "lane": 4,
+      "reaction_time": 0.142,
+      "wind": -0.5
+    },
+    {
+      "pos": 5,
+      "athlete": "Zharnel Baker",
+      "country": "BRA",
+      "mark": "20.9",
+      "time": "20.9",
+      "lane": 5,
+      "reaction_time": 0.169,
+      "wind": -1.2
+    },
+    {
+      "pos": 6,
+      "athlete": "Asafa Guliyev",
+      "country": "CAN",
+      "mark": "21.26",
+      "time": "21.26",
+      "lane": 6,
+      "reaction_time": 0.172,
+      "wind": 0.2
+    },
+    {
+      "pos": 7,
+      "athlete": "Noah Simbine",
+      "country": "GBR",
+      "mark": "21.42",
+      "time": "21.42",
+      "lane": 7,
+      "reaction_time": 0.188,
+      "wind": -1.4
+    },
+    {
+      "pos": 8,
+      "athlete": "Noah Obikwelu",
+      "country": "NED",
+      "mark": "21.95",
+      "time": "21.95",
+      "lane": 8,
+      "reaction_time": 0.184,
+      "wind": -1.2
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "data_quality": {
+    "total_records": 915,
+    "valid_times": 915,
+    "invalid_times": 0,
+    "mean_confidence": 1.0
+  },
+  "aided_analysis": {
+    "counts": {
+      "LEGAL": {
+        "count": 881,
+        "percentage": 96.28415300546447
+      },
+      "WIND_AIDED": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "ALTITUDE_AIDED": {
+        "count": 34,
+        "percentage": 3.715846994535519
+      },
+      "UNKNOWN": {
+        "count": 0,
+        "percentage": 0.0
+      }
+    },
+    "timing_analysis": {
+      "LEGAL": {
+        "mean": 44.359602724177066,
+        "median": 44.44,
+        "std": 0.26787242756042645,
+        "min": 43.03,
+        "max": 44.65
+      },
+      "ALTITUDE_AIDED": {
+        "mean": 44.39411764705883,
+        "median": 44.489999999999995,
+        "std": 0.22412277002299635,
+        "min": 43.86,
+        "max": 44.65
+      }
+    },
+    "statistical_tests": {
+      "legal_vs_altitude_aided": {
+        "t_statistic": -0.741247084786732,
+        "p_value": 0.458734248471628,
+        "significant": false
+      }
+    },
+    "environmental_correlations": {
+      "LEGAL": {
+        "wind_correlation": 0.06435133281688592,
+        "altitude_correlation": 0.02609909095289098,
+        "temperature_correlation": 0.07606475395382438
+      },
+      "ALTITUDE_AIDED": {
+        "wind_correlation": 0.34679788514707255,
+        "altitude_correlation": -0.17357340281946063,
+        "temperature_correlation": -0.1277438730683475
+      }
+    },
+    "performance_impact": {
+      "ALTITUDE_AIDED": {
+        "percentage_improvement": -0.07780710547921647,
+        "absolute_difference": -0.034514922881761834
+      }
+    }
+  },
+  "environmental_factors": {
+    "wind": {
+      "wind_speed_stats": {
+        "mean": 2.4565464480874315,
+        "std": 2.0653292177408953,
+        "max": 12.86,
+        "min": 0.0
+      },
+      "wind_effect": {
+        "correlation": 0.06603612181166281,
+        "p_value": 0.04582801297425575
+      }
+    },
+    "pressure": {
+      "pressure_stats": {
+        "mean": 1019.09043715847,
+        "std": 6.905441661122076,
+        "max": 1035.0,
+        "min": 1001.0
+      },
+      "pressure_effect": {
+        "correlation": -0.026636416291759158,
+        "p_value": 0.42095504006079454
+      }
+    },
+    "altitude": {
+      "altitude_stats": {
+        "mean": -48.35490065164096,
+        "std": 57.11494279929264,
+        "max": 102.4897784931885,
+        "min": -179.52524979196895
+      },
+      "altitude_effect": {
+        "correlation": 0.026787755505006436,
+        "p_value": 0.41831989166392547
+      }
+    },
+    "combined_effects": {
+      "multiple_regression": {
+        "r_squared": 0.007014041218564859,
+        "coefficients": {
+          "wind_speed": 0.007812206164191306,
+          "pressure": 0.5818134558062348,
+          "altitude": 0.07047098915125928
+        }
+      }
+    }
+  },
+  "summary_statistics": {
+    "wind_speed": {
+      "mean": 2.4565464480874315,
+      "std": 2.0653292177408953,
+      "min": 0.0,
+      "max": 12.86,
+      "median": 1.8
+    },
+    "pressure": {
+      "mean": 1019.09043715847,
+      "std": 6.905441661122076,
+      "min": 1001.0,
+      "max": 1035.0,
+      "median": 1017.0
+    },
+    "altitude": {
+      "mean": -48.35490065164096,
+      "std": 57.11494279929264,
+      "min": -179.52524979196895,
+      "max": 102.4897784931885,
+      "median": -31.173811639024837
+    }
+  },
+  "correlation_matrix": {
+    "wind_speed": {
+      "wind_speed": 1.0,
+      "pressure": 0.0097,
+      "altitude": -0.0093,
+      "time_seconds": 0.066
+    },
+    "pressure": {
+      "wind_speed": 0.0097,
+      "pressure": 1.0,
+      "altitude": -1.0,
+      "time_seconds": -0.0266
+    },
+    "altitude": {
+      "wind_speed": -0.0093,
+      "pressure": -1.0,
+      "altitude": 1.0,
+      "time_seconds": 0.0268
+    },
+    "time_seconds": {
+      "wind_speed": 0.066,
+      "pressure": -0.0266,
+      "altitude": 0.0268,
+      "time_seconds": 1.0
+    }
+  },
+  "performance_thresholds": {
+    "wind_speed": {
+      "optimal_range": {
+        "lower": 1.19,
+        "upper": 3.09
+      }
+    },
+    "pressure": {
+      "optimal_range": {
+        "lower": 1014.0,
+        "upper": 1025.0
+      }
+    },
+    "altitude": {
+      "optimal_range": {
+        "lower": -97.36811172707776,
+        "upper": -6.242226973783849
+      }
+    }
+  }
+}

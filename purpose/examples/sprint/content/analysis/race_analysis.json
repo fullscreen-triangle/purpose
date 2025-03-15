@@ -1,0 +1,140 @@
+{
+  "title": "Sprint Performance Analysis",
+  "date": "2025-03-15",
+  "analyst": "Domain-LLM Sample Generator",
+  "summary": "Analysis of sprint race performances",
+  "metrics": [
+    {
+      "name": "Reaction Time",
+      "unit": "seconds",
+      "importance": "high"
+    },
+    {
+      "name": "Acceleration",
+      "unit": "m/s\u00b2",
+      "importance": "high"
+    },
+    {
+      "name": "Top Speed",
+      "unit": "m/s",
+      "importance": "high"
+    },
+    {
+      "name": "Speed Endurance",
+      "unit": "index",
+      "importance": "medium"
+    },
+    {
+      "name": "Stride Length",
+      "unit": "meters",
+      "importance": "medium"
+    },
+    {
+      "name": "Stride Frequency",
+      "unit": "Hz",
+      "importance": "medium"
+    }
+  ],
+  "data": [
+    {
+      "athlete": "Trayvon Powell",
+      "country": "ESP",
+      "reaction_time": 0.125,
+      "acceleration": 5.65,
+      "top_speed": 10.61,
+      "speed_endurance": 0.55,
+      "stride_length": 2.04,
+      "stride_frequency": 3.89
+    },
+    {
+      "athlete": "Michael Powell",
+      "country": "GER",
+      "reaction_time": 0.169,
+      "acceleration": 5.05,
+      "top_speed": 10.7,
+      "speed_endurance": 0.61,
+      "stride_length": 2.37,
+      "stride_frequency": 3.52
+    },
+    {
+      "athlete": "Asafa Bolt",
+      "country": "ITA",
+      "reaction_time": 0.137,
+      "acceleration": 6.88,
+      "top_speed": 10.88,
+      "speed_endurance": 0.62,
+      "stride_length": 2.42,
+      "stride_frequency": 4.13
+    },
+    {
+      "athlete": "Akani Bolt",
+      "country": "ITA",
+      "reaction_time": 0.172,
+      "acceleration": 6.25,
+      "top_speed": 11.42,
+      "speed_endurance": 0.57,
+      "stride_length": 2.45,
+      "stride_frequency": 3.87
+    },
+    {
+      "athlete": "Ronnie Powell",
+      "country": "USA",
+      "reaction_time": 0.193,
+      "acceleration": 6.09,
+      "top_speed": 10.85,
+      "speed_endurance": 0.61,
+      "stride_length": 2.23,
+      "stride_frequency": 3.6
+    },
+    {
+      "athlete": "Andre Blake",
+      "country": "AUS",
+      "reaction_time": 0.185,
+      "acceleration": 5.69,
+      "top_speed": 10.56,
+      "speed_endurance": 0.83,
+      "stride_length": 2.32,
+      "stride_frequency": 4.0
+    },
+    {
+      "athlete": "Ferdinand Coleman",
+      "country": "NGR",
+      "reaction_time": 0.154,
+      "acceleration": 5.74,
+      "top_speed": 12.47,
+      "speed_endurance": 0.61,
+      "stride_length": 2.3,
+      "stride_frequency": 3.7
+    },
+    {
+      "athlete": "Francis Bromell",
+      "country": "BRA",
+      "reaction_time": 0.121,
+      "acceleration": 6.32,
+      "top_speed": 11.75,
+      "speed_endurance": 0.72,
+      "stride_length": 2.09,
+      "stride_frequency": 4.27
+    },
+    {
+      "athlete": "Wayde Powell",
+      "country": "KEN",
+      "reaction_time": 0.168,
+      "acceleration": 6.49,
+      "top_speed": 10.76,
+      "speed_endurance": 0.55,
+      "stride_length": 2.27,
+      "stride_frequency": 4.45
+    },
+    {
+      "athlete": "Usain Blake",
+      "country": "GER",
+      "reaction_time": 0.131,
+      "acceleration": 5.06,
+      "top_speed": 12.03,
+      "speed_endurance": 0.57,
+      "stride_length": 2.13,
+      "stride_frequency": 4.27
+    }
+  ]
+}

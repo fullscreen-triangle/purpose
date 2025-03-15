@@ -1,0 +1,773 @@
+{
+  "medal_distribution": {
+    "total_athletes": 1057,
+    "total_medalists": 77,
+    "gold_medalists": 28,
+    "silver_medalists": 25,
+    "bronze_medalists": 24,
+    "medal_rate": 7.28,
+    "gold_rate": 2.65
+  },
+  "parameter_significance": [
+    {
+      "parameter": "Age",
+      "medalist_mean": 23.4675,
+      "non_medalist_mean": 24.0633,
+      "difference_percentage": -2.48,
+      "p_value": 0.1314,
+      "effect_size": 0.1787,
+      "significant": false
+    },
+    {
+      "parameter": "Height",
+      "medalist_mean": 182.3636,
+      "non_medalist_mean": 179.8031,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3873,
+      "significant": true
+    },
+    {
+      "parameter": "Weight",
+      "medalist_mean": 74.3377,
+      "non_medalist_mean": 71.5878,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4194,
+      "significant": true
+    },
+    {
+      "parameter": "hand_mass",
+      "medalist_mean": 0.4462,
+      "non_medalist_mean": 0.4296,
+      "difference_percentage": 3.87,
+      "p_value": 0.0004,
+      "effect_size": 0.4224,
+      "significant": true
+    },
+    {
+      "parameter": "forearm_mass",
+      "medalist_mean": 1.1896,
+      "non_medalist_mean": 1.1455,
+      "difference_percentage": 3.85,
+      "p_value": 0.0004,
+      "effect_size": 0.4207,
+      "significant": true
+    },
+    {
+      "parameter": "upper_arm_mass",
+      "medalist_mean": 2.0816,
+      "non_medalist_mean": 2.0044,
+      "difference_percentage": 3.85,
+      "p_value": 0.0004,
+      "effect_size": 0.42,
+      "significant": true
+    },
+    {
+      "parameter": "forearm_hand_mass",
+      "medalist_mean": 1.6353,
+      "non_medalist_mean": 1.575,
+      "difference_percentage": 3.83,
+      "p_value": 0.0004,
+      "effect_size": 0.4187,
+      "significant": true
+    },
+    {
+      "parameter": "total_arm_mass",
+      "medalist_mean": 3.7169,
+      "non_medalist_mean": 3.5794,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4194,
+      "significant": true
+    },
+    {
+      "parameter": "foot_mass",
+      "medalist_mean": 1.0791,
+      "non_medalist_mean": 1.0386,
+      "difference_percentage": 3.9,
+      "p_value": 0.0003,
+      "effect_size": 0.4249,
+      "significant": true
+    },
+    {
+      "parameter": "leg_mass",
+      "medalist_mean": 3.4562,
+      "non_medalist_mean": 3.3282,
+      "difference_percentage": 3.85,
+      "p_value": 0.0004,
+      "effect_size": 0.42,
+      "significant": true
+    },
+    {
+      "parameter": "thigh_mass",
+      "medalist_mean": 7.4338,
+      "non_medalist_mean": 7.1588,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4194,
+      "significant": true
+    },
+    {
+      "parameter": "head_neck_mass",
+      "medalist_mean": 6.0219,
+      "non_medalist_mean": 5.7992,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4194,
+      "significant": true
+    },
+    {
+      "parameter": "thorax_mass",
+      "medalist_mean": 16.0571,
+      "non_medalist_mean": 15.463,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4195,
+      "significant": true
+    },
+    {
+      "parameter": "abdomen_mass",
+      "medalist_mean": 10.3327,
+      "non_medalist_mean": 9.9514,
+      "difference_percentage": 3.83,
+      "p_value": 0.0004,
+      "effect_size": 0.4184,
+      "significant": true
+    },
+    {
+      "parameter": "pelvis_mass",
+      "medalist_mean": 10.5558,
+      "non_medalist_mean": 10.1655,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4193,
+      "significant": true
+    },
+    {
+      "parameter": "trunk_mass",
+      "medalist_mean": 36.9457,
+      "non_medalist_mean": 35.5784,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4196,
+      "significant": true
+    },
+    {
+      "parameter": "trunk_head_neck_mass",
+      "medalist_mean": 42.9673,
+      "non_medalist_mean": 41.3777,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4195,
+      "significant": true
+    },
+    {
+      "parameter": "hat_mass",
+      "medalist_mean": 50.401,
+      "non_medalist_mean": 48.5365,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4195,
+      "significant": true
+    },
+    {
+      "parameter": "foot_leg_mass",
+      "medalist_mean": 4.5352,
+      "non_medalist_mean": 4.367,
+      "difference_percentage": 3.85,
+      "p_value": 0.0004,
+      "effect_size": 0.4201,
+      "significant": true
+    },
+    {
+      "parameter": "total_leg_mass",
+      "medalist_mean": 11.969,
+      "non_medalist_mean": 11.5259,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4196,
+      "significant": true
+    },
+    {
+      "parameter": "thorax_abdomen_mass",
+      "medalist_mean": 26.3879,
+      "non_medalist_mean": 25.4118,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4195,
+      "significant": true
+    },
+    {
+      "parameter": "abdomen_pelvis_mass",
+      "medalist_mean": 20.8895,
+      "non_medalist_mean": 20.1169,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4193,
+      "significant": true
+    },
+    {
+      "parameter": "bmi",
+      "medalist_mean": 22.3478,
+      "non_medalist_mean": 22.1267,
+      "difference_percentage": 1.0,
+      "p_value": 0.2,
+      "effect_size": 0.1518,
+      "significant": false
+    },
+    {
+      "parameter": "body_surface_area",
+      "medalist_mean": 1.9523,
+      "non_medalist_mean": 1.9022,
+      "difference_percentage": 2.64,
+      "p_value": 0.0003,
+      "effect_size": 0.4324,
+      "significant": true
+    },
+    {
+      "parameter": "lean_body_mass",
+      "medalist_mean": 59.7469,
+      "non_medalist_mean": 57.9435,
+      "difference_percentage": 3.11,
+      "p_value": 0.0002,
+      "effect_size": 0.4387,
+      "significant": true
+    },
+    {
+      "parameter": "body_fat_percentage",
+      "medalist_mean": 16.0145,
+      "non_medalist_mean": 15.8864,
+      "difference_percentage": 0.81,
+      "p_value": 0.5815,
+      "effect_size": 0.0653,
+      "significant": false
+    },
+    {
+      "parameter": "skeletal_muscle_mass",
+      "medalist_mean": 39.9642,
+      "non_medalist_mean": 39.0337,
+      "difference_percentage": 2.38,
+      "p_value": 0.0001,
+      "effect_size": 0.4668,
+      "significant": true
+    },
+    {
+      "parameter": "bone_mass",
+      "medalist_mean": 3.3881,
+      "non_medalist_mean": 3.2854,
+      "difference_percentage": 3.12,
+      "p_value": 0.0002,
+      "effect_size": 0.4398,
+      "significant": true
+    },
+    {
+      "parameter": "total_body_water",
+      "medalist_mean": 43.0178,
+      "non_medalist_mean": 41.7192,
+      "difference_percentage": 3.11,
+      "p_value": 0.0002,
+      "effect_size": 0.4388,
+      "significant": true
+    },
+    {
+      "parameter": "leg_length",
+      "medalist_mean": 88.4451,
+      "non_medalist_mean": 87.2039,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3872,
+      "significant": true
+    },
+    {
+      "parameter": "thigh_length",
+      "medalist_mean": 44.6787,
+      "non_medalist_mean": 44.0517,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3872,
+      "significant": true
+    },
+    {
+      "parameter": "shank_length",
+      "medalist_mean": 44.8625,
+      "non_medalist_mean": 44.2319,
+      "difference_percentage": 1.43,
+      "p_value": 0.0011,
+      "effect_size": 0.3877,
+      "significant": true
+    },
+    {
+      "parameter": "foot_length",
+      "medalist_mean": 27.7204,
+      "non_medalist_mean": 27.3305,
+      "difference_percentage": 1.43,
+      "p_value": 0.0011,
+      "effect_size": 0.3878,
+      "significant": true
+    },
+    {
+      "parameter": "arm_length",
+      "medalist_mean": 80.24,
+      "non_medalist_mean": 79.1133,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3873,
+      "significant": true
+    },
+    {
+      "parameter": "shoulder_width",
+      "medalist_mean": 47.2319,
+      "non_medalist_mean": 46.5691,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3873,
+      "significant": true
+    },
+    {
+      "parameter": "hip_width",
+      "medalist_mean": 34.8317,
+      "non_medalist_mean": 34.3423,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3874,
+      "significant": true
+    },
+    {
+      "parameter": "chest_depth",
+      "medalist_mean": 23.1613,
+      "non_medalist_mean": 22.8361,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3873,
+      "significant": true
+    },
+    {
+      "parameter": "predicted_step_length",
+      "medalist_mean": 209.7182,
+      "non_medalist_mean": 206.7735,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3873,
+      "significant": true
+    },
+    {
+      "parameter": "stride_length",
+      "medalist_mean": 419.4364,
+      "non_medalist_mean": 413.547,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3873,
+      "significant": true
+    },
+    {
+      "parameter": "theoretical_max_speed",
+      "medalist_mean": 36.0696,
+      "non_medalist_mean": 35.815,
+      "difference_percentage": 0.71,
+      "p_value": 0.0011,
+      "effect_size": 0.3868,
+      "significant": true
+    },
+    {
+      "parameter": "base_of_support",
+      "medalist_mean": 38.3151,
+      "non_medalist_mean": 37.7767,
+      "difference_percentage": 1.43,
+      "p_value": 0.0011,
+      "effect_size": 0.3874,
+      "significant": true
+    },
+    {
+      "parameter": "center_of_mass_height",
+      "medalist_mean": 103.9473,
+      "non_medalist_mean": 102.4877,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3873,
+      "significant": true
+    },
+    {
+      "parameter": "basal_metabolic_rate",
+      "medalist_mean": 1826.2013,
+      "non_medalist_mean": 1773.6912,
+      "difference_percentage": 2.96,
+      "p_value": 0.0001,
+      "effect_size": 0.4676,
+      "significant": true
+    },
+    {
+      "parameter": "estimated_vo2_race",
+      "medalist_mean": 2629.4969,
+      "non_medalist_mean": 2576.3046,
+      "difference_percentage": 2.06,
+      "p_value": 0.0011,
+      "effect_size": 0.3875,
+      "significant": true
+    },
+    {
+      "parameter": "peak_power_estimate",
+      "medalist_mean": 3716.8831,
+      "non_medalist_mean": 3579.3878,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4194,
+      "significant": true
+    },
+    {
+      "parameter": "race_stride_frequency",
+      "medalist_mean": 4.5,
+      "non_medalist_mean": 4.5,
+      "difference_percentage": 0.0,
+      "p_value": 0,
+      "effect_size": 0.0,
+      "significant": false
+    },
+    {
+      "parameter": "max_stride_length",
+      "medalist_mean": 455.9091,
+      "non_medalist_mean": 449.5077,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3873,
+      "significant": true
+    },
+    {
+      "parameter": "optimal_stride_length",
+      "medalist_mean": 401.2,
+      "non_medalist_mean": 395.5667,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3873,
+      "significant": true
+    },
+    {
+      "parameter": "peak_ground_force",
+      "medalist_mean": 2552.3838,
+      "non_medalist_mean": 2457.9651,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4194,
+      "significant": true
+    },
+    {
+      "parameter": "power_to_weight",
+      "medalist_mean": 447.9916,
+      "non_medalist_mean": 436.7948,
+      "difference_percentage": 2.56,
+      "p_value": 0.0005,
+      "effect_size": 0.4165,
+      "significant": true
+    },
+    {
+      "parameter": "leg_stiffness",
+      "medalist_mean": 7433.7662,
+      "non_medalist_mean": 7158.7755,
+      "difference_percentage": 3.84,
+      "p_value": 0.0004,
+      "effect_size": 0.4194,
+      "significant": true
+    },
+    {
+      "parameter": "vertical_oscillation",
+      "medalist_mean": 9.1182,
+      "non_medalist_mean": 8.9902,
+      "difference_percentage": 1.42,
+      "p_value": 0.0011,
+      "effect_size": 0.3873,
+      "significant": true
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "basal_metabolic_rate",
+      "importance": 0.1235
+    },
+    {
+      "feature": "skeletal_muscle_mass",
+      "importance": 0.1228
+    },
+    {
+      "feature": "body_fat_percentage",
+      "importance": 0.1183
+    },
+    {
+      "feature": "Age",
+      "importance": 0.0929
+    },
+    {
+      "feature": "lean_body_mass",
+      "importance": 0.0355
+    },
+    {
+      "feature": "total_body_water",
+      "importance": 0.0302
+    },
+    {
+      "feature": "bmi",
+      "importance": 0.0294
+    },
+    {
+      "feature": "bone_mass",
+      "importance": 0.0281
+    },
+    {
+      "feature": "body_surface_area",
+      "importance": 0.0234
+    },
+    {
+      "feature": "shank_length",
+      "importance": 0.0121
+    },
+    {
+      "feature": "Weight",
+      "importance": 0.012
+    },
+    {
+      "feature": "theoretical_max_speed",
+      "importance": 0.0119
+    },
+    {
+      "feature": "forearm_hand_mass",
+      "importance": 0.0118
+    },
+    {
+      "feature": "chest_depth",
+      "importance": 0.0112
+    },
+    {
+      "feature": "leg_length",
+      "importance": 0.0112
+    },
+    {
+      "feature": "center_of_mass_height",
+      "importance": 0.0109
+    },
+    {
+      "feature": "hip_width",
+      "importance": 0.0107
+    },
+    {
+      "feature": "power_to_weight",
+      "importance": 0.0106
+    },
+    {
+      "feature": "base_of_support",
+      "importance": 0.0106
+    },
+    {
+      "feature": "Height",
+      "importance": 0.0104
+    },
+    {
+      "feature": "predicted_step_length",
+      "importance": 0.0104
+    },
+    {
+      "feature": "pelvis_mass",
+      "importance": 0.0101
+    },
+    {
+      "feature": "foot_length",
+      "importance": 0.01
+    },
+    {
+      "feature": "max_stride_length",
+      "importance": 0.01
+    },
+    {
+      "feature": "total_arm_mass",
+      "importance": 0.01
+    },
+    {
+      "feature": "thorax_abdomen_mass",
+      "importance": 0.0099
+    },
+    {
+      "feature": "thorax_mass",
+      "importance": 0.0098
+    },
+    {
+      "feature": "abdomen_mass",
+      "importance": 0.0097
+    },
+    {
+      "feature": "arm_length",
+      "importance": 0.0095
+    },
+    {
+      "feature": "vertical_oscillation",
+      "importance": 0.0094
+    },
+    {
+      "feature": "head_neck_mass",
+      "importance": 0.0092
+    },
+    {
+      "feature": "trunk_head_neck_mass",
+      "importance": 0.0091
+    },
+    {
+      "feature": "foot_leg_mass",
+      "importance": 0.009
+    },
+    {
+      "feature": "hat_mass",
+      "importance": 0.0089
+    },
+    {
+      "feature": "forearm_mass",
+      "importance": 0.0089
+    },
+    {
+      "feature": "thigh_length",
+      "importance": 0.0089
+    },
+    {
+      "feature": "peak_ground_force",
+      "importance": 0.0087
+    },
+    {
+      "feature": "thigh_mass",
+      "importance": 0.0087
+    },
+    {
+      "feature": "estimated_vo2_race",
+      "importance": 0.0087
+    },
+    {
+      "feature": "stride_length",
+      "importance": 0.0085
+    },
+    {
+      "feature": "foot_mass",
+      "importance": 0.0085
+    },
+    {
+      "feature": "optimal_stride_length",
+      "importance": 0.0083
+    },
+    {
+      "feature": "leg_mass",
+      "importance": 0.0083
+    },
+    {
+      "feature": "leg_stiffness",
+      "importance": 0.0081
+    },
+    {
+      "feature": "shoulder_width",
+      "importance": 0.0078
+    },
+    {
+      "feature": "abdomen_pelvis_mass",
+      "importance": 0.0077
+    },
+    {
+      "feature": "peak_power_estimate",
+      "importance": 0.0074
+    },
+    {
+      "feature": "trunk_mass",
+      "importance": 0.0074
+    },
+    {
+      "feature": "upper_arm_mass",
+      "importance": 0.0074
+    },
+    {
+      "feature": "total_leg_mass",
+      "importance": 0.0074
+    },
+    {
+      "feature": "hand_mass",
+      "importance": 0.0069
+    },
+    {
+      "feature": "race_stride_frequency",
+      "importance": 0.0
+    }
+  ],
+  "optimal_ranges": {
+    "basal_metabolic_rate": {
+      "gold_mean": 1844.3682,
+      "gold_range_lower": 1743.7383,
+      "gold_range_upper": 1944.9982,
+      "all_medal_mean": 1826.2013,
+      "all_medal_range_lower": 1718.1885,
+      "all_medal_range_upper": 1934.2141
+    },
+    "skeletal_muscle_mass": {
+      "gold_mean": 40.2832,
+      "gold_range_lower": 38.4839,
+      "gold_range_upper": 42.0825,
+      "all_medal_mean": 39.9642,
+      "all_medal_range_lower": 38.04,
+      "all_medal_range_upper": 41.8883
+    },
+    "body_fat_percentage": {
+      "gold_mean": 15.94,
+      "gold_range_lower": 14.0086,
+      "gold_range_upper": 17.8714,
+      "all_medal_mean": 16.0145,
+      "all_medal_range_lower": 13.9276,
+      "all_medal_range_upper": 18.1015
+    },
+    "Age": {
+      "gold_mean": 23.3571,
+      "gold_range_lower": 20.0326,
+      "gold_range_upper": 26.6817,
+      "all_medal_mean": 23.4675,
+      "all_medal_range_lower": 20.5136,
+      "all_medal_range_upper": 26.4215
+    },
+    "lean_body_mass": {
+      "gold_mean": 60.4261,
+      "gold_range_lower": 56.8626,
+      "gold_range_upper": 63.9895,
+      "all_medal_mean": 59.7469,
+      "all_medal_range_lower": 55.7848,
+      "all_medal_range_upper": 63.709
+    },
+    "total_body_water": {
+      "gold_mean": 43.5064,
+      "gold_range_lower": 40.94,
+      "gold_range_upper": 46.0729,
+      "all_medal_mean": 43.0178,
+      "all_medal_range_lower": 40.1649,
+      "all_medal_range_upper": 45.8707
+    },
+    "bmi": {
+      "gold_mean": 22.3075,
+      "gold_range_lower": 20.8417,
+      "gold_range_upper": 23.7733,
+      "all_medal_mean": 22.3478,
+      "all_medal_range_lower": 20.7261,
+      "all_medal_range_upper": 23.9695
+    },
+    "bone_mass": {
+      "gold_mean": 3.4271,
+      "gold_range_lower": 3.2248,
+      "gold_range_upper": 3.6295,
+      "all_medal_mean": 3.3881,
+      "all_medal_range_lower": 3.1628,
+      "all_medal_range_upper": 3.6133
+    },
+    "body_surface_area": {
+      "gold_mean": 1.9714,
+      "gold_range_lower": 1.8725,
+      "gold_range_upper": 2.0703,
+      "all_medal_mean": 1.9523,
+      "all_medal_range_lower": 1.8411,
+      "all_medal_range_upper": 2.0636
+    },
+    "shank_length": {
+      "gold_mean": 45.1596,
+      "gold_range_lower": 43.9225,
+      "gold_range_upper": 46.3968,
+      "all_medal_mean": 44.8625,
+      "all_medal_range_lower": 43.323,
+      "all_medal_range_upper": 46.4019
+    }
+  }
+}

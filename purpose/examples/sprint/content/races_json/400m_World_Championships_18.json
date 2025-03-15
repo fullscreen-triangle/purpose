@@ -1,0 +1,79 @@
+{
+  "event": "400m",
+  "date": "2023-01-10",
+  "location": "Brussels, CHN",
+  "competition": "World Championships",
+  "round": "Semi-final",
+  "results": [
+    {
+      "pos": 1,
+      "athlete": "Justin Johnson",
+      "country": "POR",
+      "mark": "43.11",
+      "time": "43.11",
+      "lane": 1,
+      "reaction_time": 0.171,
+      "wind": -1.7
+    },
+    {
+      "pos": 2,
+      "athlete": "Justin Johnson",
+      "country": "CAN",
+      "mark": "43.68",
+      "time": "43.68",
+      "lane": 2,
+      "reaction_time": 0.184,
+      "wind": -1.9
+    },
+    {
+      "pos": 3,
+      "athlete": "Yohan Bromell",
+      "country": "CAN",
+      "mark": "44.32",
+      "time": "44.32",
+      "lane": 3,
+      "reaction_time": 0.173,
+      "wind": -1.2
+    },
+    {
+      "pos": 4,
+      "athlete": "Christian Johnson",
+      "country": "AUS",
+      "mark": "44.72",
+      "time": "44.72",
+      "lane": 4,
+      "reaction_time": 0.19,
+      "wind": 1.9
+    },
+    {
+      "pos": 5,
+      "athlete": "Asafa Vicaut",
+      "country": "JPN",
+      "mark": "45.33",
+      "time": "45.33",
+      "lane": 5,
+      "reaction_time": 0.16,
+      "wind": -0.3
+    },
+    {
+      "pos": 6,
+      "athlete": "Noah Simbine",
+      "country": "GBR",
+      "mark": "46.06",
+      "time": "46.06",
+      "lane": 6,
+      "reaction_time": 0.146,
+      "wind": -0.2
+    },
+    {
+      "pos": 7,
+      "athlete": "Yohan Simbine",
+      "country": "KEN",
+      "mark": "46.69",
+      "time": "46.69",
+      "lane": 7,
+      "reaction_time": 0.176,
+      "wind": -1.6
+    }
+  ]
+}

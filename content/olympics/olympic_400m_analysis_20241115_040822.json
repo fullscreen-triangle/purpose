@@ -1,0 +1,4512 @@
+{
+    "model_evaluation": {
+        "model_performance": {
+            "0": {
+                "precision": 0.9282296650717703,
+                "recall": 0.9897959183673469,
+                "f1-score": 0.9580246913580247,
+                "support": 196.0
+            },
+            "1": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 5.0
+            },
+            "2": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 5.0
+            },
+            "3": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1-score": 0.0,
+                "support": 6.0
+            },
+            "accuracy": 0.9150943396226415,
+            "macro avg": {
+                "precision": 0.23205741626794257,
+                "recall": 0.24744897959183673,
+                "f1-score": 0.23950617283950618,
+                "support": 212.0
+            },
+            "weighted avg": {
+                "precision": 0.8581745960097499,
+                "recall": 0.9150943396226415,
+                "f1-score": 0.885720941066853,
+                "support": 212.0
+            }
+        },
+        "feature_importance": [
+            {
+                "feature": "Year",
+                "importance": 0.08886238569052356
+            },
+            {
+                "feature": "body_fat_percentage",
+                "importance": 0.07070707957801665
+            },
+            {
+                "feature": "skeletal_muscle_mass",
+                "importance": 0.06441460838425611
+            },
+            {
+                "feature": "basal_metabolic_rate",
+                "importance": 0.06019930385558096
+            },
+            {
+                "feature": "Age",
+                "importance": 0.0579198977427862
+            },
+            {
+                "feature": "bmi",
+                "importance": 0.050172667805211416
+            },
+            {
+                "feature": "lean_body_mass",
+                "importance": 0.0390840376073738
+            },
+            {
+                "feature": "total_body_water",
+                "importance": 0.03898620983066696
+            },
+            {
+                "feature": "bone_mass",
+                "importance": 0.02855893819903431
+            },
+            {
+                "feature": "body_surface_area",
+                "importance": 0.027789102288104675
+            },
+            {
+                "feature": "chest_depth",
+                "importance": 0.01660637373611642
+            },
+            {
+                "feature": "foot_leg_mass",
+                "importance": 0.014191452860338698
+            },
+            {
+                "feature": "Weight",
+                "importance": 0.013869070185139505
+            },
+            {
+                "feature": "leg_mass",
+                "importance": 0.013354738049395359
+            },
+            {
+                "feature": "foot_length",
+                "importance": 0.013299179830230594
+            },
+            {
+                "feature": "hat_mass",
+                "importance": 0.012871201402683512
+            },
+            {
+                "feature": "arm_length",
+                "importance": 0.012846240600526906
+            },
+            {
+                "feature": "power_to_weight",
+                "importance": 0.012689550218521013
+            },
+            {
+                "feature": "upper_arm_mass",
+                "importance": 0.0124531717248796
+            },
+            {
+                "feature": "thigh_length",
+                "importance": 0.012420227388206142
+            },
+            {
+                "feature": "thorax_mass",
+                "importance": 0.012282190448152168
+            },
+            {
+                "feature": "center_of_mass_height",
+                "importance": 0.012087422744296979
+            },
+            {
+                "feature": "thigh_mass",
+                "importance": 0.012074954994698673
+            },
+            {
+                "feature": "estimated_vo2_race",
+                "importance": 0.012005389528503727
+            },
+            {
+                "feature": "hip_width",
+                "importance": 0.011957116512350135
+            },
+            {
+                "feature": "leg_stiffness",
+                "importance": 0.011807696800141385
+            },
+            {
+                "feature": "abdomen_pelvis_mass",
+                "importance": 0.011712256092109045
+            },
+            {
+                "feature": "base_of_support",
+                "importance": 0.011692031626786573
+            },
+            {
+                "feature": "trunk_mass",
+                "importance": 0.011624058478046213
+            },
+            {
+                "feature": "optimal_stride_length",
+                "importance": 0.011575913005291769
+            },
+            {
+                "feature": "leg_length",
+                "importance": 0.01144999851046452
+            },
+            {
+                "feature": "stride_length",
+                "importance": 0.011361498534406206
+            },
+            {
+                "feature": "thorax_abdomen_mass",
+                "importance": 0.011083412449267393
+            },
+            {
+                "feature": "theoretical_max_speed",
+                "importance": 0.010977946914659148
+            },
+            {
+                "feature": "peak_power_estimate",
+                "importance": 0.010881618500619458
+            },
+            {
+                "feature": "predicted_step_length",
+                "importance": 0.010827872695028922
+            },
+            {
+                "feature": "shoulder_width",
+                "importance": 0.010603986322643217
+            },
+            {
+                "feature": "forearm_hand_mass",
+                "importance": 0.010592230787286916
+            },
+            {
+                "feature": "vertical_oscillation",
+                "importance": 0.010422499929334313
+            },
+            {
+                "feature": "foot_mass",
+                "importance": 0.010378125786339818
+            },
+            {
+                "feature": "peak_ground_force",
+                "importance": 0.010283972673868323
+            },
+            {
+                "feature": "pelvis_mass",
+                "importance": 0.009852333431692726
+            },
+            {
+                "feature": "total_arm_mass",
+                "importance": 0.00969169989074961
+            },
+            {
+                "feature": "total_leg_mass",
+                "importance": 0.009615761807069087
+            },
+            {
+                "feature": "Height",
+                "importance": 0.009596684391794104
+            },
+            {
+                "feature": "head_neck_mass",
+                "importance": 0.009583713178229926
+            },
+            {
+                "feature": "trunk_head_neck_mass",
+                "importance": 0.009470604327761763
+            },
+            {
+                "feature": "shank_length",
+                "importance": 0.009381151548233888
+            },
+            {
+                "feature": "max_stride_length",
+                "importance": 0.009380243952520786
+            },
+            {
+                "feature": "forearm_mass",
+                "importance": 0.00888609673738342
+            },
+            {
+                "feature": "abdomen_mass",
+                "importance": 0.008455839125708235
+            },
+            {
+                "feature": "hand_mass",
+                "importance": 0.007108241296969223
+            },
+            {
+                "feature": "race_stride_frequency",
+                "importance": 0.0
+            }
+        ],
+        "cross_validation_scores": [
+            0.9009433962264151,
+            0.9198113207547169,
+            0.9052132701421801,
+            0.909952606635071,
+            0.909952606635071
+        ]
+    },
+    "prediction_comparison": [
+        {
+            "Name": "Sten Karl Leopold Pettersson",
+            "Year": 1932,
+            "Team": "Sweden",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8988631035606582,
+                "Bronze": 0.03088631178843619,
+                "Silver": 0.008487152862505159,
+                "Gold": 0.061763431788400505
+            },
+            "Key_Metrics": {
+                "Year": 1932.0,
+                "body_fat_percentage": 16.73,
+                "skeletal_muscle_mass": 41.15,
+                "basal_metabolic_rate": 1893.9,
+                "Age": 29.0
+            }
+        },
+        {
+            "Name": "Michael Zerbes",
+            "Year": 1968,
+            "Team": "East Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8849414659949081,
+                "Bronze": 0.013200303347692614,
+                "Silver": 0.017569194773188274,
+                "Gold": 0.0842890358842112
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 14.88,
+                "skeletal_muscle_mass": 42.52,
+                "basal_metabolic_rate": 1973.08,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Bernhard Erich \"Bernd\" Herrmann",
+            "Year": 1976,
+            "Team": "West Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9124580099597571,
+                "Bronze": 0.0402670033968589,
+                "Silver": 0.02143266608763998,
+                "Gold": 0.025842320555744043
+            },
+            "Key_Metrics": {
+                "Year": 1976.0,
+                "body_fat_percentage": 15.64,
+                "skeletal_muscle_mass": 41.97,
+                "basal_metabolic_rate": 1940.48,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Georges Dsir \"Go\" Malfait",
+            "Year": 1912,
+            "Team": "France",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1912.0,
+                "body_fat_percentage": 16.6,
+                "skeletal_muscle_mass": 34.49,
+                "basal_metabolic_rate": 1515.87,
+                "Age": 33.0
+            }
+        },
+        {
+            "Name": "Andrzej Stanisaw Badeski",
+            "Year": 1968,
+            "Team": "Poland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.5000426571216202,
+                "Bronze": 0.449564403515455,
+                "Silver": 0.034073398677912016,
+                "Gold": 0.016319540685012866
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 16.81,
+                "skeletal_muscle_mass": 37.54,
+                "basal_metabolic_rate": 1687.66,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Kossi Casimir Akoto",
+            "Year": 1992,
+            "Team": "Togo",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9736774193548388,
+                "Bronze": 0.016322580645161292,
+                "Silver": 0.01,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 20.51,
+                "skeletal_muscle_mass": 38.48,
+                "basal_metabolic_rate": 1737.21,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Niko Verakauta",
+            "Year": 2008,
+            "Team": "Fiji",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9663871197718299,
+                "Bronze": 0.015995348683233334,
+                "Silver": 0.0,
+                "Gold": 0.017617531544936674
+            },
+            "Key_Metrics": {
+                "Year": 2008.0,
+                "body_fat_percentage": 14.3,
+                "skeletal_muscle_mass": 40.41,
+                "basal_metabolic_rate": 1853.14,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Gerald Clervil",
+            "Year": 2000,
+            "Team": "Haiti",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9164544613417596,
+                "Bronze": 0.0280502971203079,
+                "Silver": 0.029587018486391933,
+                "Gold": 0.02590822305154064
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 16.19,
+                "skeletal_muscle_mass": 37.39,
+                "basal_metabolic_rate": 1679.94,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Wickramesinghe Wimaladasa",
+            "Year": 1972,
+            "Team": "Sri Lanka",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 13.99,
+                "skeletal_muscle_mass": 36.09,
+                "basal_metabolic_rate": 1609.44,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "William Duncan \"Bill\" Fritz",
+            "Year": 1936,
+            "Team": "Canada",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8753519864421406,
+                "Bronze": 0.01,
+                "Silver": 0.030520390299071064,
+                "Gold": 0.08412762325878827
+            },
+            "Key_Metrics": {
+                "Year": 1936.0,
+                "body_fat_percentage": 14.01,
+                "skeletal_muscle_mass": 38.07,
+                "basal_metabolic_rate": 1720.97,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Ali St. Louis",
+            "Year": 1984,
+            "Team": "Trinidad and Tobago",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9546819949481791,
+                "Bronze": 0.006627218934911243,
+                "Silver": 0.03687479427034236,
+                "Gold": 0.0018159918465672203
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 17.37,
+                "skeletal_muscle_mass": 38.42,
+                "basal_metabolic_rate": 1737.45,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Miles Murphy",
+            "Year": 1988,
+            "Team": "Australia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.868918204713879,
+                "Bronze": 0.11346426374118428,
+                "Silver": 0.0,
+                "Gold": 0.017617531544936674
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 14.92,
+                "skeletal_muscle_mass": 40.57,
+                "basal_metabolic_rate": 1861.74,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Richard Jones",
+            "Year": 1996,
+            "Team": "Guyana",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9530510948905109,
+                "Bronze": 0.03539562043795621,
+                "Silver": 0.01,
+                "Gold": 0.001553284671532848
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 9.69,
+                "skeletal_muscle_mass": 37.61,
+                "basal_metabolic_rate": 1701.09,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "James \"Jimmy\" Massallay",
+            "Year": 1980,
+            "Team": "Sierra Leone",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9940785498489426,
+                "Bronze": 0.0,
+                "Silver": 0.005921450151057404,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1980.0,
+                "body_fat_percentage": 13.52,
+                "skeletal_muscle_mass": 35.54,
+                "basal_metabolic_rate": 1578.73,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Jos Jacinto Hidalgo",
+            "Year": 1968,
+            "Team": "Venezuela",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.5014205456088766,
+                "Bronze": 0.0,
+                "Silver": 0.0716107411725682,
+                "Gold": 0.4269687132185551
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 15.3,
+                "skeletal_muscle_mass": 37.93,
+                "basal_metabolic_rate": 1711.65,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Robosingho Arachchilage Don Sugath Thilakaratne",
+            "Year": 2000,
+            "Team": "Sri Lanka",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 14.92,
+                "skeletal_muscle_mass": 35.15,
+                "basal_metabolic_rate": 1554.73,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Zvonimir \"Zvonko\" Sabolovi",
+            "Year": 1948,
+            "Team": "Yugoslavia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7478839504488437,
+                "Bronze": 0.0,
+                "Silver": 0.22327735608478036,
+                "Gold": 0.028838693466376082
+            },
+            "Key_Metrics": {
+                "Year": 1948.0,
+                "body_fat_percentage": 13.39,
+                "skeletal_muscle_mass": 38.47,
+                "basal_metabolic_rate": 1745.25,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Iliya Dzhivondov",
+            "Year": 2000,
+            "Team": "Bulgaria",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8485307283094066,
+                "Bronze": 0.0326656480123311,
+                "Silver": 0.014295704520298777,
+                "Gold": 0.10450791915796355
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 15.38,
+                "skeletal_muscle_mass": 40.07,
+                "basal_metabolic_rate": 1833.06,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Slobodan Brankovi",
+            "Year": 1988,
+            "Team": "Yugoslavia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9146132031703655,
+                "Bronze": 0.017395428219297224,
+                "Silver": 0.03816871515688132,
+                "Gold": 0.029822653453455993
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 15.65,
+                "skeletal_muscle_mass": 42.77,
+                "basal_metabolic_rate": 1985.19,
+                "Age": 20.0
+            }
+        },
+        {
+            "Name": "Hermann Matthias Blazejczak",
+            "Year": 1936,
+            "Team": "Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8733854768727938,
+                "Bronze": 0.013933588761174969,
+                "Silver": 0.0157650590885562,
+                "Gold": 0.0969158752774751
+            },
+            "Key_Metrics": {
+                "Year": 1936.0,
+                "body_fat_percentage": 17.78,
+                "skeletal_muscle_mass": 40.05,
+                "basal_metabolic_rate": 1829.31,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Delmo da Silva",
+            "Year": 1976,
+            "Team": "Brazil",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6471063194534653,
+                "Bronze": 0.04936133807611023,
+                "Silver": 0.03928979106045599,
+                "Gold": 0.26424255140996855
+            },
+            "Key_Metrics": {
+                "Year": 1976.0,
+                "body_fat_percentage": 16.12,
+                "skeletal_muscle_mass": 37.83,
+                "basal_metabolic_rate": 1704.69,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Andrs Byron Silva Lemos",
+            "Year": 2004,
+            "Team": "Uruguay",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9807764705882352,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.019223529411764705
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 17.48,
+                "skeletal_muscle_mass": 41.05,
+                "basal_metabolic_rate": 1885.36,
+                "Age": 18.0
+            }
+        },
+        {
+            "Name": "Jean-Pierre Boccardo",
+            "Year": 1964,
+            "Team": "France",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8680768812057177,
+                "Bronze": 0.0063878326996197774,
+                "Silver": 0.022360612020611834,
+                "Gold": 0.10317467407405073
+            },
+            "Key_Metrics": {
+                "Year": 1964.0,
+                "body_fat_percentage": 13.3,
+                "skeletal_muscle_mass": 39.98,
+                "basal_metabolic_rate": 1830.26,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Bertland \"Bert\" Cameron",
+            "Year": 1988,
+            "Team": "Jamaica",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8909216371041482,
+                "Bronze": 0.06515062659391777,
+                "Silver": 0.020318103851753616,
+                "Gold": 0.023609632450180405
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 17.06,
+                "skeletal_muscle_mass": 41.1,
+                "basal_metabolic_rate": 1889.98,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "Pavel Maslk",
+            "Year": 2012,
+            "Team": "Czech Republic",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9378604076819298,
+                "Bronze": 0.02873051224944321,
+                "Silver": 0.022027369154172673,
+                "Gold": 0.01138171091445428
+            },
+            "Key_Metrics": {
+                "Year": 2012.0,
+                "body_fat_percentage": 14.2,
+                "skeletal_muscle_mass": 37.67,
+                "basal_metabolic_rate": 1697.97,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Reinhold Keskll",
+            "Year": 1924,
+            "Team": "Estonia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1924.0,
+                "body_fat_percentage": 14.9,
+                "skeletal_muscle_mass": 35.31,
+                "basal_metabolic_rate": 1563.04,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Sulaiman Juma Obaid Al-Habsi",
+            "Year": 1988,
+            "Team": "Oman",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.99,
+                "Bronze": 0.0,
+                "Silver": 0.01,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 14.39,
+                "skeletal_muscle_mass": 35.65,
+                "basal_metabolic_rate": 1581.83,
+                "Age": 18.0
+            }
+        },
+        {
+            "Name": "Howard Granville Davies",
+            "Year": 1968,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9152495277650682,
+                "Bronze": 0.0,
+                "Silver": 0.06481044300579598,
+                "Gold": 0.019940029229135885
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 15.46,
+                "skeletal_muscle_mass": 38.27,
+                "basal_metabolic_rate": 1730.73,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Timothy \"Tim\" Hesse",
+            "Year": 1992,
+            "Team": "Ghana",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9544006400270656,
+                "Bronze": 0.036084796866138226,
+                "Silver": 0.009514563106796117,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 17.56,
+                "skeletal_muscle_mass": 37.4,
+                "basal_metabolic_rate": 1678.94,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Richard Kevan Gosper",
+            "Year": 1956,
+            "Team": "Australia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.860312996634137,
+                "Bronze": 0.06735956540996671,
+                "Silver": 0.0027393522759948915,
+                "Gold": 0.06958808567990155
+            },
+            "Key_Metrics": {
+                "Year": 1956.0,
+                "body_fat_percentage": 15.01,
+                "skeletal_muscle_mass": 41.2,
+                "basal_metabolic_rate": 1897.25,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "William Christopher Prout",
+            "Year": 1908,
+            "Team": "United States",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.5943435067551381,
+                "Bronze": 0.0,
+                "Silver": 0.024960774385533107,
+                "Gold": 0.38069571885932874
+            },
+            "Key_Metrics": {
+                "Year": 1908.0,
+                "body_fat_percentage": 17.01,
+                "skeletal_muscle_mass": 40.33,
+                "basal_metabolic_rate": 1845.46,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "David Neville",
+            "Year": 2008,
+            "Team": "United States",
+            "Actual_Medal": "Bronze",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9298392398415412,
+                "Bronze": 0.021071663400284938,
+                "Silver": 0.0,
+                "Gold": 0.049089096758173884
+            },
+            "Key_Metrics": {
+                "Year": 2008.0,
+                "body_fat_percentage": 14.12,
+                "skeletal_muscle_mass": 41.39,
+                "basal_metabolic_rate": 1909.89,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Mdard Makanga",
+            "Year": 1992,
+            "Team": "Congo (Brazzaville)",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8885295873066282,
+                "Bronze": 0.01595087642914628,
+                "Silver": 0.02996153996364291,
+                "Gold": 0.0655579963005825
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 17.33,
+                "skeletal_muscle_mass": 39.79,
+                "basal_metabolic_rate": 1815.03,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Bjarni Stefnsson",
+            "Year": 1972,
+            "Team": "Iceland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9464004745265155,
+                "Bronze": 0.0,
+                "Silver": 0.052326963468550106,
+                "Gold": 0.0012725620049344256
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 14.55,
+                "skeletal_muscle_mass": 38.96,
+                "basal_metabolic_rate": 1770.76,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Maksim Sergeyevich Dyldin",
+            "Year": 2012,
+            "Team": "Russia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7339378736888829,
+                "Bronze": 0.006627218934911243,
+                "Silver": 0.25223873436027267,
+                "Gold": 0.007196173015933127
+            },
+            "Key_Metrics": {
+                "Year": 2012.0,
+                "body_fat_percentage": 16.19,
+                "skeletal_muscle_mass": 37.69,
+                "basal_metabolic_rate": 1697.26,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Dawda Jallow",
+            "Year": 1988,
+            "Team": "Gambia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9514616787474962,
+                "Bronze": 0.0,
+                "Silver": 0.04361585235743899,
+                "Gold": 0.00492246889506478
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 14.55,
+                "skeletal_muscle_mass": 38.96,
+                "basal_metabolic_rate": 1770.76,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Kriss Kezie Uche Chukwu Duru Akabusi",
+            "Year": 1984,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "Bronze",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.4463900067080972,
+                "Bronze": 0.4936099932919028,
+                "Silver": 0.0,
+                "Gold": 0.06
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 17.95,
+                "skeletal_muscle_mass": 41.64,
+                "basal_metabolic_rate": 1919.41,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Michael \"Mike\" Paul",
+            "Year": 1984,
+            "Team": "Trinidad and Tobago",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7046602435926174,
+                "Bronze": 0.25195218769442695,
+                "Silver": 0.013111836630177327,
+                "Gold": 0.03027573208277839
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 17.01,
+                "skeletal_muscle_mass": 40.47,
+                "basal_metabolic_rate": 1854.47,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Antonio Pettigrew",
+            "Year": 2000,
+            "Team": "United States",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.875022657526185,
+                "Bronze": 0.0,
+                "Silver": 0.04268609392621228,
+                "Gold": 0.08229124854760266
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 18.39,
+                "skeletal_muscle_mass": 39.58,
+                "basal_metabolic_rate": 1803.09,
+                "Age": 32.0
+            }
+        },
+        {
+            "Name": "Roger Anthony Black",
+            "Year": 1996,
+            "Team": "Great Britain",
+            "Actual_Medal": "Silver",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9240825681250184,
+                "Bronze": 0.02974285487227789,
+                "Silver": 0.02644752985630171,
+                "Gold": 0.019727047146401985
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 16.96,
+                "skeletal_muscle_mass": 41.06,
+                "basal_metabolic_rate": 1888.23,
+                "Age": 30.0
+            }
+        },
+        {
+            "Name": "Jean-Didiace Bmou",
+            "Year": 1988,
+            "Team": "Congo (Brazzaville)",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.782761335720734,
+                "Bronze": 0.0,
+                "Silver": 0.20662164458660817,
+                "Gold": 0.010617019692657905
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 15.63,
+                "skeletal_muscle_mass": 38.73,
+                "basal_metabolic_rate": 1757.93,
+                "Age": 29.0
+            }
+        },
+        {
+            "Name": "Noel J. Carroll",
+            "Year": 1968,
+            "Team": "Ireland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8373236549082038,
+                "Bronze": 0.09715080440699493,
+                "Silver": 0.016454632537301908,
+                "Gold": 0.04907090814749924
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 16.6,
+                "skeletal_muscle_mass": 41.29,
+                "basal_metabolic_rate": 1901.34,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Fawzi Dahesh Al-Shammari",
+            "Year": 2004,
+            "Team": "Kuwait",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9285512942762566,
+                "Bronze": 0.02,
+                "Silver": 0.04441100374887798,
+                "Gold": 0.007037701974865349
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 12.34,
+                "skeletal_muscle_mass": 37.74,
+                "basal_metabolic_rate": 1705.06,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Matija estak",
+            "Year": 2004,
+            "Team": "Slovenia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9599540582520604,
+                "Bronze": 0.0,
+                "Silver": 0.030045941747939682,
+                "Gold": 0.01
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 17.34,
+                "skeletal_muscle_mass": 41.92,
+                "basal_metabolic_rate": 1937.14,
+                "Age": 31.0
+            }
+        },
+        {
+            "Name": "Erwin Richard Skamrahl",
+            "Year": 1984,
+            "Team": "West Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8934128123794517,
+                "Bronze": 0.0,
+                "Silver": 0.03160409736515996,
+                "Gold": 0.07498309025538834
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 15.16,
+                "skeletal_muscle_mass": 37.58,
+                "basal_metabolic_rate": 1692.58,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Stephen Bartonjo Rotich",
+            "Year": 1956,
+            "Team": "Kenya",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1956.0,
+                "body_fat_percentage": 15.71,
+                "skeletal_muscle_mass": 36.38,
+                "basal_metabolic_rate": 1622.02,
+                "Age": 18.0
+            }
+        },
+        {
+            "Name": "Daniel M. Thomas",
+            "Year": 1964,
+            "Team": "Tanzania",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.99,
+                "Bronze": 0.01,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1964.0,
+                "body_fat_percentage": 14.25,
+                "skeletal_muscle_mass": 36.75,
+                "basal_metabolic_rate": 1646.71,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "James Maher Rosenberger",
+            "Year": 1912,
+            "Team": "United States",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7900011809411945,
+                "Bronze": 0.15588075653368644,
+                "Silver": 0.008970251716247143,
+                "Gold": 0.0451478108088721
+            },
+            "Key_Metrics": {
+                "Year": 1912.0,
+                "body_fat_percentage": 14.87,
+                "skeletal_muscle_mass": 39.77,
+                "basal_metabolic_rate": 1817.03,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Nicodemus Maipampe",
+            "Year": 1972,
+            "Team": "Zambia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9946448087431693,
+                "Bronze": 0.0,
+                "Silver": 0.005355191256830604,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 17.48,
+                "skeletal_muscle_mass": 35.44,
+                "basal_metabolic_rate": 1568.3,
+                "Age": 30.0
+            }
+        },
+        {
+            "Name": "Stephen Bartonjo Rotich",
+            "Year": 1960,
+            "Team": "Kenya",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 16.63,
+                "skeletal_muscle_mass": 35.99,
+                "basal_metabolic_rate": 1599.31,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Sunday Bada",
+            "Year": 1996,
+            "Team": "Nigeria",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8639616620442959,
+                "Bronze": 0.09147587027412753,
+                "Silver": 0.034562467681576496,
+                "Gold": 0.01
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 16.83,
+                "skeletal_muscle_mass": 41.19,
+                "basal_metabolic_rate": 1895.66,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Abdul Karim Ohimai Amu",
+            "Year": 1960,
+            "Team": "Nigeria",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.640636967411906,
+                "Bronze": 0.2633635339316177,
+                "Silver": 0.022400936156243677,
+                "Gold": 0.07359856250023275
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 16.78,
+                "skeletal_muscle_mass": 40.57,
+                "basal_metabolic_rate": 1860.14,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Frank Laird Waller",
+            "Year": 1904,
+            "Team": "United States",
+            "Actual_Medal": "Silver",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9807010874645562,
+                "Bronze": 0.0,
+                "Silver": 0.019298912535443868,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1904.0,
+                "body_fat_percentage": 15.9,
+                "skeletal_muscle_mass": 38.99,
+                "basal_metabolic_rate": 1770.63,
+                "Age": 20.0
+            }
+        },
+        {
+            "Name": "James A. Atuti",
+            "Year": 1984,
+            "Team": "Kenya",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.616118476096781,
+                "Bronze": 0.06066405389232209,
+                "Silver": 0.3000290168198965,
+                "Gold": 0.02318845319100028
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 17.86,
+                "skeletal_muscle_mass": 41.14,
+                "basal_metabolic_rate": 1892.02,
+                "Age": 30.0
+            }
+        },
+        {
+            "Name": "Stefano Malinverni",
+            "Year": 1980,
+            "Team": "Italy",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9318565833799017,
+                "Bronze": 0.02948875185470797,
+                "Silver": 0.020855964937712974,
+                "Gold": 0.017798699827677254
+            },
+            "Key_Metrics": {
+                "Year": 1980.0,
+                "body_fat_percentage": 15.67,
+                "skeletal_muscle_mass": 39.69,
+                "basal_metabolic_rate": 1810.95,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Subul Babo",
+            "Year": 1996,
+            "Team": "Papua New Guinea",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9940785498489426,
+                "Bronze": 0.0,
+                "Silver": 0.005921450151057404,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 16.16,
+                "skeletal_muscle_mass": 36.47,
+                "basal_metabolic_rate": 1628.68,
+                "Age": 30.0
+            }
+        },
+        {
+            "Name": "Rico Lieder",
+            "Year": 1992,
+            "Team": "Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8705737604072838,
+                "Bronze": 0.04515900773559008,
+                "Silver": 0.007509578544061302,
+                "Gold": 0.07675765331306486
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 11.64,
+                "skeletal_muscle_mass": 38.8,
+                "basal_metabolic_rate": 1765.04,
+                "Age": 20.0
+            }
+        },
+        {
+            "Name": "Kennedy Ochieng",
+            "Year": 1996,
+            "Team": "Kenya",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6464083860857164,
+                "Bronze": 0.027272320978560048,
+                "Silver": 0.003655158017141201,
+                "Gold": 0.32266413491858237
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 15.48,
+                "skeletal_muscle_mass": 39.63,
+                "basal_metabolic_rate": 1808.31,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Amar Hecini",
+            "Year": 1996,
+            "Team": "Algeria",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9634515698922508,
+                "Bronze": 0.006627218934911243,
+                "Silver": 0.028105219326270775,
+                "Gold": 0.0018159918465672203
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 16.75,
+                "skeletal_muscle_mass": 38.28,
+                "basal_metabolic_rate": 1729.73,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Marcel Lambrechts",
+            "Year": 1960,
+            "Team": "Belgium",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9876201363818693,
+                "Bronze": 0.00849097472924188,
+                "Silver": 0.0,
+                "Gold": 0.0038888888888888905
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 18.87,
+                "skeletal_muscle_mass": 39.24,
+                "basal_metabolic_rate": 1782.73,
+                "Age": 29.0
+            }
+        },
+        {
+            "Name": "Alejandro Manuel Crdeas Robles",
+            "Year": 2000,
+            "Team": "Mexico",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.85847994808166,
+                "Bronze": 0.10851139709099467,
+                "Silver": 0.007943993366236315,
+                "Gold": 0.025064661461109125
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 14.87,
+                "skeletal_muscle_mass": 39.77,
+                "basal_metabolic_rate": 1817.03,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Samson Kitur",
+            "Year": 1996,
+            "Team": "Kenya",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "Gold",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.42190207181251954,
+                "Bronze": 0.1254811633434414,
+                "Silver": 0.0,
+                "Gold": 0.452616764844039
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 17.41,
+                "skeletal_muscle_mass": 40.26,
+                "basal_metabolic_rate": 1842.24,
+                "Age": 30.0
+            }
+        },
+        {
+            "Name": "Zdenk Va",
+            "Year": 1960,
+            "Team": "Czechoslovakia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 15.21,
+                "skeletal_muscle_mass": 36.72,
+                "basal_metabolic_rate": 1642.38,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "David Kitur",
+            "Year": 1992,
+            "Team": "Kenya",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8217819207667908,
+                "Bronze": 0.03394194831974561,
+                "Silver": 0.009275595973345584,
+                "Gold": 0.13500053494011804
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 16.63,
+                "skeletal_muscle_mass": 39.14,
+                "basal_metabolic_rate": 1779.93,
+                "Age": 29.0
+            }
+        },
+        {
+            "Name": "Arnaud Malherbe",
+            "Year": 2000,
+            "Team": "South Africa",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9043488924401495,
+                "Bronze": 0.04164337827705901,
+                "Silver": 0.015176465690959562,
+                "Gold": 0.03883126359183178
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 15.07,
+                "skeletal_muscle_mass": 39.65,
+                "basal_metabolic_rate": 1810.48,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Muhammad Fayyaz",
+            "Year": 1988,
+            "Team": "Pakistan",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 12.97,
+                "skeletal_muscle_mass": 35.9,
+                "basal_metabolic_rate": 1598.39,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "ngel Valentn de las Heras Lzaro",
+            "Year": 1984,
+            "Team": "Spain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9219069634046179,
+                "Bronze": 0.01,
+                "Silver": 0.03160409736515996,
+                "Gold": 0.03648893923022217
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 15.22,
+                "skeletal_muscle_mass": 37.6,
+                "basal_metabolic_rate": 1693.46,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "David Kipkorir Kirui",
+            "Year": 2000,
+            "Team": "Kenya",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9546819949481791,
+                "Bronze": 0.006627218934911243,
+                "Silver": 0.03687479427034236,
+                "Gold": 0.0018159918465672203
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 17.37,
+                "skeletal_muscle_mass": 38.42,
+                "basal_metabolic_rate": 1737.45,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Gakologelwang Lesiba Masheto",
+            "Year": 2008,
+            "Team": "Botswana",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9532110542440401,
+                "Bronze": 0.0,
+                "Silver": 0.03975124378109453,
+                "Gold": 0.007037701974865349
+            },
+            "Key_Metrics": {
+                "Year": 2008.0,
+                "body_fat_percentage": 11.82,
+                "skeletal_muscle_mass": 36.17,
+                "basal_metabolic_rate": 1615.83,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Julius Sang",
+            "Year": 1972,
+            "Team": "Kenya",
+            "Actual_Medal": "Bronze",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.936754501611397,
+                "Bronze": 0.0,
+                "Silver": 0.053221858552127736,
+                "Gold": 0.010023639836475537
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 16.82,
+                "skeletal_muscle_mass": 37.84,
+                "basal_metabolic_rate": 1704.98,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Francisco Rojas Soto",
+            "Year": 1972,
+            "Team": "Paraguay",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.942588694425407,
+                "Bronze": 0.022406547699333083,
+                "Silver": 0.020855964937712974,
+                "Gold": 0.014148792937546902
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 15.67,
+                "skeletal_muscle_mass": 39.69,
+                "basal_metabolic_rate": 1810.95,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Mark Ian Handelsman",
+            "Year": 1984,
+            "Team": "Israel",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.644315468547287,
+                "Bronze": 0.0,
+                "Silver": 0.34312073702158585,
+                "Gold": 0.012563794431127158
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 14.17,
+                "skeletal_muscle_mass": 39.0,
+                "basal_metabolic_rate": 1773.8,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Joseph \"Joe\" Ramotshabi",
+            "Year": 1980,
+            "Team": "Botswana",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9698807607097829,
+                "Bronze": 0.0,
+                "Silver": 0.025196770395152158,
+                "Gold": 0.00492246889506478
+            },
+            "Key_Metrics": {
+                "Year": 1980.0,
+                "body_fat_percentage": 13.86,
+                "skeletal_muscle_mass": 39.26,
+                "basal_metabolic_rate": 1787.79,
+                "Age": 18.0
+            }
+        },
+        {
+            "Name": "Charles Teilmann Hoff",
+            "Year": 1924,
+            "Team": "Norway",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6972547007463439,
+                "Bronze": 0.0,
+                "Silver": 0.25584389080295206,
+                "Gold": 0.04690140845070422
+            },
+            "Key_Metrics": {
+                "Year": 1924.0,
+                "body_fat_percentage": 13.27,
+                "skeletal_muscle_mass": 38.63,
+                "basal_metabolic_rate": 1753.56,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Zygmunt Eugeniusz Weiss",
+            "Year": 1928,
+            "Team": "Poland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7793056897030591,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.220694310296941
+            },
+            "Key_Metrics": {
+                "Year": 1928.0,
+                "body_fat_percentage": 18.43,
+                "skeletal_muscle_mass": 40.52,
+                "basal_metabolic_rate": 1855.22,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Michael Duane Johnson",
+            "Year": 2000,
+            "Team": "United States",
+            "Actual_Medal": "Gold",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6984394935073087,
+                "Bronze": 0.004918163672654691,
+                "Silver": 0.0,
+                "Gold": 0.29664234282003665
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 18.98,
+                "skeletal_muscle_mass": 39.73,
+                "basal_metabolic_rate": 1810.81,
+                "Age": 33.0
+            }
+        },
+        {
+            "Name": "Mulugetta Tadesse",
+            "Year": 1972,
+            "Team": "Ethiopia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 14.57,
+                "skeletal_muscle_mass": 36.7,
+                "basal_metabolic_rate": 1642.79,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Mark Daniel Ladbrook",
+            "Year": 1996,
+            "Team": "Australia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9506174312869387,
+                "Bronze": 0.0355754624426806,
+                "Silver": 0.007232472324723247,
+                "Gold": 0.006574633945657533
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 14.78,
+                "skeletal_muscle_mass": 40.51,
+                "basal_metabolic_rate": 1859.1,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Nagmeldin Ali Abubakr",
+            "Year": 2008,
+            "Team": "Sudan",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 2008.0,
+                "body_fat_percentage": 14.42,
+                "skeletal_muscle_mass": 36.53,
+                "basal_metabolic_rate": 1632.91,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Georges Dsir \"Go\" Malfait",
+            "Year": 1908,
+            "Team": "France",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1908.0,
+                "body_fat_percentage": 15.68,
+                "skeletal_muscle_mass": 34.88,
+                "basal_metabolic_rate": 1538.58,
+                "Age": 29.0
+            }
+        },
+        {
+            "Name": "Herbert Brotherson Jamison",
+            "Year": 1896,
+            "Team": "United States",
+            "Actual_Medal": "Silver",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7567275792130088,
+                "Bronze": 0.013028845194131151,
+                "Silver": 0.029709710911817355,
+                "Gold": 0.20053386468104262
+            },
+            "Key_Metrics": {
+                "Year": 1896.0,
+                "body_fat_percentage": 16.06,
+                "skeletal_muscle_mass": 38.27,
+                "basal_metabolic_rate": 1729.44,
+                "Age": 20.0
+            }
+        },
+        {
+            "Name": "Bryshon Lorenzo Nellum",
+            "Year": 2012,
+            "Team": "United States",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6417594244470596,
+                "Bronze": 0.16286552456114836,
+                "Silver": 0.02182334748174461,
+                "Gold": 0.17355170351004737
+            },
+            "Key_Metrics": {
+                "Year": 2012.0,
+                "body_fat_percentage": 17.76,
+                "skeletal_muscle_mass": 41.44,
+                "basal_metabolic_rate": 1907.77,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Antonio Snchez Muoz",
+            "Year": 1988,
+            "Team": "Spain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9399541184714204,
+                "Bronze": 0.0,
+                "Silver": 0.055123412633515,
+                "Gold": 0.00492246889506478
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 15.7,
+                "skeletal_muscle_mass": 39.23,
+                "basal_metabolic_rate": 1785.32,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "David Andrew Jenkins",
+            "Year": 1972,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8741848449414755,
+                "Bronze": 0.032119529741321734,
+                "Silver": 0.048168715156881314,
+                "Gold": 0.045526910160321454
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 15.65,
+                "skeletal_muscle_mass": 42.77,
+                "basal_metabolic_rate": 1985.19,
+                "Age": 20.0
+            }
+        },
+        {
+            "Name": "Ricardo Larios",
+            "Year": 1976,
+            "Team": "Nicaragua",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1976.0,
+                "body_fat_percentage": 11.78,
+                "skeletal_muscle_mass": 34.0,
+                "basal_metabolic_rate": 1492.26,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Marko Rai",
+            "Year": 1948,
+            "Team": "Yugoslavia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9946448087431693,
+                "Bronze": 0.0,
+                "Silver": 0.005355191256830604,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1948.0,
+                "body_fat_percentage": 16.6,
+                "skeletal_muscle_mass": 35.39,
+                "basal_metabolic_rate": 1566.25,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "Stefanos Petrakis",
+            "Year": 1948,
+            "Team": "Greece",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1948.0,
+                "body_fat_percentage": 13.67,
+                "skeletal_muscle_mass": 36.35,
+                "basal_metabolic_rate": 1623.43,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Csaba Csutors",
+            "Year": 1960,
+            "Team": "Hungary",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.730050892948855,
+                "Bronze": 0.02,
+                "Silver": 0.22673276200268588,
+                "Gold": 0.023216345048459198
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 18.0,
+                "skeletal_muscle_mass": 42.75,
+                "basal_metabolic_rate": 1981.43,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Jan William Joslin \"John\" Rinkel",
+            "Year": 1928,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7135472312856674,
+                "Bronze": 0.033062022916246804,
+                "Silver": 0.06593152021131388,
+                "Gold": 0.187459225586772
+            },
+            "Key_Metrics": {
+                "Year": 1928.0,
+                "body_fat_percentage": 15.97,
+                "skeletal_muscle_mass": 40.22,
+                "basal_metabolic_rate": 1840.78,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Arnaud Malherbe",
+            "Year": 1996,
+            "Team": "South Africa",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9138994211321163,
+                "Bronze": 0.05155871098507765,
+                "Silver": 0.015176465690959562,
+                "Gold": 0.019365402191846414
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 14.15,
+                "skeletal_muscle_mass": 40.04,
+                "basal_metabolic_rate": 1833.19,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Nils Erik Engdahl",
+            "Year": 1920,
+            "Team": "Sweden",
+            "Actual_Medal": "Bronze",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.99,
+                "Bronze": 0.0,
+                "Silver": 0.01,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1920.0,
+                "body_fat_percentage": 13.76,
+                "skeletal_muscle_mass": 34.62,
+                "basal_metabolic_rate": 1524.61,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Richard Charles \"Rick\" Mitchell",
+            "Year": 1976,
+            "Team": "Australia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6541041024712402,
+                "Bronze": 0.01,
+                "Silver": 0.32097342863369527,
+                "Gold": 0.01492246889506478
+            },
+            "Key_Metrics": {
+                "Year": 1976.0,
+                "body_fat_percentage": 14.07,
+                "skeletal_muscle_mass": 39.44,
+                "basal_metabolic_rate": 1798.55,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Karl-Adolf Metzner",
+            "Year": 1932,
+            "Team": "Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8836127162887359,
+                "Bronze": 0.01,
+                "Silver": 0.009074074074074075,
+                "Gold": 0.09731320963719005
+            },
+            "Key_Metrics": {
+                "Year": 1932.0,
+                "body_fat_percentage": 18.49,
+                "skeletal_muscle_mass": 41.3,
+                "basal_metabolic_rate": 1899.05,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Ole Jacob Pedersen",
+            "Year": 1912,
+            "Team": "Norway",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.5388428747674296,
+                "Bronze": 0.0,
+                "Silver": 0.45679186910784886,
+                "Gold": 0.004365256124721603
+            },
+            "Key_Metrics": {
+                "Year": 1912.0,
+                "body_fat_percentage": 14.17,
+                "skeletal_muscle_mass": 39.0,
+                "basal_metabolic_rate": 1773.8,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "David Canal Valero",
+            "Year": 2000,
+            "Team": "Spain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7347823906593512,
+                "Bronze": 0.02272334390482084,
+                "Silver": 0.08069358254466169,
+                "Gold": 0.1618006828911662
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 15.8,
+                "skeletal_muscle_mass": 40.34,
+                "basal_metabolic_rate": 1847.34,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Renelda Swan",
+            "Year": 1976,
+            "Team": "Bermuda",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9959278015842098,
+                "Bronze": 0.0,
+                "Silver": 0.0027996364108557365,
+                "Gold": 0.0012725620049344256
+            },
+            "Key_Metrics": {
+                "Year": 1976.0,
+                "body_fat_percentage": 14.45,
+                "skeletal_muscle_mass": 39.1,
+                "basal_metabolic_rate": 1778.19,
+                "Age": 18.0
+            }
+        },
+        {
+            "Name": "Ousmane Diarra",
+            "Year": 1988,
+            "Team": "Senegal",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6757535012030541,
+                "Bronze": 0.2658282854760431,
+                "Silver": 0.007943993366236315,
+                "Gold": 0.05047421995466664
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 14.92,
+                "skeletal_muscle_mass": 39.79,
+                "basal_metabolic_rate": 1817.91,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Ali Khamis Abbas Ali Khamis",
+            "Year": 2016,
+            "Team": "Bahrain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9159793482431118,
+                "Bronze": 0.0,
+                "Silver": 0.07909818286182349,
+                "Gold": 0.00492246889506478
+            },
+            "Key_Metrics": {
+                "Year": 2016.0,
+                "body_fat_percentage": 13.99,
+                "skeletal_muscle_mass": 39.12,
+                "basal_metabolic_rate": 1780.35,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Malcolm Clive Spence",
+            "Year": 1960,
+            "Team": "South Africa",
+            "Actual_Medal": "Bronze",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8878775759687759,
+                "Bronze": 0.06935884666969053,
+                "Silver": 0.019003540770032773,
+                "Gold": 0.02376003659150085
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 14.94,
+                "skeletal_muscle_mass": 40.87,
+                "basal_metabolic_rate": 1879.05,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Jerzy Wadysaw Kowalski",
+            "Year": 1960,
+            "Team": "Poland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9142650212437977,
+                "Bronze": 0.0,
+                "Silver": 0.08391898690963519,
+                "Gold": 0.0018159918465672203
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 16.52,
+                "skeletal_muscle_mass": 38.38,
+                "basal_metabolic_rate": 1735.41,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Robbie Ian Brightwell",
+            "Year": 1964,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6246449879274654,
+                "Bronze": 0.043733255047155944,
+                "Silver": 0.16801902652972017,
+                "Gold": 0.16360273049565843
+            },
+            "Key_Metrics": {
+                "Year": 1964.0,
+                "body_fat_percentage": 16.82,
+                "skeletal_muscle_mass": 41.98,
+                "basal_metabolic_rate": 1939.48,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Arvid Folke Alnevik (Andersson-)",
+            "Year": 1948,
+            "Team": "Sweden",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8589953373391122,
+                "Bronze": 0.0,
+                "Silver": 0.1366394065361662,
+                "Gold": 0.004365256124721603
+            },
+            "Key_Metrics": {
+                "Year": 1948.0,
+                "body_fat_percentage": 15.6,
+                "skeletal_muscle_mass": 38.43,
+                "basal_metabolic_rate": 1740.61,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "George Ezekiel Kerr",
+            "Year": 1956,
+            "Team": "Jamaica",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9498072964442877,
+                "Bronze": 0.0,
+                "Silver": 0.050192703555712176,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1956.0,
+                "body_fat_percentage": 14.09,
+                "skeletal_muscle_mass": 39.16,
+                "basal_metabolic_rate": 1782.11,
+                "Age": 19.0
+            }
+        },
+        {
+            "Name": "Thomas Edmund \"Tom\" Burke",
+            "Year": 1896,
+            "Team": "United States",
+            "Actual_Medal": "Gold",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6613916093041005,
+                "Bronze": 0.01,
+                "Silver": 0.07460447905300954,
+                "Gold": 0.25400391164289
+            },
+            "Key_Metrics": {
+                "Year": 1896.0,
+                "body_fat_percentage": 12.28,
+                "skeletal_muscle_mass": 38.22,
+                "basal_metabolic_rate": 1731.56,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Martial Biguet",
+            "Year": 1996,
+            "Team": "Central African Republic",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8146868992549143,
+                "Bronze": 0.0,
+                "Silver": 0.15876394750360576,
+                "Gold": 0.026549153241479894
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 13.92,
+                "skeletal_muscle_mass": 38.32,
+                "basal_metabolic_rate": 1735.65,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Francisco \"Frank\" Rivera Paniagua",
+            "Year": 1952,
+            "Team": "Puerto Rico",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1952.0,
+                "body_fat_percentage": 12.44,
+                "skeletal_muscle_mass": 35.59,
+                "basal_metabolic_rate": 1582.36,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Christopher Deon \"Chris\" Brown",
+            "Year": 2000,
+            "Team": "Bahamas",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9697708785941609,
+                "Bronze": 0.003933588761174969,
+                "Silver": 0.01228132265826417,
+                "Gold": 0.014014209986399927
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 17.03,
+                "skeletal_muscle_mass": 40.03,
+                "basal_metabolic_rate": 1828.14,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Anastasios \"Tasos\" Gousis",
+            "Year": 2000,
+            "Team": "Greece",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9438430770099511,
+                "Bronze": 0.03393358876117497,
+                "Silver": 0.009481686247408434,
+                "Gold": 0.012741647981465501
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 17.36,
+                "skeletal_muscle_mass": 39.95,
+                "basal_metabolic_rate": 1823.34,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Derrick Peynado",
+            "Year": 1980,
+            "Team": "Jamaica",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7184788749689501,
+                "Bronze": 0.07978511782140794,
+                "Silver": 0.02050785107359805,
+                "Gold": 0.18122815613604376
+            },
+            "Key_Metrics": {
+                "Year": 1980.0,
+                "body_fat_percentage": 14.56,
+                "skeletal_muscle_mass": 40.03,
+                "basal_metabolic_rate": 1831.02,
+                "Age": 20.0
+            }
+        },
+        {
+            "Name": "Michael Blackwood",
+            "Year": 2004,
+            "Team": "Jamaica",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9341642488090155,
+                "Bronze": 0.02790160671667562,
+                "Silver": 0.01848005018150496,
+                "Gold": 0.01945409429280397
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 15.81,
+                "skeletal_muscle_mass": 41.55,
+                "basal_metabolic_rate": 1916.61,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Konstantin Nikolayevich Grachov",
+            "Year": 1956,
+            "Team": "Soviet Union",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9846448087431693,
+                "Bronze": 0.01,
+                "Silver": 0.005355191256830604,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1956.0,
+                "body_fat_percentage": 17.9,
+                "skeletal_muscle_mass": 35.38,
+                "basal_metabolic_rate": 1564.37,
+                "Age": 29.0
+            }
+        },
+        {
+            "Name": "Piotr Grzegorz Rysiukiewicz",
+            "Year": 1996,
+            "Team": "Poland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9940785498489426,
+                "Bronze": 0.0,
+                "Silver": 0.005921450151057404,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 14.62,
+                "skeletal_muscle_mass": 37.18,
+                "basal_metabolic_rate": 1669.3,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Maher Abbas",
+            "Year": 1988,
+            "Team": "Lebanon",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.99,
+                "Bronze": 0.01,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 18.4,
+                "skeletal_muscle_mass": 40.66,
+                "basal_metabolic_rate": 1862.66,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Malachi John Davis",
+            "Year": 2004,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8419497045542563,
+                "Bronze": 0.10746053529007009,
+                "Silver": 0.008713302494198655,
+                "Gold": 0.0418764576614749
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 18.09,
+                "skeletal_muscle_mass": 40.9,
+                "basal_metabolic_rate": 1877.34,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Francis Ogola",
+            "Year": 1992,
+            "Team": "Uganda",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8613615524882168,
+                "Bronze": 0.04992614113318776,
+                "Silver": 0.04729785219056644,
+                "Gold": 0.04141445418802908
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 14.69,
+                "skeletal_muscle_mass": 40.37,
+                "basal_metabolic_rate": 1850.09,
+                "Age": 19.0
+            }
+        },
+        {
+            "Name": "Adem Hecini",
+            "Year": 2004,
+            "Team": "Algeria",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9765169121045273,
+                "Bronze": 0.008983957219251338,
+                "Silver": 0.014499130676221519,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 16.1,
+                "skeletal_muscle_mass": 36.91,
+                "basal_metabolic_rate": 1653.43,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "Alberto Juantorena Danger",
+            "Year": 1976,
+            "Team": "Cuba",
+            "Actual_Medal": "Gold",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7926038583551687,
+                "Bronze": 0.0,
+                "Silver": 0.16227769994800464,
+                "Gold": 0.045118441696826536
+            },
+            "Key_Metrics": {
+                "Year": 1976.0,
+                "body_fat_percentage": 17.47,
+                "skeletal_muscle_mass": 42.77,
+                "basal_metabolic_rate": 1983.6,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Gustavo Cuesta Rosario",
+            "Year": 2016,
+            "Team": "Dominican Republic",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7454386257914065,
+                "Bronze": 0.1465464162166385,
+                "Silver": 0.0035689455388180774,
+                "Gold": 0.10444601245313682
+            },
+            "Key_Metrics": {
+                "Year": 2016.0,
+                "body_fat_percentage": 18.68,
+                "skeletal_muscle_mass": 41.05,
+                "basal_metabolic_rate": 1885.06,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Williams Collazo Gutirrez",
+            "Year": 2008,
+            "Team": "Cuba",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9845617311172516,
+                "Bronze": 0.00391256612436371,
+                "Silver": 0.009709710911817352,
+                "Gold": 0.0018159918465672203
+            },
+            "Key_Metrics": {
+                "Year": 2008.0,
+                "body_fat_percentage": 17.43,
+                "skeletal_muscle_mass": 38.58,
+                "basal_metabolic_rate": 1745.76,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Argemiro Roque",
+            "Year": 1952,
+            "Team": "Brazil",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9333488411283051,
+                "Bronze": 0.04,
+                "Silver": 0.010015338986806115,
+                "Gold": 0.01663581988488884
+            },
+            "Key_Metrics": {
+                "Year": 1952.0,
+                "body_fat_percentage": 13.94,
+                "skeletal_muscle_mass": 36.81,
+                "basal_metabolic_rate": 1650.63,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "Klemens Biniakowski",
+            "Year": 1928,
+            "Team": "Poland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.99,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.01
+            },
+            "Key_Metrics": {
+                "Year": 1928.0,
+                "body_fat_percentage": 14.7,
+                "skeletal_muscle_mass": 35.99,
+                "basal_metabolic_rate": 1602.48,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "tefan Balok",
+            "Year": 1996,
+            "Team": "Slovakia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9499541184714204,
+                "Bronze": 0.0,
+                "Silver": 0.045123412633515,
+                "Gold": 0.00492246889506478
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 15.47,
+                "skeletal_muscle_mass": 39.33,
+                "basal_metabolic_rate": 1790.99,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Donald Eugene Sanford",
+            "Year": 2012,
+            "Team": "Israel",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9660538784330391,
+                "Bronze": 0.01911627906976744,
+                "Silver": 0.014829842497193381,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 2012.0,
+                "body_fat_percentage": 14.85,
+                "skeletal_muscle_mass": 42.5,
+                "basal_metabolic_rate": 1972.2,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Mohamed Jaman Al-Dosari",
+            "Year": 1972,
+            "Team": "Saudi Arabia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 15.59,
+                "skeletal_muscle_mass": 35.02,
+                "basal_metabolic_rate": 1546.01,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Philip Aron \"Phil\" Edwards",
+            "Year": 1928,
+            "Team": "Canada",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9917905759162303,
+                "Bronze": 0.008209424083769635,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1928.0,
+                "body_fat_percentage": 13.19,
+                "skeletal_muscle_mass": 37.28,
+                "basal_metabolic_rate": 1676.85,
+                "Age": 20.0
+            }
+        },
+        {
+            "Name": "Wayde van Niekerk",
+            "Year": 2016,
+            "Team": "South Africa",
+            "Actual_Medal": "Gold",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7309307863148142,
+                "Bronze": 0.0,
+                "Silver": 0.2565054192540586,
+                "Gold": 0.012563794431127158
+            },
+            "Key_Metrics": {
+                "Year": 2016.0,
+                "body_fat_percentage": 14.4,
+                "skeletal_muscle_mass": 38.9,
+                "basal_metabolic_rate": 1768.12,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Milkha Singh",
+            "Year": 1960,
+            "Team": "India",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.78219856168951,
+                "Bronze": 0.012439120966145318,
+                "Silver": 0.0,
+                "Gold": 0.2053623173443446
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 16.09,
+                "skeletal_muscle_mass": 37.07,
+                "basal_metabolic_rate": 1661.74,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Alvin Leonardo Harrison",
+            "Year": 1996,
+            "Team": "United States",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.4477185079743469,
+                "Bronze": 0.3110138934884128,
+                "Silver": 0.23024571483189102,
+                "Gold": 0.011021883705349273
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 16.02,
+                "skeletal_muscle_mass": 41.93,
+                "basal_metabolic_rate": 1937.44,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Timothy David \"Tim\" Benjamin",
+            "Year": 2004,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8366042984535688,
+                "Bronze": 0.0329583381760521,
+                "Silver": 0.10865178157804557,
+                "Gold": 0.021785581792333406
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 16.09,
+                "skeletal_muscle_mass": 40.56,
+                "basal_metabolic_rate": 1859.86,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Sunday Uti",
+            "Year": 1984,
+            "Team": "Nigeria",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7724595547632692,
+                "Bronze": 0.0,
+                "Silver": 0.1989252523327799,
+                "Gold": 0.028615192903950933
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 15.27,
+                "skeletal_muscle_mass": 38.08,
+                "basal_metabolic_rate": 1719.97,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Dennis Victor Shore",
+            "Year": 1936,
+            "Team": "South Africa",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8077186937581016,
+                "Bronze": 0.11911143137967771,
+                "Silver": 0.01249059605708942,
+                "Gold": 0.06067927880513141
+            },
+            "Key_Metrics": {
+                "Year": 1936.0,
+                "body_fat_percentage": 15.51,
+                "skeletal_muscle_mass": 42.1,
+                "basal_metabolic_rate": 1947.92,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Clayton M. Glasgow",
+            "Year": 1960,
+            "Team": "Guyana",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.97,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.03
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 16.82,
+                "skeletal_muscle_mass": 36.93,
+                "basal_metabolic_rate": 1653.02,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Asfaw Deble",
+            "Year": 1980,
+            "Team": "Ethiopia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9940785498489426,
+                "Bronze": 0.0,
+                "Silver": 0.005921450151057404,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1980.0,
+                "body_fat_percentage": 13.73,
+                "skeletal_muscle_mass": 35.91,
+                "basal_metabolic_rate": 1598.68,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Brian Saunders",
+            "Year": 1984,
+            "Team": "Canada",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9224394098283613,
+                "Bronze": 0.0,
+                "Silver": 0.058652762466221135,
+                "Gold": 0.018907827705417518
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 15.53,
+                "skeletal_muscle_mass": 37.63,
+                "basal_metabolic_rate": 1695.91,
+                "Age": 32.0
+            }
+        },
+        {
+            "Name": "Johannes Runge",
+            "Year": 1904,
+            "Team": "Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.742579443383573,
+                "Bronze": 0.10508353186860367,
+                "Silver": 0.00765625,
+                "Gold": 0.1446807747478234
+            },
+            "Key_Metrics": {
+                "Year": 1904.0,
+                "body_fat_percentage": 16.07,
+                "skeletal_muscle_mass": 40.08,
+                "basal_metabolic_rate": 1833.35,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Charles Asati",
+            "Year": 1972,
+            "Team": "Kenya",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7381096143306074,
+                "Bronze": 0.0,
+                "Silver": 0.05875187721090051,
+                "Gold": 0.20313850845849224
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 15.53,
+                "skeletal_muscle_mass": 37.83,
+                "basal_metabolic_rate": 1705.98,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Marcel Klarenbeek",
+            "Year": 1980,
+            "Team": "Netherlands",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8436740793465374,
+                "Bronze": 0.03939297124600639,
+                "Silver": 0.052861759997109126,
+                "Gold": 0.06407118941034709
+            },
+            "Key_Metrics": {
+                "Year": 1980.0,
+                "body_fat_percentage": 15.93,
+                "skeletal_muscle_mass": 40.68,
+                "basal_metabolic_rate": 1866.41,
+                "Age": 20.0
+            }
+        },
+        {
+            "Name": "Leberecht Julius Erich Ernst Lehmann",
+            "Year": 1912,
+            "Team": "Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1912.0,
+                "body_fat_percentage": 14.37,
+                "skeletal_muscle_mass": 36.23,
+                "basal_metabolic_rate": 1615.59,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Karl-Friedrich Haas",
+            "Year": 1956,
+            "Team": "Germany",
+            "Actual_Medal": "Silver",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.5491208627534931,
+                "Bronze": 0.037709505994739316,
+                "Silver": 0.3731696312517677,
+                "Gold": 0.04
+            },
+            "Key_Metrics": {
+                "Year": 1956.0,
+                "body_fat_percentage": 14.52,
+                "skeletal_muscle_mass": 39.53,
+                "basal_metabolic_rate": 1803.64,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Maxwell Lander \"Maxie\" Parks",
+            "Year": 1976,
+            "Team": "United States",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8766140409206211,
+                "Bronze": 0.09403163238829503,
+                "Silver": 0.008487152862505159,
+                "Gold": 0.020867173828578726
+            },
+            "Key_Metrics": {
+                "Year": 1976.0,
+                "body_fat_percentage": 16.03,
+                "skeletal_muscle_mass": 41.15,
+                "basal_metabolic_rate": 1893.62,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Francisco Mauricio Menocal",
+            "Year": 1968,
+            "Team": "Nicaragua",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9840584549767735,
+                "Bronze": 0.0,
+                "Silver": 0.014125553176659382,
+                "Gold": 0.0018159918465672203
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 16.29,
+                "skeletal_muscle_mass": 38.47,
+                "basal_metabolic_rate": 1741.08,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Markku Juhani Kukkoaho",
+            "Year": 1972,
+            "Team": "Finland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8128993780371626,
+                "Bronze": 0.004084024277925172,
+                "Silver": 0.08075442373480111,
+                "Gold": 0.10226217395011114
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 17.1,
+                "skeletal_muscle_mass": 42.2,
+                "basal_metabolic_rate": 1952.0,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Horst Mann",
+            "Year": 1956,
+            "Team": "Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8998818718469299,
+                "Bronze": 0.028209424083769634,
+                "Silver": 0.013217069731556126,
+                "Gold": 0.05869163433774435
+            },
+            "Key_Metrics": {
+                "Year": 1956.0,
+                "body_fat_percentage": 15.85,
+                "skeletal_muscle_mass": 37.29,
+                "basal_metabolic_rate": 1675.55,
+                "Age": 29.0
+            }
+        },
+        {
+            "Name": "Ato Modibo-Stephens",
+            "Year": 2004,
+            "Team": "Trinidad and Tobago",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9390753561561469,
+                "Bronze": 0.04794437093261952,
+                "Silver": 0.012980272911233515,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 16.03,
+                "skeletal_muscle_mass": 41.15,
+                "basal_metabolic_rate": 1893.62,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Alfonso Di Guida",
+            "Year": 1976,
+            "Team": "Italy",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8973779101405451,
+                "Bronze": 0.0143461655753643,
+                "Silver": 0.04325743371607573,
+                "Gold": 0.045018490568014775
+            },
+            "Key_Metrics": {
+                "Year": 1976.0,
+                "body_fat_percentage": 15.97,
+                "skeletal_muscle_mass": 39.92,
+                "basal_metabolic_rate": 1823.46,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Thomas Heaton \"Tom\" Gallon",
+            "Year": 1912,
+            "Team": "Canada",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9136774193548388,
+                "Bronze": 0.046322580645161295,
+                "Silver": 0.0,
+                "Gold": 0.04
+            },
+            "Key_Metrics": {
+                "Year": 1912.0,
+                "body_fat_percentage": 20.22,
+                "skeletal_muscle_mass": 38.44,
+                "basal_metabolic_rate": 1735.45,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Isaac Makwala",
+            "Year": 2012,
+            "Team": "Botswana",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7783468402158958,
+                "Bronze": 0.21650880282872337,
+                "Silver": 0.005144356955380578,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 2012.0,
+                "body_fat_percentage": 16.9,
+                "skeletal_muscle_mass": 40.91,
+                "basal_metabolic_rate": 1879.22,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Charles Lamont \"Charlie\" Jenkins, Sr.",
+            "Year": 1956,
+            "Team": "United States",
+            "Actual_Medal": "Gold",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8286203204485502,
+                "Bronze": 0.09302528633993674,
+                "Silver": 0.008970251716247143,
+                "Gold": 0.06938414149526617
+            },
+            "Key_Metrics": {
+                "Year": 1956.0,
+                "body_fat_percentage": 14.53,
+                "skeletal_muscle_mass": 40.31,
+                "basal_metabolic_rate": 1847.46,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Ebenezer Quaye Quartey",
+            "Year": 1964,
+            "Team": "Ghana",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9946448087431693,
+                "Bronze": 0.0,
+                "Silver": 0.005355191256830604,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1964.0,
+                "body_fat_percentage": 19.52,
+                "skeletal_muscle_mass": 36.33,
+                "basal_metabolic_rate": 1617.08,
+                "Age": 30.0
+            }
+        },
+        {
+            "Name": "Thomas Schnlebe",
+            "Year": 1988,
+            "Team": "East Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7656289784196342,
+                "Bronze": 0.12192621732995924,
+                "Silver": 0.007943993366236315,
+                "Gold": 0.1045008108841705
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 15.03,
+                "skeletal_muscle_mass": 40.13,
+                "basal_metabolic_rate": 1836.98,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Cephas Lemba",
+            "Year": 1992,
+            "Team": "Zambia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9561504792025783,
+                "Bronze": 0.035063763801165625,
+                "Silver": 0.007232472324723247,
+                "Gold": 0.001553284671532848
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 14.46,
+                "skeletal_muscle_mass": 41.35,
+                "basal_metabolic_rate": 1906.85,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Leslie Djhone",
+            "Year": 2004,
+            "Team": "France",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9274031714419751,
+                "Bronze": 0.05364536533226353,
+                "Silver": 0.012376829280103824,
+                "Gold": 0.006574633945657533
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 15.17,
+                "skeletal_muscle_mass": 40.78,
+                "basal_metabolic_rate": 1873.38,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Jassim Karim Kuraishi",
+            "Year": 1960,
+            "Team": "Iraq",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6693430494044673,
+                "Bronze": 0.0,
+                "Silver": 0.28758193842347024,
+                "Gold": 0.04307501217206223
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 15.5,
+                "skeletal_muscle_mass": 37.99,
+                "basal_metabolic_rate": 1714.29,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Ibrahim Ismail Muftah Faraj",
+            "Year": 1996,
+            "Team": "Qatar",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9728036809005991,
+                "Bronze": 0.0,
+                "Silver": 0.025923757094466354,
+                "Gold": 0.0012725620049344256
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 15.83,
+                "skeletal_muscle_mass": 38.51,
+                "basal_metabolic_rate": 1744.13,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Anubes Ferraz da Silva",
+            "Year": 1960,
+            "Team": "Brazil",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9733208191263815,
+                "Bronze": 0.0,
+                "Silver": 0.026679180873618473,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 15.54,
+                "skeletal_muscle_mass": 38.59,
+                "basal_metabolic_rate": 1748.93,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Jonnie Eduardo \"Jonni\" Lowe Henrquez",
+            "Year": 2004,
+            "Team": "Honduras",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9721442610745119,
+                "Bronze": 0.010539785059274952,
+                "Silver": 0.015499962019646011,
+                "Gold": 0.0018159918465672203
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 17.71,
+                "skeletal_muscle_mass": 38.04,
+                "basal_metabolic_rate": 1715.33,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Earl Verdelle Young",
+            "Year": 1960,
+            "Team": "United States",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8587573353592876,
+                "Bronze": 0.08327012235903507,
+                "Silver": 0.0027393522759948915,
+                "Gold": 0.05523319000568254
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 14.43,
+                "skeletal_muscle_mass": 42.13,
+                "basal_metabolic_rate": 1950.67,
+                "Age": 19.0
+            }
+        },
+        {
+            "Name": "Martyn Joseph Rooney",
+            "Year": 2012,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9651701575028067,
+                "Bronze": 0.01,
+                "Silver": 0.02482984249719338,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 2012.0,
+                "body_fat_percentage": 14.34,
+                "skeletal_muscle_mass": 42.66,
+                "basal_metabolic_rate": 1981.8,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Kenmore Henderson Hughes",
+            "Year": 1992,
+            "Team": "Antigua and Barbuda",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9690896816422129,
+                "Bronze": 0.0,
+                "Silver": 0.027821764506285332,
+                "Gold": 0.003088553851501646
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 17.07,
+                "skeletal_muscle_mass": 38.96,
+                "basal_metabolic_rate": 1767.88,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Glendon Howard \"Glen\" Cohen",
+            "Year": 1980,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6138467178187949,
+                "Bronze": 0.2819420624292727,
+                "Silver": 0.017943993366236314,
+                "Gold": 0.08626722638569628
+            },
+            "Key_Metrics": {
+                "Year": 1980.0,
+                "body_fat_percentage": 16.43,
+                "skeletal_muscle_mass": 40.33,
+                "basal_metabolic_rate": 1846.75,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Yannick \"Yann\" Quentrec",
+            "Year": 1984,
+            "Team": "France",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.957158560250212,
+                "Bronze": 0.029875517251671386,
+                "Silver": 0.0027393522759948915,
+                "Gold": 0.010226570222121837
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 13.8,
+                "skeletal_muscle_mass": 40.86,
+                "basal_metabolic_rate": 1880.05,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Boubacar Diallo",
+            "Year": 1984,
+            "Team": "Senegal",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9940785498489426,
+                "Bronze": 0.0,
+                "Silver": 0.005921450151057404,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1984.0,
+                "body_fat_percentage": 15.65,
+                "skeletal_muscle_mass": 36.65,
+                "basal_metabolic_rate": 1639.16,
+                "Age": 29.0
+            }
+        },
+        {
+            "Name": "George Lawrence \"Larry\" James",
+            "Year": 1968,
+            "Team": "United States",
+            "Actual_Medal": "Silver",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9637672803022795,
+                "Bronze": 0.009763387297633874,
+                "Silver": 0.025196770395152158,
+                "Gold": 0.0012725620049344256
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 14.04,
+                "skeletal_muscle_mass": 39.14,
+                "basal_metabolic_rate": 1781.23,
+                "Age": 20.0
+            }
+        },
+        {
+            "Name": "Francis Peter Higgins",
+            "Year": 1956,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8459332899769103,
+                "Bronze": 0.05820942408376964,
+                "Silver": 0.02079927476056967,
+                "Gold": 0.07505801117875036
+            },
+            "Key_Metrics": {
+                "Year": 1956.0,
+                "body_fat_percentage": 15.33,
+                "skeletal_muscle_mass": 37.47,
+                "basal_metabolic_rate": 1686.03,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "Rohan Handunpurage Pradeep Kumara",
+            "Year": 2000,
+            "Team": "Sri Lanka",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9829622980251347,
+                "Bronze": 0.01,
+                "Silver": 0.0,
+                "Gold": 0.007037701974865349
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 11.05,
+                "skeletal_muscle_mass": 36.36,
+                "basal_metabolic_rate": 1628.47,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Ossi Jalmari Karttunen",
+            "Year": 1976,
+            "Team": "Finland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6720247550604594,
+                "Bronze": 0.0,
+                "Silver": 0.042684141602070805,
+                "Gold": 0.28529110333746976
+            },
+            "Key_Metrics": {
+                "Year": 1976.0,
+                "body_fat_percentage": 17.65,
+                "skeletal_muscle_mass": 40.1,
+                "basal_metabolic_rate": 1832.49,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "Andrs Byron Silva Lemos",
+            "Year": 2008,
+            "Team": "Uruguay",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.99,
+                "Bronze": 0.01,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 2008.0,
+                "body_fat_percentage": 18.4,
+                "skeletal_muscle_mass": 40.66,
+                "basal_metabolic_rate": 1862.66,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Frederick William \"Federico\" Brewster",
+            "Year": 1924,
+            "Team": "Argentina",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9917905759162303,
+                "Bronze": 0.008209424083769635,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1924.0,
+                "body_fat_percentage": 13.02,
+                "skeletal_muscle_mass": 37.4,
+                "basal_metabolic_rate": 1683.41,
+                "Age": 18.0
+            }
+        },
+        {
+            "Name": "Johannes Runge",
+            "Year": 1906,
+            "Team": "Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.711217795339615,
+                "Bronze": 0.07476720438960924,
+                "Silver": 0.00765625,
+                "Gold": 0.20635875027077571
+            },
+            "Key_Metrics": {
+                "Year": 1906.0,
+                "body_fat_percentage": 16.53,
+                "skeletal_muscle_mass": 39.89,
+                "basal_metabolic_rate": 1822.0,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "Howard Davis",
+            "Year": 1988,
+            "Team": "Jamaica",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6047736881399425,
+                "Bronze": 0.3617356802093279,
+                "Silver": 0.014022032616913274,
+                "Gold": 0.01946859903381643
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 17.03,
+                "skeletal_muscle_mass": 42.04,
+                "basal_metabolic_rate": 1942.12,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Francis Kerbiriou",
+            "Year": 1972,
+            "Team": "France",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7661661885560299,
+                "Bronze": 0.13911627906976742,
+                "Silver": 0.033707298119919245,
+                "Gold": 0.061010234254283355
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 13.63,
+                "skeletal_muscle_mass": 37.83,
+                "basal_metabolic_rate": 1707.57,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Flix Ivn Mangual Guilbe",
+            "Year": 1976,
+            "Team": "Puerto Rico",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8995542150286714,
+                "Bronze": 0.07703670490270169,
+                "Silver": 0.01202736915417267,
+                "Gold": 0.01138171091445428
+            },
+            "Key_Metrics": {
+                "Year": 1976.0,
+                "body_fat_percentage": 14.6,
+                "skeletal_muscle_mass": 37.46,
+                "basal_metabolic_rate": 1685.74,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Andrzej Stanisaw Badeski",
+            "Year": 1964,
+            "Team": "Poland",
+            "Actual_Medal": "Bronze",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7370027814105512,
+                "Bronze": 0.0591247253737441,
+                "Silver": 0.02355242242589109,
+                "Gold": 0.1803200707898135
+            },
+            "Key_Metrics": {
+                "Year": 1964.0,
+                "body_fat_percentage": 15.89,
+                "skeletal_muscle_mass": 37.93,
+                "basal_metabolic_rate": 1710.37,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Hederson Alves Estefani",
+            "Year": 2016,
+            "Team": "Brazil",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9151501436050318,
+                "Bronze": 0.0,
+                "Silver": 0.05416224752997251,
+                "Gold": 0.030687608864995705
+            },
+            "Key_Metrics": {
+                "Year": 2016.0,
+                "body_fat_percentage": 12.61,
+                "skeletal_muscle_mass": 37.68,
+                "basal_metabolic_rate": 1701.14,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Amos Omolo",
+            "Year": 1968,
+            "Team": "Uganda",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.947202158591675,
+                "Bronze": 0.052797841408325025,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 18.96,
+                "skeletal_muscle_mass": 38.8,
+                "basal_metabolic_rate": 1757.97,
+                "Age": 31.0
+            }
+        },
+        {
+            "Name": "Derek Charles Pugh",
+            "Year": 1948,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9615272607215637,
+                "Bronze": 0.0,
+                "Silver": 0.0384727392784362,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1948.0,
+                "body_fat_percentage": 15.37,
+                "skeletal_muscle_mass": 38.71,
+                "basal_metabolic_rate": 1755.48,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Colin William Ashburner Campbell",
+            "Year": 1968,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6813023200296293,
+                "Bronze": 0.2908847483848109,
+                "Silver": 0.00697508896797153,
+                "Gold": 0.02083784261758851
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 15.51,
+                "skeletal_muscle_mass": 40.72,
+                "basal_metabolic_rate": 1869.46,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Otto Neumann",
+            "Year": 1928,
+            "Team": "Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9596333275676528,
+                "Bronze": 0.009322235434007134,
+                "Silver": 0.026679180873618473,
+                "Gold": 0.004365256124721603
+            },
+            "Key_Metrics": {
+                "Year": 1928.0,
+                "body_fat_percentage": 16.44,
+                "skeletal_muscle_mass": 38.66,
+                "basal_metabolic_rate": 1751.85,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Rudieon \"Rudy\" Sylvan",
+            "Year": 2000,
+            "Team": "Grenada",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9905183137525916,
+                "Bronze": 0.0,
+                "Silver": 0.009481686247408434,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 17.24,
+                "skeletal_muscle_mass": 39.3,
+                "basal_metabolic_rate": 1786.95,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Abdul Karim Ohimai Amu",
+            "Year": 1956,
+            "Team": "Nigeria",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6429347500816109,
+                "Bronze": 0.3100989313581151,
+                "Silver": 0.005144356955380578,
+                "Gold": 0.0418219616048934
+            },
+            "Key_Metrics": {
+                "Year": 1956.0,
+                "body_fat_percentage": 16.09,
+                "skeletal_muscle_mass": 40.86,
+                "basal_metabolic_rate": 1877.18,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Takahiro Watanabe",
+            "Year": 1992,
+            "Team": "Japan",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8780749437935333,
+                "Bronze": 0.10430752466152998,
+                "Silver": 0.0,
+                "Gold": 0.017617531544936674
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 15.15,
+                "skeletal_muscle_mass": 40.47,
+                "basal_metabolic_rate": 1856.06,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Daniel Stephen Caines",
+            "Year": 2004,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9167472069786377,
+                "Bronze": 0.08325279302136229,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 17.2,
+                "skeletal_muscle_mass": 39.15,
+                "basal_metabolic_rate": 1778.64,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Paramjit Singh",
+            "Year": 2000,
+            "Team": "India",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9105503753599681,
+                "Bronze": 0.03164337827705901,
+                "Silver": 0.010032108735578985,
+                "Gold": 0.04777413762739395
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 15.53,
+                "skeletal_muscle_mass": 39.46,
+                "basal_metabolic_rate": 1799.12,
+                "Age": 29.0
+            }
+        },
+        {
+            "Name": "Kun Min-Mu",
+            "Year": 1968,
+            "Team": "Chinese Taipei",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 15.29,
+                "skeletal_muscle_mass": 35.1,
+                "basal_metabolic_rate": 1550.81,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Sanderlei Claro Parrela",
+            "Year": 2000,
+            "Team": "Brazil",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8270281220942484,
+                "Bronze": 0.012999888139217123,
+                "Silver": 0.0,
+                "Gold": 0.15997198976653443
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 13.64,
+                "skeletal_muscle_mass": 41.57,
+                "basal_metabolic_rate": 1920.37,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "James Allen Gordon",
+            "Year": 1932,
+            "Team": "United States",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.824884016041577,
+                "Bronze": 0.0,
+                "Silver": 0.17075072783370138,
+                "Gold": 0.004365256124721603
+            },
+            "Key_Metrics": {
+                "Year": 1932.0,
+                "body_fat_percentage": 15.01,
+                "skeletal_muscle_mass": 38.77,
+                "basal_metabolic_rate": 1759.4,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Maksim Sergeyevich Dyldin",
+            "Year": 2008,
+            "Team": "Russia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7724595547632692,
+                "Bronze": 0.0,
+                "Silver": 0.1989252523327799,
+                "Gold": 0.028615192903950933
+            },
+            "Key_Metrics": {
+                "Year": 2008.0,
+                "body_fat_percentage": 15.27,
+                "skeletal_muscle_mass": 38.08,
+                "basal_metabolic_rate": 1719.97,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Eric Lindholm",
+            "Year": 1912,
+            "Team": "Sweden",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8803014814582321,
+                "Bronze": 0.07645006901043074,
+                "Silver": 0.0027393522759948915,
+                "Gold": 0.040509097255342345
+            },
+            "Key_Metrics": {
+                "Year": 1912.0,
+                "body_fat_percentage": 15.11,
+                "skeletal_muscle_mass": 41.54,
+                "basal_metabolic_rate": 1916.32,
+                "Age": 21.0
+            }
+        },
+        {
+            "Name": "Feliks Grzegorz uber",
+            "Year": 1928,
+            "Team": "Poland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.99,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.01
+            },
+            "Key_Metrics": {
+                "Year": 1928.0,
+                "body_fat_percentage": 14.67,
+                "skeletal_muscle_mass": 35.41,
+                "basal_metabolic_rate": 1568.72,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Andrzej Stpie",
+            "Year": 1980,
+            "Team": "Poland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.925419100162754,
+                "Bronze": 0.013933588761174969,
+                "Silver": 0.010015056790285103,
+                "Gold": 0.050632254285786035
+            },
+            "Key_Metrics": {
+                "Year": 1980.0,
+                "body_fat_percentage": 18.16,
+                "skeletal_muscle_mass": 39.84,
+                "basal_metabolic_rate": 1817.08,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Lars-Erik Ragnar Wolfbrandt",
+            "Year": 1952,
+            "Team": "Sweden",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9248932493875706,
+                "Bronze": 0.0,
+                "Silver": 0.07074149448770778,
+                "Gold": 0.004365256124721603
+            },
+            "Key_Metrics": {
+                "Year": 1952.0,
+                "body_fat_percentage": 15.6,
+                "skeletal_muscle_mass": 38.61,
+                "basal_metabolic_rate": 1749.8,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Derek Anthony Redmond",
+            "Year": 1992,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.7542922248438536,
+                "Bronze": 0.0,
+                "Silver": 0.23679388761514947,
+                "Gold": 0.008913887540996803
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 14.86,
+                "skeletal_muscle_mass": 38.71,
+                "basal_metabolic_rate": 1756.77,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Ismail Maev",
+            "Year": 1988,
+            "Team": "Yugoslavia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9946448087431693,
+                "Bronze": 0.0,
+                "Silver": 0.005355191256830604,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 16.48,
+                "skeletal_muscle_mass": 35.07,
+                "basal_metabolic_rate": 1548.06,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "Tegegne Bezabeh",
+            "Year": 1968,
+            "Team": "Ethiopia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9780067912221085,
+                "Bronze": 0.0,
+                "Silver": 0.02199320877789152,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 13.3,
+                "skeletal_muscle_mass": 37.39,
+                "basal_metabolic_rate": 1684.11,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Mohamed Diakit",
+            "Year": 1980,
+            "Team": "Guinea",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9490607604968696,
+                "Bronze": 0.0,
+                "Silver": 0.036568232645691076,
+                "Gold": 0.0143710068574393
+            },
+            "Key_Metrics": {
+                "Year": 1980.0,
+                "body_fat_percentage": 15.6,
+                "skeletal_muscle_mass": 38.31,
+                "basal_metabolic_rate": 1732.48,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Camera Ntereke",
+            "Year": 1992,
+            "Team": "Botswana",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8383804962867658,
+                "Bronze": 0.01,
+                "Silver": 0.1453255924341751,
+                "Gold": 0.00629391127905911
+            },
+            "Key_Metrics": {
+                "Year": 1992.0,
+                "body_fat_percentage": 16.04,
+                "skeletal_muscle_mass": 39.0,
+                "basal_metabolic_rate": 1772.21,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "Gilles Bertould",
+            "Year": 1968,
+            "Team": "France",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1968.0,
+                "body_fat_percentage": 12.58,
+                "skeletal_muscle_mass": 37.14,
+                "basal_metabolic_rate": 1669.13,
+                "Age": 19.0
+            }
+        },
+        {
+            "Name": "Gary Kikaya Senga",
+            "Year": 2004,
+            "Team": "Congo (Kinshasa)",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8510227334909766,
+                "Bronze": 0.054714160701296824,
+                "Silver": 0.007943993366236315,
+                "Gold": 0.08631911244149044
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 16.36,
+                "skeletal_muscle_mass": 40.0,
+                "basal_metabolic_rate": 1828.55,
+                "Age": 26.0
+            }
+        },
+        {
+            "Name": "Sean Wroe",
+            "Year": 2008,
+            "Team": "Australia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8990059000063947,
+                "Bronze": 0.07914633421915913,
+                "Silver": 0.005144356955380578,
+                "Gold": 0.01670340881906557
+            },
+            "Key_Metrics": {
+                "Year": 2008.0,
+                "body_fat_percentage": 15.38,
+                "skeletal_muscle_mass": 40.38,
+                "basal_metabolic_rate": 1850.38,
+                "Age": 23.0
+            }
+        },
+        {
+            "Name": "Savin Chem",
+            "Year": 1972,
+            "Team": "Cambodia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9946448087431693,
+                "Bronze": 0.0,
+                "Silver": 0.005355191256830604,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 17.73,
+                "skeletal_muscle_mass": 36.84,
+                "basal_metabolic_rate": 1647.63,
+                "Age": 28.0
+            }
+        },
+        {
+            "Name": "Jean-Louis Rapnouil",
+            "Year": 1996,
+            "Team": "France",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9317955406879572,
+                "Bronze": 0.01911627906976744,
+                "Silver": 0.04908818024227531,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1996.0,
+                "body_fat_percentage": 18.05,
+                "skeletal_muscle_mass": 37.37,
+                "basal_metabolic_rate": 1677.47,
+                "Age": 30.0
+            }
+        },
+        {
+            "Name": "Alf Roland Petersson",
+            "Year": 1960,
+            "Team": "Sweden",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8552773527312858,
+                "Bronze": 0.020418804228629295,
+                "Silver": 0.07181107283695319,
+                "Gold": 0.05249277020313171
+            },
+            "Key_Metrics": {
+                "Year": 1960.0,
+                "body_fat_percentage": 16.6,
+                "skeletal_muscle_mass": 41.59,
+                "basal_metabolic_rate": 1918.65,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Raymond James \"Ray\" Barbuti",
+            "Year": 1928,
+            "Team": "United States",
+            "Actual_Medal": "Gold",
+            "Predicted_Medal": "Bronze",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.416209236290954,
+                "Bronze": 0.5114860225043394,
+                "Silver": 0.02858863718087019,
+                "Gold": 0.04371610402383639
+            },
+            "Key_Metrics": {
+                "Year": 1928.0,
+                "body_fat_percentage": 18.25,
+                "skeletal_muscle_mass": 42.03,
+                "basal_metabolic_rate": 1940.24,
+                "Age": 22.0
+            }
+        },
+        {
+            "Name": "Leslie Djhone",
+            "Year": 2008,
+            "Team": "France",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9211614142938526,
+                "Bronze": 0.06144040715191905,
+                "Silver": 0.012376829280103824,
+                "Gold": 0.005021349274124684
+            },
+            "Key_Metrics": {
+                "Year": 2008.0,
+                "body_fat_percentage": 16.09,
+                "skeletal_muscle_mass": 40.38,
+                "basal_metabolic_rate": 1850.67,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Jaime Aparicio Rodewalt ",
+            "Year": 1948,
+            "Team": "Colombia",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 1.0,
+                "Bronze": 0.0,
+                "Silver": 0.0,
+                "Gold": 0.0
+            },
+            "Key_Metrics": {
+                "Year": 1948.0,
+                "body_fat_percentage": 14.1,
+                "skeletal_muscle_mass": 36.77,
+                "basal_metabolic_rate": 1646.02,
+                "Age": 18.0
+            }
+        },
+        {
+            "Name": "Christopher Deon \"Chris\" Brown",
+            "Year": 2016,
+            "Team": "Bahamas",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9792440680058009,
+                "Bronze": 0.01686704310531026,
+                "Silver": 0.0,
+                "Gold": 0.0038888888888888905
+            },
+            "Key_Metrics": {
+                "Year": 2016.0,
+                "body_fat_percentage": 20.71,
+                "skeletal_muscle_mass": 38.46,
+                "basal_metabolic_rate": 1737.31,
+                "Age": 37.0
+            }
+        },
+        {
+            "Name": "Ingo Schultz",
+            "Year": 2004,
+            "Team": "Germany",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.81,
+                "Bronze": 0.17,
+                "Silver": 0.0,
+                "Gold": 0.02
+            },
+            "Key_Metrics": {
+                "Year": 2004.0,
+                "body_fat_percentage": 19.87,
+                "skeletal_muscle_mass": 46.89,
+                "basal_metabolic_rate": 2214.63,
+                "Age": 29.0
+            }
+        },
+        {
+            "Name": "James Steven \"Jamie\" Baulch (Mills-)",
+            "Year": 2000,
+            "Team": "Great Britain",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9091266139530255,
+                "Bronze": 0.00391256612436371,
+                "Silver": 0.08514482807604365,
+                "Gold": 0.0018159918465672203
+            },
+            "Key_Metrics": {
+                "Year": 2000.0,
+                "body_fat_percentage": 18.47,
+                "skeletal_muscle_mass": 38.07,
+                "basal_metabolic_rate": 1716.5,
+                "Age": 27.0
+            }
+        },
+        {
+            "Name": "Amadou Gakou",
+            "Year": 1972,
+            "Team": "Senegal",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9233790774471405,
+                "Bronze": 0.01,
+                "Silver": 0.06379345573231711,
+                "Gold": 0.002827466820542412
+            },
+            "Key_Metrics": {
+                "Year": 1972.0,
+                "body_fat_percentage": 18.2,
+                "skeletal_muscle_mass": 37.25,
+                "basal_metabolic_rate": 1670.92,
+                "Age": 32.0
+            }
+        },
+        {
+            "Name": "Runar Rafael Holmberg",
+            "Year": 1948,
+            "Team": "Finland",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.8966588315522301,
+                "Bronze": 0.006627218934911243,
+                "Silver": 0.07723963694752468,
+                "Gold": 0.019474312565334148
+            },
+            "Key_Metrics": {
+                "Year": 1948.0,
+                "body_fat_percentage": 16.29,
+                "skeletal_muscle_mass": 38.01,
+                "basal_metabolic_rate": 1715.45,
+                "Age": 25.0
+            }
+        },
+        {
+            "Name": "Mwana Bute Kasongo",
+            "Year": 1988,
+            "Team": "Congo (Kinshasa)",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.6827978479775016,
+                "Bronze": 0.06119607120444062,
+                "Silver": 0.19070972326974883,
+                "Gold": 0.065296357548309
+            },
+            "Key_Metrics": {
+                "Year": 1988.0,
+                "body_fat_percentage": 14.03,
+                "skeletal_muscle_mass": 39.7,
+                "basal_metabolic_rate": 1814.11,
+                "Age": 24.0
+            }
+        },
+        {
+            "Name": "Sven Emil Strmberg",
+            "Year": 1936,
+            "Team": "Sweden",
+            "Actual_Medal": "No Medal",
+            "Predicted_Medal": "No Medal",
+            "Prediction_Probabilities": {
+                "No_Medal": 0.9185200480329203,
+                "Bronze": 0.07711469584235807,
+                "Silver": 0.0,
+                "Gold": 0.004365256124721603
+            },
+            "Key_Metrics": {
+                "Year": 1936.0,
+                "body_fat_percentage": 17.83,
+                "skeletal_muscle_mass": 38.99,
+                "basal_metabolic_rate": 1769.04,
+                "Age": 25.0
+            }
+        }
+    ],
+    "analysis_timestamp": "20241115_040822",
+    "summary_statistics": {
+        "total_athletes_analyzed": 212,
+        "correct_predictions": 194,
+        "prediction_accuracy": 0.9150943396226415
+    }
+}

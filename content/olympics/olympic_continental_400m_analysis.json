@@ -1,0 +1,417 @@
+{
+  "overall_medal_probability": 0.06259097525473072,
+  "continent_medal_probabilities": {
+    "Asia": {
+      "total_athletes": 88,
+      "medal_winners": 0,
+      "medal_probability": 0.0,
+      "gold_probability": 0.0,
+      "silver_probability": 0.0,
+      "bronze_probability": 0.0
+    },
+    "Unknown": {
+      "total_athletes": 477,
+      "medal_winners": 13,
+      "medal_probability": 0.027253668763102725,
+      "gold_probability": 0.008385744234800839,
+      "silver_probability": 0.008385744234800839,
+      "bronze_probability": 0.010482180293501049
+    },
+    "South America": {
+      "total_athletes": 54,
+      "medal_winners": 0,
+      "medal_probability": 0.0,
+      "gold_probability": 0.0,
+      "silver_probability": 0.0,
+      "bronze_probability": 0.0
+    },
+    "Europe": {
+      "total_athletes": 319,
+      "medal_winners": 11,
+      "medal_probability": 0.034482758620689655,
+      "gold_probability": 0.006269592476489028,
+      "silver_probability": 0.012539184952978056,
+      "bronze_probability": 0.01567398119122257
+    },
+    "Africa": {
+      "total_athletes": 112,
+      "medal_winners": 4,
+      "medal_probability": 0.03571428571428571,
+      "gold_probability": 0.0,
+      "silver_probability": 0.008928571428571428,
+      "bronze_probability": 0.026785714285714284
+    },
+    "North America": {
+      "total_athletes": 277,
+      "medal_winners": 56,
+      "medal_probability": 0.20216606498194944,
+      "gold_probability": 0.08303249097472924,
+      "silver_probability": 0.06498194945848375,
+      "bronze_probability": 0.05415162454873646
+    },
+    "Oceania": {
+      "total_athletes": 47,
+      "medal_winners": 2,
+      "medal_probability": 0.0425531914893617,
+      "gold_probability": 0.0,
+      "silver_probability": 0.02127659574468085,
+      "bronze_probability": 0.02127659574468085
+    }
+  },
+  "continent_progression": {
+    "North America": [
+      {
+        "year": 1984,
+        "medal": "gold"
+      },
+      {
+        "year": 1928,
+        "medal": "silver"
+      },
+      {
+        "year": 1928,
+        "medal": "gold"
+      },
+      {
+        "year": 2004,
+        "medal": "bronze"
+      },
+      {
+        "year": 1896,
+        "medal": "gold"
+      },
+      {
+        "year": 1932,
+        "medal": "gold"
+      },
+      {
+        "year": 1972,
+        "medal": "silver"
+      },
+      {
+        "year": 1960,
+        "medal": "gold"
+      },
+      {
+        "year": 1932,
+        "medal": "silver"
+      },
+      {
+        "year": 1968,
+        "medal": "gold"
+      },
+      {
+        "year": 1988,
+        "medal": "bronze"
+      },
+      {
+        "year": 1924,
+        "medal": "silver"
+      },
+      {
+        "year": 1976,
+        "medal": "bronze"
+      },
+      {
+        "year": 1968,
+        "medal": "bronze"
+      },
+      {
+        "year": 2012,
+        "medal": "bronze"
+      },
+      {
+        "year": 1904,
+        "medal": "bronze"
+      },
+      {
+        "year": 2004,
+        "medal": "silver"
+      },
+      {
+        "year": 2000,
+        "medal": "silver"
+      },
+      {
+        "year": 2000,
+        "medal": "bronze"
+      },
+      {
+        "year": 1904,
+        "medal": "gold"
+      },
+      {
+        "year": 1900,
+        "medal": "silver"
+      },
+      {
+        "year": 1968,
+        "medal": "silver"
+      },
+      {
+        "year": 1896,
+        "medal": "silver"
+      },
+      {
+        "year": 1956,
+        "medal": "gold"
+      },
+      {
+        "year": 1996,
+        "medal": "gold"
+      },
+      {
+        "year": 2000,
+        "medal": "gold"
+      },
+      {
+        "year": 1976,
+        "medal": "gold"
+      },
+      {
+        "year": 1964,
+        "medal": "gold"
+      },
+      {
+        "year": 1988,
+        "medal": "gold"
+      },
+      {
+        "year": 1992,
+        "medal": "silver"
+      },
+      {
+        "year": 1912,
+        "medal": "bronze"
+      },
+      {
+        "year": 1900,
+        "medal": "gold"
+      },
+      {
+        "year": 1936,
+        "medal": "bronze"
+      },
+      {
+        "year": 1952,
+        "medal": "bronze"
+      },
+      {
+        "year": 1972,
+        "medal": "gold"
+      },
+      {
+        "year": 1984,
+        "medal": "bronze"
+      },
+      {
+        "year": 1948,
+        "medal": "silver"
+      },
+      {
+        "year": 1952,
+        "medal": "silver"
+      },
+      {
+        "year": 2008,
+        "medal": "gold"
+      },
+      {
+        "year": 2016,
+        "medal": "bronze"
+      },
+      {
+        "year": 1964,
+        "medal": "silver"
+      },
+      {
+        "year": 2008,
+        "medal": "bronze"
+      },
+      {
+        "year": 1976,
+        "medal": "silver"
+      },
+      {
+        "year": 1906,
+        "medal": "gold"
+      },
+      {
+        "year": 1912,
+        "medal": "gold"
+      },
+      {
+        "year": 1988,
+        "medal": "silver"
+      },
+      {
+        "year": 1952,
+        "medal": "gold"
+      },
+      {
+        "year": 2012,
+        "medal": "silver"
+      },
+      {
+        "year": 1904,
+        "medal": "silver"
+      },
+      {
+        "year": 2004,
+        "medal": "gold"
+      },
+      {
+        "year": 2008,
+        "medal": "silver"
+      },
+      {
+        "year": 1992,
+        "medal": "gold"
+      },
+      {
+        "year": 1948,
+        "medal": "bronze"
+      },
+      {
+        "year": 1936,
+        "medal": "gold"
+      },
+      {
+        "year": 1932,
+        "medal": "bronze"
+      },
+      {
+        "year": 1948,
+        "medal": "gold"
+      }
+    ],
+    "Europe": [
+      {
+        "year": 1964,
+        "medal": "bronze"
+      },
+      {
+        "year": 1996,
+        "medal": "silver"
+      },
+      {
+        "year": 1936,
+        "medal": "silver"
+      },
+      {
+        "year": 1920,
+        "medal": "silver"
+      },
+      {
+        "year": 1924,
+        "medal": "bronze"
+      },
+      {
+        "year": 1920,
+        "medal": "bronze"
+      },
+      {
+        "year": 1896,
+        "medal": "bronze"
+      },
+      {
+        "year": 1906,
+        "medal": "silver"
+      },
+      {
+        "year": 1908,
+        "medal": "gold"
+      },
+      {
+        "year": 1956,
+        "medal": "bronze"
+      },
+      {
+        "year": 1924,
+        "medal": "gold"
+      }
+    ],
+    "Oceania": [
+      {
+        "year": 1906,
+        "medal": "bronze"
+      },
+      {
+        "year": 1980,
+        "medal": "silver"
+      }
+    ],
+    "Unknown": [
+      {
+        "year": 1912,
+        "medal": "silver"
+      },
+      {
+        "year": 1928,
+        "medal": "bronze"
+      },
+      {
+        "year": 1956,
+        "medal": "silver"
+      },
+      {
+        "year": 1956,
+        "medal": "bronze"
+      },
+      {
+        "year": 2012,
+        "medal": "gold"
+      },
+      {
+        "year": 2016,
+        "medal": "silver"
+      },
+      {
+        "year": 1960,
+        "medal": "silver"
+      },
+      {
+        "year": 1980,
+        "medal": "gold"
+      },
+      {
+        "year": 1920,
+        "medal": "gold"
+      },
+      {
+        "year": 1980,
+        "medal": "bronze"
+      },
+      {
+        "year": 1900,
+        "medal": "bronze"
+      },
+      {
+        "year": 1960,
+        "medal": "bronze"
+      },
+      {
+        "year": 2016,
+        "medal": "gold"
+      }
+    ],
+    "Africa": [
+      {
+        "year": 1996,
+        "medal": "bronze"
+      },
+      {
+        "year": 1992,
+        "medal": "bronze"
+      },
+      {
+        "year": 1972,
+        "medal": "bronze"
+      },
+      {
+        "year": 1984,
+        "medal": "silver"
+      }
+    ]
+  }
+}

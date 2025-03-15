@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "timestamp": "2025-02-20T04:12:20.730758",
+    "version": "7",
+    "frame_count": 1,
+    "joint_config": [
+      "root",
+      "rotation",
+      "l_leg",
+      "r_leg",
+      "l_knee",
+      "r_knee",
+      "l_ankle",
+      "r_ankle",
+      "l_arm",
+      "r_arm",
+      "l_elbow",
+      "r_elbow",
+      "l_wrist",
+      "r_wrist"
+    ]
+  },
+  "frames": {
+    "athlete_1": {
+      "joint_kinematics": {
+        "velocity": 6.797868027005699,
+        "acceleration": 2.6716302922081603,
+        "range_of_motion": 88.12334040516396
+      },
+      "movement_efficiency": {
+        "energy_expenditure": 497.1913364481086,
+        "movement_economy": 0.775879959945703,
+        "power_output": 1887.2403177418864
+      },
+      "performance_metrics": {
+        "technique_score": 0.7267759051635512,
+        "consistency": 0.8793379350452821,
+        "fatigue_index": 0.2399825990650562
+      }
+    }
+  }
+}

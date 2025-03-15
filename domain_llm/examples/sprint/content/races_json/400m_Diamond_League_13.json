@@ -1,0 +1,89 @@
+{
+  "event": "400m",
+  "date": "2023-04-04",
+  "location": "Rome, JAM",
+  "competition": "Diamond League",
+  "round": "Semi-final",
+  "results": [
+    {
+      "pos": 1,
+      "athlete": "Fred Simbine",
+      "country": "NED",
+      "mark": "43.09",
+      "time": "43.09",
+      "lane": 1,
+      "reaction_time": 0.183,
+      "wind": 2.0
+    },
+    {
+      "pos": 2,
+      "athlete": "Usain Hughes",
+      "country": "ITA",
+      "mark": "43.53",
+      "time": "43.53",
+      "lane": 2,
+      "reaction_time": 0.157,
+      "wind": -1.6
+    },
+    {
+      "pos": 3,
+      "athlete": "Asafa Bolt",
+      "country": "ITA",
+      "mark": "44.07",
+      "time": "44.07",
+      "lane": 3,
+      "reaction_time": 0.121,
+      "wind": 1.6
+    },
+    {
+      "pos": 4,
+      "athlete": "Andre Powell",
+      "country": "JAM",
+      "mark": "44.6",
+      "time": "44.6",
+      "lane": 4,
+      "reaction_time": 0.16,
+      "wind": 1.6
+    },
+    {
+      "pos": 5,
+      "athlete": "Fred Omanyala",
+      "country": "ITA",
+      "mark": "45.26",
+      "time": "45.26",
+      "lane": 5,
+      "reaction_time": 0.138,
+      "wind": -0.4
+    },
+    {
+      "pos": 6,
+      "athlete": "Yohan Bromell",
+      "country": "CAN",
+      "mark": "45.56",
+      "time": "45.56",
+      "lane": 6,
+      "reaction_time": 0.134,
+      "wind": -1.2
+    },
+    {
+      "pos": 7,
+      "athlete": "Asafa Guliyev",
+      "country": "CAN",
+      "mark": "46.06",
+      "time": "46.06",
+      "lane": 7,
+      "reaction_time": 0.133,
+      "wind": -0.8
+    },
+    {
+      "pos": 8,
+      "athlete": "Justin Kerley",
+      "country": "RSA",
+      "mark": "46.71",
+      "time": "46.71",
+      "lane": 8,
+      "reaction_time": 0.144,
+      "wind": -1.8
+    }
+  ]
+}

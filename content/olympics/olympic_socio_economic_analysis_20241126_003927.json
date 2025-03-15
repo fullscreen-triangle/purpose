@@ -1,0 +1,306 @@
+{
+  "analysis": {
+    "performance_stats": {
+      "age": {
+        "count": 1057.0,
+        "mean": 24.019867549668874,
+        "std": 3.3363503554874914,
+        "min": 17.0,
+        "25%": 21.0,
+        "50%": 24.0,
+        "75%": 26.0,
+        "max": 37.0
+      },
+      "height": {
+        "count": 1057.0,
+        "mean": 179.98959318826869,
+        "std": 6.641302520700944,
+        "min": 160.0,
+        "25%": 175.0,
+        "50%": 180.0,
+        "75%": 185.0,
+        "max": 201.0
+      },
+      "weight": {
+        "count": 1057.0,
+        "mean": 71.78807947019868,
+        "std": 6.591864663060275,
+        "min": 49.0,
+        "25%": 67.0,
+        "50%": 72.0,
+        "75%": 76.0,
+        "max": 99.0
+      }
+    },
+    "geopolitical_stats": {
+      "gdp": {
+        "count": 1057.0,
+        "mean": 2409424.581835383,
+        "std": 5422920.850392329,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 87120.0,
+        "75%": 1674000.0,
+        "max": 21140000.0
+      },
+      "population": {
+        "count": 1057.0,
+        "mean": 61038945.27152318,
+        "std": 135016330.41709712,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 7191503.0,
+        "75%": 48958159.0,
+        "max": 1379302771.0
+      }
+    },
+    "medal_distribution": {
+      "0": 980,
+      "Gold": 28,
+      "Silver": 25,
+      "Bronze": 24
+    },
+    "participants_by_team": {
+      "United States": 101,
+      "Great Britain": 56,
+      "Jamaica": 45,
+      "France": 34,
+      "Germany": 33,
+      "Trinidad and Tobago": 30,
+      "Poland": 30,
+      "Australia": 30,
+      "Canada": 28,
+      "Kenya": 27,
+      "Nigeria": 25,
+      "Japan": 21,
+      "South Africa": 20,
+      "Bahamas": 20,
+      "Brazil": 18,
+      "Italy": 18,
+      "Belgium": 17,
+      "Sweden": 17,
+      "Finland": 15,
+      "Cuba": 15,
+      "Uganda": 12,
+      "Soviet Union": 12,
+      "Hungary": 11,
+      "West Germany": 10,
+      "Zimbabwe": 10,
+      "Spain": 10,
+      "Botswana": 10,
+      "Barbados": 10,
+      "Ghana": 9,
+      "Mexico": 8,
+      "Czechoslovakia": 8,
+      "Ethiopia": 7,
+      "Puerto Rico": 7,
+      "Grenada": 7,
+      "Dominican Republic": 7,
+      "Zambia": 7,
+      "Venezuela": 7,
+      "Yugoslavia": 7,
+      "Russia": 7,
+      "Saudi Arabia": 7,
+      "Colombia": 7,
+      "Netherlands": 6,
+      "Papua New Guinea": 6,
+      "Greece": 6,
+      "Switzerland": 6,
+      "Senegal": 6,
+      "Ireland": 6,
+      "Sierra Leone": 5,
+      "Iceland": 5,
+      "Sri Lanka": 5,
+      "Qatar": 5,
+      "India": 5,
+      "Pakistan": 5,
+      "Bermuda": 5,
+      "Fiji": 5,
+      "East Germany": 5,
+      "Guyana": 4,
+      "Seychelles": 4,
+      "Cote d'Ivoire": 4,
+      "Oman": 4,
+      "Haiti": 4,
+      "Israel": 4,
+      "Luxembourg": 4,
+      "Sudan": 4,
+      "United States Virgin Islands": 4,
+      "Norway": 4,
+      "Congo (Brazzaville)": 4,
+      "Liberia": 4,
+      "Malaysia": 4,
+      "Argentina": 4,
+      "Antigua and Barbuda": 4,
+      "Thailand": 4,
+      "Mauritius": 4,
+      "Ukraine": 4,
+      "Congo (Kinshasa)": 3,
+      "Tanzania": 3,
+      "Czech Republic": 3,
+      "Algeria": 3,
+      "Belize": 3,
+      "Tunisia": 3,
+      "Iran": 3,
+      "Togo": 3,
+      "Gambia": 3,
+      "Chinese Taipei": 3,
+      "El Salvador": 3,
+      "Morocco": 3,
+      "Philippines": 3,
+      "Nicaragua": 3,
+      "Kuwait": 3,
+      "Portugal": 3,
+      "Mozambique": 3,
+      "Costa Rica": 3,
+      "Slovenia": 3,
+      "Malawi": 3,
+      "Lesotho": 2,
+      "South Korea": 2,
+      "Estonia": 2,
+      "Paraguay": 2,
+      "Laos": 2,
+      "Uruguay": 2,
+      "Iraq": 2,
+      "Honduras": 2,
+      "Bahrain": 2,
+      "Bangladesh": 2,
+      "Individual Olympic Athletes": 2,
+      "Benin": 2,
+      "Slovakia": 2,
+      "Madagascar": 2,
+      "Libya": 2,
+      "Cyprus": 2,
+      "Central African Republic": 2,
+      "Lebanon": 2,
+      "Hong Kong": 1,
+      "Rwanda": 1,
+      "New Zealand": 1,
+      "Australasia": 1,
+      "Peru": 1,
+      "Cambodia": 1,
+      "Afghanistan": 1,
+      "Cameroon": 1,
+      "Myanmar": 1,
+      "Romania": 1,
+      "Indonesia": 1,
+      "Nepal": 1,
+      "Egypt": 1,
+      "Lithuania": 1,
+      "Netherlands Antilles": 1,
+      "San Marino": 1,
+      "Guatemala": 1,
+      "Angola": 1,
+      "China": 1,
+      "Latvia": 1,
+      "Suriname": 1,
+      "Guinea": 1,
+      "Bulgaria": 1,
+      "Unified Team": 1,
+      "Macedonia": 1,
+      "Chile": 1,
+      "Denmark": 1,
+      "Kazakhstan": 1
+    }
+  },
+  "models": {
+    "performance": {
+      "metrics": {
+        "0": {
+          "precision": 0.9371980676328503,
+          "recall": 0.9748743718592965,
+          "f1-score": 0.9556650246305419,
+          "support": 199.0
+        },
+        "Bronze": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 5.0
+        },
+        "Gold": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 5.0
+        },
+        "Silver": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 3.0
+        },
+        "accuracy": 0.9150943396226415,
+        "macro avg": {
+          "precision": 0.23429951690821257,
+          "recall": 0.24371859296482412,
+          "f1-score": 0.23891625615763548,
+          "support": 212.0
+        },
+        "weighted avg": {
+          "precision": 0.8797283748063076,
+          "recall": 0.9150943396226415,
+          "f1-score": 0.8970629240635747,
+          "support": 212.0
+        }
+      },
+      "feature_importance": {
+        "Age": 0.2506738375329061,
+        "Height": 0.3292886447253737,
+        "Weight": 0.4200375177417202
+      }
+    },
+    "geopolitical": {
+      "metrics": {
+        "0": {
+          "precision": 0.9386792452830188,
+          "recall": 1.0,
+          "f1-score": 0.9683698296836983,
+          "support": 199.0
+        },
+        "Bronze": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 5.0
+        },
+        "Gold": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 5.0
+        },
+        "Silver": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 3.0
+        },
+        "accuracy": 0.9386792452830188,
+        "macro avg": {
+          "precision": 0.2346698113207547,
+          "recall": 0.25,
+          "f1-score": 0.24209245742092458,
+          "support": 212.0
+        },
+        "weighted avg": {
+          "precision": 0.8811187255250978,
+          "recall": 0.9386792452830188,
+          "f1-score": 0.9089886608823395,
+          "support": 212.0
+        }
+      },
+      "feature_importance": {
+        "POP_EST": 0.36116732210421343,
+        "GDP_MD_EST": 0.5540658333332652,
+        "INCOME_GRP": 0.02864312701985653,
+        "ECONOMY": 0.05612371754266488
+      }
+    }
+  },
+  "metadata": {
+    "input_file": "/Users/kundai/Documents/mass-spectrometry/fourhundred/results/merged_output.json",
+    "processing_date": "2024-11-26T00:39:27.785054",
+    "number_of_athletes": 1057
+  }
+}

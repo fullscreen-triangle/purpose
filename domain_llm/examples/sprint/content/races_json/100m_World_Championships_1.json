@@ -1,0 +1,79 @@
+{
+  "event": "100m",
+  "date": "2024-09-23",
+  "location": "Rome, FRA",
+  "competition": "World Championships",
+  "round": "Semi-final",
+  "results": [
+    {
+      "pos": 1,
+      "athlete": "Wayde Gay",
+      "country": "BRA",
+      "mark": "9.83",
+      "time": "9.83",
+      "lane": 1,
+      "reaction_time": 0.152,
+      "wind": -1.5
+    },
+    {
+      "pos": 2,
+      "athlete": "Ferdinand Coleman",
+      "country": "NGR",
+      "mark": "10.06",
+      "time": "10.06",
+      "lane": 2,
+      "reaction_time": 0.166,
+      "wind": 1.9
+    },
+    {
+      "pos": 3,
+      "athlete": "Fred Omanyala",
+      "country": "ITA",
+      "mark": "10.14",
+      "time": "10.14",
+      "lane": 3,
+      "reaction_time": 0.149,
+      "wind": 1.2
+    },
+    {
+      "pos": 4,
+      "athlete": "Francis Omanyala",
+      "country": "AUS",
+      "mark": "10.46",
+      "time": "10.46",
+      "lane": 4,
+      "reaction_time": 0.178,
+      "wind": 1.8
+    },
+    {
+      "pos": 5,
+      "athlete": "Usain Hughes",
+      "country": "ITA",
+      "mark": "10.85",
+      "time": "10.85",
+      "lane": 5,
+      "reaction_time": 0.138,
+      "wind": 0.9
+    },
+    {
+      "pos": 6,
+      "athlete": "Zharnel Baker",
+      "country": "BRA",
+      "mark": "10.9",
+      "time": "10.9",
+      "lane": 6,
+      "reaction_time": 0.192,
+      "wind": -0.1
+    },
+    {
+      "pos": 7,
+      "athlete": "Usain Blake",
+      "country": "GER",
+      "mark": "11.08",
+      "time": "11.08",
+      "lane": 7,
+      "reaction_time": 0.129,
+      "wind": -1.8
+    }
+  ]
+}

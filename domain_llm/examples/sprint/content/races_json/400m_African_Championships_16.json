@@ -1,0 +1,89 @@
+{
+  "event": "400m",
+  "date": "2024-10-19",
+  "location": "Doha, GER",
+  "competition": "African Championships",
+  "round": "Semi-final",
+  "results": [
+    {
+      "pos": 1,
+      "athlete": "Usain Blake",
+      "country": "GER",
+      "mark": "43.03",
+      "time": "43.03",
+      "lane": 1,
+      "reaction_time": 0.16,
+      "wind": -1.5
+    },
+    {
+      "pos": 2,
+      "athlete": "Akani Powell",
+      "country": "JAM",
+      "mark": "43.66",
+      "time": "43.66",
+      "lane": 2,
+      "reaction_time": 0.127,
+      "wind": -1.9
+    },
+    {
+      "pos": 3,
+      "athlete": "Akani Van Niekerk",
+      "country": "JAM",
+      "mark": "44.0",
+      "time": "44.0",
+      "lane": 3,
+      "reaction_time": 0.166,
+      "wind": 0.5
+    },
+    {
+      "pos": 4,
+      "athlete": "Fred Simbine",
+      "country": "NED",
+      "mark": "44.6",
+      "time": "44.6",
+      "lane": 4,
+      "reaction_time": 0.145,
+      "wind": 0.3
+    },
+    {
+      "pos": 5,
+      "athlete": "Justin Johnson",
+      "country": "POR",
+      "mark": "45.06",
+      "time": "45.06",
+      "lane": 5,
+      "reaction_time": 0.179,
+      "wind": 1.6
+    },
+    {
+      "pos": 6,
+      "athlete": "Asafa Bolt",
+      "country": "ITA",
+      "mark": "45.57",
+      "time": "45.57",
+      "lane": 6,
+      "reaction_time": 0.191,
+      "wind": 1.7
+    },
+    {
+      "pos": 7,
+      "athlete": "Noah Hughes",
+      "country": "GER",
+      "mark": "46.08",
+      "time": "46.08",
+      "lane": 7,
+      "reaction_time": 0.147,
+      "wind": 1.6
+    },
+    {
+      "pos": 8,
+      "athlete": "Justin Simbine",
+      "country": "AUS",
+      "mark": "46.76",
+      "time": "46.76",
+      "lane": 8,
+      "reaction_time": 0.191,
+      "wind": -0.0
+    }
+  ]
+}

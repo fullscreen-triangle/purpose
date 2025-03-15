@@ -1,0 +1,69 @@
+{
+  "event": "100m",
+  "date": "2023-01-21",
+  "location": "Doha, AUS",
+  "competition": "African Championships",
+  "round": "Heat",
+  "results": [
+    {
+      "pos": 1,
+      "athlete": "Ronnie Powell",
+      "country": "USA",
+      "mark": "9.9",
+      "time": "9.9",
+      "lane": 1,
+      "reaction_time": 0.163,
+      "wind": -0.1
+    },
+    {
+      "pos": 2,
+      "athlete": "Yohan Blake",
+      "country": "CHN",
+      "mark": "10.0",
+      "time": "10.0",
+      "lane": 2,
+      "reaction_time": 0.157,
+      "wind": 1.1
+    },
+    {
+      "pos": 3,
+      "athlete": "Yohan Bromell",
+      "country": "CAN",
+      "mark": "10.33",
+      "time": "10.33",
+      "lane": 3,
+      "reaction_time": 0.189,
+      "wind": -0.1
+    },
+    {
+      "pos": 4,
+      "athlete": "Wayde Lyles",
+      "country": "GBR",
+      "mark": "10.74",
+      "time": "10.74",
+      "lane": 4,
+      "reaction_time": 0.139,
+      "wind": -1.8
+    },
+    {
+      "pos": 5,
+      "athlete": "Yohan Guliyev",
+      "country": "GBR",
+      "mark": "10.72",
+      "time": "10.72",
+      "lane": 5,
+      "reaction_time": 0.155,
+      "wind": -1.6
+    },
+    {
+      "pos": 6,
+      "athlete": "Christian Johnson",
+      "country": "AUS",
+      "mark": "11.15",
+      "time": "11.15",
+      "lane": 6,
+      "reaction_time": 0.124,
+      "wind": -0.1
+    }
+  ]
+}

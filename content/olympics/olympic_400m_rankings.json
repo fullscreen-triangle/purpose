@@ -1,0 +1,3520 @@
+{
+  "metadata": {
+    "generated_date": "2024-11-14T03:37:49.286755",
+    "total_athletes": 1145,
+    "total_countries": 146,
+    "year_range": [
+      1896,
+      2016
+    ],
+    "scoring_weights": {
+      "weighted_medal": 0.3,
+      "physical_optimization": 0.2,
+      "longevity": 0.2,
+      "nationality_impact": 0.15,
+      "competitive_consistency": 0.15
+    }
+  },
+  "rankings": [
+    {
+      "rank": 1,
+      "name": "Kirani James",
+      "details": {
+        "team": "first    Grenada\nName: Kirani James, dtype: object",
+        "noc": "first    GRN\nName: Kirani James, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 180.0,
+          "weight_mean": 66.0
+        },
+        "career": {
+          "first_olympics": 2012,
+          "last_olympics": 2016,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 1,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 1.0,
+        "component_scores": {
+          "weighted_medal": 0.8333,
+          "physical_optimization": 0.9208,
+          "longevity": 0.6667,
+          "nationality_impact": 0.8839,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "name": "Jeremy Matthew Wariner",
+      "details": {
+        "team": "first    United States\nName: Jeremy Matthew Wariner, dtype: object",
+        "noc": "first    USA\nName: Jeremy Matthew Wariner, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 188.0,
+          "weight_mean": 71.0
+        },
+        "career": {
+          "first_olympics": 2004,
+          "last_olympics": 2008,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 1,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.8152,
+        "component_scores": {
+          "weighted_medal": 0.8333,
+          "physical_optimization": 0.8898,
+          "longevity": 0.6667,
+          "nationality_impact": 0.0187,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "name": "Michael Duane Johnson",
+      "details": {
+        "team": "first    United States\nName: Michael Duane Johnson, dtype: object",
+        "noc": "first    USA\nName: Michael Duane Johnson, dtype: object",
+        "physical_attributes": {
+          "age_mean": 30.5,
+          "height_mean": 183.0,
+          "weight_mean": 77.0
+        },
+        "career": {
+          "first_olympics": 1996,
+          "last_olympics": 2000,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Gold": 2,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.7819,
+        "component_scores": {
+          "weighted_medal": 1.0,
+          "physical_optimization": 0.5173,
+          "longevity": 0.6667,
+          "nationality_impact": 0.0187,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "name": "Steven Earl \"Steve\" Lewis",
+      "details": {
+        "team": "first    United States\nName: Steven Earl \"Steve\" Lewis, dtype: object",
+        "noc": "first    USA\nName: Steven Earl \"Steve\" Lewis, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 188.0,
+          "weight_mean": 84.0
+        },
+        "career": {
+          "first_olympics": 1988,
+          "last_olympics": 1992,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 1,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.7685,
+        "component_scores": {
+          "weighted_medal": 0.8333,
+          "physical_optimization": 0.7182,
+          "longevity": 0.6667,
+          "nationality_impact": 0.0187,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "name": "Herbert Henry \"Herb\" McKenley",
+      "details": {
+        "team": "first    Jamaica\nName: Herbert Henry \"Herb\" McKenley, dtype: object",
+        "noc": "first    JAM\nName: Herbert Henry \"Herb\" McKenley, dtype: object",
+        "physical_attributes": {
+          "age_mean": 28.0,
+          "height_mean": 185.0,
+          "weight_mean": 72.0
+        },
+        "career": {
+          "first_olympics": 1948,
+          "last_olympics": 1952,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Silver": 2,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.7345,
+        "component_scores": {
+          "weighted_medal": 0.6667,
+          "physical_optimization": 0.6766,
+          "longevity": 0.6667,
+          "nationality_impact": 0.2405,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "name": "LaShawn Merritt",
+      "details": {
+        "team": "first    United States\nName: LaShawn Merritt, dtype: object",
+        "noc": "first    USA\nName: LaShawn Merritt, dtype: object",
+        "physical_attributes": {
+          "age_mean": 26.0,
+          "height_mean": 191.0,
+          "weight_mean": 86.0
+        },
+        "career": {
+          "first_olympics": 2008,
+          "last_olympics": 2016,
+          "olympics_span": 12,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Bronze": 1,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.6914,
+        "component_scores": {
+          "weighted_medal": 0.6667,
+          "physical_optimization": 0.5384,
+          "longevity": 1.0,
+          "nationality_impact": 0.0187,
+          "competitive_consistency": 0.5
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "name": "Viktor Fyodorovich Markin",
+      "details": {
+        "team": "first    Soviet Union\nName: Viktor Fyodorovich Markin, dtype: object",
+        "noc": "first    URS\nName: Viktor Fyodorovich Markin, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 183.0,
+          "weight_mean": 73.0
+        },
+        "career": {
+          "first_olympics": 1980,
+          "last_olympics": 1980,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.6276,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.9141,
+          "longevity": 0.1667,
+          "nationality_impact": 0.3993,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "name": "Wyndham Halswelle",
+      "details": {
+        "team": "first    Great Britain\nName: Wyndham Halswelle, dtype: object",
+        "noc": "first    GBR\nName: Wyndham Halswelle, dtype: object",
+        "physical_attributes": {
+          "age_mean": 24.0,
+          "height_mean": 0.0,
+          "weight_mean": 0.0
+        },
+        "career": {
+          "first_olympics": 1906,
+          "last_olympics": 1908,
+          "olympics_span": 6,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 1,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.6252,
+        "component_scores": {
+          "weighted_medal": 0.8333,
+          "physical_optimization": 0.0957,
+          "longevity": 0.5,
+          "nationality_impact": 0.1178,
+          "competitive_consistency": 1.0
+        }
+      }
+    },
+    {
+      "rank": 9,
+      "name": "Wayde van Niekerk",
+      "details": {
+        "team": "first    South Africa\nName: Wayde van Niekerk, dtype: object",
+        "noc": "first    RSA\nName: Wayde van Niekerk, dtype: object",
+        "physical_attributes": {
+          "age_mean": 24.0,
+          "height_mean": 183.0,
+          "weight_mean": 70.0
+        },
+        "career": {
+          "first_olympics": 2016,
+          "last_olympics": 2016,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5874,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.8948,
+          "longevity": 0.1667,
+          "nationality_impact": 0.2278,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 10,
+      "name": "Gabriel J. Tiacoh",
+      "details": {
+        "team": "first    Cote d'Ivoire\nName: Gabriel J. Tiacoh, dtype: object",
+        "noc": "first    CIV\nName: Gabriel J. Tiacoh, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.5,
+          "height_mean": 180.0,
+          "weight_mean": 75.0
+        },
+        "career": {
+          "first_olympics": 1984,
+          "last_olympics": 1988,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5779,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.6455,
+          "longevity": 0.3333,
+          "nationality_impact": 1.0,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 11,
+      "name": "Eric Henry Liddell",
+      "details": {
+        "team": "first    Great Britain\nName: Eric Henry Liddell, dtype: object",
+        "noc": "first    GBR\nName: Eric Henry Liddell, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 173.0,
+          "weight_mean": 68.0
+        },
+        "career": {
+          "first_olympics": 1924,
+          "last_olympics": 1924,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5753,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.9771,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0589,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 12,
+      "name": "Alberto Juantorena Danger",
+      "details": {
+        "team": "first    Cuba\nName: Alberto Juantorena Danger, dtype: object",
+        "noc": "first    CUB\nName: Alberto Juantorena Danger, dtype: object",
+        "physical_attributes": {
+          "age_mean": 25.0,
+          "height_mean": 190.0,
+          "weight_mean": 84.0
+        },
+        "career": {
+          "first_olympics": 1972,
+          "last_olympics": 1980,
+          "olympics_span": 12,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5748,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.4848,
+          "longevity": 0.5,
+          "nationality_impact": 0.7682,
+          "competitive_consistency": 0.25
+        }
+      }
+    },
+    {
+      "rank": 13,
+      "name": "Bevil Gordon d'Urban Rudd",
+      "details": {
+        "team": "first    South Africa\nName: Bevil Gordon d'Urban Rudd, dtype: object",
+        "noc": "first    RSA\nName: Bevil Gordon d'Urban Rudd, dtype: object",
+        "physical_attributes": {
+          "age_mean": 24.0,
+          "height_mean": 180.0,
+          "weight_mean": 77.0
+        },
+        "career": {
+          "first_olympics": 1920,
+          "last_olympics": 1920,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5725,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.84,
+          "longevity": 0.1667,
+          "nationality_impact": 0.2278,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 14,
+      "name": "William Arthur \"Bill\" Carr",
+      "details": {
+        "team": "first    United States\nName: William Arthur \"Bill\" Carr, dtype: object",
+        "noc": "first    USA\nName: William Arthur \"Bill\" Carr, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 172.0,
+          "weight_mean": 66.0
+        },
+        "career": {
+          "first_olympics": 1932,
+          "last_olympics": 1932,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5714,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 1.0,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 15,
+      "name": "Lugueln Miguel Santos Aquino",
+      "details": {
+        "team": "first    Dominican Republic\nName: Lugueln Miguel Santos Aquino, dtype: object",
+        "noc": "first    DOM\nName: Lugueln Miguel Santos Aquino, dtype: object",
+        "physical_attributes": {
+          "age_mean": 20.0,
+          "height_mean": 173.0,
+          "weight_mean": 58.0
+        },
+        "career": {
+          "first_olympics": 2012,
+          "last_olympics": 2016,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5699,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.6803,
+          "longevity": 0.3333,
+          "nationality_impact": 0.9144,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 16,
+      "name": "Wendell Adrian Mottley",
+      "details": {
+        "team": "first    Trinidad and Tobago\nName: Wendell Adrian Mottley, dtype: object",
+        "noc": "first    TTO\nName: Wendell Adrian Mottley, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 173.0,
+          "weight_mean": 72.0
+        },
+        "career": {
+          "first_olympics": 1964,
+          "last_olympics": 1964,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5603,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.9628,
+          "longevity": 0.1667,
+          "nationality_impact": 0.3377,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 17,
+      "name": "Frank Schaffer",
+      "details": {
+        "team": "first    East Germany\nName: Frank Schaffer, dtype: object",
+        "noc": "first    GDR\nName: Frank Schaffer, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 188.0,
+          "weight_mean": 80.0
+        },
+        "career": {
+          "first_olympics": 1980,
+          "last_olympics": 1980,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5538,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.7563,
+          "longevity": 0.1667,
+          "nationality_impact": 0.9144,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 18,
+      "name": "Thomas Edmund \"Tom\" Burke",
+      "details": {
+        "team": "first    United States\nName: Thomas Edmund \"Tom\" Burke, dtype: object",
+        "noc": "first    USA\nName: Thomas Edmund \"Tom\" Burke, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 183.0,
+          "weight_mean": 66.0
+        },
+        "career": {
+          "first_olympics": 1896,
+          "last_olympics": 1896,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5467,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.9091,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 19,
+      "name": "Alonzo Carl Babers",
+      "details": {
+        "team": "first    United States\nName: Alonzo Carl Babers, dtype: object",
+        "noc": "first    USA\nName: Alonzo Carl Babers, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 188.0,
+          "weight_mean": 70.0
+        },
+        "career": {
+          "first_olympics": 1984,
+          "last_olympics": 1984,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.544,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.8993,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 20,
+      "name": "Charles Decker Reidpath",
+      "details": {
+        "team": "first    United States\nName: Charles Decker Reidpath, dtype: object",
+        "noc": "first    USA\nName: Charles Decker Reidpath, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 181.0,
+          "weight_mean": 76.0
+        },
+        "career": {
+          "first_olympics": 1912,
+          "last_olympics": 1912,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.536,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.8696,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 21,
+      "name": "Charles Lamont \"Charlie\" Jenkins, Sr.",
+      "details": {
+        "team": "first    United States\nName: Charles Lamont \"Charlie\" Jenkins, Sr., dtype: object",
+        "noc": "first    USA\nName: Charles Lamont \"Charlie\" Jenkins, Sr., dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 186.0,
+          "weight_mean": 74.0
+        },
+        "career": {
+          "first_olympics": 1956,
+          "last_olympics": 1956,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5358,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.869,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 22,
+      "name": "Maxwell Warburn \"Maxey\" Long",
+      "details": {
+        "team": "first    United States\nName: Maxwell Warburn \"Maxey\" Long, dtype: object",
+        "noc": "first    USA\nName: Maxwell Warburn \"Maxey\" Long, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 182.0,
+          "weight_mean": 75.0
+        },
+        "career": {
+          "first_olympics": 1900,
+          "last_olympics": 1900,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5245,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.8274,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 23,
+      "name": "Lee Edward Evans",
+      "details": {
+        "team": "first    United States\nName: Lee Edward Evans, dtype: object",
+        "noc": "first    USA\nName: Lee Edward Evans, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 180.0,
+          "weight_mean": 78.0
+        },
+        "career": {
+          "first_olympics": 1968,
+          "last_olympics": 1968,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5189,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.8067,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 24,
+      "name": "Raymond James \"Ray\" Barbuti",
+      "details": {
+        "team": "first    United States\nName: Raymond James \"Ray\" Barbuti, dtype: object",
+        "noc": "first    USA\nName: Raymond James \"Ray\" Barbuti, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 183.0,
+          "weight_mean": 82.0
+        },
+        "career": {
+          "first_olympics": 1928,
+          "last_olympics": 1928,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5183,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.8047,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 25,
+      "name": "Archibald Franklin \"Archie\" Williams",
+      "details": {
+        "team": "first    United States\nName: Archibald Franklin \"Archie\" Williams, dtype: object",
+        "noc": "first    USA\nName: Archibald Franklin \"Archie\" Williams, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 183.0,
+          "weight_mean": 80.0
+        },
+        "career": {
+          "first_olympics": 1936,
+          "last_olympics": 1936,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5105,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.7759,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 26,
+      "name": "Vincent Edward \"Vince\" Matthews",
+      "details": {
+        "team": "first    United States\nName: Vincent Edward \"Vince\" Matthews, dtype: object",
+        "noc": "first    USA\nName: Vincent Edward \"Vince\" Matthews, dtype: object",
+        "physical_attributes": {
+          "age_mean": 24.0,
+          "height_mean": 187.0,
+          "weight_mean": 81.0
+        },
+        "career": {
+          "first_olympics": 1972,
+          "last_olympics": 1972,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5101,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.7745,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 27,
+      "name": "Horatio May Fitch",
+      "details": {
+        "team": "first    United States\nName: Horatio May Fitch, dtype: object",
+        "noc": "first    USA\nName: Horatio May Fitch, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 175.0,
+          "weight_mean": 68.0
+        },
+        "career": {
+          "first_olympics": 1924,
+          "last_olympics": 1924,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.5016,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.993,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 28,
+      "name": "Johannes \"Hanns\" Braun",
+      "details": {
+        "team": "first    Germany\nName: Johannes \"Hanns\" Braun, dtype: object",
+        "noc": "first    GER\nName: Johannes \"Hanns\" Braun, dtype: object",
+        "physical_attributes": {
+          "age_mean": 25.0,
+          "height_mean": 180.0,
+          "weight_mean": 68.0
+        },
+        "career": {
+          "first_olympics": 1912,
+          "last_olympics": 1912,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.499,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.8778,
+          "longevity": 0.1667,
+          "nationality_impact": 0.1503,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 29,
+      "name": "Quincy Dushawn Watts",
+      "details": {
+        "team": "first    United States\nName: Quincy Dushawn Watts, dtype: object",
+        "noc": "first    USA\nName: Quincy Dushawn Watts, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 190.0,
+          "weight_mean": 88.0
+        },
+        "career": {
+          "first_olympics": 1992,
+          "last_olympics": 1992,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4953,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.7202,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 30,
+      "name": "Guy Montagu Butler",
+      "details": {
+        "team": "first    Great Britain\nName: Guy Montagu Butler, dtype: object",
+        "noc": "first    GBR\nName: Guy Montagu Butler, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 0.0,
+          "weight_mean": 0.0
+        },
+        "career": {
+          "first_olympics": 1920,
+          "last_olympics": 1924,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Bronze": 1,
+              "Gold": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4901,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.1197,
+          "longevity": 0.6667,
+          "nationality_impact": 0.1178,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 31,
+      "name": "Carl Kaufmann",
+      "details": {
+        "team": "first    Germany\nName: Carl Kaufmann, dtype: object",
+        "noc": "first    GER\nName: Carl Kaufmann, dtype: object",
+        "physical_attributes": {
+          "age_mean": 24.0,
+          "height_mean": 183.0,
+          "weight_mean": 76.0
+        },
+        "career": {
+          "first_olympics": 1960,
+          "last_olympics": 1960,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4881,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.8377,
+          "longevity": 0.1667,
+          "nationality_impact": 0.1503,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 32,
+      "name": "Arthur Godfrey Kilner Brown",
+      "details": {
+        "team": "first    Great Britain\nName: Arthur Godfrey Kilner Brown, dtype: object",
+        "noc": "first    GBR\nName: Arthur Godfrey Kilner Brown, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 183.0,
+          "weight_mean": 70.0
+        },
+        "career": {
+          "first_olympics": 1936,
+          "last_olympics": 1936,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4785,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.871,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0589,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 33,
+      "name": "Otis Crandall Davis",
+      "details": {
+        "team": "first    United States\nName: Otis Crandall Davis, dtype: object",
+        "noc": "first    USA\nName: Otis Crandall Davis, dtype: object",
+        "physical_attributes": {
+          "age_mean": 28.0,
+          "height_mean": 185.0,
+          "weight_mean": 74.0
+        },
+        "career": {
+          "first_olympics": 1960,
+          "last_olympics": 1960,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4783,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.6576,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 34,
+      "name": "George Vincent Rhoden",
+      "details": {
+        "team": "first    Jamaica\nName: George Vincent Rhoden, dtype: object",
+        "noc": "first    JAM\nName: George Vincent Rhoden, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 178.0,
+          "weight_mean": 68.0
+        },
+        "career": {
+          "first_olympics": 1948,
+          "last_olympics": 1952,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4766,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.6827,
+          "longevity": 0.3333,
+          "nationality_impact": 0.1202,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 35,
+      "name": "Herbert Brotherson Jamison",
+      "details": {
+        "team": "first    United States\nName: Herbert Brotherson Jamison, dtype: object",
+        "noc": "first    USA\nName: Herbert Brotherson Jamison, dtype: object",
+        "physical_attributes": {
+          "age_mean": 20.0,
+          "height_mean": 173.0,
+          "weight_mean": 69.0
+        },
+        "career": {
+          "first_olympics": 1896,
+          "last_olympics": 1896,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4686,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.8719,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 36,
+      "name": "Benjamin Bangs \"Ben\" Eastman",
+      "details": {
+        "team": "first    United States\nName: Benjamin Bangs \"Ben\" Eastman, dtype: object",
+        "noc": "first    USA\nName: Benjamin Bangs \"Ben\" Eastman, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 185.0,
+          "weight_mean": 70.0
+        },
+        "career": {
+          "first_olympics": 1932,
+          "last_olympics": 1932,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4663,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.8632,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 37,
+      "name": "Nils Erik Engdahl",
+      "details": {
+        "team": "first    Sweden\nName: Nils Erik Engdahl, dtype: object",
+        "noc": "first    SWE\nName: Nils Erik Engdahl, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 165.0,
+          "weight_mean": 57.0
+        },
+        "career": {
+          "first_olympics": 1920,
+          "last_olympics": 1924,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4642,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.7604,
+          "longevity": 0.3333,
+          "nationality_impact": 0.6223,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 38,
+      "name": "Frank Laird Waller",
+      "details": {
+        "team": "first    United States\nName: Frank Laird Waller, dtype: object",
+        "noc": "first    USA\nName: Frank Laird Waller, dtype: object",
+        "physical_attributes": {
+          "age_mean": 20.0,
+          "height_mean": 176.0,
+          "weight_mean": 71.0
+        },
+        "career": {
+          "first_olympics": 1904,
+          "last_olympics": 1904,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4603,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.8411,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 39,
+      "name": "Harry Livingston Hillman, Jr.",
+      "details": {
+        "team": "first    United States\nName: Harry Livingston Hillman, Jr., dtype: object",
+        "noc": "first    USA\nName: Harry Livingston Hillman, Jr., dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 180.0,
+          "weight_mean": 66.0
+        },
+        "career": {
+          "first_olympics": 1904,
+          "last_olympics": 1906,
+          "olympics_span": 6,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4584,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.6883,
+          "longevity": 0.25,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.5
+        }
+      }
+    },
+    {
+      "rank": 40,
+      "name": "Voitto Valdemar Hellstn",
+      "details": {
+        "team": "first    Finland\nName: Voitto Valdemar Hellstn, dtype: object",
+        "noc": "first    FIN\nName: Voitto Valdemar Hellstn, dtype: object",
+        "physical_attributes": {
+          "age_mean": 26.0,
+          "height_mean": 160.0,
+          "weight_mean": 72.0
+        },
+        "career": {
+          "first_olympics": 1956,
+          "last_olympics": 1960,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4577,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.6271,
+          "longevity": 0.3333,
+          "nationality_impact": 0.7682,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 41,
+      "name": "George Lawrence \"Larry\" James",
+      "details": {
+        "team": "first    United States\nName: George Lawrence \"Larry\" James, dtype: object",
+        "noc": "first    USA\nName: George Lawrence \"Larry\" James, dtype: object",
+        "physical_attributes": {
+          "age_mean": 20.0,
+          "height_mean": 181.0,
+          "weight_mean": 70.0
+        },
+        "career": {
+          "first_olympics": 1968,
+          "last_olympics": 1968,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4575,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.831,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 42,
+      "name": "Julius Sang",
+      "details": {
+        "team": "first    Kenya\nName: Julius Sang, dtype: object",
+        "noc": "first    KEN\nName: Julius Sang, dtype: object",
+        "physical_attributes": {
+          "age_mean": 26.0,
+          "height_mean": 175.0,
+          "weight_mean": 69.0
+        },
+        "career": {
+          "first_olympics": 1972,
+          "last_olympics": 1972,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4554,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.84,
+          "longevity": 0.1667,
+          "nationality_impact": 0.3201,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 43,
+      "name": "Frederick Vaughn \"Fred\" Newhouse",
+      "details": {
+        "team": "first    United States\nName: Frederick Vaughn \"Fred\" Newhouse, dtype: object",
+        "noc": "first    USA\nName: Frederick Vaughn \"Fred\" Newhouse, dtype: object",
+        "physical_attributes": {
+          "age_mean": 27.0,
+          "height_mean": 175.0,
+          "weight_mean": 68.0
+        },
+        "career": {
+          "first_olympics": 1976,
+          "last_olympics": 1976,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4496,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.8017,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 44,
+      "name": "Otis Harris, Jr.",
+      "details": {
+        "team": "first    United States\nName: Otis Harris, Jr., dtype: object",
+        "noc": "first    USA\nName: Otis Harris, Jr., dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 185.0,
+          "weight_mean": 83.0
+        },
+        "career": {
+          "first_olympics": 2004,
+          "last_olympics": 2004,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4456,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.7873,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 45,
+      "name": "Michael Denny \"Mike\" Larrabee",
+      "details": {
+        "team": "first    United States\nName: Michael Denny \"Mike\" Larrabee, dtype: object",
+        "noc": "first    USA\nName: Michael Denny \"Mike\" Larrabee, dtype: object",
+        "physical_attributes": {
+          "age_mean": 30.0,
+          "height_mean": 186.0,
+          "weight_mean": 77.0
+        },
+        "career": {
+          "first_olympics": 1964,
+          "last_olympics": 1964,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4435,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.5295,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 46,
+      "name": "Wayne Curtis Collett",
+      "details": {
+        "team": "first    United States\nName: Wayne Curtis Collett, dtype: object",
+        "noc": "first    USA\nName: Wayne Curtis Collett, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 188.0,
+          "weight_mean": 84.0
+        },
+        "career": {
+          "first_olympics": 1972,
+          "last_olympics": 1972,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4399,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.7661,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 47,
+      "name": "Richard Charles \"Rick\" Mitchell",
+      "details": {
+        "team": "first    Australia\nName: Richard Charles \"Rick\" Mitchell, dtype: object",
+        "noc": "first    AUS\nName: Richard Charles \"Rick\" Mitchell, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 183.0,
+          "weight_mean": 71.0
+        },
+        "career": {
+          "first_olympics": 1976,
+          "last_olympics": 1980,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4384,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.6586,
+          "longevity": 0.3333,
+          "nationality_impact": 0.2981,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 48,
+      "name": "Andrzej Stanisaw Badeski",
+      "details": {
+        "team": "first    Poland\nName: Andrzej Stanisaw Badeski, dtype: object",
+        "noc": "first    POL\nName: Andrzej Stanisaw Badeski, dtype: object",
+        "physical_attributes": {
+          "age_mean": 25.0,
+          "height_mean": 173.0,
+          "weight_mean": 68.0
+        },
+        "career": {
+          "first_olympics": 1964,
+          "last_olympics": 1972,
+          "olympics_span": 12,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4353,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.5578,
+          "longevity": 0.5,
+          "nationality_impact": 0.6534,
+          "competitive_consistency": 0.25
+        }
+      }
+    },
+    {
+      "rank": 49,
+      "name": "Davis Kamoga",
+      "details": {
+        "team": "first    Uganda\nName: Davis Kamoga, dtype: object",
+        "noc": "first    UGA\nName: Davis Kamoga, dtype: object",
+        "physical_attributes": {
+          "age_mean": 30.0,
+          "height_mean": 180.0,
+          "weight_mean": 73.0
+        },
+        "career": {
+          "first_olympics": 1996,
+          "last_olympics": 2000,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4295,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.4875,
+          "longevity": 0.3333,
+          "nationality_impact": 0.8161,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 50,
+      "name": "Paul Henry Pilgrim",
+      "details": {
+        "team": "first    United States\nName: Paul Henry Pilgrim, dtype: object",
+        "noc": "first    USA\nName: Paul Henry Pilgrim, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 180.0,
+          "weight_mean": 75.0
+        },
+        "career": {
+          "first_olympics": 1904,
+          "last_olympics": 1908,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.418,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.5504,
+          "longevity": 0.3333,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 51,
+      "name": "James Allan \"Jimmy\" Ball",
+      "details": {
+        "team": "first    Canada\nName: James Allan \"Jimmy\" Ball, dtype: object",
+        "noc": "first    CAN\nName: James Allan \"Jimmy\" Ball, dtype: object",
+        "physical_attributes": {
+          "age_mean": 27.0,
+          "height_mean": 180.0,
+          "weight_mean": 69.0
+        },
+        "career": {
+          "first_olympics": 1928,
+          "last_olympics": 1932,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4143,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.5783,
+          "longevity": 0.3333,
+          "nationality_impact": 0.287,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 52,
+      "name": "Arthur Stanley Wint",
+      "details": {
+        "team": "first    Jamaica\nName: Arthur Stanley Wint, dtype: object",
+        "noc": "first    JAM\nName: Arthur Stanley Wint, dtype: object",
+        "physical_attributes": {
+          "age_mean": 30.0,
+          "height_mean": 194.0,
+          "weight_mean": 77.0
+        },
+        "career": {
+          "first_olympics": 1948,
+          "last_olympics": 1952,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Gold": 1,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4109,
+        "component_scores": {
+          "weighted_medal": 0.5,
+          "physical_optimization": 0.4411,
+          "longevity": 0.3333,
+          "nationality_impact": 0.1202,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 53,
+      "name": "James Ellis \"Jimmy\" LuValle",
+      "details": {
+        "team": "first    United States\nName: James Ellis \"Jimmy\" LuValle, dtype: object",
+        "noc": "first    USA\nName: James Ellis \"Jimmy\" LuValle, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 185.0,
+          "weight_mean": 73.0
+        },
+        "career": {
+          "first_olympics": 1936,
+          "last_olympics": 1936,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.41,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.9063,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 54,
+      "name": "Karl-Friedrich Haas",
+      "details": {
+        "team": "first    Germany\nName: Karl-Friedrich Haas, dtype: object",
+        "noc": "first    GER\nName: Karl-Friedrich Haas, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.5,
+          "height_mean": 186.0,
+          "weight_mean": 72.0
+        },
+        "career": {
+          "first_olympics": 1952,
+          "last_olympics": 1956,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4054,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.648,
+          "longevity": 0.3333,
+          "nationality_impact": 0.1503,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 55,
+      "name": "Ardalion Vasilyevich Ignatyev",
+      "details": {
+        "team": "first    Soviet Union\nName: Ardalion Vasilyevich Ignatyev, dtype: object",
+        "noc": "first    URS\nName: Ardalion Vasilyevich Ignatyev, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 173.0,
+          "weight_mean": 68.0
+        },
+        "career": {
+          "first_olympics": 1952,
+          "last_olympics": 1956,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.4002,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.6925,
+          "longevity": 0.3333,
+          "nationality_impact": 0.3993,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 56,
+      "name": "Herman Ronald Frazier",
+      "details": {
+        "team": "first    United States\nName: Herman Ronald Frazier, dtype: object",
+        "noc": "first    USA\nName: Herman Ronald Frazier, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 184.0,
+          "weight_mean": 73.0
+        },
+        "career": {
+          "first_olympics": 1976,
+          "last_olympics": 1976,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3916,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.8386,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 57,
+      "name": "Edward Ferdinand Jacob \"Ed\" Lindberg",
+      "details": {
+        "team": "first    United States\nName: Edward Ferdinand Jacob \"Ed\" Lindberg, dtype: object",
+        "noc": "first    USA\nName: Edward Ferdinand Jacob \"Ed\" Lindberg, dtype: object",
+        "physical_attributes": {
+          "age_mean": 25.0,
+          "height_mean": 177.0,
+          "weight_mean": 76.0
+        },
+        "career": {
+          "first_olympics": 1912,
+          "last_olympics": 1912,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3848,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.8134,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 58,
+      "name": "David Neville",
+      "details": {
+        "team": "first    United States\nName: David Neville, dtype: object",
+        "noc": "first    USA\nName: David Neville, dtype: object",
+        "physical_attributes": {
+          "age_mean": 24.0,
+          "height_mean": 193.0,
+          "weight_mean": 77.0
+        },
+        "career": {
+          "first_olympics": 2008,
+          "last_olympics": 2008,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3782,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.7891,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 59,
+      "name": "Gregory \"Greg\" Haughton",
+      "details": {
+        "team": "first    Jamaica\nName: Gregory \"Greg\" Haughton, dtype: object",
+        "noc": "first    JAM\nName: Gregory \"Greg\" Haughton, dtype: object",
+        "physical_attributes": {
+          "age_mean": 26.0,
+          "height_mean": 185.0,
+          "weight_mean": 79.0
+        },
+        "career": {
+          "first_olympics": 2000,
+          "last_olympics": 2000,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3781,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.7057,
+          "longevity": 0.1667,
+          "nationality_impact": 0.1202,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 60,
+      "name": "Alexander Sheldon \"Alex\" Wilson",
+      "details": {
+        "team": "first    Canada\nName: Alexander Sheldon \"Alex\" Wilson, dtype: object",
+        "noc": "first    CAN\nName: Alexander Sheldon \"Alex\" Wilson, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 178.0,
+          "weight_mean": 66.0
+        },
+        "career": {
+          "first_olympics": 1928,
+          "last_olympics": 1932,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.374,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.6803,
+          "longevity": 0.3333,
+          "nationality_impact": 0.287,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 61,
+      "name": "Ronald John \"Ron\" Freeman, III",
+      "details": {
+        "team": "first    United States\nName: Ronald John \"Ron\" Freeman, III, dtype: object",
+        "noc": "first    USA\nName: Ronald John \"Ron\" Freeman, III, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 183.0,
+          "weight_mean": 82.0
+        },
+        "career": {
+          "first_olympics": 1968,
+          "last_olympics": 1968,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3694,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.7569,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 62,
+      "name": "Antonio Ricardo McKay",
+      "details": {
+        "team": "first    United States\nName: Antonio Ricardo McKay, dtype: object",
+        "noc": "first    USA\nName: Antonio Ricardo McKay, dtype: object",
+        "physical_attributes": {
+          "age_mean": 20.0,
+          "height_mean": 183.0,
+          "weight_mean": 77.0
+        },
+        "career": {
+          "first_olympics": 1984,
+          "last_olympics": 1984,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3693,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.7566,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 63,
+      "name": "Ollie Genoa Matson",
+      "details": {
+        "team": "first    United States\nName: Ollie Genoa Matson, dtype: object",
+        "noc": "first    USA\nName: Ollie Genoa Matson, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 188.0,
+          "weight_mean": 89.0
+        },
+        "career": {
+          "first_olympics": 1952,
+          "last_olympics": 1952,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.359,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.7185,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 64,
+      "name": "Alvin Leonardo Harrison",
+      "details": {
+        "team": "first    United States\nName: Alvin Leonardo Harrison, dtype: object",
+        "noc": "first    USA\nName: Alvin Leonardo Harrison, dtype: object",
+        "physical_attributes": {
+          "age_mean": 24.0,
+          "height_mean": 188.0,
+          "weight_mean": 80.0
+        },
+        "career": {
+          "first_olympics": 1996,
+          "last_olympics": 2000,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3587,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.5821,
+          "longevity": 0.3333,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 65,
+      "name": "Lalonde Keida Gordon",
+      "details": {
+        "team": "first    Trinidad and Tobago\nName: Lalonde Keida Gordon, dtype: object",
+        "noc": "first    TTO\nName: Lalonde Keida Gordon, dtype: object",
+        "physical_attributes": {
+          "age_mean": 25.0,
+          "height_mean": 179.0,
+          "weight_mean": 83.0
+        },
+        "career": {
+          "first_olympics": 2012,
+          "last_olympics": 2016,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3521,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.5615,
+          "longevity": 0.3333,
+          "nationality_impact": 0.3377,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 66,
+      "name": "Derrick Keith Brew",
+      "details": {
+        "team": "first    United States\nName: Derrick Keith Brew, dtype: object",
+        "noc": "first    USA\nName: Derrick Keith Brew, dtype: object",
+        "physical_attributes": {
+          "age_mean": 26.0,
+          "height_mean": 185.0,
+          "weight_mean": 81.0
+        },
+        "career": {
+          "first_olympics": 2004,
+          "last_olympics": 2004,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3503,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.6867,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 67,
+      "name": "Ernst Ludwig Emanuel Schultz",
+      "details": {
+        "team": "first    Denmark\nName: Ernst Ludwig Emanuel Schultz, dtype: object",
+        "noc": "first    DEN\nName: Ernst Ludwig Emanuel Schultz, dtype: object",
+        "physical_attributes": {
+          "age_mean": 20.0,
+          "height_mean": 0.0,
+          "weight_mean": 0.0
+        },
+        "career": {
+          "first_olympics": 1900,
+          "last_olympics": 1900,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3485,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.024,
+          "longevity": 0.1667,
+          "nationality_impact": 0.8839,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 68,
+      "name": "Harry Lee \"Butch\" Reynolds, Jr.",
+      "details": {
+        "team": "first    United States\nName: Harry Lee \"Butch\" Reynolds, Jr., dtype: object",
+        "noc": "first    USA\nName: Harry Lee \"Butch\" Reynolds, Jr., dtype: object",
+        "physical_attributes": {
+          "age_mean": 28.0,
+          "height_mean": 193.0,
+          "weight_mean": 84.0
+        },
+        "career": {
+          "first_olympics": 1988,
+          "last_olympics": 1996,
+          "olympics_span": 12,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3447,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.4576,
+          "longevity": 0.5,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.25
+        }
+      }
+    },
+    {
+      "rank": 69,
+      "name": "Roger Anthony Black",
+      "details": {
+        "team": "first    Great Britain\nName: Roger Anthony Black, dtype: object",
+        "noc": "first    GBR\nName: Roger Anthony Black, dtype: object",
+        "physical_attributes": {
+          "age_mean": 28.0,
+          "height_mean": 190.0,
+          "weight_mean": 79.0
+        },
+        "career": {
+          "first_olympics": 1992,
+          "last_olympics": 1996,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.343,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.4872,
+          "longevity": 0.3333,
+          "nationality_impact": 0.0589,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 70,
+      "name": "Malcolm Clive Spence",
+      "details": {
+        "team": "first    South Africa\nName: Malcolm Clive Spence, dtype: object",
+        "noc": "first    RSA\nName: Malcolm Clive Spence, dtype: object",
+        "physical_attributes": {
+          "age_mean": 20.5,
+          "height_mean": 187.0,
+          "weight_mean": 76.0
+        },
+        "career": {
+          "first_olympics": 1956,
+          "last_olympics": 1960,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3345,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.5792,
+          "longevity": 0.3333,
+          "nationality_impact": 0.2278,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 71,
+      "name": "Samson Kitur",
+      "details": {
+        "team": "first    Kenya\nName: Samson Kitur, dtype: object",
+        "noc": "first    KEN\nName: Samson Kitur, dtype: object",
+        "physical_attributes": {
+          "age_mean": 28.0,
+          "height_mean": 186.0,
+          "weight_mean": 77.0
+        },
+        "career": {
+          "first_olympics": 1992,
+          "last_olympics": 1996,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.333,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.5046,
+          "longevity": 0.3333,
+          "nationality_impact": 0.3201,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 72,
+      "name": "Joachim \"Jochen\" Bchner",
+      "details": {
+        "team": "first    Germany\nName: Joachim \"Jochen\" Bchner, dtype: object",
+        "noc": "first    GER\nName: Joachim \"Jochen\" Bchner, dtype: object",
+        "physical_attributes": {
+          "age_mean": 25.0,
+          "height_mean": 176.0,
+          "weight_mean": 74.0
+        },
+        "career": {
+          "first_olympics": 1928,
+          "last_olympics": 1932,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3271,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.6102,
+          "longevity": 0.3333,
+          "nationality_impact": 0.1503,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 73,
+      "name": "Daniel Joseph \"Danny Joe\" Everett",
+      "details": {
+        "team": "first    United States\nName: Daniel Joseph \"Danny Joe\" Everett, dtype: object",
+        "noc": "first    USA\nName: Daniel Joseph \"Danny Joe\" Everett, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 187.0,
+          "weight_mean": 64.0
+        },
+        "career": {
+          "first_olympics": 1988,
+          "last_olympics": 1992,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.3185,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.6841,
+          "longevity": 0.3333,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 74,
+      "name": "Malvin Groston \"Mal\" Whitfield",
+      "details": {
+        "team": "first    United States\nName: Malvin Groston \"Mal\" Whitfield, dtype: object",
+        "noc": "first    USA\nName: Malvin Groston \"Mal\" Whitfield, dtype: object",
+        "physical_attributes": {
+          "age_mean": 25.0,
+          "height_mean": 185.0,
+          "weight_mean": 76.0
+        },
+        "career": {
+          "first_olympics": 1948,
+          "last_olympics": 1952,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.291,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.5831,
+          "longevity": 0.3333,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.375
+        }
+      }
+    },
+    {
+      "rank": 75,
+      "name": "Nigel Chase Barker",
+      "details": {
+        "team": "first    Australia\nName: Nigel Chase Barker, dtype: object",
+        "noc": "first    AUS\nName: Nigel Chase Barker, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 0.0,
+          "weight_mean": 0.0
+        },
+        "career": {
+          "first_olympics": 1906,
+          "last_olympics": 1906,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.2616,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.1435,
+          "longevity": 0.1667,
+          "nationality_impact": 0.2981,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 76,
+      "name": "William Joseph \"Bill\" Holland",
+      "details": {
+        "team": "first    United States\nName: William Joseph \"Bill\" Holland, dtype: object",
+        "noc": "first    USA\nName: William Joseph \"Bill\" Holland, dtype: object",
+        "physical_attributes": {
+          "age_mean": 26.0,
+          "height_mean": 0.0,
+          "weight_mean": 0.0
+        },
+        "career": {
+          "first_olympics": 1900,
+          "last_olympics": 1900,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Silver": 1,
+              "Gold": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.2316,
+        "component_scores": {
+          "weighted_medal": 0.3333,
+          "physical_optimization": 0.0,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 77,
+      "name": "Charles Henry Stuart Gmelin",
+      "details": {
+        "team": "first    Great Britain\nName: Charles Henry Stuart Gmelin, dtype: object",
+        "noc": "first    GBR\nName: Charles Henry Stuart Gmelin, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 0.0,
+          "weight_mean": 0.0
+        },
+        "career": {
+          "first_olympics": 1896,
+          "last_olympics": 1896,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.2128,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.1435,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0589,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 78,
+      "name": "Herman Charles Groman",
+      "details": {
+        "team": "first    United States\nName: Herman Charles Groman, dtype: object",
+        "noc": "first    USA\nName: Herman Charles Groman, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 0.0,
+          "weight_mean": 0.0
+        },
+        "career": {
+          "first_olympics": 1904,
+          "last_olympics": 1904,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Bronze": 1,
+              "Gold": 0,
+              "Silver": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.1832,
+        "component_scores": {
+          "weighted_medal": 0.1667,
+          "physical_optimization": 0.0719,
+          "longevity": 0.1667,
+          "nationality_impact": 0.0094,
+          "competitive_consistency": 0.75
+        }
+      }
+    },
+    {
+      "rank": 79,
+      "name": "Michael Craig Joubert",
+      "details": {
+        "team": "first    Australia\nName: Michael Craig Joubert, dtype: object",
+        "noc": "first    AUS\nName: Michael Craig Joubert, dtype: object",
+        "physical_attributes": {
+          "age_mean": 26.0,
+          "height_mean": 168.0,
+          "weight_mean": 62.0
+        },
+        "career": {
+          "first_olympics": 1996,
+          "last_olympics": 1996,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 80,
+      "name": "Michael L. McDonald",
+      "details": {
+        "team": "first    Jamaica\nName: Michael L. McDonald, dtype: object",
+        "noc": "first    JAM\nName: Michael L. McDonald, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 183.0,
+          "weight_mean": 85.0
+        },
+        "career": {
+          "first_olympics": 1996,
+          "last_olympics": 1996,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 81,
+      "name": "Michael Walter Mathieu",
+      "details": {
+        "team": "first    Bahamas\nName: Michael Walter Mathieu, dtype: object",
+        "noc": "first    BAH\nName: Michael Walter Mathieu, dtype: object",
+        "physical_attributes": {
+          "age_mean": 24.0,
+          "height_mean": 178.0,
+          "weight_mean": 76.0
+        },
+        "career": {
+          "first_olympics": 2008,
+          "last_olympics": 2008,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 82,
+      "name": "Orukpe Eraiyokan",
+      "details": {
+        "team": "first    Nigeria\nName: Orukpe Eraiyokan, dtype: object",
+        "noc": "first    NGR\nName: Orukpe Eraiyokan, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 180.0,
+          "weight_mean": 73.0
+        },
+        "career": {
+          "first_olympics": 2016,
+          "last_olympics": 2016,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 83,
+      "name": "Omer Gustaaf Corteyn",
+      "details": {
+        "team": "first    Belgium\nName: Omer Gustaaf Corteyn, dtype: object",
+        "noc": "first    BEL\nName: Omer Gustaaf Corteyn, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 0.0,
+          "weight_mean": 0.0
+        },
+        "career": {
+          "first_olympics": 1920,
+          "last_olympics": 1920,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 84,
+      "name": "Melesio Pia Oregel",
+      "details": {
+        "team": "first    Mexico\nName: Melesio Pia Oregel, dtype: object",
+        "noc": "first    MEX\nName: Melesio Pia Oregel, dtype: object",
+        "physical_attributes": {
+          "age_mean": 20.0,
+          "height_mean": 174.0,
+          "weight_mean": 64.0
+        },
+        "career": {
+          "first_olympics": 1968,
+          "last_olympics": 1968,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 85,
+      "name": "Melville Emanuel Alfonso \"Mel\" Spence",
+      "details": {
+        "team": "first    Jamaica\nName: Melville Emanuel Alfonso \"Mel\" Spence, dtype: object",
+        "noc": "first    JAM\nName: Melville Emanuel Alfonso \"Mel\" Spence, dtype: object",
+        "physical_attributes": {
+          "age_mean": 20.0,
+          "height_mean": 177.0,
+          "weight_mean": 71.0
+        },
+        "career": {
+          "first_olympics": 1956,
+          "last_olympics": 1956,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 86,
+      "name": "Melvin Winfield \"Mel\" Sheppard",
+      "details": {
+        "team": "first    United States\nName: Melvin Winfield \"Mel\" Sheppard, dtype: object",
+        "noc": "first    USA\nName: Melvin Winfield \"Mel\" Sheppard, dtype: object",
+        "physical_attributes": {
+          "age_mean": 28.0,
+          "height_mean": 177.0,
+          "weight_mean": 67.0
+        },
+        "career": {
+          "first_olympics": 1912,
+          "last_olympics": 1912,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 87,
+      "name": "Menso Johannes Menso",
+      "details": {
+        "team": "first    Netherlands\nName: Menso Johannes Menso, dtype: object",
+        "noc": "first    NED\nName: Menso Johannes Menso, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 0.0,
+          "weight_mean": 0.0
+        },
+        "career": {
+          "first_olympics": 1924,
+          "last_olympics": 1924,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 88,
+      "name": "Meyer Prinstein",
+      "details": {
+        "team": "first    United States\nName: Meyer Prinstein, dtype: object",
+        "noc": "first    USA\nName: Meyer Prinstein, dtype: object",
+        "physical_attributes": {
+          "age_mean": 25.0,
+          "height_mean": 180.0,
+          "weight_mean": 74.0
+        },
+        "career": {
+          "first_olympics": 1904,
+          "last_olympics": 1904,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 89,
+      "name": "Michael \"Mike\" Paul",
+      "details": {
+        "team": "first    Trinidad and Tobago\nName: Michael \"Mike\" Paul, dtype: object",
+        "noc": "first    TTO\nName: Michael \"Mike\" Paul, dtype: object",
+        "physical_attributes": {
+          "age_mean": 27.0,
+          "height_mean": 185.0,
+          "weight_mean": 77.0
+        },
+        "career": {
+          "first_olympics": 1984,
+          "last_olympics": 1984,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 90,
+      "name": "Michael \"Mike\" Okot",
+      "details": {
+        "team": "first    Uganda\nName: Michael \"Mike\" Okot, dtype: object",
+        "noc": "first    UGA\nName: Michael \"Mike\" Okot, dtype: object",
+        "physical_attributes": {
+          "age_mean": 25.0,
+          "height_mean": 173.0,
+          "weight_mean": 60.0
+        },
+        "career": {
+          "first_olympics": 1984,
+          "last_olympics": 1984,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 91,
+      "name": "Omar Ghizlat",
+      "details": {
+        "team": "first    Morocco\nName: Omar Ghizlat, dtype: object",
+        "noc": "first    MAR\nName: Omar Ghizlat, dtype: object",
+        "physical_attributes": {
+          "age_mean": 19.5,
+          "height_mean": 175.0,
+          "weight_mean": 65.0
+        },
+        "career": {
+          "first_olympics": 1968,
+          "last_olympics": 1972,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 92,
+      "name": "Michael \"Mike\" Sands",
+      "details": {
+        "team": "first    Bahamas\nName: Michael \"Mike\" Sands, dtype: object",
+        "noc": "first    BAH\nName: Michael \"Mike\" Sands, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 183.0,
+          "weight_mean": 76.0
+        },
+        "career": {
+          "first_olympics": 1976,
+          "last_olympics": 1976,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 93,
+      "name": "Michael \"Mike\" Solomon",
+      "details": {
+        "team": "first    Trinidad and Tobago\nName: Michael \"Mike\" Solomon, dtype: object",
+        "noc": "first    TTO\nName: Michael \"Mike\" Solomon, dtype: object",
+        "physical_attributes": {
+          "age_mean": 23.0,
+          "height_mean": 171.0,
+          "weight_mean": 60.0
+        },
+        "career": {
+          "first_olympics": 1976,
+          "last_olympics": 1980,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 94,
+      "name": "Michael Keith Valentine \"Mike\" Wheeler",
+      "details": {
+        "team": "first    Great Britain\nName: Michael Keith Valentine \"Mike\" Wheeler, dtype: object",
+        "noc": "first    GBR\nName: Michael Keith Valentine \"Mike\" Wheeler, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 187.0,
+          "weight_mean": 76.0
+        },
+        "career": {
+          "first_olympics": 1956,
+          "last_olympics": 1956,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 95,
+      "name": "Michael Angelo Joseph",
+      "details": {
+        "team": "first    Belize\nName: Michael Angelo Joseph, dtype: object",
+        "noc": "first    BIZ\nName: Michael Angelo Joseph, dtype: object",
+        "physical_attributes": {
+          "age_mean": 20.0,
+          "height_mean": 167.0,
+          "weight_mean": 66.0
+        },
+        "career": {
+          "first_olympics": 1992,
+          "last_olympics": 1992,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 96,
+      "name": "Michael Blackwood",
+      "details": {
+        "team": "first    Jamaica\nName: Michael Blackwood, dtype: object",
+        "noc": "first    JAM\nName: Michael Blackwood, dtype: object",
+        "physical_attributes": {
+          "age_mean": 27.0,
+          "height_mean": 190.0,
+          "weight_mean": 79.0
+        },
+        "career": {
+          "first_olympics": 2004,
+          "last_olympics": 2008,
+          "olympics_span": 8,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 97,
+      "name": "Michael Bruce Frayne",
+      "details": {
+        "team": "first    Australia\nName: Michael Bruce Frayne, dtype: object",
+        "noc": "first    AUS\nName: Michael Bruce Frayne, dtype: object",
+        "physical_attributes": {
+          "age_mean": 26.0,
+          "height_mean": 179.0,
+          "weight_mean": 66.0
+        },
+        "career": {
+          "first_olympics": 1984,
+          "last_olympics": 1984,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 98,
+      "name": "Jos Garca Lorenzana",
+      "details": {
+        "team": "first    Spain\nName: Jos Garca Lorenzana, dtype: object",
+        "noc": "first    ESP\nName: Jos Garca Lorenzana, dtype: object",
+        "physical_attributes": {
+          "age_mean": 19.0,
+          "height_mean": 180.0,
+          "weight_mean": 82.0
+        },
+        "career": {
+          "first_olympics": 1920,
+          "last_olympics": 1920,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 99,
+      "name": "Michael Adrian McLean",
+      "details": {
+        "team": "first    Canada\nName: Michael Adrian McLean, dtype: object",
+        "noc": "first    CAN\nName: Michael Adrian McLean, dtype: object",
+        "physical_attributes": {
+          "age_mean": 22.0,
+          "height_mean": 185.0,
+          "weight_mean": 77.0
+        },
+        "career": {
+          "first_olympics": 1992,
+          "last_olympics": 1992,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    },
+    {
+      "rank": 100,
+      "name": "Niko Verakauta",
+      "details": {
+        "team": "first    Fiji\nName: Niko Verakauta, dtype: object",
+        "noc": "first    FIJ\nName: Niko Verakauta, dtype: object",
+        "physical_attributes": {
+          "age_mean": 21.0,
+          "height_mean": 186.0,
+          "weight_mean": 74.0
+        },
+        "career": {
+          "first_olympics": 2008,
+          "last_olympics": 2008,
+          "olympics_span": 4,
+          "medals": {
+            "<lambda>": {
+              "Gold": 0,
+              "Silver": 0,
+              "Bronze": 0
+            }
+          }
+        }
+      },
+      "scores": {
+        "composite_score": 0.0,
+        "component_scores": {
+          "weighted_medal": 0.0,
+          "physical_optimization": 0.384,
+          "longevity": 0.0,
+          "nationality_impact": 0.0,
+          "competitive_consistency": 0.0
+        }
+      }
+    }
+  ]
+}
