@@ -42,6 +42,8 @@ venv.bak/
 /data/
 /models/*
 !/models/.gitkeep
+/content/
+!/content/.gitkeep
 
 # System files
 .DS_Store
