@@ -1,0 +1,44 @@
+# Default configuration for the Purpose project
+
+# Project settings
+project_name: purpose
+project_version: "0.1.0"
+
+# Directory settings
+data_dir: data
+models_dir: models
+output_dir: output
+
+# Logging settings
+log_level: INFO
+log_file: purpose.log
+
+# Hardware settings
+use_gpu: true
+gpu_device: null  # Use first available GPU
+use_distributed: false
+
+# Processor settings
+processor:
+  max_file_size_mb: 50.0
+  output_corpus_filename: purpose_corpus.txt
+  output_jsonl_filename: domain_data.jsonl
+
+# Trainer settings
+trainer:
+  batch_size: 4
+  learning_rate: 5.0e-5
+  num_epochs: 3
+  warmup_steps: 100
+  use_lora: false
+  lora_r: 8
+  lora_alpha: 16
+  fp16: false
+
+# Inference settings
+inference:
+  max_length: 512
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 50
+  repetition_penalty: 1.1 
