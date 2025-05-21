@@ -29,7 +29,7 @@ import openai
 from anthropic import Anthropic
 
 # Local imports
-from purpose.trainer import TransformersTrainer
+from main.trainer import TransformersTrainer
 
 # Configure logging
 logging.basicConfig(

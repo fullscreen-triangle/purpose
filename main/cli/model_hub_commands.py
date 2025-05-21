@@ -18,7 +18,7 @@ from rich.table import Table
 from rich.progress import Progress
 from rich.panel import Panel
 
-from purpose.utils.model_hub import ModelHub, PurposeAPIClient, ModelSource, TaskType, ModelInfo
+from main.utils.model_hub import ModelHub, PurposeAPIClient, ModelSource, TaskType, ModelInfo
 
 # Create Typer app
 app = typer.Typer(help="Commands for working with the Purpose Model Hub")

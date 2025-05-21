@@ -1,19 +1,18 @@
 #!/usr/bin/env python3
 
-from purpose.cli.runner import (
+from main.cli.runner import (
     run_train,
     run_process,
-    run_visualize
+
 )
 
 # Import the model optimization and knowledge distillation modules
-from purpose.examples.sprint.knowledge_distill import KnowledgeDistiller
-from purpose.examples.sprint.model_optimization import ModelOptimizer
+from main.examples.sprint.knowledge_distill import KnowledgeDistiller
+from main.examples.sprint.model_optimization import ModelOptimizer
 
 __all__ = [
     'run_train',
     'run_process',
-    'run_visualize',
     'KnowledgeDistiller',
     'ModelOptimizer'
 ]
@@ -23,7 +22,7 @@ from typing import Optional
 from importlib.util import find_spec
 
 # Import CLI modules
-from purpose.cli.model_hub_commands import app as model_hub_app
+from main.cli.model_hub_commands import app as model_hub_app
 
 # Create main app
 app = typer.Typer(help="Purpose CLI: A toolkit for knowledge and LLM training")
@@ -33,22 +32,22 @@ app.add_typer(model_hub_app, name="models", help="Work with the Purpose Model Hu
 
 # Check for optional modules and add their CLIs if available
 try:
-    if find_spec("purpose.cli.knowledge_commands"):
-        from purpose.cli.knowledge_commands import app as knowledge_app
+    if find_spec("main.cli.knowledge_commands"):
+        from main.cli.knowledge_commands import app as knowledge_app
         app.add_typer(knowledge_app, name="knowledge", help="Work with knowledge graphs")
 except ImportError:
     pass
 
 try:
-    if find_spec("purpose.cli.training_commands"):
-        from purpose.cli.training_commands import app as training_app
+    if find_spec("main.cli.training_commands"):
+        from main.cli.training_commands import app as training_app
         app.add_typer(training_app, name="train", help="Train and fine-tune models")
 except ImportError:
     pass
 
 try:
-    if find_spec("purpose.cli.scraper_commands"):
-        from purpose.cli.scraper_commands import app as scraper_app
+    if find_spec("main.cli.scraper_commands"):
+        from main.cli.scraper_commands import app as scraper_app
         app.add_typer(scraper_app, name="scrape", help="Scrape and process content")
 except ImportError:
     pass

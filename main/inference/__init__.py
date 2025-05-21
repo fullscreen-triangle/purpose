@@ -5,9 +5,9 @@ This module contains components for using trained language models for inference.
 """
 
 # Import core inference classes
-from purpose.inference.base import BaseInference, InferenceConfig, InferenceOutput
-from purpose.inference.model import ModelInference
-from purpose.inference.interface import InteractiveInterface, QAInterface
+from main.inference.base import BaseInference, InferenceConfig, InferenceOutput
+from main.inference.model import ModelInference
+from main.inference.interface import InteractiveInterface, QAInterface
 
 # Define the public API
 __all__ = [

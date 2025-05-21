@@ -604,15 +604,15 @@ To use the enhanced distillation process:
 # Using the CLI
 purpose enhanced-distill --papers-dir papers --model-name distilgpt2 --num-qa-pairs 100 --epochs 3
 
-# Or using the Python script directly
-python distill_sprint_llm.py --papers-dir papers --model-name distilgpt2 --num-qa-pairs 100 --epochs 3 --enhanced
+# Or using the script directly
+python scripts/run_distillation.py --papers-dir papers --model-name distilgpt2 --num-qa-pairs 100 --epochs 3 --enhanced
 ```
 
 For the standard distillation process:
 
 ```bash
 # Run the knowledge distillation process
-python distill_sprint_llm.py --papers-dir papers --model-name distilgpt2 --num-qa-pairs 100 --epochs 3
+python scripts/run_distillation.py --papers-dir papers --model-name distilgpt2 --num-qa-pairs 100 --epochs 3
 
 # Or use the typer CLI
 python -m purpose.cli distill --papers-dir papers --model-name distilgpt2 --num-qa-pairs 100 --epochs 3
@@ -637,8 +637,8 @@ Purpose supports using Meta's LLaMA models locally while still leveraging OpenAI
 # Using the CLI
 purpose enhanced-distill --papers-dir papers --use-llama --llama-path "/path/to/llama-model" --bit-precision 4
 
-# Or using the Python script
-python distill_sprint_llm.py --papers-dir papers --enhanced --use-llama --llama-path "/path/to/llama-model" --bit-precision 4
+# Or using the script
+python scripts/run_distillation.py --papers-dir papers --enhanced --use-llama --llama-path "/path/to/llama-model" --bit-precision 4
 ```
 
 Benefits of LLaMA integration:
@@ -660,25 +660,25 @@ Notes for using LLaMA:
 git clone https://github.com/yourusername/purpose.git
 cd purpose
 
-# Install in development mode
+# Run the setup script to install dependencies and apply patches
+python scripts/setup.py
+
+# Alternatively, install in development mode
 pip install -e .
 ```
 
 ### Requirements
 
-- Python 3.8+
+- Python 3.8+ (Python 3.12 supported with specific package versions)
 - PyTorch 2.0+
-- Transformers 4.30.0+
+- Transformers 4.37.2 (for Python 3.12 compatibility)
+- Huggingface-hub 0.19.4 (for Python 3.12 compatibility)
 - OpenAI API key (for knowledge distillation)
 - Anthropic API key (for knowledge distillation)
-- Scientific papers in PDF format (placed in the `papers` directory)
+- Scientific papers in PDF format (placed in the `content/papers` directory)
 - For LLaMA models: bitsandbytes and transformers>=4.30.0 
 - For ModelHub: aiohttp, huggingface_hub, replicate (optional)
 - For domain-specific models: domain-specific packages (see requirements.txt)
-  - Medical: scikit-bio>=0.5.8, pymedtermino>=0.4.0, nltk>=3.8.1, spacy>=3.6.0
-  - Legal: lexnlp>=2.2.0, spacy>=3.6.0
-  - Finance: financial-nlp>=0.2.0, pandas>=1.5.0
-  - Math/Code: numpy>=1.20.0, sympy>=1.9.0
 
 ### Quick Start Guide
 

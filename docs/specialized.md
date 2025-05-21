@@ -48,7 +48,7 @@ bigcode/starcoder2-15b | 15 B | RG | Trained on permissively licensed code; stro
 
 
 `# example snippet for ModelHub overrides
-from purpose.utils.model_hub import PurposeAPIClient
+from main.utils.model_hub import PurposeAPIClient
 
 client = PurposeAPIClient(api_token="YOUR_HF_TOKEN")
 client.task_model_map.update({

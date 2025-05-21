@@ -13,13 +13,15 @@ import aiohttp
 import logging
 from typing import Dict, Any, Optional, Union, List
 from enum import Enum
+from pathlib import Path
 
 # Setup logging
-logger = logging.getLogger("purpose.model_hub")
+logger = logging.getLogger("main.model_hub")
 
 class ModelSource(Enum):
     """Enum for different model sources"""
     HUGGINGFACE = "huggingface"
+    LOCAL_HUGGINGFACE = "local_huggingface"  # New source for local HF models
     OLLAMA = "ollama"
     OPENAI = "openai"
     ANTHROPIC = "anthropic"
@@ -59,6 +61,7 @@ class ModelInfo:
         specialties: List[TaskType] = None,
         endpoint: Optional[str] = None,
         url: Optional[str] = None,
+        local_path: Optional[str] = None,
     ):
         self.model_id = model_id
         self.source = source
@@ -68,6 +71,7 @@ class ModelInfo:
         self.specialties = specialties or []
         self.endpoint = endpoint
         self.url = url
+        self.local_path = local_path
 
 class ModelHub:
     """
@@ -77,17 +81,21 @@ class ModelHub:
     including Hugging Face, Ollama, OpenAI, Anthropic, etc.
     """
     
-    def __init__(self, config_path: Optional[str] = None, load_specialized: bool = True):
+    def __init__(self, config_path: Optional[str] = None, load_specialized: bool = True, local_models_dir: Optional[str] = None):
         """
         Initialize the ModelHub.
         
         Args:
             config_path: Path to a JSON config file with API keys and model configurations
             load_specialized: Whether to load specialized domain-specific models
+            local_models_dir: Directory containing locally downloaded models
         """
         # Load API keys from config or environment
         self.api_keys = {}
         self.load_api_keys(config_path)
+        
+        # Set local models directory
+        self.local_models_dir = local_models_dir or os.environ.get("LOCAL_MODELS_DIR") or "./models"
         
         # Initialize model registry
         self.models: Dict[str, ModelInfo] = {}
@@ -131,6 +139,9 @@ class ModelHub:
                 logger.info("Loaded specialized domain-specific models successfully")
             except ImportError as e:
                 logger.warning(f"Failed to load specialized models: {e}")
+        
+        # Register local models from the models directory
+        self.register_local_models()
         
         # Initialize session
         self.session = None
@@ -341,25 +352,6 @@ class ModelHub:
         )
         
         # Add more models...
-        
-        # Register local Ollama models if available
-        try:
-            import requests
-            models_response = requests.get("http://localhost:11434/api/tags")
-            if models_response.status_code == 200:
-                for model in models_response.json().get("models", []):
-                    self.register_model(
-                        ModelInfo(
-                            model_id=model["name"],
-                            source=ModelSource.OLLAMA,
-                            strengths=["Local deployment", "Low latency", "Privacy"],
-                            size_params=model.get("size", "Unknown"),
-                            context_window=model.get("context", 4096),
-                            endpoint="http://localhost:11434/api/generate",
-                        )
-                    )
-        except Exception as e:
-            logger.warning(f"Could not connect to Ollama: {e}")
     
     def register_model(self, model_info: ModelInfo) -> None:
         """
@@ -684,6 +676,139 @@ class ModelHub:
         if self.session is not None:
             await self.session.close()
             self.session = None
+
+    def register_local_models(self) -> None:
+        """Register locally downloaded models from the models directory."""
+        if not os.path.exists(self.local_models_dir):
+            logger.warning(f"Local models directory not found: {self.local_models_dir}")
+            return
+        
+        try:
+            # Scan for model directories
+            for model_dir in Path(self.local_models_dir).iterdir():
+                if model_dir.is_dir():
+                    # Extract the original model ID from the directory name
+                    # Directory names are created with '/' replaced by '_'
+                    model_id = model_dir.name.replace('_', '/', 1)  # Replace only the first underscore
+                    
+                    # Check if this is a valid model directory by looking for config.json
+                    if (model_dir / "config.json").exists():
+                        # Register as a local model
+                        local_model_info = ModelInfo(
+                            model_id=model_id,
+                            source=ModelSource.LOCAL_HUGGINGFACE,
+                            strengths=["Local deployment", "Low latency", "No API required"],
+                            local_path=str(model_dir),
+                            # Other fields can be set based on config if needed
+                        )
+                        
+                        self.register_model(local_model_info)
+                        logger.info(f"Registered local model: {model_id} from {model_dir}")
+        
+        except Exception as e:
+            logger.warning(f"Error registering local models: {e}")
+
+    async def get_model(self, model_id: str, input_text: str, **kwargs) -> Any:
+        """
+        Get a response from a model.
+        
+        This method will first check if the model is available locally before
+        attempting to use any remote APIs.
+        
+        Args:
+            model_id: Model ID
+            input_text: Input text
+            **kwargs: Additional parameters
+            
+        Returns:
+            Model response
+        """
+        model_info = self.get_model_info(model_id)
+        
+        if not model_info:
+            logger.warning(f"Model not found: {model_id}")
+            # Try to find if we have a local version of this model
+            local_model_id = self._find_local_version(model_id)
+            if local_model_id:
+                logger.info(f"Using local version of {model_id}: {local_model_id}")
+                model_info = self.get_model_info(local_model_id)
+            else:
+                # If no local version, try as a regular HF model
+                logger.info(f"Using regular HF model: {model_id}")
+                return await self._call_huggingface_api(model_id, input_text, **kwargs)
+        
+        # Use the appropriate method based on model source
+        if model_info.source == ModelSource.LOCAL_HUGGINGFACE:
+            return self._call_local_model(model_info.local_path, input_text, **kwargs)
+        elif model_info.source == ModelSource.HUGGINGFACE:
+            return await self._call_huggingface_api(model_id, input_text, **kwargs)
+        elif model_info.source == ModelSource.OLLAMA:
+            return await self._call_ollama_api(model_id, input_text, **kwargs)
+        # ... other model sources ...
+        
+        raise NotImplementedError(f"Model source not implemented: {model_info.source}")
+    
+    def _find_local_version(self, model_id: str) -> Optional[str]:
+        """
+        Find if we have a local version of a remote model.
+        
+        Args:
+            model_id: Remote model ID
+            
+        Returns:
+            Local model ID if found, None otherwise
+        """
+        # Check if we have the exact model
+        for local_model_id, model_info in self.models.items():
+            if model_info.source == ModelSource.LOCAL_HUGGINGFACE:
+                # Extract remote model ID from local model ID
+                remote_id_from_local = local_model_id.split('/')[-1]
+                remote_id_parts = model_id.split('/')
+                
+                # Check if the model name matches (ignoring organization)
+                if remote_id_parts[-1] == remote_id_from_local:
+                    return local_model_id
+        
+        return None
+    
+    def _call_local_model(self, model_path: str, input_text: str, **kwargs) -> Any:
+        """
+        Call a local Hugging Face model.
+        
+        Args:
+            model_path: Path to the local model
+            input_text: Input text
+            **kwargs: Additional parameters
+            
+        Returns:
+            Model output
+        """
+        from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+        
+        try:
+            # Load tokenizer and model
+            tokenizer = AutoTokenizer.from_pretrained(model_path)
+            model = AutoModelForCausalLM.from_pretrained(model_path)
+            
+            # Create generation pipeline
+            generator = pipeline("text-generation", model=model, tokenizer=tokenizer)
+            
+            # Set generation parameters
+            parameters = kwargs.get("parameters", {})
+            if "temperature" not in parameters:
+                parameters["temperature"] = 0.7
+            if "max_new_tokens" not in parameters:
+                parameters["max_new_tokens"] = 512
+                
+            # Generate text
+            result = generator(input_text, **parameters)
+            
+            return result[0]["generated_text"]
+            
+        except Exception as e:
+            logger.error(f"Error using local model: {e}")
+            # Fall back to Hugging Face API
+            return asyncio.run(self._call_huggingface_api(model_path, input_text, **kwargs))
 
 
 class PurposeAPIClient:

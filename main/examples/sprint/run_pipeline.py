@@ -22,9 +22,9 @@ import argparse
 import time
 from pathlib import Path
 
-from purpose.examples.sprint.sprint_processor import SprintDataProcessor
-from purpose.trainer import ModelTrainer
-from purpose.inference import ModelInference
+from main.examples.sprint.sprint_processor import SprintDataProcessor
+from main.trainer import ModelTrainer
+from main.inference import ModelInference
 
 # Configure logging
 logging.basicConfig(

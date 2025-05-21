@@ -19,10 +19,10 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler("purpose.log"),
+        logging.FileHandler("main.log"),
     ]
 )
-logger = logging.getLogger("purpose")
+logger = logging.getLogger("main")
 
 # Type variables for generic type hints
 T = TypeVar('T')
@@ -219,7 +219,7 @@ class ProjectConfig(BaseConfig):
     
     # Logging settings
     log_level: str = field(default="INFO", metadata={"description": "Logging level"})
-    log_file: str = field(default="purpose.log", metadata={"description": "Log file path"})
+    log_file: str = field(default="main.log", metadata={"description": "Log file path"})
     
     # Hardware settings
     use_gpu: bool = field(default=True, metadata={"description": "Whether to use GPU if available"})
@@ -237,7 +237,7 @@ class ProjectConfig(BaseConfig):
             Path(dir_path).mkdir(parents=True, exist_ok=True)
         
         # Set up logging level
-        logging.getLogger("purpose").setLevel(getattr(logging, self.log_level))
+        logging.getLogger("main").setLevel(getattr(logging, self.log_level))
 
 @dataclass
 class ProcessorConfig(BaseConfig):

@@ -9,14 +9,14 @@ import click
 from pathlib import Path
 
 # Import CLI modules from the cli directory
-from purpose.cli.runner import run_train, run_process, run_visualize
-from purpose.cli.process import process_data
-from purpose.cli.trainer import EnhancedDistributedTrainer
-from purpose.cli.llama_cli import setup_llama_model
-from purpose.cli.enhanced_training import run_enhanced_training
+from main.cli.runner import run_train, run_process, run_visualize
+from main.cli.process import process_data
+from main.cli.trainer import EnhancedDistributedTrainer
+from main.cli.llama_cli import setup_llama_model
+from main.cli.enhanced_training import run_enhanced_training
 
 # Import configuration system
-from purpose.utils.config import (
+from main.utils.config import (
     load_config, get_config, 
     get_processor_config, 
     get_trainer_config, 
@@ -24,11 +24,11 @@ from purpose.utils.config import (
 )
 
 # Import DI utilities
-from purpose.utils.services import get_processor, get_trainer, get_inference
+from main.utils.services import get_processor, get_trainer, get_inference
 
 # Import core modules for backward compatibility
-from purpose.trainer.knowledge_distillation import run_distillation
-from purpose.trainer.enhanced_distillation import run_enhanced_distillation
+from main.trainer.knowledge_distillation import run_distillation
+from main.trainer.enhanced_distillation import run_enhanced_distillation
 
 @click.group()
 @click.option("--config", help="Path to configuration file")
@@ -43,9 +43,9 @@ def main(config, verbose):
     else:
         # Try to load from default locations
         default_configs = [
-            "purpose_config.yaml",
+            "main_config.yaml",
             "configs/default.yaml",
-            os.path.expanduser("~/.purpose/config.yaml")
+            os.path.expanduser("~/.main/config.yaml")
         ]
         
         for config_path in default_configs:
@@ -56,7 +56,7 @@ def main(config, verbose):
     # Set verbosity
     if verbose:
         import logging
-        logging.getLogger("purpose").setLevel(logging.DEBUG)
+        logging.getLogger("main").setLevel(logging.DEBUG)
 
 @main.command()
 @click.option("--data-dir", help="Directory containing the raw data files")
@@ -90,7 +90,7 @@ def process(data_dir, output_dir, max_file_size, distributed, pipeline):
         )
     elif pipeline:
         # Use the pipeline processing architecture
-        from purpose.pipelines.processing import run_processing_pipeline
+        from main.pipelines.processing import run_processing_pipeline
         result = run_processing_pipeline(
             data_dir=processor_config.data_dir,
             output_dir=processor_config.output_dir,
@@ -413,7 +413,7 @@ def generate(model_dir, prompt, interactive, qa_mode, max_length, temperature, f
     
     if interactive:
         # Enter interactive mode
-        from purpose.inference.interface import InteractiveInterface
+        from main.inference.interface import InteractiveInterface
         interface = InteractiveInterface(
             inference=inference,
             max_length=inference_config.max_length,
@@ -485,16 +485,16 @@ def config_init(output_path):
     """
     Initialize a configuration file with default settings.
     
-    If OUTPUT_PATH is not provided, the configuration will be saved to purpose_config.yaml
+    If OUTPUT_PATH is not provided, the configuration will be saved to main_config.yaml
     in the current directory.
     """
-    from purpose.utils.config import ProjectConfig
+    from main.utils.config import ProjectConfig
     
     # Create default configuration
     default_config = ProjectConfig()
     
     # Save to file
-    output_path = output_path or "purpose_config.yaml"
+    output_path = output_path or "main_config.yaml"
     default_config.to_file(output_path)
     
     click.echo(f"Created configuration file: {output_path}")

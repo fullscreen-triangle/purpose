@@ -41,7 +41,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler("purpose.log"),
+        logging.FileHandler("main.log"),
         logging.StreamHandler()
     ]
 )

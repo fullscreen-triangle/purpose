@@ -239,7 +239,7 @@ app.post('/api/visualize', async (req, res) => {
 # generate_visualization.py
 import sys
 import json
-from purpose.examples.visualization.rag_visualizer import RAGVisualizer
+from main.examples.visualization.rag_visualizer import RAGVisualizer
 
 # Read the model result from stdin
 model_result = sys.stdin.read()

@@ -11,7 +11,7 @@ output_dir: output
 
 # Logging settings
 log_level: INFO
-log_file: purpose.log
+log_file: main.log
 
 # Hardware settings
 use_gpu: true

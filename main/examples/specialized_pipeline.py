@@ -10,9 +10,9 @@ import logging
 import os
 from typing import Dict, Any, List
 
-from purpose.pipelines.base import BasePipeline, FunctionStage
-from purpose.utils.model_hub import PurposeAPIClient, TaskType
-from purpose.knowledge.structure import KnowledgeGraph
+from main.pipelines.base import BasePipeline, FunctionStage
+from main.utils.model_hub import PurposeAPIClient, TaskType
+from main.knowledge.structure import KnowledgeGraph
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

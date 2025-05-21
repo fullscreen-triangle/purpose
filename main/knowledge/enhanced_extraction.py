@@ -32,7 +32,7 @@ try:
 except ImportError:
     DEPS_AVAILABLE = False
 
-from purpose.knowledge.knowledge_map import KnowledgeMap
+from main.knowledge.knowledge_map import KnowledgeMap
 
 logger = logging.getLogger(__name__)
 

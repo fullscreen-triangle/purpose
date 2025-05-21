@@ -8,8 +8,8 @@ to process sprint-specific data.
 import os
 import logging
 from pathlib import Path
-from purpose.processor import CombinedDataProcessor
-from purpose.examples.sprint.sprint_processor import SprintDataProcessor
+from main.processor import CombinedDataProcessor
+from main.examples.sprint.sprint_processor import SprintDataProcessor
 
 # Configure logging
 logging.basicConfig(

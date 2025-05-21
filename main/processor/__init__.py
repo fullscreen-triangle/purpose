@@ -5,13 +5,13 @@ This module contains components for processing raw data into suitable formats fo
 """
 
 # Import core processor classes
-from purpose.processor.base import BaseProcessor, ProcessorConfig, ProcessorOutput
-from purpose.processor.text_processor import TextProcessor
-from purpose.processor.budget_processor import BudgetDataProcessor
-from purpose.processor.codespace_processor import CodespaceProcessor
+from main.processor.base import BaseProcessor, ProcessorConfig, ProcessorOutput
+from main.processor.text_processor import TextProcessor
+from main.processor.budget_processor import BudgetDataProcessor
+from main.processor.codespace_processor import CodespaceProcessor
 
 # Import the combined processor (main entry point)
-from purpose.processor.base import CombinedDataProcessor
+from main.processor.base import CombinedDataProcessor
 
 # Define the public API
 __all__ = [

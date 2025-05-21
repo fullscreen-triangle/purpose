@@ -5,7 +5,7 @@ Interactive interfaces for using domain-specific language models.
 import sys
 from typing import Optional
 
-from purpose.inference.model import ModelInference
+from main.inference.model import ModelInference
 
 class InteractiveInterface:
     """

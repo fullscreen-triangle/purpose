@@ -15,10 +15,10 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler("purpose.log"),
+        logging.FileHandler("main.log"),
     ]
 )
-logger = logging.getLogger("purpose")
+logger = logging.getLogger("main")
 
 T = TypeVar('T')
 U = TypeVar('U')

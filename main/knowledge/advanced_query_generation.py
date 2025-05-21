@@ -24,7 +24,7 @@ try:
 except ImportError:
     DEPS_AVAILABLE = False
 
-from purpose.knowledge.query_generation import StratifiedQueryGenerator
+from main.knowledge.query_generation import StratifiedQueryGenerator
 
 logger = logging.getLogger(__name__)
 

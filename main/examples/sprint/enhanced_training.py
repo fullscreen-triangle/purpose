@@ -19,9 +19,9 @@ import argparse
 import logging
 from pathlib import Path
 
-from purpose.examples.sprint.knowledge_distill import KnowledgeDistiller
-from purpose.examples.sprint.model_optimization import ModelOptimizer
-from purpose.cli.runner import run_train
+from main.examples.sprint.knowledge_distill import KnowledgeDistiller
+from main.examples.sprint.model_optimization import ModelOptimizer
+from main.cli.runner import run_train
 
 # Configure logging
 logging.basicConfig(

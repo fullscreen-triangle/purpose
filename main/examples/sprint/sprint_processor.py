@@ -7,7 +7,7 @@ import glob
 from pathlib import Path
 from typing import List, Dict, Any
 
-from purpose.processor import CombinedDataProcessor
+from main.processor import CombinedDataProcessor
 
 class SprintDataProcessor(CombinedDataProcessor):
     """

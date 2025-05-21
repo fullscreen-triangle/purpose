@@ -9,8 +9,36 @@ import sys
 import importlib
 from types import ModuleType
 import logging
+import hashlib
 
 logger = logging.getLogger(__name__)
+
+class HuggingfaceHubSHAModule(ModuleType):
+    """Patch module to provide the missing SHA utility functions."""
+    
+    def __init__(self):
+        super().__init__("huggingface_hub.utils.sha")
+        
+    def sha256(self, content):
+        """Calculate SHA256 hash of content."""
+        if isinstance(content, str):
+            content = content.encode()
+        return hashlib.sha256(content).hexdigest()
+    
+    def sha_fileobj(self, fileobj, chunk_size=65535):
+        """Calculate SHA256 hash of a file object."""
+        hasher = hashlib.sha256()
+        pos = fileobj.tell()
+        fileobj.seek(0)
+        
+        while True:
+            chunk = fileobj.read(chunk_size)
+            if not chunk:
+                break
+            hasher.update(chunk)
+        
+        fileobj.seek(pos)
+        return hasher.hexdigest()
 
 class HuggingfaceHubUtilsPatch(ModuleType):
     """Patch module for huggingface_hub.utils to provide compatibility classes."""
@@ -25,6 +53,9 @@ class HuggingfaceHubUtilsPatch(ModuleType):
         for attr in dir(self.original_module):
             if not attr.startswith('_'):
                 setattr(self, attr, getattr(self.original_module, attr))
+        
+        # Create and assign the sha module
+        self.sha = HuggingfaceHubSHAModule()
     
     @property
     def OfflineModeIsEnabled(self):
@@ -78,6 +109,7 @@ def apply_patches():
     # Patch huggingface_hub.utils
     try:
         sys.modules["huggingface_hub.utils"] = HuggingfaceHubUtilsPatch()
+        sys.modules["huggingface_hub.utils.sha"] = HuggingfaceHubSHAModule()
         logger.info("Applied huggingface_hub.utils compatibility patch")
     except Exception as e:
         logger.warning(f"Failed to patch huggingface_hub.utils: {e}")

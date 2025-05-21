@@ -63,7 +63,7 @@ class KnowledgeBaseQuery:
     def _initialize_model(self):
         """Initialize the Ollama model for inference."""
         # This would initialize the Ollama model
-        from purpose.inference.llama_inference import LlamaInference
+        from main.inference.llama_inference import LlamaInference
 
         self.model = LlamaInference(
             model_path=self.model_name,

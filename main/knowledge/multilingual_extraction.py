@@ -35,7 +35,7 @@ try:
 except ImportError:
     DEPS_AVAILABLE = False
 
-from purpose.knowledge.enhanced_extraction import EnhancedKnowledgeExtractor
+from main.knowledge.enhanced_extraction import EnhancedKnowledgeExtractor
 
 logger = logging.getLogger(__name__)
 

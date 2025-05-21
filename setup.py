@@ -32,7 +32,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "purpose=purpose.cli:main",
+            "purpose=main.cli:main",
         ],
     },
 )

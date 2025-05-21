@@ -12,7 +12,7 @@ The system works as follows:
 
 Usage:
     # Import and use in your RAG application
-    from purpose.examples.visualization.rag_visualizer import RAGVisualizer
+    from main.examples.visualization.rag_visualizer import RAGVisualizer
     
     visualizer = RAGVisualizer()
     visualization_code = visualizer.generate_visualization(model_result)

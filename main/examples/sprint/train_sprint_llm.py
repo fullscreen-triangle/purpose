@@ -11,7 +11,7 @@ import logging
 import argparse
 from pathlib import Path
 
-from purpose.trainer import ModelTrainer
+from main.trainer import ModelTrainer
 
 # Configure logging
 logging.basicConfig(
