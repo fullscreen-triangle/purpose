@@ -23,6 +23,7 @@ import random
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 
+import anthropic
 import openai
 from anthropic import Anthropic
 import pandas as pd
@@ -43,6 +44,128 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger("enhanced-distillation")
+
+class EnhancedDistiller:
+    """
+    A class that orchestrates the enhanced knowledge distillation process.
+    This class provides a unified interface to the various functions in this module.
+    """
+    
+    def __init__(self, 
+                 papers_dir: str,
+                 output_dir: str,
+                 student_model_name: str,
+                 teacher_model_name: str = "gpt-4-turbo",
+                 num_qa_pairs: int = 100,
+                 batch_size: int = 4,
+                 learning_rate: float = 5e-5,
+                 num_epochs: int = 3,
+                 quantize: bool = False,
+                 lora_r: int = 4):
+        """
+        Initialize the EnhancedDistiller.
+        
+        Args:
+            papers_dir: Directory containing PDF papers
+            output_dir: Directory to save all outputs
+            student_model_name: Name/path of the student model to train
+            teacher_model_name: Name of the teacher model to use
+            num_qa_pairs: Number of QA pairs to generate
+            batch_size: Training batch size
+            learning_rate: Learning rate for training
+            num_epochs: Number of training epochs
+            quantize: Whether to quantize the model
+            lora_r: LoRA rank for parameter-efficient fine-tuning
+        """
+        self.papers_dir = papers_dir
+        self.output_dir = output_dir
+        self.student_model_name = student_model_name
+        self.teacher_model_name = teacher_model_name
+        self.num_qa_pairs = num_qa_pairs
+        self.batch_size = batch_size
+        self.learning_rate = learning_rate
+        self.num_epochs = num_epochs
+        self.quantize = quantize
+        self.lora_r = lora_r
+        
+        # Create necessary directories
+        os.makedirs(output_dir, exist_ok=True)
+        self.extracted_dir = os.path.join(output_dir, "extracted_knowledge")
+        self.knowledge_map_dir = os.path.join(output_dir, "knowledge_map")
+        self.qa_pairs_dir = os.path.join(output_dir, "qa_pairs")
+        self.models_dir = os.path.join(output_dir, "models")
+        
+        for dir_path in [self.extracted_dir, self.knowledge_map_dir, 
+                        self.qa_pairs_dir, self.models_dir]:
+            os.makedirs(dir_path, exist_ok=True)
+    
+    def run(self) -> Optional[str]:
+        """
+        Run the complete enhanced distillation pipeline.
+        
+        Returns:
+            Optional[str]: Path to the trained model directory if successful, None otherwise
+        """
+        try:
+            # Step 1: Extract knowledge from papers
+            logger.info("Step 1: Extracting knowledge from papers...")
+            extract_knowledge(
+                self.papers_dir,
+                self.extracted_dir,
+                self.teacher_model_name
+            )
+            
+            # Step 2: Create knowledge map
+            logger.info("Step 2: Creating knowledge map...")
+            create_knowledge_map(
+                self.extracted_dir,
+                self.knowledge_map_dir,
+                self.teacher_model_name
+            )
+            
+            # Step 3: Generate QA pairs
+            logger.info("Step 3: Generating QA pairs...")
+            qa_pairs = generate_qa_pairs(
+                os.path.join(self.knowledge_map_dir, "knowledge_map.json"),
+                self.qa_pairs_dir,
+                self.teacher_model_name,
+                self.num_qa_pairs
+            )
+            
+            # Step 4: Generate enhanced responses
+            logger.info("Step 4: Generating enhanced responses...")
+            enhanced_qa_pairs = generate_enhanced_responses(
+                os.path.join(self.qa_pairs_dir, "qa_pairs.json"),
+                os.path.join(self.knowledge_map_dir, "knowledge_map.json"),
+                self.qa_pairs_dir,
+                self.teacher_model_name
+            )
+            
+            # Step 5: Create curriculum dataset
+            logger.info("Step 5: Creating curriculum dataset...")
+            curriculum_path = create_curriculum_dataset(
+                os.path.join(self.qa_pairs_dir, "enhanced_qa_pairs.json"),
+                self.qa_pairs_dir
+            )
+            
+            # Step 6: Run the distillation training
+            logger.info("Step 6: Running distillation training...")
+            return run_enhanced_distillation(
+                self.papers_dir,
+                self.qa_pairs_dir,
+                self.models_dir,
+                self.student_model_name,
+                self.num_qa_pairs,
+                self.batch_size,
+                self.learning_rate,
+                self.num_epochs,
+                self.quantize,
+                self.lora_r
+            )
+            
+        except Exception as e:
+            logger.error(f"Error during enhanced distillation: {str(e)}")
+            return None
 
 # Create an API client mapping
 def get_api_client(model_name: str):
