@@ -17,15 +17,19 @@ import os
 import json
 import logging
 import time
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Union
 import re
 import random
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
+from dotenv import load_dotenv
 
-import anthropic
-import openai
+# Load environment variables from .env file
+load_dotenv()
+
+from openai import OpenAI
 from anthropic import Anthropic
+from huggingface_hub import HfApi, login
 import pandas as pd
 import numpy as np
 import torch
@@ -44,6 +48,136 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger("enhanced-distillation")
+
+class APIClientManager:
+    """Manages API clients for different LLM providers"""
+    
+    _openai_client = None
+    _anthropic_client = None
+    _huggingface_client = None
+    _github_token = None
+    
+    REQUIRED_ENV_VARS = {
+        'openai': 'OPENAI_API_KEY',
+        'anthropic': 'ANTHROPIC_API_KEY',
+        'huggingface': 'HUGGINGFACE_API_KEY',
+        'github': 'GITHUB_TOKEN'
+    }
+    
+    @classmethod
+    def _check_env_var(cls, provider: str) -> str:
+        """Check if required environment variable is set"""
+        env_var_name = cls.REQUIRED_ENV_VARS[provider]
+        api_key = os.getenv(env_var_name)
+        if not api_key:
+            raise ValueError(f"{env_var_name} environment variable not set")
+        return api_key
+    
+    @classmethod
+    def get_openai_client(cls) -> OpenAI:
+        """Get or create OpenAI client"""
+        if cls._openai_client is None:
+            api_key = cls._check_env_var('openai')
+            try:
+                # First try without any additional parameters
+                cls._openai_client = OpenAI()
+            except TypeError as e:
+                if "proxies" in str(e):
+                    # If we get the proxies error, try with a custom HTTP client
+                    import httpx
+                    class CustomHTTPClient(httpx.Client):
+                        def __init__(self, *args, **kwargs):
+                            # Remove the proxies argument if present
+                            kwargs.pop("proxies", None)
+                            super().__init__(*args, **kwargs)
+                    
+                    cls._openai_client = OpenAI(http_client=CustomHTTPClient())
+                else:
+                    raise
+        return cls._openai_client
+    
+    @classmethod
+    def get_anthropic_client(cls) -> Anthropic:
+        """Get or create Anthropic client"""
+        if cls._anthropic_client is None:
+            api_key = cls._check_env_var('anthropic')
+            cls._anthropic_client = Anthropic()
+        return cls._anthropic_client
+    
+    @classmethod
+    def get_huggingface_client(cls) -> HfApi:
+        """Get or create HuggingFace client"""
+        if cls._huggingface_client is None:
+            api_key = cls._check_env_var('huggingface')
+            # Login to Hugging Face
+            login(token=api_key)
+            cls._huggingface_client = HfApi()
+        return cls._huggingface_client
+    
+    @classmethod
+    def get_github_token(cls) -> str:
+        """Get GitHub token"""
+        if cls._github_token is None:
+            cls._github_token = cls._check_env_var('github')
+        return cls._github_token
+    
+    @classmethod
+    def initialize_all_clients(cls) -> None:
+        """Initialize all API clients and check all required environment variables"""
+        logger.info("Checking API keys and initializing clients...")
+        
+        missing_keys = []
+        for provider, env_var in cls.REQUIRED_ENV_VARS.items():
+            if not os.getenv(env_var):
+                missing_keys.append(env_var)
+        
+        if missing_keys:
+            logger.error(f"Missing required environment variables: {', '.join(missing_keys)}")
+            logger.error("Please ensure your .env file contains all required API keys:")
+            logger.error("\n".join(f"- {key}" for key in missing_keys))
+            raise ValueError(f"Missing required API keys: {', '.join(missing_keys)}")
+        
+        try:
+            # Initialize all clients
+            cls.get_openai_client()
+            cls.get_anthropic_client()
+            cls.get_huggingface_client()
+            cls.get_github_token()
+            logger.info("All API clients initialized successfully")
+        except Exception as e:
+            logger.error(f"Error initializing API clients: {str(e)}")
+            raise
+
+def get_api_client(model_name: str) -> Optional[Union[OpenAI, Anthropic, HfApi]]:
+    """Get the appropriate API client for a given model name."""
+    try:
+        # Initialize all clients at startup
+        APIClientManager.initialize_all_clients()
+        
+        if model_name.startswith("gpt") or model_name.startswith("text-") or "openai" in model_name:
+            return APIClientManager.get_openai_client()
+        elif model_name.startswith("claude"):
+            return APIClientManager.get_anthropic_client()
+        elif any(name in model_name.lower() for name in ["huggingface", "hf", "transformers"]):
+            return APIClientManager.get_huggingface_client()
+        else:
+            # For local models, we'll handle them directly in the function
+            return None
+    except Exception as e:
+        logger.error(f"Error initializing API client for {model_name}: {str(e)}")
+        raise
+
+def call_api_with_retry(client: Union[OpenAI, Anthropic, HfApi], query_function, max_retries=3, retry_delay=5):
+    """Call an API with retry logic for rate limits and transient failures."""
+    for attempt in range(max_retries):
+        try:
+            return query_function()
+        except Exception as e:
+            if attempt == max_retries - 1:
+                logger.error(f"API call failed after {max_retries} attempts: {str(e)}")
+                raise
+            logger.warning(f"API error: {str(e)}. Retrying in {retry_delay} seconds...")
+            time.sleep(retry_delay * (attempt + 1))
 
 class EnhancedDistiller:
     """
@@ -167,23 +301,6 @@ class EnhancedDistiller:
             logger.error(f"Error during enhanced distillation: {str(e)}")
             return None
 
-# Create an API client mapping
-def get_api_client(model_name: str):
-    """Get the appropriate API client for a given model name."""
-    if model_name.startswith("gpt") or model_name.startswith("text-") or "openai" in model_name:
-        api_key = os.environ.get("OPENAI_API_KEY")
-        if not api_key:
-            raise ValueError("OPENAI_API_KEY environment variable not set")
-        return openai.OpenAI(api_key=api_key)
-    elif model_name.startswith("claude"):
-        api_key = os.environ.get("ANTHROPIC_API_KEY")
-        if not api_key:
-            raise ValueError("ANTHROPIC_API_KEY environment variable not set")
-        return Anthropic(api_key=api_key)
-    else:
-        # For local models, we'll handle them directly in the function
-        return None
-
 def extract_text_from_pdf(pdf_path: str) -> str:
     """Extract text from a PDF file."""
     text = ""
@@ -195,17 +312,6 @@ def extract_text_from_pdf(pdf_path: str) -> str:
     except Exception as e:
         logger.error(f"Error extracting text from {pdf_path}: {str(e)}")
     return text
-
-def call_api_with_retry(client, query_function, max_retries=3, retry_delay=5):
-    """Call an API with retry logic for rate limits and transient failures."""
-    for attempt in range(max_retries):
-        try:
-            return query_function()
-        except (openai.RateLimitError, openai.APIError, anthropic.RateLimitError, anthropic.APIError) as e:
-            if attempt == max_retries - 1:
-                raise
-            logger.warning(f"API error: {str(e)}. Retrying in {retry_delay} seconds...")
-            time.sleep(retry_delay * (attempt + 1))  # Exponential backoff
 
 def extract_knowledge(
     papers_dir: str,
@@ -248,7 +354,13 @@ def extract_knowledge(
     logger.info(f"Found {len(pdf_files)} PDF files")
     
     # Setup API client
-    client = get_api_client(model_name)
+    try:
+        client = get_api_client(model_name)
+        if client is None and not model_name.startswith(("gpt2", "gpt-neo", "bloom", "t5")):
+            raise ValueError(f"Unsupported model: {model_name}")
+    except Exception as e:
+        logger.error(f"Failed to initialize API client: {str(e)}")
+        raise
     
     # Create extraction prompt
     extraction_prompt = """
@@ -307,11 +419,10 @@ def extract_knowledge(
             for i, chunk in enumerate(chunks):
                 prompt = f"{extraction_prompt}\n\nPAPER TEXT (part {i+1}/{len(chunks)}):\n{chunk}"
                 
-                # Extract knowledge
-                if client and model_name.startswith("gpt"):
-                    response = call_api_with_retry(
-                        client,
-                        lambda: client.chat.completions.create(
+                # Extract knowledge using the appropriate client
+                if isinstance(client, OpenAI):
+                    def query_openai():
+                        response = client.chat.completions.create(
                             model=model_name,
                             messages=[
                                 {"role": "system", "content": "You are an expert in knowledge extraction from scientific papers."},
@@ -320,13 +431,13 @@ def extract_knowledge(
                             temperature=0.2,
                             max_tokens=4000
                         )
-                    )
-                    extracted_text = response.choices[0].message.content
+                        return response.choices[0].message.content
                     
-                elif client and model_name.startswith("claude"):
-                    response = call_api_with_retry(
-                        client,
-                        lambda: client.messages.create(
+                    extracted_text = call_api_with_retry(client, query_openai)
+                    
+                elif isinstance(client, Anthropic):
+                    def query_anthropic():
+                        response = client.messages.create(
                             model=model_name,
                             system="You are an expert in knowledge extraction from scientific papers.",
                             messages=[
@@ -335,8 +446,19 @@ def extract_knowledge(
                             temperature=0.2,
                             max_tokens=4000
                         )
-                    )
-                    extracted_text = response.content[0].text
+                        return response.content[0].text
+                    
+                    extracted_text = call_api_with_retry(client, query_anthropic)
+                    
+                elif isinstance(client, HfApi):
+                    def query_huggingface():
+                        response = client.create_file(
+                            os.path.basename(pdf_path),
+                            pdf_path
+                        )
+                        return response.data["url"]
+                    
+                    extracted_text = call_api_with_retry(client, query_huggingface)
                     
                 else:
                     # For local models
@@ -483,71 +605,270 @@ def create_knowledge_map(
     # Setup API client
     client = get_api_client(model_name)
     
-    # Create knowledge map
+    # Check if the knowledge is too large for a single call
     input_data = json.dumps(all_knowledge, indent=2)
+    estimated_tokens = len(input_data) // 4  # Rough estimate: 4 chars per token
     
-    if client and model_name.startswith("gpt"):
-        response = call_api_with_retry(
-            client,
-            lambda: client.chat.completions.create(
-                model=model_name,
-                messages=[
-                    {"role": "system", "content": "You are an expert in knowledge mapping and organization."},
-                    {"role": "user", "content": f"{mapping_prompt}\n\nEXTRACTED KNOWLEDGE:\n{input_data}"}
-                ],
-                temperature=0.2,
-                max_tokens=8000
-            )
-        )
-        map_text = response.choices[0].message.content
+    if estimated_tokens > 100000:  # If too large, process in chunks
+        logger.info(f"Knowledge data too large ({estimated_tokens} estimated tokens). Processing in chunks...")
         
-    elif client and model_name.startswith("claude"):
-        response = call_api_with_retry(
-            client,
-            lambda: client.messages.create(
-                model=model_name,
-                system="You are an expert in knowledge mapping and organization.",
-                messages=[
-                    {"role": "user", "content": f"{mapping_prompt}\n\nEXTRACTED KNOWLEDGE:\n{input_data}"}
-                ],
-                temperature=0.2,
-                max_tokens=8000
-            )
-        )
-        map_text = response.content[0].text
+        # Split knowledge into smaller chunks
+        chunk_size = 10  # Process 10 papers at a time
+        knowledge_chunks = [all_knowledge[i:i+chunk_size] for i in range(0, len(all_knowledge), chunk_size)]
         
+        partial_maps = []
+        
+        for i, chunk in enumerate(knowledge_chunks):
+            logger.info(f"Processing chunk {i+1}/{len(knowledge_chunks)} with {len(chunk)} papers")
+            
+            chunk_data = json.dumps(chunk, indent=2)
+            chunk_prompt = f"{mapping_prompt}\n\nEXTRACTED KNOWLEDGE (chunk {i+1}/{len(knowledge_chunks)}):\n{chunk_data}"
+            
+            try:
+                if isinstance(client, OpenAI):
+                    def query_openai():
+                        response = client.chat.completions.create(
+                            model=model_name,
+                            messages=[
+                                {"role": "system", "content": "You are an expert in knowledge mapping and organization."},
+                                {"role": "user", "content": chunk_prompt}
+                            ],
+                            temperature=0.2,
+                            max_tokens=4000
+                        )
+                        return response.choices[0].message.content
+                    
+                    map_text = call_api_with_retry(client, query_openai)
+                    
+                elif isinstance(client, Anthropic):
+                    def query_anthropic():
+                        response = client.messages.create(
+                            model=model_name,
+                            system="You are an expert in knowledge mapping and organization.",
+                            messages=[
+                                {"role": "user", "content": chunk_prompt}
+                            ],
+                            temperature=0.2,
+                            max_tokens=4000
+                        )
+                        return response.content[0].text
+                    
+                    map_text = call_api_with_retry(client, query_anthropic)
+                    
+                else:
+                    # For local models
+                    tokenizer = AutoTokenizer.from_pretrained(model_name)
+                    model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
+                    
+                    inputs = tokenizer(chunk_prompt, return_tensors="pt").to(model.device)
+                    outputs = model.generate(**inputs, max_new_tokens=4000, temperature=0.2)
+                    map_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+                
+                # Parse the JSON response
+                json_match = re.search(r'\{.*\}', map_text, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group(0)
+                    partial_map = json.loads(json_str)
+                    partial_maps.append(partial_map)
+                    logger.info(f"Successfully processed chunk {i+1}")
+                else:
+                    logger.warning(f"Could not find JSON in chunk {i+1} response")
+                    
+            except Exception as e:
+                logger.error(f"Error processing chunk {i+1}: {str(e)}")
+                continue
+            
+            # Add delay between chunks to avoid rate limits
+            time.sleep(2)
+        
+        # Merge all partial maps
+        if partial_maps:
+            logger.info("Merging partial knowledge maps...")
+            merged_map = merge_knowledge_maps(partial_maps, client, model_name)
+        else:
+            logger.error("No partial maps were successfully created")
+            return ""
+    
     else:
-        # For local models
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
-        model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
+        # Process all knowledge in a single call
+        logger.info("Processing all knowledge in a single call...")
         
-        inputs = tokenizer(f"{mapping_prompt}\n\nEXTRACTED KNOWLEDGE:\n{input_data}", return_tensors="pt").to(model.device)
-        outputs = model.generate(**inputs, max_new_tokens=8000, temperature=0.2)
-        map_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    
-    # Try to parse the JSON response
-    try:
-        # Find JSON part using regex (the LLM might include explanatory text)
+        if isinstance(client, OpenAI):
+            def query_openai():
+                response = client.chat.completions.create(
+                    model=model_name,
+                    messages=[
+                        {"role": "system", "content": "You are an expert in knowledge mapping and organization."},
+                        {"role": "user", "content": f"{mapping_prompt}\n\nEXTRACTED KNOWLEDGE:\n{input_data}"}
+                    ],
+                    temperature=0.2,
+                    max_tokens=4000
+                )
+                return response.choices[0].message.content
+            
+            map_text = call_api_with_retry(client, query_openai)
+            
+        elif isinstance(client, Anthropic):
+            def query_anthropic():
+                response = client.messages.create(
+                    model=model_name,
+                    system="You are an expert in knowledge mapping and organization.",
+                    messages=[
+                        {"role": "user", "content": f"{mapping_prompt}\n\nEXTRACTED KNOWLEDGE:\n{input_data}"}
+                    ],
+                    temperature=0.2,
+                    max_tokens=4000
+                )
+                return response.content[0].text
+            
+            map_text = call_api_with_retry(client, query_anthropic)
+            
+        else:
+            # For local models
+            tokenizer = AutoTokenizer.from_pretrained(model_name)
+            model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16, device_map="auto")
+            
+            inputs = tokenizer(f"{mapping_prompt}\n\nEXTRACTED KNOWLEDGE:\n{input_data}", return_tensors="pt").to(model.device)
+            outputs = model.generate(**inputs, max_new_tokens=4000, temperature=0.2)
+            map_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        
+        # Try to parse the JSON response
         json_match = re.search(r'\{.*\}', map_text, re.DOTALL)
         if json_match:
             json_str = json_match.group(0)
-            knowledge_map = json.loads(json_str)
-            
-            # Save the knowledge map
-            os.makedirs(output_dir, exist_ok=True)
-            output_path = os.path.join(output_dir, "knowledge_map.json")
-            
-            with open(output_path, 'w') as f:
-                json.dump(knowledge_map, f, indent=2)
-            
-            logger.info(f"Knowledge map saved to {output_path}")
-            return output_path
+            merged_map = json.loads(json_str)
         else:
             logger.error("Could not find JSON in knowledge map response")
             return ""
-    except json.JSONDecodeError:
-        logger.error("Could not parse JSON for knowledge map")
-        return ""
+    
+    # Save the knowledge map
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, "knowledge_map.json")
+    
+    with open(output_path, 'w') as f:
+        json.dump(merged_map, f, indent=2)
+    
+    logger.info(f"Knowledge map saved to {output_path}")
+    return output_path
+
+def merge_knowledge_maps(partial_maps: List[Dict], client, model_name: str) -> Dict:
+    """
+    Merge multiple partial knowledge maps into a single comprehensive map.
+    
+    Args:
+        partial_maps: List of partial knowledge maps
+        client: API client for LLM
+        model_name: Name of the model to use
+        
+    Returns:
+        Merged knowledge map
+    """
+    logger.info(f"Merging {len(partial_maps)} partial knowledge maps")
+    
+    merge_prompt = """
+    Merge the following partial knowledge maps into a single comprehensive knowledge map.
+    
+    When merging:
+    1. Combine similar concepts and remove duplicates
+    2. Merge relationships between concepts
+    3. Consolidate frameworks and models
+    4. Integrate findings and resolve conflicts
+    5. Ensure all IDs are unique
+    
+    Output the merged knowledge map in the same JSON format as the input maps.
+    """
+    
+    # Convert partial maps to JSON string
+    partial_maps_json = json.dumps(partial_maps, indent=2)
+    
+    try:
+        if isinstance(client, OpenAI):
+            def query_openai():
+                response = client.chat.completions.create(
+                    model=model_name,
+                    messages=[
+                        {"role": "system", "content": "You are an expert in knowledge integration and mapping."},
+                        {"role": "user", "content": f"{merge_prompt}\n\nPARTIAL MAPS:\n{partial_maps_json}"}
+                    ],
+                    temperature=0.2,
+                    max_tokens=4000
+                )
+                return response.choices[0].message.content
+            
+            merged_text = call_api_with_retry(client, query_openai)
+            
+        elif isinstance(client, Anthropic):
+            def query_anthropic():
+                response = client.messages.create(
+                    model=model_name,
+                    system="You are an expert in knowledge integration and mapping.",
+                    messages=[
+                        {"role": "user", "content": f"{merge_prompt}\n\nPARTIAL MAPS:\n{partial_maps_json}"}
+                    ],
+                    temperature=0.2,
+                    max_tokens=4000
+                )
+                return response.content[0].text
+            
+            merged_text = call_api_with_retry(client, query_anthropic)
+            
+        else:
+            # For local models - simple merging
+            merged_map = {
+                "concepts": [],
+                "relationships": [],
+                "frameworks": [],
+                "models": [],
+                "findings": []
+            }
+            
+            for partial_map in partial_maps:
+                for key in merged_map.keys():
+                    if key in partial_map:
+                        merged_map[key].extend(partial_map[key])
+            
+            return merged_map
+        
+        # Parse the merged response
+        json_match = re.search(r'\{.*\}', merged_text, re.DOTALL)
+        if json_match:
+            json_str = json_match.group(0)
+            return json.loads(json_str)
+        else:
+            logger.warning("Could not find JSON in merged response, using simple merge")
+            # Fallback to simple merging
+            merged_map = {
+                "concepts": [],
+                "relationships": [],
+                "frameworks": [],
+                "models": [],
+                "findings": []
+            }
+            
+            for partial_map in partial_maps:
+                for key in merged_map.keys():
+                    if key in partial_map:
+                        merged_map[key].extend(partial_map[key])
+            
+            return merged_map
+            
+    except Exception as e:
+        logger.error(f"Error merging knowledge maps: {str(e)}")
+        # Fallback to simple merging
+        merged_map = {
+            "concepts": [],
+            "relationships": [],
+            "frameworks": [],
+            "models": [],
+            "findings": []
+        }
+        
+        for partial_map in partial_maps:
+            for key in merged_map.keys():
+                if key in partial_map:
+                    merged_map[key].extend(partial_map[key])
+        
+        return merged_map
 
 def generate_qa_pairs(
     knowledge_map_path: str,
@@ -669,6 +990,16 @@ def generate_qa_pairs(
                 )
             )
             qa_text = response.content[0].text
+            
+        elif isinstance(client, HfApi):
+            response = call_api_with_retry(
+                client,
+                lambda: client.create_file(
+                    os.path.basename(os.path.join(output_dir, f"qa_pairs_{batch_number}.json")),
+                    os.path.join(output_dir, f"qa_pairs_{batch_number}.json")
+                )
+            )
+            qa_text = response.data["url"]
             
         else:
             # For local models
@@ -817,6 +1148,16 @@ def generate_enhanced_responses(
                         )
                     )
                     enhanced_answer = response.content[0].text
+                    
+                elif isinstance(client, HfApi):
+                    response = call_api_with_retry(
+                        client,
+                        lambda: client.create_file(
+                            os.path.basename(os.path.join(output_dir, f"enhanced_qa_pairs_{batch_idx+1}.json")),
+                            os.path.join(output_dir, f"enhanced_qa_pairs_{batch_idx+1}.json")
+                        )
+                    )
+                    enhanced_answer = response.data["url"]
                     
                 else:
                     # For local models

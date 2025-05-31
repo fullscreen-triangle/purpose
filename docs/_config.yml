@@ -1,0 +1,101 @@
+title: Purpose - Domain-Specific LLM Training Framework
+description: >-
+  Advanced framework for creating domain-specific language models with specialized AI integration.
+  Purpose addresses fundamental limitations in traditional RAG systems through domain adaptation.
+
+# Site settings
+url: "https://yourusername.github.io"
+baseurl: "/purpose"
+lang: en_US
+
+# Theme and appearance
+theme: jekyll-theme-cayman
+show_excerpts: true
+
+# Navigation structure
+header_pages:
+  - index.md
+  - installation.md
+  - getting-started.md
+  - architecture/
+  - components/
+  - specialized-models.md
+  - api-reference.md
+  - examples.md
+  - tutorials/
+  - contributing.md
+
+# Collections for organized content
+collections:
+  architecture:
+    output: true
+    permalink: /:collection/:name/
+  components:
+    output: true
+    permalink: /:collection/:name/
+  tutorials:
+    output: true
+    permalink: /:collection/:name/
+
+# Default values for collections
+defaults:
+  - scope:
+      path: ""
+      type: "architecture"
+    values:
+      layout: "default"
+      nav_order: 3
+  - scope:
+      path: ""
+      type: "components"
+    values:
+      layout: "default"
+      nav_order: 4
+  - scope:
+      path: ""
+      type: "tutorials"
+    values:
+      layout: "default"
+      nav_order: 7
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-github-metadata
+
+# SEO and social
+logo: /boltzmann.png
+twitter:
+  username: purposeframework
+social:
+  name: Purpose Framework
+  links:
+    - https://github.com/yourusername/purpose
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - "*.tex"
+  - "*.log"
+  - "*.aux"
+  - "*.fdb_latexmk"
+  - "*.fls"
+  - "*.synctex.gz" 
