@@ -1,0 +1,85 @@
+{
+  "experiment": "forward_training_collapse",
+  "theorem_reference": "Theorem 9.1 (Forward Training Collapse)",
+  "claim": "forward-trained policies have strictly positive failure gap on F(D*)\\F(D_c)",
+  "failure_gap_ratio": {
+    "n": 30,
+    "mean": 1.422146021452273,
+    "std": 0.7809114884378205,
+    "sem": 0.14257427921077634,
+    "ci95_lo": 1.1427004341991513,
+    "ci95_hi": 1.7015916087053946,
+    "min": 0.5447726469977422,
+    "max": 3.657639765225665,
+    "median": 1.3138118071760765
+  },
+  "forward_oos_error": {
+    "n": 30,
+    "mean": 0.006959050234896094,
+    "std": 0.0020065337613768552,
+    "sem": 0.0003663412678339306,
+    "ci95_lo": 0.006241021349941591,
+    "ci95_hi": 0.007677079119850598,
+    "min": 0.0044393210927598315,
+    "max": 0.012303268438519713,
+    "median": 0.006614278405185604
+  },
+  "backward_oos_error": {
+    "n": 30,
+    "mean": 0.005760360223738621,
+    "std": 0.00205096259535433,
+    "sem": 0.0003744528260249689,
+    "ci95_lo": 0.005026432684729683,
+    "ci95_hi": 0.00649428776274756,
+    "min": 0.0025598830585198055,
+    "max": 0.009838638703819215,
+    "median": 0.005546873410760572
+  },
+  "paired_ttest_fwd_greater_back": {
+    "t": 1.955941281915831,
+    "p": 0.03008320748247049
+  },
+  "verdict": "SUPPORTED",
+  "trials": [
+    {
+      "seed": 0,
+      "err_backward_full_domain": 0.0032496002938449085,
+      "err_forward_full_domain": 0.005175909567026183,
+      "err_backward_oos": 0.003307364917462377,
+      "err_forward_oos": 0.005280229776083948,
+      "failure_gap_ratio_fwd_over_back": 1.5965065566866083
+    },
+    {
+      "seed": 1,
+      "err_backward_full_domain": 0.004699036042891386,
+      "err_forward_full_domain": 0.00911902214029339,
+      "err_backward_oos": 0.004785996427980355,
+      "err_forward_oos": 0.00922212905366942,
+      "failure_gap_ratio_fwd_over_back": 1.92689844057428
+    },
+    {
+      "seed": 2,
+      "err_backward_full_domain": 0.008205557313211122,
+      "err_forward_full_domain": 0.005036347117555761,
+      "err_backward_oos": 0.00833495930617665,
+      "err_forward_oos": 0.0050686544616769524,
+      "failure_gap_ratio_fwd_over_back": 0.6081198810317897
+    },
+    {
+      "seed": 3,
+      "err_backward_full_domain": 0.007288113672606145,
+      "err_forward_full_domain": 0.0066747287773096615,
+      "err_backward_oos": 0.007354748476690109,
+      "err_forward_oos": 0.006763544501464809,
+      "failure_gap_ratio_fwd_over_back": 0.9196160171759725
+    },
+    {
+      "seed": 4,
+      "err_backward_full_domain": 0.009322455766654266,
+      "err_forward_full_domain": 0.005750279023777392,
+      "err_backward_oos": 0.009474518297904829,
+      "err_forward_oos": 0.005798918273282394,
+      "failure_gap_ratio_fwd_over_back": 0.6120541531451528
+    }
+  ]
+}

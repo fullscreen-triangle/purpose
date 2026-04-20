@@ -1,0 +1,65 @@
+{
+  "experiment": "nonexpansive_projection",
+  "theorem_reference": "Theorem 8.2 (Backward Training Inclusion, projection step)",
+  "claim": "||P(y) - P(z)|| <= ||y - z|| for convex constraint set C",
+  "max_ratio_across_seeds": {
+    "n": 30,
+    "mean": 0.9999232681601938,
+    "std": 0.0002585479130044791,
+    "sem": 4.72041747161455e-05,
+    "ci95_lo": 0.9998307479777502,
+    "ci95_hi": 1.0000157883426375,
+    "min": 0.9987947165551023,
+    "max": 1.0,
+    "median": 1.0
+  },
+  "violation_pct_across_seeds": {
+    "n": 30,
+    "mean": 0.0,
+    "std": 0.0,
+    "sem": 0.0,
+    "ci95_lo": 0.0,
+    "ci95_hi": 0.0,
+    "min": 0.0,
+    "max": 0.0,
+    "median": 0.0
+  },
+  "verdict": "SUPPORTED",
+  "trials": [
+    {
+      "seed": 0,
+      "k_constraints": 10,
+      "max_ratio": 1.0,
+      "mean_ratio": 0.7915216663251767,
+      "violations_pct": 0.0
+    },
+    {
+      "seed": 1,
+      "k_constraints": 7,
+      "max_ratio": 1.0,
+      "mean_ratio": 0.8216841556378789,
+      "violations_pct": 0.0
+    },
+    {
+      "seed": 2,
+      "k_constraints": 10,
+      "max_ratio": 1.0,
+      "mean_ratio": 0.7650590756298957,
+      "violations_pct": 0.0
+    },
+    {
+      "seed": 3,
+      "k_constraints": 10,
+      "max_ratio": 1.0,
+      "mean_ratio": 0.7583776142108675,
+      "violations_pct": 0.0
+    },
+    {
+      "seed": 4,
+      "k_constraints": 9,
+      "max_ratio": 1.0,
+      "mean_ratio": 0.7659274327238259,
+      "violations_pct": 0.0
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "experiment": "exponential_saving_binary_nested",
+  "theorem_reference": "Theorem 10.2 (Exponential Saving Under Nested Structure)",
+  "claim": "m_fwd / m_back >= 2^(N-1) for binary-nested cascade",
+  "cascade_depths_tested": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "results_per_depth": [
+    {
+      "cascade_depth_N": 1,
+      "predicted_ratio_lower_bound": 1,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 1.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 1.0,
+        "ci95_hi": 1.0,
+        "min": 1.0,
+        "max": 1.0,
+        "median": 1.0
+      }
+    },
+    {
+      "cascade_depth_N": 2,
+      "predicted_ratio_lower_bound": 2,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 3.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 3.0,
+        "ci95_hi": 3.0,
+        "min": 3.0,
+        "max": 3.0,
+        "median": 3.0
+      }
+    },
+    {
+      "cascade_depth_N": 3,
+      "predicted_ratio_lower_bound": 4,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 7.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 7.0,
+        "ci95_hi": 7.0,
+        "min": 7.0,
+        "max": 7.0,
+        "median": 7.0
+      }
+    },
+    {
+      "cascade_depth_N": 4,
+      "predicted_ratio_lower_bound": 8,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 15.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 15.0,
+        "ci95_hi": 15.0,
+        "min": 15.0,
+        "max": 15.0,
+        "median": 15.0
+      }
+    },
+    {
+      "cascade_depth_N": 5,
+      "predicted_ratio_lower_bound": 16,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 31.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 31.0,
+        "ci95_hi": 31.0,
+        "min": 31.0,
+        "max": 31.0,
+        "median": 31.0
+      }
+    },
+    {
+      "cascade_depth_N": 6,
+      "predicted_ratio_lower_bound": 32,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 63.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 63.0,
+        "ci95_hi": 63.0,
+        "min": 63.0,
+        "max": 63.0,
+        "median": 63.0
+      }
+    },
+    {
+      "cascade_depth_N": 7,
+      "predicted_ratio_lower_bound": 64,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 127.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 127.0,
+        "ci95_hi": 127.0,
+        "min": 127.0,
+        "max": 127.0,
+        "median": 127.0
+      }
+    },
+    {
+      "cascade_depth_N": 8,
+      "predicted_ratio_lower_bound": 128,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 255.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 255.0,
+        "ci95_hi": 255.0,
+        "min": 255.0,
+        "max": 255.0,
+        "median": 255.0
+      }
+    }
+  ],
+  "log_log_slope": 1.0,
+  "log_log_intercept": 0.0,
+  "r_squared": 1.0,
+  "slope_pvalue": 2.4999999999999984e-60,
+  "verdict": "SUPPORTED"
+}

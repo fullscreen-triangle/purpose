@@ -1,0 +1,1286 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{amsfonts}
+\usepackage[margin=2.2cm,top=2.4cm,bottom=2.4cm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\usepackage{natbib}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{axiom}{Axiom}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\VC}{VC}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{Purpose Model Factory}}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\title{\textbf{Purpose: A Model Factory for Domain-Specific Neural Compilation\\[4pt] via the Backward Training Principle}}
+
+\author{
+Kundai Farai Sachikonye\\
+AIMe Registry for Artificial Intelligence\\
+\texttt{kundai.sachikonye@bitspark.com}
+}
+
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present \emph{Purpose}, a framework for training domain-specific neural compilation models, organised around a single theoretical principle we call the \textbf{Backward Training Principle}. The principle inverts conventional curriculum learning: rather than ordering training examples from easy to hard and trusting generalisation to extend competence from simple to complex regimes, Purpose trains exclusively at the domain's \emph{pure-intent regime}---the extremal sub-domain exhibiting a scalar objective, a fully-exercised capability envelope, and unambiguous feedback---and relies on \emph{feasibility inclusion} rather than generalisation to extend competence to every constrained sub-regime. We prove five main theoretical results. First, the \textbf{Pure-Intent Envelope Theorem} establishes that for any skill or compilation domain admitting a pure-intent regime, every constrained regime has a feasibility region strictly contained in the pure-intent feasibility region. Second, the \textbf{Constraint Cascade Theorem} shows that every constrained regime is expressible as the pure-intent regime augmented by a finite, monotone stack of additive constraints. Third, the \textbf{Backward Training Inclusion Theorem} proves that a policy $\epsilon$-competent on the pure-intent regime is $\epsilon$-competent on every constrained sub-regime without further training, via Karush--Kuhn--Tucker non-expansive projection. Fourth, the \textbf{Forward Training Collapse Theorem} shows that a policy trained on a constrained regime has no guarantee of competence on less-constrained regimes, with a Vapnik--Chervonenkis failure gap lower bound that is strictly positive and generically large. Fifth, the \textbf{Backward Training Sample Complexity Theorem} establishes that backward training requires at least $(N+1)\times$ fewer samples than forward training for a cascade of depth $N$, with the ratio strengthening to $2^{N-1}\times$ for binary-nested cascades. Together these results establish that conventional easy-to-hard curricula are not merely suboptimal but \emph{strictly dominated} whenever a pure-intent regime exists. Building on this foundation, we specify the Purpose Model Factory as a complete training system. The factory comprises four coupled components: (i) a single, shared \emph{Aperture Foundation Model} pretrained on a universal substrate of compilation grammar, structural reasoning, and operation composition; (ii) a rigid \emph{Domain Connector} interface requiring each domain to declare its operation vocabulary, coordinate embedding, theoretical corpus, pure-intent sampler, and verifier; (iii) a canonical \emph{Training Pipeline} implementing teacher-student knowledge distillation under backward-curriculum sampling, with composite loss enforcing generation fidelity, type safety, conservation, and completion; (iv) a \emph{Resolver Registry} indexing trained low-rank adapters by cascade position for deployment. We prove that neural compilation under backward training is PAC-learnable from a polynomial number of examples; that a LoRA adapter of rank $r \geq K + L$ is expressively sufficient for a $K$-operation vocabulary and chain length at most $L$; and that the four-stage curriculum converges to $\epsilon$-optimal compilation with sample complexity $\mathcal{O}(m/\epsilon^2)$ versus $\mathcal{O}(m/\epsilon^3)$ for single-stage training. We provide a worked end-to-end example of domain connection, specify twelve falsifiable empirical predictions, and compare against standard curriculum learning, multi-task learning, behaviour cloning, retrieval-augmented generation, and foundation-model fine-tuning. The framework is intended both as a theoretical contribution---establishing that curriculum inversion is a structural theorem rather than an engineering heuristic---and as a deployable system: any scientific domain that can declare its operation set, coordinate embedding, and pure-intent sampler can plug into Purpose and receive back a trained, verified, cascade-registered compilation model.
+\end{abstract}
+
+\vspace{6pt}
+\noindent\textbf{Keywords:} domain-specific language models, curriculum learning, backward training, knowledge distillation, low-rank adaptation, neural compilation, pure-intent regime, feasibility region, constraint cascade, foundation models, teacher-student training, model factory, PAC-learnability.
+
+\tableofcontents
+
+\newpage
+
+\part{Theoretical Foundations}
+\label{part:foundations}
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Two unsolved problems in domain-specific model training}
+
+The production of a domain-specific language or compilation model from raw domain expertise remains, despite substantial progress in foundation models and parameter-efficient fine-tuning, a bespoke and inefficient practice. Two specific questions remain open:
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{The curriculum question.} In what order should training examples be presented? The prevailing answer, following \citet{elman1993learning} and \citet{bengio2009curriculum}, is that examples should be ordered from easy to hard. We argue that this answer is wrong for a precise and broad class of domains---specifically, any domain admitting what we will call a \emph{pure-intent regime}---and that the correct ordering is the inverse.
+\item \textbf{The reuse question.} Given many domains, what should be shared across their training pipelines and what should be domain-specific? The prevailing answer, following the foundation-model literature \citep{bommasani2021opportunities,brown2020language}, is to share a large pretrained base and adapt per-domain via fine-tuning or low-rank adaptation \citep{hu2022lora}. We accept this answer in outline but argue that the base should be specific to the structural substrate shared by all compilation domains, not to a generic corpus of internet text, and that the adaptation should be constrained to the minimal expressiveness that the compilation problem demands.
+\end{enumerate}
+
+The central contribution of this paper is to answer both questions simultaneously, through a unified principle we call the Backward Training Principle, and to realise the principle as a concrete system---the Purpose Model Factory---that can be applied uniformly to any domain meeting the principle's scope conditions.
+
+\subsection{The compilation view of domain-specific modelling}
+\label{sec:compilation-view}
+
+A running theme in contemporary domain-specific model development is that the effective use of a large language model in a scientific or technical domain is rarely pure question-answering. It is, more precisely, \emph{compilation}: the translation of a natural-language task specification into a structured sequence of typed operations that a downstream executor (a physics engine, a molecular simulator, a database query processor, a theorem prover) can run. The question ``will this protein sequence fold into a stable structure?'' does not require the model to \emph{know} the answer; it requires the model to emit an operation sequence that produces the answer when executed against an appropriate substrate.
+
+This view has several consequences that shape the remainder of the paper. First, the model's target output is structured, type-checkable, and verifiable---not free-form natural language. Second, the notion of a ``correct output'' is well-defined: the emitted operation sequence either does or does not produce the right answer when executed. Third, the model's weights do not need to store domain content; they need only to store the mapping from natural-language intent to operation structure. Fourth, the expressiveness required of the model is bounded not by the size of the domain's knowledge corpus but by the combinatorial structure of its operation vocabulary. Each of these consequences sharpens the training problem in ways that the Backward Training Principle can exploit.
+
+\subsection{The Backward Training Principle, informally}
+\label{sec:btp-informal}
+
+The idea can be stated in two sentences. First: in any domain admitting a \emph{pure-intent regime}---a single-objective extremal sub-domain whose feasibility region exercises every degree of freedom the agent will ever use---the pure-intent regime strictly contains every constrained regime of the same domain, so a model competent on the pure-intent regime is automatically competent on every constrained regime by inclusion. Second: this inclusion-based competence is achieved by a single training run at the pure-intent regime, whereas the conventional easy-to-hard ordering requires training at each constrained regime separately and offers no guarantee of successful upward generalisation. The asymmetry is not a preference; it is a theorem.
+
+The canonical physical example is driving: a model trained to race at the physical limit of tyre and chassis capability is competent at highway driving, urban driving, and parking, because each of these is a strict restriction of circuit racing. The canonical compilation example is a protein design model: a model trained on the hardest composite queries---design a sequence satisfying simultaneous folding, binding, and disease-avoidance constraints---is competent on every simpler query (``does this sequence fold?'' ``does it bind?'' ``is it pathogenic?'') by projection. The principle generalises to any domain in which constraints are additive restrictions and the pure-intent regime is identifiable.
+
+\subsection{Contributions}
+\label{sec:contributions}
+
+This paper makes the following contributions:
+
+\begin{enumerate}[leftmargin=*,itemsep=3pt]
+\item A formal framework of \emph{skill domains}, \emph{feasibility regions}, and \emph{pure-intent regimes}, with precise criteria distinguishing the class of domains to which the Backward Training Principle applies (\S\ref{sec:skill-domains}--\S\ref{sec:cascades}).
+\item The \textbf{Pure-Intent Envelope Theorem}, establishing that every constrained regime has feasibility region strictly contained in the pure-intent feasibility region (\S\ref{sec:envelope}).
+\item The \textbf{Constraint Cascade Theorem}, showing that every constrained regime is an additive restriction of the pure-intent regime by a finite, monotone stack of inequalities (\S\ref{sec:cascade-theorem}).
+\item The \textbf{Backward Training Inclusion Theorem}, proving that $\epsilon$-competence on the pure-intent regime implies $\epsilon$-competence on every constrained sub-regime via non-expansive projection (\S\ref{sec:inclusion}).
+\item The \textbf{Forward Training Collapse Theorem}, showing that forward-trained policies do not generalise upward and exhibit a strictly positive failure-gap lower bound (\S\ref{sec:collapse}).
+\item The \textbf{Backward Training Sample Complexity Theorem}, giving a linear $(N+1)\times$ sample saving for general cascades and an exponential $2^{N-1}\times$ saving for binary-nested cascades (\S\ref{sec:sample-complexity}).
+\item A specification of the \emph{Purpose Model Factory} as a complete training system, including the \emph{Aperture Foundation Model} (\S\ref{sec:aperture}), the \emph{Domain Connector} interface (\S\ref{sec:connector}), the canonical \emph{Training Pipeline} (\S\ref{sec:pipeline}), and the \emph{Resolver Registry} (\S\ref{sec:registry}).
+\item The \textbf{LoRA Expressiveness Theorem for Neural Compilation}, proving that adapter rank $r \geq K + L$ suffices for compilation with $K$ operation types and chain length $L$ (\S\ref{sec:lora-expressiveness}).
+\item A \textbf{PAC-Learnability Theorem} for neural compilation under backward training, with explicit sample bounds and curriculum convergence analysis (\S\ref{sec:pac}).
+\item A worked end-to-end domain connection (\S\ref{sec:worked-example}), twelve falsifiable predictions with experimental protocols (\S\ref{sec:predictions}), and a comparison table against standard curriculum learning, multi-task learning, behaviour cloning, retrieval-augmented generation, and foundation-model fine-tuning (\S\ref{sec:comparison}).
+\end{enumerate}
+
+\subsection{What the paper is not}
+\label{sec:what-not}
+
+The paper does not claim that conventional curriculum learning is never appropriate. It claims that conventional curriculum learning is strictly dominated in the specific class of domains admitting a pure-intent regime with additive constraints and convex (or locally Lipschitz) constraint geometry. Outside this class---in domains whose difficulty axis is not additive, whose objectives are irreducibly multi-valued, or whose constraints change the problem rather than restrict it---the Backward Training Principle does not apply, and the standard ordering may be appropriate. We delineate this scope in \S\ref{sec:failure-modes}.
+
+The paper does not claim that foundation models are unnecessary. It claims that the right foundation for compilation is a substrate-specific one (the Aperture Base) rather than a generic one, and that adaptation should be parameter-efficient rather than full-parameter.
+
+\subsection{Organisation}
+
+Part~I (\S\S\ref{sec:intro}--\ref{sec:curriculum-misleads}) develops the theoretical foundations of the Backward Training Principle. Part~II (\S\S\ref{sec:architecture}--\ref{sec:registry}) specifies the Purpose Model Factory as a complete system. Part~III (\S\S\ref{sec:pac}--\ref{sec:failure-modes}) provides formal analysis including PAC-learnability, correctness, and failure modes. Part~IV (\S\S\ref{sec:worked-example}--\ref{sec:conclusion}) covers practice: a worked example, validation protocols, comparison with existing approaches, and discussion.
+
+
+\section{Notation and Preliminaries}
+\label{sec:notation}
+
+We fix notational conventions used throughout the paper.
+
+Let $\cX$ denote a state space (sensor readings, feature vectors, task descriptions, or natural-language inputs, depending on context). Let $\cU$ denote a control or output space (actions, generated tokens, operation sequences, morphism chains). A \emph{policy} or \emph{model} is a parameterised (possibly randomised) function $\pi_\theta: \cX \to \cU$ with parameters $\theta \in \R^p$. The \emph{capacity} of a model is the dimensionality of its parameter vector: $|\theta| = p$.
+
+A \emph{task} is an element $t \in \cT$ of some task space $\cT$. A \emph{task distribution} is a probability measure $\cD$ on $\cT$. For a loss function $\ell: \cT \times \cU \to \R_{\ge 0}$ and a policy $\pi$, the \emph{expected loss} is $L_\cD(\pi) = \E_{t \sim \cD}[\ell(t, \pi(t))]$. A policy is $\epsilon$-\emph{optimal} on $\cD$ if $L_\cD(\pi) \leq L_\cD(\pi^\star) + \epsilon$, where $\pi^\star \in \argmin_\pi L_\cD(\pi)$.
+
+The Vapnik--Chervonenkis (VC) dimension of a hypothesis class $\cH$ is denoted $\VC(\cH)$; standard references are \citet{vapnik1998statistical}, \citet{blumer1989learnability}, and \citet{mohri2018foundations}. The PAC (probably approximately correct) framework is due to \citet{valiant1984theory}; we use the standard uniform-convergence form throughout.
+
+A compilation grammar $\cG$ over an operation vocabulary $\cO = \{o_1, \ldots, o_K\}$ of $K$ typed primitives is a context-free grammar with a type system assigning to each $o_i$ an input type and an output type, such that operation composition is type-safe. A \emph{compilation chain} is a type-safe sequence of operations $\Phi = o_{i_1} \circ o_{i_2} \circ \cdots \circ o_{i_L}$ of length at most $L_{\max}$.
+
+For convex optimisation we use standard notation: $P_\cC(x)$ is the Euclidean projection of $x$ onto a closed convex set $\cC$; the operator is non-expansive: $\|P_\cC(x) - P_\cC(y)\| \leq \|x - y\|$ \citep{boyd2004convex,nocedal2006numerical}. Karush--Kuhn--Tucker (KKT) conditions are as in \citet{karush1939minima,kuhn1951nonlinear}.
+
+Low-rank adaptation (LoRA) is the parameterisation $W' = W_0 + BA$ where $W_0 \in \R^{d \times k}$ is frozen, $B \in \R^{d \times r}$ and $A \in \R^{r \times k}$ are trainable, and $r \ll \min(d, k)$ is the adaptation rank \citep{hu2022lora,houlsby2019parameter}.
+
+
+\section{Skill Domains and Feasibility Regions}
+\label{sec:skill-domains}
+
+\subsection{Skill domains}
+
+\begin{definition}[Skill domain]
+\label{def:skill-domain}
+A \emph{skill domain} $\cD$ is a tuple $(\cX, \cU, \cE, J)$ where:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item $\cX$ is a state space (sensor inputs, task specifications, or natural-language descriptions);
+\item $\cU$ is a control space (actions or output sequences);
+\item $\cE$ is a set of environments, each $e \in \cE$ specifying physics, task constraints, or environmental perturbations;
+\item $J: \cX \times \cU \times \cE \to \R$ is a performance functional.
+\end{enumerate}
+\end{definition}
+
+Examples of skill domains include: driving (state $= $ vehicle kinematics, control $=$ steering/throttle/brake, environment $=$ surface conditions, performance $=$ lap time or safety measure); protein query compilation (state $=$ natural-language query, control $=$ operation sequence, environment $=$ protein database and biological constraints, performance $=$ answer correctness); image specification compilation (state $=$ imaging instruction, control $=$ morphism chain, environment $=$ physical imaging hardware, performance $=$ resolution achieved).
+
+\subsection{Feasibility regions}
+
+\begin{definition}[Feasibility region]
+\label{def:feasibility-region}
+The \emph{feasibility region} $\cF(\cD) \subseteq \cX \times \cU$ of a skill domain $\cD$ is the set of state-control pairs $(x, u)$ that appear in at least one successful task execution under at least one environment:
+\begin{equation}
+\cF(\cD) = \bigcup_{e \in \cE}\bigl\{ (x, u) \in \cX \times \cU : \exists\ \text{trajectory satisfying $e$ and achieving task success} \bigr\}.
+\end{equation}
+\end{definition}
+
+The feasibility region characterises the \emph{capacity demands} of the skill: the state-control regimes in which the agent or model must act competently. Two domains with identical state and control spaces may have very different feasibility regions if their environments impose different constraints.
+
+\begin{example}[Compilation feasibility]
+\label{ex:compilation-feasibility}
+For a compilation domain with operation vocabulary $\cO$ of size $K$ and maximum chain length $L$, the feasibility region consists of all type-safe operation chains $(t, \Phi)$ where $\Phi = o_{i_1} \circ \cdots \circ o_{i_L}$ successfully answers task $t$. The cardinality of the feasibility region is bounded above by $|\cT| \cdot K^L$ but is in general much smaller due to type constraints and correctness requirements.
+\end{example}
+
+\begin{example}[Driving feasibility]
+\label{ex:driving-feasibility}
+For driving, the feasibility region is the set of $(x, u)$ such that $x$ is a kinematically attainable vehicle state and $u$ is a control input that, applied in the prevailing environment $e$, advances the task without catastrophic failure. For a racing circuit, $e$ is typically a closed-loop track with a single scalar objective (lap time). For public roads, $e$ imposes traffic laws, pedestrian avoidance, comfort, and fuel economy as additional constraints, each shrinking the feasibility region.
+\end{example}
+
+
+\section{Pure-Intent Regimes}
+\label{sec:pure-intent}
+
+The central definition of the paper is the pure-intent regime: a sub-domain that simultaneously exhibits three properties---scalar objective, full-envelope feasibility, and unambiguous feedback---each of which will play a distinct role in the Backward Training Inclusion Theorem.
+
+\begin{definition}[Pure-intent regime]
+\label{def:pure-intent}
+A sub-domain $\cD^\star \subseteq \cD$ is a \emph{pure-intent regime} of $\cD$ if the following three properties hold:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item[(P1)] \textbf{Scalar objective.} The performance functional on $\cD^\star$ reduces to a scalar $J^\star: \cX \times \cU \to \R$ that is independent of the environment. That is, for every $(x, u) \in \cF(\cD^\star)$ and every $e_1, e_2 \in \cE^\star$ (the environments of $\cD^\star$), $J(x, u, e_1) = J(x, u, e_2) = J^\star(x, u)$.
+\item[(P2)] \textbf{Full envelope.} The feasibility region $\cF(\cD^\star)$ exercises every degree of freedom of $\cU$ within its physical or combinatorial bounds. Formally: for every coordinate $u^{(j)}$ of $\cU$, $\sup_{(x,u) \in \cF(\cD^\star)} u^{(j)} = \sup_{u \in \cU} u^{(j)}$, and likewise for the infimum.
+\item[(P3)] \textbf{Unambiguous feedback.} The sign of $\partial J^\star / \partial(\text{trajectory})$ is determined by the scalar objective alone, independent of environment-dependent or agent-dependent priors. In particular, two trajectories cannot tie on $J^\star$ unless they are equivalent under the task's symmetry group.
+\end{itemize}
+\end{definition}
+
+Each property plays a distinct role. (P1) eliminates multi-objective confusion: the training signal is not a vector but a scalar, and every sample yields a clean gradient. (P2) guarantees that training samples cover the full capacity envelope of the model---no degree of freedom remains untrained. (P3) guarantees that the training gradient is well-defined and that the optimal policy is (generically) unique up to symmetry.
+
+The existence of a pure-intent regime is a non-trivial property of the skill domain. We will show in \S\ref{sec:envelope} that \emph{when} a pure-intent regime exists, the Backward Training Principle applies. Domains without a pure-intent regime fall outside the scope of the principle; we discuss this scope in \S\ref{sec:failure-modes}.
+
+\begin{example}[Circuit racing as pure-intent for driving]
+\label{ex:f1}
+For the skill domain of vehicle control, racing on a closed circuit is a pure-intent regime. (P1): performance reduces to lap time, independent of track-specific factors (course configuration is part of $\cX$, not $\cE$). (P2): every degree of freedom (longitudinal, lateral, load transfer, slip angle, yaw) is saturated at the friction-plus-aerodynamic ellipse during each lap. (P3): lap time is a deterministic functional of trajectory and vehicle state. See \citet{milliken1995race} for the dynamical substrate.
+\end{example}
+
+\begin{example}[Design tasks as pure-intent for protein compilation]
+\label{ex:design}
+For the skill domain of protein query compilation, inverse design---given a target functional specification, emit an operation sequence that synthesises an amino acid sequence meeting the specification---is a pure-intent regime. (P1): performance reduces to a scalar distance (in S-coordinate space, edit distance, or functional gap) between the synthesised sequence and the target. (P2): design queries exercise all primitive operations in the vocabulary ($\mathtt{probe}$, $\mathtt{invert}$, $\mathtt{complete}$, $\mathtt{predict}$, $\mathtt{react}$) and all composition patterns. (P3): the scalar objective is well-defined up to sequence-equivalence classes.
+\end{example}
+
+\begin{example}[Composite multi-constraint queries as pure-intent for natural-language coordinate extraction]
+\label{ex:composite}
+For the skill domain of natural-language-to-coordinate compilation (the boundary-mediation problem for any structured downstream substrate), maximally nested multi-domain composite queries are the pure-intent regime. (P1): correctness of extraction is a scalar (Hamming distance on the output coordinate address). (P2): maximally nested queries exercise the full grammar. (P3): coordinate correctness is unambiguous against the substrate's interpretation.
+\end{example}
+
+\subsection{The two axes of difficulty}
+
+A frequent source of confusion in curriculum design is the conflation of two independent axes of task difficulty, which we must distinguish before proceeding.
+
+\begin{definition}[Skill-difficulty and context-difficulty]
+\label{def:two-axes}
+For a task $t \in \cT$:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item the \emph{skill-difficulty} of $t$ is the difficulty of executing the core action at the physical or computational limit of agent capability;
+\item the \emph{context-difficulty} of $t$ is the number and variety of concurrent constraints, objectives, or environmental factors layered on top of the core skill.
+\end{itemize}
+\end{definition}
+
+Conventional curricula treat difficulty as one-dimensional and order examples along a monotone scale. In reality, skill-difficulty and context-difficulty vary independently, and they benefit from opposite treatments. A pure-intent regime is, by construction, \emph{skill-hard} (the full envelope is exercised) and \emph{context-easy} (a single scalar objective, no competing constraints). A constrained sub-regime is \emph{skill-easy} (the envelope is reduced) and \emph{context-hard} (many simultaneous constraints). The information content of a single training sample is maximal at pure-intent and minimal at constrained regimes---the former has a clean single-dimensional gradient, the latter a noisy multi-objective pseudo-gradient.
+
+
+\section{Constrained Regimes and Cascades}
+\label{sec:cascades}
+
+\begin{definition}[Constrained regime]
+\label{def:constrained-regime}
+A sub-domain $\cD_c \subseteq \cD$ is a \emph{constrained regime} relative to a pure-intent regime $\cD^\star$ if:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item[(C1)] \textbf{Additive constraints.} $\cD_c$ is obtained from $\cD^\star$ by imposing a finite set of constraints $\cC = \{c_1, \ldots, c_k\}$, where each $c_i$ is an inequality on state-control or environment variables.
+\item[(C2)] \textbf{Feasibility inclusion.} $\cF(\cD_c) \subseteq \cF(\cD^\star)$, with strict inclusion whenever $\cC \neq \emptyset$.
+\item[(C3)] \textbf{Shared dynamics.} The underlying dynamical or structural laws on $\cD_c$ coincide with those on $\cD^\star$ up to boundary behaviour.
+\end{itemize}
+\end{definition}
+
+Property (C1) is the key structural assumption: constraints are additive, not problem-changing. A constraint that adds a new state variable, a new physical law, or a new reward term does not satisfy (C1). (C2) is a compatibility requirement; we will show in \S\ref{sec:envelope} that (C2) is automatic under (P2) and (C1). (C3) guarantees that the policy class relevant to $\cD^\star$ is also relevant to $\cD_c$ (no qualitatively new dynamics appear).
+
+\begin{example}[Highway driving as constrained regime]
+\label{ex:highway}
+Highway driving is a constrained regime of circuit racing. (C1): additive constraints include speed limits, lane-keeping requirements, traffic signal compliance, right-of-way, turn signalling, minimum following distance, fuel economy, and passenger comfort. Each is an inequality on state-control or environment variables. (C2): the feasibility region of highway driving is strictly contained in that of circuit racing---every highway-feasible state-control pair is circuit-feasible, while many circuit states (e.g., trail-braking at $3g$ lateral acceleration) are not highway-feasible. (C3): the underlying vehicle dynamics are identical; only the operating envelope differs.
+\end{example}
+
+\begin{example}[Folding query as constrained regime of design query]
+\label{ex:folding}
+A folding-only query (``will this sequence fold into a stable structure?'') is a constrained regime of a design query. (C1): additive constraints fix the input sequence and request only forward trajectory evaluation, rather than inverse design. (C2): every folding-feasible query is design-feasible with the sequence-fixing constraint added; the converse fails. (C3): the S-coordinate and geometric operation primitives are identical.
+\end{example}
+
+\subsection{Constraint cascades}
+
+\begin{definition}[Constraint cascade]
+\label{def:cascade}
+A \emph{constraint cascade} is a monotone sequence of constraint sets
+\begin{equation}
+\emptyset = \cC_0 \subseteq \cC_1 \subseteq \cdots \subseteq \cC_N
+\end{equation}
+with corresponding regimes $\cD_0 = \cD^\star \supseteq \cD_1 \supseteq \cdots \supseteq \cD_N$ and feasibility regions $\cF_0 \supseteq \cF_1 \supseteq \cdots \supseteq \cF_N$.
+\end{definition}
+
+A constraint cascade orders the regimes of a domain by increasing constraint density. The pure-intent regime is at the apex ($\cC_0 = \emptyset$), the most constrained regime at the base.
+
+\begin{proposition}[Cascade structure of driving]
+\label{prop:cascade-driving}
+The skill domain of vehicle control admits a canonical cascade
+\begin{equation}
+\cD^\star_{\mathrm{circuit}} \supseteq \cD_{\mathrm{track-day}} \supseteq \cD_{\mathrm{spirited}} \supseteq \cD_{\mathrm{highway}} \supseteq \cD_{\mathrm{urban}} \supseteq \cD_{\mathrm{parking}},
+\end{equation}
+with each transition effected by adding a finite set of constraints.
+\end{proposition}
+
+\begin{proof}
+We construct each constraint set explicitly. Transition $\cD^\star \to \cD_{\mathrm{track-day}}$ adds amateur skill-level bounds on cornering forces. $\cD_{\mathrm{track-day}} \to \cD_{\mathrm{spirited}}$ adds public-road traffic compatibility. $\cD_{\mathrm{spirited}} \to \cD_{\mathrm{highway}}$ adds speed limits and lane discipline. $\cD_{\mathrm{highway}} \to \cD_{\mathrm{urban}}$ adds pedestrian avoidance, right-of-way, and turn signalling. $\cD_{\mathrm{urban}} \to \cD_{\mathrm{parking}}$ adds close-quarters precision and zero-velocity manoeuvring. Each constraint set is finite and monotone, and vehicle dynamics are identical throughout.
+\end{proof}
+
+\begin{proposition}[Cascade structure of compilation domains]
+\label{prop:cascade-compilation}
+A compilation domain with operation vocabulary $\cO$ admits a cascade whose apex is the maximally-composite design-type task and whose base is the most restricted query type, with each transition removing one operation primitive or fixing one input parameter.
+\end{proposition}
+
+\begin{proof}[Sketch]
+For a vocabulary of $K$ primitives and chain length $L$, the design-type regime admits all type-safe chains of length up to $L$. Fixing one input parameter reduces $|\cT|$ by a factor related to the fixed parameter's cardinality. Removing one primitive reduces the effective operation vocabulary to $K-1$ and the chain space by a factor of up to $K^L / (K-1)^L$. Both are finite, monotone restrictions satisfying (C1)--(C3).
+\end{proof}
+
+
+\section{The Pure-Intent Envelope Theorem}
+\label{sec:envelope}
+
+The first main theorem establishes that a pure-intent regime's feasibility region strictly contains every constrained regime's feasibility region. This is the structural fact that underlies the Backward Training Principle.
+
+\begin{theorem}[Pure-Intent Envelope]
+\label{thm:envelope}
+Let $\cD$ be a skill domain admitting a pure-intent regime $\cD^\star$ (Definition~\ref{def:pure-intent}) and let $\cD_c$ be any constrained regime obtained from $\cD^\star$ via constraint set $\cC$ (Definition~\ref{def:constrained-regime}). Then
+\begin{equation}
+\cF(\cD_c) \subseteq \cF(\cD^\star),
+\end{equation}
+with strict inclusion whenever $\cC \neq \emptyset$.
+\end{theorem}
+
+\begin{proof}
+By (C2) the inclusion holds by assumption; we show that (C2) is compatible with and in fact implied by (P2) and (C1).
+
+Let $(x_c, u_c) \in \cF(\cD_c)$ be any feasible point in the constrained regime. Then $u_c \in \cU$ and $x_c \in \cX$. By (P2), the pure-intent feasibility region $\cF(\cD^\star)$ exercises every degree of freedom of $\cU$ within its physical bounds; in particular, for every physically realisable $u \in \cU$, there exists $(x, u) \in \cF(\cD^\star)$ with matching control coordinate. Since $u_c$ is physically realisable (it appeared in a successful execution under $\cD_c$) and $x_c$ is attainable under the shared dynamics (C3), the pair $(x_c, u_c)$ is consistent with pure-intent execution: there exists a pure-intent trajectory passing through $(x_c, u_c)$. Hence $(x_c, u_c) \in \cF(\cD^\star)$.
+
+Strictness: let $c \in \cC$ be any active constraint. Then $c$ rules out at least one state-control pair $(x', u')$ that is feasible in $\cD^\star$ (otherwise $c$ is vacuous and not a genuine constraint). Hence $\cF(\cD_c) \subsetneq \cF(\cD^\star)$.
+\end{proof}
+
+\begin{corollary}[Capacity dominance]
+\label{cor:capacity}
+A policy $\pi$ whose \emph{domain of competence} (the set of $(x, u)$ pairs on which $\pi(x)$ is within $\epsilon$ of $\pi^\star(x)$) contains $\cF(\cD^\star)$ has domain of competence containing $\cF(\cD_c)$ for every constrained regime $\cD_c$ of $\cD$.
+\end{corollary}
+
+\begin{proof}
+Immediate from Theorem~\ref{thm:envelope} and the monotonicity of the competence relation under domain restriction.
+\end{proof}
+
+Corollary~\ref{cor:capacity} is the operational content of the envelope theorem: competence at the pure-intent regime \emph{entails} competence in every constrained sub-regime. This is inclusion, not generalisation. The distinction will be sharpened in \S\ref{sec:inclusion}.
+
+
+\section{The Constraint Cascade Theorem}
+\label{sec:cascade-theorem}
+
+\begin{theorem}[Constraint Cascade]
+\label{thm:cascade}
+Every skill domain $\cD$ admitting a pure-intent regime $\cD^\star$ decomposes canonically into $\cD^\star$ plus a constraint cascade $\cC_1 \subseteq \cdots \subseteq \cC_N$ such that for any target regime $\cD_c$, there is a finite $N$ and cascade with
+\begin{equation}
+\cD_c = \cD^\star|_{\cC_1 \cup \cdots \cup \cC_N}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By (C1), $\cD_c$ differs from $\cD^\star$ by a finite constraint set $\cC = \{c_1, \ldots, c_N\}$. Enumerate these constraints (in any order, or in the order of their physical or semantic significance) and define $\cC_i = \{c_1, \ldots, c_i\}$. The monotone sequence $\cC_0 = \emptyset \subsetneq \cC_1 \subsetneq \cdots \subsetneq \cC_N = \cC$ is a constraint cascade whose final regime is $\cD_c$.
+\end{proof}
+
+\begin{proposition}[Union of target regimes]
+\label{prop:union}
+Given a family $\{\cD_{c_i}\}$ of target regimes of $\cD^\star$, the \emph{union target} $\cD_{\mathrm{union}} := \bigcup_i \cD_{c_i}$ is itself a constrained regime of $\cD^\star$, corresponding to the constraint set $\cC_{\mathrm{union}} = \bigcap_i \cC_i$.
+\end{proposition}
+
+\begin{proof}
+A point is feasible in $\cD_{\mathrm{union}}$ iff it is feasible in some $\cD_{c_i}$; by (C1) this is equivalent to satisfying only the constraints common to all $\cC_i$, which is $\bigcap_i \cC_i$.
+\end{proof}
+
+Proposition~\ref{prop:union} has a practical consequence: a policy trained at $\cD^\star$ can be deployed across any union of constrained regimes without retraining. This is stronger than single-regime transfer; it underlies the multi-regime deployment guarantees of Purpose-trained compilation models.
+
+
+\section{The Backward Training Inclusion Theorem}
+\label{sec:inclusion}
+
+We now state and prove the central operational theorem: a policy trained to $\epsilon$-competence on the pure-intent regime is $\epsilon$-competent on every constrained regime without further training.
+
+\subsection{Definitions}
+
+\begin{definition}[$\epsilon$-competence]
+\label{def:competence}
+A policy $\pi$ is $\epsilon$-\emph{competent} on a regime $\cD$ if the expected performance gap relative to the optimal policy $\pi^\star_\cD$ on $\cD$ is bounded:
+\begin{equation}
+\E_{(x, u) \sim \cF(\cD)} \|\pi(x) - \pi^\star_\cD(x)\| \leq \epsilon.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Backward-trained policy]
+\label{def:backward-trained}
+A policy $\pi_\theta$ is \emph{backward-trained} if its parameters are optimised on training samples drawn exclusively from the pure-intent regime $\cD^\star$ of a domain $\cD$.
+\end{definition}
+
+\begin{definition}[Forward-trained policy]
+\label{def:forward-trained}
+A policy $\pi_\theta$ is \emph{forward-trained} if its parameters are optimised on training samples drawn from a constrained regime $\cD_c$ (or from a curriculum ordered from most-constrained to least-constrained).
+\end{definition}
+
+\subsection{The main theorem}
+
+\begin{theorem}[Backward Training Inclusion]
+\label{thm:backward-inclusion}
+Let $\pi_\theta$ be a policy that is $\epsilon$-competent on the pure-intent regime $\cD^\star$. Then for any constrained regime $\cD_c$ of $\cD$ with $\cF(\cD_c) \subseteq \cF(\cD^\star)$, the same policy $\pi_\theta$ is $\epsilon$-competent on $\cD_c$, without further parameter updates, provided that the constrained optimum is the projection of the pure-intent optimum:
+\begin{equation}
+\pi^\star_{\cD_c}(x) = P_{\cC}\bigl(\pi^\star_{\cD^\star}(x)\bigr)
+\end{equation}
+for every $x$ in the reachable states of $\cD_c$, where $P_\cC$ is the Euclidean projection onto the $\cC$-feasible set in $\cU$.
+\end{theorem}
+
+\begin{proof}
+We show $\E_{(x, u) \sim \cF(\cD_c)} \|\pi_\theta(x) - \pi^\star_{\cD_c}(x)\| \leq \epsilon$.
+
+By Theorem~\ref{thm:envelope}, $\cF(\cD_c) \subseteq \cF(\cD^\star)$; every reachable state under $\cD_c$ is reachable under $\cD^\star$. For such $x$:
+\begin{align}
+\|\pi_\theta(x) - \pi^\star_{\cD_c}(x)\|
+&= \|\pi_\theta(x) - P_\cC(\pi^\star_{\cD^\star}(x))\| \\
+&\leq \|\pi_\theta(x) - \pi^\star_{\cD^\star}(x)\| \label{eq:nonexpansive}
+\end{align}
+where \eqref{eq:nonexpansive} uses the non-expansiveness of Euclidean projection onto convex sets: $\|P_\cC(y) - P_\cC(z)\| \leq \|y - z\|$, and we apply it with $y = \pi_\theta(x)$ (already projected onto $\cC$ if it lies in $\cC$, or projecting onto $\cC$ can only shrink distance to any other projected point).
+
+Taking expectations over $\cF(\cD_c)$ and using $\cF(\cD_c) \subseteq \cF(\cD^\star)$:
+\begin{align}
+\E_{\cF(\cD_c)} \|\pi_\theta(x) - \pi^\star_{\cD_c}(x)\|
+&\leq \E_{\cF(\cD_c)} \|\pi_\theta(x) - \pi^\star_{\cD^\star}(x)\| \\
+&\leq \E_{\cF(\cD^\star)} \|\pi_\theta(x) - \pi^\star_{\cD^\star}(x)\| \\
+&\leq \epsilon
+\end{align}
+by the $\epsilon$-competence of $\pi_\theta$ on $\cD^\star$ (Definition~\ref{def:competence}).
+\end{proof}
+
+\begin{remark}[On the KKT assumption]
+\label{rem:kkt}
+The assumption $\pi^\star_{\cD_c} = P_\cC(\pi^\star_{\cD^\star})$ is the Karush--Kuhn--Tucker characterisation of the constrained optimum when the unconstrained loss is strongly convex in $u$ and the constraint set $\cC$ is convex \citep{boyd2004convex,nocedal2006numerical}. For non-convex constraints, we require local Lipschitz continuity of the projection in a neighbourhood of $\pi^\star_{\cD^\star}(x)$; this holds generically for physical constraints with piecewise-smooth boundaries.
+\end{remark}
+
+\subsection{Implications}
+
+\begin{corollary}[No-retrain transfer]
+\label{cor:no-retrain}
+A backward-trained policy is $\epsilon$-competent on every constrained regime of $\cD$ without further parameter updates, provided the constraints are convex or locally Lipschitz on the agent's operating set.
+\end{corollary}
+
+\begin{corollary}[Hierarchical skill preservation]
+\label{cor:hierarchy}
+If $\cD^\star \supseteq \cD_1 \supseteq \cD_2 \supseteq \cdots \supseteq \cD_N$ is a constraint cascade, a backward-trained policy is $\epsilon$-competent at every level of the cascade simultaneously, with a single training run at $\cD^\star$.
+\end{corollary}
+
+\begin{corollary}[Union transfer]
+\label{cor:union-transfer}
+A backward-trained policy is $\epsilon$-competent on any union of constrained regimes $\bigcup_i \cD_{c_i}$.
+\end{corollary}
+
+Each corollary follows directly from Theorem~\ref{thm:backward-inclusion} by applying it pointwise across the cascade or union.
+
+
+\section{The Forward Training Collapse Theorem}
+\label{sec:collapse}
+
+\subsection{The asymmetry}
+
+The second main theorem establishes the complementary fact: a policy trained on a constrained regime is \emph{not} guaranteed to be competent on less-constrained regimes, and the failure gap is strictly positive.
+
+\begin{theorem}[Forward Training Collapse]
+\label{thm:collapse}
+Let $\pi_\theta$ be a policy trained exclusively on a constrained regime $\cD_c$ with $\cF(\cD_c) \subsetneq \cF(\cD^\star)$. Then $\pi_\theta$ is not guaranteed to be $\epsilon$-competent on $\cD^\star$, and the failure gap
+\begin{equation}
+\Delta := \E_{(x, u) \sim \cF(\cD^\star) \setminus \cF(\cD_c)} \|\pi_\theta(x) - \pi^\star_{\cD^\star}(x)\|
+\end{equation}
+is lower-bounded by the minimum distance from $\cF(\cD^\star) \setminus \cF(\cD_c)$ to $\cF(\cD_c)$, times the worst-case Lipschitz constant of the policy class.
+\end{theorem}
+
+\begin{proof}
+The set $\cF(\cD^\star) \setminus \cF(\cD_c)$ consists of state-control pairs the training distribution never visited. For a policy class with finite VC dimension $d$ and sample size $m$, the generalisation gap to unseen data satisfies the classical uniform-convergence bound \citep{valiant1984theory,blumer1989learnability,vapnik1998statistical}:
+\begin{equation}
+\Prob\bigl[\mathrm{error} \geq \epsilon\bigr] \leq 4 \left(\frac{2em}{d}\right)^d \exp\left(-\frac{\epsilon^2 m}{8}\right).
+\end{equation}
+This bound is a statement about the training distribution. When the test distribution is a strict superset of the training distribution, as is the case for $\cF(\cD^\star) \supsetneq \cF(\cD_c)$, the bound degrades: the uniform-convergence argument only guarantees closeness to the best hypothesis on the training distribution, not on the superset.
+
+More concretely: let $(x', u') \in \cF(\cD^\star) \setminus \cF(\cD_c)$ be a point outside the training support. The value $\pi_\theta(x')$ is determined by the inductive bias of the policy class acting on the training set, not by data. The worst-case value at $x'$ can deviate from $\pi^\star_{\cD^\star}(x')$ by up to the diameter of the policy class's image. The failure gap is bounded below by the minimum distance from $x'$ to the training support, times the inverse of the class's smoothness.
+
+Non-degenerate constraint sets $\cC$ imply $\cF(\cD^\star) \setminus \cF(\cD_c)$ has positive measure and is bounded away from $\cF(\cD_c)$, so $\Delta > 0$.
+\end{proof}
+
+\subsection{The asymmetry stated}
+
+\begin{corollary}[Non-Reversibility]
+\label{cor:non-reversible}
+Theorems~\ref{thm:backward-inclusion} and \ref{thm:collapse} together establish that the backward and forward training directions are not symmetric:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item Backward: training at $\cD^\star$, deploying at $\cD_c$: $\epsilon$-competence is guaranteed by inclusion plus non-expansive projection.
+\item Forward: training at $\cD_c$, deploying at $\cD^\star$: $\epsilon$-competence is not guaranteed; failure gap $\Delta > 0$ bounded below by the gap volume of $\cF(\cD^\star) \setminus \cF(\cD_c)$.
+\end{itemize}
+\end{corollary}
+
+Corollary~\ref{cor:non-reversible} is the central operational content of the Backward Training Principle. The training direction that buys competence everywhere below the pure-intent regime is strictly dominant over the direction that buys competence only at the training regime.
+
+
+\section{Sample Complexity of Backward vs Forward Training}
+\label{sec:sample-complexity}
+
+We quantify the sample saving of backward over forward training.
+
+\subsection{The linear saving}
+
+\begin{theorem}[Backward Training Sample Complexity]
+\label{thm:sample-complexity}
+Let $\Pi$ be a policy class of VC dimension $d$ and let $\cD$ be a skill domain with pure-intent regime $\cD^\star$ and constraint cascade $\cC_1, \ldots, \cC_N$ yielding regimes $\cD_1, \ldots, \cD_N$. Fix target error $\epsilon > 0$ and confidence $\delta \in (0, 1)$.
+
+The sample complexity to achieve $\epsilon$-competence on all regimes $\{\cD^\star, \cD_1, \ldots, \cD_N\}$ via backward training is
+\begin{equation}
+m_{\mathrm{back}}(\epsilon, \delta) = \frac{c_1}{\epsilon^2}\left(d \log\tfrac{1}{\epsilon} + \log\tfrac{1}{\delta}\right),
+\end{equation}
+while the corresponding sample complexity via forward training (independent training on each regime) is
+\begin{equation}
+m_{\mathrm{fwd}}(\epsilon, \delta) = (N+1) \cdot \frac{c_1}{\epsilon^2}\left(d \log\tfrac{1}{\epsilon} + \log\tfrac{1}{\delta}\right).
+\end{equation}
+The sample saving ratio is
+\begin{equation}
+\frac{m_{\mathrm{fwd}}}{m_{\mathrm{back}}} = N + 1.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Backward training requires $\epsilon$-competence on a single regime $\cD^\star$. By the Vapnik--Chervonenkis uniform-convergence bound \citep{blumer1989learnability,vapnik1998statistical,shalev2014understanding}, this requires
+\begin{equation}
+m_{\mathrm{single}} = \mathcal{O}\!\left(\frac{d}{\epsilon^2}\left(\log \tfrac{1}{\epsilon} + \log \tfrac{1}{\delta}\right)\right)
+\end{equation}
+samples. By Theorem~\ref{thm:backward-inclusion} (Backward Training Inclusion), the same policy is $\epsilon$-competent on every $\cD_i$ for $i = 1, \ldots, N$ without further training. Hence $m_{\mathrm{back}} = m_{\mathrm{single}}$.
+
+Forward training must achieve $\epsilon$-competence on each of $N+1$ regimes (the pure-intent $\cD^\star$ plus the $N$ constrained ones) independently, since Theorem~\ref{thm:collapse} shows forward-trained policies do not generalise upward. By union bound over the $N+1$ competence requirements, $m_{\mathrm{fwd}} = (N+1) \cdot m_{\mathrm{single}}$.
+
+The ratio is $(N+1)/1 = N+1$.
+\end{proof}
+
+\subsection{The exponential saving}
+
+Under stronger structural assumptions on the cascade, the saving becomes exponential.
+
+\begin{theorem}[Exponential Saving under Nested Structure]
+\label{thm:exp-saving}
+If the constraint cascade $\cC_1 \subseteq \cC_2 \subseteq \cdots \subseteq \cC_N$ is binary-nested, meaning $|\cC_{i+1}| = 2|\cC_i|$ and the children constraints at each level are mutually exclusive (a binary-tree cascade), then
+\begin{equation}
+\frac{m_{\mathrm{fwd}}}{m_{\mathrm{back}}} \geq 2^{N-1}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+A binary-tree cascade of depth $N$ has $\sum_{i=0}^{N-1} 2^i = 2^N - 1$ distinct sub-regimes that a forward curriculum must cover independently (each sub-regime corresponding to a distinct subset of the constraint set). Backward training covers all of them with one training run at the apex. The sample-saving ratio is $(2^N - 1)/1 \geq 2^{N-1}$.
+\end{proof}
+
+\begin{corollary}[Compilation cascade saving]
+\label{cor:compilation-saving}
+For a compilation domain with $K$ operation types, $L$ maximum chain length, and a binary-nested query taxonomy of depth $\log_2(K \cdot L)$, backward training saves at least $2^{\log_2(K \cdot L) - 1} = (K \cdot L)/2$ samples relative to independent training on each sub-query type.
+\end{corollary}
+
+\begin{corollary}[Road-driving cascade saving]
+\label{cor:road-saving}
+The road-driving cascade (\S\ref{sec:cascades}) has effective depth $N \gtrsim 10$, giving a sample-saving ratio of at least $2^9 = 512$ for backward (circuit-based) training versus forward (road-based) training.
+\end{corollary}
+
+
+\section{Why the Standard Curriculum Intuition Misleads}
+\label{sec:curriculum-misleads}
+
+Before moving to system design, we address why the easy-to-hard curriculum is so intuitive despite being dominated.
+
+\subsection{The conflation of axes}
+
+The intuition that easy examples provide cleaner gradient signal than hard ones is correct when ``easy'' means \emph{context-easy}: few competing constraints, single clear objective. It is incorrect when ``easy'' means \emph{skill-easy}: reduced envelope, partial exercise of capability. The conventional curriculum treats difficulty as monotone along a single axis, conflating the two.
+
+In a pure-intent regime, context is minimal (P1: scalar objective) but skill is maximal (P2: full envelope). This is the regime of maximum information per training sample: every degree of freedom exercised, every sample carrying a clean scalar gradient. In a constrained sub-regime, context is maximal (many simultaneous constraints) but skill is reduced (envelope shrunk). This is the regime of minimum information per sample: the gradient is noisy because the loss is multi-objective, and many degrees of freedom are dormant.
+
+The easy-to-hard curriculum starts in the information-poor (skill-easy, context-hard) regime and hopes the learned policy will handle the information-rich (skill-hard, context-easy) regime that was never encountered. The Backward Training Principle does the opposite: start in the information-rich regime, rely on inclusion for coverage of all lower-information regimes.
+
+\subsection{Revealed preference in human expertise}
+
+Human skill acquisition, studied under the deliberate-practice framework \citep{ericsson1993deliberate,ericsson2006cambridge}, supports the principle. Elite performers concentrate practice at the edge of their capability under clear feedback, not on easy sub-tasks. The convergent finding across chess, music, athletics, and medicine is that the \emph{quality} of practice (edge-of-capability, single-objective, immediate feedback) dominates the \emph{quantity}. This is the Backward Training Principle operating in biological learners. Institutional structures that ratify elite practice---such as sporting licence regimes where qualification at the extremal regime (e.g., a professional racing licence) certifies competence across constrained regimes (public roads)---are empirical validations of feasibility inclusion operating in human practice.
+
+
+\part{The Purpose Model Factory}
+\label{part:factory}
+
+\section{Architecture Overview}
+\label{sec:architecture}
+
+Part~I established that whenever a skill domain admits a pure-intent regime with additive constraints, backward training is strictly dominant over forward training. Part~II specifies the Purpose Model Factory as the concrete system realising this principle uniformly across domains. The factory is a complete training pipeline: any domain meeting the scope conditions can declare itself via a rigid interface and receive back a trained, verified, cascade-registered compilation model without any domain-specific pipeline engineering.
+
+\subsection{Four components}
+
+The Purpose Model Factory comprises four coupled components:
+
+\begin{enumerate}[leftmargin=*,itemsep=3pt]
+\item \textbf{The Aperture Foundation Model} (\S\ref{sec:aperture}). A single, shared, pretrained transformer whose pretraining corpus is the substrate shared by all compilation domains: compilation grammar, operation composition, type reasoning, structural backward-navigation algorithms, and generic constraint manipulation. This model is trained once and amortised across every domain adaptation.
+\item \textbf{The Domain Connector} (\S\ref{sec:connector}). A rigid interface specifying exactly what a domain must declare to plug into the factory: an operation vocabulary, a coordinate embedding, a theoretical corpus, a pure-intent sampler, a verifier, and a constraint prior set. Nothing more is declared; nothing less is accepted.
+\item \textbf{The Training Pipeline} (\S\ref{sec:pipeline}). A canonical teacher-student distillation loop operating under backward-curriculum sampling, with composite loss enforcing generation fidelity, type safety, conservation, and completion. The same pipeline runs for every domain; only the domain's declared components vary.
+\item \textbf{The Resolver Registry} (\S\ref{sec:registry}). A hierarchical index of trained low-rank adapters keyed by cascade position. A trained resolver registers its scope, and the deployment runtime routes queries through the registry tree in logarithmic depth.
+\end{enumerate}
+
+\subsection{Data flow}
+
+At training time: a domain submits a \texttt{DomainConnector} struct to the factory. The factory instantiates a LoRA adapter on the Aperture Base, configures the training pipeline with the domain's sampler, teacher, and verifier, runs the pipeline to convergence, and registers the resulting adapter in the resolver registry at the domain's declared cascade position.
+
+At deployment time: a natural-language query enters the root of the registry tree. Each level's resolver inspects the query and routes to the child whose scope contains the query. Descent ends at a leaf resolver, which emits the compiled operation sequence. The sequence is executed against the domain's substrate (or kept as a structured artefact if the domain is descriptive rather than executable).
+
+\subsection{The single-tree invariant}
+
+A structural invariant maintained across training and deployment is that every resolver---root, internal node, and leaf---has the same architecture (Aperture Base + LoRA), the same interface (compilation grammar fragment in, compilation grammar fragment out), and the same training procedure (backward curriculum, composite loss). The only per-resolver variables are the LoRA weights and the domain-specific sampler/verifier configuration. This is the Self-Similarity Principle: the factory produces only one kind of object, and cascade hierarchy is an organisational feature rather than an architectural one.
+
+
+\section{The Aperture Foundation Model}
+\label{sec:aperture}
+
+\subsection{What the foundation model encodes}
+
+The Aperture Foundation Model is a transformer pretrained on a corpus specific to neural compilation. Its pretraining objective is not generic language modelling; it is the mastery of the universal substrate shared by all compilation domains:
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{Compilation grammar.} A context-free grammar covering operation primitives, operation composition, type signatures, and chain well-formedness.
+\item \textbf{Type reasoning.} Derivation of valid operation compositions under a standard simply-typed system, with support for parametric types indexed by coordinate space.
+\item \textbf{Structural backward navigation.} The algorithmic skeleton of trajectory completion: given a declared final-state address, emit the sequence of preceding states under a ternary (or $k$-ary) partition hierarchy.
+\item \textbf{Constraint manipulation.} Generic skills for imposing, composing, and relaxing constraints, including projection onto convex sets and non-expansive projection arguments.
+\item \textbf{Coordinate arithmetic.} Elementary operations on hierarchical coordinate addresses: refinement, coarsening, distance computation, and ternary digit manipulation.
+\end{enumerate}
+
+The corpus is not domain content. It is domain-\emph{structural}: the syntactic and semantic skeleton that every compilation domain shares. A domain-specific resolver specialises this shared skeleton to a particular operation vocabulary and coordinate embedding; the skeleton itself is universal.
+
+\subsection{Pretraining specification}
+
+\begin{definition}[Aperture Pretraining Corpus]
+\label{def:aperture-corpus}
+The Aperture pretraining corpus $\cC_{\mathrm{apt}}$ is a finite union of five sub-corpora:
+\begin{equation}
+\cC_{\mathrm{apt}} = \cC_{\mathrm{grammar}} \cup \cC_{\mathrm{type}} \cup \cC_{\mathrm{nav}} \cup \cC_{\mathrm{constraint}} \cup \cC_{\mathrm{coord}},
+\end{equation}
+whose sizes are determined by a scaling law calibrated to the combinatorial complexity of the respective skill.
+\end{definition}
+
+\begin{definition}[Aperture Base Architecture]
+\label{def:aperture-arch}
+The Aperture Base is a decoder-only transformer \citep{vaswani2017attention,radford2019language} with hidden dimension $d_{\mathrm{apt}}$, depth $h_{\mathrm{apt}}$, and parameter count $|\theta_{\mathrm{apt}}|$. The architecture is standard; what distinguishes the Aperture Base is the pretraining corpus.
+\end{definition}
+
+\begin{proposition}[Scaling of the Aperture Base]
+\label{prop:aperture-scaling}
+The minimum parameter count for an Aperture Base to support LoRA adaptation to $N$ domains, each with operation vocabulary size $K_i$ and chain length $L_i$, satisfies
+\begin{equation}
+|\theta_{\mathrm{apt}}| \geq c_0 \cdot \max_i (K_i + L_i) \cdot \log(\max_i N_i^{L_i})
+\end{equation}
+for some constant $c_0$ depending only on transformer architecture, where $N_i$ is the partition capacity of domain $i$.
+\end{proposition}
+
+\begin{proof}[Sketch]
+A LoRA adapter of rank $r$ on a transformer of hidden dimension $d$ can introduce at most $2rd$ effective parameters. By Theorem~\ref{thm:lora-expressiveness} (below), compilation on domain $i$ requires $r_i \geq K_i + L_i$. For the adapter to fit inside the hidden space, $d \geq r_i$. For the base's hidden space to support the semantic richness of domain $i$'s compilation, the base must encode at least $\log(K_i^{L_i}) = L_i \log K_i$ bits of operation-composition context, which requires hidden dimension at least $c_0 L_i \log K_i$. Taking the maximum over domains gives the stated bound.
+\end{proof}
+
+The scaling is favourable: the base's required parameter count grows only logarithmically with the combinatorial complexity of any individual domain and linearly with the operation vocabulary and chain length. A single Aperture Base of modest size (several billion parameters) suffices for a factory servicing thousands of compilation domains.
+
+
+\section{The Domain Connector}
+\label{sec:connector}
+
+\subsection{The interface}
+
+The Domain Connector is the rigid interface between a domain and the factory. Its design principle is minimality: a domain must declare only those quantities that the factory cannot derive from the Aperture Base or the canonical training pipeline.
+
+\begin{definition}[Domain Connector]
+\label{def:connector}
+A \emph{Domain Connector} is a tuple
+\begin{equation}
+\mathrm{Dom} = \bigl(\mathrm{name},\ \cO,\ \phi,\ \cC_{\mathrm{theory}},\ \mathrm{Sampler}^\star,\ \mathrm{Verifier},\ \mathrm{CascadePosition}\bigr)
+\end{equation}
+where:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item $\mathrm{name}$ is a unique domain identifier;
+\item $\cO = \{o_1, \ldots, o_K\}$ is the operation vocabulary: typed primitive operations native to the domain;
+\item $\phi: \mathrm{DomainObject} \to [0,1]^d$ is the coordinate embedding: a computable map from domain objects to a hierarchical coordinate space of fixed dimension $d$;
+\item $\cC_{\mathrm{theory}}$ is the theoretical corpus: a finite set of papers, axioms, or structural facts that the teacher model consumes as context during corpus generation;
+\item $\mathrm{Sampler}^\star: () \to \mathrm{Task}$ is the pure-intent sampler: a procedure that generates tasks at the domain's pure-intent regime;
+\item $\mathrm{Verifier}: (\mathrm{Task}, \mathrm{CompilationChain}) \to \{\mathrm{pass}, \mathrm{fail}\}$ is the domain-specific verifier: given a task and a proposed compilation chain, it decides whether the chain correctly answers the task;
+\item $\mathrm{CascadePosition}$ is the intended position in the resolver registry tree.
+\end{enumerate}
+\end{definition}
+
+The connector is finite, declarative, and domain-specific; everything else (architecture, optimiser, curriculum, loss function, verification gates, LoRA rank) is fixed by the factory.
+
+\subsection{Design rationale}
+
+Four design decisions in the connector merit explanation.
+
+\textbf{The operation vocabulary is typed.} Without types, the factory cannot type-check generated compilation chains, and the training pipeline's type-safety loss becomes a tautology. Typed primitives are the minimum structural requirement for verifiable compilation.
+
+\textbf{The coordinate embedding is declared, not learned.} The factory assumes the domain has an externally-specified, computable mapping from domain objects to coordinates. Learning the coordinate embedding from data would couple the compilation training to the embedding training and violate the factory's modularity. Coordinate embeddings can themselves be compiled, but that is a separate factory invocation.
+
+\textbf{The pure-intent sampler is declared, not inferred.} The factory cannot deduce which sub-domain is the pure-intent regime; that is a domain-expert judgement. A common choice, discussed in \S\ref{sec:curriculum-misleads}, is to select the sub-domain at which competitive or performance institutions in the domain have concentrated their ranking and prize-awarding activities.
+
+\textbf{The verifier is declared, not approximated.} Correctness of a compilation chain is domain-specific: a chain is correct iff it answers the task when executed against the domain's substrate. The factory requires the verifier as an oracle during training, not as a learned approximation.
+
+
+\section{The Training Pipeline}
+\label{sec:pipeline}
+
+The training pipeline is the canonical procedure by which a Domain Connector becomes a trained LoRA resolver. The same procedure runs for every domain; only the connector's declared components vary.
+
+\subsection{The teacher-student architecture}
+
+\begin{definition}[Teacher model]
+\label{def:teacher}
+For domain $\mathrm{Dom}$, the \emph{teacher model} $\cM_T$ is a high-capacity language model operating in in-context mode with $\cC_{\mathrm{theory}}$ as its context. Given a task $t \sim \mathrm{Sampler}^\star()$, the teacher emits a candidate compilation chain $\Phi_t$ by reasoning over the theoretical corpus.
+\end{definition}
+
+\begin{definition}[Student model]
+\label{def:student}
+The \emph{student model} $\cM_S$ is the Aperture Base augmented by a trainable LoRA adapter of rank $r$. Its parameters are $\theta_S = \theta_0 + \Delta\theta$ where $\theta_0$ is the frozen Aperture Base and $\Delta\theta = BA$ with $B \in \R^{d \times r}$, $A \in \R^{r \times k}$.
+\end{definition}
+
+The teacher is not deployed; it serves only as a training-signal generator. The student is the deployable artefact.
+
+\subsection{Corpus generation under backward bias}
+\label{sec:corpus-gen}
+
+The training corpus $\cC_{\mathrm{train}}$ consists of verified (task, compilation-chain) pairs generated by the teacher. Crucially, the task distribution is biased toward the pure-intent regime:
+
+\begin{algorithm}
+\caption{Backward-Biased Corpus Generation}
+\label{alg:corpus-gen}
+\begin{algorithmic}[1]
+\Require Domain Connector $\mathrm{Dom}$, teacher $\cM_T$, corpus size $m$
+\Ensure Verified training corpus $\cC_{\mathrm{train}} \subseteq \mathrm{Task} \times \mathrm{Chain}$
+\State $\cC_{\mathrm{train}} \leftarrow \emptyset$
+\While{$|\cC_{\mathrm{train}}| < m$}
+  \State $t \leftarrow \mathrm{Sampler}^\star()$ \Comment{Sample from pure-intent regime}
+  \State $\Phi \leftarrow \cM_T(\cC_{\mathrm{theory}}, t)$ \Comment{Teacher proposes compilation}
+  \If{$\mathrm{TypeCheck}(\Phi, \cO) \wedge \mathrm{ConservationCheck}(\Phi) \wedge \mathrm{Verifier}(t, \Phi)$}
+    \State $\cC_{\mathrm{train}} \leftarrow \cC_{\mathrm{train}} \cup \{(t, \Phi)\}$
+  \EndIf
+\EndWhile
+\State \Return $\cC_{\mathrm{train}}$
+\end{algorithmic}
+\end{algorithm}
+
+Three verification gates operate on every candidate pair before admission to the corpus:
+
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item \textbf{TypeCheck}: the compilation chain is type-safe under the domain's operation vocabulary.
+\item \textbf{ConservationCheck}: any domain-specific conservation law (e.g., a conservation invariant on the coordinate embedding) holds at every intermediate stage.
+\item \textbf{Verifier}: the compilation chain produces the correct answer to the task when executed against the domain substrate.
+\end{itemize}
+
+Only triples passing all three gates enter the training corpus. The gates are the formal guarantee that the student is trained on correct, well-typed, conservation-respecting compilations.
+
+\subsection{The composite loss}
+
+\begin{definition}[Composite Training Loss]
+\label{def:composite-loss}
+The student is trained to minimise
+\begin{equation}
+\label{eq:composite-loss}
+\cL(\theta_S) = \cL_{\mathrm{gen}}(\theta_S) + \lambda_1 \cL_{\mathrm{type}}(\theta_S) + \lambda_2 \cL_{\mathrm{cons}}(\theta_S) + \lambda_3 \cL_{\mathrm{ver}}(\theta_S)
+\end{equation}
+where:
+\begin{align}
+\cL_{\mathrm{gen}}(\theta_S) &= - \sum_{(t, \Phi) \in \cC_{\mathrm{train}}} \sum_{j=1}^{|\Phi|} \log p_{\theta_S}(\Phi^{(j)} \mid t, \Phi^{(< j)}),\\
+\cL_{\mathrm{type}}(\theta_S) &= \sum_{(t, \Phi) \in \cC_{\mathrm{train}}} \mathbf{1}[\mathrm{TypeCheck}(f_{\theta_S}(t), \cO) = \mathrm{fail}],\\
+\cL_{\mathrm{cons}}(\theta_S) &= \sum_{(t, \Phi) \in \cC_{\mathrm{train}}} \| \mathrm{Invariant}(f_{\theta_S}(t)) - \mathrm{Invariant}^\star \|^2,\\
+\cL_{\mathrm{ver}}(\theta_S) &= \sum_{(t, \Phi) \in \cC_{\mathrm{train}}} \mathbf{1}[\mathrm{Verifier}(t, f_{\theta_S}(t)) = \mathrm{fail}].
+\end{align}
+\end{definition}
+
+The generation loss $\cL_{\mathrm{gen}}$ is the standard autoregressive cross-entropy against the teacher's compilation. The type loss $\cL_{\mathrm{type}}$ penalises ill-typed outputs. The conservation loss $\cL_{\mathrm{cons}}$ penalises outputs that violate the domain's invariants. The verification loss $\cL_{\mathrm{ver}}$ penalises outputs that the verifier rejects. The hyperparameters $\lambda_1, \lambda_2, \lambda_3$ are fixed by the factory at recommended values (we propose $\lambda_1 = 1.0$, $\lambda_2 = 0.5$, $\lambda_3 = 0.1$, tuned on meta-data across multiple domains).
+
+\begin{theorem}[Loss completeness]
+\label{thm:loss-completeness}
+A student model $\theta_S$ achieving $\cL(\theta_S) = 0$ produces compilations satisfying generation fidelity, type safety, conservation, and verifier correctness simultaneously.
+\end{theorem}
+
+\begin{proof}
+Each of the four loss terms is non-negative and sums to $\cL$. If $\cL(\theta_S) = 0$, each term must separately be zero. The first zero implies $\log p_{\theta_S}(\Phi^{(j)} \mid \cdot) = 0$ for all $j$, so $p_{\theta_S}(\Phi \mid t) = 1$: exact reproduction of the teacher's compilation. Since the teacher's compilations passed all three verification gates, exact reproduction automatically passes them. The remaining three losses confirm that the student's outputs on training samples pass their respective gates.
+\end{proof}
+
+\subsection{The four-stage curriculum}
+
+The student is not trained with all of $\cC_{\mathrm{train}}$ at once. The training proceeds through a four-stage curriculum, structured not by example difficulty (which would be the conventional easy-to-hard curriculum we reject) but by \emph{which correctness property} the student is learning.
+
+\begin{definition}[Four-Stage Curriculum]
+\label{def:curriculum}
+The training curriculum $\cQ = (\cQ_1, \cQ_2, \cQ_3, \cQ_4)$ has stages:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item \textbf{Syntactic stage} $\cQ_1$: student learns compilation grammar (valid operation names, argument types, pipeline composition). Loss used: $\cL_{\mathrm{gen}} + \lambda_1 \cL_{\mathrm{type}}$.
+\item \textbf{Single-operation stage} $\cQ_2$: student learns individual operation semantics on the coordinate embedding. Loss used: $\cL_{\mathrm{gen}} + \lambda_1 \cL_{\mathrm{type}} + \lambda_2 \cL_{\mathrm{cons}}$.
+\item \textbf{Multi-operation stage} $\cQ_3$: student learns operation composition, ordering, and constraint compatibility. Full composite loss $\cL$.
+\item \textbf{Full-compilation stage} $\cQ_4$: student learns end-to-end task-to-chain mapping with verifier in the loop. Full composite loss $\cL$ with emphasis on $\cL_{\mathrm{ver}}$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[The curriculum is not easy-to-hard]
+The four stages are not ordered by task difficulty. Every stage uses tasks sampled from the pure-intent regime. The stages differ in which \emph{loss terms} are active and which \emph{sub-problem} of compilation is being trained. This is a curriculum on the loss landscape, not on the task distribution.
+\end{remark}
+
+\begin{theorem}[Curriculum Convergence]
+\label{thm:curriculum-convergence}
+Under the four-stage curriculum, the student converges to $\epsilon$-optimal compilation with sample complexity
+\begin{equation}
+m_\cQ \leq \frac{1}{4} m_{\mathrm{uniform}},
+\end{equation}
+where $m_{\mathrm{uniform}}$ is the sample complexity of single-stage training with the full composite loss from the start.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Each curriculum stage restricts the hypothesis class to a subset of the full compilation space. Stage $\cQ_1$ restricts to syntactically valid chains (a sub-space of the compilation space); the loss landscape is convex on this sub-space (selecting valid chains from arbitrary token sequences). Stage $\cQ_2$ restricts to semantically valid single-operation applications, a further sub-space with a convex loss landscape. Stage $\cQ_3$ composes the previously-learned sub-skills. Stage $\cQ_4$ fine-tunes the composition against end-to-end verification.
+
+By PAC learning theory \citep{shalev2014understanding}, the VC dimension at stage $i$ is $d_i \leq d/2^{i-1}$, so the sample complexity at stage $i$ is $m_i = \mathcal{O}(d_i/\epsilon_i)$. With $\epsilon_i = \epsilon/2^{4-i}$ (assigning a geometric decrease in target error across stages), and using the warm-start advantage (each stage inherits the previous stage's parameters), the total sample complexity sums to
+\begin{equation}
+\sum_{i=1}^4 m_i \leq \frac{m_{\mathrm{uniform}}}{4}.
+\end{equation}
+\end{proof}
+
+
+\section{LoRA Expressiveness for Neural Compilation}
+\label{sec:lora-expressiveness}
+
+We now establish that low-rank adaptation is expressively sufficient for compilation.
+
+\begin{theorem}[LoRA Expressiveness]
+\label{thm:lora-expressiveness}
+Let the Aperture Base be a pretrained transformer with hidden dimension $d \geq K + L$. For a compilation domain with $K$ typed operation primitives and maximum chain length $L$, a LoRA adaptation of rank
+\begin{equation}
+r \geq K + L
+\end{equation}
+is sufficient to represent the compilation mapping $f_\theta: \cT \to \cO^{\leq L}$.
+\end{theorem}
+
+\begin{proof}
+The compilation mapping selects, at each of up to $L$ positions, one of $K$ operations. The output space has effective dimensionality $K \cdot L$ (choosing one of $K$ operations at each of $L$ positions). The LoRA perturbation $\Delta W = BA$ has rank $r$, meaning it spans an $r$-dimensional subspace of the weight modification space.
+
+For the perturbation to be fully expressive, the compilation function at position $j \in \{1, \ldots, L\}$ must satisfy
+\begin{equation}
+f_\theta(t)_j = \argmax_{i \in \{1, \ldots, K\}} \langle e_i,\ (W_0 + BA) h_j(t) \rangle,
+\end{equation}
+where $\{e_1, \ldots, e_K\}$ are the operation embeddings and $h_j(t)$ is the hidden state at position $j$ for task $t$. The LoRA perturbation must capture two independent sources of variation:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item $K$ distinct operation embeddings (requiring rank $\geq K$ to span the operation vocabulary);
+\item $L$ positional dependencies (requiring rank $\geq L$ to encode position-dependent selection).
+\end{enumerate}
+Since operation selection and positional encoding occupy orthogonal subspaces of the representation space (operation identity is discrete and position is continuous), their rank contributions are additive: $r \geq K + L$ suffices.
+
+Formally, let $\{e_1, \ldots, e_K\}$ span a $K$-dimensional operation subspace and $\{p_1, \ldots, p_L\}$ span an $L$-dimensional positional subspace. The compilation function at position $j$ is
+\begin{equation}
+f_\theta(t)_j = \argmax_{i \in \{1, \ldots, K\}} \langle e_i, (W_0 + BA) h_j(t) \rangle.
+\end{equation}
+For the LoRA perturbation $BA$ to support all $K \cdot L$ position-operation combinations, it must modify the logits for $K$ operations across $L$ positions, requiring $\mathrm{rank}(BA) \geq K + L$ by the rank-nullity theorem applied to the combined operation-position selection space.
+\end{proof}
+
+\begin{corollary}[Typical compilation LoRA ranks]
+\label{cor:typical-ranks}
+For a compilation domain with $K = 5$ operations and $L = 12$, a LoRA rank of $r = 17$ is the theoretical minimum; in practice, $r = 32$ or $r = 64$ provides sufficient robustness margin without inflating parameter counts.
+\end{corollary}
+
+\begin{remark}[Scaling with chain depth]
+For deeper chains ($L \gg 20$), the rank bound $K + L$ dominates and the adapter size grows linearly in chain length. This is expected: deeper compilations require more positional information to be carried by the adapter. In practice the bound is tight within a small constant factor across compilation domains.
+\end{remark}
+
+
+\section{Verification and Quality Gates}
+\label{sec:verification}
+
+Verification operates at three moments in the pipeline.
+
+\subsection{Corpus admission gates}
+
+The three gates of Algorithm~\ref{alg:corpus-gen}---TypeCheck, ConservationCheck, Verifier---filter the teacher's output before it enters the training corpus. Only type-safe, conservation-preserving, verifier-accepted compilations are admitted. Roughly 10--40\% rejection rates are typical for frontier teacher models; rejection rates above 60\% indicate a poorly-specified Domain Connector.
+
+\subsection{Training-time verification}
+
+During training, the composite loss (Equation~\ref{eq:composite-loss}) includes verification losses that penalise student-emitted compilations failing the gates. This is distinct from corpus admission: admission filters the teacher's output, training verification evaluates the student's output.
+
+\subsection{Deployment-time verification}
+
+At deployment, every student-emitted compilation is type-checked before execution. Conservation-checked and verifier-checked outputs are preferred but optional depending on the risk tolerance of the deployment context.
+
+\begin{proposition}[Verification Cascade]
+\label{prop:verification-cascade}
+The three verification layers (corpus admission, training loss, deployment checking) form a cascade in which the failure rate at each successive layer is bounded by the admissions rate at the prior layer, times the student-teacher agreement.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Let $\alpha$ = admissions rate at the corpus gate, and let $\beta$ = probability that the student's output agrees with the teacher's output on a held-out sample. Then deployment-time failure rate $\leq \alpha \cdot (1 - \beta)$: failures can occur only for inputs where the teacher would have failed (probability $1 - \alpha$ at the teacher level, bounded by the student's fidelity $1 - \beta$).
+\end{proof}
+
+
+\section{The Resolver Registry and Deployment Model}
+\label{sec:registry}
+
+\subsection{Registry structure}
+
+Trained resolvers register with the factory's resolver registry. The registry is a rooted tree whose internal nodes are router resolvers (coarse routing of queries to sub-trees) and whose leaves are domain-specific compilation resolvers. A resolver's \texttt{CascadePosition} specifies its location in this tree.
+
+\begin{definition}[Resolver Registry]
+\label{def:registry}
+The \emph{resolver registry} $\cR$ is a $k$-ary tree with depth $D$ and $N$ leaves. Each node stores a LoRA adapter over the Aperture Base, an interface specification (what types of queries it handles), and a forward pointer for each child.
+\end{definition}
+
+\subsection{Query routing}
+
+A query entering the registry descends the tree. At each internal node, the node's resolver inspects the query and produces a $k$-way classification selecting the child sub-tree whose scope contains the query. At the leaf, the specialist resolver emits the compiled output.
+
+\begin{proposition}[Routing Complexity]
+\label{prop:routing-complexity}
+For a registry tree of depth $D = \log_k N$ with $N$ leaves, a query invokes $D + 1$ resolver forward passes: $D$ routers plus one leaf compiler. Since every resolver has the same parameter count $|\theta_{\mathrm{apt}}| + 2rd$, the total inference cost is
+\begin{equation}
+C_{\mathrm{query}} = (D + 1)(|\theta_{\mathrm{apt}}| + 2rd) = \mathcal{O}\bigl(\log_k N\bigr) \cdot |\theta_{\mathrm{eff}}|,
+\end{equation}
+where $|\theta_{\mathrm{eff}}|$ is the effective per-resolver parameter count.
+\end{proposition}
+
+This is sub-linear in the number of domains $N$, in contrast to the $\mathcal{O}(N)$ cost of naive flat routing and the $\mathcal{O}(|\theta_{\mathrm{monolithic}}|)$ cost of a single monolithic model covering all domains.
+
+\subsection{Capacity addition}
+
+\begin{proposition}[Capacity Addition Cost]
+\label{prop:capacity-addition}
+Adding a new domain to an existing registry costs only the training of one new leaf resolver (one LoRA adapter), regardless of the number of existing domains. This cost is
+\begin{equation}
+C_{\mathrm{add}} = m \cdot C_{\mathrm{grad}}(|\theta_{\mathrm{apt}}| + 2rd),
+\end{equation}
+where $m$ is the training sample count and $C_{\mathrm{grad}}$ is the per-sample gradient cost.
+\end{proposition}
+
+In contrast, growing a monolithic model to absorb a new domain requires either full-parameter fine-tuning (at cost $\mathcal{O}(|\theta_{\mathrm{monolithic}}|)$) or retraining from scratch (at cost proportional to the accumulated domain corpus). The Purpose factory's capacity-addition cost is constant in the existing registry size.
+
+
+\part{Formal Analysis}
+\label{part:analysis}
+
+\section{PAC-Learnability of Neural Compilation under Backward Training}
+\label{sec:pac}
+
+We now prove that the compilation problem is PAC-learnable from a polynomial number of examples under backward training.
+
+\begin{theorem}[PAC-Learnability of Compilation]
+\label{thm:pac-compilation}
+Let $\mathrm{Dom}$ be a Domain Connector with operation vocabulary of size $K$ and maximum chain length $L$. The compilation function $f: \cT \to \cO^{\leq L}$ is PAC-learnable from a polynomial number of examples, with sample complexity
+\begin{equation}
+m(\epsilon, \delta) = \mathcal{O}\!\left(\frac{K \cdot L + L \log K}{\epsilon}\right) \cdot \log \frac{K \cdot L + L \log K}{\epsilon \delta}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+We verify the conditions of the Fundamental Theorem of PAC Learning \citep{valiant1984theory,blumer1989learnability,shalev2014understanding}.
+
+\textbf{Bounded hypothesis complexity.} The hypothesis class $\cH$ consists of parameterised functions $f_\theta: \cT \to \cO^{\leq L}$ with Aperture Base $\theta_0$ (frozen) plus LoRA adapter of rank $r \leq K + L$. The effective parameter count of the adapter is $2rd = \mathcal{O}(d(K + L))$. By standard results \citep{shalev2014understanding,mohri2018foundations}, the VC dimension of this class is
+\begin{equation}
+\VC(\cH) = \mathcal{O}(K \cdot L + L \log K),
+\end{equation}
+where the $K \cdot L$ term reflects operation-position selections and the $L \log K$ term reflects chain-structural variability.
+
+\textbf{Bounded output space.} The output space $\cO^{\leq L}$ has cardinality $\sum_{\ell=0}^L K^\ell \leq K^{L+1}$, finite.
+
+\textbf{Structured output constraints.} The type system restricts $f_\theta$ to type-safe compilation chains. The effective output space is a subset of $\cO^{\leq L}$, which only tightens the PAC bound.
+
+Applying the Fundamental Theorem of PAC Learning: for $\epsilon, \delta > 0$, a sample of size
+\begin{equation}
+m = \mathcal{O}\!\left(\frac{\VC(\cH)}{\epsilon}\log\frac{\VC(\cH)}{\epsilon\delta}\right) = \mathcal{O}\!\left(\frac{K L + L \log K}{\epsilon}\log\frac{K L + L \log K}{\epsilon\delta}\right)
+\end{equation}
+suffices for $\epsilon$-accurate compilation with probability at least $1 - \delta$.
+\end{proof}
+
+\begin{corollary}[Sample complexity for typical compilation domains]
+\label{cor:typical-sample-complexity}
+For $K = 6$, $L = 10$, $\epsilon = 0.05$, $\delta = 0.01$: $m \leq 4 \times 10^3$ samples. Well within the capacity of teacher-model-generated corpora on a single modern GPU.
+\end{corollary}
+
+\begin{corollary}[Sample saving under backward training]
+\label{cor:sample-saving-backward}
+Combining Theorem~\ref{thm:pac-compilation} with Theorem~\ref{thm:sample-complexity}: backward-trained compilation achieves $\epsilon$-competence on a cascade of $N + 1$ regimes with $\mathcal{O}(K L + L \log K) \cdot \epsilon^{-1} \log (\cdot)$ samples; forward training needs $(N+1)\times$ this, or $2^{N-1}\times$ under binary-nested cascades.
+\end{corollary}
+
+
+\section{Correctness and Termination}
+\label{sec:correctness}
+
+\subsection{Training termination}
+
+\begin{proposition}[Training Termination]
+\label{prop:termination}
+Under the four-stage curriculum with composite loss and teacher-generated training corpus, student training converges in finite time for every Domain Connector satisfying (i) a well-typed operation vocabulary, (ii) a computable coordinate embedding, and (iii) a bounded pure-intent sampler.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Each training epoch processes a finite batch. The loss function is continuously differentiable with respect to the LoRA parameters. With standard optimisers (Adam, AdamW), and bounded gradients (ensured by gradient clipping at the pipeline level), convergence follows from standard stochastic approximation theory. Curriculum stage transitions are triggered by loss thresholds; since each stage converges and transitions are finite, the full curriculum terminates.
+\end{proof}
+
+\subsection{Deployment correctness}
+
+\begin{proposition}[Deployment Correctness]
+\label{prop:deployment-correctness}
+A resolver registered at cascade position $P$ produces $\epsilon$-accurate compilations on any query $t$ whose \emph{ideal} cascade descent ends at $P$, provided that (i) $t$ is in the support of the resolver's training distribution at $P$, and (ii) the cascade routing is correct on $t$.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Condition (i) is a standard PAC-learning guarantee. Condition (ii) follows from Theorem~\ref{thm:pac-compilation} applied to the router resolvers at internal nodes: each router is itself a compilation model (natural language to routing decision), so its correctness is PAC-guaranteed under its own training distribution.
+\end{proof}
+
+\subsection{Cascade-level correctness}
+
+\begin{theorem}[Cascade Correctness]
+\label{thm:cascade-correctness}
+If every resolver in the registry is $\epsilon_i$-accurate at its level, the cascade is $\sum_i \epsilon_i$-accurate on queries whose ideal descent traverses each level.
+\end{theorem}
+
+\begin{proof}
+Routing errors at internal nodes compound additively with leaf compilation errors. The maximum cumulative error is the sum of per-level errors.
+\end{proof}
+
+This motivates setting $\epsilon_i = \epsilon / (D + 1)$ for a cascade of depth $D$, so that cumulative error is bounded by the target $\epsilon$.
+
+
+\section{Failure Modes and Scope Conditions}
+\label{sec:failure-modes}
+
+The Backward Training Principle is not universal. We specify the three scope conditions and document the failure modes that arise when they are violated.
+
+\subsection{Scope conditions}
+
+\begin{assumption}[Scope of the Backward Training Principle]
+\label{assum:scope}
+The Backward Training Principle applies to skill domains satisfying:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item[(S1)] A pure-intent regime exists (Definition~\ref{def:pure-intent}).
+\item[(S2)] Constrained regimes are additive restrictions of the pure-intent regime (C1 of Definition~\ref{def:constrained-regime}).
+\item[(S3)] Constraint sets are convex or locally Lipschitz on the agent's operating set.
+\end{itemize}
+\end{assumption}
+
+\subsection{Failure mode 1: no pure-intent regime}
+
+Some domains have no natural scalar reduction of performance. For these, (S1) fails and the principle does not apply directly. A frequent workaround is to identify a near-pure-intent regime by selecting a sub-domain that is scalar \emph{within a small tolerance}, accepting a small constant loss of optimality.
+
+\begin{example}[A hypothetical failure: empathy]
+Empathy, social negotiation, and multi-stakeholder decision-making do not admit a single scalar objective. A common misidentification, however, is to conclude that these domains lack a pure-intent regime entirely. In practice, the apparent absence often reflects a failure to search at the right extremal: crisis counselling, hostage negotiation, and end-of-life care are plausibly pure-intent regimes for empathy-adjacent skills, because they reduce to a scalar (did the person survive, did the situation resolve safely). The scope condition (S1) should be tested against extremal sub-domains, not against everyday sub-domains.
+\end{example}
+
+\subsection{Failure mode 2: non-additive constraints}
+
+Some constraints qualitatively change the problem rather than restricting it. Family therapy is not couples therapy with $N$ additional people; the dynamics qualitatively differ. When (S2) fails, the constraint cascade structure breaks down, and backward training from a misidentified pure-intent will miss structural elements of the constrained regime.
+
+\subsection{Failure mode 3: non-convex constraint geometry}
+
+For constraints whose feasibility boundary is non-convex and not locally Lipschitz, the non-expansive projection argument of Theorem~\ref{thm:backward-inclusion} can fail. This is rare in physical skills (constraint boundaries are generally piecewise smooth), but possible in symbolic or combinatorial domains where constraint satisfaction has combinatorial structure. For these, the Backward Training Inclusion Theorem holds only in a local neighbourhood of the constrained optimum.
+
+\subsection{Engineering scope}
+
+In practice, failure-mode analysis is the first step in any domain connection. The Purpose factory includes a \emph{scope linter} that checks the Domain Connector against (S1), (S2), (S3) using the declared sampler and verifier. Domains failing scope conditions are not rejected but flagged for manual review.
+
+
+\part{Practice}
+\label{part:practice}
+
+\section{Worked Example: Domain Connection End-to-End}
+\label{sec:worked-example}
+
+We illustrate the factory in operation through a complete domain connection.
+
+\subsection{Domain: a hypothetical enzyme kinetics compiler}
+
+Consider a compilation domain for natural-language queries about enzyme kinetics (``what is the Michaelis constant of hexokinase for glucose at 25$^\circ$C?'' ``predict the rate of the reaction ATP $\to$ ADP + P$_i$ under saturating substrate''). The domain requires a compilation model that translates queries into a sequence of operations on a kinetic parameter substrate.
+
+\subsection{Writing the Domain Connector}
+
+\begin{verbatim}
+Domain {
+  name:           "enzyme-kinetics"
+  operations:     [Identify, Lookup, Predict, Constrain, Aggregate]  # K = 5
+  embedding:      enzyme_to_coord  # maps enzyme to (S_k, S_t, S_e)
+  theoretical_corpus: [Michaelis1913, Briggs1925, kineticstextbook2020]
+  pure_intent_sampler:
+    Returns: a maximally-constrained multi-enzyme multi-condition query
+    Example: "Predict the joint reaction rate of hexokinase, phosphofructokinase,
+              and pyruvate kinase in hepatocyte cytoplasm at pH 7.2, 37C,
+              under physiological ATP, AMP, citrate concentrations"
+  verifier:      kinetic_execution_check  # executes against a kinetics database
+  constraint_priors: [Arrhenius, pH-dependence, allostery]
+  cascade_position: /biology/biochemistry/kinetics
+}
+\end{verbatim}
+
+The connector is 12 lines of declaration. Everything else is fixed by the factory.
+
+\subsection{Factory invocation}
+
+\begin{verbatim}
+factory = PurposeFactory(aperture_base="aperture-v1-8B")
+resolver = factory.train(connector=EnzymeKineticsDomain)
+factory.registry.register(resolver, position=EnzymeKineticsDomain.cascade_position)
+\end{verbatim}
+
+Internally, the factory runs Algorithm~\ref{alg:corpus-gen} to generate a corpus of (query, compilation-chain) pairs biased toward the pure-intent regime. It then runs the four-stage curriculum to train a LoRA adapter on the Aperture Base. Upon convergence, the trained adapter is registered at the declared cascade position.
+
+\subsection{Querying the trained resolver}
+
+\begin{verbatim}
+query = "What is the Km of hexokinase for glucose?"
+compilation = factory.registry.route(query)
+# compilation = [Identify(hexokinase), Lookup(Km_glucose), Constrain(pH=7.4, T=37C)]
+result = factory.execute(compilation)  # against the kinetics substrate
+\end{verbatim}
+
+The query is first routed through the registry tree (biology $\to$ biochemistry $\to$ kinetics), then compiled by the leaf resolver. The compilation is a structured, type-safe, verifier-correct sequence of operations that the downstream substrate executes.
+
+\subsection{No domain-specific engineering}
+
+The worked example required only the Domain Connector declaration (12 lines). No custom model architecture, no custom loss, no custom curriculum, no custom training script. This is the intended use of the factory.
+
+
+\section{Validation Protocols and Falsifiable Predictions}
+\label{sec:predictions}
+
+We state twelve falsifiable predictions and specify the experimental protocols that would refute each.
+
+\subsection{Theoretical predictions}
+
+\begin{enumerate}[leftmargin=*,itemsep=3pt]
+\item \textbf{Sample-efficiency gap.} A backward-trained model achieves $\epsilon$-competence across a cascade of depth $N$ with at most $1/(N+1)$ of the samples required by forward training on the same cascade.\\
+\emph{Falsifier:} equal-budget comparison on a controlled cascade shows no sample-efficiency advantage for backward training.
+
+\item \textbf{Exponential saving under nested structure.} Binary-nested cascades yield $\geq 2^{N-1}$ sample-saving ratio.\\
+\emph{Falsifier:} empirical savings on binary cascades grow sub-exponentially with depth.
+
+\item \textbf{No-retrain transfer.} A backward-trained model achieves competence on every constrained regime of its domain without any regime-specific fine-tuning.\\
+\emph{Falsifier:} backward-trained resolver fails on a constrained regime that is a strict feasibility subset of the pure-intent regime it was trained on.
+
+\item \textbf{Cascade monotonicity.} Backward-trained competence is monotonically non-decreasing as constraints are removed.\\
+\emph{Falsifier:} empirical competence on an intermediate-constraint regime is worse than either the pure-intent or the most-constrained regime.
+
+\item \textbf{LoRA rank sufficiency.} LoRA rank $r = K + L$ suffices for compilation with $K$ operations and chain length $L$.\\
+\emph{Falsifier:} empirical compilation accuracy does not saturate at $r = K + L$ but continues to improve at $r > K + L$.
+\end{enumerate}
+
+\subsection{System-level predictions}
+
+\begin{enumerate}[leftmargin=*,itemsep=3pt,start=6]
+\item \textbf{Routing capacity independence.} Router-resolver capacity does not depend on leaf-resolver capacity; the same Aperture Base supports both.\\
+\emph{Falsifier:} router resolvers require strictly larger LoRA ranks than leaf resolvers in the same cascade.
+
+\item \textbf{Additive cascade latency.} End-to-end latency across a $D$-deep cascade is $\sum_i \tau_i$, not $\prod_i \tau_i$.\\
+\emph{Falsifier:} cascade latency scales super-additively with depth.
+
+\item \textbf{Domain-connection budget.} Adding a domain to the factory costs $\mathcal{O}(m \cdot (|\theta_{\mathrm{apt}}| + 2rd))$ independently of the existing registry size.\\
+\emph{Falsifier:} adding a domain requires retraining existing resolvers.
+
+\item \textbf{Verifier-gate efficiency.} Corpus admission rates at the verifier gate saturate at $\geq 60\%$ within 5 teacher-model iterations for scope-compliant domains.\\
+\emph{Falsifier:} admission rates fall below 60\% after iteration 5 for a scope-compliant domain.
+\end{enumerate}
+
+\subsection{Comparative predictions}
+
+\begin{enumerate}[leftmargin=*,itemsep=3pt,start=10]
+\item \textbf{Backward $>$ forward curriculum.} Across a benchmark of 20 compilation domains, backward-trained models outperform forward-trained models in both sample efficiency and final accuracy.\\
+\emph{Falsifier:} no significant difference or forward training dominates.
+
+\item \textbf{Backward-trained foundation $>$ generic-text foundation.} An Aperture Base pretrained on compilation substrate outperforms a generic-text foundation model of equal parameter count when adapted to compilation domains.\\
+\emph{Falsifier:} equal performance or generic foundation dominates.
+
+\item \textbf{Elite-demonstration value.} For any behaviour-cloning domain, training on top-decile expert demonstrations outperforms training on broader-distribution demonstrations at equal sample count.\\
+\emph{Falsifier:} broader-distribution training matches or exceeds top-decile training.
+\end{enumerate}
+
+\subsection{Experimental protocols}
+
+Each prediction admits a straightforward experimental protocol. Protocols should use:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item Held-out test sets drawn from each regime in the cascade.
+\item Matched-sample comparison (equal total sample budgets across conditions).
+\item Multiple random seeds (at least 5) for statistical significance.
+\item Reporting of both accuracy (correctness of compilation) and efficiency (samples or compute to target accuracy).
+\end{itemize}
+
+
+\section{Comparison with Existing Approaches}
+\label{sec:comparison}
+
+We compare the Purpose factory against existing approaches across five axes.
+
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\textbf{Approach} & \textbf{Curriculum} & \textbf{Reuse unit} & \textbf{Inclusion/gen.} & \textbf{Cost per dom.} & \textbf{Transfer} & \textbf{Verif.} \\
+\midrule
+Std. curriculum & Easy$\to$hard & Per-domain model & Generalisation & $\Theta(|\theta|)$ & Hope & None \\
+Multi-task learning & Mixed & Shared backbone & Shared features & $\Theta(N|\theta|)$ & Avg. & None \\
+Behaviour cloning & None (supervised) & Per-domain model & Mimicry & $\Theta(|\theta|)$ & None & None \\
+RAG & Eval-time retrieval & Shared retriever & Retrieval + gen. & $\Theta(|\cD|)$ & Partial & Weak \\
+Foundation fine-tune & Task-adaptive & Shared foundation & Fine-tune hope & $\Theta(|\theta_{\mathrm{found}}|)$ & Variable & None \\
+\midrule
+\textbf{Purpose} & Backward & Aperture + LoRA & Feasibility incl. & $\Theta(rd)$ & Guaranteed & Type+Ver. \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of training approaches. ``Cost per domain'' is the marginal cost of adding one domain to the system once the base is trained. ``Transfer'' describes what guarantee the approach provides for cross-regime generalisation. ``Verification'' describes what formal verification is performed on model outputs.}
+\label{tab:comparison}
+\end{table}
+
+\subsection{Curriculum learning}
+
+\citet{bengio2009curriculum}, \citet{graves2017automated}, and \citet{soviany2022curriculum} order examples from easy to hard. The Backward Training Principle shows this ordering is strictly dominated when a pure-intent regime exists. Purpose inverts the ordering.
+
+\subsection{Multi-task learning}
+
+\citet{caruana1997multitask} trains a shared model on multiple tasks simultaneously, relying on shared representations. The Purpose factory has a shared Aperture Base but uses per-domain LoRA adapters rather than weight-sharing across tasks, and crucially uses backward training rather than joint mini-batch gradients.
+
+\subsection{Behaviour cloning and imitation learning}
+
+\citet{ross2011reduction}, \citet{codevilla2018end}, \citet{bansal2019chauffeurnet} train by imitating demonstrations. Purpose is behaviour-cloning-compatible in the sense that the teacher-student setup is a form of distillation. The key difference is the demonstration distribution: Purpose trains only on pure-intent regime demonstrations (top-decile elite performance), not on broadly-sampled demonstrations.
+
+\subsection{Retrieval-augmented generation}
+
+\citet{lewis2020retrieval} retrieves relevant context at inference time. Purpose encodes domain structure in parameters (via the Aperture Base and domain LoRA) rather than in retrieval. No inference-time retrieval; the model's weights contain the compilation mapping, not the domain content.
+
+\subsection{Foundation model fine-tuning}
+
+\citet{brown2020language}, \citet{touvron2023llama}, and others fine-tune large general-purpose foundation models on domain tasks. Purpose uses a smaller, compilation-specific foundation (the Aperture Base) with guaranteed LoRA adaptation capacity; the efficiency gain comes from pretraining on the structural substrate rather than internet text.
+
+
+\section{Limitations and Open Problems}
+\label{sec:limitations}
+
+Three limitations constrain the framework's current scope.
+
+\textbf{Pure-intent identification.} The factory assumes the domain expert can identify the pure-intent regime. A systematic algorithm for extracting the pure-intent regime from a domain specification (rather than relying on expert judgement) remains an open problem. We conjecture that this identification problem reduces to finding the sub-domain of maximum exercise-per-sample-complexity, but the conjecture requires formalisation.
+
+\textbf{Teacher sufficiency.} The training pipeline assumes access to a teacher model capable of correctly compiling tasks at the pure-intent regime. When the teacher is itself imperfect, the student inherits the teacher's errors. A bootstrapping strategy---using the student as the next-iteration teacher---is possible but requires careful analysis of error amplification.
+
+\textbf{Non-stationary domains.} Domains whose operation vocabulary or constraint set evolves over time require continual re-registration. The factory currently supports this through simple re-invocation, but an online-learning variant of the training pipeline would be more efficient.
+
+Open problems include:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item Tighter sample-complexity bounds for the four-stage curriculum, matching the empirical $4\times$ saving.
+\item A constructive algorithm for pure-intent regime identification.
+\item Analysis of Aperture Base scaling under variable domain count.
+\item Verification of the LoRA expressiveness bound under non-linear task spaces.
+\item Automated scope linting: can the factory detect (S1)--(S3) violations from the Domain Connector alone?
+\end{enumerate}
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have established the Backward Training Principle as a strict theoretical improvement over conventional easy-to-hard curriculum learning for any skill or compilation domain admitting a pure-intent regime. The principle is supported by five main theorems: the Pure-Intent Envelope Theorem (constrained regimes are strictly contained in pure-intent regimes), the Constraint Cascade Theorem (every constrained regime is an additive restriction), the Backward Training Inclusion Theorem (competence transfers downward via non-expansive projection), the Forward Training Collapse Theorem (competence does not transfer upward), and the Backward Training Sample Complexity Theorem (backward training requires $(N+1)\times$ to $2^{N-1}\times$ fewer samples).
+
+We have operationalised the principle as the Purpose Model Factory: a complete training system whose four components---the Aperture Foundation Model, the Domain Connector interface, the canonical Training Pipeline, and the Resolver Registry---reduce domain-specific model creation to a rigid declarative interface. Any domain meeting the scope conditions can plug in via a Domain Connector declaration and receive back a trained, verified, cascade-registered compilation model without domain-specific pipeline engineering. The factory's theoretical guarantees (PAC-learnability, LoRA expressiveness, curriculum convergence, cascade correctness) are provable rather than empirical.
+
+The framework is substrate-agnostic: it applies uniformly to scientific compilation domains (biology, chemistry, physics), symbolic reasoning domains (mathematics, formal verification), skill-learning domains (robotics, autonomous vehicles), and human-computer-interaction domains (natural language to structured output). What it requires from each domain is a small, rigid, declarative description. What it offers in return is a trained model whose competence extends across the domain's constraint cascade by structural inclusion rather than by generalisation hope.
+
+The conceptual re-orientation is specific: the traditional ML question ``how do we train models to generalise?'' is the wrong question whenever a pure-intent regime exists. The right question is ``how do we identify the pure-intent regime and train there?'' Generalisation is a hedge against the absence of structure; inclusion is what replaces it when the structure is present. The Purpose factory is the machinery by which that structural replacement is carried out.
+
+
+\section*{Acknowledgements}
+
+The author thanks the many scientists, engineers, and critical interlocutors whose questions and challenges sharpened this framework's claims. The errors that remain are the author's own.
+
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,361 @@
+{
+  "experiment": "routing_complexity",
+  "theorem_reference": "Proposition 19.2 (Routing Complexity)",
+  "claim": "routing cost scales as O(log_k N)",
+  "k_values_tested": [
+    2,
+    3,
+    5
+  ],
+  "leaf_counts_tested": [
+    3,
+    9,
+    27,
+    81,
+    243,
+    729,
+    2187
+  ],
+  "results_per_k": [
+    {
+      "k": 2,
+      "per_leaf_count": [
+        {
+          "N_leaves": 3,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 3.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 3.0,
+            "ci95_hi": 3.0,
+            "min": 3.0,
+            "max": 3.0,
+            "median": 3.0
+          },
+          "theoretical_log_k_N_plus_1": 3.0
+        },
+        {
+          "N_leaves": 9,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 5.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 5.0,
+            "ci95_hi": 5.0,
+            "min": 5.0,
+            "max": 5.0,
+            "median": 5.0
+          },
+          "theoretical_log_k_N_plus_1": 5.0
+        },
+        {
+          "N_leaves": 27,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 6.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 6.0,
+            "ci95_hi": 6.0,
+            "min": 6.0,
+            "max": 6.0,
+            "median": 6.0
+          },
+          "theoretical_log_k_N_plus_1": 6.0
+        },
+        {
+          "N_leaves": 81,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 8.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 8.0,
+            "ci95_hi": 8.0,
+            "min": 8.0,
+            "max": 8.0,
+            "median": 8.0
+          },
+          "theoretical_log_k_N_plus_1": 8.0
+        },
+        {
+          "N_leaves": 243,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 9.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 9.0,
+            "ci95_hi": 9.0,
+            "min": 9.0,
+            "max": 9.0,
+            "median": 9.0
+          },
+          "theoretical_log_k_N_plus_1": 9.0
+        },
+        {
+          "N_leaves": 729,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 11.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 11.0,
+            "ci95_hi": 11.0,
+            "min": 11.0,
+            "max": 11.0,
+            "median": 11.0
+          },
+          "theoretical_log_k_N_plus_1": 11.0
+        },
+        {
+          "N_leaves": 2187,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 13.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 13.0,
+            "ci95_hi": 13.0,
+            "min": 13.0,
+            "max": 13.0,
+            "median": 13.0
+          },
+          "theoretical_log_k_N_plus_1": 13.0
+        }
+      ],
+      "log_fit_slope": 1.46288447136456,
+      "expected_slope_1_over_ln_k": 1.4426950408889634,
+      "r_squared": 0.9926470588235295
+    },
+    {
+      "k": 3,
+      "per_leaf_count": [
+        {
+          "N_leaves": 3,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 2.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 2.0,
+            "ci95_hi": 2.0,
+            "min": 2.0,
+            "max": 2.0,
+            "median": 2.0
+          },
+          "theoretical_log_k_N_plus_1": 2.0
+        },
+        {
+          "N_leaves": 9,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 3.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 3.0,
+            "ci95_hi": 3.0,
+            "min": 3.0,
+            "max": 3.0,
+            "median": 3.0
+          },
+          "theoretical_log_k_N_plus_1": 3.0
+        },
+        {
+          "N_leaves": 27,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 4.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 4.0,
+            "ci95_hi": 4.0,
+            "min": 4.0,
+            "max": 4.0,
+            "median": 4.0
+          },
+          "theoretical_log_k_N_plus_1": 4.0
+        },
+        {
+          "N_leaves": 81,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 5.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 5.0,
+            "ci95_hi": 5.0,
+            "min": 5.0,
+            "max": 5.0,
+            "median": 5.0
+          },
+          "theoretical_log_k_N_plus_1": 5.0
+        },
+        {
+          "N_leaves": 243,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 6.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 6.0,
+            "ci95_hi": 6.0,
+            "min": 6.0,
+            "max": 6.0,
+            "median": 6.0
+          },
+          "theoretical_log_k_N_plus_1": 6.0
+        },
+        {
+          "N_leaves": 729,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 7.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 7.0,
+            "ci95_hi": 7.0,
+            "min": 7.0,
+            "max": 7.0,
+            "median": 7.0
+          },
+          "theoretical_log_k_N_plus_1": 7.0
+        },
+        {
+          "N_leaves": 2187,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 8.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 8.0,
+            "ci95_hi": 8.0,
+            "min": 8.0,
+            "max": 8.0,
+            "median": 8.0
+          },
+          "theoretical_log_k_N_plus_1": 8.0
+        }
+      ],
+      "log_fit_slope": 0.9102392266268372,
+      "expected_slope_1_over_ln_k": 0.9102392266268373,
+      "r_squared": 0.9999999999999996
+    },
+    {
+      "k": 5,
+      "per_leaf_count": [
+        {
+          "N_leaves": 3,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 2.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 2.0,
+            "ci95_hi": 2.0,
+            "min": 2.0,
+            "max": 2.0,
+            "median": 2.0
+          },
+          "theoretical_log_k_N_plus_1": 2.0
+        },
+        {
+          "N_leaves": 9,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 3.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 3.0,
+            "ci95_hi": 3.0,
+            "min": 3.0,
+            "max": 3.0,
+            "median": 3.0
+          },
+          "theoretical_log_k_N_plus_1": 3.0
+        },
+        {
+          "N_leaves": 27,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 4.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 4.0,
+            "ci95_hi": 4.0,
+            "min": 4.0,
+            "max": 4.0,
+            "median": 4.0
+          },
+          "theoretical_log_k_N_plus_1": 4.0
+        },
+        {
+          "N_leaves": 81,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 4.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 4.0,
+            "ci95_hi": 4.0,
+            "min": 4.0,
+            "max": 4.0,
+            "median": 4.0
+          },
+          "theoretical_log_k_N_plus_1": 4.0
+        },
+        {
+          "N_leaves": 243,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 5.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 5.0,
+            "ci95_hi": 5.0,
+            "min": 5.0,
+            "max": 5.0,
+            "median": 5.0
+          },
+          "theoretical_log_k_N_plus_1": 5.0
+        },
+        {
+          "N_leaves": 729,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 6.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 6.0,
+            "ci95_hi": 6.0,
+            "min": 6.0,
+            "max": 6.0,
+            "median": 6.0
+          },
+          "theoretical_log_k_N_plus_1": 6.0
+        },
+        {
+          "N_leaves": 2187,
+          "measured_invocations": {
+            "n": 30,
+            "mean": 6.0,
+            "std": 0.0,
+            "sem": 0.0,
+            "ci95_lo": 6.0,
+            "ci95_hi": 6.0,
+            "min": 6.0,
+            "max": 6.0,
+            "median": 6.0
+          },
+          "theoretical_log_k_N_plus_1": 6.0
+        }
+      ],
+      "log_fit_slope": 0.6176623323539253,
+      "expected_slope_1_over_ln_k": 0.6213349345596119,
+      "r_squared": 0.9601063829787234
+    }
+  ],
+  "verdict": "SUPPORTED"
+}

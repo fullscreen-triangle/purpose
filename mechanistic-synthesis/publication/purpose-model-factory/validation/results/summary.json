@@ -1,0 +1,82 @@
+{
+  "suite": "Purpose Model Factory Validation",
+  "paper_reference": "purpose-model-factory.tex",
+  "n_experiments": 10,
+  "total_runtime_seconds": 213.26,
+  "seeds_per_condition": 30,
+  "experiments": [
+    {
+      "id": "exp01",
+      "name": "envelope_inclusion",
+      "theorem_reference": "Theorem 6.1 (Pure-Intent Envelope)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 1.875
+    },
+    {
+      "id": "exp02",
+      "name": "nonexpansive_projection",
+      "theorem_reference": "Theorem 8.2 (Backward Training Inclusion, projection step)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 104.56
+    },
+    {
+      "id": "exp03",
+      "name": "sample_complexity_gap_linear",
+      "theorem_reference": "Theorem 10.1 (Backward Training Sample Complexity)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.036
+    },
+    {
+      "id": "exp04",
+      "name": "exponential_saving_binary_nested",
+      "theorem_reference": "Theorem 10.2 (Exponential Saving Under Nested Structure)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.013
+    },
+    {
+      "id": "exp05",
+      "name": "forward_training_collapse",
+      "theorem_reference": "Theorem 9.1 (Forward Training Collapse)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.056
+    },
+    {
+      "id": "exp06",
+      "name": "lora_rank_sufficiency",
+      "theorem_reference": "Theorem 16.1 (LoRA Expressiveness)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 4.25
+    },
+    {
+      "id": "exp07",
+      "name": "cascade_monotonicity",
+      "theorem_reference": "Prediction 4, Corollary 8.5 (Hierarchical Skill Preservation)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.116
+    },
+    {
+      "id": "exp08",
+      "name": "routing_complexity",
+      "theorem_reference": "Proposition 19.2 (Routing Complexity)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.026
+    },
+    {
+      "id": "exp09",
+      "name": "curriculum_convergence",
+      "theorem_reference": "Theorem 15.5 (Curriculum Convergence)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 2.51
+    },
+    {
+      "id": "exp10",
+      "name": "pac_sample_complexity",
+      "theorem_reference": "Theorem 20.1 (PAC-Learnability of Compilation)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 99.817
+    }
+  ],
+  "supported_count": 10,
+  "refuted_count": 0,
+  "weak_count": 0
+}

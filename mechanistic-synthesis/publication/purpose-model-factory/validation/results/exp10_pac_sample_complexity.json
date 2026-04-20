@@ -1,0 +1,96 @@
+{
+  "experiment": "pac_sample_complexity",
+  "theorem_reference": "Theorem 20.1 (PAC-Learnability of Compilation)",
+  "claim": "compilation learnable from O((K*L + L log K) / eps * log(...)) samples",
+  "eps": 0.1,
+  "delta": 0.05,
+  "configs_tested": [
+    [
+      3,
+      5
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      8,
+      10
+    ],
+    [
+      10,
+      15
+    ]
+  ],
+  "results_per_config": [
+    {
+      "K": 3,
+      "L": 5,
+      "empirical_samples_to_eps": {
+        "n": 15,
+        "mean": 2933.3333333333335,
+        "std": 390.36002917941323,
+        "sem": 100.79052613579391,
+        "ci95_lo": 2735.7839021071773,
+        "ci95_hi": 3130.8827645594897,
+        "min": 2400.0,
+        "max": 3200.0,
+        "median": 3200.0
+      },
+      "theoretical_pac_bound": 1704.6955873344496,
+      "empirical_vs_bound_ratio": 1.7207373299534643
+    },
+    {
+      "K": 5,
+      "L": 8,
+      "empirical_samples_to_eps": {
+        "n": 15,
+        "mean": 9600.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 9600.0,
+        "ci95_hi": 9600.0,
+        "min": 9600.0,
+        "max": 9600.0,
+        "median": 9600.0
+      },
+      "theoretical_pac_bound": 4899.580302065814,
+      "empirical_vs_bound_ratio": 1.9593514970970767
+    },
+    {
+      "K": 8,
+      "L": 10,
+      "empirical_samples_to_eps": {
+        "n": 15,
+        "mean": 12800.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 12800.0,
+        "ci95_hi": 12800.0,
+        "min": 12800.0,
+        "max": 12800.0,
+        "median": 12800.0
+      },
+      "theoretical_pac_bound": 9990.138010186503,
+      "empirical_vs_bound_ratio": 1.281263580838263
+    },
+    {
+      "K": 10,
+      "L": 15,
+      "empirical_samples_to_eps": {
+        "n": 15,
+        "mean": 12800.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 12800.0,
+        "ci95_hi": 12800.0,
+        "min": 12800.0,
+        "max": 12800.0,
+        "median": 12800.0
+      },
+      "theoretical_pac_bound": 19406.424318923946,
+      "empirical_vs_bound_ratio": 0.6595753957372884
+    }
+  ],
+  "verdict": "SUPPORTED"
+}

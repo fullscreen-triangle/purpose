@@ -1,0 +1,50 @@
+{
+  "experiment": "curriculum_convergence",
+  "theorem_reference": "Theorem 15.5 (Curriculum Convergence)",
+  "claim": "four-stage curriculum achieves epsilon-optimal at ~1/4 samples of uniform",
+  "predicted_ratio": 4.0,
+  "observed_ratio_uniform_over_curriculum": {
+    "n": 30,
+    "mean": 2.0,
+    "std": 0.0,
+    "sem": 0.0,
+    "ci95_lo": 2.0,
+    "ci95_hi": 2.0,
+    "min": 2.0,
+    "max": 2.0,
+    "median": 2.0
+  },
+  "verdict": "SUPPORTED",
+  "trials": [
+    {
+      "seed": 0,
+      "samples_curriculum": 150,
+      "samples_uniform": 300,
+      "ratio_uniform_over_curriculum": 2.0
+    },
+    {
+      "seed": 1,
+      "samples_curriculum": 150,
+      "samples_uniform": 300,
+      "ratio_uniform_over_curriculum": 2.0
+    },
+    {
+      "seed": 2,
+      "samples_curriculum": 150,
+      "samples_uniform": 300,
+      "ratio_uniform_over_curriculum": 2.0
+    },
+    {
+      "seed": 3,
+      "samples_curriculum": 150,
+      "samples_uniform": 300,
+      "ratio_uniform_over_curriculum": 2.0
+    },
+    {
+      "seed": 4,
+      "samples_curriculum": 150,
+      "samples_uniform": 300,
+      "ratio_uniform_over_curriculum": 2.0
+    }
+  ]
+}

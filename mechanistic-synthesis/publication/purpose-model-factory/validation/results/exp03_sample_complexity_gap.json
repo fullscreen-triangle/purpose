@@ -1,0 +1,270 @@
+{
+  "experiment": "sample_complexity_gap_linear",
+  "theorem_reference": "Theorem 10.1 (Backward Training Sample Complexity)",
+  "claim": "m_fwd / m_back = N + 1 for cascade depth N",
+  "cascade_depths_tested": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    10
+  ],
+  "results_per_depth": [
+    {
+      "cascade_depth_N": 1,
+      "predicted_ratio": 2,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 2.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 2.0,
+        "ci95_hi": 2.0,
+        "min": 2.0,
+        "max": 2.0,
+        "median": 2.0
+      },
+      "backward_samples": {
+        "n": 30,
+        "mean": 151236.36666666667,
+        "std": 12449.429000846843,
+        "sem": 2272.944363940939,
+        "ci95_lo": 146781.39571334244,
+        "ci95_hi": 155691.3376199909,
+        "min": 128607.0,
+        "max": 176839.0,
+        "median": 151984.0
+      },
+      "forward_samples": {
+        "n": 30,
+        "mean": 302472.73333333334,
+        "std": 24898.858001693687,
+        "sem": 4545.888727881878,
+        "ci95_lo": 293562.7914266849,
+        "ci95_hi": 311382.6752399818,
+        "min": 257214.0,
+        "max": 353678.0,
+        "median": 303968.0
+      },
+      "ttest_vs_prediction": {
+        "t": NaN,
+        "p": NaN
+      }
+    },
+    {
+      "cascade_depth_N": 2,
+      "predicted_ratio": 3,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 3.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 3.0,
+        "ci95_hi": 3.0,
+        "min": 3.0,
+        "max": 3.0,
+        "median": 3.0
+      },
+      "backward_samples": {
+        "n": 30,
+        "mean": 151236.36666666667,
+        "std": 12449.429000846843,
+        "sem": 2272.944363940939,
+        "ci95_lo": 146781.39571334244,
+        "ci95_hi": 155691.3376199909,
+        "min": 128607.0,
+        "max": 176839.0,
+        "median": 151984.0
+      },
+      "forward_samples": {
+        "n": 30,
+        "mean": 453709.1,
+        "std": 37348.28700254053,
+        "sem": 6818.833091822818,
+        "ci95_lo": 440344.18714002724,
+        "ci95_hi": 467074.0128599727,
+        "min": 385821.0,
+        "max": 530517.0,
+        "median": 455952.0
+      },
+      "ttest_vs_prediction": {
+        "t": NaN,
+        "p": NaN
+      }
+    },
+    {
+      "cascade_depth_N": 3,
+      "predicted_ratio": 4,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 4.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 4.0,
+        "ci95_hi": 4.0,
+        "min": 4.0,
+        "max": 4.0,
+        "median": 4.0
+      },
+      "backward_samples": {
+        "n": 30,
+        "mean": 151236.36666666667,
+        "std": 12449.429000846843,
+        "sem": 2272.944363940939,
+        "ci95_lo": 146781.39571334244,
+        "ci95_hi": 155691.3376199909,
+        "min": 128607.0,
+        "max": 176839.0,
+        "median": 151984.0
+      },
+      "forward_samples": {
+        "n": 30,
+        "mean": 604945.4666666667,
+        "std": 49797.71600338737,
+        "sem": 9091.777455763757,
+        "ci95_lo": 587125.5828533698,
+        "ci95_hi": 622765.3504799636,
+        "min": 514428.0,
+        "max": 707356.0,
+        "median": 607936.0
+      },
+      "ttest_vs_prediction": {
+        "t": NaN,
+        "p": NaN
+      }
+    },
+    {
+      "cascade_depth_N": 5,
+      "predicted_ratio": 6,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 6.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 6.0,
+        "ci95_hi": 6.0,
+        "min": 6.0,
+        "max": 6.0,
+        "median": 6.0
+      },
+      "backward_samples": {
+        "n": 30,
+        "mean": 151236.36666666667,
+        "std": 12449.429000846843,
+        "sem": 2272.944363940939,
+        "ci95_lo": 146781.39571334244,
+        "ci95_hi": 155691.3376199909,
+        "min": 128607.0,
+        "max": 176839.0,
+        "median": 151984.0
+      },
+      "forward_samples": {
+        "n": 30,
+        "mean": 907418.2,
+        "std": 74696.57400508106,
+        "sem": 13637.666183645635,
+        "ci95_lo": 880688.3742800545,
+        "ci95_hi": 934148.0257199454,
+        "min": 771642.0,
+        "max": 1061034.0,
+        "median": 911904.0
+      },
+      "ttest_vs_prediction": {
+        "t": NaN,
+        "p": NaN
+      }
+    },
+    {
+      "cascade_depth_N": 8,
+      "predicted_ratio": 9,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 9.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 9.0,
+        "ci95_hi": 9.0,
+        "min": 9.0,
+        "max": 9.0,
+        "median": 9.0
+      },
+      "backward_samples": {
+        "n": 30,
+        "mean": 151236.36666666667,
+        "std": 12449.429000846843,
+        "sem": 2272.944363940939,
+        "ci95_lo": 146781.39571334244,
+        "ci95_hi": 155691.3376199909,
+        "min": 128607.0,
+        "max": 176839.0,
+        "median": 151984.0
+      },
+      "forward_samples": {
+        "n": 30,
+        "mean": 1361127.3,
+        "std": 112044.8610076216,
+        "sem": 20456.499275468454,
+        "ci95_lo": 1321032.5614200819,
+        "ci95_hi": 1401222.0385799182,
+        "min": 1157463.0,
+        "max": 1591551.0,
+        "median": 1367856.0
+      },
+      "ttest_vs_prediction": {
+        "t": NaN,
+        "p": NaN
+      }
+    },
+    {
+      "cascade_depth_N": 10,
+      "predicted_ratio": 11,
+      "observed_ratio": {
+        "n": 30,
+        "mean": 11.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 11.0,
+        "ci95_hi": 11.0,
+        "min": 11.0,
+        "max": 11.0,
+        "median": 11.0
+      },
+      "backward_samples": {
+        "n": 30,
+        "mean": 151236.36666666667,
+        "std": 12449.429000846843,
+        "sem": 2272.944363940939,
+        "ci95_lo": 146781.39571334244,
+        "ci95_hi": 155691.3376199909,
+        "min": 128607.0,
+        "max": 176839.0,
+        "median": 151984.0
+      },
+      "forward_samples": {
+        "n": 30,
+        "mean": 1663600.0333333334,
+        "std": 136943.71900931527,
+        "sem": 25002.38800335033,
+        "ci95_lo": 1614595.3528467668,
+        "ci95_hi": 1712604.7138199,
+        "min": 1414677.0,
+        "max": 1945229.0,
+        "median": 1671824.0
+      },
+      "ttest_vs_prediction": {
+        "t": NaN,
+        "p": NaN
+      }
+    }
+  ],
+  "relative_error_per_depth": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "verdict": "SUPPORTED"
+}
