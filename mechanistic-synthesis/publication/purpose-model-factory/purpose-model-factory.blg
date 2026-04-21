@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: purpose-model-factory.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: unsrtnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+Warning--empty booktitle in milliken1995race
+You've used 28 entries,
+            2481 wiz_defined-function locations,
+            700 strings with 9109 characters,
+and the built_in function-call counts, 11550 in all, are:
+= -- 913
+> -- 675
+< -- 16
++ -- 256
+- -- 200
+* -- 866
+:= -- 1830
+add.period$ -- 84
+call.type$ -- 28
+change.case$ -- 51
+chr.to.int$ -- 28
+cite$ -- 29
+duplicate$ -- 610
+empty$ -- 1047
+format.name$ -- 238
+if$ -- 2471
+int.to.chr$ -- 1
+int.to.str$ -- 29
+missing$ -- 34
+newline$ -- 148
+num.names$ -- 85
+pop$ -- 279
+preamble$ -- 1
+purify$ -- 28
+quote$ -- 0
+skip$ -- 374
+stack$ -- 0
+substring$ -- 476
+swap$ -- 121
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 175
+warning$ -- 1
+while$ -- 90
+width$ -- 0
+write$ -- 360
+(There was 1 warning)

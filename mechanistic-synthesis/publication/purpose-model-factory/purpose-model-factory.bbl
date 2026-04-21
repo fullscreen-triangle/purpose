@@ -1,0 +1,188 @@
+\begin{thebibliography}{28}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Elman(1993)]{elman1993learning}
+Jeffrey~L. Elman.
+\newblock Learning and development in neural networks: The importance of
+  starting small.
+\newblock \emph{Cognition}, 48\penalty0 (1):\penalty0 71--99, 1993.
+
+\bibitem[Bengio et~al.(2009)Bengio, Louradour, Collobert, and
+  Weston]{bengio2009curriculum}
+Yoshua Bengio, J{\'e}r{\^o}me Louradour, Ronan Collobert, and Jason Weston.
+\newblock Curriculum learning.
+\newblock In \emph{Proceedings of the 26th Annual International Conference on
+  Machine Learning}, pages 41--48, 2009.
+
+\bibitem[Bommasani et~al.(2021)Bommasani, Hudson, Adeli,
+  et~al.]{bommasani2021opportunities}
+Rishi Bommasani, Drew~A. Hudson, Ehsan Adeli, et~al.
+\newblock On the opportunities and risks of foundation models.
+\newblock \emph{arXiv preprint arXiv:2108.07258}, 2021.
+
+\bibitem[Brown et~al.(2020)Brown, Mann, Ryder, Subbiah,
+  et~al.]{brown2020language}
+Tom~B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, et~al.
+\newblock Language models are few-shot learners.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  33:\penalty0 1877--1901, 2020.
+
+\bibitem[Hu et~al.(2022)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and
+  Chen]{hu2022lora}
+Edward~J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
+  Wang, Lu~Wang, and Weizhu Chen.
+\newblock {LoRA}: Low-rank adaptation of large language models.
+\newblock \emph{International Conference on Learning Representations}, 2022.
+
+\bibitem[Vapnik(1998)]{vapnik1998statistical}
+Vladimir~N. Vapnik.
+\newblock \emph{Statistical learning theory}.
+\newblock Wiley, 1998.
+
+\bibitem[Blumer et~al.(1989)Blumer, Ehrenfeucht, Haussler, and
+  Warmuth]{blumer1989learnability}
+Anselm Blumer, Andrzej Ehrenfeucht, David Haussler, and Manfred~K. Warmuth.
+\newblock Learnability and the {Vapnik}-{Chervonenkis} dimension.
+\newblock \emph{Journal of the ACM}, 36\penalty0 (4):\penalty0 929--965, 1989.
+
+\bibitem[Mohri et~al.(2018)Mohri, Rostamizadeh, and
+  Talwalkar]{mohri2018foundations}
+Mehryar Mohri, Afshin Rostamizadeh, and Ameet Talwalkar.
+\newblock \emph{Foundations of machine learning}.
+\newblock MIT Press, 2 edition, 2018.
+
+\bibitem[Valiant(1984)]{valiant1984theory}
+Leslie~G. Valiant.
+\newblock A theory of the learnable.
+\newblock \emph{Communications of the ACM}, 27\penalty0 (11):\penalty0
+  1134--1142, 1984.
+
+\bibitem[Boyd and Vandenberghe(2004)]{boyd2004convex}
+Stephen Boyd and Lieven Vandenberghe.
+\newblock \emph{Convex optimization}.
+\newblock Cambridge University Press, 2004.
+
+\bibitem[Nocedal and Wright(2006)]{nocedal2006numerical}
+Jorge Nocedal and Stephen~J. Wright.
+\newblock \emph{Numerical optimization}.
+\newblock Springer, 2 edition, 2006.
+
+\bibitem[Karush(1939)]{karush1939minima}
+William Karush.
+\newblock \emph{Minima of functions of several variables with inequalities as
+  side conditions}.
+\newblock Master's Thesis, Department of Mathematics, University of Chicago,
+  1939.
+
+\bibitem[Kuhn and Tucker(1951)]{kuhn1951nonlinear}
+H.~W. Kuhn and A.~W. Tucker.
+\newblock Nonlinear programming.
+\newblock In \emph{Proceedings of the Second Berkeley Symposium on Mathematical
+  Statistics and Probability}, pages 481--492, 1951.
+
+\bibitem[Houlsby et~al.(2019)Houlsby, Giurgiu, Jastrzebski, Morrone,
+  de~Laroussilhe, Gesmundo, Attariyan, and Gelly]{houlsby2019parameter}
+Neil Houlsby, Andrei Giurgiu, Stanislaw Jastrzebski, Bruna Morrone, Quentin
+  de~Laroussilhe, Andrea Gesmundo, Mona Attariyan, and Sylvain Gelly.
+\newblock Parameter-efficient transfer learning for {NLP}.
+\newblock In \emph{International Conference on Machine Learning}, pages
+  2790--2799, 2019.
+
+\bibitem[Milliken and Milliken(1995)]{milliken1995race}
+William~F. Milliken and Douglas~L. Milliken.
+\newblock Race car vehicle dynamics.
+\newblock SAE International, 1995.
+
+\bibitem[Shalev-Shwartz and Ben-David(2014)]{shalev2014understanding}
+Shai Shalev-Shwartz and Shai Ben-David.
+\newblock \emph{Understanding machine learning: From theory to algorithms}.
+\newblock Cambridge University Press, 2014.
+
+\bibitem[Ericsson et~al.(1993)Ericsson, Krampe, and
+  Tesch-R{\"o}mer]{ericsson1993deliberate}
+K.~Anders Ericsson, Ralf~T. Krampe, and Clemens Tesch-R{\"o}mer.
+\newblock The role of deliberate practice in the acquisition of expert
+  performance.
+\newblock \emph{Psychological Review}, 100\penalty0 (3):\penalty0 363--406,
+  1993.
+
+\bibitem[Ericsson et~al.(2006)Ericsson, Charness, Feltovich, and
+  Hoffman]{ericsson2006cambridge}
+K.~Anders Ericsson, Neil Charness, Paul~J. Feltovich, and Robert~R. Hoffman,
+  editors.
+\newblock \emph{The Cambridge handbook of expertise and expert performance}.
+\newblock Cambridge University Press, 2006.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez,
+  Kaiser, and Polosukhin]{vaswani2017attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock \emph{Advances in Neural Information Processing Systems}, 30, 2017.
+
+\bibitem[Radford et~al.(2019)Radford, Wu, Child, Luan, Amodei, and
+  Sutskever]{radford2019language}
+Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and Ilya
+  Sutskever.
+\newblock Language models are unsupervised multitask learners.
+\newblock In \emph{OpenAI Technical Report}, 2019.
+
+\bibitem[Graves et~al.(2017)Graves, Bellemare, Menick, Munos, and
+  Kavukcuoglu]{graves2017automated}
+Alex Graves, Marc~G. Bellemare, Jacob Menick, R{\'e}mi Munos, and Koray
+  Kavukcuoglu.
+\newblock Automated curriculum learning for neural networks.
+\newblock In \emph{International Conference on Machine Learning}, pages
+  1311--1320, 2017.
+
+\bibitem[Soviany et~al.(2022)Soviany, Ionescu, Rota, and
+  Sebe]{soviany2022curriculum}
+Petru Soviany, Radu~Tudor Ionescu, Paolo Rota, and Nicu Sebe.
+\newblock Curriculum learning: A survey.
+\newblock \emph{International Journal of Computer Vision}, 130\penalty0
+  (6):\penalty0 1526--1565, 2022.
+
+\bibitem[Caruana(1997)]{caruana1997multitask}
+Rich Caruana.
+\newblock Multitask learning.
+\newblock \emph{Machine Learning}, 28\penalty0 (1):\penalty0 41--75, 1997.
+
+\bibitem[Ross et~al.(2011)Ross, Gordon, and Bagnell]{ross2011reduction}
+St{\'e}phane Ross, Geoffrey Gordon, and Drew Bagnell.
+\newblock A reduction of imitation learning and structured prediction to
+  no-regret online learning.
+\newblock In \emph{International Conference on Artificial Intelligence and
+  Statistics}, pages 627--635, 2011.
+
+\bibitem[Codevilla et~al.(2018)Codevilla, M{\"u}ller, L{\'o}pez, Koltun, and
+  Dosovitskiy]{codevilla2018end}
+Felipe Codevilla, Matthias M{\"u}ller, Antonio L{\'o}pez, Vladlen Koltun, and
+  Alexey Dosovitskiy.
+\newblock End-to-end driving via conditional imitation learning.
+\newblock In \emph{IEEE International Conference on Robotics and Automation},
+  pages 4693--4700, 2018.
+
+\bibitem[Bansal et~al.(2019)Bansal, Krizhevsky, and
+  Ogale]{bansal2019chauffeurnet}
+Mayank Bansal, Alex Krizhevsky, and Abhijit Ogale.
+\newblock {ChauffeurNet}: Learning to drive by imitating the best and
+  synthesizing the worst.
+\newblock \emph{Robotics: Science and Systems}, 2019.
+
+\bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, et~al.]{lewis2020retrieval}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, et~al.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  33:\penalty0 9459--9474, 2020.
+
+\bibitem[Touvron et~al.(2023)Touvron, Lavril, Izacard,
+  et~al.]{touvron2023llama}
+Hugo Touvron, Thibaut Lavril, Gautier Izacard, et~al.
+\newblock {LLaMA}: Open and efficient foundation language models.
+\newblock \emph{arXiv preprint arXiv:2302.13971}, 2023.
+
+\end{thebibliography}

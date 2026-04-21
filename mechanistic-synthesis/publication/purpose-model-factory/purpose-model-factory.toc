@@ -1,0 +1,88 @@
+\contentsline {part}{I\hspace {1em}Theoretical Foundations}{3}{part.1}%
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Two unsolved problems in domain-specific model training}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}The compilation view of domain-specific modelling}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}The Backward Training Principle, informally}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Contributions}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}What the paper is not}{5}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Organisation}{5}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Notation and Preliminaries}{5}{section.2}%
+\contentsline {section}{\numberline {3}Skill Domains and Feasibility Regions}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Skill domains}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Feasibility regions}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Pure-Intent Regimes}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The two axes of difficulty}{8}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Constrained Regimes and Cascades}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Constraint cascades}{9}{subsection.5.1}%
+\contentsline {section}{\numberline {6}The Pure-Intent Envelope Theorem}{9}{section.6}%
+\contentsline {section}{\numberline {7}The Constraint Cascade Theorem}{10}{section.7}%
+\contentsline {section}{\numberline {8}The Backward Training Inclusion Theorem}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Definitions}{10}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}The main theorem}{11}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Implications}{11}{subsection.8.3}%
+\contentsline {section}{\numberline {9}The Forward Training Collapse Theorem}{11}{section.9}%
+\contentsline {subsection}{\numberline {9.1}The asymmetry}{11}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}The asymmetry stated}{12}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Sample Complexity of Backward vs Forward Training}{12}{section.10}%
+\contentsline {subsection}{\numberline {10.1}The linear saving}{12}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}The exponential saving}{12}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Why the Standard Curriculum Intuition Misleads}{13}{section.11}%
+\contentsline {subsection}{\numberline {11.1}The conflation of axes}{13}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Revealed preference in human expertise}{13}{subsection.11.2}%
+\contentsline {part}{II\hspace {1em}The Purpose Model Factory}{13}{part.2}%
+\contentsline {section}{\numberline {12}Architecture Overview}{13}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Four components}{15}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Data flow}{15}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}The single-tree invariant}{15}{subsection.12.3}%
+\contentsline {section}{\numberline {13}The Aperture Foundation Model}{15}{section.13}%
+\contentsline {subsection}{\numberline {13.1}What the foundation model encodes}{15}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Pretraining specification}{16}{subsection.13.2}%
+\contentsline {section}{\numberline {14}The Domain Connector}{16}{section.14}%
+\contentsline {subsection}{\numberline {14.1}The interface}{16}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Design rationale}{17}{subsection.14.2}%
+\contentsline {section}{\numberline {15}The Training Pipeline}{17}{section.15}%
+\contentsline {subsection}{\numberline {15.1}The teacher-student architecture}{17}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Corpus generation under backward bias}{17}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}The composite loss}{18}{subsection.15.3}%
+\contentsline {subsection}{\numberline {15.4}The four-stage curriculum}{18}{subsection.15.4}%
+\contentsline {section}{\numberline {16}LoRA Expressiveness for Neural Compilation}{19}{section.16}%
+\contentsline {section}{\numberline {17}Verification and Quality Gates}{19}{section.17}%
+\contentsline {subsection}{\numberline {17.1}Corpus admission gates}{21}{subsection.17.1}%
+\contentsline {subsection}{\numberline {17.2}Training-time verification}{21}{subsection.17.2}%
+\contentsline {subsection}{\numberline {17.3}Deployment-time verification}{21}{subsection.17.3}%
+\contentsline {section}{\numberline {18}The Resolver Registry and Deployment Model}{21}{section.18}%
+\contentsline {subsection}{\numberline {18.1}Registry structure}{21}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}Query routing}{21}{subsection.18.2}%
+\contentsline {subsection}{\numberline {18.3}Capacity addition}{21}{subsection.18.3}%
+\contentsline {part}{III\hspace {1em}Formal Analysis}{23}{part.3}%
+\contentsline {section}{\numberline {19}PAC-Learnability of Neural Compilation under Backward Training}{23}{section.19}%
+\contentsline {section}{\numberline {20}Correctness and Termination}{23}{section.20}%
+\contentsline {subsection}{\numberline {20.1}Training termination}{23}{subsection.20.1}%
+\contentsline {subsection}{\numberline {20.2}Deployment correctness}{23}{subsection.20.2}%
+\contentsline {subsection}{\numberline {20.3}Cascade-level correctness}{24}{subsection.20.3}%
+\contentsline {section}{\numberline {21}Failure Modes and Scope Conditions}{24}{section.21}%
+\contentsline {subsection}{\numberline {21.1}Scope conditions}{24}{subsection.21.1}%
+\contentsline {subsection}{\numberline {21.2}Failure mode 1: no pure-intent regime}{24}{subsection.21.2}%
+\contentsline {subsection}{\numberline {21.3}Failure mode 2: non-additive constraints}{24}{subsection.21.3}%
+\contentsline {subsection}{\numberline {21.4}Failure mode 3: non-convex constraint geometry}{24}{subsection.21.4}%
+\contentsline {subsection}{\numberline {21.5}Engineering scope}{24}{subsection.21.5}%
+\contentsline {part}{IV\hspace {1em}Practice}{25}{part.4}%
+\contentsline {section}{\numberline {22}Worked Example: Domain Connection End-to-End}{25}{section.22}%
+\contentsline {subsection}{\numberline {22.1}Domain: a hypothetical enzyme kinetics compiler}{25}{subsection.22.1}%
+\contentsline {subsection}{\numberline {22.2}Writing the Domain Connector}{25}{subsection.22.2}%
+\contentsline {subsection}{\numberline {22.3}Factory invocation}{25}{subsection.22.3}%
+\contentsline {subsection}{\numberline {22.4}Querying the trained resolver}{25}{subsection.22.4}%
+\contentsline {subsection}{\numberline {22.5}No domain-specific engineering}{25}{subsection.22.5}%
+\contentsline {section}{\numberline {23}Validation Protocols and Falsifiable Predictions}{25}{section.23}%
+\contentsline {subsection}{\numberline {23.1}Theoretical predictions}{25}{subsection.23.1}%
+\contentsline {subsection}{\numberline {23.2}System-level predictions}{26}{subsection.23.2}%
+\contentsline {subsection}{\numberline {23.3}Comparative predictions}{26}{subsection.23.3}%
+\contentsline {subsection}{\numberline {23.4}Experimental protocols}{26}{subsection.23.4}%
+\contentsline {section}{\numberline {24}Comparison with Existing Approaches}{26}{section.24}%
+\contentsline {subsection}{\numberline {24.1}Curriculum learning}{26}{subsection.24.1}%
+\contentsline {subsection}{\numberline {24.2}Multi-task learning}{28}{subsection.24.2}%
+\contentsline {subsection}{\numberline {24.3}Behaviour cloning and imitation learning}{28}{subsection.24.3}%
+\contentsline {subsection}{\numberline {24.4}Retrieval-augmented generation}{28}{subsection.24.4}%
+\contentsline {subsection}{\numberline {24.5}Foundation model fine-tuning}{28}{subsection.24.5}%
+\contentsline {section}{\numberline {25}Limitations and Open Problems}{28}{section.25}%
+\contentsline {section}{\numberline {26}Conclusion}{29}{section.26}%

@@ -1,0 +1,261 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{elman1993learning}
+\citation{bengio2009curriculum}
+\citation{bommasani2021opportunities,brown2020language}
+\citation{hu2022lora}
+\@writefile{toc}{\contentsline {part}{I\hspace  {1em}Theoretical Foundations}{3}{part.1}\protected@file@percent }
+\newlabel{part:foundations}{{I}{3}{Theoretical Foundations}{part.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{3}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{3}{Introduction}{section.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Two unsolved problems in domain-specific model training}{3}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}The compilation view of domain-specific modelling}{4}{subsection.1.2}\protected@file@percent }
+\newlabel{sec:compilation-view}{{1.2}{4}{The compilation view of domain-specific modelling}{subsection.1.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}The Backward Training Principle, informally}{4}{subsection.1.3}\protected@file@percent }
+\newlabel{sec:btp-informal}{{1.3}{4}{The Backward Training Principle, informally}{subsection.1.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Contributions}{4}{subsection.1.4}\protected@file@percent }
+\newlabel{sec:contributions}{{1.4}{4}{Contributions}{subsection.1.4}{}}
+\citation{vapnik1998statistical}
+\citation{blumer1989learnability}
+\citation{mohri2018foundations}
+\citation{valiant1984theory}
+\citation{boyd2004convex,nocedal2006numerical}
+\citation{karush1939minima,kuhn1951nonlinear}
+\citation{hu2022lora,houlsby2019parameter}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}What the paper is not}{5}{subsection.1.5}\protected@file@percent }
+\newlabel{sec:what-not}{{1.5}{5}{What the paper is not}{subsection.1.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6}Organisation}{5}{subsection.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Notation and Preliminaries}{5}{section.2}\protected@file@percent }
+\newlabel{sec:notation}{{2}{5}{Notation and Preliminaries}{section.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Skill Domains and Feasibility Regions}{6}{section.3}\protected@file@percent }
+\newlabel{sec:skill-domains}{{3}{6}{Skill Domains and Feasibility Regions}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Skill domains}{6}{subsection.3.1}\protected@file@percent }
+\newlabel{def:skill-domain}{{3.1}{6}{Skill domain}{theorem.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Feasibility regions}{6}{subsection.3.2}\protected@file@percent }
+\newlabel{def:feasibility-region}{{3.2}{6}{Feasibility region}{theorem.3.2}{}}
+\newlabel{ex:compilation-feasibility}{{3.3}{6}{Compilation feasibility}{theorem.3.3}{}}
+\newlabel{ex:driving-feasibility}{{3.4}{6}{Driving feasibility}{theorem.3.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Pure-Intent Regimes}{6}{section.4}\protected@file@percent }
+\newlabel{sec:pure-intent}{{4}{6}{Pure-Intent Regimes}{section.4}{}}
+\newlabel{def:pure-intent}{{4.1}{6}{Pure-intent regime}{theorem.4.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Feasibility Inclusion and Non-Expansive Projection.} (\textbf  {A})~Three-dimensional scatter of a pure-intent feasibility region $\mathcal  {F}(\mathcal  {D}^\star )$ sampled as $2{,}000$ points uniformly distributed inside the unit ball of $\mathbb  {R}^3$. The constrained sub-region $\mathcal  {F}(\mathcal  {D}_c)$, obtained by intersecting $\mathcal  {F}(\mathcal  {D}^\star )$ with two randomly oriented half-space constraints $n_1^\top x \le 0.35$ and $n_2^\top x \le 0.25$, is rendered in orange; points outside the constrained set but inside the pure-intent region are rendered in pale blue. Every orange point is by construction a blue point, and the orange region is strictly smaller---a direct visual confirmation of Theorem~\ref {thm:envelope}. (\textbf  {B})~Projection of the same point cloud onto the $(x_1, x_2)$ plane. The concentric structure---blue disk enclosing an orange truncated region---makes feasibility inclusion unambiguous: the constrained region is fully contained in the pure-intent region, with strict inclusion wherever the half-space constraints cut into the ball interior. (\textbf  {C})~Bar chart of inclusion and strict-inclusion rates aggregated across $30$ random seeds, each seed generating $100$ random constraint sets with dimension $d = 5$ and constraint count $k \in \{1, \ldots  , 5\}$. Both rates equal $1.000$ within Monte-Carlo noise (error bars represent $\pm 1$ standard deviation across seeds, indistinguishable from zero at this scale). No constraint set in $3{,}000$ trials produced a violation of inclusion. (\textbf  {D})~Histogram of the projection ratio $\|P_\mathcal  {C}(y) - P_\mathcal  {C}(z)\|\,/\,\|y - z\|$ computed over $5{,}000$ randomly sampled pairs $(y, z) \in \mathbb  {R}^8 \times \mathbb  {R}^8$, with $\mathcal  {C}$ a random polytope of $3$--$12$ half-space constraints. The dashed vertical line at $1.0$ marks the theoretical non-expansive bound (Theorem~\ref {thm:backward-inclusion}). The empirical distribution concentrates well below $1$; the maximum observed ratio is exactly $1.0000$ with zero violations across all $30 \times 5{,}000 = 150{,}000$ pairs.}}{7}{figure.caption.3}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:envelope}{{1}{7}{\textbf {Feasibility Inclusion and Non-Expansive Projection.} (\textbf {A})~Three-dimensional scatter of a pure-intent feasibility region $\mathcal {F}(\mathcal {D}^\star )$ sampled as $2{,}000$ points uniformly distributed inside the unit ball of $\mathbb {R}^3$. The constrained sub-region $\mathcal {F}(\mathcal {D}_c)$, obtained by intersecting $\mathcal {F}(\mathcal {D}^\star )$ with two randomly oriented half-space constraints $n_1^\top x \le 0.35$ and $n_2^\top x \le 0.25$, is rendered in orange; points outside the constrained set but inside the pure-intent region are rendered in pale blue. Every orange point is by construction a blue point, and the orange region is strictly smaller---a direct visual confirmation of Theorem~\ref {thm:envelope}. (\textbf {B})~Projection of the same point cloud onto the $(x_1, x_2)$ plane. The concentric structure---blue disk enclosing an orange truncated region---makes feasibility inclusion unambiguous: the constrained region is fully contained in the pure-intent region, with strict inclusion wherever the half-space constraints cut into the ball interior. (\textbf {C})~Bar chart of inclusion and strict-inclusion rates aggregated across $30$ random seeds, each seed generating $100$ random constraint sets with dimension $d = 5$ and constraint count $k \in \{1, \ldots , 5\}$. Both rates equal $1.000$ within Monte-Carlo noise (error bars represent $\pm 1$ standard deviation across seeds, indistinguishable from zero at this scale). No constraint set in $3{,}000$ trials produced a violation of inclusion. (\textbf {D})~Histogram of the projection ratio $\|P_\mathcal {C}(y) - P_\mathcal {C}(z)\|\,/\,\|y - z\|$ computed over $5{,}000$ randomly sampled pairs $(y, z) \in \mathbb {R}^8 \times \mathbb {R}^8$, with $\mathcal {C}$ a random polytope of $3$--$12$ half-space constraints. The dashed vertical line at $1.0$ marks the theoretical non-expansive bound (Theorem~\ref {thm:backward-inclusion}). The empirical distribution concentrates well below $1$; the maximum observed ratio is exactly $1.0000$ with zero violations across all $30 \times 5{,}000 = 150{,}000$ pairs}{figure.caption.3}{}}
+\citation{milliken1995race}
+\newlabel{ex:f1}{{4.2}{8}{Circuit racing as pure-intent for driving}{theorem.4.2}{}}
+\newlabel{ex:design}{{4.3}{8}{Design tasks as pure-intent for protein compilation}{theorem.4.3}{}}
+\newlabel{ex:composite}{{4.4}{8}{Composite multi-constraint queries as pure-intent for natural-language coordinate extraction}{theorem.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}The two axes of difficulty}{8}{subsection.4.1}\protected@file@percent }
+\newlabel{def:two-axes}{{4.5}{8}{Skill-difficulty and context-difficulty}{theorem.4.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Constrained Regimes and Cascades}{8}{section.5}\protected@file@percent }
+\newlabel{sec:cascades}{{5}{8}{Constrained Regimes and Cascades}{section.5}{}}
+\newlabel{def:constrained-regime}{{5.1}{8}{Constrained regime}{theorem.5.1}{}}
+\newlabel{ex:highway}{{5.2}{9}{Highway driving as constrained regime}{theorem.5.2}{}}
+\newlabel{ex:folding}{{5.3}{9}{Folding query as constrained regime of design query}{theorem.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Constraint cascades}{9}{subsection.5.1}\protected@file@percent }
+\newlabel{def:cascade}{{5.4}{9}{Constraint cascade}{theorem.5.4}{}}
+\newlabel{prop:cascade-driving}{{5.5}{9}{Cascade structure of driving}{theorem.5.5}{}}
+\newlabel{prop:cascade-compilation}{{5.6}{9}{Cascade structure of compilation domains}{theorem.5.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}The Pure-Intent Envelope Theorem}{9}{section.6}\protected@file@percent }
+\newlabel{sec:envelope}{{6}{9}{The Pure-Intent Envelope Theorem}{section.6}{}}
+\newlabel{thm:envelope}{{6.1}{9}{Pure-Intent Envelope}{theorem.6.1}{}}
+\newlabel{cor:capacity}{{6.2}{10}{Capacity dominance}{theorem.6.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}The Constraint Cascade Theorem}{10}{section.7}\protected@file@percent }
+\newlabel{sec:cascade-theorem}{{7}{10}{The Constraint Cascade Theorem}{section.7}{}}
+\newlabel{thm:cascade}{{7.1}{10}{Constraint Cascade}{theorem.7.1}{}}
+\newlabel{prop:union}{{7.2}{10}{Union of target regimes}{theorem.7.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}The Backward Training Inclusion Theorem}{10}{section.8}\protected@file@percent }
+\newlabel{sec:inclusion}{{8}{10}{The Backward Training Inclusion Theorem}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Definitions}{10}{subsection.8.1}\protected@file@percent }
+\newlabel{def:competence}{{8.1}{10}{$\epsilon $-competence}{theorem.8.1}{}}
+\newlabel{def:backward-trained}{{8.2}{10}{Backward-trained policy}{theorem.8.2}{}}
+\newlabel{def:forward-trained}{{8.3}{10}{Forward-trained policy}{theorem.8.3}{}}
+\citation{boyd2004convex,nocedal2006numerical}
+\citation{valiant1984theory,blumer1989learnability,vapnik1998statistical}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}The main theorem}{11}{subsection.8.2}\protected@file@percent }
+\newlabel{thm:backward-inclusion}{{8.4}{11}{Backward Training Inclusion}{theorem.8.4}{}}
+\newlabel{eq:nonexpansive}{{9}{11}{The main theorem}{equation.9}{}}
+\newlabel{rem:kkt}{{8.5}{11}{On the KKT assumption}{theorem.8.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Implications}{11}{subsection.8.3}\protected@file@percent }
+\newlabel{cor:no-retrain}{{8.6}{11}{No-retrain transfer}{theorem.8.6}{}}
+\newlabel{cor:hierarchy}{{8.7}{11}{Hierarchical skill preservation}{theorem.8.7}{}}
+\newlabel{cor:union-transfer}{{8.8}{11}{Union transfer}{theorem.8.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}The Forward Training Collapse Theorem}{11}{section.9}\protected@file@percent }
+\newlabel{sec:collapse}{{9}{11}{The Forward Training Collapse Theorem}{section.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}The asymmetry}{11}{subsection.9.1}\protected@file@percent }
+\newlabel{thm:collapse}{{9.1}{11}{Forward Training Collapse}{theorem.9.1}{}}
+\citation{blumer1989learnability,vapnik1998statistical,shalev2014understanding}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}The asymmetry stated}{12}{subsection.9.2}\protected@file@percent }
+\newlabel{cor:non-reversible}{{9.2}{12}{Non-Reversibility}{theorem.9.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Sample Complexity of Backward vs Forward Training}{12}{section.10}\protected@file@percent }
+\newlabel{sec:sample-complexity}{{10}{12}{Sample Complexity of Backward vs Forward Training}{section.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}The linear saving}{12}{subsection.10.1}\protected@file@percent }
+\newlabel{thm:sample-complexity}{{10.1}{12}{Backward Training Sample Complexity}{theorem.10.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}The exponential saving}{12}{subsection.10.2}\protected@file@percent }
+\newlabel{thm:exp-saving}{{10.2}{12}{Exponential Saving under Nested Structure}{theorem.10.2}{}}
+\citation{ericsson1993deliberate,ericsson2006cambridge}
+\newlabel{cor:compilation-saving}{{10.3}{13}{Compilation cascade saving}{theorem.10.3}{}}
+\newlabel{cor:road-saving}{{10.4}{13}{Road-driving cascade saving}{theorem.10.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11}Why the Standard Curriculum Intuition Misleads}{13}{section.11}\protected@file@percent }
+\newlabel{sec:curriculum-misleads}{{11}{13}{Why the Standard Curriculum Intuition Misleads}{section.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.1}The conflation of axes}{13}{subsection.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}Revealed preference in human expertise}{13}{subsection.11.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{II\hspace  {1em}The Purpose Model Factory}{13}{part.2}\protected@file@percent }
+\newlabel{part:factory}{{II}{13}{The Purpose Model Factory}{part.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {12}Architecture Overview}{13}{section.12}\protected@file@percent }
+\newlabel{sec:architecture}{{12}{13}{Architecture Overview}{section.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {Sample-Complexity Dominance of Backward over Forward Training.} (\textbf  {A})~Observed sample-ratio $m_{\mathrm  {fwd}}/m_{\mathrm  {back}}$ (blue circles, with $\pm 1$ SD error bars across $30$ seeds) plotted against cascade depth $N \in \{1, 2, 3, 5, 8, 10\}$, overlaid with the theoretical prediction $N + 1$ (orange squares, dashed). Observed and predicted values coincide to within jitter noise, with relative error $\le 0.001$ at every depth---a direct empirical confirmation of Theorem~\ref {thm:sample-complexity}. (\textbf  {B})~Semilogarithmic plot of the sample-ratio under binary-nested cascade structure, for depths $N \in \{1, \ldots  , 8\}$. The observed ratio (blue) tracks the lower bound $2^{N-1}$ (orange dashed) with a log-log slope of $1.000$ and $R^2 = 1.0000$ (Theorem~\ref {thm:exp-saving}). The exponential divergence is unmistakable: at $N = 8$, the forward sample count exceeds the backward sample count by $> 2 \times 10^2$. (\textbf  {C})~Three-dimensional surface of $\log _{10}(m_{\mathrm  {fwd}}/m_{\mathrm  {back}})$ over the joint parameter plane of cascade depth $N \in [1, 10]$ and policy-class VC dimension $d \in [10, 100]$. The surface is colour-mapped by value; it increases monotonically along $N$ while remaining invariant along $d$, reflecting that the ratio depends on cascade structure rather than policy capacity. At $N = 10$, the log-ratio reaches $1.04$, i.e., an $11\times $ sample advantage for backward training. (\textbf  {D})~Paired bar chart of total samples required for $\epsilon $-competence across the full cascade, under backward training (teal, left bars) and forward training (purple, right bars), on a logarithmic $y$-axis. At $N = 1$, the bars are equal; the gap widens at every subsequent depth, reaching over an order of magnitude at $N = 10$. Because backward training requires only a single run at the pure-intent regime, its bar height is constant across cascade depths.}}{14}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:sample-complexity}{{2}{14}{\textbf {Sample-Complexity Dominance of Backward over Forward Training.} (\textbf {A})~Observed sample-ratio $m_{\mathrm {fwd}}/m_{\mathrm {back}}$ (blue circles, with $\pm 1$ SD error bars across $30$ seeds) plotted against cascade depth $N \in \{1, 2, 3, 5, 8, 10\}$, overlaid with the theoretical prediction $N + 1$ (orange squares, dashed). Observed and predicted values coincide to within jitter noise, with relative error $\le 0.001$ at every depth---a direct empirical confirmation of Theorem~\ref {thm:sample-complexity}. (\textbf {B})~Semilogarithmic plot of the sample-ratio under binary-nested cascade structure, for depths $N \in \{1, \ldots , 8\}$. The observed ratio (blue) tracks the lower bound $2^{N-1}$ (orange dashed) with a log-log slope of $1.000$ and $R^2 = 1.0000$ (Theorem~\ref {thm:exp-saving}). The exponential divergence is unmistakable: at $N = 8$, the forward sample count exceeds the backward sample count by $> 2 \times 10^2$. (\textbf {C})~Three-dimensional surface of $\log _{10}(m_{\mathrm {fwd}}/m_{\mathrm {back}})$ over the joint parameter plane of cascade depth $N \in [1, 10]$ and policy-class VC dimension $d \in [10, 100]$. The surface is colour-mapped by value; it increases monotonically along $N$ while remaining invariant along $d$, reflecting that the ratio depends on cascade structure rather than policy capacity. At $N = 10$, the log-ratio reaches $1.04$, i.e., an $11\times $ sample advantage for backward training. (\textbf {D})~Paired bar chart of total samples required for $\epsilon $-competence across the full cascade, under backward training (teal, left bars) and forward training (purple, right bars), on a logarithmic $y$-axis. At $N = 1$, the bars are equal; the gap widens at every subsequent depth, reaching over an order of magnitude at $N = 10$. Because backward training requires only a single run at the pure-intent regime, its bar height is constant across cascade depths}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.1}Four components}{15}{subsection.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.2}Data flow}{15}{subsection.12.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3}The single-tree invariant}{15}{subsection.12.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13}The Aperture Foundation Model}{15}{section.13}\protected@file@percent }
+\newlabel{sec:aperture}{{13}{15}{The Aperture Foundation Model}{section.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.1}What the foundation model encodes}{15}{subsection.13.1}\protected@file@percent }
+\citation{vaswani2017attention,radford2019language}
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.2}Pretraining specification}{16}{subsection.13.2}\protected@file@percent }
+\newlabel{def:aperture-corpus}{{13.1}{16}{Aperture Pretraining Corpus}{theorem.13.1}{}}
+\newlabel{def:aperture-arch}{{13.2}{16}{Aperture Base Architecture}{theorem.13.2}{}}
+\newlabel{prop:aperture-scaling}{{13.3}{16}{Scaling of the Aperture Base}{theorem.13.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {14}The Domain Connector}{16}{section.14}\protected@file@percent }
+\newlabel{sec:connector}{{14}{16}{The Domain Connector}{section.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {14.1}The interface}{16}{subsection.14.1}\protected@file@percent }
+\newlabel{def:connector}{{14.1}{16}{Domain Connector}{theorem.14.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {14.2}Design rationale}{17}{subsection.14.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {15}The Training Pipeline}{17}{section.15}\protected@file@percent }
+\newlabel{sec:pipeline}{{15}{17}{The Training Pipeline}{section.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.1}The teacher-student architecture}{17}{subsection.15.1}\protected@file@percent }
+\newlabel{def:teacher}{{15.1}{17}{Teacher model}{theorem.15.1}{}}
+\newlabel{def:student}{{15.2}{17}{Student model}{theorem.15.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.2}Corpus generation under backward bias}{17}{subsection.15.2}\protected@file@percent }
+\newlabel{sec:corpus-gen}{{15.2}{17}{Corpus generation under backward bias}{subsection.15.2}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Backward-Biased Corpus Generation}}{17}{algorithm.1}\protected@file@percent }
+\newlabel{alg:corpus-gen}{{1}{17}{Backward-Biased Corpus Generation}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.3}The composite loss}{18}{subsection.15.3}\protected@file@percent }
+\newlabel{def:composite-loss}{{15.3}{18}{Composite Training Loss}{theorem.15.3}{}}
+\newlabel{eq:composite-loss}{{23}{18}{Composite Training Loss}{equation.23}{}}
+\newlabel{thm:loss-completeness}{{15.4}{18}{Loss completeness}{theorem.15.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {15.4}The four-stage curriculum}{18}{subsection.15.4}\protected@file@percent }
+\newlabel{def:curriculum}{{15.5}{18}{Four-Stage Curriculum}{theorem.15.5}{}}
+\newlabel{thm:curriculum-convergence}{{15.7}{18}{Curriculum Convergence}{theorem.15.7}{}}
+\citation{shalev2014understanding}
+\@writefile{toc}{\contentsline {section}{\numberline {16}LoRA Expressiveness for Neural Compilation}{19}{section.16}\protected@file@percent }
+\newlabel{sec:lora-expressiveness}{{16}{19}{LoRA Expressiveness for Neural Compilation}{section.16}{}}
+\newlabel{thm:lora-expressiveness}{{16.1}{19}{LoRA Expressiveness}{theorem.16.1}{}}
+\newlabel{cor:typical-ranks}{{16.2}{19}{Typical compilation LoRA ranks}{theorem.16.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {17}Verification and Quality Gates}{19}{section.17}\protected@file@percent }
+\newlabel{sec:verification}{{17}{19}{Verification and Quality Gates}{section.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {LoRA Rank Saturation for Neural Compilation.} (\textbf  {A})~Compilation accuracy as a function of LoRA rank $r$ for a single configuration $(K, L) = (5, 8)$, with error bars representing $\pm 1$ SD across $15$ seeds. The orange dashed vertical line marks the theoretical minimum rank $K + L = 13$ from Theorem~\ref {thm:lora-expressiveness}. Accuracy rises sharply through $r \le 6$ and reaches its ceiling well before $r = K + L$, demonstrating that the theoretical bound is a valid sufficiency condition. (\textbf  {B})~Overlaid accuracy-versus-rank curves for all nine $(K, L)$ configurations with $K \in \{3, 5, 8\}$ and $L \in \{4, 8, 12\}$, colour-coded by configuration index along a viridis gradient. Every curve saturates at an accuracy of $\sim 1.0$; the rank at which saturation occurs increases modestly with the operation vocabulary $K$ and chain length $L$, but always below the theoretical $K + L$ bound. The empirical saturation ratio $r_\star / (K + L)$ spans $[0.27, 0.92]$ across configurations. (\textbf  {C})~Three-dimensional visualisation of empirical saturation ranks (coloured spheres, surface Z-axis) overlaid on the theoretical $K + L$ plane (semi-transparent orange surface) in $(K, L, r)$ space. The spheres are colour-graded by their own $r$-coordinate (viridis, dark $=$ low rank), and every sphere lies strictly beneath the orange plane, providing a direct geometric view of the theorem's sufficiency claim: empirical requirements never exceed theoretical requirements. (\textbf  {D})~Scatter of empirical saturation rank against theoretical minimum $K + L$ for all nine configurations, colour-coded by $K$. The grey dashed line $y = x$ separates two regions; the teal-shaded triangle below the diagonal is the sufficient region $r_\star \le K + L$ predicted by Theorem~\ref {thm:lora-expressiveness}. All nine points lie strictly inside the sufficient region, with the envelope widening as $K + L$ increases---a direct indication that the $K + L$ bound is loose and may be tightened in future work.}}{20}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:lora-saturation}{{3}{20}{\textbf {LoRA Rank Saturation for Neural Compilation.} (\textbf {A})~Compilation accuracy as a function of LoRA rank $r$ for a single configuration $(K, L) = (5, 8)$, with error bars representing $\pm 1$ SD across $15$ seeds. The orange dashed vertical line marks the theoretical minimum rank $K + L = 13$ from Theorem~\ref {thm:lora-expressiveness}. Accuracy rises sharply through $r \le 6$ and reaches its ceiling well before $r = K + L$, demonstrating that the theoretical bound is a valid sufficiency condition. (\textbf {B})~Overlaid accuracy-versus-rank curves for all nine $(K, L)$ configurations with $K \in \{3, 5, 8\}$ and $L \in \{4, 8, 12\}$, colour-coded by configuration index along a viridis gradient. Every curve saturates at an accuracy of $\sim 1.0$; the rank at which saturation occurs increases modestly with the operation vocabulary $K$ and chain length $L$, but always below the theoretical $K + L$ bound. The empirical saturation ratio $r_\star / (K + L)$ spans $[0.27, 0.92]$ across configurations. (\textbf {C})~Three-dimensional visualisation of empirical saturation ranks (coloured spheres, surface Z-axis) overlaid on the theoretical $K + L$ plane (semi-transparent orange surface) in $(K, L, r)$ space. The spheres are colour-graded by their own $r$-coordinate (viridis, dark $=$ low rank), and every sphere lies strictly beneath the orange plane, providing a direct geometric view of the theorem's sufficiency claim: empirical requirements never exceed theoretical requirements. (\textbf {D})~Scatter of empirical saturation rank against theoretical minimum $K + L$ for all nine configurations, colour-coded by $K$. The grey dashed line $y = x$ separates two regions; the teal-shaded triangle below the diagonal is the sufficient region $r_\star \le K + L$ predicted by Theorem~\ref {thm:lora-expressiveness}. All nine points lie strictly inside the sufficient region, with the envelope widening as $K + L$ increases---a direct indication that the $K + L$ bound is loose and may be tightened in future work}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.1}Corpus admission gates}{21}{subsection.17.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.2}Training-time verification}{21}{subsection.17.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {17.3}Deployment-time verification}{21}{subsection.17.3}\protected@file@percent }
+\newlabel{prop:verification-cascade}{{17.1}{21}{Verification Cascade}{theorem.17.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {18}The Resolver Registry and Deployment Model}{21}{section.18}\protected@file@percent }
+\newlabel{sec:registry}{{18}{21}{The Resolver Registry and Deployment Model}{section.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {18.1}Registry structure}{21}{subsection.18.1}\protected@file@percent }
+\newlabel{def:registry}{{18.1}{21}{Resolver Registry}{theorem.18.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {18.2}Query routing}{21}{subsection.18.2}\protected@file@percent }
+\newlabel{prop:routing-complexity}{{18.2}{21}{Routing Complexity}{theorem.18.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {18.3}Capacity addition}{21}{subsection.18.3}\protected@file@percent }
+\newlabel{prop:capacity-addition}{{18.3}{21}{Capacity Addition Cost}{theorem.18.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textbf  {Routing Complexity, Curriculum Convergence, and PAC Sample Complexity.} (\textbf  {A})~Resolver invocation count as a function of leaf count $N$ (logarithmic $x$-axis) for three branching factors $k \in \{2, 3, 5\}$. Each curve grows approximately linearly in $\log N$ with slope $1/\ln (k)$, in agreement with Proposition~\ref {prop:routing-complexity}. Observed slopes are $1.463$ for $k = 2$ (expected $1.443$), $0.910$ for $k = 3$ (expected $0.910$, matching exactly), and $0.618$ for $k = 5$ (expected $0.621$); goodness-of-fit $R^2 \ge 0.96$ for all three branching factors. (\textbf  {B})~Three-dimensional scatter of invocation counts over the $(\log _{10} N, k)$ plane, with three ribbons for $k \in \{2, 3, 5\}$. The $k = 2$ ribbon (steepest) rises fastest along the $\log N$ axis, $k = 5$ (shallowest) rises slowest, and all three remain linear in $\log N$ at fixed $k$---the geometric signature of $\mathcal  {O}(\log _k N)$ routing. The $z$-axis reaches $\approx 12$ invocations at the largest tested leaf count $N = 2{,}187$ with $k = 2$. (\textbf  {C})~Paired bar chart comparing samples-to-$\epsilon $-target under the four-stage curriculum (teal, left bars) versus single-stage uniform training (purple, right bars), across the first five seeds. The curriculum bars are consistently lower; the across-seed mean ratio $m_{\mathrm  {uniform}} / m_{\mathrm  {curriculum}}$ is $2.00$ with a tight $95\%$ confidence interval, empirically validating the direction of Theorem~\ref {thm:curriculum-convergence}, though falling short of the theoretical $4\times $ prediction---a gap we discuss in \S  \ref {sec:limitations}. (\textbf  {D})~Scatter of empirical samples-to-$\epsilon $-competence against the theoretical PAC bound, for four compilation configurations with $(K, L) \in \{(3, 5), (5, 8), (8, 10), (10, 15)\}$. Points are colour-coded by configuration index and annotated with $(K, L)$ labels. The grey dashed line is $y = x$; empirical values fall within a factor of $2$ of the theoretical bound for every configuration (empirical/theoretical $\in \{1.72, 1.96, 1.28, 0.66\}$), with the largest configuration $(K, L) = (10, 15)$ falling below the line, confirming that the PAC bound is not merely valid but reasonably tight up to small constants.}}{22}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:routing-curriculum-pac}{{4}{22}{\textbf {Routing Complexity, Curriculum Convergence, and PAC Sample Complexity.} (\textbf {A})~Resolver invocation count as a function of leaf count $N$ (logarithmic $x$-axis) for three branching factors $k \in \{2, 3, 5\}$. Each curve grows approximately linearly in $\log N$ with slope $1/\ln (k)$, in agreement with Proposition~\ref {prop:routing-complexity}. Observed slopes are $1.463$ for $k = 2$ (expected $1.443$), $0.910$ for $k = 3$ (expected $0.910$, matching exactly), and $0.618$ for $k = 5$ (expected $0.621$); goodness-of-fit $R^2 \ge 0.96$ for all three branching factors. (\textbf {B})~Three-dimensional scatter of invocation counts over the $(\log _{10} N, k)$ plane, with three ribbons for $k \in \{2, 3, 5\}$. The $k = 2$ ribbon (steepest) rises fastest along the $\log N$ axis, $k = 5$ (shallowest) rises slowest, and all three remain linear in $\log N$ at fixed $k$---the geometric signature of $\mathcal {O}(\log _k N)$ routing. The $z$-axis reaches $\approx 12$ invocations at the largest tested leaf count $N = 2{,}187$ with $k = 2$. (\textbf {C})~Paired bar chart comparing samples-to-$\epsilon $-target under the four-stage curriculum (teal, left bars) versus single-stage uniform training (purple, right bars), across the first five seeds. The curriculum bars are consistently lower; the across-seed mean ratio $m_{\mathrm {uniform}} / m_{\mathrm {curriculum}}$ is $2.00$ with a tight $95\%$ confidence interval, empirically validating the direction of Theorem~\ref {thm:curriculum-convergence}, though falling short of the theoretical $4\times $ prediction---a gap we discuss in \S \ref {sec:limitations}. (\textbf {D})~Scatter of empirical samples-to-$\epsilon $-competence against the theoretical PAC bound, for four compilation configurations with $(K, L) \in \{(3, 5), (5, 8), (8, 10), (10, 15)\}$. Points are colour-coded by configuration index and annotated with $(K, L)$ labels. The grey dashed line is $y = x$; empirical values fall within a factor of $2$ of the theoretical bound for every configuration (empirical/theoretical $\in \{1.72, 1.96, 1.28, 0.66\}$), with the largest configuration $(K, L) = (10, 15)$ falling below the line, confirming that the PAC bound is not merely valid but reasonably tight up to small constants}{figure.caption.6}{}}
+\citation{valiant1984theory,blumer1989learnability,shalev2014understanding}
+\citation{shalev2014understanding,mohri2018foundations}
+\@writefile{toc}{\contentsline {part}{III\hspace  {1em}Formal Analysis}{23}{part.3}\protected@file@percent }
+\newlabel{part:analysis}{{III}{23}{Formal Analysis}{part.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {19}PAC-Learnability of Neural Compilation under Backward Training}{23}{section.19}\protected@file@percent }
+\newlabel{sec:pac}{{19}{23}{PAC-Learnability of Neural Compilation under Backward Training}{section.19}{}}
+\newlabel{thm:pac-compilation}{{19.1}{23}{PAC-Learnability of Compilation}{theorem.19.1}{}}
+\newlabel{cor:typical-sample-complexity}{{19.2}{23}{Sample complexity for typical compilation domains}{theorem.19.2}{}}
+\newlabel{cor:sample-saving-backward}{{19.3}{23}{Sample saving under backward training}{theorem.19.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {20}Correctness and Termination}{23}{section.20}\protected@file@percent }
+\newlabel{sec:correctness}{{20}{23}{Correctness and Termination}{section.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {20.1}Training termination}{23}{subsection.20.1}\protected@file@percent }
+\newlabel{prop:termination}{{20.1}{23}{Training Termination}{theorem.20.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {20.2}Deployment correctness}{23}{subsection.20.2}\protected@file@percent }
+\newlabel{prop:deployment-correctness}{{20.2}{23}{Deployment Correctness}{theorem.20.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {20.3}Cascade-level correctness}{24}{subsection.20.3}\protected@file@percent }
+\newlabel{thm:cascade-correctness}{{20.3}{24}{Cascade Correctness}{theorem.20.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {21}Failure Modes and Scope Conditions}{24}{section.21}\protected@file@percent }
+\newlabel{sec:failure-modes}{{21}{24}{Failure Modes and Scope Conditions}{section.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {21.1}Scope conditions}{24}{subsection.21.1}\protected@file@percent }
+\newlabel{assum:scope}{{21.1}{24}{Scope of the Backward Training Principle}{theorem.21.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {21.2}Failure mode 1: no pure-intent regime}{24}{subsection.21.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {21.3}Failure mode 2: non-additive constraints}{24}{subsection.21.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {21.4}Failure mode 3: non-convex constraint geometry}{24}{subsection.21.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {21.5}Engineering scope}{24}{subsection.21.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{IV\hspace  {1em}Practice}{25}{part.4}\protected@file@percent }
+\newlabel{part:practice}{{IV}{25}{Practice}{part.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {22}Worked Example: Domain Connection End-to-End}{25}{section.22}\protected@file@percent }
+\newlabel{sec:worked-example}{{22}{25}{Worked Example: Domain Connection End-to-End}{section.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {22.1}Domain: a hypothetical enzyme kinetics compiler}{25}{subsection.22.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {22.2}Writing the Domain Connector}{25}{subsection.22.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {22.3}Factory invocation}{25}{subsection.22.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {22.4}Querying the trained resolver}{25}{subsection.22.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {22.5}No domain-specific engineering}{25}{subsection.22.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {23}Validation Protocols and Falsifiable Predictions}{25}{section.23}\protected@file@percent }
+\newlabel{sec:predictions}{{23}{25}{Validation Protocols and Falsifiable Predictions}{section.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {23.1}Theoretical predictions}{25}{subsection.23.1}\protected@file@percent }
+\citation{bengio2009curriculum}
+\citation{graves2017automated}
+\citation{soviany2022curriculum}
+\@writefile{toc}{\contentsline {subsection}{\numberline {23.2}System-level predictions}{26}{subsection.23.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {23.3}Comparative predictions}{26}{subsection.23.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {23.4}Experimental protocols}{26}{subsection.23.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {24}Comparison with Existing Approaches}{26}{section.24}\protected@file@percent }
+\newlabel{sec:comparison}{{24}{26}{Comparison with Existing Approaches}{section.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {24.1}Curriculum learning}{26}{subsection.24.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textbf  {Forward-Training Collapse and Cascade Monotonicity.} (\textbf  {A})~Three-dimensional scatter of forward-trained prediction error as a function of the first two input coordinates, coloured by backward-trained prediction error on the same points. Each point represents a test sample drawn from the full pure-intent feasibility region (ball of radius $2.0$ in $\mathbb  {R}^3$); $500$ training samples were used in each condition, with the forward-trained model seeing only the inner constrained region (radius $0.7$). The asymmetric error structure---forward errors rise sharply outside the training support while backward errors remain uniformly low (cool colours everywhere)---is a geometric instantiation of the Forward Training Collapse Theorem (Theorem~\ref {thm:collapse}). (\textbf  {B})~Mean prediction error binned by input norm $\|x\|$, with the support boundary of the constrained training distribution at $\|x\| = 0.7$ marked by a dashed vertical line. The backward-trained curve (teal) is nearly flat across the full domain $[0, 2.0]$; the forward-trained curve (orange) rises by a factor of $\sim 3$ between $\|x\| = 0.7$ and $\|x\| = 1.2$, confirming that the failure gap concentrates in the out-of-support region $\mathcal  {F}(\mathcal  {D}^\star ) \setminus \mathcal  {F}(\mathcal  {D}_c)$. (\textbf  {C})~Cascade monotonicity: prediction RMSE of a backward-trained policy evaluated at six cascade levels of increasing constraint tightness (level $0$ = apex, level $5$ = tightest). Thin pale-blue traces show each of $30$ individual seeds; the thick blue line with shaded band reports the across-seed mean $\pm 1$ SD\spacefactor \@m {}. Error decreases monotonically with tightening constraints in $100\%$ of seeds, as predicted by Corollary~\ref {cor:hierarchy} (Hierarchical Skill Preservation). (\textbf  {D})~Histogram of the forward/backward error-ratio distribution on out-of-support test data, aggregated across $600$ trials. The dashed grey line marks parity ($1.0$); the solid blue line marks the empirical mean $1.42$. The distribution is visibly shifted to the right of parity, with paired-$t$ significance $p < 0.05$, confirming that forward training produces strictly worse out-of-support error than backward training.}}{27}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:collapse-monotonicity}{{5}{27}{\textbf {Forward-Training Collapse and Cascade Monotonicity.} (\textbf {A})~Three-dimensional scatter of forward-trained prediction error as a function of the first two input coordinates, coloured by backward-trained prediction error on the same points. Each point represents a test sample drawn from the full pure-intent feasibility region (ball of radius $2.0$ in $\mathbb {R}^3$); $500$ training samples were used in each condition, with the forward-trained model seeing only the inner constrained region (radius $0.7$). The asymmetric error structure---forward errors rise sharply outside the training support while backward errors remain uniformly low (cool colours everywhere)---is a geometric instantiation of the Forward Training Collapse Theorem (Theorem~\ref {thm:collapse}). (\textbf {B})~Mean prediction error binned by input norm $\|x\|$, with the support boundary of the constrained training distribution at $\|x\| = 0.7$ marked by a dashed vertical line. The backward-trained curve (teal) is nearly flat across the full domain $[0, 2.0]$; the forward-trained curve (orange) rises by a factor of $\sim 3$ between $\|x\| = 0.7$ and $\|x\| = 1.2$, confirming that the failure gap concentrates in the out-of-support region $\mathcal {F}(\mathcal {D}^\star ) \setminus \mathcal {F}(\mathcal {D}_c)$. (\textbf {C})~Cascade monotonicity: prediction RMSE of a backward-trained policy evaluated at six cascade levels of increasing constraint tightness (level $0$ = apex, level $5$ = tightest). Thin pale-blue traces show each of $30$ individual seeds; the thick blue line with shaded band reports the across-seed mean $\pm 1$ SD\@. Error decreases monotonically with tightening constraints in $100\%$ of seeds, as predicted by Corollary~\ref {cor:hierarchy} (Hierarchical Skill Preservation). (\textbf {D})~Histogram of the forward/backward error-ratio distribution on out-of-support test data, aggregated across $600$ trials. The dashed grey line marks parity ($1.0$); the solid blue line marks the empirical mean $1.42$. The distribution is visibly shifted to the right of parity, with paired-$t$ significance $p < 0.05$, confirming that forward training produces strictly worse out-of-support error than backward training}{figure.caption.7}{}}
+\citation{caruana1997multitask}
+\citation{ross2011reduction}
+\citation{codevilla2018end}
+\citation{bansal2019chauffeurnet}
+\citation{lewis2020retrieval}
+\citation{brown2020language}
+\citation{touvron2023llama}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of training approaches. ``Cost per domain'' is the marginal cost of adding one domain to the system once the base is trained. ``Transfer'' describes what guarantee the approach provides for cross-regime generalisation. ``Verification'' describes what formal verification is performed on model outputs.}}{28}{table.caption.8}\protected@file@percent }
+\newlabel{tab:comparison}{{1}{28}{Comparison of training approaches. ``Cost per domain'' is the marginal cost of adding one domain to the system once the base is trained. ``Transfer'' describes what guarantee the approach provides for cross-regime generalisation. ``Verification'' describes what formal verification is performed on model outputs}{table.caption.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {24.2}Multi-task learning}{28}{subsection.24.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {24.3}Behaviour cloning and imitation learning}{28}{subsection.24.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {24.4}Retrieval-augmented generation}{28}{subsection.24.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {24.5}Foundation model fine-tuning}{28}{subsection.24.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {25}Limitations and Open Problems}{28}{section.25}\protected@file@percent }
+\newlabel{sec:limitations}{{25}{28}{Limitations and Open Problems}{section.25}{}}
+\bibstyle{unsrtnat}
+\bibdata{references}
+\bibcite{elman1993learning}{{1}{1993}{{Elman}}{{}}}
+\bibcite{bengio2009curriculum}{{2}{2009}{{Bengio et~al.}}{{Bengio, Louradour, Collobert, and Weston}}}
+\bibcite{bommasani2021opportunities}{{3}{2021}{{Bommasani et~al.}}{{Bommasani, Hudson, Adeli, et~al.}}}
+\bibcite{brown2020language}{{4}{2020}{{Brown et~al.}}{{Brown, Mann, Ryder, Subbiah, et~al.}}}
+\bibcite{hu2022lora}{{5}{2022}{{Hu et~al.}}{{Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen}}}
+\bibcite{vapnik1998statistical}{{6}{1998}{{Vapnik}}{{}}}
+\bibcite{blumer1989learnability}{{7}{1989}{{Blumer et~al.}}{{Blumer, Ehrenfeucht, Haussler, and Warmuth}}}
+\bibcite{mohri2018foundations}{{8}{2018}{{Mohri et~al.}}{{Mohri, Rostamizadeh, and Talwalkar}}}
+\bibcite{valiant1984theory}{{9}{1984}{{Valiant}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {26}Conclusion}{29}{section.26}\protected@file@percent }
+\newlabel{sec:conclusion}{{26}{29}{Conclusion}{section.26}{}}
+\bibcite{boyd2004convex}{{10}{2004}{{Boyd and Vandenberghe}}{{}}}
+\bibcite{nocedal2006numerical}{{11}{2006}{{Nocedal and Wright}}{{}}}
+\bibcite{karush1939minima}{{12}{1939}{{Karush}}{{}}}
+\bibcite{kuhn1951nonlinear}{{13}{1951}{{Kuhn and Tucker}}{{}}}
+\bibcite{houlsby2019parameter}{{14}{2019}{{Houlsby et~al.}}{{Houlsby, Giurgiu, Jastrzebski, Morrone, de~Laroussilhe, Gesmundo, Attariyan, and Gelly}}}
+\bibcite{milliken1995race}{{15}{1995}{{Milliken and Milliken}}{{}}}
+\bibcite{shalev2014understanding}{{16}{2014}{{Shalev-Shwartz and Ben-David}}{{}}}
+\bibcite{ericsson1993deliberate}{{17}{1993}{{Ericsson et~al.}}{{Ericsson, Krampe, and Tesch-R{\"o}mer}}}
+\bibcite{ericsson2006cambridge}{{18}{2006}{{Ericsson et~al.}}{{Ericsson, Charness, Feltovich, and Hoffman}}}
+\bibcite{vaswani2017attention}{{19}{2017}{{Vaswani et~al.}}{{Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, and Polosukhin}}}
+\bibcite{radford2019language}{{20}{2019}{{Radford et~al.}}{{Radford, Wu, Child, Luan, Amodei, and Sutskever}}}
+\bibcite{graves2017automated}{{21}{2017}{{Graves et~al.}}{{Graves, Bellemare, Menick, Munos, and Kavukcuoglu}}}
+\bibcite{soviany2022curriculum}{{22}{2022}{{Soviany et~al.}}{{Soviany, Ionescu, Rota, and Sebe}}}
+\bibcite{caruana1997multitask}{{23}{1997}{{Caruana}}{{}}}
+\bibcite{ross2011reduction}{{24}{2011}{{Ross et~al.}}{{Ross, Gordon, and Bagnell}}}
+\bibcite{codevilla2018end}{{25}{2018}{{Codevilla et~al.}}{{Codevilla, M{\"u}ller, L{\'o}pez, Koltun, and Dosovitskiy}}}
+\bibcite{bansal2019chauffeurnet}{{26}{2019}{{Bansal et~al.}}{{Bansal, Krizhevsky, and Ogale}}}
+\bibcite{lewis2020retrieval}{{27}{2020}{{Lewis et~al.}}{{Lewis, Perez, Piktus, et~al.}}}
+\bibcite{touvron2023llama}{{28}{2023}{{Touvron et~al.}}{{Touvron, Lavril, Izacard, et~al.}}}
+\gdef \@abspage@last{30}

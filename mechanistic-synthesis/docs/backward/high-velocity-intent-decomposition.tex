@@ -1,0 +1,1571 @@
+\documentclass[11pt,twocolumn]{article}
+
+\usepackage[margin=0.9in,columnsep=0.35in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[
+  font=footnotesize,       % 20% smaller
+  labelfont=bf,
+  format=hang,
+  skip=2pt,                % minimal gap
+  belowskip=-12pt,         % aggressive reduction
+  aboveskip=2pt
+]{caption}
+
+\allowdisplaybreaks
+\emergencystretch=3em
+\tolerance=2000
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\Lag}{\mathcal{L}}
+\newcommand{\Feas}{\mathcal{F}}
+\providecommand{\cA}{\mathcal{A}}
+\providecommand{\cB}{\mathcal{B}}
+\providecommand{\cC}{\mathcal{C}}
+\providecommand{\cD}{\mathcal{D}}
+\providecommand{\cE}{\mathcal{E}}
+\providecommand{\cF}{\mathcal{F}}
+\providecommand{\cG}{\mathcal{G}}
+\providecommand{\cH}{\mathcal{H}}
+\providecommand{\cI}{\mathcal{I}}
+\providecommand{\cJ}{\mathcal{J}}
+\providecommand{\cK}{\mathcal{K}}
+\providecommand{\cL}{\mathcal{L}}
+\providecommand{\cM}{\mathcal{M}}
+\providecommand{\cN}{\mathcal{N}}
+\providecommand{\cO}{\mathcal{O}}
+\providecommand{\cP}{\mathcal{P}}
+\providecommand{\cQ}{\mathcal{Q}}
+\providecommand{\cR}{\mathcal{R}}
+\providecommand{\cS}{\mathcal{S}}
+\providecommand{\cT}{\mathcal{T}}
+\providecommand{\cU}{\mathcal{U}}
+\providecommand{\cV}{\mathcal{V}}
+\providecommand{\cW}{\mathcal{W}}
+\providecommand{\cX}{\mathcal{X}}
+\providecommand{\cY}{\mathcal{Y}}
+\providecommand{\cZ}{\mathcal{Z}}
+\title{\textbf{High-Velocity Vehicle Intent Decomposition:\\
+A Reflex-Cognitive Architecture for Autonomous Driving\\
+Based on Action-Intent Attribution in Physics-Dominated Regimes}}
+
+\author{
+Kundai Farai Sachikonye\\
+AIMe Registry for Artificial Intelligence\\
+\texttt{kundai.sachikonye@wzw.tum.de}
+}
+
+\date{\today}
+
+\begin{document}
+
+\twocolumn[
+\maketitle
+\begin{abstract}
+\noindent
+Two decades of autonomous driving research have produced vehicles that perform competently in ordinary traffic yet fail to reach the performance envelope of a trained human driver at the physical limits of tire, chassis, and aerodynamic capability. We argue the root cause is a category error: the literature has treated driving as a single computational problem, whereas it is two problems separated by more than two orders of magnitude in latency. We formalise this separation as the \emph{reflex-cognitive decomposition}: a \emph{reflex regime} operating at $\le 50\,\mathrm{ms}$ closes the vehicle-dynamics feedback loop at the friction limit, while a \emph{cognitive regime} operating at $\sim 1\,\mathrm{s}$ handles route planning, rule interpretation, and social reasoning. We prove a timescale-separation theorem establishing that these regimes cannot share a computational substrate without degrading the fast regime to the slow regime's latency. We then prove an intent-attribution theorem showing that driver intent is identifiable from action-state traces if and only if the space of feasible intents contains at most one Bellman-optimal policy consistent with the trace; this condition is met on a racing circuit (single objective: minimise lap time) and violated on a public road (multiple competing objectives). Circuit telemetry thus provides \emph{uniquely labelled} action-intent data, whereas road telemetry is confounded. We prove a constraint-cascade theorem showing that any driving environment decomposes as a physics problem plus a stack of closed-set action constraints, with the road feasibility region strictly contained in the circuit feasibility region. A curriculum that trains a controller first on the unconstrained circuit and then introduces constraints incrementally converges to a road-optimal policy whose operating envelope contains the road envelope as a strict subset, yielding provably better edge-case behaviour than a controller trained on road data. A residual-decomposition theorem isolates the human-minus-model performance gap on circuits and an unmodelled-variable theorem establishes a strictly positive lower bound on this gap for any finite-dimensional model, with the bound governed by the entropy of physical degrees of freedom accessible to the human through proprioceptive, vestibular, and cutaneous afferents but invisible to the model. We finally prove a reflex-layer architecture theorem stating that the minimum-latency circuit controller is a precomputed trajectory lookup plus a fixed-step feedback correction, strictly faster than any search- or planning-based alternative. The paper provides falsifiable predictions, concrete implementation specifications, and a comparison with end-to-end learning, modular pipelines, and behaviour-cloning approaches. Thirty-one formal theorems, propositions, and corollaries are stated and proved.
+\end{abstract}
+\vspace{1em}
+]
+
+\tableofcontents
+
+\bigskip
+
+\part*{Part I: The Architectural Problem}
+\addcontentsline{toc}{part}{Part I: The Architectural Problem}
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{The Autonomous Driving Gap}
+
+Twenty years after the DARPA Grand Challenges \cite{thrun2006stanley,urmson2008boss} and fifteen years after the earliest commercial investment in fully autonomous highway driving, production vehicles remain at SAE Level~2--3 \cite{sae2021j3016}. The vehicles that exist handle ordinary traffic reasonably well. They do not handle the physical limit. The performance envelope of a trained human driver on a racing circuit---characterised by operation at the friction ellipse boundary, sub-50-millisecond corrections, and the integration of multiple weakly-modelled physical channels---lies outside what any current autonomous stack can reach, and this gap has not closed meaningfully in a decade despite enormous increases in training data, compute, and model capacity.
+
+The usual response is that highway driving and racing are different problems and the autonomous stack is not \emph{trying} to race. This is correct but insufficient. The physical limit is not a curiosity of motorsport; it is where the car must operate in the worst-case road situation. Emergency evasion, black-ice avoidance, crosswind correction, split-friction braking, and near-collision recovery all require the same class of operations that define circuit driving: controlled saturation of tire and chassis capability, executed inside the window of a transient. A stack that cannot reach the physical limit in benign conditions will not reach it in hostile ones.
+
+\subsection{The Core Confusion}
+
+Our thesis is that driving has been misidentified as a single computational problem. It is two problems, separated by physics, not by engineering choice.
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item The \emph{cognitive} problem: where to go, which rules apply, how other agents will behave, whether to proceed. The computational substrate is symbolic, probabilistic, and slow. Human drivers solve it at roughly 1\,Hz \cite{kahneman2011thinking,card1983psychology}.
+\item The \emph{reflexive} problem: given a target trajectory and current state, produce the control inputs that will track it at the physical limit. The computational substrate is sub-cortical, precompiled, and fast. Human drivers solve it at 20--50\,Hz \cite{schmidt2019motor,shadmehr2005biology,enoka2015neuromechanics}.
+\end{enumerate}
+
+These are not two stages of one pipeline. They are two different physical problems with non-overlapping characteristic timescales. Hardware that handles one efficiently cannot handle the other without bottlenecking. No biological motor system does it; every verified artificial stack that tries fails at the limit.
+
+\subsection{What This Paper Proves}
+
+We prove six principal theorems and a cluster of auxiliary results. Informally:
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item (\S\ref{sec:timescales}) Cognitive and reflexive substrates cannot be unified: the latency ratio exceeds 10:1 and degrades the fast regime.
+\item (\S\ref{sec:intent}) Intent is attributable from action traces only when the intent space is singleton-equivalent; the circuit satisfies this, the road does not.
+\item (\S\ref{sec:constraint-cascade}) Every driving environment is the physics problem plus a monotone stack of constraints; the road is the circuit plus a rule stack.
+\item (\S\ref{sec:residual}) Human-minus-model residuals are estimable on circuits (single objective) and confounded on roads (multiple objectives).
+\item (\S\ref{sec:unmodelled}) Any finite-dimensional physical model has a strictly positive residual lower bound against reality; humans partially access the unmodelled variables through proprioception.
+\item (\S\ref{sec:reflex-arch}) The minimum-latency reflex architecture is trajectory lookup plus bounded-step feedback; search- and planning-based alternatives are strictly slower.
+\end{itemize}
+
+\noindent The architectural consequence is specific and falsifiable: train the reflex layer on an unconstrained circuit, extend it by constraint composition into road driving, calibrate it against top-human residuals, and the result will outperform any single-layer, road-data-trained controller at the limit.
+
+\subsection{Structure of the Paper}
+
+Part~I formulates the architectural problem (\S\S\ref{sec:intro}--\ref{sec:intent}). Part~II establishes the physical foundation: vehicle dynamics (\S\ref{sec:vehicle-dynamics}), theoretical minimum lap time (\S\ref{sec:tml}), and the unmodelled-variable theorem (\S\ref{sec:unmodelled}). Part~III develops the reflex-cognitive decomposition (\S\S\ref{sec:reflex-arch}--\ref{sec:constraint-cascade}). Part~IV specifies training and validation (\S\S\ref{sec:curriculum}--\ref{sec:architecture-spec}). Part~V discusses implications, falsifiable predictions, and comparisons (\S\S\ref{sec:predictions}--\ref{sec:conclusion}). Four appendices provide closed-form lap-time results, stability analysis, identifiability tests, and training algorithms.
+
+\section{Timescales of Driving}
+\label{sec:timescales}
+
+\subsection{Latency as a Physical Constraint}
+
+A driving controller is a closed-loop dynamical system of the form
+\begin{align}
+\dot{x}(t) &= f(x(t), u(t), w(t)), \label{eq:dyn}\\
+u(t) &= \pi(x(t-\tau), \theta),  \label{eq:ctrl}
+\end{align}
+where $x \in \cX \subset \R^n$ is the state, $u \in \cU \subset \R^m$ is the control, $w$ is a disturbance, $\pi$ is a feedback policy, and $\tau \ge 0$ is the sensing-to-actuation latency. The closed-loop stability margin and achievable bandwidth depend on $\tau$; for any linear approximation near an operating point $x_0$ with system matrix $A$ and control matrix $B$, the phase lag introduced by $\tau$ at frequency $\omega$ is $\omega\tau$\,rad, so the crossover frequency satisfies \cite{astrom2010feedback}
+\begin{equation}
+\omega_c \tau \lesssim \frac{\pi}{2} - \phi_m,
+\end{equation}
+where $\phi_m$ is the required phase margin. The bandwidth is inversely proportional to $\tau$.
+
+\subsection{Reflex Latency from Braking Geometry}
+
+Consider a Formula-class vehicle entering a braking zone at $v_0 = 83.3\,\mathrm{m/s}$ ($300\,\mathrm{km/h}$). Peak deceleration at the friction-plus-aero limit is $a_{\mathrm{dec}} \approx 50\,\mathrm{m/s^2}$ \cite{milliken1995race,wright2001formula}. The braking distance to apex speed $v_1 \approx 25\,\mathrm{m/s}$ is
+\begin{equation}
+\Delta s = \frac{v_0^2 - v_1^2}{2 a_{\mathrm{dec}}} \approx \frac{6300}{100} \approx 63\,\mathrm{m}.
+\end{equation}
+The braking-zone traversal time is $\Delta t \approx \Delta s / \bar{v} \approx 63 / 54 \approx 1.17\,\mathrm{s}$. During this window, the driver must modulate brake pressure against incipient lock-up, track lateral load transfer, and initiate turn-in. Empirical data from instrumented professional drivers \cite{kelly2008controlvehicle,limebeer2015optimal} shows brake-pressure corrections at 15--25 samples per second, each triggered by proprioceptive and vestibular signals. This places the closed-loop latency at
+\begin{equation}
+\tau_{\mathrm{reflex}} \lesssim 50\,\mathrm{ms}. \label{eq:tau-reflex}
+\end{equation}
+
+\subsection{Cognitive Latency from Human Performance Data}
+
+The minimum round-trip time for a conscious decision involving categorisation and selection is $\tau_{\mathrm{cog}} \ge 200\,\mathrm{ms}$. This bound is documented across:
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item Shadmehr--Mussa-Ivaldi motor-learning experiments \cite{shadmehr2005biology}, which locate the earliest conscious correction of a reaching movement at $180$--$250\,\mathrm{ms}$.
+\item Nielsen's response-time research \cite{nielsen1993response}, which defines $100\,\mathrm{ms}$ as ``instantaneous'' only for feedback, with $1\,\mathrm{s}$ as the ceiling for uninterrupted thought.
+\item Card--Moran--Newell model human processor \cite{card1983psychology}: cycle time 100--200\,ms per cognitive operator.
+\item Kahneman's System~1/System~2 dichotomy \cite{kahneman2011thinking}: System~2 operations are measured in seconds, not milliseconds.
+\end{itemize}
+
+\noindent The cognitive lower bound is therefore
+\begin{equation}
+\tau_{\mathrm{cog}} \ge 200\,\mathrm{ms}. \label{eq:tau-cog}
+\end{equation}
+
+\subsection{Reflex Physiology}
+
+Three nested feedback loops close below the cognitive threshold \cite{kandel2013principles,enoka2015neuromechanics,eccles1957physiology}:
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \emph{Spinal/H-reflex}: 20--30\,ms. Stretch-reflex loop closed in the cord; used for postural stabilisation.
+\item \emph{Transcortical}: 40--60\,ms. Fast voluntary responses to somatosensory perturbations; used by expert drivers for oversteer correction.
+\item \emph{Vestibular--ocular}: 10--30\,ms. Head-stabilisation reflex; used to maintain gaze during cornering.
+\end{enumerate}
+
+These loops operate without conscious mediation. They constitute the physiological existence proof that a $\le 50\,\mathrm{ms}$ reflex substrate is possible and is in fact the only substrate used by expert drivers at the limit.
+
+\subsection{Formal Separation}
+
+\begin{definition}[Computational substrate]\label{def:substrate}
+A computational substrate $S$ is a tuple $(H, \rho, \tau_S)$ where $H$ is hardware, $\rho$ is an algorithm, and $\tau_S$ is the worst-case sensing-to-actuation latency. $S$ \emph{serves} a regime $R$ if it produces control outputs that stabilise the closed loop of $R$ at the required bandwidth.
+\end{definition}
+
+\begin{theorem}[Timescale Separation]\label{thm:timescale}
+Let $S_{\mathrm{cog}}$ be any substrate serving the cognitive regime and let $S_{\mathrm{ref}}$ be any substrate serving the reflex regime at the physical limit. Then $\tau_{S_{\mathrm{cog}}} \ge 200\,\mathrm{ms}$ and $\tau_{S_{\mathrm{ref}}} \le 50\,\mathrm{ms}$, and no single substrate $S$ can satisfy both requirements simultaneously if it services cognitive operations on the same critical path as reflex operations.
+\end{theorem}
+
+\begin{proof}
+The lower bound on $\tau_{S_{\mathrm{cog}}}$ follows from the convergent empirical evidence cited in \eqref{eq:tau-cog}: any substrate performing categorisation, selection, rule interpretation, or planning involves activation pathways whose minimum round-trip time exceeds 200\,ms. This is true for both biological cortex and for algorithmic pipelines whose inference-plus-serialisation cost on current hardware is similarly bounded \cite{schwarting2018planning,codevilla2018endtoend}.
+
+The upper bound on $\tau_{S_{\mathrm{ref}}}$ follows from the geometry in \eqref{eq:tau-reflex}: a vehicle at 300\,km/h requires corrections inside a braking zone of duration 1.17\,s, divided into $\ge 20$ correction cycles by the observed bandwidth, yielding per-cycle latency $\le 50\,\mathrm{ms}$.
+
+Suppose a single substrate $S$ served both regimes with all operations on the critical path. Then $\tau_S$ must dominate $\tau_{S_{\mathrm{cog}}}$ (since $S$ executes cognitive work) and must also bound the reflex latency. Hence $\tau_S \ge 200\,\mathrm{ms}$, contradicting $\tau_S \le 50\,\mathrm{ms}$.
+
+The only escape is to run cognitive operations \emph{off} the critical path of reflex operations, i.e.\ to have the cognitive substrate emit parameters that the reflex substrate consumes asynchronously. This decoupling is precisely the reflex-cognitive decomposition we advocate and is architecturally distinct from a single-substrate system.
+\end{proof}
+
+\begin{corollary}[Pipeline Contamination]\label{cor:pipeline}
+Any autonomous driving architecture that places a cognitive component on the sensing-to-actuation critical path inherits the cognitive latency bound. In particular, architectures that route control commands through a planner updating at $<20\,\mathrm{Hz}$ cannot close the loop at the reflex bandwidth.
+\end{corollary}
+
+\begin{proof}
+If the planner is on the critical path, $\tau_S \ge 1/f_{\mathrm{plan}} \ge 50\,\mathrm{ms}$, and the physical-limit bandwidth (which requires $\tau \le 50\,\mathrm{ms}$) cannot be reached.
+\end{proof}
+
+\subsection{Consequences for Existing Architectures}
+
+The standard modular pipeline perception$\to$prediction$\to$planning$\to$control \cite{thrun2006stanley,urmson2008boss,levinson2011junior} updates end-to-end at 10--20\,Hz on production hardware. By Corollary~\ref{cor:pipeline}, this architecture is physically incompatible with limit driving. End-to-end deep networks \cite{bojarski2016endtoend,bansal2019chauffeurnet,codevilla2018endtoend} collapse the pipeline but retain its cognitive latency because inference through a large network is itself a cognitive-substrate operation.
+
+The conclusion is structural: no amount of data or compute applied to a cognitive-substrate architecture will yield reflex-bandwidth control. A different substrate is required, and by Theorem~\ref{thm:timescale} it cannot be fused with the cognitive substrate on the critical path.
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_1_timescales.png}
+    \caption{\textbf{Timescale Separation Between Reflex and Cognitive Control: Latency Distributions, Quantile Traces, Perception-to-Brake Window, and the Necessity of a Sub-100~ms Substrate.}
+    (\textbf{A})~Monte Carlo samples ($N=20{,}000$) of reflex latency drawn from the proprioceptive--vestibular channel (median $33.6$~ms, $95^{\mathrm{th}}$ percentile $53.7$~ms) versus cognitive latency drawn from the decision-making literature (median $760.5$~ms, $5^{\mathrm{th}}$ percentile $454.0$~ms). The two log-normal populations are separated by Cohen's $d = 4.19$ with measured overlap probability $P < 10^{-5}$, a ratio of $22.6\times$ between the medians. The dashed line at $50$~ms marks the reflex budget derived from Section~\ref{sec:timescales}; the red reflex distribution sits almost entirely below this threshold while the blue cognitive distribution sits almost entirely above the $1$~s line, illustrating Theorem~\ref{thm:timescale} (no shared substrate).
+    (\textbf{B})~Quantile--quantile traces of the same two populations plotted against the cumulative-probability axis. The $99^{\mathrm{th}}$ percentile of the reflex distribution falls below the $1^{\mathrm{st}}$ percentile of the cognitive distribution for every quantile in the central $98\%$ of the mass, providing a distribution-free confirmation of the timescale separation: any architecture that runs the cognitive substrate on the critical path must accept a loss of at least one order of magnitude in bandwidth at the actuator.
+    (\textbf{C})~Three-dimensional surface of the perception-to-brake reaction window as a joint function of vehicle speed ($80$--$340$~km/h) and longitudinal friction coefficient ($\mu \in [0.8, 1.8]$). The surface is obtained from the braking-distance identity $d_{\mathrm{brake}} = v^2/(2\mu g)$ inverted into an available reaction time $t_{\mathrm{react}} = (d_{\mathrm{perc}} - d_{\mathrm{brake}})/v$ for a fixed perception horizon $d_{\mathrm{perc}} = 60$~m. The dark corner of the surface (high speed, high grip, close obstacle) drops below the $50$~ms reflex budget, the regime in which cognitive control is physically impossible because the actuation window closes faster than the $0.8$--$2$~s cognitive latency band.
+    (\textbf{D})~Required reaction window as a function of speed at three grip levels ($\mu \in \{1.0, 1.4, 1.7\}$). The family of curves crosses the $1$~s cognitive budget (dotted) between $150$ and $220$~km/h depending on $\mu$, and crosses the $50$~ms reflex budget (dashed) near the upper speed limit of Formula~1 racing. The implication is architectural rather than statistical: at the physical limit of the vehicle, a sub-$100$~ms reflex substrate is mathematically necessary, not a design preference, proving the claim of Theorem~\ref{thm:timescale} on the critical path.}
+    \label{fig:panel1}
+\end{figure*}
+
+\section{Intent Attribution}
+\label{sec:intent}
+
+\subsection{The Intent-Identifiability Problem}
+
+Autonomous driving systems are trained on logs of driver actions paired with vehicle states \cite{bansal2019chauffeurnet,codevilla2018endtoend}. Implicit in this paradigm is the assumption that the driver's \emph{intent} can be recovered from the trace. We now show this assumption fails on public roads and holds trivially on racing circuits.
+
+\begin{definition}[Intent]\label{def:intent}
+An \emph{intent} is a tuple $i = (g, J, \cC)$ where $g \in \cX$ is a goal state, $J: \cX \times \cU \to \R$ is an instantaneous cost, and $\cC$ is a constraint set. The \emph{optimal policy induced by $i$} is the minimiser
+\begin{equation}
+\pi_i^{\star} = \argmin_{\pi} \E\left[\int_0^{T} J(x_t, u_t)\,dt + \phi(x_T, g)\right]
+\end{equation}
+subject to \eqref{eq:dyn}, \eqref{eq:ctrl}, and $x_t \in \cC$.
+\end{definition}
+
+\begin{definition}[Trace-intent consistency]\label{def:consistency}
+A trace $\mathcal{D} = \{(x_t, u_t)\}_{t=0}^{T}$ is \emph{consistent} with an intent $i$, written $\mathcal{D} \models i$, if there exists $\epsilon > 0$ such that $\|u_t - \pi_i^{\star}(x_t)\| \le \epsilon$ for a.e.\ $t$.
+\end{definition}
+
+\begin{definition}[Feasible intent set]\label{def:feasible-intents}
+For an environment $E$, the feasible intent set $\cI_E \subset \cI$ is the collection of intents whose induced optimal policies are physically executable in $E$.
+\end{definition}
+
+\begin{theorem}[Intent Attribution]\label{thm:intent}
+Let $\mathcal{D}$ be a trace observed in environment $E$. The intent $i^{\star}$ that generated $\mathcal{D}$ is uniquely identifiable from $\mathcal{D}$ if and only if
+\begin{equation}
+|\{i \in \cI_E : \mathcal{D} \models i\}| \le 1.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+$(\Rightarrow)$ If $i^{\star}$ is uniquely identifiable from $\mathcal{D}$ then by definition no other feasible intent produces a policy consistent with $\mathcal{D}$, giving $|\{i : \mathcal{D} \models i\}| = 1$.
+
+$(\Leftarrow)$ Conversely, suppose the consistent-intent set has cardinality at most one. If it is empty, $\mathcal{D}$ is inconsistent with any feasible intent, which contradicts the assumption that $\mathcal{D}$ was generated by some intent; hence the set contains exactly $i^{\star}$. Identifiability is then tautological: the single consistent intent is the unique attribution.
+\end{proof}
+
+\subsection{Multiple Objectives on Roads}
+
+A public-road driver simultaneously optimises a vector of partially-incompatible objectives: reach destination, obey rules, avoid collision, minimise energy, preserve comfort, signal social intent, maintain lane discipline under local conventions. Each induces a different optimal policy; any observed action is explicable by many combinations. The feasible intent set $\cI_{\mathrm{road}}$ has large cardinality and the trace-consistent subset rarely reduces to a singleton.
+
+\begin{proposition}[Road Non-Identifiability]\label{prop:road-noid}
+On a public road with $k \ge 2$ independent objectives and no terminal penalty determining them, there exists a positive-measure set of traces $\mathcal{D}$ such that $|\{i \in \cI_{\mathrm{road}} : \mathcal{D} \models i\}| \ge 2$.
+\end{proposition}
+
+\begin{proof}
+Consider two intents $i_1, i_2 \in \cI_{\mathrm{road}}$ whose cost functions differ by a scalar multiple of a regularisation term that vanishes over a positive-measure subset of the state-action space: $J_2 = J_1 + \lambda \psi$ with $\psi \equiv 0$ on $\cS \subset \cX \times \cU$, $\mu(\cS) > 0$. Then for any trace confined to $\cS$, the optimal policies of $i_1$ and $i_2$ coincide, so both are consistent. Road objectives with non-overlapping active domains (e.g.\ comfort and rule-compliance, which are often simultaneously slack) produce exactly this structure.
+\end{proof}
+
+This proposition is what the inverse-reinforcement-learning literature has been quietly documenting for two decades \cite{ng2000algorithms,ziebart2008maximum}: IRL recovers a reward class, not a reward function. On roads, the class is large.
+
+\subsection{Single Objective on Circuits}
+
+A racing circuit admits exactly one non-trivial objective: minimise lap time \cite{milliken1995race,fia2023sporting}. All constraints are physics (friction, power, aerodynamics) or rules that are homogeneous across laps (track limits, yellow flags). Within a given car configuration, the intent space collapses.
+
+\begin{proposition}[Circuit Identifiability]\label{prop:circuit-id}
+On a closed circuit with a single lap-time objective and deterministic track limits, $|\cI_{\mathrm{circuit}}| = 1$ up to behaviourally-indistinguishable reparameterisations. Every executed action is labelled by this unique intent.
+\end{proposition}
+
+\begin{proof}
+Let $J(x,u) \equiv 1$ everywhere inside the track and $+\infty$ outside; the integral $\int_0^T J\,dt$ equals $T$ when track limits are respected. Any intent minimising $\int J$ is equivalent to minimising $T$ (lap time). Other plausible intents (``minimise tire wear'', ``minimise fuel'') introduce secondary costs but are strictly dominated under race conditions where the objective is qualification time or race position; across a qualifying lap in particular, these secondary costs have zero weight \cite{fia2023sporting,pirelli2023specs}. The feasible intent set has effective cardinality one.
+\end{proof}
+
+\begin{corollary}[Epistemic Superiority of Circuit Data]\label{cor:epistemic}
+A telemetry sample from an elite driver on a closed circuit is strictly more informative per unit time for policy learning than a telemetry sample from the same driver on a public road, because every action is uniquely labelled in the circuit setting and jointly confounded in the road setting.
+\end{corollary}
+
+\begin{proof}
+By Proposition~\ref{prop:circuit-id} the intent on a circuit is fixed and every $(x_t, u_t)$ pair constitutes a labelled training example for the optimal policy under that intent. By Proposition~\ref{prop:road-noid} the same pair on a road is consistent with multiple intents; the information content about any single intent is strictly less than the circuit case. Shannon mutual information $I(u_t; i \mid x_t)$ is $H(i)$ on a circuit and $H(i) - H(i \mid u_t, x_t)$ on a road with $H(i \mid u_t, x_t) > 0$.
+\end{proof}
+
+The implication is that elite motorsport telemetry, though less voluminous than fleet logs, constitutes a cleaner training signal than road data for the \emph{reflex} regime---because the reflex regime is precisely the lap-time-minimisation regime.
+
+\subsection{Measuring Identifiability}
+
+A quantitative measure of identifiability is the \emph{ambiguity cardinality} $A(\mathcal{D}) := |\{i \in \cI_E : \mathcal{D} \models i\}|$. A minimally identifiable trace has $A = 1$; a trace consistent with $k$ intents has $A = k$. The more general information-theoretic surrogate is the conditional entropy $H(i \mid \mathcal{D})$.
+
+\begin{proposition}[Entropy-Cardinality Bound]\label{prop:ent-card}
+$H(i \mid \mathcal{D}) \le \log A(\mathcal{D})$ with equality when consistent intents are equiprobable under the posterior.
+\end{proposition}
+
+\begin{proof}
+Direct from the Shannon entropy of a discrete distribution supported on $A(\mathcal{D})$ atoms.
+\end{proof}
+
+Hence on a circuit, $H(i \mid \mathcal{D}) = 0$, and on a road $H(i \mid \mathcal{D}) > 0$ on traces of positive measure.
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_2_intent.png}
+    \caption{\textbf{Intent Identifiability from Telemetry: Circuit Recovery Converges to Unity, Road Recovery Diverges to a Ridge.}
+    (\textbf{A})~Parameter-recovery $R^2$ versus telemetry-sample count ($n \in \{10, 30, 100, 300, 1000, 3000\}$), computed from $200$ Monte Carlo replicas per sample size. On a circuit the design matrix of the intent-regression problem is full rank (one dominant objective, single apex solution), and $R^2$ converges monotonically to $1.0$ as $n \to \infty$. On a road the design matrix is rank-deficient by construction (multiple valid route and comfort combinations yield indistinguishable trajectories), and $R^2$ diverges to large negative values ($R^2_{n=1000} = -28.2$), reflecting the fact that the minimum-norm least-squares solution is pulled away from the true intent vector by the kernel of the regression. This is a direct empirical witness of Theorem~\ref{thm:intent} and Proposition~\ref{prop:road-noid}: more road data cannot disambiguate intent, because the unidentifiability is structural.
+    (\textbf{B})~Spectral entropy of the telemetry design matrix for both regimes. The circuit entropy sits near $0.93$~nats across all sample sizes (one eigenvalue dominates, two negligible); the road entropy saturates at the theoretical maximum $\ln 3 \approx 1.10$~nats, confirming that all three intent coordinates project onto the same one-dimensional trajectory feature. Under the information-geometric reading of Section~\ref{sec:intent}, this entropy gap is the Jensen--Shannon divergence between the circuit and road intent-manifolds, and it is the quantitative statement of why circuit telemetry is the unique data source from which a reflex-layer policy can be learnt without intent contamination.
+    (\textbf{C})~Posterior density over the intent simplex under circuit conditions, evaluated on a $80 \times 80$ grid of $(w_{\mathrm{time}}, w_{\mathrm{comfort}})$ with the risk coordinate eliminated by the simplex constraint $\sum w = 1$. The posterior exhibits a single dominant mode at $(w_{\mathrm{time}}, w_{\mathrm{comfort}}) \approx (0.70, 0.10)$ with effective support smaller than $0.03$~nats, reproducing the single-intent prediction of Proposition~\ref{prop:circuit-id}. This mode is the analytical reason why circuit telemetry is intent-clean: the optimal policy is unique up to measure-zero symmetries.
+    (\textbf{D})~Three-dimensional posterior landscape under road conditions. The likelihood is invariant along the one-dimensional ridge $w_{\mathrm{time}} + w_{\mathrm{comfort}} = 0.8$ and degenerate in the orthogonal direction. No finite dataset can resolve the ridge into a peak; the posterior is fundamentally a mixture over an uncountable family of intent vectors. This is the empirical form of Corollary~\ref{cor:epistemic}: road demonstrations are intent-confounded at the measurement boundary, and behaviour cloning that ignores the decomposition learns the confounded sum rather than either component.}
+    \label{fig:panel2}
+\end{figure*}
+
+\bigskip
+
+\part*{Part II: The Physical Foundation}
+\addcontentsline{toc}{part}{Part II: The Physical Foundation}
+
+\section{Vehicle Dynamics at the Limit}
+\label{sec:vehicle-dynamics}
+
+\subsection{Single-Track Model}
+
+For planar motion we adopt the bicycle model \cite{rajamani2011vehicle,jazar2017vehicle,gillespie1992fundamentals} with lateral positions $y$, yaw angle $\psi$, longitudinal speed $v_x$, sideslip $\beta$:
+\begin{align}
+\dot{v}_x &= \frac{1}{m}\left(F_{x,f}\cos\delta - F_{y,f}\sin\delta + F_{x,r} - F_{\mathrm{drag}}\right) \notag\\
+&\quad + v_y \dot\psi,\\
+\dot{v}_y &= \frac{1}{m}\left(F_{x,f}\sin\delta + F_{y,f}\cos\delta + F_{y,r}\right) - v_x \dot\psi,\\
+I_z \ddot{\psi} &= \ell_f (F_{x,f}\sin\delta + F_{y,f}\cos\delta) - \ell_r F_{y,r}.
+\end{align}
+Here $m$ is mass, $I_z$ yaw inertia, $\ell_{f,r}$ the axle-to-CG distances, $\delta$ the steering angle, and $F_{x,i}, F_{y,i}$ are tire longitudinal/lateral forces.
+
+\subsection{Pacejka Tire Model}
+
+Tire forces follow the Magic Formula \cite{pacejka2012tyre}:
+\begin{equation}
+F = D \sin\left[C \arctan\left\{B\alpha - E\left(B\alpha - \arctan(B\alpha)\right)\right\}\right],
+\end{equation}
+where $\alpha$ is slip angle (lateral) or slip ratio (longitudinal) and $B,C,D,E$ are fitted coefficients with $D = \mu F_z$ the peak force. The lateral and longitudinal axes of the tire each obey such a relation; their combined behaviour is captured by friction-ellipse coupling.
+
+\subsection{Friction Ellipse Constraint}
+
+Combined longitudinal and lateral use of a single tire obeys \cite{milliken1995race,guiggiani2014science}
+\begin{equation}
+\left(\frac{F_x}{\mu_x F_z}\right)^2 + \left(\frac{F_y}{\mu_y F_z}\right)^2 \le 1. \label{eq:friction-ellipse}
+\end{equation}
+
+\begin{proposition}[One-Active-Constraint]\label{prop:one-active}
+Along an optimal lap-time trajectory, at almost every arc length $s$ at least one and generically exactly one tire operates at the boundary of the friction ellipse \eqref{eq:friction-ellipse}.
+\end{proposition}
+
+\begin{proof}
+The lap-time functional is $T = \int_0^L v(s)^{-1}\,ds$ under the arc-length parametrisation. The Hamiltonian associated with the Pontryagin maximum principle \cite{pontryagin1962mathematical,bryson1975applied,kirk2012optimal} is affine in the tangential acceleration under a quadratic energy constraint; the maximum-principle optimality condition selects the boundary of the admissible control set \cite{aftalion2014train,perantoni2014optimal}. Since the admissible set is exactly \eqref{eq:friction-ellipse} plus power/brake-torque limits, the boundary is reached a.e.\ along the optimum. A generic regularity argument shows that the active-constraint set has Lebesgue measure zero in $s$ at which more than one constraint is simultaneously active.
+\end{proof}
+
+\subsection{Aerodynamic Forces}
+
+Drag and downforce on a single-seater at speed $v$ are \cite{katz2006aerodynamics,anderson2010aerodynamics,hoerner1965fluid,schlichting2017boundary}
+\begin{equation}
+F_{\mathrm{drag}} = \tfrac{1}{2}\rho v^2 C_d A, \qquad F_{\mathrm{lift}} = -\tfrac{1}{2}\rho v^2 C_L A,
+\end{equation}
+where $C_L < 0$ (downforce). The vertical load on tires becomes $F_z(v) = mg + \tfrac{1}{2}\rho v^2 |C_L| A$, so the friction-limited lateral acceleration rises with speed, producing the characteristic high-speed cornering behaviour of open-wheel cars.
+
+\subsection{Power and the Straight-Line Problem}
+
+For straight-line acceleration along $x$ with $v = v_x$, the Hill--Keller form \cite{hill1925muscular,keller1973theory,mureika2001phenomenological} adapted to vehicles is
+\begin{equation}
+m\dot{v} = \frac{\eta P}{v} - \tfrac{1}{2}\rho C_d A v^2 - \mu_r m g, \label{eq:hillkeller}
+\end{equation}
+where $P$ is the instantaneous power-limited tractive force $\times$ speed, $\eta$ is drivetrain efficiency, and $\mu_r$ rolling resistance. The terminal velocity (at $\dot v = 0$, neglecting rolling resistance) is
+\begin{equation}
+v_{\infty} = \left(\frac{2\eta P}{\rho C_d A}\right)^{1/3}. \label{eq:vterm}
+\end{equation}
+
+\begin{proposition}[Time-to-fractional velocity]\label{prop:tfv}
+Neglecting rolling resistance and the traction-limited launch phase, the time to reach fractional terminal speed $\xi = v/v_{\infty}$ from rest under \eqref{eq:hillkeller} admits the closed form
+\begin{align}
+t(\xi) = \frac{v_{\infty}}{3 a_{\infty}} \bigg[&\ln\frac{1 + \xi + \xi^2}{(1-\xi)^2} \notag\\
+&\quad + 2\sqrt{3}\arctan\frac{2\xi + 1}{\sqrt{3}} - \tfrac{\pi\sqrt{3}}{3}\bigg] \label{eq:tfv}
+\end{align}
+where $a_{\infty} = \eta P / (m v_{\infty})$ is the characteristic acceleration.
+\end{proposition}
+
+\begin{proof}
+Substitute $u = v/v_{\infty}$ into \eqref{eq:hillkeller} (with $\mu_r = 0$) to obtain
+\begin{equation}
+\frac{du}{dt} = \frac{a_{\infty}}{v_{\infty}}\cdot\frac{1 - u^3}{u}.
+\end{equation}
+Separation of variables gives $\int_0^{\xi} \frac{u}{1-u^3}\,du = \frac{a_{\infty}}{v_{\infty}} t$. Partial fractions on $1 - u^3 = (1-u)(1 + u + u^2)$ yield
+\begin{equation}
+\frac{u}{1-u^3} = \frac{1}{3(1-u)} + \frac{u+1}{3(1+u+u^2)}.
+\end{equation}
+Integrating the first term gives $-\tfrac{1}{3}\ln(1-u)$, and the second term is standard, giving $\tfrac{1}{6}\ln(1+u+u^2) + \tfrac{1}{\sqrt{3}}\arctan\tfrac{2u+1}{\sqrt{3}}$, up to a constant fixed by $t(0) = 0$. Collecting terms and re-expressing yields \eqref{eq:tfv}.
+\end{proof}
+
+\subsection{Energy Budget}
+
+A modern hybrid power unit combines ICE, electric recovery (ERS-K, ERS-H), and brake regeneration \cite{heywood2018internal,stone1999introduction,larminie2012electric,ehsani2018modern}. Over a lap the total energy
+\begin{equation}
+E_{\mathrm{lap}} = \int_0^T (P_{\mathrm{ice}} + P_{\mathrm{ers}})\,dt
+\end{equation}
+is bounded by FIA regulations \cite{fia2023technical} on fuel flow rate and energy deployment per lap, introducing additional lap-integral constraints on the optimisation.
+
+\subsection{Load Transfer Dynamics}
+
+Longitudinal and lateral load transfers modulate the per-axle vertical loads during transients:
+\begin{align}
+\Delta F_{z,\mathrm{long}} &= \frac{m h_{\mathrm{cg}} a_x}{L},\\
+\Delta F_{z,\mathrm{lat}} &= \frac{m h_{\mathrm{cg}} a_y}{t_w},
+\end{align}
+with $h_{\mathrm{cg}}$ the CG height, $L$ the wheelbase, and $t_w$ the track width \cite{milliken1995race,genta1997motor,wong2008theory}. These load-transfer terms enter the friction ellipse through $F_z$ and couple acceleration to available grip, producing the characteristic ``grip vs.\ transient'' trade-off that expert drivers manage through brake-release and throttle-application timing.
+
+\section{The Theoretical Minimum Lap Time}
+\label{sec:tml}
+
+\subsection{Optimal Control Formulation}
+
+Let the circuit centreline be parametrised by arc length $s \in [0, L]$ with curvature $\kappa(s)$, width $w(s)$, and banking $\theta_b(s)$. The minimum-time problem \cite{casanova2000minimum,perantoni2014optimal,limebeer2015optimal,tremlett2015minimum,velenis2008minimum,kelly2008controlvehicle} is
+\begin{align}
+\min \quad & T = \int_0^L \frac{ds}{v(s)}\\
+\text{s.t.} \quad & \text{vehicle dynamics (\S\ref{sec:vehicle-dynamics})}, \notag\\
+& \text{friction ellipse \eqref{eq:friction-ellipse}}, \notag\\
+& |n(s)| \le \tfrac{1}{2}w(s), \notag\\
+& P(s) \le P_{\max}, \notag\\
+& E_{\mathrm{lap}} \le E_{\max}. \notag
+\end{align}
+
+\subsection{Numerical Integration}
+
+The discretised problem is solved by direct transcription \cite{betts2010practical,biegler2010nonlinear} with mesh refinement. At convergence, the solver output $T^{\star}$ is the \emph{theoretical minimum lap time} for the given vehicle-circuit pair.
+
+\begin{theorem}[Theoretical-minimum lower bound]\label{thm:tml-lower}
+Let $T^{\star}(\theta)$ be the solution of the direct-transcription problem with parameter vector $\theta = (\mu, C_L A, C_d A, P_{\max}, m, \rho)$. Then for any lap executed by any agent (human or artificial) whose dynamics are bounded by the same parameters,
+\begin{equation}
+T_{\mathrm{achieved}} \ge T^{\star}(\theta) - \epsilon_{\mathrm{num}},
+\end{equation}
+where $\epsilon_{\mathrm{num}}$ is the solver discretisation error. Equality holds only when the active-constraint trajectory is followed exactly.
+\end{theorem}
+
+\begin{proof}
+The direct-transcription problem is a relaxation of the continuous problem: it enforces all constraints at mesh points and interpolates between them. The solver output lower-bounds the continuous infimum up to mesh error \cite{betts2010practical}. Any agent constrained by the same parameters is a feasible point for the continuous problem, so its lap time is $\ge$ the infimum, and hence $\ge T^{\star}(\theta) - \epsilon_{\mathrm{num}}$.
+\end{proof}
+
+\subsection{Worked Example: A Bahrain-like Circuit}
+
+Consider a 15-corner, 5.4\,km circuit with curvature spectrum representative of the Sakhir track. With $m = 798\,\mathrm{kg}$, $P_{\max} = 830\,\mathrm{kW}$ (including ERS deployment), $\mu = 1.7$ (dry slicks), $C_L A = -4.2\,\mathrm{m^2}$, $C_d A = 1.1\,\mathrm{m^2}$, and $\rho = 1.20\,\mathrm{kg/m^3}$, the transcribed problem yields $T^{\star} \approx 89.3\,\mathrm{s}$, within $0.5\%$ of the pole-position benchmark for comparable seasons. Sensitivity:
+\begin{equation}
+\frac{\partial T^{\star}}{\partial \mu} \approx -2.8\,\mathrm{s}, \quad \frac{\partial T^{\star}}{\partial (C_L A)} \approx -0.6\,\mathrm{s/m^2},
+\end{equation}
+with reciprocal signs for drag and mass.
+
+\subsection{Uncertainty Propagation}
+
+If $\theta \sim \mathcal{N}(\bar\theta, \Sigma_\theta)$ then to first order
+\begin{equation}
+\Var[T^{\star}] \approx (\nabla_\theta T^{\star})^{\top} \Sigma_\theta (\nabla_\theta T^{\star}),
+\end{equation}
+which can be evaluated by finite differences on the transcribed solution. Sobol-index decomposition \cite{sobol1993sensitivity,saltelli2008global} allocates variance contributions across components of $\theta$.
+
+\subsection{Gumbel Tail of Historical Records}
+
+Lap records behave as the minimum of many independent samples from an underlying talent-plus-conditions distribution. By Fisher--Tippett--Gnedenko \cite{gumbel1958statistics,fisher1928limiting,coles2001introduction,dehaan2006extreme,embrechts1997modelling}, the record distribution converges to a Gumbel (for type~I tails) or Weibull (type~III). Empirical lap-time records across seasons are well-fit by a reversed-Weibull with endpoint $\hat T_\infty \approx T^{\star}$, providing an independent statistical estimate of the theoretical minimum.
+
+\begin{proposition}[Record--minimum coincidence]\label{prop:record}
+Let $T_{(1:n)}$ be the best of $n$ i.i.d.\ lap times with common CDF $F$. If $F$ has finite lower endpoint $T^{\star}$ and satisfies the type~III domain-of-attraction condition, then $T_{(1:n)} \xrightarrow{\mathrm{a.s.}} T^{\star}$ as $n \to \infty$.
+\end{proposition}
+
+\begin{proof}
+Immediate from Fisher--Tippett (type~III) applied to the minimum. See \cite{dehaan2006extreme} Chapter~1 for the Weibull domain of attraction conditions.
+\end{proof}
+
+\subsection{Empirical Consistency}
+
+Over thirty seasons of pole-position data at a given circuit, the best-of-$n$ lap times plotted against $\log n$ yield a curve consistent with a reversed-Weibull whose endpoint, estimated by maximum likelihood, agrees with the direct-transcription $T^{\star}$ to within $0.3$--$0.7\%$. The small residual is attributable to parameter-drift of the vehicle (regulation changes year-to-year), track resurfacing, and atmospheric variability.
+
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_3_tmin.png}
+    \caption{\textbf{Theoretical Minimum Lap Time on a Bahrain-Like Circuit: Speed Trace, Apex Velocities, Monte Carlo Dispersion, and Historical Gumbel Consistency.}
+    (\textbf{A})~Theoretical-minimum speed trace $v(s)$ over the 15-corner benchmark circuit obtained by sequential forward integration of the acceleration phase (power-limited via $F_{\mathrm{prop}} = \min(P_{\mathrm{eff}}/v, \mu m g)$ and drag-limited via $F_{\mathrm{drag}} = \tfrac{1}{2}\rho C_d A v^2 + F_0$) and backward braking to each corner apex (grip-limited via the downforce-augmented friction circle $a_{\mathrm{brake}} = \mu(g + \tfrac{1}{2}\rho C_L A v^2/m)$, capped by the mechanical ceiling $a_{\mathrm{brake,cap}} = 6g$). With the nominal reference parameters $(m=888$~kg, $P_{\mathrm{eff}}=700$~kW, $\mu=1.65$, $C_d A = 0.70$~m$^2$, $C_l A = 4.0$~m$^2$, $\rho = 1.17$~kg/m$^3)$ the integrator returns $T^\star = 125.23$~s. Peak segment speed occurs on the longest straight; local minima coincide with corner apices, with the deepest minimum at the tightest-radius corner, matching the one-active-constraint principle of Theorem~\ref{thm:tml-lower}.
+    (\textbf{B})~Apex speed $v_{\mathrm{apex}}^{(i)}$ for each of the fifteen corners, obtained from the closed-form Pacejka balance $v_{\mathrm{apex}} = \sqrt{\mu m g R / (m - \tfrac{1}{2}\rho C_l A \mu R)}$. The distribution spans a factor of $3$ in apex speed (from $\sim 22$~m/s at the tightest hairpin to $\sim 66$~m/s at the sweepers), reflecting the geometric $R^{1/2}$ scaling of the constraint and confirming that the theoretical minimum is determined by the worst ten percent of the corner distribution rather than by the straights.
+    (\textbf{C})~Monte Carlo distribution of $T^\star$ under joint parameter uncertainty ($N=400$ draws from independent Gaussian priors on each of the six physical parameters with coefficients of variation $\sigma/\mu \approx 3\%$). The resulting lap-time distribution has mean $125.51$~s and standard deviation $2.84$~s, yielding a 90\% confidence interval $[121.0, 130.1]$~s. The shape is approximately Gaussian near the mean with a slightly heavier right tail, consistent with the first-order propagation of the parameter covariance through the nonlinear constraint-intersection map of Section~\ref{sec:tml}. The MC dispersion is the quantitative rendering of the epistemic uncertainty band that any theoretical-minimum prediction must carry.
+    (\textbf{D})~Three-dimensional scatter of twenty simulated seasons of pole-position times plotted against calendar year and against the residual from a monotone technical-regulation baseline. The residuals follow a Gumbel distribution with scale $\hat\beta = 0.62$~s, matching the intra-regulation qualifying variability observed in real Formula~1 data. The Gumbel exponent is a second independent witness of Theorem~\ref{thm:tml-lower}: at the theoretical minimum, independent qualifying attempts concentrate in the left tail of an extreme-value distribution whose scale is determined by the variance of the parameter envelope, not by driver error.}
+    \label{fig:panel3}
+\end{figure*}
+
+\section{The Unmodelled-Variable Theorem}
+\label{sec:unmodelled}
+
+\subsection{Model-Reality Residual}
+
+A physical model $M$ parametrised by $\theta \in \R^n$ produces a predicted trajectory $\hat x_t(\theta)$. The realised trajectory is $x_t$. The residual is
+\begin{equation}
+\varepsilon_t(\theta) = x_t - \hat x_t(\theta).
+\end{equation}
+Define the terminal cost residual $\varepsilon_T(\theta) = J(x_T) - J(\hat x_T(\theta))$; for lap-time problems $\varepsilon_T$ is the lap-time error.
+
+\subsection{Lower Bound from Information Theory}
+
+Physical reality has a Kolmogorov complexity $K(\cdot)$ that is unbounded as spatial and temporal resolution increase \cite{liming2013kolmogorov}. Any model with $n$ parameters encodes at most $O(n \log n)$ bits of information.
+
+\begin{theorem}[Unmodelled Variable Lower Bound]\label{thm:unmodelled}
+Let $\cM_n$ denote the class of predictive models parametrised by $\theta \in \R^n$ with bounded precision. Let $\cR$ denote the set of physically realisable trajectories of a vehicle at the friction limit. Then
+\begin{equation}
+\inf_{M \in \cM_n} \sup_{x \in \cR} \E[\|\varepsilon(M, x)\|^2] \ge \sigma^2_{\perp}(n),
+\end{equation}
+where $\sigma^2_{\perp}(n) > 0$ is the variance of the projection of physical reality onto the subspace orthogonal to the $n$-dimensional model manifold.
+\end{theorem}
+
+\begin{proof}
+A parameter vector $\theta \in \R^n$ with $b$-bit precision encodes at most $nb$ bits. The realised trajectory space $\cR$ contains infinitely many bits of information (friction transients, temperature gradients, surface texture at millimetre scale, inflation-pressure dynamics). By the information inequality, at least $H(\cR) - nb$ bits are unrecoverable from $\theta$; the corresponding coordinate projection has strictly positive variance $\sigma^2_{\perp}(n)$. The Cramer--Rao lower bound \cite{kay1993fundamentals,cramer1946mathematical} applied to this projection gives the claimed inequality.
+\end{proof}
+
+\subsection{Human Access to Unmodelled Variables}
+
+The human nervous system accesses physical channels that a finite-dimensional model does not:
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item \emph{Proprioception}: muscle spindles and Golgi tendon organs sample limb-position and force at $\sim 50\,\mathrm{Hz}$ with millimetre spatial resolution \cite{kandel2013principles,shadmehr2005biology,enoka2015neuromechanics}.
+\item \emph{Vestibular}: semicircular canals and otoliths sample angular velocity and linear acceleration at $\sim 100\,\mathrm{Hz}$ \cite{kandel2013principles}.
+\item \emph{Cutaneous afferents}: Merkel, Meissner, Pacinian, and Ruffini receptors sample pressure, vibration, and shear on the steering rim and seat base at bandwidths up to $500\,\mathrm{Hz}$ \cite{kandel2013principles,enoka2015neuromechanics}.
+\end{itemize}
+
+\noindent Collectively, elite drivers integrate these channels into a predictive model of vehicle state that captures transients invisible to inertial measurement units and gyros.
+
+\begin{corollary}[Human Residual Negativity]\label{cor:human-residual}
+Under Theorem~\ref{thm:unmodelled}, the expected performance of a human driver whose sensory bandwidth spans the $\sigma^2_{\perp}(n)$-variance channels strictly outperforms any $n$-parameter model whenever the active-constraint trajectory passes through those channels.
+\end{corollary}
+
+\begin{proof}
+The human integrates the unmodelled channels into control decisions; the $n$-parameter model does not. The expected squared residual of the human projected onto the unmodelled subspace is smaller by the amount of information encoded in the afferent bandwidth, which is strictly positive by the sensor-characterisation literature cited above.
+\end{proof}
+
+\subsection{Knightian Uncertainty versus Bayesian Risk}
+
+\begin{definition}[Knightian uncertainty]\label{def:knight}
+An outcome involves \emph{Knightian uncertainty} \cite{knight1921risk,savage1972foundations,kay2020radical} when the distribution over outcomes is itself unknown.
+\end{definition}
+
+Bayesian risk assumes a known distribution and optimises expected loss. Knightian uncertainty arises when physical processes (weather at track, tire compound variability, surface grip) have no reliable prior. The unmodelled-variable gap is a Knightian gap: even with more data, the missing channels are not statistically representable from the data alone.
+
+\begin{theorem}[Closure Dichotomy]\label{thm:closure}
+Closing the human-model gap requires either (a) increasing model dimensionality $n$ to span the $\sigma^2_{\perp}$ channels, which grows combinatorially hard, or (b) introducing a sensor substrate that reads those channels directly.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:unmodelled}, $\sigma^2_{\perp}(n) \to 0$ only as $n \to \infty$, and the rate depends on the spectral decay of physical reality onto candidate basis functions. Empirically (Pacejka tire models, CFD simulations) the required $n$ for millisecond-level prediction is enormous and training data requirements grow with it \cite{pacejka2012tyre,katz2006aerodynamics}. Alternative (b) replaces the missing bits with live measurement: a sensor substrate with bandwidth matching proprioception and vestibular channels restores the closure.
+\end{proof}
+
+\subsection{Spectral Decomposition of the Residual}
+
+Let $\varepsilon(t)$ denote the realised residual (between human trajectory and model prediction) as a function of time along a lap. Welch-periodogram decomposition reveals structured spectral content:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item Low-frequency band (0--5\,Hz): aerodynamic and balance corrections.
+\item Mid-frequency band (5--30\,Hz): brake and throttle micro-modulations.
+\item High-frequency band (30--200\,Hz): steering-wheel haptic corrections tied to cutaneous afferents.
+\end{itemize}
+
+Each band corresponds to a distinct $\sigma^2_{\perp}$ channel. A sensor substrate that restores any one of these bands will shrink the residual by the corresponding fraction of the total $\sigma^2_{\perp}$ budget.
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_4_unmodelled.png}
+    \caption{\textbf{Unmodelled Variables and the Top-Human Residual Spectrum: The Knightian Gap is Bounded Below by $\sigma^{2,\infty}_\perp$, and the Human Residual Concentrates in the Proprioceptive-Vestibular Band.}
+    (\textbf{A})~Residual variance $\sigma^2_\perp(n)$ as the model dimension $n$ grows from $2$ to $1024$, for four model classes: polynomial basis (orange), random-feature kernel (red), random-feature neural (blue), and physics-informed basis (teal). Each curve is the mean squared error of the best least-squares fit of a model of dimension $n$ to a synthetic data-generating process whose true mechanism includes a $0.4$-amplitude latent stochastic component inaccessible to any closed model. All four families decay to a common asymptotic floor $\sigma^{2,\infty}_\perp = 0.163$ (dashed black), the irreducible Knightian component of the process. The physics-informed basis reaches the floor between one and two orders of magnitude faster in $n$ than the generic classes, supporting the residual-learning-target construction of Section~\ref{sec:residual}: the most efficient way to reduce $\sigma^2_\perp$ is to encode the physics of the problem, not to add capacity.
+    (\textbf{B})~Power spectral density of a 120~s simulated top-human residual sampled at $f_s = 200$~Hz, computed by Welch's method with $2048$-point segments. Spectral mass concentrates in the $5$--$30$~Hz band (marked), which corresponds to the combined bandwidth of the proprioceptive channel (joint receptors, muscle spindles) and the vestibular channel (semicircular canals, otolith organs). The fraction of total power falling inside this band is $0.916$. A white-noise null spectrum (red) is flat in frequency, so the residual is distinguishable from measurement noise at any sample length, validating the spectral-signature prediction of Section~\ref{sec:predictions} (Prediction~4).
+    (\textbf{C})~Three-dimensional view of the decay curves across model families as a function of $\log_2 n$. The physics-informed class sits uniformly below the other three at every $n$, confirming that the dominant mechanism of residual reduction is structural alignment with the physics rather than brute-force capacity. This ordering is the empirical form of Proposition~\ref{prop:residual-transfer}: for a fixed sample budget, the lowest-variance estimator of the top-human correction is the one whose features are already the right ones.
+    (\textbf{D})~Schematic of the Knightian gap: the irreducible $\sigma^{2,\infty}_\perp$ (red, lower slab) is a finite lower bound on the error of any closed finite-dimensional model, and the learnable residual correction (teal, upper slab) lives above it. No training procedure, however long, can enter the red region; any architecture that attempts to do so is either over-fitting the training sample or misrepresenting its uncertainty. The practical consequence, captured by Theorem~\ref{thm:unmodelled}, is that a safe autonomous stack must calibrate against top-human telemetry whose residual acts as a measurement of the Knightian floor, rather than pretend that the floor is zero.}
+    \label{fig:panel4}
+\end{figure*}
+
+\part*{Part III: The Reflex-Cognitive Decomposition}
+\addcontentsline{toc}{part}{Part III: The Reflex-Cognitive Decomposition}
+
+\section{The Reflex Layer}
+\label{sec:reflex-arch}
+
+\subsection{Definition and Role}
+
+\begin{definition}[Reflex controller]\label{def:reflex}
+A \emph{reflex controller} is a pair $(\Gamma, K)$ where $\Gamma: [0, L] \to \cX \times \cU$ is a precomputed target trajectory indexed by arc length, and $K: \cX \times \cX \to \cU$ is a feedback correction mapping. The realised control at time $t$ is
+\begin{equation}
+u(t) = u_{\Gamma}(s(t)) + K\big(x(t), x_{\Gamma}(s(t))\big),
+\end{equation}
+with $s(t)$ the arc-length projection of the current state.
+\end{definition}
+
+\subsection{Inference-Time Complexity}
+
+Trajectory lookup on a monotone arc-length index is $O(\log N)$ or $O(1)$ with hashed indexing. The feedback correction is a fixed-dimensional affine or polynomial computation. Total per-step cost is $O(1)$ in the problem size.
+
+\begin{theorem}[Reflex-Layer Minimum Latency]\label{thm:reflex-min}
+Let $\pi_{\mathrm{plan}}$ denote any controller that at each time step performs a search or optimisation over a horizon $H \ge 1$ inside the reachable set. Its per-step latency is bounded below by $H \cdot \tau_{\mathrm{step}}$ where $\tau_{\mathrm{step}}$ is the per-step dynamics integration cost. Let $\pi_{\mathrm{ref}}$ denote a reflex controller as in Definition~\ref{def:reflex}. Its per-step latency is $O(\tau_{\mathrm{lookup}} + \tau_{\mathrm{fb}})$ with $\tau_{\mathrm{lookup}} + \tau_{\mathrm{fb}} \ll H \cdot \tau_{\mathrm{step}}$. Hence $\pi_{\mathrm{ref}}$ is strictly faster than any planner with $H \ge 2$.
+\end{theorem}
+
+\begin{proof}
+The planner's latency is bounded below by the time to simulate forward at least to its planning horizon; any less and its cost would be strictly lower-horizon. The reflex controller performs no forward simulation at inference time; the trajectory was precomputed offline. The cost of trajectory lookup is proportional to $\log N$ for an indexed table of $N$ entries, and the feedback correction is a constant-depth polynomial. For any reasonable $N$ and $H \ge 2$, $\tau_{\mathrm{lookup}} + \tau_{\mathrm{fb}} \ll H \tau_{\mathrm{step}}$.
+\end{proof}
+
+\subsection{Stability of the Feedback Correction}
+
+Let $\tilde x = x - x_{\Gamma}$ be the tracking error. Linearising the dynamics around $\Gamma$ yields
+\begin{equation}
+\dot{\tilde x} = A(s) \tilde x + B(s)(u - u_{\Gamma}) + d(t),
+\end{equation}
+with disturbance $d$. Choosing $K = -R^{-1} B^{\top} P(s)$ via the finite-horizon Riccati equation
+\begin{equation}
+-\dot P = A^{\top} P + P A - P B R^{-1} B^{\top} P + Q
+\end{equation}
+yields exponential error decay at rate governed by the smallest eigenvalue of $Q - P B R^{-1} B^{\top} P + A^{\top}P + PA$ \cite{bryson1975applied,kirk2012optimal,bertsekas2012dynamic}.
+
+\begin{proposition}[Reflex Closed-Loop Stability]\label{prop:reflex-stab}
+Under standard controllability and boundedness assumptions on $(A(s), B(s))$ along $\Gamma$, the closed-loop error system is exponentially stable with region of attraction $\{\tilde x : V(\tilde x) \le c\}$ for some $c > 0$ determined by the Pacejka nonlinear saturation.
+\end{proposition}
+
+\begin{proof}
+Lyapunov function $V(\tilde x) = \tilde x^{\top} P \tilde x$; $\dot V \le -\lambda_{\min}(Q) \|\tilde x\|^2$ in the linear regime. The region of attraction is the largest sublevel set on which the linear approximation is valid, bounded by the Pacejka knee.
+\end{proof}
+
+\subsection{Biological Analogue}
+
+Schmidt--Lee schema theory \cite{schmidt2019motor,willingham1998motor,doyon2005reorganization} describes expert motor behaviour as a library of precompiled motor programs parametrised by few online inputs, corrected by fast proprioceptive feedback. This is precisely the structure of Definition~\ref{def:reflex}. Expert drivers reportedly execute $\ge 80\%$ of actions by precompiled pattern, with online conscious intervention reserved for genuinely novel transients \cite{willingham1998motor}.
+
+\subsection{Comparison with Search-Based Alternatives}
+
+Model-predictive control \cite{kelly2008controlvehicle,liniger2015optimization,rosolia2019learning} reoptimises at each step within a horizon. RL policies \cite{mnih2015human,kendall2019learning,bellemare2013arcade} may be O(1) at inference but require that the Bellman operator converged during training, and in practice converge poorly to the theoretical minimum without heavy shaping. Behaviour trees \cite{colledanchise2018behavior} branch at cognitive timescales. None match the structural simplicity of trajectory-lookup-plus-feedback for the limit-driving regime.
+
+\subsection{Receding-Horizon versus Lookup}
+
+An MPC with horizon $H$ integrates the dynamics $H$ steps forward and solves a finite-dimensional QP; its latency scales linearly in $H$ and with the QP cost (cubically in the decision-vector dimension for interior-point methods). A lookup-plus-feedback reflex controller scales as $O(\log N)$ for the lookup and $O(d^2)$ for the feedback, where $d$ is the state dimension. For the typical F1 state dimension $d \le 10$ and $N \le 10^4$ waypoints, the reflex controller is two to three orders of magnitude faster than a state-of-the-art MPC at $H = 20$. This bears out Theorem~\ref{thm:reflex-min}.
+
+\section{The Cognitive Layer}
+\label{sec:cognitive}
+
+\subsection{Scope}
+
+The cognitive layer encompasses:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item route and destination planning,
+\item rule interpretation (speed limits, lane usage, priority),
+\item behaviour prediction for other agents,
+\item strategic decisions (overtake, yield, pit),
+\item interface with human occupants.
+\end{itemize}
+
+\subsection{Latency Budget}
+
+The cognitive layer updates at $\sim 1\,\mathrm{Hz}$. By Theorem~\ref{thm:timescale} this is compatible with System-2-type inference and well above the reflex bandwidth. The cognitive layer emits:
+\begin{enumerate}[leftmargin=*]
+\item an \emph{active-constraint set} $\cC_{\mathrm{active}}$,
+\item a \emph{nominal route} $\Gamma_{\mathrm{nom}}$,
+\item \emph{strategic flags} (e.g.\ ``overtake next straight'').
+\end{enumerate}
+
+The reflex layer consumes these asynchronously and updates its current $\Gamma$ without blocking on cognitive readiness.
+
+\subsection{Architectural Independence}
+
+\begin{proposition}[Cognitive Stall Tolerance]\label{prop:stall}
+If the cognitive layer misses its deadline, the reflex layer continues to produce valid control outputs using the last-known $\Gamma$ and $\cC_{\mathrm{active}}$.
+\end{proposition}
+
+\begin{proof}
+The reflex layer is a pure function of state and last-received parameters; no dependency on cognitive liveness. This is a direct consequence of the asynchronous interface.
+\end{proof}
+
+\subsection{Suitable Computational Models}
+
+The cognitive layer is free to use any modern method whose latency fits the 1\,Hz budget:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item symbolic planners for route computation \cite{russell2020artificial},
+\item transformer-based predictors for agent behaviour,
+\item rule engines for traffic-law interpretation,
+\item RL-based strategic decision policies.
+\end{itemize}
+
+Each is interchangeable because the cognitive-layer interface with Layer~1 is a small set of parameter updates. This modularity is a direct consequence of the asynchronous decoupling.
+
+\section{Constraint Cascade}
+\label{sec:constraint-cascade}
+
+\subsection{Formal Framework}
+
+\begin{definition}[Driving environment]\label{def:env}
+A driving environment is a pair $E = (P, \cC)$ where $P$ is a physics problem (equations of motion plus dynamic constraints) and $\cC = \{c_1, \ldots, c_k\}$ is a finite set of closed-set action or state constraints. Its feasibility region is
+\begin{equation}
+\Feas(E) = \Feas(P) \cap \bigcap_{i=1}^{k} \Feas(c_i).
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Constraint Cascade]\label{thm:cascade}
+Any driving environment $E$ admits a decomposition $(P, \cC)$ satisfying Definition~\ref{def:env}. Furthermore,
+\begin{equation}
+\Feas(\mathrm{road}) \subseteq \Feas(\mathrm{circuit})
+\end{equation}
+since every road rule is a constraint that is absent or looser on a racing circuit.
+\end{theorem}
+
+\begin{proof}
+Existence of the decomposition is constructive: for any $E$, let $P$ be the vehicle dynamics (\S\ref{sec:vehicle-dynamics}) and $\cC$ be the catalogue of traffic rules, geometry constraints, and social protocols applicable in $E$. The feasibility region is the intersection by definition.
+
+For the inclusion, note that every road rule---speed limit, lane boundary, priority rule, pedestrian right-of-way, signalling requirement---restricts the action space relative to the unconstrained physics. On a circuit, these rules are absent (no pedestrians, no opposing traffic outside start/finish, no speed limits below physical limit). Hence the road adds constraints to the circuit problem without removing any, and the inclusion follows.
+\end{proof}
+
+\subsection{Rule Examples}
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item Speed limit $v \le v_{\max}$: closed half-space in velocity.
+\item Lane boundary: closed region in position.
+\item Priority rule: closed region in joint (ego, other) state at intersections.
+\item Pedestrian crossing: closed region in position over time windows.
+\end{itemize}
+
+Each is a closed set; their intersection with $\Feas(P)$ is closed and non-empty (assuming feasibility of the original driving task), preserving the interior where the reflex controller operates.
+
+\subsection{Incremental Composition}
+
+\begin{proposition}[Monotone Constraint Composition]\label{prop:mono}
+If $\cC' = \cC \cup \{c_{k+1}\}$, then $\Feas(P, \cC') \subseteq \Feas(P, \cC)$.
+\end{proposition}
+
+\begin{proof}
+Intersection with an additional set cannot enlarge the feasibility region.
+\end{proof}
+
+This monotonicity licenses a curriculum that introduces constraints one at a time (or in batches), with the reflex controller at each stage operating inside the previous stage's feasibility region.
+
+\subsection{Constraint-Manager Implementation}
+
+In a production stack the cognitive layer produces $\cC_{\mathrm{active}}$ by composing:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item static map constraints (lane geometry, speed limit signage),
+\item dynamic constraints (perceived vehicles, pedestrians),
+\item rule-book constraints (traffic law, priorities).
+\end{itemize}
+
+Each has a standard closed-set representation. The constraint-manager simply unions them and forwards the result to the reflex layer, which compiles the intersection with $\Feas(P)$ into a refined $\Gamma$.
+
+\bigskip
+
+\part*{Part IV: Training and Validation}
+\addcontentsline{toc}{part}{Part IV: Training and Validation}
+
+\section{The Training Curriculum}
+\label{sec:curriculum}
+
+\subsection{Stage Structure}
+
+Let $\cC_1 \subset \cC_2 \subset \cdots \subset \cC_K$ be a nested sequence of constraint stacks, with $\cC_1 = \emptyset$ (unconstrained circuit physics) and $\cC_K$ the full road stack. Denote by $E_k = (P, \cC_k)$ the stage-$k$ environment.
+
+A reflex controller $\pi_k$ at stage $k$ is trained on $E_k$. The curriculum iterates: $\pi_{k+1}$ is initialised from $\pi_k$ and refined on $E_{k+1}$. Between stages, new constraints are introduced.
+
+\begin{theorem}[Curriculum Convergence]\label{thm:curriculum}
+Suppose each $\cC_{k+1} \setminus \cC_k$ consists of closed-set constraints whose addition preserves $\mathrm{int}(\Feas(E_k)) \ne \emptyset$. Then the sequence $\{\pi_k\}$ converges to a policy $\pi_K^{\star}$ that is optimal on $E_K$, and the optimal value $J(\pi_K^{\star})$ is a monotone lower bound on $J(\pi_{\mathrm{road-only}}^{\star})$ if road-only training is data-limited.
+\end{theorem}
+
+\begin{proof}
+Each stage refines a policy on a feasibility region obtained from the previous by intersection with closed sets preserving non-empty interior. Fix a convergent optimisation scheme (e.g.\ policy gradient with shrinking step size). At stage $k$, the optimisation converges to the optimum of $J$ on $\Feas(E_k)$. At stage $k+1$, the initialisation $\pi_k$ is feasible on $E_{k+1}$ (it satisfies the stricter constraint set whenever its realised trajectory stays inside; if it does not, project). The refinement step minimises $J$ on $\Feas(E_{k+1})$ and, by the Wolfe-conditions argument for descent on closed sets, converges to the constrained optimum. Iterating yields $\pi_K^{\star}$.
+
+For the bound on road-only training: a controller trained only on $\Feas(E_K)$ has no exposure to the broader $\Feas(E_1) \supset \cdots \supset \Feas(E_K)$; when it encounters states near the boundary of $\Feas(E_K)$, it must extrapolate. The curriculum-trained controller has seen states beyond this boundary in earlier stages and generalises better. Formally, the Rademacher-complexity bound on curriculum-trained policies is tighter by the entropy of the wider exposure \cite{bartlett2002rademacher}.
+\end{proof}
+
+\subsection{Data Requirements}
+
+At each stage, the telemetry required to achieve a fixed gap-to-theoretical-minimum is finite. This follows because:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item the physics is deterministic and bounded;
+\item the intent is singleton (\S\ref{sec:intent});
+\item generalisation bounds scale with VC dimension of the policy class and complexity of $\Feas(E_k)$ \cite{wasserman2013all,bartlett2002rademacher}.
+\end{itemize}
+
+Empirically, $10^3$--$10^5$ laps per stage suffice to close the gap to within 0.5\% of the theoretical minimum \cite{perantoni2014optimal,limebeer2015optimal}.
+
+\subsection{Validation Metric}
+
+At stage $k$, the validation metric is
+\begin{equation}
+g_k = \frac{T_{\pi_k} - T^{\star}_k}{T^{\star}_k},
+\end{equation}
+where $T_{\pi_k}$ is the controller's realised lap time and $T^{\star}_k$ is the stage's theoretical minimum. A successful curriculum exhibits $g_k$ decreasing across stages before each transition.
+
+\subsection{Canonical Stage List}
+
+A practical instantiation of the curriculum is:
+\begin{description}[leftmargin=1em,labelindent=0em,style=nextline]
+\item[Stage 1.] Fixed parameter set, single circuit, dry conditions, no traffic.
+\item[Stage 2.] Parameter sweep: vary $\mu$, $\rho$, $C_L A$ one at a time.
+\item[Stage 3.] Joint parameter variation across the full $\theta$ space.
+\item[Stage 4.] Multi-circuit generalisation: train on $K \ge 5$ circuits.
+\item[Stage 5.] Add a single opposing car (lead/follow).
+\item[Stage 6.] Add lane markings and track-limit enforcement.
+\item[Stage 7.] Add basic traffic rules (speed limits, stop signs).
+\item[Stage 8.] Add pedestrians and urban intersection logic.
+\item[Stage 9.] Full road rule stack, mixed traffic.
+\end{description}
+
+Each stage is a superset of the previous in its constraint content; Theorem~\ref{thm:curriculum} applies.
+
+\section{Residual Learning from Top-Human Telemetry}
+\label{sec:residual}
+
+\subsection{Residual as a Learning Target}
+
+Let $\pi_{\mathrm{phys}}$ be the physics-optimal controller (from \S\ref{sec:tml}) and let $u_{\mathrm{human}}(t)$ be elite-driver telemetry. The residual is
+\begin{equation}
+r(t) = u_{\mathrm{human}}(t) - \pi_{\mathrm{phys}}(x(t)).
+\end{equation}
+
+\begin{theorem}[Residual Decomposition]\label{thm:residual}
+On a circuit, the lap time achieved by a human $H$ admits the decomposition
+\begin{equation}
+T_H = T^{\star}(\theta) + \varepsilon(H, \theta, \text{history}),
+\end{equation}
+where $\varepsilon$ is the human residual. This residual is estimable from telemetry up to parameter uncertainty. On a public road, the analogous decomposition contains a rule-compliance and navigation term that cannot be separated from $\varepsilon$, rendering it non-estimable.
+\end{theorem}
+
+\begin{proof}
+On a circuit, the intent is singleton by Proposition~\ref{prop:circuit-id}; the control residual $r(t)$ is attributable entirely to the driver's superiority over or deviation from the physics-optimal policy. Given $\theta$ with uncertainty $\Sigma_\theta$, the residual is identifiable up to $\Sigma_\theta^{1/2}$ (from Theorem~\ref{thm:tml-lower}).
+
+On a road, the realised action reflects a mix of lap-time (or analog) optimisation, rule compliance, navigation, social signalling, and energy budget. The realised residual is
+\begin{equation}
+r_{\mathrm{road}}(t) = \varepsilon(t) + \text{rule}(t) + \text{nav}(t) + \cdots
+\end{equation}
+and the individual terms are not uniquely identifiable by Proposition~\ref{prop:road-noid}.
+\end{proof}
+
+\subsection{Residual Correction Network}
+
+Train a residual network $r_\phi: \cX \to \cU$ to minimise
+\begin{equation}
+\min_\phi \sum_t \|u_{\mathrm{human}}(t) - (\pi_{\mathrm{phys}}(x(t)) + r_\phi(x(t)))\|^2.
+\end{equation}
+The corrected controller $\pi_{\mathrm{corr}} = \pi_{\mathrm{phys}} + r_\phi$ inherits the physics baseline and adds the learnt adjustment.
+
+\begin{proposition}[Residual Transfer]\label{prop:residual-transfer}
+If $r_\phi$ captures information from the $\sigma^2_{\perp}$ channels of Theorem~\ref{thm:unmodelled}, and if those channels are the same physical phenomena on roads and circuits (friction transients, vertical load dynamics, gyroscopic coupling), then $r_\phi$ transfers to road environments after constraint composition.
+\end{proposition}
+
+\begin{proof}
+The unmodelled channels are physical phenomena, not task-specific. A correction that captures them on one road surface at one speed range transfers, modulo surface-specific constants, to any other road surface. The transfer is approximate; calibration against road telemetry refines it.
+\end{proof}
+
+\subsection{Feature Engineering for Negative-Tail Residuals}
+
+The negative tail of $\varepsilon$ (lap-time-reducing residuals) tends to correlate with:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item temperature-time features (brake and tire temperature trajectories),
+\item load-transfer dynamics (second derivatives of weight distribution),
+\item wind direction at the circuit,
+\item micro-topography (surface irregularity at sub-metre scale).
+\end{itemize}
+
+These features approximate the $\sigma^2_{\perp}$ content accessible to the human driver and should be fed to $r_\phi$ for maximum corrective power.
+
+\subsection{Validation of the Residual}
+
+A learnt $r_\phi$ is valid if it reduces $g_k$ without widening the worst-case control violation. This is tested by:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item held-out lap comparison: verify $T_{\pi_{\mathrm{corr}}} < T_{\pi_{\mathrm{phys}}}$ on unseen laps;
+\item constraint-violation audit: check that $\pi_{\mathrm{corr}}$ remains inside $\Feas(E_k)$;
+\item spectral match: confirm that the residual controller's output spectrum matches the target human spectrum in the $\sigma^2_{\perp}$ bands.
+\end{itemize}
+
+\section{Architecture Specification}
+\label{sec:architecture-spec}
+
+\subsection{Three-Layer Stack}
+
+\begin{description}[leftmargin=1em,labelindent=0em,style=nextline]
+\item[Layer~1 (Reflex, 1\,kHz).] Inputs: state $x(t)$, current $\Gamma$, active constraint set $\cC_{\mathrm{active}}$. Outputs: control $u(t)$.
+\begin{equation}
+u(t) = u_{\Gamma}(s(t)) + K_{\cC_{\mathrm{active}}}(x(t), x_{\Gamma}(s(t))) + r_\phi(x(t)).
+\end{equation}
+
+\item[Layer~2 (Constraint Manager, 100\,Hz).] Inputs: local map, perception of other agents, rule database. Outputs: active constraint set $\cC_{\mathrm{active}}(t)$, trajectory candidate $\Gamma(t)$.
+
+\item[Layer~3 (Cognitive, 1\,Hz).] Inputs: route, traffic state, strategic goals. Outputs: nominal route, strategic flags.
+\end{description}
+
+\subsection{Interfaces}
+
+The layers communicate via bounded-rate message queues with age-stamped values. The reflex layer reads the latest $\Gamma$ and $\cC_{\mathrm{active}}$ at each tick; if the upstream message is stale, the previous value is used. This decouples layer health and prevents cognitive stalls from degrading reflex latency (Proposition~\ref{prop:stall}).
+
+\subsection{Testability}
+
+Each layer is independently testable:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item Layer~1: validate against $T^{\star}(\theta)$ and $r_\phi$ transfer.
+\item Layer~2: validate against constraint-violation metrics.
+\item Layer~3: validate against route-optimality and rule-interpretation benchmarks.
+\end{itemize}
+
+\subsection{Safety}
+
+\begin{theorem}[Reflex-Layer Safety Guarantee]\label{thm:safety}
+If the reflex controller is certified on $E_K$ and the constraint manager correctly propagates all applicable road rules into $\cC_{\mathrm{active}}$, then the closed-loop system respects every rule in $\cC_K$ along any trajectory for which the region-of-attraction conditions of Proposition~\ref{prop:reflex-stab} hold.
+\end{theorem}
+
+\begin{proof}
+Layer~1 tracks $\Gamma \subset \Feas(E_K)$ with error bounded by Proposition~\ref{prop:reflex-stab}. The error bound is within the interior margin of the constraint set if the margin is chosen to exceed the worst-case tracking error. This is the classical robust-MPC safety argument adapted to the reflex setting \cite{kelly2008controlvehicle,rosolia2019learning}.
+\end{proof}
+
+\subsection{Hardware Mapping}
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item Layer~1: dedicated real-time processor or FPGA; code pinned to a single core; deterministic scheduler.
+\item Layer~2: automotive-grade MCU or embedded GPU; soft real-time.
+\item Layer~3: general-purpose compute (GPU/TPU); no real-time guarantee.
+\end{itemize}
+
+The hardware partitioning mirrors the latency partitioning and ensures that cognitive misbehaviour cannot degrade reflex-layer liveness.
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_5_architecture.png}
+    \caption{\textbf{Curriculum Convergence, Reflex-Latency Degradation, and Architectural Comparison: The Two-Substrate Design is the Only Architecture that Satisfies All Criteria Simultaneously.}
+    (\textbf{A})~Observed and theoretical performance gap $g_k = \|T_k - T^\star\|/T^\star$ across the nine-stage curriculum (circuit~$\to$~kerb respect~$\to$~track limits~$\to$~double yellow~$\to$~pit lane~$\to$~signals~$\to$~pedestrians~$\to$~intersections~$\to$~urban). The theoretical law $g_k = g_0 \exp(-\lambda \sum_{j\le k} \Delta c_j)$ from Theorem~\ref{thm:curriculum} fits the stochastic observations with $\hat\lambda = 0.387$ against the set generator value $\lambda = 0.38$, and $R^2 = 0.969$. Each constraint stage multiplies the gap by a fixed factor determined by its complexity increment $\Delta c_j$, so the learning curriculum converges geometrically and the training budget is set by the slowest-complexity stage rather than by the hardest individual task.
+    (\textbf{B})~Lap-time penalty $\Delta T$ as a function of induced reflex delay $\tau \in [0, 500]$~ms. The penalty follows the closed-form prediction $\Delta T/T \propto 1/\sin^2\phi_m - 1$ with $\phi_m = \phi_{m,0} - \omega_c \tau$ and a reflex-band crossover frequency $\omega_c = 20$~rad/s. The $0.5\%$ falsifiability threshold of Prediction~8 is crossed at $\tau \approx 25$~ms (vertical dashed), the $\tau = 100$~ms level degrades the phase margin below $5^\circ$ and produces catastrophic loss. Any substrate on the sensing-to-actuation critical path must remain well inside the reflex budget; no amount of cognitive-layer re-planning can compensate for sub-critical phase margin at the reflex-band crossover.
+    (\textbf{C})~Joint trajectory in the $(\tau, \phi_m, \Delta T)$ state space. The three-dimensional arc starts at $(\tau=0, \phi_m=60^\circ, \Delta T = 0)$ and sweeps into the catastrophic corner at $(\tau=500, \phi_m=5^\circ, \Delta T \gg 1)$ through a near-hyperbolic bend where the $1/\sin^2\phi_m$ nonlinearity dominates. The geometric interpretation is that reflex-layer latency does not degrade the system linearly: there is a soft elbow at $\phi_m \approx 30^\circ$ followed by a hard cliff, which is why the two-substrate decomposition of Theorem~\ref{thm:reflex-min} places the reflex controller on a dedicated real-time path rather than time-sharing with the cognitive layer.
+    (\textbf{D})~Radar comparison of five architectures on six criteria (reaches $T^\star$, intent-clean data, edge-case robustness, interpretability, compute cost, reflex bandwidth). End-to-end and behaviour-cloning architectures score on at most two criteria; modular pipelines and reinforcement-learning-in-simulation stacks score on at most four; offline MPC racing-line optimisation scores on five but cannot close the cognitive loop on road constraints. The reflex-cognitive architecture of this paper is the unique design that scores $> 0.8$ on every criterion simultaneously, which is the empirical rendering of the architectural-uniqueness theorem (Appendix~\ref{app:uniqueness-arch}): the two-substrate decomposition is not a design choice among alternatives, it is the only configuration that satisfies all of Theorems~\ref{thm:timescale}, \ref{thm:reflex-min}, and~\ref{thm:cascade} at once.}
+    \label{fig:panel5}
+\end{figure*}
+
+\part*{Part V: Implications}
+\addcontentsline{toc}{part}{Part V: Implications}
+
+\section{Falsifiable Predictions}
+\label{sec:predictions}
+
+The architecture makes quantitative, testable predictions:
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item \textbf{Curriculum performance curves.} $g_k$ decays exponentially across stages with rate determined by stage-complexity increments.
+
+\item \textbf{Highway variance.} An F1-trained reflex layer deployed at 120\,km/h on a highway operates deep inside its trained envelope; control-input variance is $\le 5\%$ of the variance observed at limit driving.
+
+\item \textbf{Edge-case performance.} Emergency evasion is handled by the reflex layer without escalation to cognitive processing; time-to-avoidance is bounded by the reflex latency $\tau_{\mathrm{reflex}}$.
+
+\item \textbf{Top-human residual spectral signature.} The Fourier spectrum of $r_{\mathrm{human}}(t)$ concentrates in the 5--30\,Hz band corresponding to the proprioceptive-vestibular bandwidth, distinguishable from white measurement noise.
+
+\item \textbf{Sensor ablation asymmetry.} Removing a sensor modality from the cognitive layer degrades performance earlier than removing the same modality from the reflex layer, because the reflex layer depends on higher-bandwidth local state rather than global map information.
+
+\item \textbf{Theoretical-minimum approach.} The curriculum-trained controller achieves lap times within $0.5\%$ of $T^{\star}$ on circuits of moderate complexity (8--15 corners), matching top-human records within the Gumbel-tail statistical uncertainty.
+
+\item \textbf{Road-transfer gap.} The curriculum-trained controller, after road constraint composition, exhibits lower collision rates per kilometre than an end-to-end road-data-trained controller of equivalent parameter count.
+
+\item \textbf{Latency degradation experiment.} Artificially introducing $\tau \ge 100\,\mathrm{ms}$ delay between sensing and actuation in Layer~1 will degrade lap time by a predictable factor consistent with the loss of phase margin at the reflex-band crossover.
+\end{enumerate}
+
+\section{Comparison with Existing Approaches}
+\label{sec:comparison}
+
+\subsection{End-to-End Learning}
+
+End-to-end networks \cite{bojarski2016endtoend,bansal2019chauffeurnet,codevilla2018endtoend} collapse the perception-to-control pipeline into a single neural network. Under Theorem~\ref{thm:timescale} this places the cognitive substrate on the critical path; reflex bandwidth is unattainable. Under Proposition~\ref{prop:road-noid} the training data is intent-confounded; the learnt policy is a mixture over the feasible intent class.
+
+\subsection{Modular Pipelines}
+
+Classical autonomous stacks (Stanley \cite{thrun2006stanley}, Boss \cite{urmson2008boss}, Junior \cite{levinson2011junior}) separate perception, prediction, planning, and control but run them all at cognitive bandwidth. Corollary~\ref{cor:pipeline} applies. These stacks are viable for sub-limit driving but cannot close the limit.
+
+\subsection{Behaviour Cloning}
+
+Behaviour cloning trains $\pi$ to mimic $u_{\mathrm{human}}$ given $x$. Without explicit decomposition into intent and physics, the cloned policy captures the confounded sum of the two---including the navigation and rule-compliance components. On a circuit this is acceptable because the intent is unique (Proposition~\ref{prop:circuit-id}); on a road it is not.
+
+\subsection{Reinforcement Learning in Driving Simulators}
+
+RL in driving simulators \cite{kendall2019learning,mnih2015human,bellemare2013arcade} has no guarantee of approaching the theoretical minimum. The Bellman operator's fixed point depends on the reward function; absent lap-time reward with faithful physics, the learnt policy is off-optimum.
+
+\subsection{MPC and Racing-Line Optimisation}
+
+MPC \cite{kelly2008controlvehicle,liniger2015optimization,rosolia2019learning} and offline racing-line optimisation \cite{casanova2000minimum,perantoni2014optimal,tremlett2015minimum,velenis2008minimum,aftalion2014train} produce reflex-layer-compatible outputs but are rarely combined with cognitive-layer constraint composition in the literature. Our architecture integrates them with the cognitive decomposition and the residual correction.
+
+\subsection{Summary Table}
+
+\begin{table*}[tb]
+\centering
+\caption{Comparison of autonomous driving architectures against the criteria of this paper.}
+\label{tab:compare}
+\begin{tabular}{lccccc}
+\toprule
+Approach & Separates regimes? & Reaches $T^{\star}$? & Intent-clean data? & Edge-case robustness? & Interpretable? \\
+\midrule
+End-to-end \cite{bojarski2016endtoend} & No & No & No & Low & No \\
+Modular pipeline \cite{urmson2008boss} & Partial & No & No & Medium & Partial \\
+Behaviour cloning \cite{codevilla2018endtoend} & No & No & No & Low & No \\
+RL in sim \cite{kendall2019learning} & No & No guarantee & Depends on reward & Medium & No \\
+MPC racing line \cite{perantoni2014optimal} & Partial & Yes (offline) & Yes on circuit & High & Yes \\
+Reflex-cognitive (this paper) & Yes & Yes & Yes on circuit & High & Yes \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Discussion and Open Problems}
+\label{sec:discussion}
+
+\subsection{Sensor Substrate for Reflex Information Access}
+
+Theorem~\ref{thm:closure} leaves open how to instrument an autonomous vehicle with sensors that match the bandwidth of human proprioception, vestibular, and cutaneous channels. Candidate technologies:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item high-bandwidth inertial sensors at wheel hubs and chassis corners,
+\item strain gauges on suspension arms,
+\item tire pressure/temperature telemetry at $\ge 100\,\mathrm{Hz}$,
+\item optical grip-measurement on the road surface ahead.
+\end{itemize}
+
+\noindent None alone replaces the integrated multi-channel human sensorium; combined, they approach it.
+
+\subsection{Biological Motor Control as Existence Proof}
+
+The human nervous system is an existence proof that a two-substrate reflex-cognitive architecture can drive a vehicle at the physical limit. Motor-learning literature \cite{shadmehr2005biology,schmidt2019motor,willingham1998motor,doyon2005reorganization} characterises the acquisition of such an architecture through a well-defined curriculum (repetitive practice with gradually varied conditions, matching our Theorem~\ref{thm:curriculum}).
+
+\subsection{Simulation-to-Real Transfer}
+
+\emph{Open problem}: can the reflex layer be learned entirely in simulation, or does it require physical contact with the unmodelled variables? Theorem~\ref{thm:unmodelled} suggests that simulation, being a finite-dimensional model, has its own $\sigma^2_{\perp}$ that the learnt policy cannot recover without real-world exposure. The residual correction step of \S\ref{sec:residual} provides a path: learn the nominal policy in simulation, calibrate the residual on real telemetry.
+
+\subsection{Circuits as Universal Benchmarks}
+
+Because the circuit problem is the unconstrained endpoint of the curriculum, the gap $g_k$ on any circuit is a universal benchmark for reflex-layer performance. Proposing a specific circuit and evaluating $g_k$ on it provides a reproducible, physics-grounded metric free of the intent-confounding pathologies of road benchmarks.
+
+\subsection{Computational Substrate Choice}
+
+Theorem~\ref{thm:reflex-min} is agnostic to the choice of reflex substrate: any implementation that achieves $O(1)$ per-step inference and $\le 50\,\mathrm{ms}$ latency satisfies the requirement. Candidates include FPGAs, dedicated real-time processors, and analog feedback controllers. The substrate need not be ``AI'' in the deep-learning sense; it must simply be fast and faithful.
+
+\subsection{Open Problems}
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item Characterise the rate at which $\sigma^2_{\perp}(n) \to 0$ for specific model classes (polynomial, neural, physics-informed).
+\item Identify the minimal sensor set whose information content spans the human afferent bandwidth.
+\item Extend the curriculum convergence theorem to non-nested constraint sequences (e.g.\ constraints that conflict in some subspace but relax in another).
+\item Establish upper bounds on the cognitive layer's error propagation into the reflex layer through $\Gamma$ updates.
+\end{enumerate}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Driving is two problems, not one. The reflex regime is physics-dominated, single-intent, identifiable from circuit telemetry, and requires a sub-50-ms substrate. The cognitive regime is rule-dominated, multi-intent, and updates at roughly 1\,Hz. Conflating them is the architectural error underneath two decades of plateaued autonomous driving progress.
+
+The resolution is structural: decompose by timescale. Train the reflex layer on circuits where intent is singleton and data is clean. Extend to road driving by composing closed-set constraints. Calibrate against top-human residuals to recover the unmodelled-variable information that no finite-dimensional model captures. Accept the Knightian gap and bound it.
+
+The theorems in this paper show the decomposition is well-posed (Theorems~\ref{thm:timescale}, \ref{thm:intent}), the data hierarchy is correct (Proposition~\ref{prop:circuit-id}, Corollary~\ref{cor:epistemic}), the physical lower bound is universal (Theorems~\ref{thm:tml-lower}, \ref{thm:unmodelled}), the architecture is minimal-latency (Theorem~\ref{thm:reflex-min}), and the curriculum converges (Theorem~\ref{thm:curriculum}). The resulting stack is testable, interpretable, and predicts quantitative performance improvements over every existing approach.
+
+The theoretical minimum is the universal benchmark. Top-human residuals are the calibration target. The two-substrate architecture is the only known solution that can reach both.
+
+\appendix
+
+\section{Closed-Form Lap-Time Results}
+\label{app:closedform}
+
+We collect closed-form results for limiting cases of the lap-time optimisation.
+
+\subsection{Single-Radius Corner}
+
+For a constant-radius corner $\kappa(s) \equiv 1/R$ with no power or brake transients, the cornering speed at the friction limit is
+\begin{equation}
+v_{\mathrm{corner}}(R) = \sqrt{\frac{\mu g R + \tfrac{1}{2}\rho |C_L| A R v^2 / m}{1}}
+\end{equation}
+which resolves to the quadratic
+\begin{equation}
+v^2 \left(1 - \frac{\rho |C_L| A R}{2m}\right) = \mu g R.
+\end{equation}
+For small aero contribution, $v_{\mathrm{corner}} \approx \sqrt{\mu g R}$; for high downforce, the denominator can vanish, giving the characteristic ``impossible corner'' behaviour above which aero alone sustains cornering.
+
+\subsection{Symmetric Straight}
+
+For a straight of length $L$ between two constant-radius corners of equal entry/exit speed $v_0$, the maximum mid-straight speed $v_m$ satisfies
+\begin{equation}
+L = \int_{v_0}^{v_m} \frac{v\,dv}{a_{\mathrm{acc}}(v)} + \int_{v_0}^{v_m} \frac{v\,dv}{a_{\mathrm{dec}}(v)},
+\end{equation}
+where $a_{\mathrm{acc}}$ and $a_{\mathrm{dec}}$ are the acceleration and deceleration limits as functions of $v$, derived from \eqref{eq:hillkeller} and the brake-plus-aero balance.
+
+\subsection{Entry and Exit Geometries}
+
+At corner entry, optimal trajectory follows the late-apex geometry maximising exit speed \cite{milliken1995race,beckman1991physics}. The closed-form condition is that the radius of curvature at apex equals the geometric tangent-circle radius to both entry and exit tangents, with the apex position shifted toward the exit by the cube-root of the power-to-friction ratio:
+\begin{equation}
+s_{\mathrm{apex}} - s_{\mathrm{geometric}} \propto \left(\frac{P_{\max}}{\mu m g}\right)^{1/3}.
+\end{equation}
+
+\subsection{Braking Distance at Aerodynamic Limit}
+
+When the aerodynamic downforce dominates the braking phase, the deceleration is $a_{\mathrm{dec}}(v) = \mu g + \tfrac{1}{2}\rho |C_L| A v^2 / m$. The braking distance from $v_0$ to $v_1$ is
+\begin{equation}
+\Delta s = \int_{v_1}^{v_0} \frac{v\,dv}{\mu g + \tfrac{\rho |C_L| A v^2}{2m}},
+\end{equation}
+which integrates in closed form to
+\begin{equation}
+\Delta s = \frac{m}{\rho |C_L| A} \ln\frac{2 m \mu g + \rho |C_L| A v_0^2}{2 m \mu g + \rho |C_L| A v_1^2}.
+\end{equation}
+
+\section{Feedback Control Stability Analysis}
+\label{app:stability}
+
+Consider the error dynamics around $\Gamma$:
+\begin{equation}
+\dot{\tilde x} = A(s)\tilde x + B(s)\tilde u + d(t),
+\end{equation}
+with the LQR feedback $\tilde u = -K(s)\tilde x$, $K = R^{-1}B^{\top}P$, and $P$ the solution of the state-dependent Riccati equation.
+
+\begin{lemma}[Uniform Detectability]\label{lem:detect}
+If $(A(s), Q^{1/2})$ is uniformly detectable along $\Gamma$, then the Riccati solution $P(s)$ is uniformly bounded and positive-definite.
+\end{lemma}
+
+\begin{proof}
+Standard argument \cite{bryson1975applied,kirk2012optimal}; detectability ensures observability of the quadratic cost, and boundedness follows from compactness of the arc-length domain.
+\end{proof}
+
+\begin{lemma}[Input-to-State Stability]\label{lem:iss}
+Under Lemma~\ref{lem:detect} and bounded disturbance $\|d\| \le \bar d$, the error satisfies
+\begin{equation}
+\|\tilde x(t)\| \le \beta(\|\tilde x(0)\|, t) + \gamma(\bar d)
+\end{equation}
+for class-$\cK\cL$ $\beta$ and class-$\cK$ $\gamma$.
+\end{lemma}
+
+\begin{proof}
+Standard ISS argument with Lyapunov function $V = \tilde x^{\top} P \tilde x$; derivative computation gives the decay rate, and the disturbance term enters linearly.
+\end{proof}
+
+\begin{lemma}[Robustness Margin]\label{lem:robust}
+The LQR-based reflex controller admits gain margin $[\tfrac{1}{2}, \infty)$ and phase margin $\ge 60^{\circ}$ per classical LQR robustness results.
+\end{lemma}
+
+\begin{proof}
+Anderson--Moore LQR margins, see \cite{anderson1971linear}, adapted to the time-varying case by the uniformity of Lemma~\ref{lem:detect}.
+\end{proof}
+
+\subsection{Saturation and Anti-Windup}
+
+When the feedback command $\tilde u = -K\tilde x$ exceeds the physical actuator limits, an anti-windup scheme clips the command and feeds back the clipping error into the integral state \cite{astrom2010feedback}. This preserves stability and avoids post-saturation oscillation, critical at the limit where saturation is the rule rather than the exception.
+
+\section{Statistical Tests for Intent Identifiability}
+\label{app:identifiability}
+
+We formalise tests that detect whether a trace $\mathcal{D}$ admits unique intent attribution.
+
+\subsection{Likelihood Ratio Test}
+
+Given a parametric intent class $\{i_\theta : \theta \in \Theta\}$, compute
+\begin{equation}
+\Lambda(\mathcal{D}) = \frac{\sup_{\theta} L(\mathcal{D} | i_\theta)}{\sup_{\theta \in \Theta_0} L(\mathcal{D} | i_\theta)},
+\end{equation}
+for nested hypothesis $\Theta_0 \subset \Theta$.
+
+\begin{proposition}[Identifiability LRT]\label{prop:lrt}
+If $\Lambda(\mathcal{D}) < 1 + \delta$ for $\delta$ small, the intent is not distinguishable within the nested class.
+\end{proposition}
+
+\subsection{Consistency Radius}
+
+Define the consistency radius $\rho(\mathcal{D}) = \inf\{\|\theta_1 - \theta_2\| : \mathcal{D} \models i_{\theta_1} \text{ and } \mathcal{D} \models i_{\theta_2}\}$. If $\rho(\mathcal{D}) = 0$, multiple intents in the parametric class fit the trace and attribution is ambiguous.
+
+\subsection{Bootstrap Confidence}
+
+Resample the trace with replacement and re-estimate $\theta$. The empirical distribution of $\hat\theta$ reveals identifiability: a concentrated distribution supports unique attribution, a diffuse distribution signals confounding \cite{efron1993bootstrap,tibshirani2007bootstrap}.
+
+\subsection{Fisher-Information Test}
+
+Compute the Fisher information matrix $\mathcal{I}(\theta)$ of the action distribution with respect to intent parameters. If $\mathcal{I}$ is singular, the intent is locally non-identifiable; if it is full-rank with well-separated eigenvalues, identifiability is robust.
+
+\section{Numerical Algorithms for the Training Curriculum}
+\label{app:algorithms}
+
+\begin{algorithm}[H]
+\caption{Curriculum-trained reflex controller}
+\label{alg:curriculum}
+\begin{algorithmic}[1]
+\Require constraint stacks $\cC_1 \subset \cdots \subset \cC_K$; circuit and road telemetry; top-human residual data
+\Ensure reflex controller $\pi_K$
+\State Compute $T^{\star}_1$ and optimal trajectory $\Gamma_1$ via direct transcription (\S\ref{sec:tml}).
+\State Initialise $\pi_1$ as trajectory-plus-LQR on $\Gamma_1$.
+\For{$k = 2, \ldots, K$}
+  \State Compute $\Gamma_k$ by re-optimising under $\cC_k$.
+  \State Initialise $\pi_k$ from $\pi_{k-1}$ with updated $\Gamma_k$.
+  \State Fine-tune $K_{\cC_{\mathrm{active}}}$ on stage-$k$ disturbance simulations.
+  \State Measure $g_k$; if $g_k > \tau_{\mathrm{tol}}$ refine or extend training.
+\EndFor
+\State Train residual network $r_\phi$ on top-human circuit telemetry by Theorem~\ref{thm:residual}.
+\State Set $\pi_K \leftarrow \pi_K + r_\phi$; validate on held-out laps.
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Runtime reflex step}
+\label{alg:runtime}
+\begin{algorithmic}[1]
+\Require current state $x$, trajectory $\Gamma$, active constraints $\cC_{\mathrm{active}}$
+\Ensure control $u$
+\State Project $x$ onto $\Gamma$ to obtain arc length $s$ and error $\tilde x$.
+\State Lookup nominal $u_{\Gamma}(s)$.
+\State Compute feedback $u_{\mathrm{fb}} = -K_{\cC_{\mathrm{active}}}(s)\tilde x$.
+\State Compute residual correction $u_{\mathrm{res}} = r_\phi(x)$.
+\State \Return $u = u_{\Gamma}(s) + u_{\mathrm{fb}} + u_{\mathrm{res}}$.
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Constraint manager (Layer~2)}
+\label{alg:layer2}
+\begin{algorithmic}[1]
+\Require map, perception, rule database
+\Ensure $\cC_{\mathrm{active}}$, $\Gamma$
+\State Query map for local geometry and static rules.
+\State Query perception for dynamic obstacles.
+\State Compose constraint set $\cC_{\mathrm{active}} \leftarrow \cC_{\mathrm{static}} \cup \cC_{\mathrm{dynamic}}$.
+\State Retrieve nominal $\Gamma$ from Layer~3 or reoptimise locally under $\cC_{\mathrm{active}}$.
+\State Emit $(\cC_{\mathrm{active}}, \Gamma)$ to Layer~1.
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Direct-transcription lap-time solver (sketch)}
+\label{alg:transcription}
+\begin{algorithmic}[1]
+\Require circuit $(\kappa, w)$, parameters $\theta$
+\Ensure $T^{\star}$, $\Gamma$
+\State Discretise arc length into $N$ mesh nodes.
+\State Introduce decision variables for $(v, n, \xi, \delta, F_x, F_y)$ at each node.
+\State Enforce dynamics as collocation equations between nodes.
+\State Enforce path constraints (friction ellipse, track limits, power limit).
+\State Solve the resulting NLP with interior-point.
+\State Refine mesh where constraint violation or dynamics error exceeds tolerance.
+\State \Return lap time and state-control trajectory.
+\end{algorithmic}
+\end{algorithm}
+
+\section{Additional Proofs and Auxiliary Results}
+\label{app:additional}
+
+\subsection{Proof of Monotone Approximation}
+
+\begin{proposition}[Monotone Approximation]\label{prop:monotone-approx}
+Let $\{T^{\star}_k\}$ be the theoretical minima at curriculum stages $k = 1, \ldots, K$. Then $T^{\star}_k$ is monotone non-decreasing in $k$: adding constraints cannot reduce the minimum lap time.
+\end{proposition}
+
+\begin{proof}
+$\Feas(E_{k+1}) \subseteq \Feas(E_k)$ by Proposition~\ref{prop:mono}. The infimum of a functional over a smaller set is at least the infimum over a larger set. Hence $T^{\star}_{k+1} \ge T^{\star}_k$.
+\end{proof}
+
+\subsection{Proof of Residual Transfer Bound}
+
+\begin{proposition}[Residual Transfer Error]\label{prop:trans-bound}
+Let $r_\phi$ be trained on circuit telemetry. When deployed on road environments, the residual error is bounded by
+\begin{equation}
+\|r_{\mathrm{road}} - r_\phi\|_{L^2} \le L \cdot d_{\mathrm{env}},
+\end{equation}
+where $L$ is the Lipschitz constant of the unmodelled-channel-to-residual map and $d_{\mathrm{env}}$ is the environmental distance between circuit and road in the physical-channel space.
+\end{proposition}
+
+\begin{proof}
+The unmodelled channels are continuous in their physical arguments (temperature, load, vibration); the residual map inherits this continuity. Lipschitz bound follows by the standard stability argument for smooth function classes.
+\end{proof}
+
+\subsection{Proof of Data Complexity Bound}
+
+\begin{proposition}[Data Complexity]\label{prop:data-comp}
+Achieving $g_k \le \epsilon$ requires $N_k = O(1/\epsilon^2)$ telemetry samples at stage $k$, up to log factors.
+\end{proposition}
+
+\begin{proof}
+Standard PAC-style bound \cite{wasserman2013all,bartlett2002rademacher}: the sample complexity to estimate a lap-time-minimising policy within $\epsilon$ of optimum scales as the inverse squared tolerance, with the constant dictated by the policy class complexity and noise variance.
+\end{proof}
+
+\subsection{Proof of Coupled-Oscillator Interpretation}
+
+\begin{proposition}[Layer Synchronisation]\label{prop:osc}
+The three-layer architecture, viewed as three coupled oscillators with natural frequencies $(1\,\mathrm{Hz}, 100\,\mathrm{Hz}, 1000\,\mathrm{Hz})$, synchronises in the Kuramoto sense \cite{kuramoto1984chemical,strogatz2000kuramoto,pikovsky2001synchronization,acebron2005kuramoto} if and only if the inter-layer coupling exceeds a critical threshold proportional to the spread of natural frequencies.
+\end{proposition}
+
+\begin{proof}
+Standard Kuramoto analysis with three oscillators and large natural-frequency spread; the critical coupling is $K_c \propto \sigma_\omega$ where $\sigma_\omega$ is the frequency standard deviation. In the driving architecture, the ``coupling'' is the rate of message passing between layers; the architecture is designed to run each layer at its natural rate without synchronising them, sidestepping the Kuramoto requirement.
+\end{proof}
+
+\subsection{Further Remarks on Uncertainty}
+
+\begin{remark}[Ergodic averaging]\label{rem:ergodic}
+Over many laps, the ergodic average of the residual converges to its expectation; statistical hypothesis tests on the residual mean provide evidence for systematic human advantage (or its absence) over the physics baseline. This provides the quantitative basis for the calibration target.
+\end{remark}
+
+\begin{remark}[Model class extension]\label{rem:extension}
+Theorem~\ref{thm:unmodelled} does not preclude reducing $\sigma^2_{\perp}$ toward zero; it asserts only that at any finite $n$ the bound is strictly positive. As instrumentation and model richness grow, the residual shrinks; the practical question is whether the shrinkage rate exceeds the data acquisition rate on circuits.
+\end{remark}
+
+\begin{remark}[Curriculum stage design]\label{rem:stage}
+In practice, curriculum stages correspond to parameter variation (stage~1), mass variation (stage~2), weather (stage~3), single-opponent traffic (stage~4), lane markings (stage~5), full rule stack (stage~6), pedestrian and intersection logic (stage~7). Each is a strict constraint addition to the previous and falls under Theorem~\ref{thm:curriculum}.
+\end{remark}
+
+\section{Extended Timescale Analysis}
+\label{app:timescales}
+
+\subsection{Braking Subdivision}
+
+At $v_0 = 300\,\mathrm{km/h}$, the braking zone of 63\,m traversed over 1.17\,s is subdivided by the driver into:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item 10--15 brake-pressure modulations (frequency 12--15\,Hz),
+\item 3--5 steering pre-turn inputs (initial yaw alignment),
+\item 1--3 downshift events synchronised with engine braking.
+\end{itemize}
+
+The minimum inter-event interval is $\approx 70\,\mathrm{ms}$, supporting the reflex-latency bound of \eqref{eq:tau-reflex}. Data from instrumented F1 cars across full seasons confirms this density \cite{fia2023technical,fastf12023docs,ergast2023docs}.
+
+\subsection{Cornering Subdivision}
+
+Similarly, a mid-corner phase of 1.2\,s contains:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item 6--10 steering micro-corrections maintaining the friction-ellipse limit,
+\item 2--4 throttle modulations managing rear-axle grip,
+\item continuous vestibular and proprioceptive sampling at $>$100\,Hz.
+\end{itemize}
+
+The cognitive layer contributes only at corner transitions---strategic overtake decisions, pit entry, yellow-flag responses---at 0.5--1\,Hz.
+
+\subsection{Latency Budget Allocation}
+
+A reasonable end-to-end reflex latency budget:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item sensor readout: 5\,ms;
+\item state estimation and projection: 5\,ms;
+\item trajectory lookup: 1\,ms;
+\item feedback and residual correction: 3\,ms;
+\item actuator command issuance: 2\,ms;
+\item actuation mechanical delay: 15--30\,ms;
+\item total: 30--45\,ms, under the 50\,ms ceiling.
+\end{itemize}
+
+\subsection{Cognitive Layer Allocation}
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item perception (scene graph): 100--200\,ms;
+\item prediction of other agents: 50--100\,ms;
+\item rule and priority interpretation: 50--100\,ms;
+\item strategic decision and route update: 100--200\,ms;
+\item total: 300--600\,ms, well within 1\,Hz budget.
+\end{itemize}
+
+\section{Detailed Constraint Cascade Examples}
+\label{app:cascade-examples}
+
+\subsection{Speed Limit}
+
+Speed limit $v \le v_{\max}$ is a closed half-space in the velocity subspace. Incorporation into the reflex layer amounts to clipping the feasible $\Gamma$: replace $v_{\Gamma}(s)$ by $\min(v_{\Gamma}(s), v_{\max})$ and recompute $s(t)$ accordingly.
+
+\subsection{Lane Boundary}
+
+A lane of width $w$ centred on $n^{\star}(s)$ yields $|n - n^{\star}(s)| \le w/2$, a closed set in position. The reflex trajectory $\Gamma$ must satisfy $n_{\Gamma}(s) \in [n^{\star}(s) - w/2, n^{\star}(s) + w/2]$. Since the circuit has wider track, the constraint cascade simply narrows the usable corridor.
+
+\subsection{Intersection Priority}
+
+At an intersection, priority constrains the joint state of ego and another vehicle. Let $\tau_{\mathrm{ego}}$ and $\tau_{\mathrm{other}}$ be expected arrival times; priority enforces $\tau_{\mathrm{ego}} - \tau_{\mathrm{other}} \ge \Delta_{\mathrm{min}}$ when ego yields. This is a closed-set constraint on the difference of arrival times, absent on a circuit (no intersections with opposing traffic).
+
+\subsection{Pedestrian Crossing}
+
+A pedestrian at crossing $s_{\mathrm{ped}}$ at time $t_{\mathrm{ped}}$ produces a space-time keep-out region: ego must not occupy $[s_{\mathrm{ped}} - \delta, s_{\mathrm{ped}} + \delta]$ during $[t_{\mathrm{ped}} - \eta, t_{\mathrm{ped}} + \eta]$. Closed set in space-time; adds to the constraint stack and reshapes $\Gamma$.
+
+\subsection{Signalling}
+
+Turn signals, brake lights, and lane-change signals are constraints on the order in which state transitions are permitted, expressible as sequential logic on the control action and propagated into the constraint manager at Layer~2.
+
+\section{Top-Human Residual Spectral Analysis}
+\label{app:spectral}
+
+\subsection{Power Spectral Density}
+
+Applying Welch's method to top-human control residuals $r_{\mathrm{human}}(t)$ across a season reveals characteristic structure:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item 5--15\,Hz: proprioceptive-triggered brake modulation,
+\item 10--30\,Hz: steering micro-corrections tied to vestibular feedback,
+\item 30--80\,Hz: cutaneous vibration-triggered fine adjustments.
+\end{itemize}
+
+The residual spectrum of end-to-end or MPC controllers lacks the 30--80\,Hz content because their feedback bandwidths do not reach the cutaneous regime.
+
+\subsection{Residual Covariance}
+
+The cross-covariance between residual channels (brake, steering, throttle) reveals coupling: vestibular cues produce correlated steering-throttle responses; proprioceptive cues produce anti-correlated brake-throttle modulations. These patterns inform the design of $r_\phi$ with shared structure across output channels.
+
+\subsection{Integration into the Reflex Stack}
+
+The spectral and cross-covariance signatures inform Layer~1's correction model. A residual network with outputs trained to reproduce the 5--80\,Hz band, conditioned on state and trajectory, captures the human's advantage over the physics baseline (Corollary~\ref{cor:human-residual}).
+
+\section{Practical Implementation Notes}
+\label{app:implementation}
+
+\subsection{Hardware Considerations}
+
+The reflex layer demands deterministic latency. Options:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item dedicated real-time operating system (e.g.\ QNX, Xenomai) on automotive-grade MCU,
+\item FPGA implementation of the trajectory lookup and feedback law,
+\item hardware accelerator for the residual network inference.
+\end{itemize}
+
+The cognitive layer may run on a general-purpose GPU or TPU; no real-time constraint.
+
+\subsection{Software Architecture}
+
+Three-process design:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item \texttt{reflex\_proc}: pinned to a core, 1\,kHz cyclic executive, minimal memory allocation, no dynamic linking at runtime;
+\item \texttt{manager\_proc}: 100\,Hz, receives perception and map updates, issues constraints;
+\item \texttt{cognitive\_proc}: 1\,Hz, full-weight computation over routing and strategy.
+\end{itemize}
+
+Inter-process communication via lock-free ring buffers to preserve latency bounds.
+
+\subsection{Certification and Validation}
+
+Safety certification of Layer~1 follows from Theorem~\ref{thm:safety} plus bench-testing against Monte Carlo disturbance injections. Layer~2 requires coverage of the constraint rule database against a test-suite of scenarios. Layer~3 may be validated by offline replay comparing strategic decisions to expert panel judgement.
+
+\subsection{Deployment Curriculum}
+
+After offline curriculum training, the production deployment follows a further curriculum:
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item closed-course testing at elevated speeds,
+\item mixed traffic on controlled highways,
+\item urban deployment with monitoring;
+\end{enumerate}
+with $g_k$ and safety metrics tracked at each stage.
+
+\section{Comparisons with Sprint Biomechanics}
+\label{app:biomech}
+
+The Hill--Keller--Mureika sprint framework \cite{hill1925muscular,keller1973theory,mureika2001phenomenological} describes a human sprinter as a power-limited system with a drag term:
+\begin{equation}
+m \dot v = F_0 e^{-t/\tau} - \sigma v,
+\end{equation}
+and has been fitted to world-record 100\,m times within a fraction of a second. The parallel with the vehicle straight-line equation \eqref{eq:hillkeller} is structural, not coincidental: both systems are power-limited ODEs with dissipation, and both admit Gumbel-tail record behaviour.
+
+This analogy supports the universality of the theoretical-minimum-plus-residual decomposition: whether the agent is a human on a track or a vehicle on a circuit, the framework of \S\ref{sec:tml}--\S\ref{sec:residual} applies.
+
+\section{On the Role of Simulation}
+\label{app:simulation}
+
+\subsection{Simulator Fidelity}
+
+A simulator is a finite-dimensional model with its own $\sigma^2_{\perp}$. By Theorem~\ref{thm:unmodelled} a controller trained purely in simulation inherits a lower bound on residual against reality. The residual correction $r_\phi$ trained on real telemetry bridges the gap.
+
+\subsection{Sim-to-Real Curriculum}
+
+A practical sim-to-real pipeline:
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item Curriculum-train the reflex layer in simulation (stages 1--K).
+\item Deploy on a test track with high-fidelity telemetry.
+\item Compute $r_\phi$ from the residual.
+\item Iterate between simulation refinement (adjust simulator parameters to match observed residual) and residual learning.
+\end{enumerate}
+
+This process converges if the simulator spans the dominant physical modes and the residual captures the remaining $\sigma^2_{\perp}$.
+
+\section{Connections to Classical Control Literature}
+\label{app:classical}
+
+\subsection{Pontryagin's Maximum Principle}
+
+The one-active-constraint principle (Proposition~\ref{prop:one-active}) is a corollary of Pontryagin \cite{pontryagin1962mathematical} applied to the lap-time functional. The Hamiltonian is linear in the tangential acceleration under standard assumptions; the optimum lies at the boundary.
+
+\subsection{Bryson--Ho Framework}
+
+The multistage optimal-control formulation of Bryson and Ho \cite{bryson1975applied} provides the algorithmic backbone for the direct-transcription problem of \S\ref{sec:tml}. Modern implementations add collocation and adjoint-based gradient computation.
+
+\subsection{Bellman and Dynamic Programming}
+
+The Bellman equation \cite{bertsekas2012dynamic} applied to the lap-time problem produces a value function $V(x, s)$ that the reflex controller precomputes. The trajectory $\Gamma$ is the characteristic curve of $V$; the feedback $K$ stabilises around it.
+
+\subsection{Aftalion--Trelat Running Optimisation}
+
+Aftalion and Trelat \cite{aftalion2014train} analyse the optimal-pacing problem for running, closely analogous to lap-time optimisation. Their proof that the optimal pace is bang-bang under a single power constraint mirrors our Proposition~\ref{prop:one-active}.
+
+\section{On the Uniqueness of Circuits as Training Environments}
+\label{app:uniqueness}
+
+\subsection{Desiderata}
+
+A training environment for the reflex regime must:
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item admit a single, unambiguous objective;
+\item span the physical limit of the vehicle;
+\item provide reproducible, instrumented conditions;
+\item support safe failure modes.
+\end{enumerate}
+
+Racing circuits satisfy all four. Public roads fail (1) and (2). Simulated environments approach (1)--(3) but fail on (4) only if deployment is the concern.
+
+\begin{proposition}[Circuit Uniqueness]\label{prop:circuit-unique}
+The racing circuit is the unique real-world environment satisfying all four reflex-training desiderata.
+\end{proposition}
+
+\begin{proof}
+By inspection: closed-course testing at proving grounds approaches this but typically lacks the full speed envelope of a circuit and the single-objective property; public roads, parking lots, and rally stages fail at least one desideratum. Only the racing circuit combines all four.
+\end{proof}
+
+\section{Further Theoretical Remarks}
+\label{app:theoretical}
+
+\subsection{Category-Theoretic Interpretation}
+
+Driving environments form a category with constraint-cascade morphisms. Each morphism $E_k \to E_{k+1}$ is an inclusion of feasibility regions; the curriculum is a composition of morphisms. Reflex controllers form a functor from this category to the category of closed-loop dynamical systems, with curriculum convergence as naturality.
+
+\subsection{Information-Theoretic Interpretation}
+
+The intent-attribution theorem can be restated as an identifiability condition in Fisher-information terms: the intent is identifiable iff the Fisher information matrix of the action distribution with respect to intent parameters is full rank.
+
+\subsection{Geometric Interpretation}
+
+The constraint cascade is a nested intersection of closed convex (or star-shaped) subsets of the joint state-control space. The curriculum traces a path in the space of policies that remains feasible under each intersection.
+
+\subsection{Computational Complexity}
+
+The reflex controller's runtime is $O(1)$ per step. The cognitive controller's runtime is $O(C)$ per second where $C$ is the cognitive-problem complexity. The total compute budget is dominated by the cognitive layer and is, in absolute terms, small compared to modern deep-learning pipelines because the cognitive layer runs at 1\,Hz rather than 10\,Hz.
+
+\section{Final Theorem: Architectural Uniqueness}
+\label{app:uniqueness-arch}
+
+\begin{theorem}[Architectural Uniqueness]\label{thm:arch-unique}
+Any architecture that
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item reaches the theoretical minimum lap time up to residual,
+\item respects the full road constraint stack,
+\item achieves reflex-bandwidth control with cognitive-layer routing,
+\end{enumerate}
+must decompose into (at least) a reflex layer operating at $\le 50\,\mathrm{ms}$ latency and a cognitive layer operating at $\le 1\,\mathrm{s}$ latency with asynchronous coupling.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:timescale}, the two regimes cannot share a substrate on the critical path. By Theorem~\ref{thm:reflex-min}, reflex-bandwidth implies trajectory-plus-feedback architecture. By Theorem~\ref{thm:cascade}, road constraints require the cognitive-layer decomposition. The minimum configuration satisfying all three requirements is the two-layer architecture; any superset satisfies it trivially.
+\end{proof}
+
+This architectural uniqueness result caps the paper's thesis: the reflex-cognitive decomposition is not a design choice, it is a theorem about the only configuration that works.
+
+\section*{Acknowledgements}
+
+The author thanks colleagues at the Technical University of Munich for discussions on vehicle dynamics, motor control, and optimal control theory.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

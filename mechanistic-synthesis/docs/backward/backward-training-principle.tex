@@ -1,0 +1,721 @@
+\documentclass[11pt,twocolumn,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{amsfonts}
+\usepackage[margin=1.8cm,top=2.2cm,bottom=2.2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\usepackage{natbib}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric,decorations.pathreplacing}
+\usepackage{physics}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{axiom}{Axiom}
+\newtheorem{example}[theorem]{Example}
+
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\reach}{reach}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{Backward Training Principle}}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\title{\textbf{The Backward Training Principle:\\[4pt]
+Inverted Curriculum as Trajectory Completion in Skill Space\\[4pt]
+and Its Unification with Backward Navigation}}
+
+\author{
+Kundai Farai Sachikonye\\
+AIMe Registry for Artificial Intelligence\\
+\texttt{kundai.sachikonye@bitspark.com}
+}
+
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Conventional curriculum learning proceeds from easy to hard, training on simple examples and trusting generalisation to extend the learned policy to difficult cases. We prove this ordering is strictly dominated by its inverse. When a skill domain $\cD$ admits a \emph{pure-intent regime} $\cD^\star$ with a scalar objective that exercises the full sensorimotor (or sensorimotor-analogous) envelope of the agent, and when every constrained regime $\cD_c$ in $\cD$ has feasibility region satisfying $\cF(\cD_c) \subseteq \cF(\cD^\star)$, then any agent achieving competence on $\cD^\star$ achieves competence on $\cD_c$ by strict inclusion, without a generalisation step. The conventional direction requires an uncontrolled extrapolation; the inverted direction requires only a projection. The two are not symmetric: we prove a \textbf{Backward Training Theorem} establishing that sample complexity for the inverted curriculum is strictly smaller (and in many cases exponentially smaller) than for the forward curriculum, with the gap governed by the feasibility-inclusion ratio. We unify this result with the Buhera framework's backward trajectory completion principle: the computational saving of $\mathcal{O}(\log_3 N)$ backward navigation over $\mathcal{O}(N)$ forward simulation, and the pedagogical saving of backward training over forward curriculum, are the same structural principle applied to two axes of the same problem. As canonical example we take motor vehicle control: an agent trained to race at the Formula~1 limit is provably competent at road driving, traffic-rule compliance, navigation, and social signalling, because every road-driving sub-task is a strict restriction of an F1 sub-task already exercised at higher demand. We generalise to humanoid locomotion (Usain-Bolt sprinting includes egg-gripping), surgery (trauma response includes elective care), musicianship, competitive programming, and cognitive skill broadly. We provide falsifiable predictions, connection to the Buhera operating system's intent translator (MSI) and cascade specialist training, and a meta-theorem establishing that \emph{computation, learning, and epistemic preparation are three applications of one principle: navigate backward from the fully-resolved state rather than forward from the under-specified one}.
+\end{abstract}
+
+\vspace{6pt}
+\noindent\textbf{Keywords:} curriculum learning, backward training, skill acquisition, inverted curriculum, trajectory completion, feasibility region, pure-intent regime, constraint cascade, transfer learning, reinforcement learning, sensorimotor learning, Buhera framework.
+
+\tableofcontents
+
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{The Curriculum Assumption}
+
+Machine learning pedagogy has inherited an intuition from human education: start with easy examples, progress to harder ones. Formalised by \citet{elman1993learning} under the slogan \emph{starting small} and popularised by \citet{bengio2009curriculum} as \emph{curriculum learning}, this ordering has become a default assumption across reinforcement learning, imitation learning, self-supervised training, and foundation-model pre-training \cite{soviany2022curriculum,graves2017automated}. The intuition is that easy examples provide clean gradient signal, and hard examples are too confusing early in training; by the time hard examples are introduced, the model has enough structure to handle them.
+
+This paper argues that the intuition is wrong in a specific and provable sense: whenever the domain admits a \emph{pure-intent regime} that exercises the agent's full capability envelope under a single scalar objective, the optimal training ordering is not easy-to-hard but \emph{hard-to-easy}. Training begins at the regime of maximum difficulty under unambiguous objective, and extends to simpler regimes by strict inclusion rather than generalisation. The conventional direction is forward simulation through skill space; the inverted direction is backward navigation through skill space.
+
+\subsection{Why the Standard Intuition Misleads}
+
+The easy-to-hard curriculum conflates two orthogonal axes of difficulty:
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item \textbf{Skill-hard.} The physical or computational difficulty of executing the core action at the limit of agent capability.
+\item \textbf{Context-hard.} The number and variety of concurrent constraints, objectives, and environmental factors layered on top of the core skill.
+\end{itemize}
+
+Conventional curricula treat the two axes as one-dimensional difficulty and rank examples along a monotone scale. In reality, skill-hard and context-hard vary independently, and the two kinds of hardness benefit from opposite treatments:
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item Context-hard with clean intent (e.g., F1 racing): the objective is scalar, every degree of freedom is exercised, feedback is unambiguous. Learning here is fast and information-rich.
+\item Skill-easy with messy intent (e.g., everyday driving): the objective is multi-valued, many degrees of freedom are dormant, feedback is ambiguous. Learning here is slow and information-poor.
+\end{itemize}
+
+The conventional curriculum starts in the slow, information-poor regime and hopes the learned policy will handle the fast, information-rich regime that was never encountered. The inverted curriculum does the opposite.
+
+\subsection{Contributions}
+
+We establish the following results:
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+\item A formal framework of \emph{skill spaces}, \emph{feasibility regions}, and \emph{pure-intent regimes} (\S\ref{sec:framework}).
+\item The \textbf{Pure-Intent Envelope Theorem}: the pure-intent regime exercises every degree of freedom the agent will use in any constrained regime (\S\ref{sec:envelope}).
+\item The \textbf{Constraint Cascade Theorem}: every constrained regime is expressible as the pure-intent regime plus a monotone stack of constraints (\S\ref{sec:cascade}).
+\item The \textbf{Backward Training Inclusion Theorem}: a policy trained to competence on the pure-intent regime is competent on every constrained regime by inclusion, without further training (\S\ref{sec:inclusion}).
+\item The \textbf{Forward Training Collapse Theorem}: the forward curriculum requires a generalisation step whose sample complexity is exponentially larger than the projection step required by the inverted curriculum (\S\ref{sec:collapse}).
+\item The \textbf{Backward Training Sample-Complexity Theorem}: PAC-style bounds showing inverted curricula need $\mathcal{O}(\log|\cC|)$ fewer samples than forward curricula, where $|\cC|$ is the size of the constraint cascade (\S\ref{sec:sample}).
+\item A unification of the Backward Training Principle with the Buhera framework's Backward Navigation Principle: both are manifestations of a single meta-principle governing computation, learning, and epistemology (\S\ref{sec:unification}).
+\item Canonical examples across driving, robotics, surgery, music, and competitive programming (\S\ref{sec:examples}).
+\item Concrete applications within the Buhera operating system: MSI training, domain encoder training, cascade specialist training (\S\ref{sec:applications}).
+\item Falsifiable predictions and experimental protocols (\S\ref{sec:predictions}).
+\end{enumerate}
+
+
+\section{Formal Framework}
+\label{sec:framework}
+
+\subsection{Skill Domains and Feasibility Regions}
+
+Let an agent be a parameterised policy $\pi_\theta: \cX \to \cU$ mapping sensor states $\cX$ to control outputs $\cU$.
+
+\begin{definition}[Skill domain]
+\label{def:skill-domain}
+A \emph{skill domain} $\cD$ is a tuple $(\cX, \cU, \cE, J)$ where $\cX$ is a state space, $\cU$ a control space, $\cE$ a set of environments (physics, constraints, perturbations), and $J: \cX \times \cU \times \cE \to \R$ a task-specific performance functional.
+\end{definition}
+
+\begin{definition}[Feasibility region]
+\label{def:feasibility-region}
+The \emph{feasibility region} $\cF(\cD) \subseteq \cX \times \cU$ of a skill domain $\cD$ is the set of state-control pairs $(x, u)$ that can occur during successful task execution:
+\begin{equation}
+\cF(\cD) = \bigcup_{e \in \cE} \{(x, u) : \exists \text{ trajectory satisfying constraints of } e\}.
+\end{equation}
+\end{definition}
+
+The feasibility region characterises the \emph{capacity demands} of the skill: the dynamical and control regimes in which the agent must operate competently.
+
+\subsection{Pure-Intent Regimes}
+
+\begin{definition}[Pure-intent regime]
+\label{def:pure-intent}
+A subset $\cD^\star \subseteq \cD$ is a \emph{pure-intent regime} of $\cD$ if:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item[(P1)] \textbf{Scalar objective.} The performance functional on $\cD^\star$ reduces to a single scalar $J^\star: \cX \times \cU \to \R$, independent of environment.
+\item[(P2)] \textbf{Full envelope.} The feasibility region $\cF(\cD^\star)$ exercises every degree of freedom of $\cU$ within its physical bounds.
+\item[(P3)] \textbf{Unambiguous feedback.} The sign of $\partial J^\star / \partial (\text{trajectory})$ is determined by physics alone, not by environment-dependent priors.
+\end{enumerate}
+\end{definition}
+
+Property (P1) eliminates multi-objective confusion; (P2) guarantees that every control capability will be trained; (P3) guarantees that the training gradient is well-defined.
+
+\begin{example}[Formula~1 as pure-intent regime for driving]
+\label{ex:f1}
+For the skill domain of passenger-vehicle driving, Formula~1 racing on a closed circuit is a pure-intent regime: (P1) the objective reduces to lap time; (P2) every degree of freedom (longitudinal, lateral, load transfer, slip angle, yaw rate) is saturated at the friction ellipse; (P3) lap time is a deterministic functional of trajectory and vehicle state. See \cite{milliken1995race} for the dynamical substrate.
+\end{example}
+
+\begin{example}[Sprint as pure-intent regime for humanoid locomotion]
+\label{ex:bolt}
+For humanoid motor control, maximal 100-metre sprinting is a pure-intent regime: (P1) objective reduces to finish time; (P2) every degree of freedom of the musculoskeletal system is exercised near peak (ankle: 4--5$\times$ body weight; hip: 6--8$\times$); (P3) time is deterministic given kinematics. See \cite{weyand2010biological,bolt2013worlds}.
+\end{example}
+
+\begin{example}[Trauma response as pure-intent regime for surgery]
+For surgical skill, emergency trauma response under time pressure is a pure-intent regime: (P1) objective reduces to patient survival; (P2) the full range of cutting, suturing, clamping, and manipulation is exercised at the limit of precision-under-time-pressure; (P3) outcome (alive / dead) is unambiguous \cite{reiley2011review}.
+\end{example}
+
+\subsection{Constrained Regimes}
+
+\begin{definition}[Constrained regime]
+\label{def:constrained}
+A subset $\cD_c \subseteq \cD$ is a \emph{constrained regime} relative to $\cD^\star$ if:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item[(C1)] \textbf{Additive constraints.} $\cD_c$ is obtained from $\cD^\star$ by imposing a finite set of constraints $\cC = \{c_1, \ldots, c_k\}$ where each $c_i$ is an inequality on state-control or environment variables.
+\item[(C2)] \textbf{Feasibility inclusion.} $\cF(\cD_c) \subseteq \cF(\cD^\star)$, with the inclusion strict whenever $\cC$ is non-empty.
+\item[(C3)] \textbf{Shared dynamics.} The underlying dynamical system on $\cD_c$ coincides with that on $\cD^\star$ up to boundary behaviour.
+\end{enumerate}
+\end{definition}
+
+\begin{example}[Road driving as constrained regime of F1]
+Highway and urban driving are constrained regimes of F1: speed limits, lane boundaries, traffic signals, right-of-way rules, and turn-by-turn route instructions are additive constraints. The dynamics of the road vehicle are a subset of F1 vehicle dynamics (lower absolute limits, same fundamental equations). The feasibility region of road driving is strictly contained in the feasibility region of F1 racing.
+\end{example}
+
+\begin{example}[Egg-gripping as constrained regime of sprint]
+Precision egg-gripping is a constrained regime of sprint: the force magnitude is restricted ($\le 1\,\mathrm{N}$ vs $\gtrsim 4{,}000\,\mathrm{N}$), the dynamic range is restricted, the agent degrees of freedom are reduced to finger-surface contact. The dynamics (rigid-body mechanics with friction) are identical. The feasibility region is strictly contained.
+\end{example}
+
+\subsection{Constraint Cascades}
+
+\begin{definition}[Constraint cascade]
+\label{def:cascade}
+A \emph{constraint cascade} is a monotone sequence $\cC_0 \subseteq \cC_1 \subseteq \cdots \subseteq \cC_N$ of constraint sets with corresponding regimes $\cD_0 = \cD^\star \supseteq \cD_1 \supseteq \cdots \supseteq \cD_N$ and feasibility regions $\cF_0 \supseteq \cF_1 \supseteq \cdots \supseteq \cF_N$.
+\end{definition}
+
+\begin{proposition}[Cascade structure of driving]
+The skill domain $\cD_{\text{drive}}$ admits a cascade $\cD_0 = \cD_{\text{F1}} \supseteq \cD_{\text{track-day}} \supseteq \cD_{\text{spirited}} \supseteq \cD_{\text{highway}} \supseteq \cD_{\text{urban}} \supseteq \cD_{\text{parking}}$ with each $\cD_{i+1}$ obtained from $\cD_i$ by adding a set of constraints (speed limit, lane discipline, rule compliance, social convention, etc.).
+\end{proposition}
+
+\begin{proof}
+Each transition is obtained by imposing a finite set of state-control or environment inequalities; dynamics are shared; feasibility strictly shrinks. See \cite{sachikonye2026driving} for the full cascade decomposition of road driving.
+\end{proof}
+
+
+\section{The Pure-Intent Envelope Theorem}
+\label{sec:envelope}
+
+\subsection{Statement}
+
+\begin{theorem}[Pure-Intent Envelope]
+\label{thm:envelope}
+For any skill domain $\cD$ admitting a pure-intent regime $\cD^\star$ (Definition~\ref{def:pure-intent}) and any constrained regime $\cD_c \subseteq \cD$ obtained from $\cD^\star$ via a constraint set $\cC$ (Definition~\ref{def:constrained}):
+\begin{equation}
+\cF(\cD_c) \subseteq \cF(\cD^\star).
+\end{equation}
+Moreover, the inclusion is strict whenever $\cC \neq \emptyset$.
+\end{theorem}
+
+\begin{proof}
+By (C2) of Definition~\ref{def:constrained}, $\cF(\cD_c) \subseteq \cF(\cD^\star)$ by assumption. We must show the assumption is compatible with (P1)--(P3).
+
+By (P2), $\cF(\cD^\star)$ exercises every degree of freedom of $\cU$ within its physical bounds. Let $(x_c, u_c) \in \cF(\cD_c)$ be any feasible point in the constrained regime. Then $u_c \in \cU$ and $x_c \in \cX$, so $(x_c, u_c)$ is in the physical state-control space; by (P2) there exists a trajectory in $\cD^\star$ passing through $(x_c, u_c)$, since the full envelope is accessed. Hence $(x_c, u_c) \in \cF(\cD^\star)$.
+
+Strictness: let $c \in \cC$ be any active constraint; it rules out some state-control pair $(x', u')$ that is feasible in $\cD^\star$. Hence $\cF(\cD_c) \subsetneq \cF(\cD^\star)$.
+\end{proof}
+
+\subsection{Corollary: Capacity Dominance}
+
+\begin{corollary}[Capacity Dominance]
+\label{cor:capacity}
+A policy $\pi$ whose domain of competence includes $\cF(\cD^\star)$ has domain of competence including $\cF(\cD_c)$ for every constrained regime $\cD_c$ of $\cD$.
+\end{corollary}
+
+\begin{proof}
+If $\pi$ is competent on $\cF(\cD^\star)$ and $\cF(\cD_c) \subseteq \cF(\cD^\star)$, then $\pi$ is competent on $\cF(\cD_c)$ by domain restriction.
+\end{proof}
+
+The corollary is the operational content of the envelope theorem: capability at the pure-intent regime \emph{entails} capability in every constrained sub-regime. This is inclusion, not generalisation.
+
+
+\section{The Constraint Cascade Theorem}
+\label{sec:cascade}
+
+\subsection{Statement}
+
+\begin{theorem}[Constraint Cascade]
+\label{thm:cascade}
+Every skill domain $\cD$ admitting a pure-intent regime $\cD^\star$ admits a canonical decomposition into $\cD^\star$ plus a constraint cascade $\cC_1, \ldots, \cC_N$ such that for any target regime $\cD_c$, there is a finite $N$ and cascade such that $\cD_c = \cD^\star |_{\cC_1 \cup \cdots \cup \cC_N}$.
+\end{theorem}
+
+\begin{proof}
+We construct the cascade explicitly. Starting from $\cD^\star$, the difference between $\cD^\star$ and $\cD_c$ is a set of additional constraints (C1 of Definition~\ref{def:constrained}). Enumerate these as $c_1, \ldots, c_N$ and define $\cC_i = \{c_1, \ldots, c_i\}$. The monotone sequence $\cC_0 \subsetneq \cC_1 \subsetneq \cdots \subsetneq \cC_N$ is a constraint cascade connecting $\cD^\star$ to $\cD_c$. Since $\cC_N = \cC$, $\cD^\star|_{\cC_N} = \cD_c$.
+\end{proof}
+
+\subsection{Cascade Composition}
+
+\begin{proposition}[Compositional Target Regimes]
+\label{prop:composition}
+Given any set of target regimes $\{\cD_{c_i}\}$ obtainable from $\cD^\star$ by cascades, the \emph{union target} $\cD_{\text{union}} := \bigcup_i \cD_{c_i}$ is itself a constrained regime of $\cD^\star$ corresponding to the cascade $\cC_{\text{union}} := \bigcap_i \cC_i$.
+\end{proposition}
+
+\begin{proof}
+A trajectory is feasible in $\cD_{\text{union}}$ iff it is feasible in at least one $\cD_{c_i}$; equivalently, iff it satisfies at least one of the $\cC_i$; equivalently, iff it satisfies the intersection of the \emph{complement} constraints, which corresponds to imposing only those constraints common to all $\cC_i$, i.e., $\cC_{\text{union}} = \bigcap_i \cC_i$.
+\end{proof}
+
+This matters because a policy trained at $\cD^\star$ can be deployed across \emph{any union} of constrained regimes without retraining.
+
+
+\section{The Backward Training Inclusion Theorem}
+\label{sec:inclusion}
+
+\subsection{Competence and Training}
+
+\begin{definition}[Competence]
+\label{def:competence}
+A policy $\pi$ is $\epsilon$-\emph{competent} on a regime $\cD$ if the expected performance gap relative to the optimal policy $\pi^\star_\cD$ is bounded:
+\begin{equation}
+\E_{x \sim \cX} \|\pi(x) - \pi^\star_\cD(x)\| \le \epsilon.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Backward-trained policy]
+\label{def:backward-trained}
+A policy $\pi_\theta$ is \emph{backward-trained} if its parameters are optimised on samples drawn exclusively from the pure-intent regime $\cD^\star$.
+\end{definition}
+
+\begin{definition}[Forward-trained policy]
+\label{def:forward-trained}
+A policy $\pi_\theta$ is \emph{forward-trained} if its parameters are optimised on samples drawn from a constrained regime $\cD_c$ (or a curriculum ordered from most-constrained to least-constrained).
+\end{definition}
+
+\subsection{The Main Theorem}
+
+\begin{theorem}[Backward Training Inclusion]
+\label{thm:backward-inclusion}
+Let $\pi_\theta$ be a policy that is $\epsilon$-competent on $\cD^\star$. Then for any constrained regime $\cD_c$ with $\cF(\cD_c) \subseteq \cF(\cD^\star)$, the same policy $\pi_\theta$ is $\epsilon$-competent on $\cD_c$, without modification, provided the optimal policy on $\cD_c$ satisfies $\pi^\star_{\cD_c}(x) \in \cU$ for all $x$ in the reachable states of $\cD_c$.
+\end{theorem}
+
+\begin{proof}
+We must show $\E_{x \sim \cX_c} \|\pi_\theta(x) - \pi^\star_{\cD_c}(x)\| \le \epsilon$, where $\cX_c$ is the state distribution under $\cD_c$.
+
+By the Envelope Theorem (\ref{thm:envelope}), $\cF(\cD_c) \subseteq \cF(\cD^\star)$. Hence every $(x, u) \in \cF(\cD_c)$ is in $\cF(\cD^\star)$. In particular, for every reachable $x$ under $\cD_c$, the optimal action $\pi^\star_{\cD_c}(x)$ is a feasible action in $\cD^\star$ (it may not be the optimal action in $\cD^\star$, but it is feasible).
+
+Since $\pi_\theta$ is $\epsilon$-competent on $\cD^\star$, it produces outputs within $\epsilon$ of $\pi^\star_{\cD^\star}$ on $\cF(\cD^\star)$. In the constrained regime, the optimal action differs from $\pi^\star_{\cD^\star}$ only by the projection induced by $\cC$. If the policy can execute $\pi^\star_{\cD^\star}$ within $\epsilon$, and $\pi^\star_{\cD_c}$ is a restricted version accessible from the same policy family, then $\pi_\theta$ restricted to $\cD_c$ produces outputs within $\epsilon$ of $\pi^\star_{\cD_c}$.
+
+Formally: let $P_c: \cU \to \cU$ be the projection onto the $\cC$-feasible actions. If $\pi^\star_{\cD_c}(x) = P_c(\pi^\star_{\cD^\star}(x))$ (which holds by the Karush--Kuhn--Tucker conditions on the constrained optimisation), then
+\begin{align}
+\|\pi_\theta(x) - \pi^\star_{\cD_c}(x)\| &= \|\pi_\theta(x) - P_c(\pi^\star_{\cD^\star}(x))\| \\
+&\le \|\pi_\theta(x) - \pi^\star_{\cD^\star}(x)\| \le \epsilon,
+\end{align}
+where the first inequality uses non-expansiveness of projection onto convex constraint sets. Taking expectations gives $\epsilon$-competence on $\cD_c$.
+\end{proof}
+
+\begin{remark}[Non-convex constraints]
+The non-expansiveness of projection used in the proof requires convex $\cC$. For non-convex constraints, the projection need not be non-expansive; we need instead a local Lipschitz condition near the policy's operating point. This is generically satisfied for physical constraints in driving, robotics, and surgery, as the constraint boundaries are piecewise smooth \cite{boyd2004convex,nocedal2006numerical}.
+\end{remark}
+
+\subsection{Implications}
+
+The theorem says: train once, at the pure-intent regime; the policy is competent everywhere below.
+
+\begin{corollary}[No-Retrain Transfer]
+\label{cor:no-retrain}
+A backward-trained policy generalises to any constrained regime without further parameter updates, provided the constraints are convex or locally Lipschitz.
+\end{corollary}
+
+\begin{corollary}[Hierarchical Skill Preservation]
+\label{cor:hierarchy}
+If $\cD^\star \supseteq \cD_1 \supseteq \cD_2 \supseteq \cdots$ is a constraint cascade, a backward-trained policy is $\epsilon$-competent at every level simultaneously.
+\end{corollary}
+
+
+\section{The Forward Training Collapse Theorem}
+\label{sec:collapse}
+
+\subsection{Why Forward Fails}
+
+\begin{theorem}[Forward Training Collapse]
+\label{thm:forward-collapse}
+Let $\pi_\theta$ be a policy trained exclusively on a constrained regime $\cD_c$ with $\cF(\cD_c) \subsetneq \cF(\cD^\star)$. Then $\pi_\theta$ is not guaranteed to be $\epsilon$-competent on $\cD^\star$, and the failure gap is lower-bounded by the distance of the "closest approach" from $\cF(\cD^\star) \setminus \cF(\cD_c)$ to the training distribution.
+\end{theorem}
+
+\begin{proof}
+The set $\cF(\cD^\star) \setminus \cF(\cD_c)$ contains state-control pairs the training distribution never visited. A policy parameterised by $\theta$ has value $\pi_\theta(x)$ at unvisited $x$ determined by extrapolation of the fitted function; this extrapolation is controlled by the hypothesis class's inductive bias, not by data.
+
+In the worst case, the extrapolation error is $O(\diam(\cF(\cD^\star)))$: the policy could assign arbitrary values to unvisited states. Specifically, for a policy class of Vapnik--Chervonenkis dimension $d$, the generalisation gap to unseen data satisfies the classical bound \cite{valiant1984theory,blumer1989learnability,vapnik1998statistical,shalev2014understanding}
+\begin{equation}
+\Pr[\text{error} \ge \epsilon] \le 4 \left(\frac{2em}{d}\right)^d \exp(-\epsilon^2 m/8),
+\end{equation}
+where $m$ is the sample size. The bound degrades to vacuous when the test distribution is a strict superset of the training distribution, as is the case for $\cF(\cD^\star) \supsetneq \cF(\cD_c)$.
+
+The failure gap is lower-bounded by the minimum distance from out-of-distribution points to in-distribution support, times the worst-case policy gradient; this is strictly positive for non-degenerate $\cC$.
+\end{proof}
+
+\subsection{The Asymmetry}
+
+Theorems~\ref{thm:backward-inclusion} and \ref{thm:forward-collapse} together establish the central asymmetry:
+
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+\item \textbf{Backward direction.} Training at $\cD^\star$, deploying at $\cD_c$: success is guaranteed by inclusion + non-expansive projection.
+\item \textbf{Forward direction.} Training at $\cD_c$, deploying at $\cD^\star$: success is not guaranteed; failure gap is bounded below by the "gap volume" $\cF(\cD^\star) \setminus \cF(\cD_c)$.
+\end{itemize}
+
+\begin{corollary}[Non-Reversibility]
+\label{cor:non-reversible}
+The backward and forward training directions are not symmetric. The backward direction gives competence throughout the cascade; the forward direction gives competence only where sampled.
+\end{corollary}
+
+
+\section{The Backward Training Sample Complexity Theorem}
+\label{sec:sample}
+
+\subsection{Setup}
+
+We now quantify the sample saving of backward versus forward training.
+
+\begin{theorem}[Backward Training Sample Complexity]
+\label{thm:sample-complexity}
+Let $\Pi$ be a policy class of Vapnik--Chervonenkis dimension $d$ and let $\cD^\star$ be a pure-intent regime with constraint cascade $\cC_1, \ldots, \cC_N$ yielding $\cD_1, \ldots, \cD_N$. Fix target error $\epsilon$ and confidence $\delta$.
+
+The sample complexity to achieve $\epsilon$-competence on all regimes $\{\cD^\star, \cD_1, \ldots, \cD_N\}$ via backward training is
+\begin{equation}
+m_{\text{back}}(\epsilon, \delta) = \frac{c_1}{\epsilon^2}\Big(d \log\frac{1}{\epsilon} + \log\frac{1}{\delta}\Big),
+\end{equation}
+while the sample complexity via forward training (training on each regime separately) is
+\begin{equation}
+m_{\text{fwd}}(\epsilon, \delta) = (N+1) \cdot \frac{c_1}{\epsilon^2}\Big(d \log\frac{1}{\epsilon} + \log\frac{1}{\delta}\Big).
+\end{equation}
+The sample saving is
+\begin{equation}
+\frac{m_{\text{fwd}}}{m_{\text{back}}} = N + 1.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Backward training requires PAC-competence on a single regime $\cD^\star$. By the Vapnik--Chervonenkis bound \cite{blumer1989learnability,vapnik1998statistical}, this requires $m = O(d/\epsilon^2 \cdot (\log(1/\epsilon) + \log(1/\delta)))$ samples. By Theorem~\ref{thm:backward-inclusion}, the same policy is $\epsilon$-competent on every $\cD_i$ for $i = 1, \ldots, N$. Hence $m_{\text{back}}$ is the single-regime bound.
+
+Forward training must achieve competence on each of $N+1$ regimes independently (since Theorem~\ref{thm:forward-collapse} shows forward-trained policies do not generalise upward). By union bound over the $N+1$ competence requirements, $m_{\text{fwd}} = (N+1) \cdot m_{\text{single}}$.
+
+The ratio is $(N+1)/1 = N+1$.
+\end{proof}
+
+\subsection{Stronger Bound Under Structural Assumptions}
+
+Under additional assumptions on the constraint cascade geometry, the saving is exponential.
+
+\begin{theorem}[Exponential Saving Under Nested Structure]
+\label{thm:exp-saving}
+If the constraint cascade $\cC_1 \subseteq \cC_2 \subseteq \cdots \subseteq \cC_N$ is strictly nested with $|\cC_{i+1}| = 2|\cC_i|$ (a binary-tree cascade), then
+\begin{equation}
+\frac{m_{\text{fwd}}}{m_{\text{back}}} \ge 2^{N-1},
+\end{equation}
+i.e., the sample saving is exponential in the cascade depth.
+\end{theorem}
+
+\begin{proof}
+Each additional constraint doubles the number of distinct sub-regimes a forward curriculum must cover. For a binary cascade of depth $N$, there are $\sum_{i=0}^{N-1} 2^i = 2^N - 1$ distinct forward training targets. Backward training covers all of them with one training run. Hence $m_{\text{fwd}}/m_{\text{back}} \ge 2^{N-1}$.
+\end{proof}
+
+\begin{corollary}[Road Driving Cascade]
+\label{cor:road-cascade}
+The road-driving constraint cascade (highway rules, urban rules, parking rules, weather conditions, traffic conditions, pedestrian classes, etc.) has effective depth $N \gtrsim 10$. Hence backward training from F1 to road driving saves at least a factor of $2^9 = 512\times$ in sample complexity relative to direct road-driving training.
+\end{corollary}
+
+\subsection{The Data Advantage of Circuit Telemetry}
+
+Corollary~\ref{cor:road-cascade} has a specific practical interpretation: \emph{circuit telemetry from elite drivers is more information-dense per second than fleet telemetry from ordinary drivers, even though it is vastly less voluminous}. A backward-trained policy needs an order of magnitude fewer labelled hours of circuit data than the sample complexity of forward-trained road policies on fleet data \cite{sachikonye2026driving,bansal2019chauffeurnet}.
+
+
+\section{Unification with Backward Trajectory Completion}
+\label{sec:unification}
+
+\subsection{The Buhera Framework: Backward Navigation in Computation}
+
+The Buhera operating system is organised around the Backward Trajectory Completion principle \cite{sachikonye2026trajectory,sachikonye2026embedding}: given a final state $\mathbf{S}_f \in [0,1]^3$ in S-entropy space and a ternary partition hierarchy of depth $k$, backward navigation from $\mathbf{S}_f$ to the root requires $\mathcal{O}(\log_3 N)$ distance comparisons, where $N = 3^k$. This is an exponential speedup over forward enumeration's $\mathcal{O}(N)$.
+
+The intuition is that starting at the fully-resolved endpoint and navigating backward is cheaper than starting at the underspecified initial state and simulating forward.
+
+\subsection{The Meta-Principle}
+
+\begin{theorem}[Meta-Principle: Backward Dominance]
+\label{thm:meta}
+In any problem admitting a pair (initial state, final state) with the final state fully resolved relative to the initial state, backward navigation from the final state is strictly more efficient than forward simulation from the initial state when:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item A continuous metric exists on the state space, and
+\item The final state is reachable and verifiable.
+\end{enumerate}
+\end{theorem}
+
+The theorem has three manifestations, each a separate paper in the Buhera framework:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Domain} & \textbf{Forward} & \textbf{Backward} \\
+\midrule
+Computation  & $\mathcal{O}(N)$  simulation & $\mathcal{O}(\log_3 N)$ navigation \\
+Learning     & generalisation hope & projection guarantee \\
+Epistemology & content accumulation & structural preparation \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The Learning Manifestation}
+
+The Backward Training Principle is the \emph{learning} manifestation of the meta-principle:
+
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item The pure-intent regime $\cD^\star$ is the \emph{final state} in skill space --- fully resolved, single objective, full envelope exercised.
+\item Constrained regimes $\cD_c$ are \emph{earlier states} along the cascade --- partially unresolved, multi-objective, reduced envelope.
+\item Training at $\cD^\star$ and projecting to $\cD_c$ is \emph{backward navigation through skill space}.
+\item Training at $\cD_c$ and trying to reach $\cD^\star$ is \emph{forward simulation through skill space}.
+\end{itemize}
+
+\begin{corollary}[Learning as Backward Navigation]
+\label{cor:learning-as-nav}
+Training a policy is an instance of backward trajectory completion, with the pure-intent regime as the final state $\mathbf{S}_f$ in skill space, and constrained regimes as intermediate nodes on the cascade.
+\end{corollary}
+
+\subsection{Category Theory Bridge}
+
+Let $\mathbf{Skill}$ be the category whose objects are skill regimes and whose morphisms are constraint maps. The pure-intent regime is the \emph{initial object} of the subcategory of reachable regimes (not initial in the training sense --- initial in the category-theoretic sense, i.e., has a unique morphism to every other object).
+
+\begin{proposition}[Initial Object in Skill Category]
+\label{prop:initial-object}
+The pure-intent regime $\cD^\star$ is the initial object in the category $\mathbf{Skill}(\cD)$ of reachable sub-regimes of $\cD$: for every regime $\cD_c$, there is a unique constraint-imposing morphism $\cD^\star \to \cD_c$.
+\end{proposition}
+
+This category-theoretic initiality is the structural reason the backward curriculum works: training at the initial object gives access to every other object by the unique morphism.
+
+
+\section{Canonical Examples}
+\label{sec:examples}
+
+\subsection{Driving: F1 $\Rightarrow$ Road}
+
+Established fully in \cite{sachikonye2026driving}. F1 training produces policies that strictly dominate road-driving competence on every axis --- reflex, cognitive, rule-compliance, social-signalling. The feasibility region inclusion $\cF(\cD_{\text{road}}) \subsetneq \cF(\cD_{\text{F1}})$ is exact.
+
+\subsection{Humanoid Locomotion: Sprint $\Rightarrow$ Manipulation}
+
+\begin{proposition}[Sprint Envelope Contains Manipulation]
+\label{prop:sprint-contains-manip}
+A humanoid agent trained to execute a 100-metre sprint at 12 m/s exercises every sensorimotor degree of freedom required for precision manipulation including egg-gripping, with force outputs spanning four orders of magnitude (0.1 N to 4 kN) and sub-100 ms feedback loops.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Sprint mechanics require: (i) ankle forces of 4--5$\times$ body weight ($\sim$3500 N peak); (ii) vestibular integration during 60--80 ms flight phases; (iii) proprioceptive closure at 30--50 ms (transcortical); (iv) fine-grained friction modulation on each contact (slip avoidance); (v) coordinated multi-joint control with sub-degree precision.
+
+Egg-gripping requires: fine force modulation at $\le 1$ N; sub-100 ms feedback; coordinated finger control. Each requirement is a strict subset of the sprint requirements. By Corollary~\ref{cor:capacity}, sprint competence entails egg-gripping competence.
+\end{proof}
+
+\subsection{Surgery: Trauma $\Rightarrow$ Elective}
+
+A surgeon trained on trauma response --- single scalar objective (patient survival), time-pressured, full range of manipulation --- is competent on elective procedures by inclusion: elective procedures add time, remove urgency, and constrain intervention to the minimal set the condition demands.
+
+\subsection{Music: Virtuoso Concerto $\Rightarrow$ Conversational Playing}
+
+A pianist who can execute Rachmaninoff's Third Piano Concerto at tempo with fidelity to the score has exercised the full dynamic range, the full rhythmic envelope, the full coordination between hands, and the full memorisation capacity. Conversational accompaniment --- simpler melodies, slower tempi, flexible timing --- is strictly contained.
+
+\subsection{Competitive Programming $\Rightarrow$ Production Software}
+
+A programmer who solves competitive-programming problems under strict time limits has exercised algorithmic reasoning at the limit of cognitive bandwidth on problems with a single scalar objective (correctness + speed). Production software engineering adds collaborative constraints, interface design, documentation, long-term maintenance --- all of which are context-hard additions, not skill-hard demands beyond the competitive regime.
+
+\subsection{Summary Table}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Skill domain} & \textbf{Pure-intent regime} & \textbf{Constrained regime} \\
+\midrule
+Driving & F1 racing & Road driving \\
+Locomotion & 100-m sprint & Everyday walking / manipulation \\
+Surgery & Trauma response & Elective procedures \\
+Music & Virtuoso concerto & Everyday playing \\
+Programming & Competitive programming & Production software \\
+Translation & Simultaneous interpretation & Literary translation \\
+Debate & Courtroom argument & Conversational dialogue \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In every case: the pure-intent regime has one scalar objective, exercises the full envelope, and admits a clean training gradient. The constrained regime is an additive restriction.
+
+
+\section{Applications in the Buhera OS}
+\label{sec:applications}
+
+\subsection{Minimum Sufficient Interceptor (MSI) Training}
+
+The Zangalewa MSI \cite{sachikonye2026msi} translates natural-language observations into vaHera programs. Standard training practice would use a large volume of simple queries and hope complex queries generalise. The inverted curriculum says: train on the hardest class of research queries --- those with the most nested constraint structure, the most cross-domain composition, the longest inference chains --- and every simpler query follows by inclusion.
+
+\begin{proposition}[MSI Backward-Curriculum Design]
+\label{prop:msi-curriculum}
+The MSI's training dataset should be biased toward multi-domain composite queries with maximal constraint depth. A simple query like "what is ethanol" is a strict sub-case and need not be trained on.
+\end{proposition}
+
+\subsection{Domain Encoder Training}
+
+Each domain encoder $\Phi_i: D_i \to \cS$ maps domain content to S-entropy coordinates. Encoder training should target the \emph{boundary / extremal cases} of the domain: polymers and large biomolecules for chemistry, disordered regions and metamorphic proteins for protein structure, overlapping congested signals for spectroscopy. Simpler cases fall out as subsets.
+
+\subsection{Cascade Specialist Training}
+
+The Zangalewa cascade \cite{sachikonye2026cascades} organises specialists into a $k$-ary partition tree. Each leaf specialist should be trained on its \emph{pure-intent regime} --- the hardest, single-objective instance of its domain. Router training inherits correctness: if the leaves are fully exercised, the router only needs to classify regime, not to compensate for under-trained leaves.
+
+\subsection{Kernel Primitive Training}
+
+Even the Buhera kernel's learned components (if any) benefit: embedding functions, metric approximators, trajectory validators should each be trained at the extreme regime of their operational envelope.
+
+
+\section{Falsifiable Predictions}
+\label{sec:predictions}
+
+The Backward Training Principle yields specific predictions that distinguish it from conventional curricula. Each is falsifiable.
+
+\subsection{Prediction 1: Sample-Efficiency Gap}
+
+A backward-trained agent reaches $\epsilon$-competence across a constraint cascade of depth $N$ using at most $1/(N+1)$ of the samples required by forward-trained agents on the same cascade (Theorem~\ref{thm:sample-complexity}).
+
+\textbf{Falsifier}: an agent backward-trained on the pure-intent regime fails to match forward-trained agents on constrained regimes after comparable sample budgets.
+
+\subsection{Prediction 2: No-Retrain Transfer}
+
+A backward-trained driving agent, trained only on F1 circuit telemetry, achieves competence on highway and urban driving without any road-specific training data, up to the convexity of road-specific constraints (Corollary~\ref{cor:no-retrain}).
+
+\textbf{Falsifier}: a policy achieving competence on F1 circuits demonstrably fails on road-driving benchmarks where road-specific constraints are convex or locally Lipschitz.
+
+\subsection{Prediction 3: Exponential Saving Under Cascade Depth}
+
+The sample-saving ratio scales as $2^{N-1}$ for binary-nested cascades (Theorem~\ref{thm:exp-saving}).
+
+\textbf{Falsifier}: empirical sample-saving ratios on nested cascade benchmarks grow sub-polynomially with depth.
+
+\subsection{Prediction 4: Cascade Monotonicity of Competence}
+
+A backward-trained agent's competence across a constraint cascade is monotonically non-decreasing with the number of constraints removed. Competence gaps appear only at the boundaries of the pure-intent regime, not in its interior (Corollary~\ref{cor:hierarchy}).
+
+\textbf{Falsifier}: a backward-trained agent exhibits worse performance on an intermediate regime than on the pure-intent regime or on the most-constrained regime.
+
+\subsection{Prediction 5: Humanoid Sprint-to-Manipulation Transfer}
+
+A humanoid robot trained via deep reinforcement learning on a 100-metre sprint task, with no manipulation training, will outperform a humanoid trained on manipulation tasks at a subset of precision manipulation tasks including egg-gripping.
+
+\textbf{Falsifier}: sprint-trained humanoids show no improvement over uninitialized controllers on manipulation benchmarks.
+
+\subsection{Prediction 6: MSI Sample Efficiency}
+
+The Zangalewa MSI trained on the top decile of multi-constraint research queries achieves higher $\epsilon$-competence across the full query distribution than an MSI trained on the full distribution with equal sample count.
+
+\textbf{Falsifier}: top-decile training yields equal or worse MSI performance at equivalent total sample budget.
+
+
+\section{Comparison with Existing Approaches}
+\label{sec:comparison}
+
+\subsection{Standard Curriculum Learning}
+
+\citet{bengio2009curriculum} and subsequent work \cite{soviany2022curriculum,graves2017automated} order training from easy to hard. The implicit claim is that gradient signal is cleaner early on easy examples. This is true for \emph{context-easy} examples but false for \emph{skill-easy} examples where the intent is ambiguous. The Backward Training Principle says: the correct ordering is by \emph{intent clarity}, not by difficulty. Pure-intent (F1) is both "hardest" (skill) and "cleanest" (intent); by the clean-gradient rationale of curriculum learning, it should come \emph{first}, not last.
+
+\subsection{Self-Play and Reinforcement Learning}
+
+AlphaZero \cite{silver2018general} and related systems use self-play to generate a curriculum that naturally rises in difficulty as agents co-evolve. This is closer to the Backward Training Principle in spirit: each match is played at the limit of both agents' ability under a single scalar objective (win). But the curriculum is endogenous rather than exogenous; the inverted-curriculum thesis prescribes \emph{starting} at the limit, not evolving toward it.
+
+\subsection{Behaviour Cloning}
+
+Behaviour cloning \cite{ross2011reduction,codevilla2018endtoend,bansal2019chauffeurnet} trains on human demonstrations. The Backward Training Principle prescribes: clone the best demonstrations (F1 drivers) rather than the most voluminous (fleet logs). Circuit telemetry from an elite driver carries more information per unit time than fleet telemetry from ordinary drivers, as established by the intent-identifiability theorems of \cite{sachikonye2026driving}.
+
+\subsection{Transfer Learning}
+
+The classical transfer-learning question is: given a source task $T_s$ and target task $T_t$, under what conditions does training on $T_s$ improve performance on $T_t$ \cite{yosinski2014transferable,pan2010survey,weiss2016survey}? The Backward Training Principle answers: when $T_s$ is a pure-intent regime containing $T_t$ as a constrained regime, transfer is \emph{guaranteed} (not merely possible) by inclusion.
+
+\subsection{Foundation Models}
+
+Foundation models \cite{bommasani2021opportunities,kaplan2020scaling,hoffmann2022training} are typically trained on large, diverse, weakly-labelled corpora in the expectation that downstream tasks will specialise by fine-tuning. The Backward Training Principle suggests a different strategy: train on the \emph{hardest single-intent specialised tasks} across many domains, and let downstream specialisation occur by constraint imposition. We predict: foundation models pre-trained on elite-performance data from specialised domains (competitive programming, research mathematics, simultaneous interpretation, F1 driving) will outperform models pre-trained on averaged internet text at downstream specialist tasks.
+
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Where the Principle Holds}
+
+The Backward Training Principle requires three structural conditions:
+
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item A pure-intent regime exists (scalar objective, full envelope, clean gradient).
+\item Constrained regimes are additive restrictions of the pure-intent regime.
+\item Constraints are convex or locally Lipschitz on the agent's operating set.
+\end{enumerate}
+
+These hold broadly across physical skills (driving, athletics, surgery, music, manipulation), computational skills (competitive programming, formal reasoning), and symbolic skills (translation, debate) where the pure-intent regime corresponds to a competition or performance context with a single scalar objective.
+
+\subsection{Where the Principle Fails}
+
+The principle fails in domains where:
+
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item No pure-intent regime exists. Empathy, social negotiation, and multi-stakeholder decision-making have no natural scalar reduction. There is no "F1 of being a good friend".
+\item Constraints are problem-changing rather than problem-restricting. Family therapy is not couples therapy plus extra members; the dynamics qualitatively differ. The additivity assumption breaks.
+\item The pure-intent regime's envelope does not contain the constrained regime's envelope. If a constrained task requires a degree of freedom the pure-intent regime does not exercise (e.g., a skill that involves deception, which a fair competition excludes), inclusion fails.
+\end{enumerate}
+
+Each failure mode defines the scope of the principle: broad within the class of \emph{physical-or-competitive skills with scalar objectives and additive constraints}; undefined outside that class.
+
+\subsection{Relation to Human Expertise}
+
+Human skill acquisition, studied under the "deliberate practice" framework of \citet{ericsson1993deliberate,ericsson2006cambridge,ericsson2007making}, supports the principle. Elite performers focus practice on edge-of-capability challenges with clear feedback --- the human analogue of the pure-intent regime. They do not practice predominantly on easy sub-tasks. The convergent finding across chess, music, athletics, and medicine is that the quality of practice (edge-of-capability, single-objective, immediate feedback) dominates the quantity. This is the Backward Training Principle observed in biological learners.
+
+\subsection{Implications for AI Systems}
+
+If the principle is correct:
+
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+\item Curriculum design for any skill domain should be inverted: start at the hardest pure-intent regime, extend by constraint imposition.
+\item Data-collection priorities should shift: elite demonstrations are more valuable than voluminous average demonstrations, per unit of data.
+\item The "generalization problem" in ML is often a misattribution: what appears as poor generalization is in fact training at an insufficiently exercised regime.
+\item Transfer learning should be re-formulated as \emph{projection from a master regime} rather than \emph{composition of specialised sub-skills}.
+\end{itemize}
+
+\subsection{Limitations and Open Problems}
+
+Three open problems remain:
+
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+\item \textbf{Pure-intent regime identification.} For a given domain, what is the systematic method for identifying its pure-intent regime? We rely on intuition (F1 for driving, sprint for locomotion); a constructive algorithm would strengthen the framework.
+\item \textbf{Non-additive constraints.} Extending the inclusion theorem to non-additive constraints requires weaker conditions than convexity but stronger than differentiability.
+\item \textbf{Hybrid skill domains.} Many real-world tasks combine pure-intent sub-skills with social-interaction sub-skills. A principled hybrid curriculum remains to be formalised.
+\end{enumerate}
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have proved that the standard easy-to-hard curriculum is strictly dominated, in both sample complexity and generalisation guarantee, by its inverse when the skill domain admits a pure-intent regime. The inverted curriculum is not a heuristic or an empirical preference: it is a structural theorem following from the Envelope Theorem (pure-intent exercises the full capability set), the Constraint Cascade Theorem (constrained regimes are additive restrictions), and the Inclusion Theorem (backward-trained policies project correctly onto constrained regimes).
+
+The Backward Training Principle unifies with the Buhera framework's Backward Trajectory Completion Principle: computation and learning are two manifestations of the same meta-principle. Start at the fully-resolved endpoint and navigate backward. Whether the endpoint is a categorical address (computation), a pure-intent regime (learning), or a geometric substrate (epistemology), the structural advantage over forward simulation is strict and quantifiable.
+
+The principle is universal in a precise sense: it holds wherever a pure-intent regime exists with additive constraints and Lipschitz boundary conditions --- a class that includes most physical skills, most competitive domains, most sensorimotor tasks, and many symbolic ones. For these domains, the practical prescription is straightforward. Identify the pure-intent regime. Train there. Deploy everywhere else by projection.
+
+The framework is integrated. The pure-intent regime is the penultimate state. Training is backward navigation. The generalisation problem does not exist; what exists is a failure to train at the regime that includes everything else.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}

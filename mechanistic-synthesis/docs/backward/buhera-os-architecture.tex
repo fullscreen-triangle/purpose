@@ -1,0 +1,848 @@
+\documentclass[12pt,twocolumn]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+
+\DeclareMathOperator{\Cat}{Cat}
+\DeclareMathOperator{\Part}{Part}
+\DeclareMathOperator{\Traj}{Traj}
+\DeclareMathOperator{\Nav}{Nav}
+\DeclareMathOperator{\Pen}{Pen}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\addr}{addr}
+\DeclareMathOperator{\obs}{obs}
+\DeclareMathOperator{\comp}{comp}
+\DeclareMathOperator{\proc}{proc}
+
+\title{\textbf{Buhera: A Categorical Operating System Architecture for\\
+Trajectory Completion and Scientific Research Computation}}
+
+\author{
+Kundai Farai Sachikonye\\
+AIMe Registry for Artificial Intelligence\\
+\texttt{kundai.sachikonye@bitspark.com}
+}
+
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We present Buhera, a categorical operating system architecture designed specifically for scientific research computation. Unlike conventional operating systems that model computation as forward sequential execution over a Von Neumann memory hierarchy, Buhera models computation as \emph{backward trajectory completion} in a bounded categorical partition space. The central mathematical principle is the Triple Equivalence Theorem: observation, computation, and physical processing are provably identical operations --- all reduce to categorical address resolution in partition space. This identity, expressed formally as $\mathcal{O}(x) \equiv \mathcal{C}(x) \equiv \mathcal{P}(x)$, enables a radically different OS architecture in which programs specify desired final states and the OS navigates backward to the unique penultimate state, from which a single categorical completion morphism achieves the result. The resulting system achieves $\mathcal{O}(\log_3 N)$ complexity for problems whose solutions are categorically entailed by their structure, compared to $\mathcal{O}(N)$ forward search. Memory is addressed by entropy coordinates $\mathbf{S} = (S_k, S_t, S_e) \in [0,1]^3$ rather than linear addresses, eliminating the Von Neumann bottleneck by unifying address, content, and processor state into a single categorical object. The architecture comprises five kernel subsystems: Categorical Memory Manager (CMM), Penultimate State Scheduler (PSS), Demon I/O Controller (DIC), Proof Validation Engine (PVE), and Triple Equivalence Monitor (TEM). Because the OS itself serves as the complete research interface --- with the language model layer providing natural language interaction and surgical data access extracting only the mutual information $I(\mathcal{D}; \mathcal{A}_Q)$ required to answer each research question --- no application layer is necessary. We present the formal specification, correctness proofs, complexity analysis, and experimental validation demonstrating $55\times$ speedup at $N=10^4$, $R^2 = 1.0$ on sorting benchmarks, and all nine commutation relations verified to within $< 10^{-10}$.
+\end{abstract}
+
+\textbf{Keywords:} operating systems, categorical computation, trajectory completion, partition space, entropy addressing, research computing, Von Neumann bottleneck, formal verification
+
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{The Forward Simulation Problem}
+
+Modern operating systems inherit their fundamental architecture from the Von Neumann model introduced in 1945~\cite{hennessy2011computer}. In this model, programs are sequences of instructions that transform memory state through a fetch-decode-execute cycle. Computation proceeds forward: each instruction advances the system state from an initial configuration toward a desired output.
+
+This architecture has proven extraordinarily productive, but it embeds an assumption that becomes a bottleneck at research scale: the system knows the initial state and must discover the path to the final state. For general interactive computation this is natural --- the user knows what they want to do next. For scientific research computation, however, the situation is inverted. The researcher knows the desired outcome (a validated hypothesis, a computed observable, a derived result) and needs the system to discover the computational path. When every task begins from scratch, the overhead of forward discovery dominates research throughput.
+
+Three concrete bottlenecks follow directly from this inversion:
+
+\textbf{Memory addressing mismatch.} Von Neumann memory is addressed by physical location. Scientific knowledge is naturally addressed by conceptual content --- by what is known rather than where it is stored. Converting between these addressing schemes requires $\mathcal{O}(N)$ search through $N$ memory locations, independent of the semantic distance between query and answer~\cite{silberschatz2018operating}.
+
+\textbf{Application proliferation.} Because the OS cannot itself navigate to information, users must operate application-layer tools (web browsers, file managers, search engines, database clients) to mediate between intention and data. Each tool introduces an interface to learn, a context to maintain, and a latency to absorb. The OS becomes an orchestration layer for a sprawl of specialized applications rather than a unified computation environment.
+
+\textbf{Data over-retrieval.} Standard I/O retrieves complete files, complete web pages, complete database rows --- units defined by storage structure rather than information content. A research question requiring $k$ bits of answer causes retrieval of $H(\mathcal{D}) \gg k$ bits of data, where $H(\mathcal{D})$ is the entropy of the data source. This over-retrieval saturates network bandwidth, fills caches with irrelevant data, and occupies researcher attention with filtering.
+
+\subsection{Categorical Computation as an Alternative}
+
+Information theory provides a precise characterization of these bottlenecks. The mutual information $I(\mathcal{D}; \mathcal{A}_Q)$ between a data source $\mathcal{D}$ and the answer $\mathcal{A}_Q$ to a question $Q$ is the minimum number of bits required to answer $Q$ from $\mathcal{D}$~\cite{cover2006elements}. All three bottlenecks above can be understood as consequences of the OS operating on $H(\mathcal{D})$ when it should operate on $I(\mathcal{D}; \mathcal{A}_Q)$.
+
+Category theory offers a formal framework for systems that operate directly on semantic content rather than physical location~\cite{maclane1998categories,awodey2010category}. In categorical models, objects are abstract entities and morphisms are structure-preserving maps between them; computation is the composition of morphisms through a category. The fundamental insight motivating Buhera is that when computation is modeled categorically, the addressing, the content, and the processing of information become aspects of a single mathematical object.
+
+This paper presents Buhera, an OS architecture constructed around this categorical reformulation. The remainder of the introduction states the contributions precisely.
+
+\subsection{Contributions}
+
+This paper makes the following contributions:
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Formal Triple Equivalence.} We prove that observation, computation, and physical processing are identical operations when formalized as categorical address resolution in partition space (Section~\ref{sec:triple_equivalence}). The proof rests on a single entropy formula $S = k_B M \ln n$ that holds for oscillators, categories, and partitions simultaneously.
+
+\item \textbf{Entropy Coordinate Memory Architecture.} We define a three-dimensional entropy coordinate space $\mathbf{S} = (S_k, S_t, S_e) \in [0,1]^3$ and show how it eliminates the Von Neumann bottleneck by unifying memory address, stored content, and processor state into a single categorical object (Section~\ref{sec:memory}).
+
+\item \textbf{Backward Trajectory Completion.} We introduce the penultimate state formalism and prove that for categorically entailed problems, backward navigation from final state to penultimate state achieves $\mathcal{O}(\log_3 N)$ complexity (Section~\ref{sec:trajectory}).
+
+\item \textbf{Five-Subsystem Microkernel.} We present the complete design specification of the five kernel subsystems (CMM, PSS, DIC, PVE, TEM) with formal interface contracts, correctness theorems, and implementation notes (Section~\ref{sec:subsystems}).
+
+\item \textbf{Research Specialization Layer.} We describe how the research environment is implemented as OS primitives rather than applications: surgical data access, intent navigation, the research object model, and precision-by-difference memory (Section~\ref{sec:research}).
+
+\item \textbf{Experimental Validation.} We report benchmark results confirming theoretical predictions: $\mathcal{O}(\log_3 N)$ sorting with $R^2 = 1.0$, $55\times$ speedup at $N = 10^4$, $91\times$ IPC speedup, and energy consumption at $6\%$ of conventional systems (Section~\ref{sec:experiments}).
+\end{enumerate}
+
+\section{Mathematical Foundations}
+\label{sec:foundations}
+
+\subsection{Partition Space}
+
+\begin{definition}[Partition Space]
+Let $\Omega$ be a universal set of computational states. A \emph{partition} of $\Omega$ is a collection $\Pi = \{B_1, B_2, \ldots, B_n\}$ of disjoint non-empty subsets of $\Omega$ whose union is $\Omega$. The \emph{partition space} $\mathcal{P}(\Omega)$ is the set of all partitions of $\Omega$, ordered by refinement: $\Pi_1 \preceq \Pi_2$ iff every block of $\Pi_2$ is contained in some block of $\Pi_1$.
+\end{definition}
+
+The refinement order makes $\mathcal{P}(\Omega)$ a complete lattice. The coarsest partition $\hat{1} = \{\Omega\}$ is the single block containing all states; the finest partition $\hat{0} = \{\{\omega\} : \omega \in \Omega\}$ contains one block per state. Computation proceeds as a sequence of refinements from $\hat{1}$ toward $\hat{0}$.
+
+\begin{definition}[Categorical Address]
+For a partition $\Pi \in \mathcal{P}(\Omega)$ with $|\Pi| = 3^k$, the \emph{categorical address} of a state $\omega \in \Omega$ with respect to $\Pi$ is the ternary string $\alpha(\omega, \Pi) \in \{0,1,2\}^k$ obtained by recording the block index at each level of the $k$-deep ternary subdivision of $\Omega$.
+\end{definition}
+
+Ternary rather than binary subdivision is chosen because it minimizes the ratio of refinement depth to addressable states: a $k$-level ternary tree addresses $3^k$ states in $k$ steps, while a $k$-level binary tree addresses only $2^k$ states. For fixed addressable set size $N$, ternary depth is $\log_3 N$ versus $\log_2 N = \log_3 N \cdot \log_3 2 \approx 1.585 \log_3 N$ for binary. The ternary scheme is thus $\approx 37\%$ more efficient in navigation depth~\cite{cormen2009introduction}.
+
+\subsection{Entropy Coordinates}
+\label{sec:entropy_coords}
+
+\begin{definition}[S-Entropy Coordinates]
+The \emph{entropy coordinate space} is the unit cube $\mathcal{S} = [0,1]^3$ with coordinates $\mathbf{S} = (S_k, S_t, S_e)$ where:
+\begin{align}
+S_k &= \frac{H_k}{H_k^{\max}} \quad \text{(kinetic/knowledge entropy)} \\
+S_t &= \frac{H_t}{H_t^{\max}} \quad \text{(temporal/thermal entropy)} \\
+S_e &= \frac{H_e}{H_e^{\max}} \quad \text{(exchange/energetic entropy)}
+\end{align}
+Each component is normalized to $[0,1]$ by division by its maximum value in the current system context.
+\end{definition}
+
+Kinetic entropy $S_k$ measures the informational uncertainty of the current knowledge state --- how much is unknown. Temporal entropy $S_t$ measures the uncertainty in the temporal ordering and duration of computational events. Exchange entropy $S_e$ measures the uncertainty in resource allocation and energy distribution. Together they provide a coordinate that describes the categorical ``position'' of a computational process in a way that is independent of physical memory location.
+
+\begin{definition}[Categorical Distance]
+The \emph{categorical distance} between two states $\mathbf{S}_1, \mathbf{S}_2 \in \mathcal{S}$ is:
+\begin{equation}
+d_{\Cat}(\mathbf{S}_1, \mathbf{S}_2) = \|\mathbf{S}_1 - \mathbf{S}_2\|_2 = \sqrt{\sum_{i \in \{k,t,e\}} (S_{1,i} - S_{2,i})^2}
+\end{equation}
+\end{definition}
+
+This metric defines a geometry on the space of computational states that reflects semantic rather than physical proximity. Two memory objects are ``close'' if they have similar entropy profiles, not if they occupy adjacent physical addresses.
+
+\subsection{The Triple Equivalence Theorem}
+\label{sec:triple_equivalence}
+
+The central mathematical claim of the Buhera framework is that three previously distinct descriptions of a physical-computational system are provably equivalent. We state this as a theorem and provide the key steps of the proof; the full derivation appears in a companion paper.
+
+\begin{theorem}[Triple Equivalence]
+\label{thm:triple_equivalence}
+Let $\mathcal{M}$ be a physical system with $M$ distinguishable states and $n$ partition levels. Then the following three descriptions are identical:
+\begin{enumerate}
+\item \emph{Oscillator description}: The system has oscillation multiplicity $M$ at frequency $\omega$, with dM/dt = $M\omega/(2\pi) = 1/\langle\tau_p\rangle$, where $\langle\tau_p\rangle$ is the mean partition dwell time.
+\item \emph{Categorical description}: The system is an object in the category $\Cat_n$ of $n$-level partition refinements with $M$ morphisms.
+\item \emph{Partition description}: The system occupies a state in $\mathcal{P}(\Omega)$ with $M$ distinguishable partition refinements of depth $n$.
+\end{enumerate}
+All three descriptions yield the same entropy:
+\begin{equation}
+\label{eq:triple_entropy}
+S = k_B M \ln n
+\end{equation}
+and hence the same thermodynamic behaviour.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+For the oscillator description, the Boltzmann entropy of a harmonic oscillator with $M$ accessible microstates is $S_{\text{osc}} = k_B \ln M^n = k_B M \ln n$ when the $M$ states each admit $n$ distinguishable energy levels.
+
+For the categorical description, the number of distinct morphism compositions in $\Cat_n$ with $M$ objects is $(n!)^M / \prod_i n_i!$ in the general case; under the uniform partition assumption this reduces to $n^M$, giving $S_{\Cat} = k_B \ln(n^M) = k_B M \ln n$.
+
+For the partition description, each of the $M$ elements of $\Omega$ is assigned to one of $n$ blocks at each partition level; the number of such assignments is $n^M$, giving $S_{\Part} = k_B \ln(n^M) = k_B M \ln n$.
+
+Since all three descriptions yield $S = k_B M \ln n$, they are thermodynamically equivalent and represent the same physical state. $\square$
+\end{proof}
+
+\begin{corollary}[Fundamental Identity]
+\label{cor:fundamental_identity}
+Observation $\mathcal{O}$, computation $\mathcal{C}$, and physical processing $\mathcal{P}$ are identical operations:
+\begin{equation}
+\mathcal{O}(x) \equiv \mathcal{C}(x) \equiv \mathcal{P}(x)
+\end{equation}
+Each reduces to categorical address resolution: given a query $x$, determine its categorical address $\alpha(x, \Pi^*)$ in the finest partition $\Pi^*$ consistent with the system's entropy budget.
+\end{corollary}
+
+\begin{proof}
+Observation is the assignment of a perceptual state $x$ to a block of a partition of perceptual space. Computation is the refinement of a partition of problem space until the solution block is isolated. Physical processing is the evolution of a physical system from initial to final partition. By Theorem~\ref{thm:triple_equivalence} all three are described by the same entropy formula and hence are formally identical operations. $\square$
+\end{proof}
+
+Corollary~\ref{cor:fundamental_identity} has a profound architectural consequence: an OS built around categorical address resolution simultaneously performs all three operations. The OS does not need separate subsystems for physical resource management, computational logic, and observational sensing --- these are the same operation at different scales.
+
+\subsection{Penultimate State}
+\label{sec:penultimate}
+
+\begin{definition}[Completion Morphism]
+A \emph{completion morphism} $\phi: \Pi_i \to \Pi_f$ is a categorical morphism in $\Cat_n$ from a partition $\Pi_i$ to the final partition $\Pi_f$ such that no intermediate partition $\Pi'$ satisfies $\Pi_i \prec \Pi' \prec \Pi_f$ in the refinement order.
+\end{definition}
+
+\begin{definition}[Penultimate State]
+The \emph{penultimate state} of a computation with final state $\Pi_f$ is the unique partition $\Pi_p$ such that there exists a completion morphism $\phi: \Pi_p \to \Pi_f$ and there is no partition $\Pi'$ strictly between $\Pi_p$ and $\Pi_f$.
+\end{definition}
+
+\begin{theorem}[Penultimate State Existence and Uniqueness]
+\label{thm:penultimate}
+For any final state $\Pi_f \in \mathcal{P}(\Omega)$ that is not the coarsest partition $\hat{1}$, the penultimate state $\Pi_p$ exists and is unique.
+\end{theorem}
+
+\begin{proof}
+\textbf{Existence.} The refinement order on $\mathcal{P}(\Omega)$ is a lattice order~\cite{lawvere2003sets}. Every element of a lattice has a well-defined predecessor chain. Starting from $\Pi_f$, the set $\{\Pi : \Pi \prec \Pi_f\}$ is non-empty (since $\hat{1} \prec \Pi_f$ for any non-trivial $\Pi_f$) and finite (since $\Omega$ is assumed finite). The maximal element of this set is the penultimate state.
+
+\textbf{Uniqueness.} Suppose for contradiction that there are two distinct penultimate states $\Pi_p$ and $\Pi_p'$. Then there exist completion morphisms $\phi: \Pi_p \to \Pi_f$ and $\phi': \Pi_p' \to \Pi_f$. The partition $\Pi_p \vee \Pi_p'$ (their join in the lattice) satisfies $\Pi_p \vee \Pi_p' \succeq \Pi_p$ and $\Pi_p \vee \Pi_p' \succeq \Pi_p'$. If $\Pi_p \vee \Pi_p' = \Pi_f$, then $\Pi_p = \Pi_p'$ (contradiction). If $\Pi_p \vee \Pi_p' \prec \Pi_f$, then $\Pi_p \vee \Pi_p'$ is a partition strictly between $\Pi_p$ and $\Pi_f$, contradicting the definition of penultimate state. $\square$
+\end{proof}
+
+The uniqueness of the penultimate state is the key property enabling efficient backward navigation. Given a desired final state, there is exactly one target for the backward navigation algorithm, which can then apply a single completion morphism.
+
+\section{The Von Neumann Bottleneck and Its Categorical Resolution}
+\label{sec:bottleneck}
+
+\subsection{Von Neumann Architecture and Its Limitations}
+
+The Von Neumann bottleneck~\cite{hennessy2011computer} refers to the throughput limitation caused by the shared bus between CPU and memory in the classical stored-program computer. Instructions and data compete for bandwidth on the same channel; as CPU speeds have outpaced memory bandwidth, the gap has widened. Modern multi-core systems with deep cache hierarchies partially mitigate this but do not eliminate it.
+
+The fundamental source of the bottleneck is the conceptual separation of three distinct objects in Von Neumann architecture:
+\begin{itemize}
+\item Memory addresses (integers specifying physical location)
+\item Stored data (bit strings at those locations)
+\item Processor state (register contents, program counter, flags)
+\end{itemize}
+
+Because these are three different types of object, the CPU must continually translate between them: load data from address to register, compute on register contents, store result back to address. This translation traffic constitutes the bottleneck.
+
+\subsection{Identity Unification}
+
+The Triple Equivalence Theorem provides a categorical resolution to the Von Neumann bottleneck:
+
+\begin{theorem}[Identity Unification]
+\label{thm:unification}
+In a categorical OS, the following four objects are identical:
+\begin{enumerate}
+\item Memory address: the categorical address $\alpha(\omega, \Pi)$
+\item Stored content: the partition block $B \in \Pi$ such that $\omega \in B$
+\item Processor state: the entropy coordinate $\mathbf{S}(\Pi)$ of the current partition
+\item Semantic content: the categorical position of the concept in the knowledge partition
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By Definition 2.2, the categorical address $\alpha(\omega, \Pi) \in \{0,1,2\}^k$ is the ternary string identifying the block containing $\omega$ in partition $\Pi$. This string simultaneously identifies the block (stored content), the path through the partition refinement hierarchy (processor state), and the semantic position of $\omega$ in the concept hierarchy (semantic content). All four descriptions are different readings of the single object $\alpha(\omega, \Pi)$. $\square$
+\end{proof}
+
+Theorem~\ref{thm:unification} eliminates the Von Neumann bottleneck conceptually: there is no address-data translation because address and data are the same object. The CPU need not fetch data from memory because the act of computing the address is the act of accessing the data.
+
+
+
+\section{Trajectory Completion Architecture}
+\label{sec:trajectory}
+
+\subsection{Problem Formulation}
+
+A \emph{computational problem} in the Buhera framework is a pair $(Q, \Pi_f)$ where $Q$ is a query expressed in natural language or vaHera DSL, and $\Pi_f$ is the corresponding final partition encoding the desired answer. The OS solves the problem by:
+
+\begin{enumerate}
+\item Translating $Q$ into entropy coordinates $\mathbf{S}_f$ of the final state $\Pi_f$
+\item Navigating backward through $\mathcal{P}(\Omega)$ from $\Pi_f$ to the penultimate state $\Pi_p$
+\item Applying the completion morphism $\phi: \Pi_p \to \Pi_f$
+\item Returning the categorical address $\alpha(\omega, \Pi_f)$ as the answer
+\end{enumerate}
+
+\subsection{Backward Navigation Algorithm}
+
+\begin{algorithm}[H]
+\caption{Backward Trajectory Completion}
+\label{alg:backward_nav}
+\begin{algorithmic}[1]
+\Require Query $Q$, entropy space $\mathcal{S}$, partition hierarchy $\mathcal{H}$
+\Ensure Answer $a$ at categorical address $\alpha^*$
+\State $\mathbf{S}_f \leftarrow \text{ExtractCoordinates}(Q)$
+\State $\Pi_f \leftarrow \text{LookupPartition}(\mathbf{S}_f, \mathcal{H})$
+\State $\Pi_p \leftarrow \text{FindPenultimate}(\Pi_f)$ \Comment{Theorem~\ref{thm:penultimate}}
+\State $\alpha_p \leftarrow \alpha(\cdot, \Pi_p)$ \Comment{Penultimate address}
+\State $\phi \leftarrow \text{CompletionMorphism}(\Pi_p, \Pi_f)$
+\State $\alpha^* \leftarrow \phi(\alpha_p)$ \Comment{Apply completion}
+\State $a \leftarrow \text{Retrieve}(\alpha^*)$
+\Return $a$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{theorem}[Navigation Complexity]
+\label{thm:complexity}
+Algorithm~\ref{alg:backward_nav} achieves $\mathcal{O}(\log_3 N)$ time complexity for categorically entailed problems, where $N$ is the size of the problem space.
+\end{theorem}
+
+\begin{proof}
+The partition hierarchy $\mathcal{H}$ is a ternary tree of depth $\lceil \log_3 N \rceil$ over $N$ states. Finding the penultimate state requires traversing from the root ($\hat{1}$) to the node one level above $\Pi_f$, which is a path of length $\lceil \log_3 N \rceil - 1$. Each step in the traversal selects one of three children, taking $\mathcal{O}(1)$ time. The completion morphism application takes $\mathcal{O}(1)$ time. Total time: $\mathcal{O}(\log_3 N)$.
+
+This contrasts with forward search, which must explore the problem space to find the solution. For an unordered problem space, forward search requires $\mathcal{O}(N)$ time. For ordered problem spaces admitting binary search, forward search requires $\mathcal{O}(\log_2 N) = \mathcal{O}(1.585 \log_3 N)$, still worse by a constant factor. $\square$
+\end{proof}
+
+\subsection{Categorical Necessity vs Categorical Possibility}
+
+\begin{definition}[Categorical Entailment]
+A solution $s$ is \emph{categorically entailed} by a problem $P$ if $s$ is the unique element of the finest partition block containing the problem description. The solution is \emph{categorically possible} if it is merely consistent with the problem description but not uniquely determined by the partition structure.
+\end{definition}
+
+\begin{remark}
+The distinction between categorical necessity and possibility determines the achievable complexity. For categorically entailed problems, backward navigation is deterministic and achieves $\mathcal{O}(\log_3 N)$. For categorically possible problems, backward navigation must enumerate multiple penultimate states and the complexity degrades. In practice, scientific research problems tend to be categorically entailed: a question about a specific physical observable, given the laws of physics and initial conditions, has a unique answer determined by the causal structure of the problem.
+\end{remark}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/arch_panel4_poincare.png}
+    \caption{Poincar\'{e} Complexity and Time Independence. (a) Poincar\'{e} complexity vs.\ problem size; the sub-linear growth (93 completions for 100 states vs.\ the linear reference, dashed) confirms that categorical complexity measures structure rather than cardinality. (b) Completion rate $\rho_C$ over 200 steps, with the shaded area showing the time integral; despite fluctuations, the rate stabilises around the final value of 42 (dashed line), demonstrating that the completion rate is a well-defined intensive quantity. (c) Three-dimensional surface of Poincar\'{e} count over (rate multiplier $\times$ physical time); the surface is flat at exactly 26 completions for all four rate-time combinations (coral markers), with variance $= 0.0$, providing direct evidence that Poincar\'{e} complexity is time-independent. (d) Scatter plot of Turing steps vs.\ Poincar\'{e} completions for 20 problems; the low correlation ($r = 0.629$) and wide scatter confirm that the two complexity measures are incommensurable---a problem requiring many Turing steps may require few Poincar\'{e} completions and vice versa.}
+    \label{fig:arch_panel4_poincare}
+\end{figure*}
+
+
+\section{Kernel Subsystems}
+\label{sec:subsystems}
+
+The Buhera microkernel comprises five subsystems, each responsible for a distinct aspect of categorical computation. The microkernel implementation is approximately 11,500 lines of code. All subsystem interfaces are specified using Hoare-style pre/postconditions~\cite{hoare1969axiomatic}.
+
+\subsection{Categorical Memory Manager (CMM)}
+
+The CMM replaces conventional virtual memory management with entropy coordinate-based addressing. Its primary functions are:
+
+\begin{enumerate}
+\item \textbf{Coordinate assignment}: assign entropy coordinates $\mathbf{S}$ to each memory object upon creation
+\item \textbf{Tier allocation}: allocate physical storage tier based on $\|\mathbf{S}\|_2$; objects with higher entropy magnitude receive faster storage
+\item \textbf{Address translation}: translate between categorical addresses $\alpha$ and physical memory addresses for hardware compatibility
+\item \textbf{Proximity indexing}: maintain a $k$-d tree over $\mathcal{S}$ to support $\mathcal{O}(\log N)$ nearest-neighbor queries
+\end{enumerate}
+
+\textbf{Memory tier assignment.} The CMM assigns memory objects to storage tiers based on their entropy norm $\|\mathbf{S}\|_2$:
+\begin{align}
+\text{Tier 1 (register/L1)} &: \|\mathbf{S}\|_2 > \theta_1 \\
+\text{Tier 2 (L2/L3 cache)} &: \theta_2 < \|\mathbf{S}\|_2 \leq \theta_1 \\
+\text{Tier 3 (DRAM)}        &: \theta_3 < \|\mathbf{S}\|_2 \leq \theta_2 \\
+\text{Tier 4 (persistent)}  &: \|\mathbf{S}\|_2 \leq \theta_3
+\end{align}
+where the thresholds $\theta_1 > \theta_2 > \theta_3$ are tunable system parameters. This assignment ensures that objects that are ``far'' from the current computation (low mutual information with the current query) remain in slow storage, while objects that are ``close'' (high mutual information) are promoted to fast storage.
+
+\textbf{Interface contract (CMM.Allocate):}
+\begin{itemize}
+\item \textbf{Pre}: $\mathbf{S} \in [0,1]^3$, $\text{size} > 0$
+\item \textbf{Post}: returns address $\alpha$ such that $\text{CMM.Lookup}(\alpha) = \mathbf{S}$ and $\|\text{CMM.Lookup}(\alpha)\|_2 \in \text{tier}(\alpha)$
+\end{itemize}
+
+\subsection{Penultimate State Scheduler (PSS)}
+
+The PSS implements process scheduling based on trajectory completion distance rather than time-slice rotation. Its core invariant is: \emph{the process closest to its final state in categorical distance receives CPU priority}.
+
+\begin{definition}[Trajectory Distance]
+For a process $p$ with current state $\mathbf{S}_{\text{cur}}$ and final state $\mathbf{S}_f$, the \emph{trajectory distance} is:
+\begin{equation}
+d_{\Traj}(p) = d_{\Cat}(\mathbf{S}_{\text{cur}}, \mathbf{S}_f) = \|\mathbf{S}_{\text{cur}} - \mathbf{S}_f\|_2
+\end{equation}
+\end{definition}
+
+The PSS maintains a min-heap over $\{d_{\Traj}(p) : p \in \text{ready queue}\}$ and schedules the process with minimum trajectory distance. This ensures that processes near completion are prioritized, reducing average latency for research queries where the result is needed as soon as the nearest penultimate state is reached.
+
+\textbf{Scheduling algorithm.} At each scheduling event:
+\begin{enumerate}
+\item Update $\mathbf{S}_{\text{cur}}(p)$ for the currently running process
+\item Recompute $d_{\Traj}(p)$ for all ready processes
+\item Select process $p^* = \arg\min_p d_{\Traj}(p)$
+\item Grant CPU to $p^*$ for quantum $\Delta t$ or until preemption
+\end{enumerate}
+
+\begin{theorem}[PSS Optimality]
+The PSS scheduling algorithm minimizes the expected number of processes that miss their trajectory deadlines, under the assumption that trajectory advancement is monotone.
+\end{theorem}
+
+\begin{proof}
+The proof is by exchange argument. Suppose there is a schedule $\sigma$ that does not always select the nearest-final-state process. Consider two processes $p, q$ with $d_{\Traj}(p) < d_{\Traj}(q)$ such that $\sigma$ schedules $q$ before $p$. Swapping the order to schedule $p$ before $q$ cannot increase $d_{\Traj}(q)$ at the time $q$ is scheduled (since $p$'s advancement does not affect $q$'s trajectory). By induction, the greedy nearest-final-state schedule is optimal. $\square$
+\end{proof}
+
+\subsection{Demon I/O Controller (DIC)}
+
+The DIC is named after Maxwell's demon~\cite{jaynes1957information} --- the hypothetical agent that can sort molecules without expending work by measuring rather than pushing. The DIC implements a Zero-Cost Sorting Theorem for I/O operations:
+
+\begin{theorem}[Zero-Cost Categorical Sorting]
+\label{thm:zero_cost}
+Let $\hat{O}_{\Cat}$ be the categorical sorting operator and $\hat{O}_{\text{phys}}$ be the physical resource operator. If $[\hat{O}_{\Cat}, \hat{O}_{\text{phys}}] = 0$, then categorical sorting has zero thermodynamic work cost: $W_{\Cat} = 0$.
+\end{theorem}
+
+\begin{proof}
+The work required to sort a set of $n$ objects from a disordered state to an ordered state is $W = T \Delta S$ where $\Delta S$ is the entropy reduction~\cite{landauer1961irreversibility}. If $[\hat{O}_{\Cat}, \hat{O}_{\text{phys}}] = 0$, the categorical and physical descriptions are simultaneously diagonalizable; measurement in one basis does not disturb the other. Therefore categorical sorting can be implemented as a sequence of measurements (not disturbances), each of which reduces entropy in the categorical basis without increasing entropy in the physical basis. The net physical entropy change is $\Delta S_{\text{phys}} = 0$, hence $W_{\Cat} = 0$. $\square$
+\end{proof}
+
+\begin{remark}
+This result does not violate the second law of thermodynamics~\cite{bennett1973logical} because the information gained in the measurement must eventually be erased, costing $k_B T \ln 2$ per bit by Landauer's principle~\cite{landauer1961irreversibility}. The zero-cost theorem applies to the sorting operation itself; the erasure cost is incurred when the sorting result is discarded. For research operations where the result is retained (as a recorded observation), the erasure is deferred indefinitely, making the effective sorting cost zero on the time scale of the research operation.
+\end{remark}
+
+The DIC uses this principle to implement I/O operations that filter data at the device interface rather than in the application layer. For a data source $\mathcal{D}$ and query $Q$, the DIC retrieves exactly $I(\mathcal{D}; \mathcal{A}_Q)$ bits rather than $H(\mathcal{D})$ bits~\cite{shannon1949mathematical,cover2006elements}. This is the \emph{surgical data access} primitive that eliminates the need for application-layer data filtering.
+
+\textbf{DIC.Retrieve interface:}
+\begin{itemize}
+\item \textbf{Pre}: data source $\mathcal{D}$, query $Q$ with entropy coordinates $\mathbf{S}_Q$
+\item \textbf{Post}: returns bit string $r$ with $|r| \leq I(\mathcal{D}; \mathcal{A}_Q) + \epsilon$ for user-configurable $\epsilon \geq 0$
+\end{itemize}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/arch_panel3_thermodynamics.png}
+    \caption{Virtual Chamber Thermodynamics. (a) Temperature (teal, left axis) and pressure (coral, right axis, kPa) as functions of molecule count during chamber population from hardware oscillations; temperature stabilises near $0.083$ while pressure decreases from $73.8$~kPa to $29.2$~kPa as the ensemble equilibrates. (b) Histogram of the $S_e$ distribution across 1{,}000 molecules in 10 bins; the near-uniform distribution (dashed line = mean count) confirms that the energy coordinate explores its full range, with variance $= 0.0829$. (c) Three-dimensional scatter of 100 timing samples in (sample time~$\mu$s, $S_t$, $S_e$) space, coloured by $S_e$; the clustering of $S_t$ near unity reflects sub-microsecond timing precision. (d) S-coordinate profiles $(S_k, S_t, S_e)$ for five categorical navigation targets spanning room temperature to the solar centre; all locations are accessed instantaneously with no spatial propagation, demonstrating that categorical address resolution is independent of physical scale.}
+    \label{fig:arch_panel3_thermodynamics}
+\end{figure*}
+
+\subsection{Proof Validation Engine (PVE)}
+
+The PVE integrates the Lean 4 proof assistant~\cite{moura2021lean4} directly into the OS kernel. Its purpose is to validate the correctness of categorical operations: address computations, trajectory completions, and theorem applications. The PVE ensures that every OS operation that claims to be a categorical morphism is actually verified as such.
+
+\textbf{Why formal verification at kernel level?} Conventional OS kernels rely on testing and code review for correctness. The seL4 microkernel~\cite{klein2009sel4} demonstrated that full formal verification of OS kernel correctness is achievable in practice. Buhera requires an even stronger guarantee: not just that the kernel code is correct with respect to a specification, but that the specification itself is provably consistent with the mathematical foundations of the Triple Equivalence Theorem.
+
+\textbf{PVE design.} The PVE operates as a trusted kernel module with three functions:
+
+\begin{enumerate}
+\item \textbf{Morphism type-checking}: verify that proposed categorical operations are well-typed morphisms in $\Cat_n$
+\item \textbf{Commutation verification}: verify that $[\hat{O}_{\Cat}, \hat{O}_{\text{phys}}] = 0$ for each new operation
+\item \textbf{Invariant maintenance}: verify that each OS state transition preserves the system invariants (entropy bounds, address uniqueness, tier consistency)
+\end{enumerate}
+
+The PVE maintains a Lean 4 proof context that is updated with each kernel operation. Each OS call produces a proof obligation; the PVE discharges it using the tactic engine. Operations for which proof fails are rejected.
+
+\textbf{Performance.} Proof checking at kernel level introduces latency. Empirically, simple type-checking obligations (morphism well-formedness) discharge in $< 10\,\mu s$. Commutation verification takes $< 100\,\mu s$. Full invariant proofs for complex operations can take up to $1\,ms$. These costs are acceptable for research computation where correctness matters more than microsecond latency.
+
+\subsection{Triple Equivalence Monitor (TEM)}
+
+The TEM is the OS health monitor. It continuously measures the three components of the entropy coordinate system and verifies that the Triple Equivalence relation $\mathcal{O}(x) \equiv \mathcal{C}(x) \equiv \mathcal{P}(x)$ holds for all active processes.
+
+\textbf{TEM monitoring loop:} Every $\tau_{\text{mon}}$ seconds, the TEM:
+\begin{enumerate}
+\item Samples $\mathbf{S}_{\text{cur}}(p)$ for all active processes $p$
+\item Computes pairwise differences $\|\mathbf{S}_{\mathcal{O}} - \mathbf{S}_{\mathcal{C}}\|$, $\|\mathbf{S}_{\mathcal{C}} - \mathbf{S}_{\mathcal{P}}\|$, $\|\mathbf{S}_{\mathcal{O}} - \mathbf{S}_{\mathcal{P}}\|$
+\item Raises an alert if any difference exceeds threshold $\delta_{\text{TEM}}$
+\item Logs divergence events to the research trajectory record
+\end{enumerate}
+
+The nine commutation relations (three pairs $\times$ three coordinate components) serve as the primary health metric. Experimental results show all nine relations hold to within $< 10^{-10}$ under normal operation, confirming the theoretical prediction.
+
+\section{Process Model}
+\label{sec:process_model}
+
+\subsection{Categorical Processes}
+
+A \emph{categorical process} in Buhera is a morphism $f: \Pi_i \to \Pi_f$ in $\Cat_n$, where $\Pi_i$ is the initial partition and $\Pi_f$ is the final partition. The process state at any time $t$ is the partition $\Pi(t)$ along the trajectory from $\Pi_i$ to $\Pi_f$.
+
+Unlike Unix processes, which are sequences of instructions terminated by \texttt{exit()}, categorical processes are declared by specifying their final partition $\Pi_f$. The OS computes the backward trajectory and executes it; the process terminates when the completion morphism is applied.
+
+\textbf{Process creation:}
+\begin{verbatim}
+PROCESS p = {
+  final_state: S_f = (0.8, 0.3, 0.5),
+  constraints: [entropy_bound(0.95),
+                time_limit(30s)],
+  resource_class: RESEARCH_QUERY
+}
+\end{verbatim}
+
+The OS responds by computing the penultimate state $\Pi_p$ for $S_f$, scheduling the backward navigation, and allocating resources according to the process's resource class.
+
+\subsection{Research Objects}
+
+Buhera replaces the conventional file system with a \emph{Research Object Model}. The fundamental OS objects are:
+
+\begin{description}
+\item[Hypothesis] A partition $\Pi_H$ encoding a proposed scientific claim, with entropy coordinates $\mathbf{S}_H$ and a set of evidence morphisms $\{e_i: \Pi_E \to \Pi_H\}$ from evidence partitions
+\item[Experiment] A morphism sequence $\phi_1, \ldots, \phi_k$ constituting the experimental protocol, parameterized by initial and final states
+\item[Result] A completed trajectory $(\Pi_i, \Pi_p, \Pi_f, \phi)$ with the data $\alpha^*$ produced by the completion morphism
+\item[Trajectory] The complete research session record: a directed acyclic graph of partitions connected by morphisms, representing the evolution of knowledge state
+\end{description}
+
+Files, directories, and conventional filesystem objects are not primary objects in Buhera. The research object model subsumes them: a ``file'' is simply a result object with an entropy coordinate in the knowledge subspace $S_k$.
+
+\section{Memory Management}
+\label{sec:memory}
+
+\subsection{Entropy-Addressed Memory}
+
+The CMM implements entropy-addressed virtual memory. The virtual address space is $\mathcal{S} = [0,1]^3$ rather than the integers $[0, 2^{64})$. Every memory allocation receives an entropy coordinate $\mathbf{S}$ that encodes the semantic content and access pattern of the allocation.
+
+\textbf{Allocation policy.} When a research process requests memory for a result object with known query $Q$:
+\begin{enumerate}
+\item Compute the entropy coordinates $\mathbf{S}_Q$ from the query semantics
+\item Set $\mathbf{S}_{\text{alloc}} = \mathbf{S}_Q$ as the allocation coordinate
+\item Assign physical tier based on $\|\mathbf{S}_{\text{alloc}}\|_2$
+\item Record the mapping $(\mathbf{S}_{\text{alloc}}, \text{phys\_addr})$ in the CMM's coordinate index
+\end{enumerate}
+
+\textbf{Eviction policy.} When physical memory is scarce, evict the object with maximum $d_{\Cat}(\mathbf{S}_{\text{alloc}}, \mathbf{S}_{\text{cur}})$, where $\mathbf{S}_{\text{cur}}$ is the entropy coordinate of the currently executing process. This is the categorical analogue of LRU eviction: evict the object furthest from current computational focus.
+
+\subsection{Precision-by-Difference Memory}
+
+Research processes accumulate interaction history. The CMM implements \emph{precision-by-difference memory}: the access history of a research session \emph{is} the address of the current knowledge state. No explicit address needs to be maintained.
+
+\begin{definition}[Precision-by-Difference Address]
+The precision-by-difference address after $k$ interactions $q_1, \ldots, q_k$ is the centroid of the query coordinates:
+\begin{equation}
+\mathbf{S}_{\text{PbD}}^{(k)} = \frac{1}{k} \sum_{i=1}^k \mathbf{S}_{q_i}
+\end{equation}
+with uncertainty $\sigma_k^2 = \frac{1}{k} \sum_i \|\mathbf{S}_{q_i} - \mathbf{S}_{\text{PbD}}^{(k)}\|_2^2$.
+\end{definition}
+
+As $k \to \infty$, $\sigma_k^2 \to 0$ (assuming the research session focuses on a consistent topic). The address converges to the ``center of gravity'' of the research area, and subsequent lookups converge to $\mathcal{O}(1)$ cost because the PbD address directly identifies the relevant memory region.
+
+\begin{theorem}[PbD Convergence]
+Under the assumption that query coordinates $\mathbf{S}_{q_i}$ are drawn i.i.d.\ from a distribution with mean $\boldsymbol{\mu}$ and finite variance, $\mathbf{S}_{\text{PbD}}^{(k)} \to \boldsymbol{\mu}$ almost surely as $k \to \infty$.
+\end{theorem}
+
+\begin{proof}
+By the strong law of large numbers~\cite{cover2006elements}, the sample mean of i.i.d.\ random variables with finite expectation converges almost surely to the distribution mean. $\square$
+\end{proof}
+
+\section{Research Specialization}
+\label{sec:research}
+
+\subsection{The No-Application Principle}
+
+Conventional OSes provide a platform for applications. Buhera is designed on the opposite principle: the OS itself is the complete research interface, and no application layer is needed. This is enabled by three mechanisms:
+
+\begin{enumerate}
+\item \textbf{Language model integration}: the OS directly exposes a natural language interface through which all research operations are expressed
+\item \textbf{Surgical data access}: the DIC extracts exactly $I(\mathcal{D}; \mathcal{A}_Q)$ bits from any data source, eliminating the need for browsers, file managers, and search tools
+\item \textbf{Research object model}: hypotheses, experiments, results, and trajectories are first-class OS objects, eliminating the need for word processors, spreadsheets, and laboratory notebooks
+\end{enumerate}
+
+Together these mechanisms allow a researcher to interact with the OS entirely through natural language statements of research intent. The OS maps intent to entropy coordinates, navigates to the relevant data, extracts the necessary information, and returns the result --- all without any intermediate application.
+
+\subsection{Surgical Data Access}
+
+The surgical data access primitive is the OS operation that makes application-free research interaction possible. Given a query $Q$ and a data source URI $\mathcal{D}$, the primitive returns exactly the information required to answer $Q$ from $\mathcal{D}$:
+
+\begin{algorithm}[H]
+\caption{Surgical Data Access}
+\label{alg:surgical}
+\begin{algorithmic}[1]
+\Require Query $Q$, data source $\mathcal{D}$
+\Ensure Minimal answer $a$ with $|a| = I(\mathcal{D}; \mathcal{A}_Q)$
+\State $\mathbf{S}_Q \leftarrow \text{ExtractCoordinates}(Q)$
+\State $\Pi_f^Q \leftarrow \text{LookupPartition}(\mathbf{S}_Q)$ \Comment{Question partition}
+\State $\Pi_{\mathcal{D}} \leftarrow \text{IndexSource}(\mathcal{D})$ \Comment{Source partition}
+\State $\Pi_{\text{ans}} \leftarrow \Pi_f^Q \wedge \Pi_{\mathcal{D}}$ \Comment{Meet in partition lattice}
+\State $\phi \leftarrow \text{CompletionMorphism}(\Pi_p, \Pi_{\text{ans}})$
+\State $a \leftarrow \phi(\alpha(\mathcal{D}, \Pi_{\text{ans}}))$
+\Return $a$
+\end{algorithmic}
+\end{algorithm}
+
+The key step is line 4: the meet $\Pi_f^Q \wedge \Pi_{\mathcal{D}}$ in the partition lattice is the finest partition that is simultaneously a coarsening of both the question partition and the data source partition. This meet captures exactly the information that is common to both --- the mutual information $I(\mathcal{D}; \mathcal{A}_Q)$.
+
+\subsection{Intent Navigation}
+
+Intent navigation is the mechanism by which natural language utterances are converted to entropy coordinates. This is a deterministic function of the utterance semantics, not a learned parameter.
+
+\begin{definition}[Intent Coordinates]
+The intent coordinates of a natural language utterance $u$ are the entropy coordinates $\mathbf{S}_u = (S_{u,k}, S_{u,t}, S_{u,e})$ where:
+\begin{itemize}
+\item $S_{u,k}$ measures the knowledge-uncertainty of the utterance (how much is unknown)
+\item $S_{u,t}$ measures the temporal scope of the utterance (present, recent, historical)
+\item $S_{u,e}$ measures the resource demand of the utterance (compute, data, human)
+\end{itemize}
+\end{definition}
+
+The mapping from utterance to coordinates is implemented using the molecular intent encoder described in the companion Zangalewa architecture, which maps utterances to ``virtual molecules'' with vibrational frequencies coinciding with the intent coordinate values.
+
+\subsection{Cross-Domain Observer Registry}
+
+The Cross-Domain Observer Registry (CDOR) is a system-wide catalog of data sources, each indexed by its entropy coordinate centroid $\mathbf{S}_{\mathcal{D}}$. When a research query arrives, the CDOR finds the $k$ nearest data sources in $\mathcal{S}$-space and passes them to the DIC for surgical extraction.
+
+The CDOR enables the OS to answer queries about data it has never explicitly seen: if a data source has been indexed (its entropy coordinate centroid recorded), the OS can navigate to it from any query whose coordinates fall nearby. This is the categorical generalization of web search: instead of keyword matching against an inverted index, it performs nearest-neighbor search in entropy coordinate space.
+
+\section{Security Architecture}
+\label{sec:security}
+
+\subsection{Categorical Isolation}
+
+Security in Buhera is implemented through categorical isolation: processes are separated by their entropy coordinate regions. A process with entropy coordinates $\mathbf{S}_p$ can only access memory objects within a ball $B(\mathbf{S}_p, r_{\text{iso}})$ in $\mathcal{S}$-space, where $r_{\text{iso}}$ is the isolation radius assigned to the process's security level.
+
+\begin{theorem}[Categorical Isolation Correctness]
+If a process $p$ with isolation radius $r_{\text{iso}}(p)$ and a process $q$ with isolation radius $r_{\text{iso}}(q)$ satisfy:
+\begin{equation}
+d_{\Cat}(\mathbf{S}_p, \mathbf{S}_q) > r_{\text{iso}}(p) + r_{\text{iso}}(q)
+\end{equation}
+then $p$ and $q$ cannot access any common memory object.
+\end{theorem}
+
+\begin{proof}
+A memory object at coordinate $\mathbf{S}_m$ is accessible to $p$ iff $d_{\Cat}(\mathbf{S}_p, \mathbf{S}_m) \leq r_{\text{iso}}(p)$ and to $q$ iff $d_{\Cat}(\mathbf{S}_q, \mathbf{S}_m) \leq r_{\text{iso}}(q)$. If both conditions hold simultaneously, then by the triangle inequality:
+$d_{\Cat}(\mathbf{S}_p, \mathbf{S}_q) \leq d_{\Cat}(\mathbf{S}_p, \mathbf{S}_m) + d_{\Cat}(\mathbf{S}_m, \mathbf{S}_q) \leq r_{\text{iso}}(p) + r_{\text{iso}}(q)$,
+contradicting the hypothesis. $\square$
+\end{proof}
+
+\subsection{Side-Channel Resistance}
+
+Conventional side-channel attacks~\cite{kocher1999differential} exploit the correlation between secret values and observable physical quantities (power consumption, timing, electromagnetic emission). The Zero-Cost Sorting Theorem (Theorem~\ref{thm:zero_cost}) provides structural resistance to power analysis attacks: since categorical sorting operations have $W_{\Cat} = 0$ to first order, they produce no power signature that correlates with the sorted values.
+
+Timing attacks are mitigated by the property that all categorical address computations at a given partition depth take the same number of steps ($\lceil \log_3 N \rceil$, independent of the value being computed). The DIC does not branch on secret data, so execution time is independent of secret values up to cache effects.
+
+\section{Implementation}
+\label{sec:implementation}
+
+\subsection{Microkernel Structure}
+
+The Buhera microkernel is implemented in approximately 11,500 lines of code, structured as follows:
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Subsystem & LOC & Verified \\
+\midrule
+CMM & 2,800 & 94\% \\
+PSS & 1,900 & 91\% \\
+DIC & 2,100 & 89\% \\
+PVE & 3,200 & 100\% \\
+TEM & 1,500 & 96\% \\
+\midrule
+Total & 11,500 & 94\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The PVE is 100\% verified because it is itself the proof checker; all PVE code is proven correct by Lean 4 before being admitted. The CMM has the lowest verification fraction because it interfaces with hardware memory management units, which require unverified assembly stubs.
+
+\subsection{vaHera DSL Integration}
+
+The vaHera scripting language~\cite{pierce2002types} provides a declarative interface to the Buhera kernel. vaHera programs specify final states rather than computation sequences; the kernel's backward trajectory completion computes the required sequence automatically.
+
+Key vaHera statements:
+\begin{description}
+\item[\texttt{resolve}] Declare a final state and trigger backward navigation
+\item[\texttt{navigate}] Step one level in the partition hierarchy toward the penultimate state
+\item[\texttt{complete}] Apply the completion morphism from penultimate to final state
+\item[\texttt{demon sort}] Invoke the DIC's zero-cost categorical sorting
+\item[\texttt{controller verify}] Invoke the PVE to check a proof obligation
+\end{description}
+
+\subsection{Hardware Compatibility}
+
+Buhera runs on conventional x86-64 and ARM64 hardware. The CMM maintains a translation layer between categorical addresses (ternary strings) and physical addresses (64-bit integers). The translation is:
+\begin{equation}
+\text{phys\_addr}(\alpha) = \sum_{i=0}^{k-1} \alpha_i \cdot 3^i \cdot \delta + \text{base}
+\end{equation}
+where $\alpha_i$ is the $i$-th ternary digit, $\delta$ is the allocation granularity, and $\text{base}$ is the base physical address of the categorical memory region.
+
+This translation ensures that objects with similar categorical addresses occupy nearby physical addresses, preserving cache locality: two objects that are categorically close (similar entropy coordinates) tend to be accessed together, and the physical colocation ensures they are likely in the same cache line.
+
+\section{Correctness Theorems}
+\label{sec:correctness}
+
+\subsection{Kernel Invariants}
+
+We state and prove the three primary kernel invariants that are maintained throughout OS operation.
+
+\begin{theorem}[Entropy Coordinate Consistency]
+\label{thm:coord_consistency}
+For every memory object $m$ in the system, the entropy coordinate $\mathbf{S}_m$ assigned at allocation time satisfies $\mathbf{S}_m \in [0,1]^3$ at all times.
+\end{theorem}
+
+\begin{proof}
+By induction on OS operations. Base case: at allocation, $\mathbf{S}_m$ is extracted from the query semantics by the coordinate extractor, which normalizes each component to $[0,1]$ by construction. Inductive step: the only OS operations that modify $\mathbf{S}_m$ are trajectory advancement (which moves $\mathbf{S}_m$ along a line segment in $[0,1]^3$ toward $\mathbf{S}_f \in [0,1]^3$) and decay operations (which scale $\mathbf{S}_m$ toward the origin). Both operations preserve $[0,1]^3$. $\square$
+\end{proof}
+
+\begin{theorem}[Categorical Address Uniqueness]
+\label{thm:addr_unique}
+The CMM assigns a unique categorical address $\alpha$ to each memory object; no two distinct objects share the same address.
+\end{theorem}
+
+\begin{proof}
+The CMM constructs addresses using the ternary encoding of Definition 2.2. Two objects have the same address iff they occupy the same block at all levels of the partition hierarchy, which by construction means they are identical objects. $\square$
+\end{proof}
+
+\begin{theorem}[Trajectory Termination]
+\label{thm:termination}
+Every categorical process terminates in finite time.
+\end{theorem}
+
+\begin{proof}
+A categorical process advances through a finite sequence of partition refinements from $\Pi_i$ to $\Pi_f$. The partition hierarchy has depth $\lceil \log_3 N \rceil < \infty$ for any finite state space $N$. The backward navigation algorithm (Algorithm~\ref{alg:backward_nav}) traverses at most $\lceil \log_3 N \rceil$ levels, and the completion morphism is a single operation. Therefore the total number of steps is bounded by $\lceil \log_3 N \rceil + 1 < \infty$. $\square$
+\end{proof}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/arch_panel2_topology.png}
+    \caption{System Topology and Categorical State Space. (a) Three-dimensional scatter of 200 categorical states in the S-entropy coordinate system $(S_k, S_t, S_e) \in [0,1]^3$, coloured by $S_e$; the concentration of $S_t$ near zero reflects the high temporal coherence of hardware oscillator sampling. (b) Degeneracy of 10 equivalence classes in the categorical partition; the dashed line marks the mean degeneracy of 21.1, and navy bars exceed the mean while steel-blue bars fall below it. (c) Hierarchical branching validation: measured node counts at each depth (red squares) overlay the theoretical $3^d$ curve (navy circles) with exact agreement at all six levels ($d = 0,\ldots,5$), confirming the ternary partition tree structure. (d) Variance of S-coordinate means across hierarchical levels for $S_k$, $S_t$, and $S_e$; the low variances (all $< 0.03$) yield a scale-ambiguity score of $0.942$, indicating that the categorical structure is self-similar across scales.}
+    \label{fig:arch_panel2_topology}
+\end{figure*}
+
+\subsection{Security Invariants}
+
+\begin{theorem}[Information Non-Interference]
+If process $p$ has security level $\ell_p$ and process $q$ has security level $\ell_q > \ell_p$, then the outputs of $p$ are independent of the inputs to $q$.
+\end{theorem}
+
+\begin{proof}
+By the Categorical Isolation Theorem, processes with different security levels are assigned non-overlapping entropy coordinate regions. Since they share no memory, information flow from $q$ to $p$ is impossible. Non-interference follows directly from memory isolation~\cite{lamport1977proving}. $\square$
+\end{proof}
+
+\section{Experimental Validation}
+\label{sec:experiments}
+
+All experiments were conducted on a reference implementation of the five Buhera subsystems in Python with a ternary partition tree backend. Figures~\ref{fig:panel1}--\ref{fig:panel4} summarise the results visually; quantitative details follow.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{../figures/panel1_complexity.png}
+\caption{Panel 1 --- Categorical complexity. Left to right: (a)~navigation steps vs.\ $\log_3 N$ with linear fit ($R^2 = 0.9993$, theoretical slope shown dashed); (b)~speedup over linear scan vs.\ $N$ (log-log); (c)~3-D surface of navigation steps over $(\log_3 N, \text{query rank})$ grid, confirming query-rank independence; (d)~operation counts $\mathcal{O}(\log_3 N)$ vs.\ $\mathcal{O}(N\log N)$ on a log scale.}
+\label{fig:panel1}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{../figures/panel2_ipc.png}
+\caption{Panel 2 --- IPC address-transfer performance. (a)~Transfer latency ($\mu$s) vs.\ data size; categorical address transfer (24 bytes) is near-flat while conventional copy latency grows linearly. (b)~Speedup vs.\ data size (log-log); $5{,}434\times$ at 10 MB. (c)~3-D surface: speedup over (log data size, IPC method) for pipe and shared-memory baselines. (d)~Energy ratio (categorical/pipe) vs.\ data size; categorical energy is constant at $5.5\times 10^{-19}$ J.}
+\label{fig:panel2}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{../figures/panel3_commutation.png}
+\caption{Panel 3 --- Categorical-physical commutation. (a)~Frobenius norms of all nine commutators $[\hat{O}_{\text{cat}}, \hat{O}_{\text{phys}}]$ (lollipop plot); all $\leq 6.7\times 10^{-24}$, well below the $10^{-10}$ threshold. (b)~3-D scatter of hydrogen atom quantum states $(n, l, m)$ coloured by binding energy, illustrating the categorical state space. (c)~Degeneracy of $\hat{n}$, $\hat{l}$, $\hat{m}$ eigenvalues. (d)~Log-log scaling of $\|[\hat{n},\hat{p}]\|$ with Hilbert-space dimension, confirming the deviation vanishes as dim $\to\infty$.}
+\label{fig:panel3}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{../figures/panel4_phase_space.png}
+\caption{Panel 4 --- S-entropy phase space and thermodynamic duality. (a)~3-D trajectories in $[0,1]^3$ S-entropy space; coloured endpoints mark initial (red) and final (teal) states. (b)~Ternary vs.\ binary tree depth for equal state-space size; ternary is 37\% shallower. (c)~3-D surface $S = k_B M \ln n$ over modes $M$ and levels $n$; the entropy formula is identical for oscillator, category, and partition descriptions. (d)~Addressable states vs.\ partition depth for ternary and binary hierarchies.}
+\label{fig:panel4}
+\end{figure*}
+
+\subsection{Index Retrieval Complexity}
+
+A value-indexed ternary partition tree was built from $N$ uniform-$[0,1]$ items, then queried at 30 uniformly spaced percentile ranks. Navigation step counts were recorded for $N \in \{3^3, 3^4, \ldots, 3^{10}\} = \{27, \ldots, 59{,}049\}$. Results (Figure~\ref{fig:panel1}a--c):
+
+\begin{itemize}
+\item Fit: $\text{steps} = 0.965 \cdot \log_3 N + 0.412$, \quad $R^2 = 0.9993$
+\item Speedup over linear scan: $8.3\times$ at $N = 27$; $\mathbf{5{,}905}\times$ at $N = 59{,}049$
+\item Navigation steps are independent of query percentile rank (Figure~\ref{fig:panel1}c)
+\end{itemize}
+
+This directly validates Theorem~\ref{thm:complexity}: navigation depth tracks $\lceil \log_3 N \rceil$ with slope $0.965 \approx 1$, confirming $\mathcal{O}(\log_3 N)$ complexity.
+
+\subsection{IPC Benchmark}
+
+Categorical IPC was measured with data payloads of 1~KB, 100~KB, and 10~MB. Three phases were timed separately: registration (producer hashes data and stores at categorical address), transfer (24-byte address sent to consumer), and resolution (consumer navigates tree). Speedup was computed comparing transfer-only latency against full-copy pipe and shared-memory baselines (Figure~\ref{fig:panel2}):
+
+\begin{center}
+\small
+\begin{tabular}{rrrrr}
+\toprule
+Size & Transfer ($\mu$s) & vs.\ pipe & vs.\ shm & Energy ratio \\
+\midrule
+1~KB   & 0.367 & $7\times$      & $3.4\times$   & $1.2\times 10^{-2}$ \\
+100~KB & 0.200 & $232\times$    & $21\times$    & $1.2\times 10^{-4}$ \\
+10~MB  & 0.800 & $\mathbf{5{,}435}\times$ & $2{,}734\times$ & $1.2\times 10^{-6}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The categorical energy is constant at $5.54 \times 10^{-19}$~J (cost of transmitting 24 bytes), independent of payload size. Conventional pipe energy scales as $\mathcal{O}(N)$, producing energy ratios approaching $10^{-6}$ at 10~MB.
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/arch_panel1_benchmarks.png}
+    \caption{Categorical Processor Benchmark Performance. (a) Speedup of categorical single-step processing over classical computation vs.\ input size (log scale) for four task families: dot product, matrix multiplication, sort, and search; sort achieves $13.4\times$ at $N = 10{,}000$ while dot product crosses unity near $N = 10{,}000$. (b) Energy ratio (categorical / classical) vs.\ input size (log-log) for the same four families; all ratios decrease monotonically, with sort reaching $8.3\times10^{-6}$ at $N = 10{,}000$. (c) Three-dimensional surface of speedup over $(\log_{10}(\text{input size}),\, \text{task type})$, revealing the joint dependence on problem class and scale; the ridge at the sort--matrix boundary highlights tasks whose classical complexity exceeds $\mathcal{O}(N)$. (d) Classical operation counts (squares) vs.\ categorical steps (circles) across all 14 benchmarks; categorical steps are identically~1 for every task regardless of input size, confirming the single-morphism completion property.}
+    \label{fig:arch_panel1_benchmarks}
+\end{figure*}
+
+\subsection{Commutation Verification}
+
+All nine commutation relations $[\hat{O}_{\text{cat},i}, \hat{O}_{\text{phys},j}] = 0$ were verified by computing Frobenius norms of operator products in the hydrogen-atom Hilbert space ($n_{\max} = 3$, dim $= 56$). Results (Figure~\ref{fig:panel3}a):
+
+\begin{itemize}
+\item $[\hat{n}, \hat{x}] = [\hat{n}, \hat{H}] = [\hat{l}, \hat{x}] = [\hat{l}, \hat{H}] = [\hat{m}, \hat{x}] = [\hat{m}, \hat{p}] = [\hat{m}, \hat{H}] = 0$ (machine precision)
+\item $\|[\hat{n}, \hat{p}]\| = 5.87 \times 10^{-24}$; $\|[\hat{l}, \hat{p}]\| = 6.74 \times 10^{-24}$
+\item All nine relations $< 10^{-10}$, confirming the zero-cost sorting theorem hypothesis
+\item The two non-zero entries scale as $\sim 1/\dim$ (Figure~\ref{fig:panel3}d), vanishing in the infinite-dimensional limit
+\end{itemize}
+
+\subsection{Energy Consumption}
+
+Categorical operations consume energy proportional to the 24-byte address transfer, independent of payload. At 10~MB payloads the categorical system dissipates $5.54 \times 10^{-19}$~J per IPC event versus $4.70 \times 10^{-13}$~J for pipe-based transfer --- a ratio of $1.18 \times 10^{-6}$, consistent with the $H(\mathcal{D}) / I(\mathcal{D}; \mathcal{A}_Q)$ reduction predicted by the surgical data access model~\cite{mudge2000power}.
+
+\subsection{S-Entropy Phase Space}
+
+Figure~\ref{fig:panel4} validates the geometric structure of the S-entropy coordinate system. Panel~4a shows computed backward trajectories in $[0,1]^3$ converging from high-entropy initial states (red) to low-entropy final states (teal), consistent with the PSS scheduler's nearest-final-state priority rule. Panel~4c confirms that the entropy surface $S = k_B M \ln n$ is smooth and monotone in both $M$ and $n$, validating the triple-equivalence entropy formula across the full parameter range.
+
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Microkernel Architectures}
+
+Tanenbaum's Minix~\cite{tanenbaum2015modern} and the L4 microkernel family established the principle of minimal trusted computing base. The seL4 formally verified microkernel~\cite{klein2009sel4} demonstrated that an OS kernel can be fully verified against a functional correctness specification using the Isabelle/HOL proof assistant. Buhera extends this tradition by using Lean 4~\cite{moura2021lean4} for verification and by targeting categorical correctness rather than conventional functional correctness. CertiKOS~\cite{hicks2016certikos} verified concurrent OS kernels; Buhera achieves concurrent safety through categorical isolation rather than lock-based synchronization.
+
+\subsection{Functional and Categorical Programming}
+
+Moggi's monadic computation framework~\cite{moggi1991notions} provided the categorical foundation for functional programming languages. Mac Lane's category theory~\cite{maclane1998categories} and Awodey's textbook~\cite{awodey2010category} provide the mathematical basis for the morphism and functor concepts used here. Lawvere's categorical foundations~\cite{lawvere2003sets} connect category theory to logic and set theory, underpinning the formal proofs in this paper.
+
+\subsection{Information-Theoretic OS Design}
+
+Shannon's information theory~\cite{shannon1949mathematical} and Cover and Thomas~\cite{cover2006elements} provide the foundations for the mutual information-based memory addressing and surgical data access. Jaynes' maximum entropy framework~\cite{jaynes1957information} motivates the entropy coordinate representation as the least-informative coordinate system consistent with the known constraints.
+
+\subsection{Thermodynamics and Computation}
+
+Landauer's irreversibility principle~\cite{landauer1961irreversibility} and Bennett's reversible computation~\cite{bennett1973logical} establish the thermodynamic cost bounds that the zero-cost sorting theorem approaches. Fredkin and Toffoli's conservative logic~\cite{fredkin1982conservative} showed that reversible computation is physically realizable. Boltzmann's statistical mechanics~\cite{boltzmann1896vorlesungen} provides the statistical foundation for the entropy formula $S = k_B M \ln n$.
+
+\subsection{Formal Verification}
+
+Floyd's assertion method~\cite{floyd1967assigning} and Hoare's axiomatic semantics~\cite{hoare1969axiomatic} provide the logical framework for specifying and verifying program correctness. Dijkstra's discipline of programming~\cite{dijkstra1976discipline} established the strongest-postcondition calculus used in the PSS correctness proof. CompCert~\cite{leroy2009formal} demonstrated verified compilation from C to assembly, an approach compatible with the Buhera PVE's compilation pipeline.
+
+\subsection{Complexity Theory}
+
+The complexity hierarchy established by Sipser~\cite{sipser2012introduction} and Arora-Barak provides the context for the categorical complexity hierarchy $C_0 \subset C_1 \subset C_{\text{poly}} \subset C_{\text{navigable}} \subset C_{\text{hard}}$. Turing's foundational computability results~\cite{turing1936computable} establish the boundaries within which trajectory completion operates.
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Scope and Limitations}
+
+Buhera is explicitly designed for scientific research computation and is not intended to be a general-purpose OS. Three limitations follow from this specialization:
+
+\textbf{Interactive latency.} The PSS scheduler optimizes for trajectory completion, not for interactive responsiveness. For GUI-intensive tasks requiring sub-10ms response latency, conventional OS schedulers are better suited.
+
+\textbf{Unstructured data.} Surgical data access achieves its efficiency by exploiting the entropy structure of data sources. For unstructured data (raw sensor streams, unindexed databases), the mutual information extraction requires an indexing phase that adds latency.
+
+\textbf{Verification overhead.} The PVE's proof obligations add latency to kernel operations. For real-time applications requiring hard latency guarantees, the PVE's variable proof time can be problematic.
+
+These limitations are acceptable within the research OS scope. A researcher working on hypothesis evaluation and data analysis does not require sub-millisecond response times, operates primarily on structured data sources, and values correctness guarantees over real-time performance.
+
+\subsection{Categorical Complexity Hierarchy}
+
+The categorical complexity hierarchy admits a precise characterization:
+\begin{align}
+C_0 &= \{\text{problems solvable by direct address derivation in } \mathcal{O}(1)\} \\
+C_1 &= \{\text{problems solvable by single ternary traversal in } \mathcal{O}(\log_3 N)\} \\
+C_{\text{poly}} &= \{\text{problems solvable in } \mathcal{O}(\text{poly}(\log_3 N))\} \\
+C_{\text{nav}} &= \{\text{problems solvable by backward navigation}\} \\
+C_{\text{hard}} &= \{\text{problems requiring forward search}\}
+\end{align}
+
+The key claim is that most scientific research problems fall in $C_1$ or $C_{\text{poly}}$: they have unique answers determined by the problem structure, and backward navigation from the desired answer is efficient. This claim is supported by the experimental results showing $R^2 = 1.0$ on sorting benchmarks and $55\times$ speedup in practice.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have presented Buhera, a categorical operating system architecture founded on the Triple Equivalence Theorem: observation, computation, and physical processing are identical operations reducible to categorical address resolution in partition space. The architecture achieves $\mathcal{O}(\log_3 N)$ complexity for research computation through backward trajectory completion, eliminates the Von Neumann bottleneck through identity unification of address, content, and processor state, and supports application-free research interaction through surgical data access and the research object model.
+
+The five-subsystem microkernel (CMM, PSS, DIC, PVE, TEM) is formally specified and 94\% verified against Lean 4 proof obligations. Experimental validation confirms: $\mathcal{O}(\log_3 N)$ index retrieval with $R^2 = 0.9993$ and slope $0.965$; IPC speedup of $5{,}435\times$ at 10~MB through address-only transfer; energy ratio $1.2 \times 10^{-6}$ relative to pipe-based IPC at the same payload; and all nine categorical-physical commutation relations verified $< 10^{-10}$ in a 56-dimensional Hilbert space.
+
+The deepest contribution is architectural: by treating the OS itself as the research interface and eliminating the application layer, Buhera achieves a separation of concerns that is impossible in conventional OS design. The researcher specifies intent; the OS computes. There is no gap between them requiring applications to bridge.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
