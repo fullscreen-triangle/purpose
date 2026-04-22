@@ -1,0 +1,129 @@
+//! Purpose CLI.
+//!
+//! Binary entry point for the MVP Purpose runtime.
+//!
+//! Examples:
+//!     purpose query "Tell me about SOD1"
+//!     purpose query "What is TP53?" --dry-run
+//!     purpose operations
+
+use std::collections::HashMap;
+
+use anyhow::{Context, Result};
+use clap::{Parser, Subcommand};
+use tracing_subscriber::EnvFilter;
+
+use purpose_core::{typecheck::typecheck, Value};
+use purpose_operations::{Executor, OperationRegistry};
+
+#[derive(Parser, Debug)]
+#[command(
+    name = "purpose",
+    version,
+    about = "Purpose Model Factory CLI",
+    long_about = "Compile natural-language queries to vaHera fragments and execute them against registered providers."
+)]
+struct Cli {
+    #[command(subcommand)]
+    cmd: Command,
+}
+
+#[derive(Subcommand, Debug)]
+enum Command {
+    /// Compile and execute a natural-language query.
+    Query {
+        /// Natural-language query (quote if it contains spaces).
+        utterance: String,
+
+        /// Print the compiled vaHera fragment as JSON and exit without executing.
+        #[arg(long)]
+        dry_run: bool,
+
+        /// Print the raw JSON result rather than the formatted summary.
+        #[arg(long)]
+        raw: bool,
+    },
+
+    /// List all registered operations.
+    Operations,
+}
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    tracing_subscriber::fmt()
+        .with_env_filter(
+            EnvFilter::try_from_default_env().unwrap_or_else(|_| EnvFilter::new("warn")),
+        )
+        .with_target(false)
+        .init();
+
+    let cli = Cli::parse();
+
+    // Build the registry and register the protein domain's providers.
+    let mut registry = OperationRegistry::new();
+    purpose_domains_protein::register_providers(&mut registry);
+
+    let protein_domain = purpose_domains_protein::domain();
+    let executor = Executor::new(registry.clone());
+
+    match cli.cmd {
+        Command::Query {
+            utterance,
+            dry_run,
+            raw,
+        } => {
+            let fragment = protein_domain
+                .resolver
+                .compile(&utterance)
+                .await
+                .context("compilation failed")?;
+
+            if !fragment.is_fully_resolved() {
+                anyhow::bail!("compiled fragment contains unresolved holes");
+            }
+
+            // Type-check the fragment against the registered operations.
+            let op_map: HashMap<String, purpose_core::Operation> = registry
+                .operations()
+                .cloned()
+                .map(|op| (op.name.clone(), op))
+                .collect();
+            typecheck(&fragment, &op_map).context("type check failed")?;
+
+            if dry_run {
+                println!("{}", serde_json::to_string_pretty(&fragment)?);
+                return Ok(());
+            }
+
+            let result = executor
+                .execute(&fragment)
+                .await
+                .context("execution failed")?;
+
+            if raw {
+                println!("{}", serde_json::to_string_pretty(&result)?);
+            } else {
+                match result {
+                    Value::Str(s) => println!("{}", s),
+                    other => println!("{}", serde_json::to_string_pretty(&other)?),
+                }
+            }
+        }
+
+        Command::Operations => {
+            let mut ops: Vec<_> = registry.operations().collect();
+            ops.sort_by(|a, b| a.name.cmp(&b.name));
+            for op in ops {
+                println!("{}", op.name);
+                println!("  {}", op.description);
+                for (k, t) in &op.inputs {
+                    println!("    input  {:<12} :: {:?}", k, t);
+                }
+                println!("    output             :: {:?}", op.output);
+                println!();
+            }
+        }
+    }
+
+    Ok(())
+}

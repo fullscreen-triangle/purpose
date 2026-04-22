@@ -1,0 +1,23 @@
+[package]
+name = "purpose-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Command-line interface for the Purpose Model Factory."
+
+[[bin]]
+name = "purpose"
+path = "src/main.rs"
+
+[dependencies]
+purpose-core = { workspace = true }
+purpose-operations = { workspace = true }
+purpose-domains-protein = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }

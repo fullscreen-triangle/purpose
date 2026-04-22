@@ -1,0 +1,37 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/purpose-core",
+    "crates/purpose-operations",
+    "crates/purpose-domains-protein",
+    "crates/purpose-cli",
+]
+
+[workspace.package]
+edition = "2021"
+version = "0.1.0"
+authors = ["Kundai Farai Sachikonye <kundai.sachikonye@bitspark.com>"]
+license = "MIT OR Apache-2.0"
+rust-version = "1.75"
+
+[workspace.dependencies]
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+thiserror = "1"
+async-trait = "0.1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+clap = { version = "4", features = ["derive"] }
+regex = "1"
+urlencoding = "2"
+
+purpose-core = { path = "crates/purpose-core" }
+purpose-operations = { path = "crates/purpose-operations" }
+purpose-domains-protein = { path = "crates/purpose-domains-protein" }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1

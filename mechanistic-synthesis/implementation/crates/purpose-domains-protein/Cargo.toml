@@ -1,0 +1,15 @@
+[package]
+name = "purpose-domains-protein"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Protein compilation domain for the Purpose Model Factory. Hand-coded resolver + UniProt operations."
+
+[dependencies]
+purpose-core = { workspace = true }
+purpose-operations = { workspace = true }
+async-trait = { workspace = true }
+regex = { workspace = true }
+tracing = { workspace = true }
