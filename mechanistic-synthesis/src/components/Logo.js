@@ -1,25 +1,27 @@
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import React from 'react'
+import Link from "next/link";
+import React from "react";
+import { motion } from "framer-motion";
 
+const MotionLink = motion(Link);
 
-let MotionLink = motion(Link);
-
-const Logo = () => {
-
+export default function Logo() {
   return (
-    <div
-     className='flex flex-col items-center justify-center mt-2'>
-        <MotionLink href="/" 
-    className='flex items-center justify-center rounded-full w-16 h-16  bg-dark text-white dark:border-2 dark:border-solid dark:border-light
-    text-2xl font-bold'
-    whileHover={{
-      backgroundColor:["#121212", "rgba(131,58,180,1)","rgba(253,29,29,1)","rgba(252,176,69,1)","rgba(131,58,180,1)", "#121212"],
-      transition:{duration:1, repeat: Infinity }
-    }}
-    >CB</MotionLink>
+    <div className="flex items-center justify-center">
+      <MotionLink
+        href="/"
+        className="flex items-center justify-center gap-2 rounded-md px-3 py-1.5
+                   bg-dark text-light dark:bg-light dark:text-dark
+                   font-semibold tracking-tight"
+        whileHover={{
+          backgroundColor: ["#1b1b1b", "#B63E96", "#1b1b1b"],
+          transition: { duration: 1, repeat: Infinity },
+        }}
+      >
+        <span className="text-base">MS</span>
+        <span className="text-xs font-normal opacity-70 hidden sm:inline">
+          mechanistic-synthesis
+        </span>
+      </MotionLink>
     </div>
-  )
+  );
 }
-
-export default Logo

@@ -1,3 +1,174 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* -------- Paper rendering -------- */
+
+.paper-content {
+  font-family: var(--font-mont), Georgia, "Times New Roman", serif;
+  color: theme("colors.dark");
+  line-height: 1.65;
+}
+
+.dark .paper-content {
+  color: theme("colors.light");
+}
+
+.paper-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.paper-content h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .paper-content h2 {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.paper-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.paper-content p {
+  margin: 0.85rem 0;
+  font-size: 1rem;
+}
+
+.paper-content ul,
+.paper-content ol {
+  margin: 0.85rem 0;
+  padding-left: 1.5rem;
+}
+
+.paper-content ul {
+  list-style: disc;
+}
+
+.paper-content ol {
+  list-style: decimal;
+}
+
+.paper-content li {
+  margin: 0.25rem 0;
+}
+
+.paper-content li > p {
+  margin: 0.2rem 0;
+}
+
+.paper-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  padding: 0.12em 0.35em;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.dark .paper-content code {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.paper-content pre {
+  background: rgba(0, 0, 0, 0.04);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.dark .paper-content pre {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.paper-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.paper-content blockquote {
+  border-left: 3px solid theme("colors.primary");
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: rgba(0, 0, 0, 0.7);
+  font-style: italic;
+}
+
+.dark .paper-content blockquote {
+  border-left-color: theme("colors.primaryDark");
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.paper-content a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.paper-content h1 a,
+.paper-content h2 a,
+.paper-content h3 a {
+  color: inherit;
+}
+
+.paper-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.paper-content th,
+.paper-content td {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+}
+
+.dark .paper-content th,
+.dark .paper-content td {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.paper-content th {
+  background: rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+}
+
+.dark .paper-content th {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* -------- Print stylesheet for paper export -------- */
+
+@media print {
+  header,
+  footer,
+  aside,
+  button {
+    display: none !important;
+  }
+  .paper-content {
+    color: black !important;
+    max-width: 100% !important;
+  }
+  .paper-content h2 {
+    page-break-after: avoid;
+    border-bottom: 1px solid #ccc;
+  }
+  body {
+    background: white !important;
+  }
+}

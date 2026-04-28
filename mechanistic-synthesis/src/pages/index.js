@@ -1,90 +1,269 @@
-import AnimatedText from "@/components/AnimatedText";
-import { HireMe } from "@/components/HireMe";
-import { LinkArrow } from "@/components/Icons";
-import Layout from "@/components/Layout";
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import lightBulb from "../../public/images/svgs/miscellaneous_icons_1.svg";
-import profilePic from "../../public/images/profile/developer-pic-1.png";
-import TransitionEffect from "@/components/TransitionEffect";
+import { useState, useCallback } from "react";
+import { motion } from "framer-motion";
 
+import ExperimentInput from "@/components/ExperimentInput";
+import FollowupPanel from "@/components/FollowupPanel";
+import PaperRenderer from "@/components/PaperRenderer";
+import LoadingState from "@/components/LoadingState";
+import { saveHistoryItem } from "@/lib/storage";
+
+const MAX_FOLLOWUP_ROUNDS = 3;
 
 export default function Home() {
-  
+  const [phase, setPhase] = useState("input");
+  // "input" | "triaging" | "followup" | "synthesizing" | "result" | "error"
+
+  const [description, setDescription] = useState("");
+  const [followups, setFollowups] = useState([]);
+  const [pendingQuestions, setPendingQuestions] = useState([]);
+  const [triageSummary, setTriageSummary] = useState("");
+  const [triageField, setTriageField] = useState("");
+  const [followupRounds, setFollowupRounds] = useState(0);
+
+  const [synthesis, setSynthesis] = useState("");
+  const [streaming, setStreaming] = useState(false);
+  const [error, setError] = useState("");
+
+  const runTriage = useCallback(async (desc, fups) => {
+    setPhase("triaging");
+    setError("");
+    try {
+      const res = await fetch("/api/triage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ description: desc, followups: fups }),
+      });
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}));
+        throw new Error(j.error || `triage failed (${res.status})`);
+      }
+      return await res.json();
+    } catch (e) {
+      setError(e.message || String(e));
+      setPhase("error");
+      return null;
+    }
+  }, []);
+
+  const runSynthesis = useCallback(
+    async (desc, fups) => {
+      setPhase("synthesizing");
+      setError("");
+      setSynthesis("");
+      setStreaming(true);
+      try {
+        const res = await fetch("/api/synthesize", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ description: desc, followups: fups }),
+        });
+        if (!res.ok) {
+          const j = await res.json().catch(() => ({}));
+          throw new Error(j.error || `synthesis failed (${res.status})`);
+        }
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let acc = "";
+        // eslint-disable-next-line no-constant-condition
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          acc += decoder.decode(value, { stream: true });
+          setSynthesis(acc);
+        }
+        setStreaming(false);
+        setPhase("result");
+        try {
+          saveHistoryItem({
+            description: desc,
+            followups: fups,
+            synthesis: acc,
+            summary: triageSummary,
+            field: triageField,
+          });
+        } catch {
+          // ignore storage errors
+        }
+      } catch (e) {
+        setStreaming(false);
+        setError(e.message || String(e));
+        setPhase("error");
+      }
+    },
+    [triageSummary, triageField]
+  );
+
+  const handleInitialSubmit = useCallback(
+    async (text) => {
+      setDescription(text);
+      setFollowups([]);
+      setFollowupRounds(0);
+
+      const result = await runTriage(text, []);
+      if (!result) return;
+
+      setTriageSummary(result.summary || "");
+      setTriageField(result.field || "");
+
+      if (result.status === "ready") {
+        runSynthesis(text, []);
+      } else {
+        setPendingQuestions(result.questions || []);
+        setPhase("followup");
+      }
+    },
+    [runTriage, runSynthesis]
+  );
+
+  const handleFollowupSubmit = useCallback(
+    async (newFollowups) => {
+      const merged = [...followups, ...newFollowups];
+      setFollowups(merged);
+      const round = followupRounds + 1;
+      setFollowupRounds(round);
+
+      if (round >= MAX_FOLLOWUP_ROUNDS) {
+        runSynthesis(description, merged);
+        return;
+      }
+
+      const result = await runTriage(description, merged);
+      if (!result) return;
+      setTriageSummary(result.summary || triageSummary);
+
+      if (result.status === "ready") {
+        runSynthesis(description, merged);
+      } else {
+        setPendingQuestions(result.questions || []);
+        setPhase("followup");
+      }
+    },
+    [
+      description,
+      followups,
+      followupRounds,
+      runTriage,
+      runSynthesis,
+      triageSummary,
+    ]
+  );
+
+  const handleSkipFollowup = useCallback(() => {
+    runSynthesis(description, followups);
+  }, [description, followups, runSynthesis]);
+
+  const handleReset = useCallback(() => {
+    setPhase("input");
+    setDescription("");
+    setFollowups([]);
+    setPendingQuestions([]);
+    setSynthesis("");
+    setError("");
+    setTriageSummary("");
+    setTriageField("");
+    setFollowupRounds(0);
+  }, []);
+
   return (
     <>
       <Head>
-        <title>Awesome Portfolio Built with Nextjs</title>
+        <title>mechanistic-synthesis</title>
         <meta
           name="description"
-          content="Explore CodeBucks's Next.js developer portfolio and 
-        discover the latest webapp projects and software engineering articles. 
-        Showcase your skills as a full-stack developer and software engineer."
+          content="Describe an experiment; receive a procedural synthesis paper."
         />
       </Head>
 
-      <TransitionEffect />
-      <article
-        className={`flex min-h-screen items-center text-dark dark:text-light sm:items-start`}
-      >
-        <Layout className="!pt-0 md:!pt-16 sm:!pt-16">
-          <div className="flex w-full items-start justify-between md:flex-col">
-            <div className="w-1/2 lg:hidden md:inline-block md:w-full">
-              <Image
-                src={profilePic}
-                alt="CodeBucks"
-                className="h-auto w-full"
-                sizes="100vw"
-                priority
-              />
-            </div>
-            <div className="flex w-1/2 flex-col items-center self-center lg:w-full lg:text-center">
-              <AnimatedText
-                text="Turning vision into reality with code and design."
-                className="!text-left !text-6xl xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl"
-              />
-              <p className="my-4 text-base font-medium md:text-sm sm:!text-xs">
-              As a skilled full-stack developer, I am dedicated to turning ideas into innovative web applications. Explore my latest projects and articles, showcasing my expertise in React.js and web development.
+      <div className="w-full min-h-[calc(100vh-180px)] px-8 sm:px-6 py-12">
+        {phase === "input" && (
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-10"
+            >
+              <h1 className="text-3xl sm:text-2xl font-semibold tracking-tight text-dark dark:text-light mb-3">
+                Describe an experiment.
+              </h1>
+              <p className="text-dark/60 dark:text-light/60 text-base leading-relaxed">
+                Procedural-learning synthesis tool. Write what you&apos;re studying,
+                what you&apos;re asking, what you plan to do — at whatever level of
+                detail you have. The system reads it, asks clarifying questions if
+                needed, and produces a paper-shaped synthesis: background, prior work,
+                methods, expected results, statistics, pitfalls, and references.
               </p>
-              <div className="mt-2 flex items-center self-start lg:self-center">
-                <Link
-                  // whileHover={{
-                  //   cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='font-size:24px;'><text y='50%'>👆</text></svg>"), auto`,
-                  // }}
-                  href="/dummy.pdf"
-                  target={"_blank"}
-                  className={`flex items-center rounded-lg border-2 border-solid bg-dark p-2.5 px-6 text-lg font-semibold
-            capitalize text-light hover:border-dark hover:bg-transparent hover:text-dark 
-            dark:bg-light dark:text-dark dark:hover:border-light dark:hover:bg-dark dark:hover:text-light
-            md:p-2 md:px-4 md:text-base
-             `}
-                  download
-                >
-                  Resume <LinkArrow className="ml-1 !w-6 md:!w-4" />
-                </Link>
-
-                <Link
-                  href="mailto:codebucks27@gmail.com"
-                  className="ml-4 text-lg font-medium capitalize text-dark underline 
-                  dark:text-light md:text-base"
-                >
-                  Contact
-                </Link>
-              </div>
-            </div>
+            </motion.div>
+            <ExperimentInput onSubmit={handleInitialSubmit} />
           </div>
-        </Layout>
+        )}
 
-        <HireMe />
-        <div className="absolute right-8 bottom-8 inline-block w-24 md:hidden">
-          <Image
-            className="relative h-auto w-full"
-            src={lightBulb}
-            alt="Codebucks"
-          />
-        </div>
-      </article>
+        {phase === "triaging" && <LoadingState phase="triaging" />}
+
+        {phase === "followup" && (
+          <div className="max-w-3xl mx-auto">
+            <FollowupPanel
+              summary={triageSummary}
+              questions={pendingQuestions}
+              onSubmit={handleFollowupSubmit}
+              onSkip={handleSkipFollowup}
+            />
+          </div>
+        )}
+
+        {phase === "synthesizing" && synthesis.length === 0 && (
+          <LoadingState phase="synthesizing" />
+        )}
+
+        {(phase === "synthesizing" || phase === "result") && synthesis.length > 0 && (
+          <div className="w-full">
+            <div className="max-w-6xl mx-auto mb-6 flex items-center justify-between">
+              <button
+                onClick={handleReset}
+                className="text-sm text-dark/60 dark:text-light/60 hover:text-dark dark:hover:text-light transition"
+              >
+                ← New synthesis
+              </button>
+              {phase === "result" && (
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => navigator.clipboard.writeText(synthesis)}
+                    className="text-sm text-dark/60 dark:text-light/60 hover:text-dark dark:hover:text-light transition"
+                  >
+                    Copy markdown
+                  </button>
+                  <button
+                    onClick={() => window.print()}
+                    className="text-sm text-dark/60 dark:text-light/60 hover:text-dark dark:hover:text-light transition"
+                  >
+                    Print / PDF
+                  </button>
+                </div>
+              )}
+            </div>
+            <PaperRenderer markdown={synthesis} streaming={streaming} />
+          </div>
+        )}
+
+        {phase === "error" && (
+          <div className="max-w-3xl mx-auto py-12 text-center">
+            <p className="text-primary dark:text-primaryDark font-medium mb-4">
+              Something went wrong.
+            </p>
+            <p className="text-sm text-dark/70 dark:text-light/70 mb-6 font-mono">
+              {error}
+            </p>
+            <button
+              onClick={handleReset}
+              className="px-5 py-2 rounded-md bg-dark text-light dark:bg-light dark:text-dark
+                         font-medium hover:opacity-90 transition"
+            >
+              Start over
+            </button>
+          </div>
+        )}
+      </div>
     </>
   );
 }
