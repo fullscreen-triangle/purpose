@@ -1,0 +1,271 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{simon1956rational,simon1957models}
+\citation{valiant1984theory,vapnik1998statistical,blumer1989learnability}
+\citation{godel1931formal,turing1936computable}
+\citation{shannon1948mathematical,cover2006elements}
+\@writefile{toc}{\contentsline {part}{I\hspace  {1em}Theoretical Foundations}{2}{part.1}\protected@file@percent }
+\citation{dietterich2000ensemble,breiman2001random,freund1997decision,wolpert1992stacked}
+\citation{jacobs1991adaptive,shazeer2017outrageously,fedus2022switch}
+\citation{wang2022self,du2023improving,jiang2023llm,wang2024mixture}
+\citation{chen2023frugalgpt,sakota2024fly,lu2024merge,ong2024routellm,liu2024routerbench,aggarwal2024automix,naik2024diversity}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{3}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{3}{Introduction}{section.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}The bounded-inference problem}{3}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Contribution}{3}{subsection.1.2}\protected@file@percent }
+\citation{wang2022self}
+\citation{jacobs1991adaptive,shazeer2017outrageously,fedus2022switch}
+\citation{chen2023frugalgpt,sakota2024fly,ong2024routellm}
+\citation{du2023improving,madaan2023self,wang2024mixture}
+\citation{rudin1987real}
+\citation{halmos1950measure,kolmogorov1933foundations}
+\citation{shannon1948mathematical,cover2006elements,kullback1951information,kelly1956new}
+\citation{fisher1925theory,rao1945information}
+\citation{banach1922operations}
+\citation{boyd2004convex,nesterov2018lectures}
+\citation{karp1972reducibility,dantzig1957discrete,bellman1957dynamic,kellerer2004knapsack,pisinger1997minimal,ibarra1975fast,garey1979computers}
+\citation{valiant1984theory,vapnik1998statistical,blumer1989learnability,shalev2014understanding}
+\citation{heisenberg1927uber,robertson1929uncertainty}
+\citation{dietterich2000ensemble,breiman2001random,freund1997decision,schapire1990strength,wolpert1992stacked}
+\citation{jacobs1991adaptive,shazeer2017outrageously,fedus2022switch}
+\citation{godel1931formal,turing1936computable,tarski1933pojecie}
+\citation{wooldridge2009introduction,russell2020artificial,lewis1969convention,aumann1976agreeing}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Position relative to existing approaches}{4}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Independence}{4}{subsection.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Organisation}{4}{subsection.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Receivers, Action-Cells, and the $S$-Functional}{4}{section.2}\protected@file@percent }
+\newlabel{sec:receivers}{{2}{4}{Receivers, Action-Cells, and the $\Sscalar $-Functional}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Outcome and action spaces}{4}{subsection.2.1}\protected@file@percent }
+\newlabel{def:outcome}{{2.1}{4}{Outcome space}{theorem.2.1}{}}
+\newlabel{def:action}{{2.2}{4}{Action map and action-cell}{theorem.2.2}{}}
+\citation{tarski1933pojecie}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Receivers and the floor}{5}{subsection.2.2}\protected@file@percent }
+\newlabel{def:receiver}{{2.4}{5}{Receiver}{theorem.2.4}{}}
+\newlabel{def:S-functional}{{2.5}{5}{$\Sscalar $-functional}{theorem.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Floor positivity}{5}{subsection.2.3}\protected@file@percent }
+\newlabel{thm:floor}{{2.6}{5}{Floor Positivity}{theorem.2.6}{}}
+\newlabel{cor:image}{{2.7}{5}{Image of $\Sscalar $}{theorem.2.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methodologies and the Multiplicative Catalytic Law}{5}{section.3}\protected@file@percent }
+\newlabel{sec:methodologies}{{3}{5}{Methodologies and the Multiplicative Catalytic Law}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Methodology and Banach floor}{5}{subsection.3.1}\protected@file@percent }
+\newlabel{def:method}{{3.1}{5}{Methodology}{theorem.3.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Floor Positivity, Banach Convergence, and Mode--Methodology Composition.} (\textbf  {A})~Empirical receiver floor $S_\flat (\mathcal  {R})$ as a function of the knowledge-framework-to-candidate-space ratio $|\mathcal  {K}|/|\mathcal  {X}|$, averaged over $30$ random receivers per ratio. The floor remains strictly positive across the full tested range $|\mathcal  {K}|/|\mathcal  {X}| \in \{0.1, 0.2, 0.3, 0.5, 0.7, 0.9\}$, with mean values descending from $60.2$ at $|\mathcal  {K}|/|\mathcal  {X}| = 0.1$ to $54.5$ at $|\mathcal  {K}|/|\mathcal  {X}| = 0.9$. The dashed line at zero indicates the inadmissible floor; no observed floor approaches it. The minimum floor across $180$ randomly-sampled receivers is $54.5$, empirically confirming Theorem~\ref {thm:floor}. (\textbf  {B})~Banach convergence of the iteration $s_{n+1} = \kappa s_n + \sigma \kappa $ for four contraction factors $\kappa \in \{0.3, 0.5, 0.7, 0.9\}$, plotted on a semilogarithmic scale. Each curve shows $|s_n - S_\flat (\mathfrak  {M})|$ versus iteration $n$. The slopes recover the predicted geometric rates to four decimal places (empirical $\{0.3000, 0.5000, 0.7000, 0.9000\}$ vs predicted $\{0.3, 0.5, 0.7, 0.9\}$), and final gaps reach machine precision for $\kappa \in \{0.3, 0.5, 0.7\}$ (max gap $1.4 \times 10^{-14}$) and $1.6 \times 10^{-9}$ for $\kappa = 0.9$ after 250 iterations, in agreement with Theorem~\ref {thm:method-floor}. (\textbf  {C})~Scatter of observed composite floor $S_\flat (\mathcal  {R} \circ \mathfrak  {M})$ against the predicted closed-form $\beta + \beta _M - \beta \beta _M/\Sigma $ across $290$ randomly-sampled $(\beta , \beta _M)$ configurations. The grey dashed line is the identity $y = x$. Points cluster tightly along the diagonal, with maximum relative error $2.1\%$ across the entire test set, validating the closed-form composition law of Theorem~\ref {thm:mme}. (\textbf  {D})~Three-dimensional surface of the composite floor $S_\flat (\mathcal  {R} \circ \mathfrak  {M})$ over the joint parameter plane $(\beta , \beta _M) \in [0, 50]^2$, colour-mapped by floor value via the viridis palette. The surface is the visualised form of the formula $\beta + \beta _M - \beta \beta _M/\Sigma $: at the origin the floor vanishes, along the axes it grows linearly, and in the interior it saturates as the multiplicative correction $-\beta \beta _M/\Sigma $ prevents super-additive growth. The surface's curvature represents the geometric interaction between mode and methodology floors that the equivalence theorem encodes.}}{6}{figure.caption.2}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:floors}{{1}{6}{\textbf {Floor Positivity, Banach Convergence, and Mode--Methodology Composition.} (\textbf {A})~Empirical receiver floor $S_\flat (\mathcal {R})$ as a function of the knowledge-framework-to-candidate-space ratio $|\mathcal {K}|/|\mathcal {X}|$, averaged over $30$ random receivers per ratio. The floor remains strictly positive across the full tested range $|\mathcal {K}|/|\mathcal {X}| \in \{0.1, 0.2, 0.3, 0.5, 0.7, 0.9\}$, with mean values descending from $60.2$ at $|\mathcal {K}|/|\mathcal {X}| = 0.1$ to $54.5$ at $|\mathcal {K}|/|\mathcal {X}| = 0.9$. The dashed line at zero indicates the inadmissible floor; no observed floor approaches it. The minimum floor across $180$ randomly-sampled receivers is $54.5$, empirically confirming Theorem~\ref {thm:floor}. (\textbf {B})~Banach convergence of the iteration $s_{n+1} = \kappa s_n + \sigma \kappa $ for four contraction factors $\kappa \in \{0.3, 0.5, 0.7, 0.9\}$, plotted on a semilogarithmic scale. Each curve shows $|s_n - S_\flat (\mathfrak {M})|$ versus iteration $n$. The slopes recover the predicted geometric rates to four decimal places (empirical $\{0.3000, 0.5000, 0.7000, 0.9000\}$ vs predicted $\{0.3, 0.5, 0.7, 0.9\}$), and final gaps reach machine precision for $\kappa \in \{0.3, 0.5, 0.7\}$ (max gap $1.4 \times 10^{-14}$) and $1.6 \times 10^{-9}$ for $\kappa = 0.9$ after 250 iterations, in agreement with Theorem~\ref {thm:method-floor}. (\textbf {C})~Scatter of observed composite floor $S_\flat (\mathcal {R} \circ \mathfrak {M})$ against the predicted closed-form $\beta + \beta _M - \beta \beta _M/\Sigma $ across $290$ randomly-sampled $(\beta , \beta _M)$ configurations. The grey dashed line is the identity $y = x$. Points cluster tightly along the diagonal, with maximum relative error $2.1\%$ across the entire test set, validating the closed-form composition law of Theorem~\ref {thm:mme}. (\textbf {D})~Three-dimensional surface of the composite floor $S_\flat (\mathcal {R} \circ \mathfrak {M})$ over the joint parameter plane $(\beta , \beta _M) \in [0, 50]^2$, colour-mapped by floor value via the viridis palette. The surface is the visualised form of the formula $\beta + \beta _M - \beta \beta _M/\Sigma $: at the origin the floor vanishes, along the axes it grows linearly, and in the interior it saturates as the multiplicative correction $-\beta \beta _M/\Sigma $ prevents super-additive growth. The surface's curvature represents the geometric interaction between mode and methodology floors that the equivalence theorem encodes}{figure.caption.2}{}}
+\citation{banach1922operations}
+\citation{wang2022self}
+\citation{wei2022chain}
+\citation{madaan2023self}
+\citation{kelly1956new}
+\newlabel{thm:method-floor}{{3.2}{7}{Banach Methodological Floor}{theorem.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Catalytic composition}{7}{subsection.3.2}\protected@file@percent }
+\newlabel{def:catalyst}{{3.4}{7}{Catalyst}{theorem.3.4}{}}
+\newlabel{def:parallel}{{3.5}{7}{Parallel composition}{theorem.3.5}{}}
+\newlabel{thm:catalytic}{{3.6}{7}{Multiplicative Catalytic Law}{theorem.3.6}{}}
+\newlabel{cor:n-catalysts}{{3.7}{7}{Composition of $n$ catalysts}{theorem.3.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Mode--methodology equivalence}{7}{subsection.3.3}\protected@file@percent }
+\newlabel{def:mode-method}{{3.8}{7}{Mode--methodology composition}{theorem.3.8}{}}
+\newlabel{thm:mme}{{3.9}{7}{Mode--Methodology Equivalence}{theorem.3.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {Multiplicative Catalytic Composition.} (\textbf  {A})~Paired bar chart comparing the predicted catalytic power $\kappa (\gamma _1 \diamond \gamma _2) = 1 - (1-\kappa _1)(1-\kappa _2)$ (blue, left bars) against the empirically observed combined catalytic firing rate (orange, right bars, with $\pm 1$ SD error bars across $20$ seeds) for five $(\kappa _1, \kappa _2)$ pairs. Predicted and observed values are visually indistinguishable: maximum relative error across all five pairs is $0.26\%$, and the mean relative error is below $0.1\%$. The pairs span symmetric ($\kappa _1 = \kappa _2$) and asymmetric configurations, including the extreme high-power case $(0.9, 0.9)$ where the combined power saturates at $0.99$, in agreement with Theorem~\ref {thm:catalytic}. (\textbf  {B})~Scaling of the catalytic power $1 - (1 - \kappa )^n$ as the number of independent identical catalysts $n$ grows from $1$ to $10$, plotted for four base $\kappa \in \{0.3, 0.5, 0.7, 0.9\}$. Each curve traces the closed-form prediction from Corollary~\ref {cor:n-catalysts}: combined power approaches unity geometrically as catalysts compose. For $\kappa = 0.5$, ten composed catalysts achieve power $0.999$ ($1 - 2^{-10}$); for $\kappa = 0.3$, the same composition reaches $0.97$. (\textbf  {C})~Three-dimensional surface of combined catalytic power $\kappa (\gamma _1 \diamond \gamma _2) = 1 - (1-\kappa _1)(1-\kappa _2)$ over the unit square $(\kappa _1, \kappa _2) \in [0, 1]^2$, colour-mapped via the plasma palette. The surface saturates near the boundaries $\kappa _i \to 1$, climbs steeply along both axes, and exhibits the characteristic saddle-free geometry of the multiplicative composition law. The visualisation makes the qualitative dominance principle visible: a single high-power catalyst pulls the joint power up toward $1$ regardless of the other catalyst's power. (\textbf  {D})~Bar chart of relative errors $|\kappa _{\text  {empirical}} - \kappa _{\text  {predicted}}| / \kappa _{\text  {predicted}}$ for the five tested pairs; all bars are below $0.005$, an order of magnitude below the conservative $0.05$ threshold (dashed grey line) used to declare the theorem supported. The empirical agreement with the predicted formula is essentially perfect across the entire tested range.}}{8}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:catalysts}{{2}{8}{\textbf {Multiplicative Catalytic Composition.} (\textbf {A})~Paired bar chart comparing the predicted catalytic power $\kappa (\gamma _1 \diamond \gamma _2) = 1 - (1-\kappa _1)(1-\kappa _2)$ (blue, left bars) against the empirically observed combined catalytic firing rate (orange, right bars, with $\pm 1$ SD error bars across $20$ seeds) for five $(\kappa _1, \kappa _2)$ pairs. Predicted and observed values are visually indistinguishable: maximum relative error across all five pairs is $0.26\%$, and the mean relative error is below $0.1\%$. The pairs span symmetric ($\kappa _1 = \kappa _2$) and asymmetric configurations, including the extreme high-power case $(0.9, 0.9)$ where the combined power saturates at $0.99$, in agreement with Theorem~\ref {thm:catalytic}. (\textbf {B})~Scaling of the catalytic power $1 - (1 - \kappa )^n$ as the number of independent identical catalysts $n$ grows from $1$ to $10$, plotted for four base $\kappa \in \{0.3, 0.5, 0.7, 0.9\}$. Each curve traces the closed-form prediction from Corollary~\ref {cor:n-catalysts}: combined power approaches unity geometrically as catalysts compose. For $\kappa = 0.5$, ten composed catalysts achieve power $0.999$ ($1 - 2^{-10}$); for $\kappa = 0.3$, the same composition reaches $0.97$. (\textbf {C})~Three-dimensional surface of combined catalytic power $\kappa (\gamma _1 \diamond \gamma _2) = 1 - (1-\kappa _1)(1-\kappa _2)$ over the unit square $(\kappa _1, \kappa _2) \in [0, 1]^2$, colour-mapped via the plasma palette. The surface saturates near the boundaries $\kappa _i \to 1$, climbs steeply along both axes, and exhibits the characteristic saddle-free geometry of the multiplicative composition law. The visualisation makes the qualitative dominance principle visible: a single high-power catalyst pulls the joint power up toward $1$ regardless of the other catalyst's power. (\textbf {D})~Bar chart of relative errors $|\kappa _{\text {empirical}} - \kappa _{\text {predicted}}| / \kappa _{\text {predicted}}$ for the five tested pairs; all bars are below $0.005$, an order of magnitude below the conservative $0.05$ threshold (dashed grey line) used to declare the theorem supported. The empirical agreement with the predicted formula is essentially perfect across the entire tested range}{figure.caption.3}{}}
+\citation{robertson1929uncertainty,heisenberg1927uber}
+\citation{heisenberg1927uber,robertson1929uncertainty}
+\@writefile{toc}{\contentsline {section}{\numberline {4}The Receiver Uncertainty Principle}{9}{section.4}\protected@file@percent }
+\newlabel{sec:uncertainty}{{4}{9}{The Receiver Uncertainty Principle}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Dispersions}{9}{subsection.4.1}\protected@file@percent }
+\newlabel{def:disp-K}{{4.1}{9}{Knowledge dispersion}{theorem.4.1}{}}
+\newlabel{def:disp-Y}{{4.2}{9}{Action dispersion}{theorem.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The uncertainty inequality}{9}{subsection.4.2}\protected@file@percent }
+\newlabel{thm:uncertainty}{{4.3}{9}{Receiver Uncertainty Principle}{theorem.4.3}{}}
+\newlabel{cor:prod-comp}{{4.5}{9}{Production vs.\ completion}{theorem.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Implication for federation}{9}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Federation and the Federation Inequality}{9}{section.5}\protected@file@percent }
+\newlabel{sec:federation}{{5}{9}{Federation and the Federation Inequality}{section.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {Receiver Uncertainty Principle: $\sigma _K \cdot \sigma _Y \geq \beta \tau $.} (\textbf  {A})~Scatter of observed dispersion-product $\sigma _K \cdot \sigma _Y$ versus the theoretical lower bound $\beta \tau = \hbar _\mathcal  {R}$ for $500$ random methodology samples drawn over receivers with $\beta \in [2, 30]$ and action-cell tolerances $\tau \in [5, 25]$. The dashed orange line is the inequality saturation $y = x$. Every observed point lies on or strictly above the line, with zero violations across the $450$ samples in the calibration set (violation rate $0.000$), confirming the Heisenberg-type inequality of Theorem~\ref {thm:uncertainty}. (\textbf  {B})~Histogram of the slack $\sigma _K\sigma _Y - \beta \tau $ across the same sample set, with the orange dashed line at zero. The distribution is concentrated near small positive slack and exhibits a long right tail; no sample exhibits negative slack. The slack distribution's shape reflects the structural fact that the bound is tight for methodologies on the saturation hyperbola and loose for those with mis-allocated dispersion across the conjugate axes. (\textbf  {C})~Three-dimensional scatter of $(\sigma _K, \sigma _Y, \beta )$ for the sample set, with points colour-coded by the bound $\beta \tau $ via the viridis palette. The cloud's structure reveals the joint geometry of the inequality: large-floor methodologies (warm-coloured points, high in $\beta $) require larger dispersion products to satisfy the bound, while small-floor methodologies (cool-coloured points, low in $\beta $) admit smaller products. The scattering across $(\sigma _K, \sigma _Y)$ at fixed $\beta \tau $ traces the hyperbolic constraint surface. (\textbf  {D})~Trade-off hyperbolas $\sigma _Y^{\min }(\sigma _K) = \hbar _\mathcal  {R}/\sigma _K$ for four representative values of the bound constant $\beta \tau \in \{50, 200, 500, 1000\}$. The curves illustrate the conjugate dispersion regime: minimising $\sigma _Y$ (concentrated, deterministic output) requires high $\sigma _K$ (variable internal state), and vice versa. The framework predicts and the data confirms that no methodology can occupy the region below all four curves simultaneously.}}{10}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:uncertainty}{{3}{10}{\textbf {Receiver Uncertainty Principle: $\sigma _K \cdot \sigma _Y \geq \beta \tau $.} (\textbf {A})~Scatter of observed dispersion-product $\sigma _K \cdot \sigma _Y$ versus the theoretical lower bound $\beta \tau = \hbar _\mathcal {R}$ for $500$ random methodology samples drawn over receivers with $\beta \in [2, 30]$ and action-cell tolerances $\tau \in [5, 25]$. The dashed orange line is the inequality saturation $y = x$. Every observed point lies on or strictly above the line, with zero violations across the $450$ samples in the calibration set (violation rate $0.000$), confirming the Heisenberg-type inequality of Theorem~\ref {thm:uncertainty}. (\textbf {B})~Histogram of the slack $\sigma _K\sigma _Y - \beta \tau $ across the same sample set, with the orange dashed line at zero. The distribution is concentrated near small positive slack and exhibits a long right tail; no sample exhibits negative slack. The slack distribution's shape reflects the structural fact that the bound is tight for methodologies on the saturation hyperbola and loose for those with mis-allocated dispersion across the conjugate axes. (\textbf {C})~Three-dimensional scatter of $(\sigma _K, \sigma _Y, \beta )$ for the sample set, with points colour-coded by the bound $\beta \tau $ via the viridis palette. The cloud's structure reveals the joint geometry of the inequality: large-floor methodologies (warm-coloured points, high in $\beta $) require larger dispersion products to satisfy the bound, while small-floor methodologies (cool-coloured points, low in $\beta $) admit smaller products. The scattering across $(\sigma _K, \sigma _Y)$ at fixed $\beta \tau $ traces the hyperbolic constraint surface. (\textbf {D})~Trade-off hyperbolas $\sigma _Y^{\min }(\sigma _K) = \hbar _\mathcal {R}/\sigma _K$ for four representative values of the bound constant $\beta \tau \in \{50, 200, 500, 1000\}$. The curves illustrate the conjugate dispersion regime: minimising $\sigma _Y$ (concentrated, deterministic output) requires high $\sigma _K$ (variable internal state), and vice versa. The framework predicts and the data confirms that no methodology can occupy the region below all four curves simultaneously}{figure.caption.4}{}}
+\citation{kolmogorov1933foundations}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Federation}{11}{subsection.5.1}\protected@file@percent }
+\newlabel{def:federation}{{5.1}{11}{Federation}{theorem.5.1}{}}
+\newlabel{def:redundant}{{5.2}{11}{Redundant federation}{theorem.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The federation inequality}{11}{subsection.5.2}\protected@file@percent }
+\newlabel{thm:federation}{{5.3}{11}{Federation Inequality}{theorem.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Marginal floor reduction}{11}{subsection.5.3}\protected@file@percent }
+\newlabel{def:marginal}{{5.4}{11}{Marginal floor reduction}{theorem.5.4}{}}
+\newlabel{thm:marginal}{{5.5}{11}{Closed-form marginal reduction}{theorem.5.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Knowledge entropy}{11}{subsection.5.4}\protected@file@percent }
+\newlabel{def:H-receiver}{{5.6}{11}{Knowledge entropy of a receiver}{theorem.5.6}{}}
+\newlabel{thm:H-fed}{{5.7}{11}{Federation entropy ordering}{theorem.5.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textbf  {Federation Inequality, Marginal Reduction, and Knowledge-Entropy Ordering.} (\textbf  {A})~Joint federation floor $S_\flat (\mathfrak  {F})$ (blue, solid line with $\pm 1$ SD error bars) and the minimum-individual floor $\min _i S_\flat (\mathcal  {R}_i)$ (orange, dashed) as functions of federation size $n \in \{1, 2, 3, 4, 5, 6, 8\}$, plotted on a logarithmic vertical axis. Both curves coincide at $n = 1$ ($38.3$, identical by definition). At $n = 2$ the joint floor drops to $11.0$ against a min-individual of $25.8$; at $n = 8$ the joint floor is $0.043$ against a min-individual of $14.4$. The geometric decay of the joint floor with $n$ matches the closed-form prediction $\Sigma \DOTSB \prod@ \slimits@ _{i=1}^n \beta _i/\Sigma $ from the proof of Theorem~\ref {thm:federation}. (\textbf  {B})~Marginal floor reduction $\Delta S_\flat = S_\flat (\mathfrak  {F}_n) - S_\flat (\mathfrak  {F}_{n+1})$ at each step $n \to n+1$, comparing the closed-form prediction $S_n(1 - \beta _{\text  {new}}/\Sigma )$ (orange, dashed) against the directly-measured marginal (blue, solid, with $\pm 1$ SD across seeds). The two curves are visually indistinguishable; the maximum relative error across all seven steps is $2.7 \times 10^{-16}$ --- machine-precision agreement with Theorem~\ref {thm:marginal}. (\textbf  {C})~Knowledge entropy $\mathfrak  {H}(\mathfrak  {F})$ (blue, solid) compared against the maximum individual knowledge entropy $\max _i \mathfrak  {H}(\mathcal  {R}_i)$ (orange, dashed) as a function of federation size $n \in \{1, \ldots  , 10\}$. The joint entropy grows from $1.25$ at $n = 1$ to $12.7$ at $n = 10$, while the maximum-individual entropy remains bounded between $0.4$ and $0.6$ across the same range. (\textbf  {D})~Three-dimensional surface of the joint federation floor $S_\flat (\mathfrak  {F}) = \Sigma (\bar  \beta /\Sigma )^n$ over the joint parameter plane $(n, \bar  \beta ) \in [1, 10] \times [10, 60]$, where $\bar  \beta $ is the mean per-receiver floor. The surface collapses exponentially toward zero as $n$ grows, with the collapse rate steepening for low $\bar  \beta $. The visualisation provides the geometric form of the multiplicative composition law: doubling the federation has a far larger effect than halving the mean per-receiver floor.}}{12}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:federation}{{4}{12}{\textbf {Federation Inequality, Marginal Reduction, and Knowledge-Entropy Ordering.} (\textbf {A})~Joint federation floor $S_\flat (\mathfrak {F})$ (blue, solid line with $\pm 1$ SD error bars) and the minimum-individual floor $\min _i S_\flat (\mathcal {R}_i)$ (orange, dashed) as functions of federation size $n \in \{1, 2, 3, 4, 5, 6, 8\}$, plotted on a logarithmic vertical axis. Both curves coincide at $n = 1$ ($38.3$, identical by definition). At $n = 2$ the joint floor drops to $11.0$ against a min-individual of $25.8$; at $n = 8$ the joint floor is $0.043$ against a min-individual of $14.4$. The geometric decay of the joint floor with $n$ matches the closed-form prediction $\Sigma \prod _{i=1}^n \beta _i/\Sigma $ from the proof of Theorem~\ref {thm:federation}. (\textbf {B})~Marginal floor reduction $\Delta S_\flat = S_\flat (\mathfrak {F}_n) - S_\flat (\mathfrak {F}_{n+1})$ at each step $n \to n+1$, comparing the closed-form prediction $S_n(1 - \beta _{\text {new}}/\Sigma )$ (orange, dashed) against the directly-measured marginal (blue, solid, with $\pm 1$ SD across seeds). The two curves are visually indistinguishable; the maximum relative error across all seven steps is $2.7 \times 10^{-16}$ --- machine-precision agreement with Theorem~\ref {thm:marginal}. (\textbf {C})~Knowledge entropy $\mathfrak {H}(\mathfrak {F})$ (blue, solid) compared against the maximum individual knowledge entropy $\max _i \mathfrak {H}(\mathcal {R}_i)$ (orange, dashed) as a function of federation size $n \in \{1, \ldots , 10\}$. The joint entropy grows from $1.25$ at $n = 1$ to $12.7$ at $n = 10$, while the maximum-individual entropy remains bounded between $0.4$ and $0.6$ across the same range. (\textbf {D})~Three-dimensional surface of the joint federation floor $S_\flat (\mathfrak {F}) = \Sigma (\bar \beta /\Sigma )^n$ over the joint parameter plane $(n, \bar \beta ) \in [1, 10] \times [10, 60]$, where $\bar \beta $ is the mean per-receiver floor. The surface collapses exponentially toward zero as $n$ grows, with the collapse rate steepening for low $\bar \beta $. The visualisation provides the geometric form of the multiplicative composition law: doubling the federation has a far larger effect than halving the mean per-receiver floor}{figure.caption.5}{}}
+\citation{dantzig1957discrete,karp1972reducibility,bellman1957dynamic}
+\citation{bellman1957dynamic}
+\citation{ibarra1975fast}
+\citation{kellerer2004knapsack,pisinger1997minimal}
+\citation{kelly1956new}
+\citation{chen2023frugalgpt,ong2024routellm}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Cascade Switching and the Knapsack Theorem}{13}{section.6}\protected@file@percent }
+\newlabel{sec:cascade}{{6}{13}{Cascade Switching and the Knapsack Theorem}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}The allocation problem}{13}{subsection.6.1}\protected@file@percent }
+\newlabel{def:cascade}{{6.1}{13}{Cascade}{theorem.6.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}The cascade switching theorem}{13}{subsection.6.2}\protected@file@percent }
+\newlabel{thm:knapsack}{{6.3}{13}{Cascade Switching Theorem}{theorem.6.3}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Cascade Switching by Value-Density Greedy}}{13}{algorithm.1}\protected@file@percent }
+\newlabel{alg:greedy}{{1}{13}{Cascade Switching by Value-Density Greedy}{algorithm.1}{}}
+\newlabel{cor:knapsack-form}{{6.4}{13}{Closed-form optimum}{theorem.6.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Greedy approximation}{13}{subsection.6.3}\protected@file@percent }
+\newlabel{thm:greedy-approx}{{6.5}{13}{Greedy approximation}{theorem.6.5}{}}
+\citation{banach1922operations}
+\citation{du2023improving}
+\citation{zheng2023judging}
+\citation{wang2024mixture}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Comparison with fixed-allocation cascades}{14}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Circular Validation}{14}{section.7}\protected@file@percent }
+\newlabel{sec:circular}{{7}{14}{Circular Validation}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}The justification graph}{14}{subsection.7.1}\protected@file@percent }
+\newlabel{def:justification}{{7.1}{14}{Justification graph}{theorem.7.1}{}}
+\newlabel{def:linear}{{7.2}{14}{Linear justification}{theorem.7.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Linear justification failure}{14}{subsection.7.2}\protected@file@percent }
+\newlabel{thm:linear-fail}{{7.3}{14}{Linear Justification Failure}{theorem.7.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Circular justification}{14}{subsection.7.3}\protected@file@percent }
+\newlabel{def:circular}{{7.5}{14}{Circular justification}{theorem.7.5}{}}
+\newlabel{thm:circular}{{7.6}{14}{Circular Validity Sufficiency}{theorem.7.6}{}}
+\newlabel{cor:three-min}{{7.7}{14}{Three-node minimum}{theorem.7.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Operational interpretation}{14}{subsection.7.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textbf  {Cascade Switching Knapsack and Circular Validation.} (\textbf  {A})~Greedy-to-optimal ratio for cascade switching as a function of budget $B \in \{1.5, 2.5, 3.5, 5.0, 8.0\}$, with $\pm 1$ SD error bars across $30$ seeds. The mean ratio remains between $0.97$ and $0.98$ across all budgets, far above the $(1 - 1/e) \approx 0.632$ worst-case bound (orange dashed) predicted by Theorem~\ref {thm:greedy-approx}. The minimum observed ratio across $150$ trials is $0.642$, just above the bound. The dashed grey line at $1.0$ marks exact optimality. (\textbf  {B})~Paired bar chart of resulting cascade floors under the optimal allocation (green, left bars) versus the value-density greedy (purple, right bars) across the same budget settings. At $B = 1.5$ the optimal floor is $46.3$ vs greedy $47.2$; at $B = 8.0$ optimal $9.66$ vs greedy $10.05$. The two allocations produce nearly identical floors at every budget, consistent with the high greedy-to-optimal ratios in panel A and confirming that the value-density greedy is a practically near-optimal solver for the cascade switching problem of Theorem~\ref {thm:knapsack}. (\textbf  {C})~Three-dimensional surface of the value-density $\rho _i = v_i / c_i = \log (\Sigma /(\Sigma - \beta _i)) / c_i$ over the joint parameter plane $(\beta _i, c_i) \in [5, 55] \times [0.3, 3.0]$, colour-mapped via the plasma palette. The surface rises sharply in the high-$\beta $, low-$c$ corner --- the methodologies the greedy router prioritises first --- and is nearly flat in the high-$c$, low-$\beta $ region. (\textbf  {D})~Effective floor as a function of the validator-graph size $|V| \in \{1, 2, 3, 4, 5\}$ for three regimes: the linear (DAG) validator (orange squares), the circular (strongly-connected) validator (blue circles), and the unvalidated min-individual baseline (grey diamonds, dotted). The linear floor remains near $30$ at every size (capped by the terminal-node floor, per Theorem~\ref {thm:linear-fail}). The circular floor exhibits a sharp discontinuity at $|V| = 3$ (vertical magenta dashed line): floors of $31.8$, $33.2$ at $|V| = 1, 2$ collapse to $3.0$ at $|V| = 3$, then to $0.91$ at $|V| = 4$ and $0.26$ at $|V| = 5$. The visible step at $|V| = 3$ is the empirical realisation of the Circular Validity Sufficiency Theorem~\ref {thm:circular}: foundational coherence requires a strongly-connected validator graph of size at least three.}}{15}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:cascade}{{5}{15}{\textbf {Cascade Switching Knapsack and Circular Validation.} (\textbf {A})~Greedy-to-optimal ratio for cascade switching as a function of budget $B \in \{1.5, 2.5, 3.5, 5.0, 8.0\}$, with $\pm 1$ SD error bars across $30$ seeds. The mean ratio remains between $0.97$ and $0.98$ across all budgets, far above the $(1 - 1/e) \approx 0.632$ worst-case bound (orange dashed) predicted by Theorem~\ref {thm:greedy-approx}. The minimum observed ratio across $150$ trials is $0.642$, just above the bound. The dashed grey line at $1.0$ marks exact optimality. (\textbf {B})~Paired bar chart of resulting cascade floors under the optimal allocation (green, left bars) versus the value-density greedy (purple, right bars) across the same budget settings. At $B = 1.5$ the optimal floor is $46.3$ vs greedy $47.2$; at $B = 8.0$ optimal $9.66$ vs greedy $10.05$. The two allocations produce nearly identical floors at every budget, consistent with the high greedy-to-optimal ratios in panel A and confirming that the value-density greedy is a practically near-optimal solver for the cascade switching problem of Theorem~\ref {thm:knapsack}. (\textbf {C})~Three-dimensional surface of the value-density $\rho _i = v_i / c_i = \log (\Sigma /(\Sigma - \beta _i)) / c_i$ over the joint parameter plane $(\beta _i, c_i) \in [5, 55] \times [0.3, 3.0]$, colour-mapped via the plasma palette. The surface rises sharply in the high-$\beta $, low-$c$ corner --- the methodologies the greedy router prioritises first --- and is nearly flat in the high-$c$, low-$\beta $ region. (\textbf {D})~Effective floor as a function of the validator-graph size $|V| \in \{1, 2, 3, 4, 5\}$ for three regimes: the linear (DAG) validator (orange squares), the circular (strongly-connected) validator (blue circles), and the unvalidated min-individual baseline (grey diamonds, dotted). The linear floor remains near $30$ at every size (capped by the terminal-node floor, per Theorem~\ref {thm:linear-fail}). The circular floor exhibits a sharp discontinuity at $|V| = 3$ (vertical magenta dashed line): floors of $31.8$, $33.2$ at $|V| = 1, 2$ collapse to $3.0$ at $|V| = 3$, then to $0.91$ at $|V| = 4$ and $0.26$ at $|V| = 5$. The visible step at $|V| = 3$ is the empirical realisation of the Circular Validity Sufficiency Theorem~\ref {thm:circular}: foundational coherence requires a strongly-connected validator graph of size at least three}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The FKAC architecture. Layer 1 instantiates the Cascade Switching Theorem; Layer 2 instantiates the Federation Inequality; Layer 3 instantiates the Circular Validity Theorem; Layer 4 inherits the aggregate floor.}}{16}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:arch}{{6}{16}{The FKAC architecture. Layer 1 instantiates the Cascade Switching Theorem; Layer 2 instantiates the Federation Inequality; Layer 3 instantiates the Circular Validity Theorem; Layer 4 inherits the aggregate floor}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {part}{II\hspace  {1em}The FKAC Architecture}{16}{part.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Federated Knapsack-Allocated Cascade}{16}{section.8}\protected@file@percent }
+\newlabel{sec:fkac}{{8}{16}{Federated Knapsack-Allocated Cascade}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Architecture overview}{16}{subsection.8.1}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Federated Knapsack-Allocated Cascade}}{16}{algorithm.2}\protected@file@percent }
+\newlabel{alg:fkac}{{2}{16}{Federated Knapsack-Allocated Cascade}{algorithm.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}End-to-end algorithm}{16}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}End-to-end floor theorem}{16}{subsection.8.3}\protected@file@percent }
+\newlabel{thm:fkac}{{8.1}{16}{End-to-End Floor}{theorem.8.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Why this composition is non-trivial}{17}{subsection.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Complexity Analysis}{17}{section.9}\protected@file@percent }
+\newlabel{sec:complexity}{{9}{17}{Complexity Analysis}{section.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Per-layer complexity}{17}{subsection.9.1}\protected@file@percent }
+\newlabel{prop:router-comp}{{9.1}{17}{Router complexity}{theorem.9.1}{}}
+\newlabel{prop:fed-comp}{{9.2}{17}{Federation complexity}{theorem.9.2}{}}
+\newlabel{prop:val-comp}{{9.3}{17}{Validator complexity}{theorem.9.3}{}}
+\newlabel{prop:int-comp}{{9.4}{17}{Integration complexity}{theorem.9.4}{}}
+\newlabel{cor:total-comp}{{9.5}{17}{Total complexity}{theorem.9.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Comparison with single-model baseline}{17}{subsection.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{III\hspace  {1em}Application: Multi-Model Language Inference}{17}{part.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Instantiation on Language-Model Inference}{17}{section.10}\protected@file@percent }
+\newlabel{sec:application}{{10}{17}{Instantiation on Language-Model Inference}{section.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Task and outcome space}{18}{subsection.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}Receiver assignment}{18}{subsection.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Floor calibration}{18}{subsection.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Cascade allocation}{18}{subsection.10.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5}Parallel drafting and validation}{18}{subsection.10.5}\protected@file@percent }
+\citation{dietterich2000ensemble,breiman2001random,freund1997decision,schapire1990strength,wolpert1992stacked}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Empirical results on validation set. Floor on $[0, 100]$ scale (lower is better). Agreement and cross are cell-membership rates against expert reference. Latency is end-to-end wall-clock.}}{19}{table.caption.8}\protected@file@percent }
+\newlabel{tab:results}{{1}{19}{Empirical results on validation set. Floor on $[0, 100]$ scale (lower is better). Agreement and cross are cell-membership rates against expert reference. Latency is end-to-end wall-clock}{table.caption.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11}Empirical Validation}{19}{section.11}\protected@file@percent }
+\newlabel{sec:validation}{{11}{19}{Empirical Validation}{section.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.1}Setup}{19}{subsection.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}Metrics}{19}{subsection.11.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3}Results}{19}{subsection.11.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.4}Cascade-allocation correctness}{19}{subsection.11.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.5}Floor reduction by federation size}{19}{subsection.11.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.6}Circular validation impact}{19}{subsection.11.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{IV\hspace  {1em}Discussion}{19}{part.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12}Related Work}{19}{section.12}\protected@file@percent }
+\newlabel{sec:related}{{12}{19}{Related Work}{section.12}{}}
+\@writefile{toc}{\contentsline {paragraph}{Ensemble methods.}{19}{section*.9}\protected@file@percent }
+\citation{jacobs1991adaptive,shazeer2017outrageously,fedus2022switch}
+\citation{chen2023frugalgpt,sakota2024fly,lu2024merge,ong2024routellm,liu2024routerbench,aggarwal2024automix,naik2024diversity,stoica2024specialized}
+\citation{du2023improving}
+\citation{madaan2023self}
+\citation{yao2023tree}
+\citation{wang2024mixture}
+\citation{zheng2023judging}
+\citation{simon1956rational,simon1957models}
+\citation{valiant1984theory,vapnik1998statistical}
+\citation{shazeer2017outrageously,fedus2022switch}
+\@writefile{toc}{\contentsline {paragraph}{Mixture of experts.}{20}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Cost-aware LLM routing.}{20}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Multi-agent reasoning.}{20}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{LLM as judge.}{20}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Foundation models and bounded inference.}{20}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.1}Distinctions}{20}{subsection.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13}Limitations and Open Problems}{20}{section.13}\protected@file@percent }
+\newlabel{sec:limitations}{{13}{20}{Limitations and Open Problems}{section.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.1}Calibration cost}{20}{subsection.13.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.2}Independence assumption}{20}{subsection.13.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.3}Cell-membership oracle}{20}{subsection.13.3}\protected@file@percent }
+\citation{vonneumann1928theorie,nash1951non}
+\citation{garey1979computers}
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{aggarwal2024automix}{{1}{2024}{{Aggarwal et~al.}}{{Aggarwal, Madaan, Anand, Potharaju, Mishra, Zhou, Gupta, Rajagopal, Kappaganthu, Yang, et~al.}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.4}Adversarial inputs}{21}{subsection.13.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.5}Open problems}{21}{subsection.13.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {14}Conclusion}{21}{section.14}\protected@file@percent }
+\newlabel{sec:conclusion}{{14}{21}{Conclusion}{section.14}{}}
+\bibcite{aumann1976agreeing}{{2}{1976}{{Aumann}}{{}}}
+\bibcite{banach1922operations}{{3}{1922}{{Banach}}{{}}}
+\bibcite{bellman1957dynamic}{{4}{1957}{{Bellman}}{{}}}
+\bibcite{blumer1989learnability}{{5}{1989}{{Blumer et~al.}}{{Blumer, Ehrenfeucht, Haussler, and Warmuth}}}
+\bibcite{boyd2004convex}{{6}{2004}{{Boyd and Vandenberghe}}{{}}}
+\bibcite{breiman2001random}{{7}{2001}{{Breiman}}{{}}}
+\bibcite{chen2023frugalgpt}{{8}{2023}{{Chen et~al.}}{{Chen, Zaharia, and Zou}}}
+\bibcite{cover2006elements}{{9}{2006}{{Cover and Thomas}}{{}}}
+\bibcite{dantzig1957discrete}{{10}{1957}{{Dantzig}}{{}}}
+\bibcite{dietterich2000ensemble}{{11}{2000}{{Dietterich}}{{}}}
+\bibcite{du2023improving}{{12}{2023}{{Du et~al.}}{{Du, Li, Torralba, Tenenbaum, and Mordatch}}}
+\bibcite{fedus2022switch}{{13}{2022}{{Fedus et~al.}}{{Fedus, Zoph, and Shazeer}}}
+\bibcite{fisher1925theory}{{14}{1925}{{Fisher}}{{}}}
+\bibcite{freund1997decision}{{15}{1997}{{Freund and Schapire}}{{}}}
+\bibcite{garey1979computers}{{16}{1979}{{Garey and Johnson}}{{}}}
+\bibcite{godel1931formal}{{17}{1931}{{G{\"o}del}}{{}}}
+\bibcite{halmos1950measure}{{18}{1950}{{Halmos}}{{}}}
+\bibcite{heisenberg1927uber}{{19}{1927}{{Heisenberg}}{{}}}
+\bibcite{ibarra1975fast}{{20}{1975}{{Ibarra and Kim}}{{}}}
+\bibcite{jacobs1991adaptive}{{21}{1991}{{Jacobs et~al.}}{{Jacobs, Jordan, Nowlan, and Hinton}}}
+\bibcite{jiang2023llm}{{22}{2023}{{Jiang et~al.}}{{Jiang, Ren, and Lin}}}
+\bibcite{karp1972reducibility}{{23}{1972}{{Karp}}{{}}}
+\bibcite{kellerer2004knapsack}{{24}{2004}{{Kellerer et~al.}}{{Kellerer, Pferschy, and Pisinger}}}
+\bibcite{kelly1956new}{{25}{1956}{{Kelly}}{{}}}
+\bibcite{kolmogorov1933foundations}{{26}{1933}{{Kolmogorov}}{{}}}
+\bibcite{kullback1951information}{{27}{1951}{{Kullback and Leibler}}{{}}}
+\bibcite{lewis1969convention}{{28}{1969}{{Lewis}}{{}}}
+\bibcite{liu2024routerbench}{{29}{2024}{{Liu et~al.}}{{Liu, Yao, Ton, Zhang, Cheng, et~al.}}}
+\bibcite{lu2024merge}{{30}{2024}{{Lu et~al.}}{{Lu, Yuan, Lin, Lin, Yuan, Zhou, and Zhou}}}
+\bibcite{madaan2023self}{{31}{2023}{{Madaan et~al.}}{{Madaan, Tandon, Gupta, Hallinan, Gao, Wiegreffe, Alon, Dziri, Prabhumoye, Yang, et~al.}}}
+\bibcite{naik2024diversity}{{32}{2024}{{Naik et~al.}}{{Naik, Khurana, Liang, and Hashimoto}}}
+\bibcite{nash1951non}{{33}{1951}{{Nash}}{{}}}
+\bibcite{nesterov2018lectures}{{34}{2018}{{Nesterov}}{{}}}
+\bibcite{ong2024routellm}{{35}{2024}{{Ong et~al.}}{{Ong, Almahairi, Wu, Chiang, Wu, Gonzalez, Kadous, and Stoica}}}
+\bibcite{pisinger1997minimal}{{36}{1997}{{Pisinger}}{{}}}
+\bibcite{rao1945information}{{37}{1945}{{Rao}}{{}}}
+\bibcite{robertson1929uncertainty}{{38}{1929}{{Robertson}}{{}}}
+\bibcite{rudin1987real}{{39}{1987}{{Rudin}}{{}}}
+\bibcite{russell2020artificial}{{40}{2020}{{Russell and Norvig}}{{}}}
+\bibcite{sakota2024fly}{{41}{2024}{{Sakota et~al.}}{{Sakota, Peyrard, and West}}}
+\bibcite{schapire1990strength}{{42}{1990}{{Schapire}}{{}}}
+\bibcite{shalev2014understanding}{{43}{2014}{{Shalev-Shwartz and Ben-David}}{{}}}
+\bibcite{shannon1948mathematical}{{44}{1948}{{Shannon}}{{}}}
+\bibcite{shazeer2017outrageously}{{45}{2017}{{Shazeer et~al.}}{{Shazeer, Mirhoseini, Maziarz, Davis, Le, Hinton, and Dean}}}
+\bibcite{simon1956rational}{{46}{1956}{{Simon}}{{}}}
+\bibcite{simon1957models}{{47}{1957}{{Simon}}{{}}}
+\bibcite{stoica2024specialized}{{48}{2024}{{Stoica et~al.}}{{Stoica, Wong, Xu, and Zhang}}}
+\bibcite{tarski1933pojecie}{{49}{1933}{{Tarski}}{{}}}
+\bibcite{turing1936computable}{{50}{1936}{{Turing}}{{}}}
+\bibcite{valiant1984theory}{{51}{1984}{{Valiant}}{{}}}
+\bibcite{vapnik1998statistical}{{52}{1998}{{Vapnik}}{{}}}
+\bibcite{vonneumann1928theorie}{{53}{1928}{{von Neumann}}{{}}}
+\bibcite{wang2024mixture}{{54}{2024}{{Wang et~al.}}{{Wang, Wang, Athiwaratkun, Zhang, and Zou}}}
+\bibcite{wang2022self}{{55}{2023}{{Wang et~al.}}{{Wang, Wei, Schuurmans, Le, Chi, Narang, Chowdhery, and Zhou}}}
+\bibcite{wei2022chain}{{56}{2022}{{Wei et~al.}}{{Wei, Wang, Schuurmans, Bosma, Ichter, Xia, Chi, Le, and Zhou}}}
+\bibcite{wolpert1992stacked}{{57}{1992}{{Wolpert}}{{}}}
+\bibcite{wooldridge2009introduction}{{58}{2009}{{Wooldridge}}{{}}}
+\bibcite{yao2023tree}{{59}{2023}{{Yao et~al.}}{{Yao, Yu, Zhao, Shafran, Griffiths, Cao, and Narasimhan}}}
+\bibcite{zheng2023judging}{{60}{2023}{{Zheng et~al.}}{{Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li, Li, Xing, et~al.}}}
+\gdef \@abspage@last{24}

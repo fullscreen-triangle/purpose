@@ -1,0 +1,73 @@
+\contentsline {part}{I\hspace {1em}Theoretical Foundations}{2}{part.1}%
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}The bounded-inference problem}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Contribution}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Position relative to existing approaches}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Independence}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Organisation}{4}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Receivers, Action-Cells, and the $S$-Functional}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Outcome and action spaces}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Receivers and the floor}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Floor positivity}{5}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Methodologies and the Multiplicative Catalytic Law}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Methodology and Banach floor}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Catalytic composition}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Mode--methodology equivalence}{7}{subsection.3.3}%
+\contentsline {section}{\numberline {4}The Receiver Uncertainty Principle}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Dispersions}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}The uncertainty inequality}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Implication for federation}{9}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Federation and the Federation Inequality}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Federation}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The federation inequality}{11}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Marginal floor reduction}{11}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Knowledge entropy}{11}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Cascade Switching and the Knapsack Theorem}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The allocation problem}{13}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The cascade switching theorem}{13}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Greedy approximation}{13}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Comparison with fixed-allocation cascades}{14}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Circular Validation}{14}{section.7}%
+\contentsline {subsection}{\numberline {7.1}The justification graph}{14}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Linear justification failure}{14}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Circular justification}{14}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Operational interpretation}{14}{subsection.7.4}%
+\contentsline {part}{II\hspace {1em}The FKAC Architecture}{16}{part.2}%
+\contentsline {section}{\numberline {8}Federated Knapsack-Allocated Cascade}{16}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Architecture overview}{16}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}End-to-end algorithm}{16}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}End-to-end floor theorem}{16}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Why this composition is non-trivial}{17}{subsection.8.4}%
+\contentsline {section}{\numberline {9}Complexity Analysis}{17}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Per-layer complexity}{17}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Comparison with single-model baseline}{17}{subsection.9.2}%
+\contentsline {part}{III\hspace {1em}Application: Multi-Model Language Inference}{17}{part.3}%
+\contentsline {section}{\numberline {10}Instantiation on Language-Model Inference}{17}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Task and outcome space}{18}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Receiver assignment}{18}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Floor calibration}{18}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Cascade allocation}{18}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Parallel drafting and validation}{18}{subsection.10.5}%
+\contentsline {section}{\numberline {11}Empirical Validation}{19}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Setup}{19}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Metrics}{19}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Results}{19}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Cascade-allocation correctness}{19}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}Floor reduction by federation size}{19}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}Circular validation impact}{19}{subsection.11.6}%
+\contentsline {part}{IV\hspace {1em}Discussion}{19}{part.4}%
+\contentsline {section}{\numberline {12}Related Work}{19}{section.12}%
+\contentsline {paragraph}{Ensemble methods.}{19}{section*.9}%
+\contentsline {paragraph}{Mixture of experts.}{20}{section*.10}%
+\contentsline {paragraph}{Cost-aware LLM routing.}{20}{section*.11}%
+\contentsline {paragraph}{Multi-agent reasoning.}{20}{section*.12}%
+\contentsline {paragraph}{LLM as judge.}{20}{section*.13}%
+\contentsline {paragraph}{Foundation models and bounded inference.}{20}{section*.14}%
+\contentsline {subsection}{\numberline {12.1}Distinctions}{20}{subsection.12.1}%
+\contentsline {section}{\numberline {13}Limitations and Open Problems}{20}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Calibration cost}{20}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Independence assumption}{20}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Cell-membership oracle}{20}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Adversarial inputs}{21}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}Open problems}{21}{subsection.13.5}%
+\contentsline {section}{\numberline {14}Conclusion}{21}{section.14}%
