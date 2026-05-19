@@ -16,7 +16,9 @@
       "Read(//c//**)",
       "Bash(curl -sL \"https://raw.githubusercontent.com/fullscreen-triangle/levinthal/main/cytochrome/README.md\" -o \"/tmp/p450_monograph.md\")",
       "Read(//tmp/**)",
-      "Bash(mkdir -p \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450\" && cp /tmp/p450_monograph.md \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450/monograph.md\" && wc -l -w -c \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450/monograph.md\")"
+      "Bash(mkdir -p \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450\" && cp /tmp/p450_monograph.md \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450/monograph.md\" && wc -l -w -c \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450/monograph.md\")",
+      "Bash(python /tmp/fix_braces.py)",
+      "Bash(python _fix_braces.py)"
     ],
     "additionalDirectories": [
       "\\tmp"
