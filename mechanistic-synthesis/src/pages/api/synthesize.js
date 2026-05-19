@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { getAnthropicClient, SYNTHESIS_MODEL } from "@/lib/anthropic";
+import { getProvider, synthesisModel } from "@/lib/llm";
 import { SYNTHESIS_SYSTEM, formatUserMessage } from "@/lib/prompts";
 import { buildPackContext, selectPacks } from "@/lib/knowledge-packs";
 
@@ -34,12 +34,25 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: e.errors?.[0]?.message || "invalid body" });
   }
 
-  let client;
+  let provider;
   try {
-    client = getAnthropicClient();
+    provider = getProvider();
   } catch (e) {
     return res.status(500).json({ error: e.message });
   }
+
+  // Re-validate the requested pack ids against current text.
+  const fupText = (body.followups || [])
+    .map((f) => `${f.question} ${f.answer || ""}`)
+    .join("\n");
+  const haystack = `${body.description}\n${fupText}`;
+  const reselected = new Set(selectPacks(haystack));
+  const finalPackIds = (body.packs || []).filter((id) => reselected.has(id));
+  const packsToUse = finalPackIds.length > 0 ? finalPackIds : [...reselected];
+  const packContext = buildPackContext(packsToUse);
+  const systemPrompt = packContext
+    ? `${SYNTHESIS_SYSTEM}\n\n${packContext}`
+    : SYNTHESIS_SYSTEM;
 
   res.writeHead(200, {
     "Content-Type": "text/plain; charset=utf-8",
@@ -48,28 +61,9 @@ export default async function handler(req, res) {
     "Transfer-Encoding": "chunked",
   });
 
-  // Resolve the set of knowledge packs to include. The client passes the
-  // pack ids the triage step returned; we re-validate here against the
-  // current description + followups so a stale or tampered list is
-  // automatically narrowed to packs that still match.
-  const fupText = (body.followups || [])
-    .map((f) => `${f.question} ${f.answer || ""}`)
-    .join("\n");
-  const haystack = `${body.description}\n${fupText}`;
-  const reselected = new Set(selectPacks(haystack));
-  const finalPackIds = (body.packs || []).filter((id) => reselected.has(id));
-  // If the client did not pass any pack hints, fall back to fresh selection.
-  const packsToUse =
-    finalPackIds.length > 0 ? finalPackIds : [...reselected];
-  const packContext = buildPackContext(packsToUse);
-  const systemPrompt = packContext
-    ? `${SYNTHESIS_SYSTEM}\n\n${packContext}`
-    : SYNTHESIS_SYSTEM;
-
   try {
-    const stream = client.messages.stream({
-      model: SYNTHESIS_MODEL,
-      max_tokens: 8192,
+    const stream = provider.stream({
+      model: synthesisModel(),
       system: systemPrompt,
       messages: [
         {
@@ -77,18 +71,12 @@ export default async function handler(req, res) {
           content: formatUserMessage(body.description, body.followups),
         },
       ],
+      maxTokens: 8192,
     });
 
-    for await (const event of stream) {
-      if (
-        event.type === "content_block_delta" &&
-        event.delta &&
-        event.delta.type === "text_delta" &&
-        typeof event.delta.text === "string"
-      ) {
-        res.write(event.delta.text);
-        if (typeof res.flush === "function") res.flush();
-      }
+    for await (const chunk of stream) {
+      res.write(chunk);
+      if (typeof res.flush === "function") res.flush();
     }
     res.end();
   } catch (e) {

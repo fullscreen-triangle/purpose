@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { getAnthropicClient, TRIAGE_MODEL } from "@/lib/anthropic";
+import { getProvider, triageModel } from "@/lib/llm";
 import { TRIAGE_SYSTEM, formatUserMessage } from "@/lib/prompts";
 import { selectPacks, getPackLabel } from "@/lib/knowledge-packs";
 
@@ -33,17 +33,16 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: e.errors?.[0]?.message || "invalid body" });
   }
 
-  let client;
+  let provider;
   try {
-    client = getAnthropicClient();
+    provider = getProvider();
   } catch (e) {
     return res.status(500).json({ error: e.message });
   }
 
   try {
-    const message = await client.messages.create({
-      model: TRIAGE_MODEL,
-      max_tokens: 1024,
+    const text = await provider.chat({
+      model: triageModel(),
       system: TRIAGE_SYSTEM,
       messages: [
         {
@@ -51,17 +50,13 @@ export default async function handler(req, res) {
           content: formatUserMessage(body.description, body.followups),
         },
       ],
+      maxTokens: 1024,
     });
-
-    const text = message.content
-      .filter((b) => b.type === "text")
-      .map((b) => b.text)
-      .join("");
 
     let parsed;
     try {
       parsed = JSON.parse(extractJson(text));
-    } catch (e) {
+    } catch {
       return res
         .status(502)
         .json({ error: "triage model returned non-JSON output", raw: text });
@@ -73,9 +68,8 @@ export default async function handler(req, res) {
         .json({ error: "triage model returned invalid status", raw: parsed });
     }
 
-    // Augment the triage response with knowledge-pack selection. Pack
-    // matching is keyword-based and runs against the user's raw description
-    // plus the model's one-sentence summary.
+    // Augment with knowledge-pack selection. Keyword-based; runs against
+    // the user description plus the model's summary and field hints.
     const haystack = [
       body.description,
       parsed.summary || "",
@@ -91,11 +85,11 @@ export default async function handler(req, res) {
 }
 
 /**
- * Extract a JSON object substring from arbitrary text. Models occasionally
- * wrap JSON in code fences or prose despite instructions.
+ * Extract a JSON object substring from arbitrary model output. Open-source
+ * models occasionally wrap JSON in code fences or add commentary.
  */
 function extractJson(text) {
-  const trimmed = text.trim();
+  const trimmed = (text || "").trim();
   if (trimmed.startsWith("{") && trimmed.endsWith("}")) return trimmed;
   const fenceMatch = trimmed.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
   if (fenceMatch) return fenceMatch[1].trim();
