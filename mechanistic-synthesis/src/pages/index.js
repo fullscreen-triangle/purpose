@@ -6,6 +6,8 @@ import ExperimentInput from "@/components/ExperimentInput";
 import FollowupPanel from "@/components/FollowupPanel";
 import PaperRenderer from "@/components/PaperRenderer";
 import LoadingState from "@/components/LoadingState";
+import PackBadge from "@/components/PackBadge";
+import ExampleQueries from "@/components/ExampleQueries";
 import { saveHistoryItem } from "@/lib/storage";
 
 const MAX_FOLLOWUP_ROUNDS = 3;
@@ -19,6 +21,8 @@ export default function Home() {
   const [pendingQuestions, setPendingQuestions] = useState([]);
   const [triageSummary, setTriageSummary] = useState("");
   const [triageField, setTriageField] = useState("");
+  const [activePacks, setActivePacks] = useState([]);
+  const [seedText, setSeedText] = useState("");
   const [followupRounds, setFollowupRounds] = useState(0);
 
   const [synthesis, setSynthesis] = useState("");
@@ -47,7 +51,7 @@ export default function Home() {
   }, []);
 
   const runSynthesis = useCallback(
-    async (desc, fups) => {
+    async (desc, fups, packs = []) => {
       setPhase("synthesizing");
       setError("");
       setSynthesis("");
@@ -56,7 +60,11 @@ export default function Home() {
         const res = await fetch("/api/synthesize", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ description: desc, followups: fups }),
+          body: JSON.stringify({
+            description: desc,
+            followups: fups,
+            packs: packs.map((p) => p.id || p),
+          }),
         });
         if (!res.ok) {
           const j = await res.json().catch(() => ({}));
@@ -105,9 +113,11 @@ export default function Home() {
 
       setTriageSummary(result.summary || "");
       setTriageField(result.field || "");
+      const packs = result.packs || [];
+      setActivePacks(packs);
 
       if (result.status === "ready") {
-        runSynthesis(text, []);
+        runSynthesis(text, [], packs);
       } else {
         setPendingQuestions(result.questions || []);
         setPhase("followup");
@@ -124,16 +134,18 @@ export default function Home() {
       setFollowupRounds(round);
 
       if (round >= MAX_FOLLOWUP_ROUNDS) {
-        runSynthesis(description, merged);
+        runSynthesis(description, merged, activePacks);
         return;
       }
 
       const result = await runTriage(description, merged);
       if (!result) return;
       setTriageSummary(result.summary || triageSummary);
+      const packs = result.packs || activePacks;
+      setActivePacks(packs);
 
       if (result.status === "ready") {
-        runSynthesis(description, merged);
+        runSynthesis(description, merged, packs);
       } else {
         setPendingQuestions(result.questions || []);
         setPhase("followup");
@@ -146,12 +158,13 @@ export default function Home() {
       runTriage,
       runSynthesis,
       triageSummary,
+      activePacks,
     ]
   );
 
   const handleSkipFollowup = useCallback(() => {
-    runSynthesis(description, followups);
-  }, [description, followups, runSynthesis]);
+    runSynthesis(description, followups, activePacks);
+  }, [description, followups, activePacks, runSynthesis]);
 
   const handleReset = useCallback(() => {
     setPhase("input");
@@ -162,6 +175,8 @@ export default function Home() {
     setError("");
     setTriageSummary("");
     setTriageField("");
+    setActivePacks([]);
+    setSeedText("");
     setFollowupRounds(0);
   }, []);
 
@@ -194,8 +209,17 @@ export default function Home() {
                 needed, and produces a paper-shaped synthesis: background, prior work,
                 methods, expected results, statistics, pitfalls, and references.
               </p>
+              <p className="text-xs text-dark/40 dark:text-light/40 mt-4 leading-relaxed">
+                Specialist knowledge packs activate automatically when the description
+                matches their domain. Currently included:{" "}
+                <span className="font-medium text-dark/60 dark:text-light/60">
+                  cytochrome P450 — categorical mechanics
+                </span>
+                .
+              </p>
             </motion.div>
-            <ExperimentInput onSubmit={handleInitialSubmit} />
+            <ExperimentInput initial={seedText} onSubmit={handleInitialSubmit} />
+            <ExampleQueries onPick={(t) => setSeedText(t)} />
           </div>
         )}
 
@@ -206,6 +230,7 @@ export default function Home() {
             <FollowupPanel
               summary={triageSummary}
               questions={pendingQuestions}
+              packs={activePacks}
               onSubmit={handleFollowupSubmit}
               onSkip={handleSkipFollowup}
             />
@@ -218,15 +243,18 @@ export default function Home() {
 
         {(phase === "synthesizing" || phase === "result") && synthesis.length > 0 && (
           <div className="w-full">
-            <div className="max-w-6xl mx-auto mb-6 flex items-center justify-between">
+            <div className="max-w-6xl mx-auto mb-6 flex items-center justify-between gap-4">
               <button
                 onClick={handleReset}
-                className="text-sm text-dark/60 dark:text-light/60 hover:text-dark dark:hover:text-light transition"
+                className="text-sm text-dark/60 dark:text-light/60 hover:text-dark dark:hover:text-light transition shrink-0"
               >
                 ← New synthesis
               </button>
-              {phase === "result" && (
-                <div className="flex items-center gap-3">
+              <div className="flex-1 flex justify-center">
+                <PackBadge packs={activePacks} />
+              </div>
+              {phase === "result" ? (
+                <div className="flex items-center gap-3 shrink-0">
                   <button
                     onClick={() => navigator.clipboard.writeText(synthesis)}
                     className="text-sm text-dark/60 dark:text-light/60 hover:text-dark dark:hover:text-light transition"
@@ -240,6 +268,8 @@ export default function Home() {
                     Print / PDF
                   </button>
                 </div>
+              ) : (
+                <div className="shrink-0 w-[160px]" aria-hidden />
               )}
             </div>
             <PaperRenderer markdown={synthesis} streaming={streaming} />

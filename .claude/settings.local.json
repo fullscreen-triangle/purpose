@@ -10,7 +10,16 @@
       "Bash(grep -n '\\\\\\\\label' \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/publication/purpose-model-factory/figures/factory-captions.tex\")",
       "Bash(cargo --version)",
       "Bash(rustc --version)",
-      "Read(//c/Users/kunda/.cargo/**)"
+      "Read(//c/Users/kunda/.cargo/**)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/fullscreen-triangle/levinthal/main/cytochrome/README.md\" -o \"c:/tmp_p450_monograph.md\")",
+      "Read(//c//**)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/fullscreen-triangle/levinthal/main/cytochrome/README.md\" -o \"/tmp/p450_monograph.md\")",
+      "Read(//tmp/**)",
+      "Bash(mkdir -p \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450\" && cp /tmp/p450_monograph.md \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450/monograph.md\" && wc -l -w -c \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450/monograph.md\")"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
     ]
   }
 }

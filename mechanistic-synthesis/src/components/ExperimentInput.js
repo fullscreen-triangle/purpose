@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const PLACEHOLDER = `Describe your experiment in your own words.
@@ -15,6 +15,10 @@ There is no required structure. Write as much as is useful — the system will a
 export default function ExperimentInput({ initial = "", disabled = false, onSubmit }) {
   const [text, setText] = useState(initial);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (initial) setText(initial);
+  }, [initial]);
 
   function handleSubmit(e) {
     e.preventDefault();

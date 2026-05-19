@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import PackBadge from "./PackBadge";
 
-export default function FollowupPanel({ summary, questions, onSubmit, onSkip }) {
+export default function FollowupPanel({ summary, questions, packs = [], onSubmit, onSkip }) {
   const [answers, setAnswers] = useState(() => questions.map(() => ""));
   const [skips, setSkips] = useState(() => questions.map(() => false));
 
@@ -42,6 +43,11 @@ export default function FollowupPanel({ summary, questions, onSubmit, onSkip }) 
             </span>{" "}
             {summary}
           </p>
+          {packs && packs.length > 0 && (
+            <div className="mt-3">
+              <PackBadge packs={packs} />
+            </div>
+          )}
         </div>
       )}
 

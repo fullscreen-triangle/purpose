@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { getAnthropicClient, TRIAGE_MODEL } from "@/lib/anthropic";
 import { TRIAGE_SYSTEM, formatUserMessage } from "@/lib/prompts";
+import { selectPacks, getPackLabel } from "@/lib/knowledge-packs";
 
 export const config = {
   maxDuration: 60,
@@ -71,6 +72,17 @@ export default async function handler(req, res) {
         .status(502)
         .json({ error: "triage model returned invalid status", raw: parsed });
     }
+
+    // Augment the triage response with knowledge-pack selection. Pack
+    // matching is keyword-based and runs against the user's raw description
+    // plus the model's one-sentence summary.
+    const haystack = [
+      body.description,
+      parsed.summary || "",
+      parsed.field || "",
+    ].join("\n");
+    const packIds = selectPacks(haystack);
+    parsed.packs = packIds.map((id) => ({ id, label: getPackLabel(id) }));
 
     return res.status(200).json(parsed);
   } catch (e) {
