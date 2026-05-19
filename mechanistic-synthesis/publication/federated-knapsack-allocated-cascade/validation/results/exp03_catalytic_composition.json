@@ -1,0 +1,116 @@
+{
+  "experiment": "multiplicative_catalytic_law",
+  "theorem_reference": "Theorem 3.5 (Multiplicative Catalytic Law)",
+  "claim": "kappa(gamma1 . gamma2) = 1 - (1-k1)(1-k2)",
+  "pairs_tested": [
+    [
+      0.3,
+      0.4
+    ],
+    [
+      0.5,
+      0.5
+    ],
+    [
+      0.2,
+      0.7
+    ],
+    [
+      0.6,
+      0.8
+    ],
+    [
+      0.9,
+      0.9
+    ]
+  ],
+  "results_per_pair": [
+    {
+      "kappa_1": 0.3,
+      "kappa_2": 0.4,
+      "predicted_kappa_combined": 0.5800000000000001,
+      "empirical_kappa_combined": {
+        "n": 20,
+        "mean": 0.58059,
+        "std": 0.0066159217840473,
+        "sem": 0.0014793650842951445,
+        "ci95_lo": 0.5776904444347816,
+        "ci95_hi": 0.5834895555652185,
+        "min": 0.568,
+        "max": 0.5938,
+        "median": 0.5804
+      },
+      "relative_error": 0.0010172413793103092
+    },
+    {
+      "kappa_1": 0.5,
+      "kappa_2": 0.5,
+      "predicted_kappa_combined": 0.75,
+      "empirical_kappa_combined": {
+        "n": 20,
+        "mean": 0.7493299999999998,
+        "std": 0.005346233302645496,
+        "sem": 0.0011954541088288536,
+        "ci95_lo": 0.7469869099466953,
+        "ci95_hi": 0.7516730900533044,
+        "min": 0.7358,
+        "max": 0.757,
+        "median": 0.7491
+      },
+      "relative_error": 0.0008933333333335606
+    },
+    {
+      "kappa_1": 0.2,
+      "kappa_2": 0.7,
+      "predicted_kappa_combined": 0.76,
+      "empirical_kappa_combined": {
+        "n": 20,
+        "mean": 0.7599100000000001,
+        "std": 0.007080135294574079,
+        "sem": 0.0015831663808563137,
+        "ci95_lo": 0.7568069938935217,
+        "ci95_hi": 0.7630130061064785,
+        "min": 0.7496,
+        "max": 0.7764,
+        "median": 0.7587999999999999
+      },
+      "relative_error": 0.00011842105263147826
+    },
+    {
+      "kappa_1": 0.6,
+      "kappa_2": 0.8,
+      "predicted_kappa_combined": 0.92,
+      "empirical_kappa_combined": {
+        "n": 20,
+        "mean": 0.9223699999999999,
+        "std": 0.0032047826102479075,
+        "sem": 0.0007166111769623535,
+        "ci95_lo": 0.9209654420931537,
+        "ci95_hi": 0.9237745579068461,
+        "min": 0.9178,
+        "max": 0.9286,
+        "median": 0.9215
+      },
+      "relative_error": 0.0025760869565216
+    },
+    {
+      "kappa_1": 0.9,
+      "kappa_2": 0.9,
+      "predicted_kappa_combined": 0.99,
+      "empirical_kappa_combined": {
+        "n": 20,
+        "mean": 0.98974,
+        "std": 0.0013689796430765048,
+        "sem": 0.0003061131541732464,
+        "ci95_lo": 0.9891400182178204,
+        "ci95_hi": 0.9903399817821795,
+        "min": 0.9864,
+        "max": 0.992,
+        "median": 0.9899
+      },
+      "relative_error": 0.000262626262626301
+    }
+  ],
+  "max_relative_error": 0.0025760869565216,
+  "verdict": "SUPPORTED"
+}

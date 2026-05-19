@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 
 const MESSAGES = {
   triaging: "Reading your description…",
-  synthesizing: "Composing the synthesis. This usually takes 30–90 seconds.",
+  synthesizing:
+    "Drafting independently across the federation, then integrating. Usually 60–120 seconds.",
 };
 
 export default function LoadingState({ phase = "triaging" }) {

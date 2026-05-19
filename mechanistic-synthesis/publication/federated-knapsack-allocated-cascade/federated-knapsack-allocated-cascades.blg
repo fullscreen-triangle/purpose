@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: federated-knapsack-allocated-cascades.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+Warning--empty journal in karp1972reducibility
+Warning--empty journal in lewis1969convention
+You've used 60 entries,
+            2773 wiz_defined-function locations,
+            901 strings with 13577 characters,
+and the built_in function-call counts, 26437 in all, are:
+= -- 2240
+> -- 1671
+< -- 41
++ -- 579
+- -- 519
+* -- 2088
+:= -- 4223
+add.period$ -- 180
+call.type$ -- 60
+change.case$ -- 340
+chr.to.int$ -- 60
+cite$ -- 122
+duplicate$ -- 1218
+empty$ -- 2119
+format.name$ -- 595
+if$ -- 5408
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 74
+newline$ -- 308
+num.names$ -- 240
+pop$ -- 724
+preamble$ -- 1
+purify$ -- 289
+quote$ -- 0
+skip$ -- 911
+stack$ -- 0
+substring$ -- 767
+swap$ -- 71
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 590
+warning$ -- 2
+while$ -- 236
+width$ -- 0
+write$ -- 757
+(There were 2 warnings)

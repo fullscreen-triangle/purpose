@@ -8,7 +8,26 @@ import PaperRenderer from "@/components/PaperRenderer";
 import LoadingState from "@/components/LoadingState";
 import PackBadge from "@/components/PackBadge";
 import ExampleQueries from "@/components/ExampleQueries";
+import FederationStatus from "@/components/FederationStatus";
 import { saveHistoryItem } from "@/lib/storage";
+
+// Recognise the streaming metadata sentinel emitted by /api/synthesize.
+// Server emits: <<META>>{"phase":"drafting",...}<<END>>\n
+const META_RE = /<<META>>(\{[\s\S]*?\})<<END>>\n?/g;
+function extractMetaAndStrip(text) {
+  let m;
+  const metas = [];
+  let stripped = text;
+  while ((m = META_RE.exec(text)) !== null) {
+    try {
+      metas.push(JSON.parse(m[1]));
+    } catch {
+      // ignore malformed metadata
+    }
+  }
+  stripped = text.replace(META_RE, "");
+  return { metas, stripped };
+}
 
 const MAX_FOLLOWUP_ROUNDS = 3;
 
@@ -28,6 +47,7 @@ export default function Home() {
   const [synthesis, setSynthesis] = useState("");
   const [streaming, setStreaming] = useState(false);
   const [error, setError] = useState("");
+  const [federationMeta, setFederationMeta] = useState(null);
 
   const runTriage = useCallback(async (desc, fups) => {
     setPhase("triaging");
@@ -55,6 +75,7 @@ export default function Home() {
       setPhase("synthesizing");
       setError("");
       setSynthesis("");
+      setFederationMeta(null);
       setStreaming(true);
       try {
         const res = await fetch("/api/synthesize", {
@@ -72,13 +93,39 @@ export default function Home() {
         }
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
-        let acc = "";
+        let rawAcc = "";
+        let renderedAcc = "";
+        // Carry partial metadata sentinels across chunk boundaries.
+        let metaBuffer = "";
         // eslint-disable-next-line no-constant-condition
         while (true) {
           const { value, done } = await reader.read();
           if (done) break;
-          acc += decoder.decode(value, { stream: true });
-          setSynthesis(acc);
+          const chunk = decoder.decode(value, { stream: true });
+          rawAcc += chunk;
+          metaBuffer += chunk;
+
+          // Drain any complete metadata sentinels from metaBuffer.
+          const { metas, stripped } = extractMetaAndStrip(metaBuffer);
+          if (metas.length > 0) {
+            // Apply each metadata update in order. The latest wins for
+            // overlapping fields; failed_models stays present across phases.
+            setFederationMeta((prev) => {
+              let next = prev || {};
+              for (const m of metas) next = { ...next, ...m };
+              return next;
+            });
+          }
+
+          // Compute the user-visible synthesis text: raw stream minus all
+          // metadata sentinels seen so far. We do this on rawAcc (not on
+          // stripped) so the displayed text remains coherent if a sentinel
+          // arrives mid-chunk.
+          renderedAcc = rawAcc.replace(META_RE, "");
+          setSynthesis(renderedAcc);
+          // metaBuffer keeps the trailing partial (everything after the
+          // last fully-parsed sentinel); discard parsed prefix.
+          metaBuffer = stripped;
         }
         setStreaming(false);
         setPhase("result");
@@ -86,7 +133,7 @@ export default function Home() {
           saveHistoryItem({
             description: desc,
             followups: fups,
-            synthesis: acc,
+            synthesis: renderedAcc,
             summary: triageSummary,
             field: triageField,
           });
@@ -178,6 +225,7 @@ export default function Home() {
     setActivePacks([]);
     setSeedText("");
     setFollowupRounds(0);
+    setFederationMeta(null);
   }, []);
 
   return (
@@ -210,8 +258,10 @@ export default function Home() {
                 methods, expected results, statistics, pitfalls, and references.
               </p>
               <p className="text-xs text-dark/40 dark:text-light/40 mt-4 leading-relaxed">
-                Specialist knowledge packs activate automatically when the description
-                matches their domain. Currently included:{" "}
+                Each synthesis is drafted in parallel by a federation of three
+                models, then merged by an integrator. Specialist knowledge packs
+                activate automatically when the description matches their
+                domain. Currently included:{" "}
                 <span className="font-medium text-dark/60 dark:text-light/60">
                   cytochrome P450 — categorical mechanics
                 </span>
@@ -238,7 +288,10 @@ export default function Home() {
         )}
 
         {phase === "synthesizing" && synthesis.length === 0 && (
-          <LoadingState phase="synthesizing" />
+          <div className="max-w-3xl mx-auto">
+            <FederationStatus meta={federationMeta} streaming />
+            <LoadingState phase="synthesizing" />
+          </div>
         )}
 
         {(phase === "synthesizing" || phase === "result") && synthesis.length > 0 && (
@@ -271,6 +324,9 @@ export default function Home() {
               ) : (
                 <div className="shrink-0 w-[160px]" aria-hidden />
               )}
+            </div>
+            <div className="max-w-6xl mx-auto">
+              <FederationStatus meta={federationMeta} streaming={streaming} />
             </div>
             <PaperRenderer markdown={synthesis} streaming={streaming} />
           </div>

@@ -1,0 +1,366 @@
+\begin{thebibliography}{60}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Aggarwal et~al.(2024)Aggarwal, Madaan, Anand, Potharaju, Mishra, Zhou,
+  Gupta, Rajagopal, Kappaganthu, Yang, et~al.]{aggarwal2024automix}
+Pranjal Aggarwal, Aman Madaan, Ankit Anand, Srividya~Pranavi Potharaju, Swaroop
+  Mishra, Pei Zhou, Aditya Gupta, Dheeraj Rajagopal, Karthik Kappaganthu,
+  Yiming Yang, et~al.
+\newblock {A}uto{M}ix: automatically mixing language models.
+\newblock \emph{Advances in Neural Information Processing Systems}, 2024.
+
+\bibitem[Aumann(1976)]{aumann1976agreeing}
+Robert~J. Aumann.
+\newblock Agreeing to disagree.
+\newblock \emph{The Annals of Statistics}, 4\penalty0 (6):\penalty0 1236--1239,
+  1976.
+
+\bibitem[Banach(1922)]{banach1922operations}
+Stefan Banach.
+\newblock Sur les op\'erations dans les ensembles abstraits et leur application
+  aux \'equations int\'egrales.
+\newblock \emph{Fundamenta Mathematicae}, 3:\penalty0 133--181, 1922.
+
+\bibitem[Bellman(1957)]{bellman1957dynamic}
+Richard Bellman.
+\newblock \emph{Dynamic Programming}.
+\newblock Princeton University Press, 1957.
+
+\bibitem[Blumer et~al.(1989)Blumer, Ehrenfeucht, Haussler, and
+  Warmuth]{blumer1989learnability}
+Anselm Blumer, Andrzej Ehrenfeucht, David Haussler, and Manfred~K. Warmuth.
+\newblock Learnability and the {V}apnik--{C}hervonenkis dimension.
+\newblock \emph{Journal of the ACM}, 36\penalty0 (4):\penalty0 929--965, 1989.
+
+\bibitem[Boyd and Vandenberghe(2004)]{boyd2004convex}
+Stephen Boyd and Lieven Vandenberghe.
+\newblock \emph{Convex Optimization}.
+\newblock Cambridge University Press, 2004.
+
+\bibitem[Breiman(2001)]{breiman2001random}
+Leo Breiman.
+\newblock Random forests.
+\newblock \emph{Machine Learning}, 45\penalty0 (1):\penalty0 5--32, 2001.
+
+\bibitem[Chen et~al.(2023)Chen, Zaharia, and Zou]{chen2023frugalgpt}
+Lingjiao Chen, Matei Zaharia, and James Zou.
+\newblock {F}rugal{GPT}: how to use large language models while reducing cost
+  and improving performance.
+\newblock \emph{arXiv preprint arXiv:2305.05176}, 2023.
+
+\bibitem[Cover and Thomas(2006)]{cover2006elements}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock \emph{Elements of Information Theory}.
+\newblock Wiley-Interscience, 2 edition, 2006.
+
+\bibitem[Dantzig(1957)]{dantzig1957discrete}
+George~B. Dantzig.
+\newblock Discrete-variable extremum problems.
+\newblock \emph{Operations Research}, 5\penalty0 (2):\penalty0 266--277, 1957.
+
+\bibitem[Dietterich(2000)]{dietterich2000ensemble}
+Thomas~G. Dietterich.
+\newblock Ensemble methods in machine learning.
+\newblock \emph{Multiple Classifier Systems: First International Workshop, MCS
+  2000}, pages 1--15, 2000.
+
+\bibitem[Du et~al.(2023)Du, Li, Torralba, Tenenbaum, and
+  Mordatch]{du2023improving}
+Yilun Du, Shuang Li, Antonio Torralba, Joshua~B. Tenenbaum, and Igor Mordatch.
+\newblock Improving factuality and reasoning in language models through
+  multiagent debate.
+\newblock \emph{arXiv preprint arXiv:2305.14325}, 2023.
+
+\bibitem[Fedus et~al.(2022)Fedus, Zoph, and Shazeer]{fedus2022switch}
+William Fedus, Barret Zoph, and Noam Shazeer.
+\newblock Switch transformer: scaling to trillion parameter models with simple
+  and efficient sparsity.
+\newblock \emph{Journal of Machine Learning Research}, 23:\penalty0 1--39,
+  2022.
+
+\bibitem[Fisher(1925)]{fisher1925theory}
+Ronald~A. Fisher.
+\newblock Theory of statistical estimation.
+\newblock \emph{Mathematical Proceedings of the Cambridge Philosophical
+  Society}, 22:\penalty0 700--725, 1925.
+
+\bibitem[Freund and Schapire(1997)]{freund1997decision}
+Yoav Freund and Robert~E. Schapire.
+\newblock A decision-theoretic generalization of on-line learning and an
+  application to boosting.
+\newblock \emph{Journal of Computer and System Sciences}, 55\penalty0
+  (1):\penalty0 119--139, 1997.
+
+\bibitem[Garey and Johnson(1979)]{garey1979computers}
+Michael~R. Garey and David~S. Johnson.
+\newblock \emph{Computers and Intractability: A Guide to the Theory of
+  {NP}-Completeness}.
+\newblock W. H. Freeman, 1979.
+
+\bibitem[G{\"o}del(1931)]{godel1931formal}
+Kurt G{\"o}del.
+\newblock {\"U}ber formal unentscheidbare {S}{\"a}tze der {P}rincipia
+  {M}athematica und verwandter {S}ysteme {I}.
+\newblock \emph{Monatshefte f\"ur Mathematik und Physik}, 38:\penalty0
+  173--198, 1931.
+
+\bibitem[Halmos(1950)]{halmos1950measure}
+Paul~R. Halmos.
+\newblock \emph{Measure Theory}.
+\newblock Van Nostrand, 1950.
+
+\bibitem[Heisenberg(1927)]{heisenberg1927uber}
+Werner Heisenberg.
+\newblock {\"U}ber den anschaulichen inhalt der quantentheoretischen kinematik
+  und mechanik.
+\newblock \emph{Zeitschrift f\"ur Physik}, 43\penalty0 (3-4):\penalty0
+  172--198, 1927.
+
+\bibitem[Ibarra and Kim(1975)]{ibarra1975fast}
+Oscar~H. Ibarra and Chul~E. Kim.
+\newblock Fast approximation algorithms for the knapsack and sum of subset
+  problems.
+\newblock \emph{Journal of the ACM}, 22\penalty0 (4):\penalty0 463--468, 1975.
+
+\bibitem[Jacobs et~al.(1991)Jacobs, Jordan, Nowlan, and
+  Hinton]{jacobs1991adaptive}
+Robert~A. Jacobs, Michael~I. Jordan, Steven~J. Nowlan, and Geoffrey~E. Hinton.
+\newblock Adaptive mixtures of local experts.
+\newblock \emph{Neural Computation}, 3\penalty0 (1):\penalty0 79--87, 1991.
+
+\bibitem[Jiang et~al.(2023)Jiang, Ren, and Lin]{jiang2023llm}
+Dongfu Jiang, Xiang Ren, and Bill~Yuchen Lin.
+\newblock {LLM-Blender}: ensembling large language models with pairwise ranking
+  and generative fusion.
+\newblock \emph{ACL}, 2023.
+
+\bibitem[Karp(1972)]{karp1972reducibility}
+Richard~M. Karp.
+\newblock Reducibility among combinatorial problems.
+\newblock pages 85--103, 1972.
+
+\bibitem[Kellerer et~al.(2004)Kellerer, Pferschy, and
+  Pisinger]{kellerer2004knapsack}
+Hans Kellerer, Ulrich Pferschy, and David Pisinger.
+\newblock \emph{Knapsack Problems}.
+\newblock Springer, 2004.
+
+\bibitem[Kelly(1956)]{kelly1956new}
+John~L. Kelly.
+\newblock A new interpretation of information rate.
+\newblock \emph{Bell System Technical Journal}, 35\penalty0 (4):\penalty0
+  917--926, 1956.
+
+\bibitem[Kolmogorov(1933)]{kolmogorov1933foundations}
+Andrey~N. Kolmogorov.
+\newblock \emph{Foundations of the Theory of Probability}.
+\newblock Chelsea Publishing Company (English translation 1950), 1933.
+
+\bibitem[Kullback and Leibler(1951)]{kullback1951information}
+Solomon Kullback and Richard~A. Leibler.
+\newblock On information and sufficiency.
+\newblock \emph{The Annals of Mathematical Statistics}, 22\penalty0
+  (1):\penalty0 79--86, 1951.
+
+\bibitem[Lewis(1969)]{lewis1969convention}
+David~K. Lewis.
+\newblock Convention: A philosophical study.
+\newblock 1969.
+
+\bibitem[Liu et~al.(2024)Liu, Yao, Ton, Zhang, Cheng,
+  et~al.]{liu2024routerbench}
+Yueqi Liu, Yixiao Yao, Jean-Francois Ton, Xiaodan Zhang, Ruocheng Cheng, et~al.
+\newblock {R}outer{B}ench: a benchmark for multi-{LLM} routing system.
+\newblock \emph{arXiv preprint arXiv:2403.12031}, 2024.
+
+\bibitem[Lu et~al.(2024)Lu, Yuan, Lin, Lin, Yuan, Zhou, and Zhou]{lu2024merge}
+Keming Lu, Hongyi Yuan, Runji Lin, Junyang Lin, Zheng Yuan, Chang Zhou, and
+  Jingren Zhou.
+\newblock Routing to the expert: efficient reward-guided ensemble of large
+  language models.
+\newblock \emph{NAACL}, 2024.
+
+\bibitem[Madaan et~al.(2023)Madaan, Tandon, Gupta, Hallinan, Gao, Wiegreffe,
+  Alon, Dziri, Prabhumoye, Yang, et~al.]{madaan2023self}
+Aman Madaan, Niket Tandon, Prakhar Gupta, Skyler Hallinan, Luyu Gao, Sarah
+  Wiegreffe, Uri Alon, Nouha Dziri, Shrimai Prabhumoye, Yiming Yang, et~al.
+\newblock Self-refine: iterative refinement with self-feedback.
+\newblock \emph{Advances in Neural Information Processing Systems}, 2023.
+
+\bibitem[Naik et~al.(2024)Naik, Khurana, Liang, and
+  Hashimoto]{naik2024diversity}
+Aman Naik, Megh Khurana, Percy Liang, and Tatsunori Hashimoto.
+\newblock Diversity-aware routing for cost-efficient {LLM} cascades.
+\newblock In \emph{Workshop on Foundation Models, ICML}, 2024.
+
+\bibitem[Nash(1951)]{nash1951non}
+John Nash.
+\newblock Non-cooperative games.
+\newblock \emph{The Annals of Mathematics}, 54\penalty0 (2):\penalty0 286--295,
+  1951.
+
+\bibitem[Nesterov(2018)]{nesterov2018lectures}
+Yurii Nesterov.
+\newblock \emph{Lectures on Convex Optimization}.
+\newblock Springer, 2 edition, 2018.
+
+\bibitem[Ong et~al.(2024)Ong, Almahairi, Wu, Chiang, Wu, Gonzalez, Kadous, and
+  Stoica]{ong2024routellm}
+Isaac Ong, Amjad Almahairi, Vincent Wu, Wei-Lin Chiang, Tianhao Wu, Joseph~E.
+  Gonzalez, M.~Waleed Kadous, and Ion Stoica.
+\newblock {R}oute{LLM}: learning to route {LLM}s with preference data.
+\newblock \emph{arXiv preprint arXiv:2406.18665}, 2024.
+
+\bibitem[Pisinger(1997)]{pisinger1997minimal}
+David Pisinger.
+\newblock A minimal algorithm for the 0-1 knapsack problem.
+\newblock \emph{Operations Research}, 45\penalty0 (5):\penalty0 758--767, 1997.
+
+\bibitem[Rao(1945)]{rao1945information}
+C.~Radhakrishna Rao.
+\newblock Information and the accuracy attainable in the estimation of
+  statistical parameters.
+\newblock \emph{Bulletin of the Calcutta Mathematical Society}, 37:\penalty0
+  81--91, 1945.
+
+\bibitem[Robertson(1929)]{robertson1929uncertainty}
+Howard~P. Robertson.
+\newblock The uncertainty principle.
+\newblock \emph{Physical Review}, 34\penalty0 (1):\penalty0 163--164, 1929.
+
+\bibitem[Rudin(1987)]{rudin1987real}
+Walter Rudin.
+\newblock \emph{Real and Complex Analysis}.
+\newblock McGraw-Hill, 3 edition, 1987.
+
+\bibitem[Russell and Norvig(2020)]{russell2020artificial}
+Stuart Russell and Peter Norvig.
+\newblock \emph{Artificial Intelligence: A Modern Approach}.
+\newblock Pearson, 4 edition, 2020.
+
+\bibitem[Sakota et~al.(2024)Sakota, Peyrard, and West]{sakota2024fly}
+Marija Sakota, Maxime Peyrard, and Robert West.
+\newblock Fly-swat or cannon? cost-effective language model choice via
+  meta-modeling.
+\newblock \emph{WSDM}, 2024.
+
+\bibitem[Schapire(1990)]{schapire1990strength}
+Robert~E. Schapire.
+\newblock The strength of weak learnability.
+\newblock \emph{Machine Learning}, 5\penalty0 (2):\penalty0 197--227, 1990.
+
+\bibitem[Shalev-Shwartz and Ben-David(2014)]{shalev2014understanding}
+Shai Shalev-Shwartz and Shai Ben-David.
+\newblock \emph{Understanding Machine Learning: From Theory to Algorithms}.
+\newblock Cambridge University Press, 2014.
+
+\bibitem[Shannon(1948)]{shannon1948mathematical}
+Claude~E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock \emph{Bell System Technical Journal}, 27\penalty0 (3):\penalty0
+  379--423, 1948.
+
+\bibitem[Shazeer et~al.(2017)Shazeer, Mirhoseini, Maziarz, Davis, Le, Hinton,
+  and Dean]{shazeer2017outrageously}
+Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc~V. Le,
+  Geoffrey~E. Hinton, and Jeff Dean.
+\newblock Outrageously large neural networks: the sparsely-gated
+  mixture-of-experts layer.
+\newblock \emph{International Conference on Learning Representations}, 2017.
+
+\bibitem[Simon(1956)]{simon1956rational}
+Herbert~A. Simon.
+\newblock Rational choice and the structure of the environment.
+\newblock \emph{Psychological Review}, 63\penalty0 (2):\penalty0 129--138,
+  1956.
+
+\bibitem[Simon(1957)]{simon1957models}
+Herbert~A. Simon.
+\newblock \emph{Models of Man: Social and Rational}.
+\newblock Wiley, 1957.
+
+\bibitem[Stoica et~al.(2024)Stoica, Wong, Xu, and Zhang]{stoica2024specialized}
+Andra-Ioana Stoica, Ben Wong, Christine Xu, and Eric Zhang.
+\newblock Specialized model routing for large language model inference.
+\newblock \emph{ICML Workshop on Foundation Models in the Wild}, 2024.
+
+\bibitem[Tarski(1933)]{tarski1933pojecie}
+Alfred Tarski.
+\newblock The concept of truth in formalized languages.
+\newblock \emph{Logic, Semantics, Metamathematics}, 1933.
+
+\bibitem[Turing(1936)]{turing1936computable}
+Alan~M. Turing.
+\newblock On computable numbers, with an application to the
+  {E}ntscheidungsproblem.
+\newblock \emph{Proceedings of the London Mathematical Society}, 2\penalty0
+  (42):\penalty0 230--265, 1936.
+
+\bibitem[Valiant(1984)]{valiant1984theory}
+Leslie~G. Valiant.
+\newblock A theory of the learnable.
+\newblock \emph{Communications of the ACM}, 27\penalty0 (11):\penalty0
+  1134--1142, 1984.
+
+\bibitem[Vapnik(1998)]{vapnik1998statistical}
+Vladimir~N. Vapnik.
+\newblock \emph{Statistical Learning Theory}.
+\newblock Wiley, 1998.
+
+\bibitem[von Neumann(1928)]{vonneumann1928theorie}
+John von Neumann.
+\newblock Zur {T}heorie der {G}esellschaftsspiele.
+\newblock \emph{Mathematische Annalen}, 100:\penalty0 295--320, 1928.
+
+\bibitem[Wang et~al.(2024)Wang, Wang, Athiwaratkun, Zhang, and
+  Zou]{wang2024mixture}
+Junlin Wang, Jue Wang, Ben Athiwaratkun, Ce~Zhang, and James Zou.
+\newblock Mixture-of-agents enhances large language model capabilities.
+\newblock \emph{arXiv preprint arXiv:2406.04692}, 2024.
+
+\bibitem[Wang et~al.(2023)Wang, Wei, Schuurmans, Le, Chi, Narang, Chowdhery,
+  and Zhou]{wang2022self}
+Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc~V. Le, Ed~H. Chi, Sharan Narang,
+  Aakanksha Chowdhery, and Denny Zhou.
+\newblock Self-consistency improves chain of thought reasoning in language
+  models.
+\newblock \emph{International Conference on Learning Representations}, 2023.
+
+\bibitem[Wei et~al.(2022)Wei, Wang, Schuurmans, Bosma, Ichter, Xia, Chi, Le,
+  and Zhou]{wei2022chain}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia,
+  Ed~Chi, Quoc~V. Le, and Denny Zhou.
+\newblock Chain-of-thought prompting elicits reasoning in large language
+  models.
+\newblock \emph{Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem[Wolpert(1992)]{wolpert1992stacked}
+David~H. Wolpert.
+\newblock Stacked generalization.
+\newblock \emph{Neural Networks}, 5\penalty0 (2):\penalty0 241--259, 1992.
+
+\bibitem[Wooldridge(2009)]{wooldridge2009introduction}
+Michael Wooldridge.
+\newblock \emph{An Introduction to MultiAgent Systems}.
+\newblock Wiley, 2 edition, 2009.
+
+\bibitem[Yao et~al.(2023)Yao, Yu, Zhao, Shafran, Griffiths, Cao, and
+  Narasimhan]{yao2023tree}
+Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas~L. Griffiths, Yuan
+  Cao, and Karthik Narasimhan.
+\newblock Tree of thoughts: deliberate problem solving with large language
+  models.
+\newblock \emph{Advances in Neural Information Processing Systems}, 2023.
+
+\bibitem[Zheng et~al.(2023)Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li,
+  Li, Xing, et~al.]{zheng2023judging}
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao
+  Zhuang, Zi~Lin, Zhuohan Li, Dacheng Li, Eric~P. Xing, et~al.
+\newblock Judging {LLM}-as-a-judge with {MT}-bench and chatbot arena.
+\newblock \emph{Advances in Neural Information Processing Systems}, 2023.
+
+\end{thebibliography}

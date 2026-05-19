@@ -1,0 +1,82 @@
+{
+  "suite": "Federated Knapsack-Allocated Cascades Validation",
+  "paper_reference": "federated-knapsack-allocated-cascades.tex",
+  "n_experiments": 10,
+  "seeds_per_condition": 30,
+  "total_runtime_seconds": 0.559,
+  "experiments": [
+    {
+      "id": "exp01",
+      "name": "floor_positivity",
+      "theorem_reference": "Theorem 2.6 (Floor Positivity)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.178
+    },
+    {
+      "id": "exp02",
+      "name": "banach_methodological_floor",
+      "theorem_reference": "Theorem 3.3 (Banach Methodological Floor)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.051
+    },
+    {
+      "id": "exp03",
+      "name": "multiplicative_catalytic_law",
+      "theorem_reference": "Theorem 3.5 (Multiplicative Catalytic Law)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.017
+    },
+    {
+      "id": "exp04",
+      "name": "mode_methodology_composition",
+      "theorem_reference": "Theorem 3.7 (Mode-Methodology Equivalence)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.162
+    },
+    {
+      "id": "exp05",
+      "name": "receiver_uncertainty_principle",
+      "theorem_reference": "Theorem 4.4 (Receiver Uncertainty Principle)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.008
+    },
+    {
+      "id": "exp06",
+      "name": "federation_inequality",
+      "theorem_reference": "Theorem 5.3 (Federation Inequality)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.018
+    },
+    {
+      "id": "exp07",
+      "name": "marginal_floor_reduction",
+      "theorem_reference": "Theorem 5.5 (Marginal Reduction Closed Form)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.01
+    },
+    {
+      "id": "exp08",
+      "name": "federation_entropy_ordering",
+      "theorem_reference": "Theorem 5.7 (Federation Entropy Ordering)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.021
+    },
+    {
+      "id": "exp09",
+      "name": "cascade_switching_knapsack",
+      "theorem_reference": "Theorems 6.2 and 6.4 (Cascade Switching)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.081
+    },
+    {
+      "id": "exp10",
+      "name": "circular_validation",
+      "theorem_reference": "Theorems 7.2 (Linear Failure) and 7.4 (Circular Sufficiency)",
+      "verdict": "SUPPORTED",
+      "runtime_seconds": 0.013
+    }
+  ],
+  "supported_count": 10,
+  "refuted_count": 0,
+  "weak_count": 0
+}
