@@ -31,3 +31,9 @@ yarn-error.log*
 # vercel
 .vercel
 .env.local.example
+
+# The repository-root .gitignore ignores every directory named "lib/"
+# (a Python convention). Re-include this Next.js source directory so the
+# @/lib/* modules are committed and the Vercel build can resolve them.
+!src/lib/
+!src/lib/**
