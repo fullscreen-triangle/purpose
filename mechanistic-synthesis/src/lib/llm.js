@@ -18,6 +18,8 @@
  * Adding a third provider (Together AI, Cohere, local Ollama) is one class.
  */
 
+import Anthropic from "@anthropic-ai/sdk";
+
 // ============================================================================
 // Provider selection
 // ============================================================================
@@ -194,9 +196,6 @@ class AnthropicProvider {
     if (!this.apiKey) {
       throw new Error("ANTHROPIC_API_KEY is not set.");
     }
-    // Lazy-load the SDK so it is only required when this provider is active.
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const Anthropic = require("@anthropic-ai/sdk").default;
     this.client = new Anthropic({ apiKey: this.apiKey });
   }
 
