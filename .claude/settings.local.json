@@ -18,7 +18,12 @@
       "Read(//tmp/**)",
       "Bash(mkdir -p \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450\" && cp /tmp/p450_monograph.md \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450/monograph.md\" && wc -l -w -c \"c:/Users/kunda/Documents/semantics/purpose/mechanistic-synthesis/knowledge-packs/cytochrome-p450/monograph.md\")",
       "Bash(python /tmp/fix_braces.py)",
-      "Bash(python _fix_braces.py)"
+      "Bash(python _fix_braces.py)",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"\\(exit: $?\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ],
     "additionalDirectories": [
       "\\tmp"
