@@ -62,9 +62,11 @@ impl Resolver for ProteinResolver {
 /// small stopword list prevents obvious false positives.
 fn extract_gene_symbol(utterance: &str) -> Option<String> {
     let re = Regex::new(r"\b([A-Z][A-Z0-9]{1,6})\b").ok()?;
-    re.captures_iter(utterance)
+    let symbol = re
+        .captures_iter(utterance)
         .filter_map(|c| c.get(1).map(|m| m.as_str().to_string()))
-        .find(|s| !is_stopword(s))
+        .find(|s| !is_stopword(s));
+    symbol
 }
 
 fn is_stopword(s: &str) -> bool {
