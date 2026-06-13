@@ -1,0 +1,17 @@
+[package]
+name = "purpose-domains-codebase"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+purpose-core = { workspace = true }
+purpose-operations = { workspace = true }
+async-trait = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+regex = { workspace = true }
+walkdir = "2"
+tracing = { workspace = true }

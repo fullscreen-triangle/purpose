@@ -4,6 +4,7 @@ members = [
     "crates/purpose-core",
     "crates/purpose-operations",
     "crates/purpose-domains-protein",
+    "crates/purpose-domains-codebase",
     "crates/purpose-cli",
 ]
 
@@ -31,6 +32,7 @@ urlencoding = "2"
 purpose-core = { path = "crates/purpose-core" }
 purpose-operations = { path = "crates/purpose-operations" }
 purpose-domains-protein = { path = "crates/purpose-domains-protein" }
+purpose-domains-codebase = { path = "crates/purpose-domains-codebase" }
 
 [profile.release]
 lto = "thin"

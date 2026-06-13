@@ -15,6 +15,7 @@ path = "src/main.rs"
 purpose-core = { workspace = true }
 purpose-operations = { workspace = true }
 purpose-domains-protein = { workspace = true }
+purpose-domains-codebase = { workspace = true }
 anyhow = { workspace = true }
 clap = { workspace = true }
 serde_json = { workspace = true }
