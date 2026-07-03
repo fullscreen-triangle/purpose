@@ -70,6 +70,21 @@ enum Command {
         #[arg(long)]
         root: Option<PathBuf>,
     },
+
+    /// Clip an accumulated-context ledger to the slice necessary for its goal.
+    ///
+    /// Carry the uncertainty, not the knowledge: given a JSON ledger of turns
+    /// (each with the terms it individuates and its token cost) and a goal,
+    /// report which turns are load-bearing for the goal and how many tokens
+    /// dropping the rest saves.
+    Ledger {
+        /// Path to a ledger JSON file (reads stdin if omitted).
+        path: Option<PathBuf>,
+
+        /// Print the raw clip result as JSON rather than the formatted report.
+        #[arg(long)]
+        raw: bool,
+    },
 }
 
 /// Walk up from `start` to find a project root (a dir containing `.git` or
@@ -204,6 +219,28 @@ async fn main() -> Result<()> {
             match result {
                 Value::Str(s) => println!("{}", s),
                 other => println!("{}", serde_json::to_string_pretty(&other)?),
+            }
+        }
+
+        Command::Ledger { path, raw } => {
+            let text = match path {
+                Some(p) => std::fs::read_to_string(&p)
+                    .with_context(|| format!("cannot read ledger {}", p.display()))?,
+                None => {
+                    use std::io::Read;
+                    let mut buf = String::new();
+                    std::io::stdin()
+                        .read_to_string(&mut buf)
+                        .context("cannot read ledger from stdin")?;
+                    buf
+                }
+            };
+            let ledger = purpose_domains_ledger::parse(&text).context("parse failed")?;
+            let clip = ledger.clip();
+            if raw {
+                println!("{}", serde_json::to_string_pretty(&clip)?);
+            } else {
+                print!("{}", purpose_domains_ledger::render(&clip));
             }
         }
 

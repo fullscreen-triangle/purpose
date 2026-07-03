@@ -30,8 +30,85 @@ Purpose now supports integration with a wide range of specialized AI models from
 └───────────────────┘     └───────────────────┘     └───────────────────┘
 ```
 
+---
+
+## The `purpose` Codebase Navigation Tool
+
+> **For AI assistants working in this repo:** read
+> [`mechanistic-synthesis/synthesis.md`](mechanistic-synthesis/synthesis.md)
+> first, then use `purpose ask` instead of reading files broadly.
+
+Beyond the training framework, this repo ships a small standalone command-line
+tool — `purpose` — that answers the question *"where is X in this project?"*
+without an LLM having to read the whole codebase. It builds a local index of a
+project's symbol definitions and returns the relevant `file:line` slice for any
+natural-language question. It runs entirely on your machine: **no API key, no
+network, no per-query cost.**
+
+The motivation is concrete: on a large project a single AI prompt can ingest
+hundreds of thousands of tokens just to locate the right code. `purpose ask`
+returns ~1–2k tokens pointing at exactly the right place instead — cutting that
+cost by one to two orders of magnitude.
+
+### Install
+
+The tool is a Rust binary in
+[`mechanistic-synthesis/implementation`](mechanistic-synthesis/implementation).
+Build it once and install it onto your `PATH`:
+
+```bash
+# Requires Rust (https://rustup.rs)
+cd mechanistic-synthesis/implementation
+cargo install --path crates/purpose-cli
+# installs `purpose` into ~/.cargo/bin (already on PATH)
+```
+
+Verify:
+
+```bash
+purpose --help
+```
+
+### Use it in any project
+
+```bash
+# 1. Build the index for the current project (run once; re-run after big changes)
+purpose index
+
+# 2. Ask where something is — returns the relevant code slice
+purpose ask "where is the database connection set up"
+purpose ask "auth middleware"
+purpose ask "Resolver trait"
+```
+
+Output is a ranked list of `path:line  [kind] Name` matches with one-line
+snippets — a precise table of contents, not an explanation. Open the files it
+points at to read the actual code.
+
+| Command | What it does |
+|---|---|
+| `purpose index` | Build/refresh `.purpose/index.json` for the current project |
+| `purpose index --root .` | Index only the current folder (not the whole git repo) |
+| `purpose ask "<question>"` | Return the relevant `file:line` slice for a question |
+| `purpose --help` | Full command list |
+
+**Notes & limits.** The index is a snapshot — re-run `purpose index` after the
+code changes. It indexes *definitions* (functions, structs, classes, traits,
+headings), not call sites, config values, or runtime behaviour — use `grep` for
+those. By default it indexes the enclosing **git root**; pass `--root` to scope
+it. Full details, query tips, and the AI-facing contract are in
+[`mechanistic-synthesis/synthesis.md`](mechanistic-synthesis/synthesis.md).
+
+> The codebase domain is one Connector in the broader Purpose architecture (the
+> same `Resolver`/`Provider`/`Executor` interfaces described in
+> [`mechanistic-synthesis/implementation/integration.md`](mechanistic-synthesis/implementation/integration.md)),
+> with a source repository as its substrate instead of UniProt.
+
+---
+
 ## Table of Contents
 
+0. [The `purpose` Codebase Navigation Tool](#the-purpose-codebase-navigation-tool)
 1. [Theoretical Framework](#theoretical-framework)
 2. [Core Architecture](#core-architecture)
    - [Data Processing Pipeline](#data-processing-pipeline)

@@ -1,0 +1,13 @@
+[package]
+name = "purpose-domains-ledger"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Residue-ledger: carry the uncertainty, not the knowledge. Computes the necessary slice of accumulated context for a given goal."
+
+[dependencies]
+purpose-core = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
