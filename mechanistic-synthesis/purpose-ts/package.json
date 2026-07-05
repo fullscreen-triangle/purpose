@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "node --test dist/test/",
+    "test": "node --test \"dist/test/**/*.test.js\"",
     "smoke": "node dist/test/smoke.js"
   },
   "keywords": [
