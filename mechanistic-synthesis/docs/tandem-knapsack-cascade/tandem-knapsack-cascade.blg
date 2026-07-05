@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: tandem-knapsack-cascade.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 17 entries,
+            2773 wiz_defined-function locations,
+            692 strings with 6971 characters,
+and the built_in function-call counts, 7675 in all, are:
+= -- 671
+> -- 418
+< -- 14
++ -- 146
+- -- 129
+* -- 602
+:= -- 1191
+add.period$ -- 51
+call.type$ -- 17
+change.case$ -- 92
+chr.to.int$ -- 17
+cite$ -- 34
+duplicate$ -- 360
+empty$ -- 662
+format.name$ -- 152
+if$ -- 1590
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 20
+newline$ -- 93
+num.names$ -- 68
+pop$ -- 195
+preamble$ -- 1
+purify$ -- 77
+quote$ -- 0
+skip$ -- 261
+stack$ -- 0
+substring$ -- 312
+swap$ -- 27
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 172
+warning$ -- 0
+while$ -- 76
+width$ -- 0
+write$ -- 224

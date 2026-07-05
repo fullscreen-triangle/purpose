@@ -1,0 +1,104 @@
+\begin{thebibliography}{17}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Black(1937)]{black1937}
+Max Black.
+\newblock Vagueness: An exercise in logical analysis.
+\newblock \emph{Philosophy of Science}, 4\penalty0 (4):\penalty0 427--455,
+  1937.
+
+\bibitem[Dantzig(1957)]{dantzig1957}
+George~B. Dantzig.
+\newblock Discrete-variable extremum problems.
+\newblock \emph{Operations Research}, 5\penalty0 (2):\penalty0 266--288, 1957.
+
+\bibitem[Dean and Boddy(1988)]{dean1988}
+Thomas Dean and Mark Boddy.
+\newblock An analysis of time-dependent planning.
+\newblock In \emph{Proceedings of the Seventh AAAI National Conference on
+  Artificial Intelligence}, pages 49--54, 1988.
+
+\bibitem[Diestel(2017)]{diestel2017}
+Reinhard Diestel.
+\newblock \emph{Graph Theory}.
+\newblock Springer, 5th edition, 2017.
+
+\bibitem[Ford and Fulkerson(1956)]{fordfulkerson1956}
+L.~R. Ford and D.~R. Fulkerson.
+\newblock Maximal flow through a network.
+\newblock \emph{Canadian Journal of Mathematics}, 8:\penalty0 399--404, 1956.
+
+\bibitem[Kellerer et~al.(2004)Kellerer, Pferschy, and Pisinger]{kellerer2004}
+Hans Kellerer, Ulrich Pferschy, and David Pisinger.
+\newblock \emph{Knapsack Problems}.
+\newblock Springer, 2004.
+
+\bibitem[Lamport(1978)]{lamport1978}
+Leslie Lamport.
+\newblock Time, clocks, and the ordering of events in a distributed system.
+\newblock \emph{Communications of the ACM}, 21\penalty0 (7):\penalty0 558--565,
+  1978.
+
+\bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal,
+  K\"{u}ttler, Lewis, Yih, Rockt\"{a}schel, Riedel, and Kiela]{lewis2020}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K\"{u}ttler, Mike Lewis, Wen-tau Yih, Tim
+  Rockt\"{a}schel, Sebastian Riedel, and Douwe Kiela.
+\newblock Retrieval-augmented generation for knowledge-intensive nlp tasks.
+\newblock In \emph{Advances in Neural Information Processing Systems 33}, 2020.
+
+\bibitem[Menger(1927)]{menger1927}
+Karl Menger.
+\newblock Zur allgemeinen kurventheorie.
+\newblock \emph{Fundamenta Mathematicae}, 10:\penalty0 96--115, 1927.
+
+\bibitem[Nemhauser and Wolsey(1988)]{nemhauser1988}
+George~L. Nemhauser and Laurence~A. Wolsey.
+\newblock \emph{Integer and Combinatorial Optimization}.
+\newblock Wiley, 1988.
+
+\bibitem[Sahni(1975)]{sahni1975}
+Sartaj Sahni.
+\newblock Approximate algorithms for the 0/1 knapsack problem.
+\newblock \emph{Journal of the ACM}, 22\penalty0 (1):\penalty0 115--124, 1975.
+
+\bibitem[Simon(1955)]{simon1955}
+Herbert~A. Simon.
+\newblock A behavioral model of rational choice.
+\newblock \emph{The Quarterly Journal of Economics}, 69\penalty0 (1):\penalty0
+  99--118, 1955.
+
+\bibitem[Simon(1956)]{simon1956}
+Herbert~A. Simon.
+\newblock Rational choice and the structure of the environment.
+\newblock \emph{Psychological Review}, 63\penalty0 (2):\penalty0 129--138,
+  1956.
+
+\bibitem[Tarjan(1972)]{tarjan1972}
+Robert Tarjan.
+\newblock Depth-first search and linear graph algorithms.
+\newblock \emph{SIAM Journal on Computing}, 1\penalty0 (2):\penalty0 146--160,
+  1972.
+
+\bibitem[Tay et~al.(2022)Tay, Dehghani, Bahri, and Metzler]{tay2022}
+Yi~Tay, Mostafa Dehghani, Dara Bahri, and Donald Metzler.
+\newblock Efficient transformers: A survey.
+\newblock \emph{ACM Computing Surveys}, 55\penalty0 (6):\penalty0 1--28, 2022.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez,
+  Kaiser, and Polosukhin]{vaswani2017}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock In \emph{Advances in Neural Information Processing Systems 30}, 2017.
+
+\bibitem[Zilberstein(1996)]{zilberstein1996}
+Shlomo Zilberstein.
+\newblock Using anytime algorithms in intelligent systems.
+\newblock \emph{AI Magazine}, 17\penalty0 (3):\penalty0 73--83, 1996.
+
+\end{thebibliography}
