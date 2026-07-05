@@ -1,0 +1,16 @@
+{
+  "id": "exp07",
+  "name": "separation_seek_vs_nec",
+  "theorem": "Theorem (Separation), thm:separation",
+  "protocol": "diamond: a reachable-but-redundant step; seek keeps it, nec drops it",
+  "reach": [
+    "r",
+    "u1",
+    "u2"
+  ],
+  "necessary": [],
+  "u2_reachable": true,
+  "u2_necessary": false,
+  "separation_witnessed": true,
+  "verdict": "PASS"
+}

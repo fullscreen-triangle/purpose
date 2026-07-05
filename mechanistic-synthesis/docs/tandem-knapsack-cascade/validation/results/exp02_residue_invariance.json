@@ -1,0 +1,10 @@
+{
+  "id": "exp02",
+  "name": "residue_invariance",
+  "theorem": "Theorem (Residue is invariant; labels are not), thm:invariant",
+  "protocol": "residue preserved under random relabelling; label permutes",
+  "trials": 390,
+  "violations": 0,
+  "max_discrepancy": 0.0,
+  "verdict": "PASS"
+}

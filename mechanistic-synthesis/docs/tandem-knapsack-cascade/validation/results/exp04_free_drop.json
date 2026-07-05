@@ -1,0 +1,9 @@
+{
+  "id": "exp04",
+  "name": "free_drop",
+  "theorem": "Theorem (Free drop), thm:freedrop",
+  "protocol": "dropping an unreachable step leaves reach(goal) unchanged",
+  "trials": 136,
+  "violations": 0,
+  "verdict": "PASS"
+}

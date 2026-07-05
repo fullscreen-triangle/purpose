@@ -1,0 +1,11 @@
+{
+  "id": "exp05",
+  "name": "knapsack_optimality",
+  "theorem": "Theorems (0/1 knapsack; value-density greedy), thm:knapsack, thm:greedy",
+  "protocol": "exact >= greedy; greedy >= exact*(1 - cost_max/budget)",
+  "trials": 60,
+  "greedy_within_bound": 60,
+  "exact_optimal": 60,
+  "worst_relative_gap": 0.158616,
+  "verdict": "PASS"
+}

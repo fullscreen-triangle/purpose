@@ -1,0 +1,10 @@
+{
+  "id": "exp01",
+  "name": "floor_positivity",
+  "theorem": "Theorem (Floor from non-completability), thm:floor",
+  "protocol": "min u--medium cut >= beta for every step; no zero cut",
+  "trials": 399,
+  "violations": 0,
+  "min_residue_over_floor": 1.0,
+  "verdict": "PASS"
+}

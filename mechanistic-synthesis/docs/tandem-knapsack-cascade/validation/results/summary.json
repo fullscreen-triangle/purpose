@@ -1,0 +1,52 @@
+{
+  "suite": "Tandem Knapsack-Cascade Validation",
+  "paper": "tandem-knapsack-cascade.tex",
+  "seed": 42,
+  "n_experiments": 7,
+  "passed": 7,
+  "failed": 0,
+  "experiments": [
+    {
+      "id": "exp01",
+      "name": "floor_positivity",
+      "theorem": "Theorem (Floor from non-completability), thm:floor",
+      "verdict": "PASS"
+    },
+    {
+      "id": "exp02",
+      "name": "residue_invariance",
+      "theorem": "Theorem (Residue is invariant; labels are not), thm:invariant",
+      "verdict": "PASS"
+    },
+    {
+      "id": "exp03",
+      "name": "necessity_vs_reachability",
+      "theorem": "Theorem (Necessity), thm:necessity [subset always; chain identity, reconciliation Decision 3]",
+      "verdict": "PASS"
+    },
+    {
+      "id": "exp04",
+      "name": "free_drop",
+      "theorem": "Theorem (Free drop), thm:freedrop",
+      "verdict": "PASS"
+    },
+    {
+      "id": "exp05",
+      "name": "knapsack_optimality",
+      "theorem": "Theorems (0/1 knapsack; value-density greedy), thm:knapsack, thm:greedy",
+      "verdict": "PASS"
+    },
+    {
+      "id": "exp06",
+      "name": "cascade_log_working_set",
+      "theorem": "Theorem (Logarithmic working set), thm:cascade",
+      "verdict": "PASS"
+    },
+    {
+      "id": "exp07",
+      "name": "separation_seek_vs_nec",
+      "theorem": "Theorem (Separation), thm:separation",
+      "verdict": "PASS"
+    }
+  ]
+}

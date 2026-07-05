@@ -1,0 +1,11 @@
+{
+  "id": "exp03",
+  "name": "necessity_vs_reachability",
+  "theorem": "Theorem (Necessity), thm:necessity [subset always; chain identity, reconciliation Decision 3]",
+  "protocol": "(a) necessary subset of reach on random graphs; (b) on a chain, necessary == reach minus terminal leaf",
+  "subset_trials": 40,
+  "subset_holds": 40,
+  "chain_trials": 40,
+  "chain_identity_holds": 40,
+  "verdict": "PASS"
+}

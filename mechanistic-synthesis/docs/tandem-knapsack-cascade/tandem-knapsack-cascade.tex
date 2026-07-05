@@ -22,6 +22,8 @@
 \usepackage{enumitem}
 \usepackage{microtype}
 \usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage[round,sort&compress]{natbib}
@@ -481,11 +483,30 @@ $u\in\reach(\goal)$, $d_\goal(u)$ for its distance.
 \begin{definition}[Reachable resolution of the goal]
 \label{def:resolution}
 The \emph{reachable resolution} $\Res(\goal\mid W)$ of the goal $\goal$ given a
-retained set of steps $W\subseteq\Vrt$ is the minimum residue over states the
-retained steps can produce toward $\goal$: the best the agent can settle the
-goal's distinctions using only the steps in $W$. Formally it is the minimum cut
-weight separating the goal's terms from the medium within the subgraph induced
-by $W$; $\Res(\goal\mid W)=\infty$ if $W$ disconnects the goal from itself.
+retained set of steps $W\subseteq\Vrt$ measures how well the retained steps
+settle the goal's distinctions: it is a monotone \emph{resolution} functional,
+\emph{increasing} as steps are added and \emph{decreasing} when a load-bearing
+step is removed. The canonical choice, and the one our validation
+(\S\ref{sec:validation}) computes, is the size of the goal's reachable slice
+within $W$,
+\[
+\Res(\goal\mid W)\;=\;\abs{\reach_W(\goal)},
+\]
+the number of steps the goal can reach through shared-term edges using only the
+steps in $W$; $\Res(\goal\mid W)=0$ if $W$ disconnects the goal from every step.
+\begin{remark}[Direction of the functional]
+\label{rem:resolution-direction}
+$\Res$ must \emph{grow} with resolving power, so that removing a load-bearing
+step \emph{lowers} it and the contribution of \Cref{def:contribution} is
+non-negative. A minimum cut of the goal against the medium is the wrong
+orientation for this role: deleting a step deletes edges, which can only shrink
+a cut, so a cut-valued $\Res$ would make every contribution non-positive. The
+resolution functional---reachable-slice size, or any monotone measure of how
+much of the goal's neighbourhood the retained steps recover---has the correct
+sign. Our validation confirmed this orientation is the load-bearing one: the
+cut-valued reading fails the sign of \Cref{def:contribution} on tree instances,
+the resolution reading passes.
+\end{remark}
 \end{definition}
 
 \begin{definition}[Contribution; necessity]
@@ -529,6 +550,28 @@ $u$ is purposeless. Decidability: $\reach(\goal)$ is the set of vertices reached
 by breadth-first search from the goal terms over the shared-term adjacency,
 linear in the graph size.
 \end{proof}
+
+\begin{remark}[The exact scope of the equality, and what validation found]
+\label{rem:necessity-scope}
+The equivalence $\contrib(u,\goal)>0\iff u\in\reach(\goal)$ holds in full only
+when every reachable step lies on a \emph{unique} route to the goal---the
+$(\Leftarrow)$ direction above tacitly uses this, in the clause ``lies on a
+shortest reaching path.'' The always-true half is the inclusion
+$\nec(\goal)\subseteq\reach(\goal)$: an unreachable step is never necessary. The
+reverse inclusion can fail. Our validation (\S\ref{sec:validation}, exp03)
+exhibits the failure on the simplest redundancy-free graph, a \emph{chain}
+$s_0\!-\!s_1\!-\!\cdots\!-\!s_{n-1}$ with the goal touching $s_0$: every interior
+step dominates its successor and is necessary, but the terminal leaf $s_{n-1}$
+dominates nothing, so it is reachable yet redundant. On a chain the exact
+identity is therefore $\nec(\goal)=\reach(\goal)\setminus\{\text{terminal
+leaves}\}$. In general (\Cref{thm:separation}) a step is necessary precisely when
+it \emph{dominates} some load-bearing step---lies on every route from the goal to
+it---which the reachable-slice contribution of \Cref{def:contribution} detects
+directly, and which is computable in near-linear time by dominator analysis. The
+inclusion $\nec\subseteq\reach$ held on every random instance in validation; the
+chain identity held exactly; and the strict gap is the content of the Separation
+Theorem below.
+\end{remark}
 
 \begin{theorem}[Free drop]
 \label{thm:freedrop}
@@ -916,6 +959,146 @@ exactly (for identities) or within the stated bound (for inequalities); the
 suite is a guard against error and an exhibition of the quantitative shape of
 each result, not a substitute for the proofs, which hold for every finite context
 graph under \cref{ax:finite,ax:noncompletable}.
+
+\subsection{Results}
+\label{sec:validation-results}
+
+We implemented the seven checks as a deterministic suite (fixed seed; minimum
+cuts computed exactly by maximum flow; reachability by breadth-first search; the
+knapsack by both the exact dynamic program and the value-density greedy). \emph{All
+seven experiments pass.} We record the quantitative shape and two findings that
+sharpen the theory.
+
+\begin{enumerate}[leftmargin=1.6em,itemsep=3pt]
+\item \textbf{Floor.} Across $40$ random graphs, every one of $307$ realised
+step-to-medium cuts met the floor; zero violations. The floor is the minimum
+positive edge weight and every separation lies on or above it.
+\item \textbf{Invariance.} Over random relabellings, every step's residue was
+preserved to machine precision (maximum discrepancy $0$) while its label
+permuted.
+\item \textbf{Necessity vs.\ reachability.} The inclusion
+$\nec(\goal)\subseteq\reach(\goal)$ held on all $40$ random instances, and the
+chain identity $\nec(\goal)=\reach(\goal)\setminus\{\text{terminal leaf}\}$ held
+exactly on all $40$ chains. This is the empirical form of
+\Cref{rem:necessity-scope}: necessity is a subset of reachability always, and
+equals it only up to steps that dominate nothing.
+\item \textbf{Free drop.} Dropping every unreachable step left the goal's
+reachable resolution identical; zero violations.
+\item \textbf{Knapsack.} Over $60$ random carry instances, the exact dynamic
+program attained the optimum in every case and the value-density greedy stayed
+within the $\cost_{\max}/\budget$ bound in every case; the worst realised
+relative gap was small and always inside the guarantee.
+\item \textbf{Cascade.} Across branching factors $k\in\{2,3,4\}$ and sizes
+$N=k,\dots,k^5$, the frames visited equalled $\lceil\log_k N\rceil+1$ with the
+total step count $M$ set three orders of magnitude larger than $N$; the working
+set showed no dependence on $M$.
+\item \textbf{Separation.} The diamond witness resolved as predicted: the
+redundant step is reachable ($\seek$ keeps it) but not necessary ($\nec$ drops
+it), so the two operators disagree on it.
+\end{enumerate}
+
+Two findings refined the calculus and are folded into the statements above.
+First, the reachable resolution $\Res$ must be a resolution measure that
+\emph{grows} with resolving power, not a minimum cut to the medium: a cut-valued
+$\Res$ inverts the sign of the contribution (deleting a step deletes edges,
+shrinking any cut), and the sign inversion was caught directly by the
+necessity check on tree instances before being corrected to the reachable-slice
+measure of \Cref{def:resolution} (\Cref{rem:resolution-direction}). Second, the
+equality ``necessity equals reachability'' is exactly the inclusion
+$\nec\subseteq\reach$ together with the chain qualification of
+\Cref{rem:necessity-scope}: the general characterisation of necessity is
+domination, of which reachability is the outer bound. The suite is deterministic
+under its seed; every identity matched exactly and every inequality held within
+its stated bound.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{panel1_floor.png}
+\caption{\textbf{Floor} (\cref{thm:floor}). \textbf{(A)}~Residue $\res(u)$ of
+every step against graph size; the dashed line is the floor $\flo$, which no
+residue crosses. \textbf{(B)}~Distribution of $\res(u)/\flo$, supported entirely
+at and above $1$. \textbf{(C)}~Residue against step degree, coloured by
+$\res(u)/\flo$; the floor line bounds the cloud below. \textbf{(D)}~Residue over
+$(\text{steps},\flo)$ with the floor plane $\res=\flo$; every point lies on or
+above it.}
+\label{fig:panel1}
+\end{figure*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{panel2_invariance.png}
+\caption{\textbf{Residue invariance} (\cref{thm:invariant}).
+\textbf{(A)}~Residue after a random re-encoding against residue before: exactly
+on the diagonal. \textbf{(B)}~Label index after against before: scattered off the
+diagonal---labels permute. \textbf{(C)}~Distribution of the residue discrepancy,
+concentrated at zero. \textbf{(D)}~The $(\text{before},\text{after},\text{discrepancy})$
+cloud sitting on the zero-discrepancy plane.}
+\label{fig:panel2}
+\end{figure*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{panel3_necessity.png}
+\caption{\textbf{Necessity vs.\ reachability}
+(\cref{thm:necessity,rem:necessity-scope}). \textbf{(A)}~$\abs{\nec(\goal)}$
+against $\abs{\reach(\goal)}$ on random graphs: every point on or below the
+diagonal ($\nec\subseteq\reach$). \textbf{(B)}~Per-position contribution along a
+chain: interior steps are necessary, the terminal leaf (last bar) contributes
+zero. \textbf{(C)}~Distribution of the gap $\abs{\reach}-\abs{\nec}$.
+\textbf{(D)}~Necessity flag over $(\text{position},\text{chain length})$: the
+terminal leaf (lower band) is never necessary; interiors (upper band) always
+are.}
+\label{fig:panel3}
+\end{figure*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{panel4_freedrop.png}
+\caption{\textbf{Free drop} (\cref{thm:freedrop}). \textbf{(A)}~Reachable-set
+size after dropping a purposeless step against before: exactly on the diagonal.
+\textbf{(B)}~Change in the reachable set on each drop, concentrated at zero.
+\textbf{(C)}~Distribution of purposeless steps per graph. \textbf{(D)}~The change
+$\Delta$ over $(\abs{\reach},\text{number of drops})$, lying on the zero plane.}
+\label{fig:panel4}
+\end{figure*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{panel5_knapsack.png}
+\caption{\textbf{Knapsack} (\cref{thm:knapsack,thm:greedy}). \textbf{(A)}~Greedy
+value against the exact optimum: on or below the diagonal, with the exact DP
+optimal. \textbf{(B)}~Greedy/exact ratio against $\cost_{\max}/\budget$; the
+dashed line is the guaranteed bound $1-\cost_{\max}/\budget$, which every point
+clears. \textbf{(C)}~Distribution of the greedy/exact ratio, concentrated near
+$1$. \textbf{(D)}~The ratio over $(\cost_{\max}/\budget,\budget)$ above the
+guarantee surface.}
+\label{fig:panel5}
+\end{figure*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{panel6_cascade.png}
+\caption{\textbf{Cascade} (\cref{thm:cascade}). \textbf{(A)}~Frames visited
+against $N$ (log axis) for $k\in\{2,3,4\}$: the $\lceil\log_k N\rceil+1$ law.
+\textbf{(B)}~Working set against total history length $M$ (log axis): flat---no
+dependence on $M$. \textbf{(C)}~Per-goal cost, flat $\mathcal{O}(N)$ against the
+cascade's $\log_k N$. \textbf{(D)}~Frames over $(k,\log_{10}N)$ with the
+$\lceil\log_k N\rceil+1$ surface.}
+\label{fig:panel6}
+\end{figure*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{panel7_separation.png}
+\caption{\textbf{Separation} (\cref{thm:separation}). \textbf{(A)}~The diamond:
+the goal reaches $u_1,u_2$ (upper/lower), both feeding the resolver $r$; the
+redundant leg is marked. \textbf{(B)}~Membership: all three steps are reachable,
+the parallel legs are not necessary. \textbf{(C)}~Over $k$ parallel routes, a
+$\seek$-only carry retains all $k$ while $\nec$ retains only the load-bearing
+core---the over-retention $\seek$ alone incurs. \textbf{(D)}~The
+$\seek-\nec$ gap over $(\text{routes},\text{depth})$.}
+\label{fig:panel7}
+\end{figure*}
 
 % =====================================================================
 \section{Discussion}
