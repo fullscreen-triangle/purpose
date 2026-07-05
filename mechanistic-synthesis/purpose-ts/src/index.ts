@@ -103,4 +103,5 @@ export function residue(
 
 // ---- Re-exports for graph-view-flavoured callers (Graffiti) ----
 export { reachView as reachInView, buildGraph, defaultValue };
-export type { CarryItem, EdgeWeight };
+export { carryGreedy, carryExact } from "./core/index.js";
+export type { CarryItem, CarryOutcome, EdgeWeight } from "./core/index.js";
