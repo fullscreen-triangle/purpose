@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.20)  6 JUL 2026 01:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.20)  6 JUL 2026 04:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -306,4 +306,607 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
 
-(C:\Users\kunda\AppData\Local\Programs\MiK
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+)
+\Gin@req@height=\dimen193
+\Gin@req@width=\dimen194
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.st
+y
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+ (C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count311
+\float@exts=\toks36
+\float@box=\box60
+\@float@everytoks=\toks37
+\@floatcapt=\box61
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks38
+\c@algorithm=\count312
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algpseudoc
+ode.sty
+Package: algpseudocode 
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algorithmi
+cx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count313
+\c@ALG@rem=\count314
+\c@ALG@nested=\count315
+\ALG@tlm=\skip65
+\ALG@thistlm=\skip66
+\c@ALG@Lnr=\count316
+\c@ALG@blocknr=\count317
+\c@ALG@storecount=\count318
+\c@ALG@tmpcounter=\count319
+\ALG@tmplength=\skip67
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip68
+\bibsep=\skip69
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count320
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count321
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen195
+\Hy@linkcounter=\count322
+\Hy@pagecounter=\count323
+ (C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count324
+ (C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4072.
+Package hyperref Info: Hyper figures OFF on input line 4201.
+Package hyperref Info: Link nesting OFF on input line 4206.
+Package hyperref Info: Hyper index ON on input line 4209.
+Package hyperref Info: Plain pages OFF on input line 4216.
+Package hyperref Info: Backreferencing OFF on input line 4221.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4468.
+\c@Hy@tempcnt=\count325
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4807.
+\XeTeXLinkMargin=\dimen196
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count326
+\Field@Width=\dimen197
+\Fld@charsize=\dimen198
+Package hyperref Info: Hyper figures OFF on input line 6084.
+Package hyperref Info: Link nesting OFF on input line 6089.
+Package hyperref Info: Hyper index ON on input line 6092.
+Package hyperref Info: backreferencing OFF on input line 6099.
+Package hyperref Info: Link coloring ON on input line 6102.
+Package hyperref Info: Link coloring with OCG OFF on input line 6109.
+Package hyperref Info: PDF/A mode OFF on input line 6114.
+\Hy@abspage=\count327
+\c@Item=\count328
+\c@Hfootnote=\count329
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2026-01-29 v7.01p Hyperref driver for pdfTeX
+\Fld@listcount=\count330
+\c@bookmark@seq@number=\count331
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip70
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/cleveref\cleveref.sty
+Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2370.
+LaTeX Info: Redefining \cref on input line 2370.
+LaTeX Info: Redefining \Cref on input line 2370.
+LaTeX Info: Redefining \crefrange on input line 2370.
+LaTeX Info: Redefining \Crefrange on input line 2370.
+LaTeX Info: Redefining \cpageref on input line 2370.
+LaTeX Info: Redefining \Cpageref on input line 2370.
+LaTeX Info: Redefining \cpagerefrange on input line 2370.
+LaTeX Info: Redefining \Cpagerefrange on input line 2370.
+LaTeX Info: Redefining \labelcref on input line 2370.
+LaTeX Info: Redefining \labelcpageref on input line 2370.
+Package cleveref Info: `amsthm' support loaded on input line 3026.
+Package cleveref Info: `algorithmicx' support loaded on input line 3120.
+)
+==> First Aid for cleveref.sty applied!
+\c@theorem=\count332
+\c@axiom=\count333
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 93
+.
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count334
+) (tandem-knapsack-cascade.aux)
+\openout1 = `tandem-knapsack-cascade.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 93.
+LaTeX Font Info:    ... okay on input line 93.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=4.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumntrue
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Info: Redefining \microtypecontext on input line 93.
+Package microtype Info: Applying patch `item' on input line 93.
+Package microtype Info: Applying patch `toc' on input line 93.
+Package microtype Info: Applying patch `eqnum' on input line 93.
+Package microtype Info: Applying patch `footnote' on input line 93.
+Package microtype Info: Applying patch `verbatim' on input line 93.
+LaTeX Info: Redefining \microtypesetup on input line 93.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+Package microtype Info: Patching command `\showhyphens'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count335
+\scratchdimen=\dimen199
+\scratchbox=\box62
+\nofMPsegments=\count336
+\nofMParguments=\count337
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count338
+\MPscratchDim=\dimen256
+\MPnumerator=\count339
+\makeMPintoPDFobject=\count340
+\everyMPtoPDFconversion=\toks40
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package hyperref Info: Link coloring ON on input line 93.
+ (tandem-knapsack-cascade.out) (tandem-knapsack-cascade.out)
+\@outlinefile=\write3
+\openout3 = `tandem-knapsack-cascade.out'.
+
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 9
+5.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 9
+5.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+95.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+95.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 95.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 95.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 95.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 95.
+
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 95.
+
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 95
+.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 9
+5.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 110.
+
+Overfull \hbox (1.45422pt too wide) in paragraph at lines 98--137
+\T1/lmr/m/it/10.95 (-20) cas-cade\T1/lmr/m/n/10.95 (-20) ---a $\OML/lmm/m/it/10
+.95 k$\T1/lmr/m/n/10.95 (-20) -ary rout-ing tree of con-text frames---
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+(tandem-knapsack-cascade.toc
+Underfull \vbox (badness 4981) has occurred while \output is active []
+
+ [1{C:/Users/kunda/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/k
+unda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
+
+
+{C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
+{C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/
+Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}])
+\tf@toc=\write4
+\openout4 = `tandem-knapsack-cascade.toc'.
+
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
+85.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [2{C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc
+}] [3{C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex
+.enc}]
+LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
+281.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmss.fd
+File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmss' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Overfull \hbox (93.32336pt too wide) detected at line 337
+\OML/lmm/m/it/10.95 ^^Z\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 u\OT1/lmr/m/n/10
+.95 )  =  [] \OML/lmm/m/it/10.95 w\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 @\OT1
+/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 S\OT1/lmr/m/n/10.95 ))\OML/lmm/m/it/10.95 ;
+  @\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 S\OT1/lmr/m/n/10.95 ) = \OMS/lmsy/m/
+n/10.95 ff\OML/lmm/m/it/10.95 a; b\OMS/lmsy/m/n/10.95 g 2 \OML/lmm/m/it/10.95 E
+ \OT1/lmr/m/n/10.95 : \OML/lmm/m/it/10.95 a \OMS/lmsy/m/n/10.95 2 \OML/lmm/m/it
+/10.95 S;  b [] S\OMS/lmsy/m/n/10.95 g\OML/lmm/m/it/10.95 ;
+ []
+
+<figures/panel1_floor.png, id=223, 1071.5232pt x 247.6452pt>
+File: figures/panel1_floor.png Graphic file (type png)
+<use figures/panel1_floor.png>
+Package pdftex.def Info: figures/panel1_floor.png  used on input line 388.
+(pdftex.def)             Requested size: 455.24411pt x 105.21568pt.
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 418--418
+[]\T1/lmr/bx/n/14.4 (+20) Residue Is Con-served;
+ []
+
+
+Underfull \hbox (badness 1389) in paragraph at lines 451--456
+[]\T1/lmr/bx/n/10.95 (+20) Theorem 4.3 \T1/lmr/m/n/10.95 (+20) (Knowl-edge is r
+e-gen-er-a-ble;
+ []
+
+<figures/panel2_invariance.png, id=252, 1081.641pt x 248.6088pt>
+File: figures/panel2_invariance.png Graphic file (type png)
+<use figures/panel2_invariance.png>
+Package pdftex.def Info: figures/panel2_invariance.png  used on input line 493.
+
+(pdftex.def)             Requested size: 455.24411pt x 104.635pt.
+[5] [6 <./figures/panel1_floor.png> <./figures/panel2_invariance.png>]
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 6
+19.
+
+(C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmss' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [7]
+<figures/panel4_freedrop.png, id=300, 1079.232pt x 247.6452pt>
+File: figures/panel4_freedrop.png Graphic file (type png)
+<use figures/panel4_freedrop.png>
+Package pdftex.def Info: figures/panel4_freedrop.png  used on input line 644.
+(pdftex.def)             Requested size: 455.24411pt x 104.45993pt.
+<figures/panel3_necessity.png, id=308, 1063.3326pt x 247.6452pt>
+File: figures/panel3_necessity.png Graphic file (type png)
+<use figures/panel3_necessity.png>
+Package pdftex.def Info: figures/panel3_necessity.png  used on input line 699.
+(pdftex.def)             Requested size: 455.24411pt x 106.02434pt.
+
+[8] [9 <./figures/panel4_freedrop.png> <./figures/panel3_necessity.png>]
+<figures/panel5_knapsack.png, id=353, 1080.6774pt x 248.127pt>
+File: figures/panel5_knapsack.png Graphic file (type png)
+<use figures/panel5_knapsack.png>
+Package pdftex.def Info: figures/panel5_knapsack.png  used on input line 807.
+(pdftex.def)             Requested size: 455.24411pt x 104.52686pt.
+<figures/panel6_cascade.png, id=363, 1074.414pt x 247.1634pt>
+File: figures/panel6_cascade.png Graphic file (type png)
+<use figures/panel6_cascade.png>
+Package pdftex.def Info: figures/panel6_cascade.png  used on input line 904.
+(pdftex.def)             Requested size: 455.24411pt x 104.72437pt.
+
+[10] [11 <./figures/panel5_knapsack.png> <./figures/panel6_cascade.png>]
+Overfull \hbox (1.61621pt too wide) in paragraph at lines 947--953
+\T1/lmr/m/n/10.95 (-20) re-moval changes the goal's reach-able resolution---
+ []
+
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 960.
+
+Underfull \hbox (badness 1062) in paragraph at lines 964--968
+[]\T1/lmr/m/it/10.95 (+20) on a re-tained set that is not ex-actly
+ []
+
+
+Underfull \hbox (badness 1845) in paragraph at lines 998--1002
+[]\T1/lmr/m/n/10.95 (+20) Over-retention of $[]$-only is the-o-
+ []
+
+[12]
+<figures/panel7_separation.png, id=429, 1071.0414pt x 248.6088pt>
+File: figures/panel7_separation.png Graphic file (type png)
+<use figures/panel7_separation.png>
+Package pdftex.def Info: figures/panel7_separation.png  used on input line 1092
+.
+(pdftex.def)             Requested size: 455.24411pt x 105.67061pt.
+ [13]
+Underfull \hbox (badness 3861) in paragraph at lines 1150--1154
+[]\T1/lmr/bx/n/10.95 (+20) Knapsack op-ti-mal-ity \T1/lmr/m/n/10.95 (+20) (the-
+o-rems [][]6.2[][]
+ []
+
+[14 <./figures/panel7_separation.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1237--1243
+ []\T1/lmr/bx/n/10.95 (+20) Long-context ar-chi-tec-tures.[] \T1/lmr/m/n/10.95 
+(+20) Ef-fi-cient
+ []
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 1237--1243
+\T1/lmr/m/n/10.95 (+20) trans-form-ers ([][]Tay et al.[][], [][]2022[][]) lower
+ the
+ []
+
+
+Underfull \hbox (badness 2865) in paragraph at lines 1237--1243
+\T1/lmr/m/n/10.95 (+20) is carried---residue, not knowledge---so it
+ []
+
+[15] (tandem-knapsack-cascade.bbl [16]) [17
+
+] (tandem-knapsack-cascade.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+Package rerunfilecheck Info: File `tandem-knapsack-cascade.out' has not changed
+.
+(rerunfilecheck)             Checksum: F512AC679D9E51CBDA170227C73FC667;4165.
+ ) 
+Here is how much of TeX's memory you used:
+ 17926 strings out of 467867
+ 295915 string characters out of 5418334
+ 775587 words of memory out of 5000000
+ 46027 multiletter control sequences out of 15000+600000
+ 752741 words of font info for 291 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 75i,9n,79p,2000b,732s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
+b><C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
+b><C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
+b><C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
+b><C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb
+><C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb>
+<C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><
+C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:
+/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:
+/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:
+/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss8.pfb><C:/
+Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso10.pfb><C:
+/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:
+/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/
+Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/U
+sers/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/U
+sers/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/ms
+bm10.pfb>
+Output written on tandem-knapsack-cascade.pdf (17 pages, 1258404 bytes).
+PDF statistics:
+ 627 PDF objects out of 1000 (max. 8388607)
+ 140 named destinations out of 1000 (max. 500000)
+ 68324 words of extra memory for PDF output out of 74296 (max. 10000000)
+

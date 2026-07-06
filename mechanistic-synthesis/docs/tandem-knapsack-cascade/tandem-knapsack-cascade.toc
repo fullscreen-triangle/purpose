@@ -1,26 +1,27 @@
 \contentsline {part}{I\hspace {1em}Foundations}{2}{part.1}%
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}The problem}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}The thesis}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.2}The thesis}{2}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}What the paper proves}{3}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Method and scope}{4}{subsection.1.4}%
-\contentsline {section}{\numberline {2}The Context Model}{4}{section.2}%
-\contentsline {section}{\numberline {3}The Floor: No Genuine Step Is Free}{5}{section.3}%
+\contentsline {subsection}{\numberline {1.4}Method and scope}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}The Context Model}{3}{section.2}%
+\contentsline {section}{\numberline {3}The Floor: No Genuine Step Is Free}{4}{section.3}%
 \contentsline {section}{\numberline {4}Residue Is Conserved; Knowledge Is Surface}{5}{section.4}%
-\contentsline {part}{II\hspace {1em}The Necessity Calculus}{6}{part.2}%
-\contentsline {section}{\numberline {5}Necessity: What a Goal Actually Needs}{6}{section.5}%
+\contentsline {part}{II\hspace {1em}The Necessity Calculus}{5}{part.2}%
+\contentsline {section}{\numberline {5}Necessity: What a Goal Actually Needs}{5}{section.5}%
 \contentsline {section}{\numberline {6}The Knapsack Carry: Optimal Under a Budget}{8}{section.6}%
-\contentsline {section}{\numberline {7}The Cascade: Bounding the Working Set}{8}{section.7}%
-\contentsline {part}{III\hspace {1em}The Tandem}{9}{part.3}%
-\contentsline {section}{\numberline {8}Separation: Two Questions, Two Operators}{9}{section.8}%
-\contentsline {section}{\numberline {9}The Tandem Algorithm}{10}{section.9}%
-\contentsline {part}{IV\hspace {1em}Validation and Discussion}{11}{part.4}%
-\contentsline {section}{\numberline {10}Constructive Validation}{11}{section.10}%
-\contentsline {section}{\numberline {11}Discussion}{12}{section.11}%
-\contentsline {subsection}{\numberline {11.1}Relation to existing practice}{12}{subsection.11.1}%
-\contentsline {paragraph}{Retrieval.}{12}{section*.2}%
-\contentsline {paragraph}{Long-context architectures.}{12}{section*.3}%
-\contentsline {paragraph}{Anytime computation.}{12}{section*.4}%
-\contentsline {subsection}{\numberline {11.2}What the calculus assumes and does not supply}{12}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3}Scope}{12}{subsection.11.3}%
-\contentsline {subsection}{\numberline {11.4}Conclusion}{13}{subsection.11.4}%
+\contentsline {section}{\numberline {7}The Cascade: Bounding the Working Set}{10}{section.7}%
+\contentsline {part}{III\hspace {1em}The Tandem}{12}{part.3}%
+\contentsline {section}{\numberline {8}Separation: Two Questions, Two Operators}{12}{section.8}%
+\contentsline {section}{\numberline {9}The Tandem Algorithm}{12}{section.9}%
+\contentsline {part}{IV\hspace {1em}Validation and Discussion}{13}{part.4}%
+\contentsline {section}{\numberline {10}Constructive Validation}{13}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Results}{14}{subsection.10.1}%
+\contentsline {section}{\numberline {11}Discussion}{15}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Relation to existing practice}{15}{subsection.11.1}%
+\contentsline {paragraph}{Retrieval.}{15}{section*.3}%
+\contentsline {paragraph}{Long-context architectures.}{15}{section*.4}%
+\contentsline {paragraph}{Anytime computation.}{15}{section*.5}%
+\contentsline {subsection}{\numberline {11.2}What the calculus assumes and does not supply}{15}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Scope}{16}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Conclusion}{16}{subsection.11.4}%
