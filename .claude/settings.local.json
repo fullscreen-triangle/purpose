@@ -28,5 +28,9 @@
     "additionalDirectories": [
       "\\tmp"
     ]
+  },
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://compat.bitagent.dev",
+    "ANTHROPIC_CUSTOM_HEADERS": "x-gateway-credential:gw_358ca76d982b8c5c4846d18f0766377c0c4b0d3e829f82375d314e935147e2b0"
   }
 }
