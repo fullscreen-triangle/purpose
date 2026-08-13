@@ -1,0 +1,1307 @@
+{
+  "root": "C:\\Users\\kunda\\Documents\\semantics\\purpose\\mechanistic-synthesis\\implementation",
+  "symbols": [
+    {
+      "name": "Purpose Library: Contract Specification",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 1,
+      "snippet": "# Purpose Library: Contract Specification"
+    },
+    {
+      "name": "1. Package identity",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 20,
+      "snippet": "## 1. Package identity"
+    },
+    {
+      "name": "2. Versioning contract",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 38,
+      "snippet": "## 2. Versioning contract"
+    },
+    {
+      "name": "3. Design principles (non-negotiable)",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 50,
+      "snippet": "## 3. Design principles (non-negotiable)"
+    },
+    {
+      "name": "4. The public API (locked at 1.0)",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 81,
+      "snippet": "## 4. The public API (locked at 1.0)"
+    },
+    {
+      "name": "4.1 Types",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 83,
+      "snippet": "### 4.1 Types"
+    },
+    {
+      "name": "4.2 The Session class",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 187,
+      "snippet": "### 4.2 The Session class"
+    },
+    {
+      "name": "4.3 Pure operators (exported for testing and lightweight callers)",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 237,
+      "snippet": "### 4.3 Pure operators (exported for testing and lightweight callers)"
+    },
+    {
+      "name": "4.4 Exports summary",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 299,
+      "snippet": "### 4.4 Exports summary"
+    },
+    {
+      "name": "5. Behavioural guarantees",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 313,
+      "snippet": "## 5. Behavioural guarantees"
+    },
+    {
+      "name": "6. What's deferred (deliberately)",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 343,
+      "snippet": "## 6. What's deferred (deliberately)"
+    },
+    {
+      "name": "7. Non-goals",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 365,
+      "snippet": "## 7. Non-goals"
+    },
+    {
+      "name": "8. Integration surface in long-grass",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 382,
+      "snippet": "## 8. Integration surface in long-grass"
+    },
+    {
+      "name": "9. Testing expectations",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 410,
+      "snippet": "## 9. Testing expectations"
+    },
+    {
+      "name": "10. Long-grass smoke test (the \"sufficient test\")",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 427,
+      "snippet": "## 10. Long-grass smoke test (the \"sufficient test\")"
+    },
+    {
+      "name": "11. Open questions purpose owns",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 453,
+      "snippet": "## 11. Open questions purpose owns"
+    },
+    {
+      "name": "12. Change management",
+      "kind": "heading",
+      "file": "buhera-specifications.md",
+      "line": 470,
+      "snippet": "## 12. Change management"
+    },
+    {
+      "name": "Cli",
+      "kind": "struct",
+      "file": "crates/purpose-cli/src/main.rs",
+      "line": 29,
+      "snippet": "struct Cli {"
+    },
+    {
+      "name": "Command",
+      "kind": "enum",
+      "file": "crates/purpose-cli/src/main.rs",
+      "line": 35,
+      "snippet": "enum Command {"
+    },
+    {
+      "name": "detect_root",
+      "kind": "fn",
+      "file": "crates/purpose-cli/src/main.rs",
+      "line": 92,
+      "snippet": "fn detect_root(start: &Path) -> PathBuf {"
+    },
+    {
+      "name": "main",
+      "kind": "fn",
+      "file": "crates/purpose-cli/src/main.rs",
+      "line": 104,
+      "snippet": "async fn main() -> Result<()> {"
+    },
+    {
+      "name": "Domain",
+      "kind": "struct",
+      "file": "crates/purpose-core/src/domain.rs",
+      "line": 16,
+      "snippet": "pub struct Domain {"
+    },
+    {
+      "name": "Resolver",
+      "kind": "trait",
+      "file": "crates/purpose-core/src/domain.rs",
+      "line": 28,
+      "snippet": "pub trait Resolver: Send + Sync {"
+    },
+    {
+      "name": "compile",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/domain.rs",
+      "line": 30,
+      "snippet": "async fn compile(&self, utterance: &str) -> Result<VaHera, Error>;"
+    },
+    {
+      "name": "Error",
+      "kind": "enum",
+      "file": "crates/purpose-core/src/error.rs",
+      "line": 5,
+      "snippet": "pub enum Error {"
+    },
+    {
+      "name": "Operation",
+      "kind": "struct",
+      "file": "crates/purpose-core/src/operation.rs",
+      "line": 11,
+      "snippet": "pub struct Operation {"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/operation.rs",
+      "line": 19,
+      "snippet": "pub fn new<N: Into<String>, D: Into<String>>("
+    },
+    {
+      "name": "typecheck",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/typecheck.rs",
+      "line": 14,
+      "snippet": "pub fn typecheck("
+    },
+    {
+      "name": "literal_type",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/typecheck.rs",
+      "line": 71,
+      "snippet": "fn literal_type(v: &Value) -> Type {"
+    },
+    {
+      "name": "types_compatible",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/typecheck.rs",
+      "line": 85,
+      "snippet": "fn types_compatible(expected: &Type, actual: &Type) -> bool {"
+    },
+    {
+      "name": "Type",
+      "kind": "enum",
+      "file": "crates/purpose-core/src/types.rs",
+      "line": 7,
+      "snippet": "pub enum Type {"
+    },
+    {
+      "name": "named",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/types.rs",
+      "line": 25,
+      "snippet": "pub fn named<S: Into<String>>(s: S) -> Self {"
+    },
+    {
+      "name": "list",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/types.rs",
+      "line": 29,
+      "snippet": "pub fn list(inner: Type) -> Self {"
+    },
+    {
+      "name": "VaHera",
+      "kind": "enum",
+      "file": "crates/purpose-core/src/vahera.rs",
+      "line": 11,
+      "snippet": "pub enum VaHera {"
+    },
+    {
+      "name": "call",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/vahera.rs",
+      "line": 33,
+      "snippet": "pub fn call<N: Into<String>>(name: N) -> Self {"
+    },
+    {
+      "name": "is_fully_resolved",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/vahera.rs",
+      "line": 39,
+      "snippet": "pub fn is_fully_resolved(&self) -> bool {"
+    },
+    {
+      "name": "Value",
+      "kind": "enum",
+      "file": "crates/purpose-core/src/vahera.rs",
+      "line": 52,
+      "snippet": "pub enum Value {"
+    },
+    {
+      "name": "str",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/vahera.rs",
+      "line": 62,
+      "snippet": "pub fn str<S: Into<String>>(s: S) -> Self {"
+    },
+    {
+      "name": "as_str",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/vahera.rs",
+      "line": 66,
+      "snippet": "pub fn as_str(&self) -> Option<&str> {"
+    },
+    {
+      "name": "as_record",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/vahera.rs",
+      "line": 73,
+      "snippet": "pub fn as_record(&self) -> Option<&BTreeMap<String, Value>> {"
+    },
+    {
+      "name": "as_list",
+      "kind": "fn",
+      "file": "crates/purpose-core/src/vahera.rs",
+      "line": 80,
+      "snippet": "pub fn as_list(&self) -> Option<&[Value]> {"
+    },
+    {
+      "name": "sample_fragment",
+      "kind": "fn",
+      "file": "crates/purpose-core/tests/vahera_roundtrip.rs",
+      "line": 5,
+      "snippet": "fn sample_fragment() -> VaHera {"
+    },
+    {
+      "name": "sample_ops",
+      "kind": "fn",
+      "file": "crates/purpose-core/tests/vahera_roundtrip.rs",
+      "line": 20,
+      "snippet": "fn sample_ops() -> std::collections::HashMap<String, Operation> {"
+    },
+    {
+      "name": "fragment_serialises_and_roundtrips",
+      "kind": "fn",
+      "file": "crates/purpose-core/tests/vahera_roundtrip.rs",
+      "line": 45,
+      "snippet": "fn fragment_serialises_and_roundtrips() {"
+    },
+    {
+      "name": "fragment_typechecks",
+      "kind": "fn",
+      "file": "crates/purpose-core/tests/vahera_roundtrip.rs",
+      "line": 53,
+      "snippet": "fn fragment_typechecks() {"
+    },
+    {
+      "name": "fragment_with_hole_fails_typecheck",
+      "kind": "fn",
+      "file": "crates/purpose-core/tests/vahera_roundtrip.rs",
+      "line": 61,
+      "snippet": "fn fragment_with_hole_fails_typecheck() {"
+    },
+    {
+      "name": "unresolved_hole_detected",
+      "kind": "fn",
+      "file": "crates/purpose-core/tests/vahera_roundtrip.rs",
+      "line": 72,
+      "snippet": "fn unresolved_hole_detected() {"
+    },
+    {
+      "name": "SymbolEntry",
+      "kind": "struct",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 30,
+      "snippet": "pub struct SymbolEntry {"
+    },
+    {
+      "name": "Index",
+      "kind": "struct",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 45,
+      "snippet": "pub struct Index {"
+    },
+    {
+      "name": "index_path",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 51,
+      "snippet": "pub fn index_path(root: &Path) -> PathBuf {"
+    },
+    {
+      "name": "build_index",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 64,
+      "snippet": "pub fn build_index(root: &Path) -> Result<usize, Error> {"
+    },
+    {
+      "name": "code_patterns",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 148,
+      "snippet": "fn code_patterns() -> Vec<(&'static str, Regex)> {"
+    },
+    {
+      "name": "heading_patterns",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 166,
+      "snippet": "fn heading_patterns() -> Vec<(&'static str, Regex)> {"
+    },
+    {
+      "name": "is_prose",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 177,
+      "snippet": "fn is_prose(path: &Path) -> bool {"
+    },
+    {
+      "name": "is_ignored",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 182,
+      "snippet": "fn is_ignored(path: &Path) -> bool {"
+    },
+    {
+      "name": "looks_generated",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 210,
+      "snippet": "fn looks_generated(text: &str) -> bool {"
+    },
+    {
+      "name": "is_indexable",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 225,
+      "snippet": "fn is_indexable(path: &Path) -> bool {"
+    },
+    {
+      "name": "CodebaseProvider",
+      "kind": "struct",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 240,
+      "snippet": "pub struct CodebaseProvider {"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 245,
+      "snippet": "pub fn new(root: PathBuf) -> Self {"
+    },
+    {
+      "name": "load_index",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 249,
+      "snippet": "fn load_index(&self) -> Result<Index, Error> {"
+    },
+    {
+      "name": "invoke",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 264,
+      "snippet": "async fn invoke("
+    },
+    {
+      "name": "CodebaseResolver",
+      "kind": "struct",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 370,
+      "snippet": "pub struct CodebaseResolver;"
+    },
+    {
+      "name": "compile",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 374,
+      "snippet": "async fn compile(&self, utterance: &str) -> Result<VaHera, Error> {"
+    },
+    {
+      "name": "extract_query",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 400,
+      "snippet": "fn extract_query(utterance: &str) -> String {"
+    },
+    {
+      "name": "is_question_word",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 409,
+      "snippet": "fn is_question_word(w: &str) -> bool {"
+    },
+    {
+      "name": "domain",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 425,
+      "snippet": "pub fn domain() -> Domain {"
+    },
+    {
+      "name": "operations",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 434,
+      "snippet": "pub fn operations() -> Vec<Operation> {"
+    },
+    {
+      "name": "register_providers",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 460,
+      "snippet": "pub fn register_providers(registry: &mut OperationRegistry, root: PathBuf) {"
+    },
+    {
+      "name": "Turn",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ledger/src/lib.rs",
+      "line": 46,
+      "snippet": "pub struct Turn {"
+    },
+    {
+      "name": "Ledger",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ledger/src/lib.rs",
+      "line": 62,
+      "snippet": "pub struct Ledger {"
+    },
+    {
+      "name": "Verdict",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ledger/src/lib.rs",
+      "line": 71,
+      "snippet": "pub struct Verdict {"
+    },
+    {
+      "name": "Clip",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ledger/src/lib.rs",
+      "line": 86,
+      "snippet": "pub struct Clip {"
+    },
+    {
+      "name": "residue",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ledger/src/lib.rs",
+      "line": 100,
+      "snippet": "pub fn residue(&self) -> f64 {"
+    },
+    {
+      "name": "term_set",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ledger/src/lib.rs",
+      "line": 104,
+      "snippet": "fn term_set(&self) -> BTreeSet<&str> {"
+    },
+    {
+      "name": "clip",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ledger/src/lib.rs",
+      "line": 117,
+      "snippet": "pub fn clip(&self) -> Clip {"
+    },
+    {
+      "name": "parse",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ledger/src/lib.rs",
+      "line": 184,
+      "snippet": "pub fn parse(text: &str) -> Result<Ledger, purpose_core::Error> {"
+    },
+    {
+      "name": "render",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ledger/src/lib.rs",
+      "line": 190,
+      "snippet": "pub fn render(clip: &Clip) -> String {"
+    },
+    {
+      "name": "ProteinResolver",
+      "kind": "struct",
+      "file": "crates/purpose-domains-protein/src/lib.rs",
+      "line": 27,
+      "snippet": "pub struct ProteinResolver;"
+    },
+    {
+      "name": "compile",
+      "kind": "fn",
+      "file": "crates/purpose-domains-protein/src/lib.rs",
+      "line": 31,
+      "snippet": "async fn compile(&self, utterance: &str) -> Result<VaHera, Error> {"
+    },
+    {
+      "name": "extract_gene_symbol",
+      "kind": "fn",
+      "file": "crates/purpose-domains-protein/src/lib.rs",
+      "line": 63,
+      "snippet": "fn extract_gene_symbol(utterance: &str) -> Option<String> {"
+    },
+    {
+      "name": "is_stopword",
+      "kind": "fn",
+      "file": "crates/purpose-domains-protein/src/lib.rs",
+      "line": 72,
+      "snippet": "fn is_stopword(s: &str) -> bool {"
+    },
+    {
+      "name": "domain",
+      "kind": "fn",
+      "file": "crates/purpose-domains-protein/src/lib.rs",
+      "line": 104,
+      "snippet": "pub fn domain() -> Domain {"
+    },
+    {
+      "name": "operations",
+      "kind": "fn",
+      "file": "crates/purpose-domains-protein/src/lib.rs",
+      "line": 113,
+      "snippet": "pub fn operations() -> Vec<Operation> {"
+    },
+    {
+      "name": "register_providers",
+      "kind": "fn",
+      "file": "crates/purpose-domains-protein/src/lib.rs",
+      "line": 153,
+      "snippet": "pub fn register_providers(registry: &mut OperationRegistry) {"
+    },
+    {
+      "name": "Executor",
+      "kind": "struct",
+      "file": "crates/purpose-operations/src/executor.rs",
+      "line": 13,
+      "snippet": "pub struct Executor {"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/executor.rs",
+      "line": 18,
+      "snippet": "pub fn new(registry: OperationRegistry) -> Self {"
+    },
+    {
+      "name": "registry",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/executor.rs",
+      "line": 22,
+      "snippet": "pub fn registry(&self) -> &OperationRegistry {"
+    },
+    {
+      "name": "execute",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/executor.rs",
+      "line": 27,
+      "snippet": "pub async fn execute(&self, program: &VaHera) -> Result<Value, Error> {"
+    },
+    {
+      "name": "execute_with",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/executor.rs",
+      "line": 33,
+      "snippet": "pub fn execute_with<'a>("
+    },
+    {
+      "name": "Provider",
+      "kind": "trait",
+      "file": "crates/purpose-operations/src/provider.rs",
+      "line": 13,
+      "snippet": "pub trait Provider: Send + Sync {"
+    },
+    {
+      "name": "invoke",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/provider.rs",
+      "line": 16,
+      "snippet": "async fn invoke("
+    },
+    {
+      "name": "ProteinSummaryProvider",
+      "kind": "struct",
+      "file": "crates/purpose-operations/src/providers/summary.rs",
+      "line": 12,
+      "snippet": "pub struct ProteinSummaryProvider;"
+    },
+    {
+      "name": "invoke",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/providers/summary.rs",
+      "line": 16,
+      "snippet": "async fn invoke("
+    },
+    {
+      "name": "format_protein_summary",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/providers/summary.rs",
+      "line": 38,
+      "snippet": "fn format_protein_summary(v: &Value) -> String {"
+    },
+    {
+      "name": "UniprotProvider",
+      "kind": "struct",
+      "file": "crates/purpose-operations/src/providers/uniprot.rs",
+      "line": 12,
+      "snippet": "pub struct UniprotProvider {"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/providers/uniprot.rs",
+      "line": 18,
+      "snippet": "pub fn new() -> Self {"
+    },
+    {
+      "name": "with_base_url",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/providers/uniprot.rs",
+      "line": 30,
+      "snippet": "pub fn with_base_url<S: Into<String>>(mut self, url: S) -> Self {"
+    },
+    {
+      "name": "get_json",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/providers/uniprot.rs",
+      "line": 35,
+      "snippet": "async fn get_json(&self, url: &str) -> Result<serde_json::Value, Error> {"
+    },
+    {
+      "name": "default",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/providers/uniprot.rs",
+      "line": 59,
+      "snippet": "fn default() -> Self {"
+    },
+    {
+      "name": "invoke",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/providers/uniprot.rs",
+      "line": 66,
+      "snippet": "async fn invoke("
+    },
+    {
+      "name": "value_from_json",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/providers/uniprot.rs",
+      "line": 126,
+      "snippet": "fn value_from_json(j: &serde_json::Value) -> Value {"
+    },
+    {
+      "name": "OperationRegistry",
+      "kind": "struct",
+      "file": "crates/purpose-operations/src/registry.rs",
+      "line": 13,
+      "snippet": "pub struct OperationRegistry {"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/registry.rs",
+      "line": 18,
+      "snippet": "pub fn new() -> Self {"
+    },
+    {
+      "name": "register",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/registry.rs",
+      "line": 24,
+      "snippet": "pub fn register(&mut self, op: Operation, provider: Arc<dyn Provider>) {"
+    },
+    {
+      "name": "get",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/registry.rs",
+      "line": 28,
+      "snippet": "pub fn get(&self, name: &str) -> Option<(&Operation, &Arc<dyn Provider>)> {"
+    },
+    {
+      "name": "names",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/registry.rs",
+      "line": 32,
+      "snippet": "pub fn names(&self) -> impl Iterator<Item = &str> {"
+    },
+    {
+      "name": "operations",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/registry.rs",
+      "line": 36,
+      "snippet": "pub fn operations(&self) -> impl Iterator<Item = &Operation> {"
+    },
+    {
+      "name": "len",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/registry.rs",
+      "line": 40,
+      "snippet": "pub fn len(&self) -> usize {"
+    },
+    {
+      "name": "is_empty",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/registry.rs",
+      "line": 44,
+      "snippet": "pub fn is_empty(&self) -> bool {"
+    },
+    {
+      "name": "default",
+      "kind": "fn",
+      "file": "crates/purpose-operations/src/registry.rs",
+      "line": 50,
+      "snippet": "fn default() -> Self {"
+    },
+    {
+      "name": "The Graffiti <-> Purpose interface",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 1,
+      "snippet": "# The Graffiti <-> Purpose interface"
+    },
+    {
+      "name": "Why this interface exists",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 8,
+      "snippet": "## Why this interface exists"
+    },
+    {
+      "name": "Division of responsibility",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 34,
+      "snippet": "## Division of responsibility"
+    },
+    {
+      "name": "Package boundary",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 51,
+      "snippet": "## Package boundary"
+    },
+    {
+      "name": "1. The shared substrate: `ContextGraph`",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 68,
+      "snippet": "## 1. The shared substrate: `ContextGraph`"
+    },
+    {
+      "name": "`ContextGraphAdapter` (lives in Graffiti, not Purpose)",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 110,
+      "snippet": "### `ContextGraphAdapter` (lives in Graffiti, not Purpose)"
+    },
+    {
+      "name": "2. Term tagging: `τ(u)`",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 126,
+      "snippet": "## 2. Term tagging: `τ(u)`"
+    },
+    {
+      "name": "3. Goal: `Goal`",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 173,
+      "snippet": "## 3. Goal: `Goal`"
+    },
+    {
+      "name": "4. Purpose's public surface",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 191,
+      "snippet": "## 4. Purpose's public surface"
+    },
+    {
+      "name": "5. What Graffiti must add on its side",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 278,
+      "snippet": "## 5. What Graffiti must add on its side"
+    },
+    {
+      "name": "6. What Graffiti does NOT need yet",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 305,
+      "snippet": "## 6. What Graffiti does NOT need yet"
+    },
+    {
+      "name": "7. Testing contract",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 318,
+      "snippet": "## 7. Testing contract"
+    },
+    {
+      "name": "8. Versioning and stability",
+      "kind": "heading",
+      "file": "graffiti.md",
+      "line": 332,
+      "snippet": "## 8. Versioning and stability"
+    },
+    {
+      "name": "Integrating with the Purpose Framework",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 1,
+      "snippet": "# Integrating with the Purpose Framework"
+    },
+    {
+      "name": "1. What the framework provides",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 9,
+      "snippet": "## 1. What the framework provides"
+    },
+    {
+      "name": "1.1 What Purpose deliberately does not provide",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 20,
+      "snippet": "### 1.1 What Purpose deliberately does not provide"
+    },
+    {
+      "name": "2. The stability contract",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 32,
+      "snippet": "## 2. The stability contract"
+    },
+    {
+      "name": "2.1 Stable interfaces (frozen)",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 34,
+      "snippet": "### 2.1 Stable interfaces (frozen)"
+    },
+    {
+      "name": "2.2 Evolving interfaces",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 51,
+      "snippet": "### 2.2 Evolving interfaces"
+    },
+    {
+      "name": "2.3 What lives outside the framework",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 61,
+      "snippet": "### 2.3 What lives outside the framework"
+    },
+    {
+      "name": "3. Integration path A — adding a new domain",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 70,
+      "snippet": "## 3. Integration path A — adding a new domain"
+    },
+    {
+      "name": "3.1 The four things you write",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 76,
+      "snippet": "### 3.1 The four things you write"
+    },
+    {
+      "name": "3.2 Resolver implementations you can choose from",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 143,
+      "snippet": "### 3.2 Resolver implementations you can choose from"
+    },
+    {
+      "name": "3.3 Multiple domains",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 156,
+      "snippet": "### 3.3 Multiple domains"
+    },
+    {
+      "name": "4. Integration path B — adding a new provider",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 182,
+      "snippet": "## 4. Integration path B — adding a new provider"
+    },
+    {
+      "name": "4.1 The Provider trait",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 186,
+      "snippet": "### 4.1 The Provider trait"
+    },
+    {
+      "name": "4.2 Pattern: HTTP / REST provider",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 201,
+      "snippet": "### 4.2 Pattern: HTTP / REST provider"
+    },
+    {
+      "name": "4.3 Pattern: HuggingFace Inference API provider",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 231,
+      "snippet": "### 4.3 Pattern: HuggingFace Inference API provider"
+    },
+    {
+      "name": "4.4 Pattern: local Candle model provider",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 277,
+      "snippet": "### 4.4 Pattern: local Candle model provider"
+    },
+    {
+      "name": "4.5 Pattern: Python subprocess bridge",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 311,
+      "snippet": "### 4.5 Pattern: Python subprocess bridge"
+    },
+    {
+      "name": "4.6 Pattern: database provider",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 336,
+      "snippet": "### 4.6 Pattern: database provider"
+    },
+    {
+      "name": "4.7 What a provider may not do",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 363,
+      "snippet": "### 4.7 What a provider may not do"
+    },
+    {
+      "name": "5. Integration path C — embedding Purpose in a host application",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 372,
+      "snippet": "## 5. Integration path C — embedding Purpose in a host application"
+    },
+    {
+      "name": "6. Integrating with the Buhera operating system",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 409,
+      "snippet": "## 6. Integrating with the Buhera operating system"
+    },
+    {
+      "name": "6.1 What Buhera adds over the bare Executor",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 413,
+      "snippet": "### 6.1 What Buhera adds over the bare Executor"
+    },
+    {
+      "name": "6.2 What the kernel does NOT change",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 451,
+      "snippet": "### 6.2 What the kernel does NOT change"
+    },
+    {
+      "name": "6.3 Migration path",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 460,
+      "snippet": "### 6.3 Migration path"
+    },
+    {
+      "name": "7. Integrating with the Blank Screen Interceptor",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 468,
+      "snippet": "## 7. Integrating with the Blank Screen Interceptor"
+    },
+    {
+      "name": "7.1 What the Interceptor adds over the bare CLI",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 472,
+      "snippet": "### 7.1 What the Interceptor adds over the bare CLI"
+    },
+    {
+      "name": "7.2 The Interceptor's dependency on the framework",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 485,
+      "snippet": "### 7.2 The Interceptor's dependency on the framework"
+    },
+    {
+      "name": "7.3 The file-operation symmetry property",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 510,
+      "snippet": "### 7.3 The file-operation symmetry property"
+    },
+    {
+      "name": "8. Integrating with cascade routing",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 521,
+      "snippet": "## 8. Integrating with cascade routing"
+    },
+    {
+      "name": "8.1 Cascade node as a resolver",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 525,
+      "snippet": "### 8.1 Cascade node as a resolver"
+    },
+    {
+      "name": "8.2 Registering cascade nodes",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 554,
+      "snippet": "### 8.2 Registering cascade nodes"
+    },
+    {
+      "name": "8.3 The self-similarity invariant",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 569,
+      "snippet": "### 8.3 The self-similarity invariant"
+    },
+    {
+      "name": "9. The data contract",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 575,
+      "snippet": "## 9. The data contract"
+    },
+    {
+      "name": "9.1 vaHera wire format",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 577,
+      "snippet": "### 9.1 vaHera wire format"
+    },
+    {
+      "name": "9.2 Value wire format",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 604,
+      "snippet": "### 9.2 Value wire format"
+    },
+    {
+      "name": "9.3 Error wire format",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 617,
+      "snippet": "### 9.3 Error wire format"
+    },
+    {
+      "name": "10. Versioning",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 623,
+      "snippet": "## 10. Versioning"
+    },
+    {
+      "name": "11. Reference — the complete public API",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 636,
+      "snippet": "## 11. Reference — the complete public API"
+    },
+    {
+      "name": "`purpose-core`",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 638,
+      "snippet": "### `purpose-core`"
+    },
+    {
+      "name": "`purpose-operations`",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 701,
+      "snippet": "### `purpose-operations`"
+    },
+    {
+      "name": "`purpose-domains-protein`",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 735,
+      "snippet": "### `purpose-domains-protein`"
+    },
+    {
+      "name": "12. Quick reference for common integrations",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 746,
+      "snippet": "## 12. Quick reference for common integrations"
+    },
+    {
+      "name": "13. Design principles the framework enforces",
+      "kind": "heading",
+      "file": "integration.md",
+      "line": 765,
+      "snippet": "## 13. Design principles the framework enforces"
+    },
+    {
+      "name": "Purpose: reconciliation of the two consumer contracts",
+      "kind": "heading",
+      "file": "purpose-reconciliation.md",
+      "line": 1,
+      "snippet": "# Purpose: reconciliation of the two consumer contracts"
+    },
+    {
+      "name": "Decision 1 — one library, two entry heights (layered)",
+      "kind": "heading",
+      "file": "purpose-reconciliation.md",
+      "line": 23,
+      "snippet": "## Decision 1 — one library, two entry heights (layered)"
+    },
+    {
+      "name": "Decision 2 — the graph input: core takes a view, Session takes steps",
+      "kind": "heading",
+      "file": "purpose-reconciliation.md",
+      "line": 67,
+      "snippet": "## Decision 2 — the graph input: core takes a view, Session takes steps"
+    },
+    {
+      "name": "Decision 3 — `necessary` is the dominator test, not `seek`, and not max-flow ablation",
+      "kind": "heading",
+      "file": "purpose-reconciliation.md",
+      "line": 87,
+      "snippet": "## Decision 3 — `necessary` is the dominator test, not `seek`, and not max-flow ablation"
+    },
+    {
+      "name": "Why they split (the diamond)",
+      "kind": "heading",
+      "file": "purpose-reconciliation.md",
+      "line": 100,
+      "snippet": "### Why they split (the diamond)"
+    },
+    {
+      "name": "The right operator: dominators, not ablation",
+      "kind": "heading",
+      "file": "purpose-reconciliation.md",
+      "line": 118,
+      "snippet": "### The right operator: dominators, not ablation"
+    },
+    {
+      "name": "v1 latitude (explicit)",
+      "kind": "heading",
+      "file": "purpose-reconciliation.md",
+      "line": 141,
+      "snippet": "### v1 latitude (explicit)"
+    },
+    {
+      "name": "Decision 4 — the paper is corrected, not softened",
+      "kind": "heading",
+      "file": "purpose-reconciliation.md",
+      "line": 155,
+      "snippet": "## Decision 4 — the paper is corrected, not softened"
+    },
+    {
+      "name": "What both consumers change",
+      "kind": "heading",
+      "file": "purpose-reconciliation.md",
+      "line": 189,
+      "snippet": "## What both consumers change"
+    },
+    {
+      "name": "Net effect",
+      "kind": "heading",
+      "file": "purpose-reconciliation.md",
+      "line": 207,
+      "snippet": "## Net effect"
+    },
+    {
+      "name": "Purpose implementation — MVP",
+      "kind": "heading",
+      "file": "README.md",
+      "line": 1,
+      "snippet": "# Purpose implementation — MVP"
+    },
+    {
+      "name": "Crates",
+      "kind": "heading",
+      "file": "README.md",
+      "line": 5,
+      "snippet": "## Crates"
+    },
+    {
+      "name": "Build",
+      "kind": "heading",
+      "file": "README.md",
+      "line": 12,
+      "snippet": "## Build"
+    },
+    {
+      "name": "Run",
+      "kind": "heading",
+      "file": "README.md",
+      "line": 20,
+      "snippet": "## Run"
+    },
+    {
+      "name": "End-to-end: hit UniProt, format a summary",
+      "kind": "heading",
+      "file": "README.md",
+      "line": 23,
+      "snippet": "# End-to-end: hit UniProt, format a summary"
+    },
+    {
+      "name": "Compile only, inspect the vaHera fragment",
+      "kind": "heading",
+      "file": "README.md",
+      "line": 26,
+      "snippet": "# Compile only, inspect the vaHera fragment"
+    },
+    {
+      "name": "Raw JSON response",
+      "kind": "heading",
+      "file": "README.md",
+      "line": 29,
+      "snippet": "# Raw JSON response"
+    },
+    {
+      "name": "List registered operations and their signatures",
+      "kind": "heading",
+      "file": "README.md",
+      "line": 32,
+      "snippet": "# List registered operations and their signatures"
+    },
+    {
+      "name": "Current scope",
+      "kind": "heading",
+      "file": "README.md",
+      "line": 36,
+      "snippet": "## Current scope"
+    },
+    {
+      "name": "What is stubbed or absent",
+      "kind": "heading",
+      "file": "README.md",
+      "line": 42,
+      "snippet": "## What is stubbed or absent"
+    }
+  ]
+}

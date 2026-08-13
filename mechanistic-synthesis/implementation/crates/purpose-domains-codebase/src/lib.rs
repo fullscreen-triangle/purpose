@@ -187,6 +187,14 @@ fn is_ignored(path: &Path) -> bool {
                 | Some("node_modules")
                 | Some("target")
                 | Some(".purpose")
+                // Fetched dependency sources: not this project's code, and they
+                // dwarf it (67% of one 74k-symbol index came from `.cargo-home`).
+                | Some(".cargo-home")
+                | Some(".cargo")
+                | Some("site-packages")
+                // Agent worktrees are near-duplicate copies of the repo; without
+                // this, every hit is reported once per worktree (69% of one index).
+                | Some(".claude")
                 | Some("dist")
                 | Some("build")
                 | Some("__pycache__")
@@ -466,5 +474,31 @@ pub fn register_providers(registry: &mut OperationRegistry, root: PathBuf) {
             }
             _ => {}
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::is_ignored;
+    use std::path::Path;
+
+    #[test]
+    fn skips_fetched_dependency_sources() {
+        assert!(is_ignored(Path::new("buhera-os/.cargo-home/registry/src/clap/lib.rs")));
+        assert!(is_ignored(Path::new("proj/.venv/lib/site-packages/numpy/core.py")));
+        assert!(is_ignored(Path::new("web/node_modules/react/index.js")));
+    }
+
+    #[test]
+    fn skips_agent_worktree_copies() {
+        assert!(is_ignored(Path::new(".claude/worktrees/agent-a7d9/panthera/docs/a.tex")));
+    }
+
+    #[test]
+    fn keeps_real_project_sources() {
+        assert!(!is_ignored(Path::new("crates/wt-static/src/lib.rs")));
+        assert!(!is_ignored(Path::new("panthera/docs/german-rail-network-yield.tex")));
+        // `cargo.toml`/`cargo` as a *file* stem must not be caught by the dir rule.
+        assert!(!is_ignored(Path::new("crates/purpose-cli/Cargo.toml")));
     }
 }

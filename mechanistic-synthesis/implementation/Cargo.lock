@@ -664,6 +664,7 @@ dependencies = [
  "clap",
  "purpose-core",
  "purpose-domains-codebase",
+ "purpose-domains-ledger",
  "purpose-domains-protein",
  "purpose-operations",
  "serde_json",
@@ -694,6 +695,15 @@ dependencies = [
  "serde_json",
  "tracing",
  "walkdir",
+]
+
+[[package]]
+name = "purpose-domains-ledger"
+version = "0.1.0"
+dependencies = [
+ "purpose-core",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
