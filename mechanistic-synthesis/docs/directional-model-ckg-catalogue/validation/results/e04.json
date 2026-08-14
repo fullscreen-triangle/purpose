@@ -1,0 +1,292 @@
+{
+  "claim": "Theorem (monotone non-return): the record never decreases; un-committing is a further committing act; a recurring configuration is a distinct state.",
+  "id": "E04",
+  "n_walks": 40,
+  "record_decrements": 0,
+  "recurrences_distinguished_by_record": 707,
+  "rows": [
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 0
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 1
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 2
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 3
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 4
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 5
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 6
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 7
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 8
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 9
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 10
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 11
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 12
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 13
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 14
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 15
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 16
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 17
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 18
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 19
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 20
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 21
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 22
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 23
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 24
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 25
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 26
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 27
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 28
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 29
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 30
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 31
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 32
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 33
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 34
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 35
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 36
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 37
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 38
+    },
+    {
+      "final_record": 31,
+      "uncommit_advanced": true,
+      "uncommit_after": 31,
+      "uncommit_before": 30,
+      "walk": 39
+    }
+  ],
+  "steps_per_walk": 30,
+  "uncommit_always_advanced": true,
+  "verdict": "PASS"
+}

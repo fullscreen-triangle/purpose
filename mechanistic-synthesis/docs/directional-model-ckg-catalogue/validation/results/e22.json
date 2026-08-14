@@ -1,0 +1,612 @@
+{
+  "claim": "Corollary (diversify, do not repeat): a chain of distinct probes strictly exceeds the composite power of repeating the weakest member the same number of times.",
+  "diverse_strictly_better": 300,
+  "id": "E22",
+  "n_trials": 300,
+  "rows": [
+    {
+      "advantage": 0.37704603348905386,
+      "diverse_composite": 0.9490942250939138,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.1561233441210254,
+        0.5710409573716433,
+        0.5057339473219247,
+        0.6338308376395991,
+        0.2229844636430514
+      ],
+      "n_probes": 5,
+      "repeated_weakest_composite": 0.57204819160486,
+      "trial": 0
+    },
+    {
+      "advantage": 0.348435984421653,
+      "diverse_composite": 0.9804863086676608,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.64849727731784,
+        0.7333957399254178,
+        0.732639929651091,
+        0.22116204793646066
+      ],
+      "n_probes": 4,
+      "repeated_weakest_composite": 0.6320503242460078,
+      "trial": 1
+    },
+    {
+      "advantage": 0.553755613264335,
+      "diverse_composite": 0.9985810231295891,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.7114629242943493,
+        0.8787481529661738,
+        0.11784025417366395,
+        0.4042237022819433,
+        0.21852095546644407,
+        0.07091874570485965,
+        0.39249520247835706,
+        0.8250418719242645
+      ],
+      "n_probes": 8,
+      "repeated_weakest_composite": 0.4448254098652541,
+      "trial": 2
+    },
+    {
+      "advantage": 0.2808181696469365,
+      "diverse_composite": 0.6382219703956824,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.1983790177077111,
+        0.5486919160102458
+      ],
+      "n_probes": 2,
+      "repeated_weakest_composite": 0.3574038007487459,
+      "trial": 3
+    },
+    {
+      "advantage": 0.594880841167052,
+      "diverse_composite": 0.968938016603435,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.27440488924356116,
+        0.5083456629308077,
+        0.12549842627875196,
+        0.07511207203736746,
+        0.439621665235318,
+        0.8078926777965858
+      ],
+      "n_probes": 6,
+      "repeated_weakest_composite": 0.37405717543638306,
+      "trial": 4
+    },
+    {
+      "advantage": 0.1569672995467437,
+      "diverse_composite": 0.9315631315478761,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.681033482526937,
+        0.5172271304789999,
+        0.35499706553543303,
+        0.31096626471924466
+      ],
+      "n_probes": 4,
+      "repeated_weakest_composite": 0.7745958320011324,
+      "trial": 5
+    },
+    {
+      "advantage": 0.551133384355195,
+      "diverse_composite": 0.8730831801352499,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.6351063688375794,
+        0.4912974089541954,
+        0.09256513231541882,
+        0.2465169522584953
+      ],
+      "n_probes": 4,
+      "repeated_weakest_composite": 0.3219497957800549,
+      "trial": 6
+    },
+    {
+      "advantage": 0.2415381666738291,
+      "diverse_composite": 0.5066507439493716,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.2314682888739218,
+        0.09758368540705836,
+        0.2886460500559718
+      ],
+      "n_probes": 3,
+      "repeated_weakest_composite": 0.2651125772755425,
+      "trial": 7
+    },
+    {
+      "advantage": 0.33348420837478965,
+      "diverse_composite": 0.9985074555624925,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.25855205509829254,
+        0.7264988971881988,
+        0.6639368044988357,
+        0.8481383707940177,
+        0.7936373414733529,
+        0.14464784751736143,
+        0.18296163755539607
+      ],
+      "n_probes": 7,
+      "repeated_weakest_composite": 0.6650232471877029,
+      "trial": 8
+    },
+    {
+      "advantage": 0.27800540222278713,
+      "diverse_composite": 0.8589302094131563,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.5956089030172502,
+        0.5338398786273199,
+        0.25166282894391984
+      ],
+      "n_probes": 3,
+      "repeated_weakest_composite": 0.5809248071903692,
+      "trial": 9
+    },
+    {
+      "advantage": 0.21023102048040765,
+      "diverse_composite": 0.9982140124708736,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.6076848537215527,
+        0.8564364519839116,
+        0.17624827380377522,
+        0.2691913486313353,
+        0.8330190336579044,
+        0.30548269638846093,
+        0.3667535122105642,
+        0.2827404888870409
+      ],
+      "n_probes": 8,
+      "repeated_weakest_composite": 0.787982991990466,
+      "trial": 10
+    },
+    {
+      "advantage": 0.47741937908645493,
+      "diverse_composite": 0.9981724972004044,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.2025533356022372,
+        0.08784233486702793,
+        0.09511890630684633,
+        0.15209547975167126,
+        0.4836080394516426,
+        0.7611772305803542,
+        0.7994915636862318,
+        0.8675779899768169
+      ],
+      "n_probes": 8,
+      "repeated_weakest_composite": 0.5207531181139494,
+      "trial": 11
+    },
+    {
+      "advantage": 0.08387590350072216,
+      "diverse_composite": 0.9937588094691001,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.7581780277902326,
+        0.875212902711853,
+        0.4520993764525165,
+        0.6225145602133506
+      ],
+      "n_probes": 4,
+      "repeated_weakest_composite": 0.909882905968378,
+      "trial": 12
+    },
+    {
+      "advantage": 0.6271592325369592,
+      "diverse_composite": 0.9580713650239544,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.6371271322503462,
+        0.6503360184412921,
+        0.0955786856616061,
+        0.6346286081155462
+      ],
+      "n_probes": 4,
+      "repeated_weakest_composite": 0.33091213248699525,
+      "trial": 13
+    },
+    {
+      "advantage": 0.01801243410288289,
+      "diverse_composite": 0.9974318666068928,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.6212398006176603,
+        0.7661432409365467,
+        0.7495542414285439,
+        0.8842317059229223
+      ],
+      "n_probes": 4,
+      "repeated_weakest_composite": 0.9794194325040099,
+      "trial": 14
+    },
+    {
+      "advantage": 0.07158478141914848,
+      "diverse_composite": 0.9980704585443171,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.6989877089332547,
+        0.47603347695581205,
+        0.3112634396539965,
+        0.4792511746950201,
+        0.7907734195304148,
+        0.7421950148714203,
+        0.36762201872438244
+      ],
+      "n_probes": 7,
+      "repeated_weakest_composite": 0.9264856771251686,
+      "trial": 15
+    },
+    {
+      "advantage": 0.11156139761183026,
+      "diverse_composite": 0.986201941447816,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.40496943486696835,
+        0.6272290021761414,
+        0.8403321013894499,
+        0.6103999688565335
+      ],
+      "n_probes": 4,
+      "repeated_weakest_composite": 0.8746405438359858,
+      "trial": 16
+    },
+    {
+      "advantage": 0.2072709732180038,
+      "diverse_composite": 0.9604674787301553,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.7031675927031645,
+        0.37485223811808566,
+        0.20799993464097138,
+        0.4998413234077478,
+        0.245668527521115,
+        0.28703983410630723
+      ],
+      "n_probes": 6,
+      "repeated_weakest_composite": 0.7531965055121514,
+      "trial": 17
+    },
+    {
+      "advantage": 0.6496535608157061,
+      "diverse_composite": 0.9598588304852044,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.12037477805624258,
+        0.3024141301756201,
+        0.07158109665808829,
+        0.8903482768773215,
+        0.35740811366454656
+      ],
+      "n_probes": 5,
+      "repeated_weakest_composite": 0.31020526966949824,
+      "trial": 18
+    },
+    {
+      "advantage": 0.3447367700569337,
+      "diverse_composite": 0.9739107401632658,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.1389137136975096,
+        0.15509841777227723,
+        0.5976427699049195,
+        0.3562347001126195,
+        0.6795611904190502,
+        0.1321335747004659,
+        0.5021808584472217
+      ],
+      "n_probes": 7,
+      "repeated_weakest_composite": 0.6291739701063321,
+      "trial": 19
+    },
+    {
+      "advantage": 0.6044646145433855,
+      "diverse_composite": 0.9977923191464559,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.48577008565125396,
+        0.068906163446871,
+        0.6673928272990497,
+        0.5643598603794625,
+        0.8805999035065656,
+        0.5583718210858981,
+        0.3965176837211509
+      ],
+      "n_probes": 7,
+      "repeated_weakest_composite": 0.3933277046030704,
+      "trial": 20
+    },
+    {
+      "advantage": 0.07428614153685853,
+      "diverse_composite": 0.6858400175333922,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.3767455383204495,
+        0.49593624790104623
+      ],
+      "n_probes": 2,
+      "repeated_weakest_composite": 0.6115538759965337,
+      "trial": 21
+    },
+    {
+      "advantage": 0.20323025180920595,
+      "diverse_composite": 0.9258787222269325,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.7583070110530008,
+        0.3478559717122297,
+        0.5297429412825992
+      ],
+      "n_probes": 3,
+      "repeated_weakest_composite": 0.7226484704177265,
+      "trial": 22
+    },
+    {
+      "advantage": 0.26861665273054136,
+      "diverse_composite": 0.9738238810916491,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.609541046256126,
+        0.3344628895914985,
+        0.8992702880989484
+      ],
+      "n_probes": 3,
+      "repeated_weakest_composite": 0.7052072283611077,
+      "trial": 23
+    },
+    {
+      "advantage": 0.3479615475872688,
+      "diverse_composite": 0.9973925153872638,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.7483503615713826,
+        0.12280389683151369,
+        0.22467462905375496,
+        0.4085512438347657,
+        0.8269157983769647,
+        0.29154549557177656,
+        0.31511539929973453,
+        0.6932808903280121
+      ],
+      "n_probes": 8,
+      "repeated_weakest_composite": 0.649430967799995,
+      "trial": 24
+    },
+    {
+      "advantage": 0.6660052443346443,
+      "diverse_composite": 0.9773280795377056,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.07188212592940743,
+        0.3156759268537947,
+        0.8087749465162329,
+        0.4108528737824803,
+        0.68314920567225
+      ],
+      "n_probes": 5,
+      "repeated_weakest_composite": 0.31132283520306137,
+      "trial": 25
+    },
+    {
+      "advantage": 0.12872966117978157,
+      "diverse_composite": 0.9971361895246131,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.4376726078947182,
+        0.7550724577044197,
+        0.33070710724006364,
+        0.22392392871772765,
+        0.2263971957315244,
+        0.27072410075878395,
+        0.7261921132112504,
+        0.7408560627997938
+      ],
+      "n_probes": 8,
+      "repeated_weakest_composite": 0.8684065283448316,
+      "trial": 26
+    },
+    {
+      "advantage": 0.13949790121447447,
+      "diverse_composite": 0.9836282122318821,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.4618286719810474,
+        0.8813186456152018,
+        0.7436737664610663
+      ],
+      "n_probes": 3,
+      "repeated_weakest_composite": 0.8441303110174077,
+      "trial": 27
+    },
+    {
+      "advantage": 0.33190745076902706,
+      "diverse_composite": 0.9010970461498781,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.5529720357036301,
+        0.33192366772801957,
+        0.5912319545040822,
+        0.1898386029394658
+      ],
+      "n_probes": 4,
+      "repeated_weakest_composite": 0.569189595380851,
+      "trial": 28
+    },
+    {
+      "advantage": 0.6309812206217157,
+      "diverse_composite": 0.9978943872040993,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.8099427092104291,
+        0.6493542287225713,
+        0.5146422276457796,
+        0.38847879013528835,
+        0.8345911394469876,
+        0.31300199430217734,
+        0.0632199966873324
+      ],
+      "n_probes": 7,
+      "repeated_weakest_composite": 0.3669131665823836,
+      "trial": 29
+    },
+    {
+      "advantage": 0.11603673974082862,
+      "diverse_composite": 0.9977106583277773,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.4081063265876397,
+        0.7382101310243673,
+        0.8409899107344889,
+        0.35339142698370174,
+        0.7009588528542607,
+        0.3481704210226073,
+        0.26280407476493883
+      ],
+      "n_probes": 7,
+      "repeated_weakest_composite": 0.8816739185869487,
+      "trial": 30
+    },
+    {
+      "advantage": 0.011573443117525728,
+      "diverse_composite": 0.8941722104946488,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.6573613672936501,
+        0.6911387701104671
+      ],
+      "n_probes": 2,
+      "repeated_weakest_composite": 0.8825987673771231,
+      "trial": 31
+    },
+    {
+      "advantage": 0.2512183777702609,
+      "diverse_composite": 0.9362451272037815,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.43877522277925096,
+        0.88640046665092
+      ],
+      "n_probes": 2,
+      "repeated_weakest_composite": 0.6850267494335206,
+      "trial": 32
+    },
+    {
+      "advantage": 0.5954889215151696,
+      "diverse_composite": 0.9550248973154296,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.4835020850657583,
+        0.5225221255871153,
+        0.3807955274286845,
+        0.4443091846893441,
+        0.4291343487155839,
+        0.0715700895707626
+      ],
+      "n_probes": 6,
+      "repeated_weakest_composite": 0.35953597580026,
+      "trial": 33
+    },
+    {
+      "advantage": 0.39206017415758565,
+      "diverse_composite": 0.9801547863416885,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.8270713856583494,
+        0.28355830231968915,
+        0.4951216113416184,
+        0.16254882831274461,
+        0.621154801373624
+      ],
+      "n_probes": 5,
+      "repeated_weakest_composite": 0.5880946121841029,
+      "trial": 34
+    },
+    {
+      "advantage": 0.6138412318259495,
+      "diverse_composite": 0.9203914456195115,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.07059928185750369,
+        0.37835626195796407,
+        0.25230272108886687,
+        0.4245682452214109,
+        0.6797452749566509
+      ],
+      "n_probes": 5,
+      "repeated_weakest_composite": 0.30655021379356195,
+      "trial": 35
+    },
+    {
+      "advantage": 0.4545581549029196,
+      "diverse_composite": 0.9879910898452746,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.5181523899862247,
+        0.17352728643918422,
+        0.8164863114869915,
+        0.8356775496626478
+      ],
+      "n_probes": 4,
+      "repeated_weakest_composite": 0.533432934942355,
+      "trial": 36
+    },
+    {
+      "advantage": 0.07198430833645308,
+      "diverse_composite": 0.9993961122557087,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.6902247845966603,
+        0.3758379276528306,
+        0.292795984885956,
+        0.6161418408772353,
+        0.27954269290366857,
+        0.47520894256836443,
+        0.8742660994576834,
+        0.7579809151410544
+      ],
+      "n_probes": 8,
+      "repeated_weakest_composite": 0.9274118039192556,
+      "trial": 37
+    },
+    {
+      "advantage": 0.33793595476655025,
+      "diverse_composite": 0.801984125327226,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.191289407689344,
+        0.41930059971483247,
+        0.09873129137308698,
+        0.10327928166514048,
+        0.10154508517507962,
+        0.41930549854167964
+      ],
+      "n_probes": 6,
+      "repeated_weakest_composite": 0.4640481705606757,
+      "trial": 38
+    },
+    {
+      "advantage": 0.10979164795439289,
+      "diverse_composite": 0.9934680524620904,
+      "diverse_strictly_better": true,
+      "kappas": [
+        0.8643337825358737,
+        0.8474872686414664,
+        0.4594350060128901,
+        0.4159944768969074
+      ],
+      "n_probes": 4,
+      "repeated_weakest_composite": 0.8836764045076975,
+      "trial": 39
+    }
+  ],
+  "ties": 0,
+  "verdict": "PASS"
+}

@@ -1,0 +1,36 @@
+{
+  "experiments": [
+    {
+      "claim": "Theorem (positive floor): sigma(v) >= beta > 0 for every item.",
+      "id": "E01",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (conserved invariant): sigma is preserved by every weighted isomorphism; the label is not.",
+      "id": "E02",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (identity is a region): the minimising side is in general not the singleton {v}.",
+      "id": "E03",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (monotone non-return): the record never decreases; un-committing is a further committing act; a recurring configuration is a distinct state.",
+      "id": "E04",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (self-blunting): every contact operation strictly reduces the instrument's uncommitted capacity and strictly increases its record.",
+      "id": "E05",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (no perfect repeatable instrument): no operation is both traceless (requires beta = 0) and leaves the instrument unchanged (requires a static record).",
+      "id": "E06",
+      "verdict": "PASS"
+    }
+  ],
+  "part": "I -- Foundations",
+  "pass_rate": "6/6"
+}

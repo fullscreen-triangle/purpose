@@ -1,0 +1,409 @@
+{
+  "claim": "Corollary (attributes do not close the gap): even with numeric attributes on every assertion, a matcher inspecting the queried pair's neighbourhood cannot recover the verdict, because the threshold is a minimum over subsets of the whole domain and no bounded pattern forms such a minimum.",
+  "id": "E30",
+  "n_trials": 200,
+  "rows": [
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 6,
+      "pattern_size": 1,
+      "trial": 0
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 8,
+      "pattern_size": 6,
+      "trial": 1
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 9,
+      "pattern_size": 3,
+      "trial": 2
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 10,
+      "pattern_size": 5,
+      "trial": 3
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 6,
+      "pattern_size": 3,
+      "trial": 4
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 12,
+      "pattern_size": 6,
+      "trial": 5
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 11,
+      "pattern_size": 6,
+      "trial": 6
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 8,
+      "pattern_size": 2,
+      "trial": 7
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 9,
+      "pattern_size": 6,
+      "trial": 8
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 6,
+      "pattern_size": 2,
+      "trial": 9
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 8,
+      "pattern_size": 2,
+      "trial": 10
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 7,
+      "pattern_size": 1,
+      "trial": 11
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 6,
+      "pattern_size": 2,
+      "trial": 12
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 5,
+      "pattern_size": 1,
+      "trial": 13
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 4,
+      "pattern_size": 1,
+      "trial": 14
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 6,
+      "pattern_size": 1,
+      "trial": 15
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 9,
+      "pattern_size": 3,
+      "trial": 16
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 5,
+      "pattern_size": 1,
+      "trial": 17
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 6,
+      "pattern_size": 3,
+      "trial": 18
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 6,
+      "pattern_size": 3,
+      "trial": 19
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 5,
+      "pattern_size": 2,
+      "trial": 20
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 10,
+      "pattern_size": 4,
+      "trial": 21
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 5,
+      "pattern_size": 2,
+      "trial": 22
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 9,
+      "pattern_size": 5,
+      "trial": 23
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 8,
+      "pattern_size": 6,
+      "trial": 24
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 7,
+      "pattern_size": 3,
+      "trial": 25
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 8,
+      "pattern_size": 5,
+      "trial": 26
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 6,
+      "pattern_size": 2,
+      "trial": 27
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 3,
+      "pattern_size": 2,
+      "trial": 28
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 4,
+      "pattern_size": 1,
+      "trial": 29
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 5,
+      "pattern_size": 4,
+      "trial": 30
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 5,
+      "pattern_size": 4,
+      "trial": 31
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 5,
+      "pattern_size": 2,
+      "trial": 32
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 5,
+      "pattern_size": 1,
+      "trial": 33
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 5,
+      "pattern_size": 4,
+      "trial": 34
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 11,
+      "pattern_size": 6,
+      "trial": 35
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 9,
+      "pattern_size": 4,
+      "trial": 36
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 6,
+      "pattern_size": 4,
+      "trial": 37
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 5,
+      "pattern_size": 1,
+      "trial": 38
+    },
+    {
+      "accountable_G1": true,
+      "accountable_G2": false,
+      "bounded_pattern_fooled": true,
+      "local_neighbourhood_identical": true,
+      "n_local_assertions": 3,
+      "n_y": 11,
+      "pattern_size": 5,
+      "trial": 39
+    }
+  ],
+  "trials_where_bounded_pattern_fooled": 200,
+  "verdict": "PASS"
+}

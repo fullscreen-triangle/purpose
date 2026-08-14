@@ -1,0 +1,400 @@
+{
+  "claim": "Theorem (floor monotonicity): a finer term map induces a system floor at least as large; the realised floor is a ground-truth-free readout of extraction quality.",
+  "id": "E19",
+  "monotonicity_violations": 0,
+  "n_chains_generated": 40,
+  "n_chains_valid": 40,
+  "rows": [
+    {
+      "chain": 0,
+      "floor_gain": 6.0,
+      "floors": [
+        1.0,
+        4.0,
+        5.0,
+        7.0,
+        7.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 7
+    },
+    {
+      "chain": 1,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        4.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 2,
+      "floor_gain": 6.0,
+      "floors": [
+        1.0,
+        4.0,
+        6.0,
+        7.0,
+        7.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 7
+    },
+    {
+      "chain": 3,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        2.0,
+        4.0,
+        4.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 4,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        2.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 5,
+      "floor_gain": 6.0,
+      "floors": [
+        1.0,
+        3.0,
+        6.0,
+        7.0,
+        7.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 7
+    },
+    {
+      "chain": 6,
+      "floor_gain": 6.0,
+      "floors": [
+        1.0,
+        3.0,
+        6.0,
+        7.0,
+        7.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 7
+    },
+    {
+      "chain": 7,
+      "floor_gain": 6.0,
+      "floors": [
+        1.0,
+        4.0,
+        6.0,
+        7.0,
+        7.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 7
+    },
+    {
+      "chain": 8,
+      "floor_gain": 6.0,
+      "floors": [
+        1.0,
+        1.0,
+        4.0,
+        4.0,
+        7.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 7
+    },
+    {
+      "chain": 9,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        1.0,
+        4.0,
+        5.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 10,
+      "floor_gain": 3.0,
+      "floors": [
+        1.0,
+        2.0,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 4
+    },
+    {
+      "chain": 11,
+      "floor_gain": 2.0,
+      "floors": [
+        2.0,
+        4.0,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 4
+    },
+    {
+      "chain": 12,
+      "floor_gain": 5.0,
+      "floors": [
+        1.0,
+        1.0,
+        4.0,
+        4.0,
+        6.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 6
+    },
+    {
+      "chain": 13,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        2.0,
+        4.0,
+        5.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 14,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        2.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 15,
+      "floor_gain": 3.0,
+      "floors": [
+        1.0,
+        3.0,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 4
+    },
+    {
+      "chain": 16,
+      "floor_gain": 5.0,
+      "floors": [
+        1.0,
+        2.0,
+        6.0,
+        6.0,
+        6.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 6
+    },
+    {
+      "chain": 17,
+      "floor_gain": 6.0,
+      "floors": [
+        1.0,
+        2.0,
+        6.0,
+        7.0,
+        7.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 7
+    },
+    {
+      "chain": 18,
+      "floor_gain": 6.0,
+      "floors": [
+        1.0,
+        4.0,
+        7.0,
+        7.0,
+        7.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 7
+    },
+    {
+      "chain": 19,
+      "floor_gain": 3.0,
+      "floors": [
+        1.0,
+        1.0,
+        2.0,
+        4.0,
+        4.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 4
+    },
+    {
+      "chain": 20,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        1.0,
+        4.0,
+        5.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 21,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        1.0,
+        3.0,
+        5.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 22,
+      "floor_gain": 6.0,
+      "floors": [
+        1.0,
+        4.0,
+        6.0,
+        7.0,
+        7.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 7
+    },
+    {
+      "chain": 23,
+      "floor_gain": 5.0,
+      "floors": [
+        1.0,
+        3.0,
+        5.0,
+        6.0,
+        6.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 6
+    },
+    {
+      "chain": 24,
+      "floor_gain": 5.0,
+      "floors": [
+        1.0,
+        1.0,
+        6.0,
+        6.0,
+        6.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 6
+    },
+    {
+      "chain": 25,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        2.0,
+        2.0,
+        3.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 26,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        2.0,
+        3.0,
+        5.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 27,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        4.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    },
+    {
+      "chain": 28,
+      "floor_gain": 3.0,
+      "floors": [
+        1.0,
+        3.0,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 4
+    },
+    {
+      "chain": 29,
+      "floor_gain": 4.0,
+      "floors": [
+        1.0,
+        3.0,
+        4.0,
+        5.0,
+        5.0
+      ],
+      "monotone_nondecreasing": true,
+      "n_sources": 5
+    }
+  ],
+  "verdict": "PASS"
+}

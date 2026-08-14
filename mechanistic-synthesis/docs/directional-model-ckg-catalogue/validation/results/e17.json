@@ -1,0 +1,211 @@
+{
+  "claim": "Corollaries (no staleness, no re-presentation): a pair determination is computed against the current graph and is never stale; a committed cut is never re-committed, so no prior propagation is available as content.",
+  "id": "E17",
+  "n_trials": 40,
+  "recommit_always_advanced_record": true,
+  "rows": [
+    {
+      "cache_stale_events": 3,
+      "cached_value": 16.675132554494656,
+      "final_fresh_value": 18.378523489568504,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v2",
+      "trial": 0
+    },
+    {
+      "cache_stale_events": 0,
+      "cached_value": 25.93213053338302,
+      "final_fresh_value": 25.93213053338302,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v2",
+      "trial": 1
+    },
+    {
+      "cache_stale_events": 4,
+      "cached_value": 13.172177768237756,
+      "final_fresh_value": 15.537751189497818,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v6",
+      "trial": 2
+    },
+    {
+      "cache_stale_events": 0,
+      "cached_value": 20.979436721087517,
+      "final_fresh_value": 20.979436721087517,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v1",
+      "trial": 3
+    },
+    {
+      "cache_stale_events": 0,
+      "cached_value": 16.33740653716855,
+      "final_fresh_value": 16.33740653716855,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v3",
+      "trial": 4
+    },
+    {
+      "cache_stale_events": 0,
+      "cached_value": 9.790294869515211,
+      "final_fresh_value": 9.790294869515211,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v0",
+      "trial": 5
+    },
+    {
+      "cache_stale_events": 5,
+      "cached_value": 20.69028208569532,
+      "final_fresh_value": 21.97674049311756,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v2",
+      "trial": 6
+    },
+    {
+      "cache_stale_events": 5,
+      "cached_value": 10.27818449368822,
+      "final_fresh_value": 16.439564226699563,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v2",
+      "trial": 7
+    },
+    {
+      "cache_stale_events": 5,
+      "cached_value": 7.339872863014245,
+      "final_fresh_value": 10.035736670922788,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v0",
+      "trial": 8
+    },
+    {
+      "cache_stale_events": 0,
+      "cached_value": 18.0095356707079,
+      "final_fresh_value": 18.0095356707079,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v5",
+      "trial": 9
+    },
+    {
+      "cache_stale_events": 0,
+      "cached_value": 14.76435537847699,
+      "final_fresh_value": 14.76435537847699,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v1",
+      "trial": 10
+    },
+    {
+      "cache_stale_events": 0,
+      "cached_value": 6.539262788305285,
+      "final_fresh_value": 6.539262788305285,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v5",
+      "trial": 11
+    },
+    {
+      "cache_stale_events": 3,
+      "cached_value": 15.31403757244122,
+      "final_fresh_value": 22.05878445767408,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v2",
+      "trial": 12
+    },
+    {
+      "cache_stale_events": 0,
+      "cached_value": 9.931195597587955,
+      "final_fresh_value": 9.931195597587955,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v3",
+      "trial": 13
+    },
+    {
+      "cache_stale_events": 5,
+      "cached_value": 18.90754344089452,
+      "final_fresh_value": 22.105570721167513,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v6",
+      "trial": 14
+    },
+    {
+      "cache_stale_events": 5,
+      "cached_value": 12.26261122862725,
+      "final_fresh_value": 17.97535207516193,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v4",
+      "trial": 15
+    },
+    {
+      "cache_stale_events": 5,
+      "cached_value": 14.40591673239545,
+      "final_fresh_value": 15.997913261868092,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v4",
+      "trial": 16
+    },
+    {
+      "cache_stale_events": 0,
+      "cached_value": 17.388192779657828,
+      "final_fresh_value": 17.388192779657828,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v4",
+      "trial": 17
+    },
+    {
+      "cache_stale_events": 0,
+      "cached_value": 17.254078033452867,
+      "final_fresh_value": 17.254078033452867,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v6",
+      "trial": 18
+    },
+    {
+      "cache_stale_events": 5,
+      "cached_value": 13.946453773697975,
+      "final_fresh_value": 17.697277756271145,
+      "final_record": 6,
+      "pair_stale_events": 0,
+      "record_at_cache": 0,
+      "target": "v2",
+      "trial": 19
+    }
+  ],
+  "trials_where_cache_went_stale": 21,
+  "trials_where_pair_went_stale": 0,
+  "verdict": "PASS"
+}

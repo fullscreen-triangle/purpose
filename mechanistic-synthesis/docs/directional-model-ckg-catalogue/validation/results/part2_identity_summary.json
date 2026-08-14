@@ -1,0 +1,31 @@
+{
+  "experiments": [
+    {
+      "claim": "Theorem (continuity of termination): Chi is preserved in all three cases; the record chain and the termination condition separate them.",
+      "id": "E07",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Proposition (Chi alone is not an identity criterion): independently authored structures of identical specification share Chi yet are distinct individuals.",
+      "id": "E08",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Corollary (snapshot and restore): a restored structure has the same Chi and is a distinct individual, because the chain passes through an open (serialised) stage.",
+      "id": "E09",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (no consistent self-verification): for every total verifier V, the diagonal value V(D_V) is self-refuting -- each of the two possible values entails the other.",
+      "id": "E10",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (consumer-relativity): the same item registers different cells in consumers with different graphs, and each registration is correct at its own floor; none is privileged.",
+      "id": "E11",
+      "verdict": "PASS"
+    }
+  ],
+  "part": "II -- Identity",
+  "pass_rate": "5/5"
+}

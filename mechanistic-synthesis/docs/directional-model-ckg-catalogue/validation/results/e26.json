@@ -1,0 +1,405 @@
+{
+  "boundary_note": "A seed is necessary by definition (sole point of entry); where it reaches only itself it dominates nothing, so the domination criterion is stated for non-seed items and seeds are counted separately.",
+  "chain_identity_holds": true,
+  "chain_lengths_tested": 7,
+  "chain_rows": [
+    {
+      "chain_length": 3,
+      "interiors_all_necessary": true,
+      "nec_retains": 2,
+      "seek_retains": 3,
+      "terminal_leaf": "s2",
+      "terminal_leaf_necessary": false,
+      "terminal_leaf_reachable": true
+    },
+    {
+      "chain_length": 4,
+      "interiors_all_necessary": true,
+      "nec_retains": 3,
+      "seek_retains": 4,
+      "terminal_leaf": "s3",
+      "terminal_leaf_necessary": false,
+      "terminal_leaf_reachable": true
+    },
+    {
+      "chain_length": 5,
+      "interiors_all_necessary": true,
+      "nec_retains": 4,
+      "seek_retains": 5,
+      "terminal_leaf": "s4",
+      "terminal_leaf_necessary": false,
+      "terminal_leaf_reachable": true
+    },
+    {
+      "chain_length": 6,
+      "interiors_all_necessary": true,
+      "nec_retains": 5,
+      "seek_retains": 6,
+      "terminal_leaf": "s5",
+      "terminal_leaf_necessary": false,
+      "terminal_leaf_reachable": true
+    },
+    {
+      "chain_length": 7,
+      "interiors_all_necessary": true,
+      "nec_retains": 6,
+      "seek_retains": 7,
+      "terminal_leaf": "s6",
+      "terminal_leaf_necessary": false,
+      "terminal_leaf_reachable": true
+    },
+    {
+      "chain_length": 8,
+      "interiors_all_necessary": true,
+      "nec_retains": 7,
+      "seek_retains": 8,
+      "terminal_leaf": "s7",
+      "terminal_leaf_necessary": false,
+      "terminal_leaf_reachable": true
+    },
+    {
+      "chain_length": 9,
+      "interiors_all_necessary": true,
+      "nec_retains": 8,
+      "seek_retains": 9,
+      "terminal_leaf": "s8",
+      "terminal_leaf_necessary": false,
+      "terminal_leaf_reachable": true
+    }
+  ],
+  "claim": "Theorem (separation of finding and pruning): seek marks reachable, nec marks load-bearing; they disagree on redundant reachable items, nec is contained in reach, and necessity coincides with domination.",
+  "containment_violations": 0,
+  "diamond_always_shows_gap": true,
+  "diamond_rows": [
+    {
+      "legs_necessary": [],
+      "legs_reachable": true,
+      "nec_retains": 1,
+      "over_retention_gap": 3,
+      "parallel_routes": 2,
+      "seek_retains": 4
+    },
+    {
+      "legs_necessary": [],
+      "legs_reachable": true,
+      "nec_retains": 1,
+      "over_retention_gap": 4,
+      "parallel_routes": 3,
+      "seek_retains": 5
+    },
+    {
+      "legs_necessary": [],
+      "legs_reachable": true,
+      "nec_retains": 1,
+      "over_retention_gap": 5,
+      "parallel_routes": 4,
+      "seek_retains": 6
+    },
+    {
+      "legs_necessary": [],
+      "legs_reachable": true,
+      "nec_retains": 1,
+      "over_retention_gap": 6,
+      "parallel_routes": 5,
+      "seek_retains": 7
+    },
+    {
+      "legs_necessary": [],
+      "legs_reachable": true,
+      "nec_retains": 1,
+      "over_retention_gap": 7,
+      "parallel_routes": 6,
+      "seek_retains": 8
+    },
+    {
+      "legs_necessary": [],
+      "legs_reachable": true,
+      "nec_retains": 1,
+      "over_retention_gap": 8,
+      "parallel_routes": 7,
+      "seek_retains": 9
+    },
+    {
+      "legs_necessary": [],
+      "legs_reachable": true,
+      "nec_retains": 1,
+      "over_retention_gap": 9,
+      "parallel_routes": 8,
+      "seek_retains": 10
+    },
+    {
+      "legs_necessary": [],
+      "legs_reachable": true,
+      "nec_retains": 1,
+      "over_retention_gap": 10,
+      "parallel_routes": 9,
+      "seek_retains": 11
+    },
+    {
+      "legs_necessary": [],
+      "legs_reachable": true,
+      "nec_retains": 1,
+      "over_retention_gap": 11,
+      "parallel_routes": 10,
+      "seek_retains": 12
+    },
+    {
+      "legs_necessary": [],
+      "legs_reachable": true,
+      "nec_retains": 1,
+      "over_retention_gap": 12,
+      "parallel_routes": 11,
+      "seek_retains": 13
+    }
+  ],
+  "diamond_widths_tested": 10,
+  "domination_checks_non_seed": 211,
+  "domination_mismatches": 0,
+  "id": "E26",
+  "random_graphs_tested": 60,
+  "random_graphs_with_positive_gap": 57,
+  "rows": [
+    {
+      "containment_holds": true,
+      "gap": 9,
+      "n_items": 10,
+      "nec": 1,
+      "seek": 10,
+      "trial": 0
+    },
+    {
+      "containment_holds": true,
+      "gap": 3,
+      "n_items": 7,
+      "nec": 4,
+      "seek": 7,
+      "trial": 1
+    },
+    {
+      "containment_holds": true,
+      "gap": 8,
+      "n_items": 9,
+      "nec": 1,
+      "seek": 9,
+      "trial": 2
+    },
+    {
+      "containment_holds": true,
+      "gap": 7,
+      "n_items": 8,
+      "nec": 1,
+      "seek": 8,
+      "trial": 3
+    },
+    {
+      "containment_holds": true,
+      "gap": 7,
+      "n_items": 8,
+      "nec": 1,
+      "seek": 8,
+      "trial": 4
+    },
+    {
+      "containment_holds": true,
+      "gap": 5,
+      "n_items": 6,
+      "nec": 1,
+      "seek": 6,
+      "trial": 5
+    },
+    {
+      "containment_holds": true,
+      "gap": 9,
+      "n_items": 10,
+      "nec": 1,
+      "seek": 10,
+      "trial": 6
+    },
+    {
+      "containment_holds": true,
+      "gap": 7,
+      "n_items": 8,
+      "nec": 1,
+      "seek": 8,
+      "trial": 7
+    },
+    {
+      "containment_holds": true,
+      "gap": 3,
+      "n_items": 5,
+      "nec": 2,
+      "seek": 5,
+      "trial": 8
+    },
+    {
+      "containment_holds": true,
+      "gap": 9,
+      "n_items": 10,
+      "nec": 1,
+      "seek": 10,
+      "trial": 9
+    },
+    {
+      "containment_holds": true,
+      "gap": 7,
+      "n_items": 8,
+      "nec": 1,
+      "seek": 8,
+      "trial": 10
+    },
+    {
+      "containment_holds": true,
+      "gap": 3,
+      "n_items": 5,
+      "nec": 1,
+      "seek": 4,
+      "trial": 11
+    },
+    {
+      "containment_holds": true,
+      "gap": 8,
+      "n_items": 10,
+      "nec": 2,
+      "seek": 10,
+      "trial": 12
+    },
+    {
+      "containment_holds": true,
+      "gap": 5,
+      "n_items": 7,
+      "nec": 2,
+      "seek": 7,
+      "trial": 13
+    },
+    {
+      "containment_holds": true,
+      "gap": 5,
+      "n_items": 6,
+      "nec": 1,
+      "seek": 6,
+      "trial": 14
+    },
+    {
+      "containment_holds": true,
+      "gap": 8,
+      "n_items": 9,
+      "nec": 1,
+      "seek": 9,
+      "trial": 15
+    },
+    {
+      "containment_holds": true,
+      "gap": 7,
+      "n_items": 8,
+      "nec": 1,
+      "seek": 8,
+      "trial": 16
+    },
+    {
+      "containment_holds": true,
+      "gap": 6,
+      "n_items": 7,
+      "nec": 1,
+      "seek": 7,
+      "trial": 17
+    },
+    {
+      "containment_holds": true,
+      "gap": 8,
+      "n_items": 9,
+      "nec": 1,
+      "seek": 9,
+      "trial": 18
+    },
+    {
+      "containment_holds": true,
+      "gap": 6,
+      "n_items": 7,
+      "nec": 1,
+      "seek": 7,
+      "trial": 19
+    },
+    {
+      "containment_holds": true,
+      "gap": 8,
+      "n_items": 9,
+      "nec": 1,
+      "seek": 9,
+      "trial": 20
+    },
+    {
+      "containment_holds": true,
+      "gap": 6,
+      "n_items": 7,
+      "nec": 1,
+      "seek": 7,
+      "trial": 21
+    },
+    {
+      "containment_holds": true,
+      "gap": 4,
+      "n_items": 6,
+      "nec": 2,
+      "seek": 6,
+      "trial": 22
+    },
+    {
+      "containment_holds": true,
+      "gap": 6,
+      "n_items": 10,
+      "nec": 4,
+      "seek": 10,
+      "trial": 23
+    },
+    {
+      "containment_holds": true,
+      "gap": 9,
+      "n_items": 10,
+      "nec": 1,
+      "seek": 10,
+      "trial": 24
+    },
+    {
+      "containment_holds": true,
+      "gap": 2,
+      "n_items": 6,
+      "nec": 3,
+      "seek": 5,
+      "trial": 25
+    },
+    {
+      "containment_holds": true,
+      "gap": 8,
+      "n_items": 9,
+      "nec": 1,
+      "seek": 9,
+      "trial": 26
+    },
+    {
+      "containment_holds": true,
+      "gap": 8,
+      "n_items": 9,
+      "nec": 1,
+      "seek": 9,
+      "trial": 27
+    },
+    {
+      "containment_holds": true,
+      "gap": 9,
+      "n_items": 10,
+      "nec": 1,
+      "seek": 10,
+      "trial": 28
+    },
+    {
+      "containment_holds": true,
+      "gap": 0,
+      "n_items": 9,
+      "nec": 1,
+      "seek": 1,
+      "trial": 29
+    }
+  ],
+  "seed_boundary_cases_excluded": 40,
+  "verdict": "PASS"
+}

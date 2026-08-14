@@ -1,0 +1,210 @@
+{
+  "claim": "Theorem (consumer-relativity): the same item registers different cells in consumers with different graphs, and each registration is correct at its own floor; none is privileged.",
+  "id": "E11",
+  "n_trials": 40,
+  "rows": [
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 9,
+      "cut_size_sparse": 2,
+      "n_items": 9,
+      "sigma_dense": 9.0,
+      "sigma_sparse": 3.0,
+      "trial": 0
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 6,
+      "cut_size_sparse": 2,
+      "n_items": 6,
+      "sigma_dense": 6.0,
+      "sigma_sparse": 3.0,
+      "trial": 1
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 8,
+      "cut_size_sparse": 2,
+      "n_items": 8,
+      "sigma_dense": 8.0,
+      "sigma_sparse": 3.0,
+      "trial": 2
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 9,
+      "cut_size_sparse": 2,
+      "n_items": 9,
+      "sigma_dense": 9.0,
+      "sigma_sparse": 3.0,
+      "trial": 3
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 8,
+      "cut_size_sparse": 2,
+      "n_items": 8,
+      "sigma_dense": 8.0,
+      "sigma_sparse": 3.0,
+      "trial": 4
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 9,
+      "cut_size_sparse": 2,
+      "n_items": 9,
+      "sigma_dense": 9.0,
+      "sigma_sparse": 3.0,
+      "trial": 5
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 7,
+      "cut_size_sparse": 2,
+      "n_items": 7,
+      "sigma_dense": 7.0,
+      "sigma_sparse": 3.0,
+      "trial": 6
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 8,
+      "cut_size_sparse": 2,
+      "n_items": 8,
+      "sigma_dense": 8.0,
+      "sigma_sparse": 3.0,
+      "trial": 7
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 5,
+      "cut_size_sparse": 2,
+      "n_items": 5,
+      "sigma_dense": 5.0,
+      "sigma_sparse": 3.0,
+      "trial": 8
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 5,
+      "cut_size_sparse": 2,
+      "n_items": 5,
+      "sigma_dense": 5.0,
+      "sigma_sparse": 3.0,
+      "trial": 9
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 6,
+      "cut_size_sparse": 2,
+      "n_items": 6,
+      "sigma_dense": 6.0,
+      "sigma_sparse": 3.0,
+      "trial": 10
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 7,
+      "cut_size_sparse": 2,
+      "n_items": 7,
+      "sigma_dense": 7.0,
+      "sigma_sparse": 3.0,
+      "trial": 11
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 6,
+      "cut_size_sparse": 2,
+      "n_items": 6,
+      "sigma_dense": 6.0,
+      "sigma_sparse": 3.0,
+      "trial": 12
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 7,
+      "cut_size_sparse": 2,
+      "n_items": 7,
+      "sigma_dense": 7.0,
+      "sigma_sparse": 3.0,
+      "trial": 13
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 5,
+      "cut_size_sparse": 2,
+      "n_items": 5,
+      "sigma_dense": 5.0,
+      "sigma_sparse": 3.0,
+      "trial": 14
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 6,
+      "cut_size_sparse": 2,
+      "n_items": 6,
+      "sigma_dense": 6.0,
+      "sigma_sparse": 3.0,
+      "trial": 15
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 5,
+      "cut_size_sparse": 2,
+      "n_items": 5,
+      "sigma_dense": 5.0,
+      "sigma_sparse": 3.0,
+      "trial": 16
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 7,
+      "cut_size_sparse": 2,
+      "n_items": 7,
+      "sigma_dense": 7.0,
+      "sigma_sparse": 3.0,
+      "trial": 17
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 6,
+      "cut_size_sparse": 2,
+      "n_items": 6,
+      "sigma_dense": 6.0,
+      "sigma_sparse": 3.0,
+      "trial": 18
+    },
+    {
+      "both_correct_at_own_floor": true,
+      "cells_differ": true,
+      "cut_size_dense": 8,
+      "cut_size_sparse": 2,
+      "n_items": 8,
+      "sigma_dense": 8.0,
+      "sigma_sparse": 3.0,
+      "trial": 19
+    }
+  ],
+  "trials_both_registrations_correct": 40,
+  "trials_with_differing_cells": 40,
+  "verdict": "PASS"
+}

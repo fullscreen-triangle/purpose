@@ -1,0 +1,57 @@
+{
+  "cases": [
+    {
+      "all_parts_replaced": true,
+      "case": "gradual replacement",
+      "chi_preserved": true,
+      "passed_through_open_stage": false,
+      "record_after": 48,
+      "record_before": 12,
+      "record_chain_continuous": true,
+      "same_individual": true
+    },
+    {
+      "all_parts_replaced": false,
+      "case": "disassembly and reconstruction",
+      "chi_preserved": true,
+      "passed_through_open_stage": true,
+      "record_after": 36,
+      "record_before": 12,
+      "record_chain_continuous": true,
+      "same_individual": false
+    },
+    {
+      "all_parts_replaced": false,
+      "case": "copy authored alongside",
+      "chi_preserved": true,
+      "passed_through_open_stage": false,
+      "record_after": 12,
+      "record_before": 0,
+      "record_chain_continuous": false,
+      "same_individual": false
+    }
+  ],
+  "chi_original": [
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0,
+    6.0
+  ],
+  "chi_preserved_in_all_cases": true,
+  "claim": "Theorem (continuity of termination): Chi is preserved in all three cases; the record chain and the termination condition separate them.",
+  "expected_same_individual": [
+    true,
+    false,
+    false
+  ],
+  "id": "E07",
+  "n_planks": 6,
+  "observed_same_individual": [
+    true,
+    false,
+    false
+  ],
+  "verdict": "PASS"
+}

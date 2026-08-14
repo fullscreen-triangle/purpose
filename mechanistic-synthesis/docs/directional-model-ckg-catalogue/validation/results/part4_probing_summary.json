@@ -1,0 +1,51 @@
+{
+  "experiments": [
+    {
+      "claim": "Theorem (correct for any term map): every structural result holds on the induced graph regardless of the quality of the term map; extraction error coarsens, it does not corrupt.",
+      "id": "E18",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (floor monotonicity): a finer term map induces a system floor at least as large; the realised floor is a ground-truth-free readout of extraction quality.",
+      "id": "E19",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (multiplicative composition): the composite power of a probe chain is 1 - prod_i (1 - kappa_i).",
+      "id": "E20",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Corollary (saturation dichotomy): the residual is driven to zero iff sum_i kappa_i diverges.",
+      "id": "E21",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Corollary (diversify, do not repeat): a chain of distinct probes strictly exceeds the composite power of repeating the weakest member the same number of times.",
+      "id": "E22",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (coherence requires three): robustness to the failure of any single probe implies a directed support cycle of length >= 3; no 2-member structure is robust.",
+      "id": "E23",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (selection is a 0/1 knapsack): with values -log(1 - beta_i/Omega), the value-density greedy is within (1 - c_max/B) of the exact optimum and never exceeds it.",
+      "id": "E24",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (water-filling): the optimum equalises marginal gain at a single price across engaged probes, drops probes whose entry margin is below the price, and the price is nonincreasing in budget and nondecreasing in probe count.",
+      "id": "E25",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (separation of finding and pruning): seek marks reachable, nec marks load-bearing; they disagree on redundant reachable items, nec is contained in reach, and necessity coincides with domination.",
+      "id": "E26",
+      "verdict": "PASS"
+    }
+  ],
+  "part": "IV -- Construction and Probing",
+  "pass_rate": "9/9"
+}

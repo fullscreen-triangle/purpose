@@ -1,0 +1,1611 @@
+{
+  "claim": "Theorem (conserved invariant): sigma is preserved by every weighted isomorphism; the label is not.",
+  "id": "E02",
+  "labels_permuted": 365,
+  "max_discrepancy": 0.0,
+  "n_graphs": 60,
+  "n_items_checked": 423,
+  "rows": [
+    {
+      "discrepancy": 0.0,
+      "graph": 0,
+      "image": "v2",
+      "item": "v0",
+      "sigma_after": 8.80746073433032,
+      "sigma_before": 8.80746073433032
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 0,
+      "image": "v0",
+      "item": "v1",
+      "sigma_after": 9.791071495443749,
+      "sigma_before": 9.791071495443749
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 0,
+      "image": "v1",
+      "item": "v2",
+      "sigma_after": 2.849385860251142,
+      "sigma_before": 2.849385860251142
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 0,
+      "image": "v3",
+      "item": "v3",
+      "sigma_after": 4.492193139826926,
+      "sigma_before": 4.492193139826926
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 1,
+      "image": "v3",
+      "item": "v0",
+      "sigma_after": 12.787141803346433,
+      "sigma_before": 12.787141803346433
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 1,
+      "image": "v0",
+      "item": "v1",
+      "sigma_after": 12.787141803346433,
+      "sigma_before": 12.787141803346433
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 1,
+      "image": "v1",
+      "item": "v2",
+      "sigma_after": 2.7233142755882236,
+      "sigma_before": 2.7233142755882236
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 1,
+      "image": "v2",
+      "item": "v3",
+      "sigma_after": 12.787141803346433,
+      "sigma_before": 12.787141803346433
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 2,
+      "image": "v7",
+      "item": "v0",
+      "sigma_after": 19.132550270904154,
+      "sigma_before": 19.132550270904154
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 2,
+      "image": "v0",
+      "item": "v1",
+      "sigma_after": 19.701422652483817,
+      "sigma_before": 19.701422652483817
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 2,
+      "image": "v1",
+      "item": "v2",
+      "sigma_after": 23.65032722636268,
+      "sigma_before": 23.65032722636268
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 2,
+      "image": "v2",
+      "item": "v3",
+      "sigma_after": 20.663550223706387,
+      "sigma_before": 20.663550223706387
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 2,
+      "image": "v3",
+      "item": "v4",
+      "sigma_after": 19.16016400359302,
+      "sigma_before": 19.16016400359302
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 2,
+      "image": "v5",
+      "item": "v5",
+      "sigma_after": 9.159683021184865,
+      "sigma_before": 9.159683021184865
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 2,
+      "image": "v6",
+      "item": "v6",
+      "sigma_after": 17.374270670304508,
+      "sigma_before": 17.374270670304508
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 2,
+      "image": "v4",
+      "item": "v7",
+      "sigma_after": 7.897439025231622,
+      "sigma_before": 7.897439025231622
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 3,
+      "image": "v4",
+      "item": "v0",
+      "sigma_after": 15.132003601928881,
+      "sigma_before": 15.132003601928881
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 3,
+      "image": "v3",
+      "item": "v1",
+      "sigma_after": 9.863049437985005,
+      "sigma_before": 9.863049437985005
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 3,
+      "image": "v0",
+      "item": "v2",
+      "sigma_after": 10.777209909483163,
+      "sigma_before": 10.777209909483163
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 3,
+      "image": "v6",
+      "item": "v3",
+      "sigma_after": 4.067612924038029,
+      "sigma_before": 4.067612924038029
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 3,
+      "image": "v8",
+      "item": "v4",
+      "sigma_after": 14.861570878993838,
+      "sigma_before": 14.861570878993838
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 3,
+      "image": "v2",
+      "item": "v5",
+      "sigma_after": 10.9041720956584,
+      "sigma_before": 10.9041720956584
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 3,
+      "image": "v5",
+      "item": "v6",
+      "sigma_after": 15.116272857642098,
+      "sigma_before": 15.116272857642098
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 3,
+      "image": "v7",
+      "item": "v7",
+      "sigma_after": 11.213634106242322,
+      "sigma_before": 11.213634106242322
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 3,
+      "image": "v1",
+      "item": "v8",
+      "sigma_after": 5.002328489994625,
+      "sigma_before": 5.002328489994625
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 4,
+      "image": "v3",
+      "item": "v0",
+      "sigma_after": 9.921541652496579,
+      "sigma_before": 9.921541652496579
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 4,
+      "image": "v7",
+      "item": "v1",
+      "sigma_after": 13.316828877295519,
+      "sigma_before": 13.316828877295519
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 4,
+      "image": "v0",
+      "item": "v2",
+      "sigma_after": 13.71683169238759,
+      "sigma_before": 13.71683169238759
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 4,
+      "image": "v8",
+      "item": "v3",
+      "sigma_after": 8.766563130745656,
+      "sigma_before": 8.766563130745656
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 4,
+      "image": "v5",
+      "item": "v4",
+      "sigma_after": 9.569849340019989,
+      "sigma_before": 9.569849340019989
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 4,
+      "image": "v1",
+      "item": "v5",
+      "sigma_after": 10.241886441593023,
+      "sigma_before": 10.241886441593023
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 4,
+      "image": "v6",
+      "item": "v6",
+      "sigma_after": 16.573444272930114,
+      "sigma_before": 16.573444272930114
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 4,
+      "image": "v2",
+      "item": "v7",
+      "sigma_after": 5.819064764388717,
+      "sigma_before": 5.819064764388717
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 4,
+      "image": "v4",
+      "item": "v8",
+      "sigma_after": 17.564193747238328,
+      "sigma_before": 17.564193747238328
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 5,
+      "image": "v4",
+      "item": "v0",
+      "sigma_after": 13.07503225555933,
+      "sigma_before": 13.07503225555933
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 5,
+      "image": "v5",
+      "item": "v1",
+      "sigma_after": 8.884702342293295,
+      "sigma_before": 8.884702342293295
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 5,
+      "image": "v3",
+      "item": "v2",
+      "sigma_after": 20.053999833448042,
+      "sigma_before": 20.053999833448042
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 5,
+      "image": "v0",
+      "item": "v3",
+      "sigma_after": 11.191486971420497,
+      "sigma_before": 11.191486971420497
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 5,
+      "image": "v2",
+      "item": "v4",
+      "sigma_after": 13.653791423944499,
+      "sigma_before": 13.653791423944499
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 5,
+      "image": "v1",
+      "item": "v5",
+      "sigma_after": 12.340097071508582,
+      "sigma_before": 12.340097071508582
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 6,
+      "image": "v0",
+      "item": "v0",
+      "sigma_after": 14.351320944731388,
+      "sigma_before": 14.351320944731388
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 6,
+      "image": "v4",
+      "item": "v1",
+      "sigma_after": 13.49848915541248,
+      "sigma_before": 13.49848915541248
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 6,
+      "image": "v1",
+      "item": "v2",
+      "sigma_after": 10.084089438488366,
+      "sigma_before": 10.084089438488366
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 6,
+      "image": "v2",
+      "item": "v3",
+      "sigma_after": 5.607720116316686,
+      "sigma_before": 5.607720116316686
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 6,
+      "image": "v3",
+      "item": "v4",
+      "sigma_after": 10.547336968972672,
+      "sigma_before": 10.547336968972672
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 6,
+      "image": "v5",
+      "item": "v5",
+      "sigma_after": 14.351320944731386,
+      "sigma_before": 14.351320944731386
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 7,
+      "image": "v4",
+      "item": "v0",
+      "sigma_after": 11.035115869336007,
+      "sigma_before": 11.035115869336007
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 7,
+      "image": "v1",
+      "item": "v1",
+      "sigma_after": 17.47630800387301,
+      "sigma_before": 17.47630800387301
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 7,
+      "image": "v5",
+      "item": "v2",
+      "sigma_after": 15.520304696130367,
+      "sigma_before": 15.520304696130367
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 7,
+      "image": "v7",
+      "item": "v3",
+      "sigma_after": 18.604462554614557,
+      "sigma_before": 18.604462554614557
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 7,
+      "image": "v6",
+      "item": "v4",
+      "sigma_after": 15.69825627117313,
+      "sigma_before": 15.69825627117313
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 7,
+      "image": "v3",
+      "item": "v5",
+      "sigma_after": 14.91978401340045,
+      "sigma_before": 14.91978401340045
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 7,
+      "image": "v2",
+      "item": "v6",
+      "sigma_after": 10.213207199191801,
+      "sigma_before": 10.213207199191801
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 7,
+      "image": "v0",
+      "item": "v7",
+      "sigma_after": 14.678232125469489,
+      "sigma_before": 14.678232125469489
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 8,
+      "image": "v1",
+      "item": "v0",
+      "sigma_after": 16.472997448366876,
+      "sigma_before": 16.472997448366876
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 8,
+      "image": "v2",
+      "item": "v1",
+      "sigma_after": 16.140476078543266,
+      "sigma_before": 16.140476078543266
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 8,
+      "image": "v0",
+      "item": "v2",
+      "sigma_after": 9.747883817271294,
+      "sigma_before": 9.747883817271294
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 8,
+      "image": "v4",
+      "item": "v3",
+      "sigma_after": 11.687910802773759,
+      "sigma_before": 11.687910802773759
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 8,
+      "image": "v3",
+      "item": "v4",
+      "sigma_after": 15.635560666057422,
+      "sigma_before": 15.635560666057422
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 8,
+      "image": "v5",
+      "item": "v5",
+      "sigma_after": 8.018055152181677,
+      "sigma_before": 8.018055152181677
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 9,
+      "image": "v6",
+      "item": "v0",
+      "sigma_after": 29.91322560464622,
+      "sigma_before": 29.91322560464622
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 9,
+      "image": "v2",
+      "item": "v1",
+      "sigma_after": 26.30918701601938,
+      "sigma_before": 26.30918701601938
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 9,
+      "image": "v7",
+      "item": "v2",
+      "sigma_after": 22.728340541624842,
+      "sigma_before": 22.728340541624842
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 9,
+      "image": "v0",
+      "item": "v3",
+      "sigma_after": 29.913225604646232,
+      "sigma_before": 29.913225604646232
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 9,
+      "image": "v3",
+      "item": "v4",
+      "sigma_after": 16.347351398284488,
+      "sigma_before": 16.347351398284488
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 9,
+      "image": "v4",
+      "item": "v5",
+      "sigma_after": 18.951487447660956,
+      "sigma_before": 18.951487447660956
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 9,
+      "image": "v8",
+      "item": "v6",
+      "sigma_after": 18.814215286780303,
+      "sigma_before": 18.814215286780303
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 9,
+      "image": "v1",
+      "item": "v7",
+      "sigma_after": 29.690825902778514,
+      "sigma_before": 29.690825902778514
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 9,
+      "image": "v5",
+      "item": "v8",
+      "sigma_after": 13.117340759741369,
+      "sigma_before": 13.117340759741369
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 10,
+      "image": "v5",
+      "item": "v0",
+      "sigma_after": 18.955959871869688,
+      "sigma_before": 18.955959871869688
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 10,
+      "image": "v3",
+      "item": "v1",
+      "sigma_after": 11.487264877036004,
+      "sigma_before": 11.487264877036004
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 10,
+      "image": "v4",
+      "item": "v2",
+      "sigma_after": 12.609455965219922,
+      "sigma_before": 12.609455965219922
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 10,
+      "image": "v1",
+      "item": "v3",
+      "sigma_after": 14.143150005565804,
+      "sigma_before": 14.143150005565804
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 10,
+      "image": "v0",
+      "item": "v4",
+      "sigma_after": 13.864557136497641,
+      "sigma_before": 13.864557136497641
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 10,
+      "image": "v2",
+      "item": "v5",
+      "sigma_after": 11.755008932756894,
+      "sigma_before": 11.755008932756894
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 11,
+      "image": "v1",
+      "item": "v0",
+      "sigma_after": 7.315465558187934,
+      "sigma_before": 7.315465558187934
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 11,
+      "image": "v6",
+      "item": "v1",
+      "sigma_after": 13.13719652527656,
+      "sigma_before": 13.13719652527656
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 11,
+      "image": "v9",
+      "item": "v2",
+      "sigma_after": 12.426218819059788,
+      "sigma_before": 12.426218819059788
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 11,
+      "image": "v0",
+      "item": "v3",
+      "sigma_after": 12.164389346336689,
+      "sigma_before": 12.164389346336689
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 11,
+      "image": "v8",
+      "item": "v4",
+      "sigma_after": 13.249153340443296,
+      "sigma_before": 13.249153340443296
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 11,
+      "image": "v4",
+      "item": "v5",
+      "sigma_after": 3.106959106013457,
+      "sigma_before": 3.106959106013457
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 11,
+      "image": "v3",
+      "item": "v6",
+      "sigma_after": 9.976200390275233,
+      "sigma_before": 9.976200390275233
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 11,
+      "image": "v7",
+      "item": "v7",
+      "sigma_after": 10.22041272197226,
+      "sigma_before": 10.22041272197226
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 11,
+      "image": "v5",
+      "item": "v8",
+      "sigma_after": 12.42966824007195,
+      "sigma_before": 12.42966824007195
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 11,
+      "image": "v2",
+      "item": "v9",
+      "sigma_after": 4.2881519710615095,
+      "sigma_before": 4.2881519710615095
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 12,
+      "image": "v4",
+      "item": "v0",
+      "sigma_after": 12.60461358354229,
+      "sigma_before": 12.60461358354229
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 12,
+      "image": "v7",
+      "item": "v1",
+      "sigma_after": 12.60461358354229,
+      "sigma_before": 12.60461358354229
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 12,
+      "image": "v1",
+      "item": "v2",
+      "sigma_after": 5.223412542719904,
+      "sigma_before": 5.223412542719904
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 12,
+      "image": "v5",
+      "item": "v3",
+      "sigma_after": 3.631302089383756,
+      "sigma_before": 3.631302089383756
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 12,
+      "image": "v3",
+      "item": "v4",
+      "sigma_after": 9.856644895050692,
+      "sigma_before": 9.856644895050692
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 12,
+      "image": "v2",
+      "item": "v5",
+      "sigma_after": 5.223412542719904,
+      "sigma_before": 5.223412542719904
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 12,
+      "image": "v8",
+      "item": "v6",
+      "sigma_after": 5.433757074770095,
+      "sigma_before": 5.433757074770095
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 12,
+      "image": "v0",
+      "item": "v7",
+      "sigma_after": 12.45439214111374,
+      "sigma_before": 12.45439214111374
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 12,
+      "image": "v6",
+      "item": "v8",
+      "sigma_after": 9.40604615396927,
+      "sigma_before": 9.40604615396927
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 13,
+      "image": "v7",
+      "item": "v0",
+      "sigma_after": 14.154331258912443,
+      "sigma_before": 14.154331258912443
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 13,
+      "image": "v8",
+      "item": "v1",
+      "sigma_after": 11.630289465735725,
+      "sigma_before": 11.630289465735725
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 13,
+      "image": "v2",
+      "item": "v2",
+      "sigma_after": 15.37445339390468,
+      "sigma_before": 15.37445339390468
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 13,
+      "image": "v5",
+      "item": "v3",
+      "sigma_after": 16.87963633475983,
+      "sigma_before": 16.87963633475983
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 13,
+      "image": "v3",
+      "item": "v4",
+      "sigma_after": 14.387623090092411,
+      "sigma_before": 14.387623090092411
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 13,
+      "image": "v0",
+      "item": "v5",
+      "sigma_after": 16.157196383601423,
+      "sigma_before": 16.157196383601423
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 13,
+      "image": "v4",
+      "item": "v6",
+      "sigma_after": 23.079394950047778,
+      "sigma_before": 23.079394950047778
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 13,
+      "image": "v1",
+      "item": "v7",
+      "sigma_after": 15.904630112213301,
+      "sigma_before": 15.904630112213301
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 13,
+      "image": "v6",
+      "item": "v8",
+      "sigma_after": 13.373154292283933,
+      "sigma_before": 13.373154292283933
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 14,
+      "image": "v3",
+      "item": "v0",
+      "sigma_after": 9.127688568278876,
+      "sigma_before": 9.127688568278876
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 14,
+      "image": "v5",
+      "item": "v1",
+      "sigma_after": 19.33783114044192,
+      "sigma_before": 19.33783114044192
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 14,
+      "image": "v4",
+      "item": "v2",
+      "sigma_after": 20.357051475299407,
+      "sigma_before": 20.357051475299407
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 14,
+      "image": "v1",
+      "item": "v3",
+      "sigma_after": 11.194020328598725,
+      "sigma_before": 11.194020328598725
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 14,
+      "image": "v2",
+      "item": "v4",
+      "sigma_after": 11.725181040752256,
+      "sigma_before": 11.725181040752256
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 14,
+      "image": "v0",
+      "item": "v5",
+      "sigma_after": 9.953795334607891,
+      "sigma_before": 9.953795334607891
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 14,
+      "image": "v6",
+      "item": "v6",
+      "sigma_after": 17.121717194145486,
+      "sigma_before": 17.121717194145486
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 15,
+      "image": "v1",
+      "item": "v0",
+      "sigma_after": 13.017116903445382,
+      "sigma_before": 13.017116903445382
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 15,
+      "image": "v4",
+      "item": "v1",
+      "sigma_after": 23.906225304800333,
+      "sigma_before": 23.906225304800333
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 15,
+      "image": "v3",
+      "item": "v2",
+      "sigma_after": 12.411831234769604,
+      "sigma_before": 12.411831234769604
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 15,
+      "image": "v7",
+      "item": "v3",
+      "sigma_after": 17.85251622945465,
+      "sigma_before": 17.85251622945465
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 15,
+      "image": "v5",
+      "item": "v4",
+      "sigma_after": 11.013560244077299,
+      "sigma_before": 11.013560244077299
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 15,
+      "image": "v6",
+      "item": "v5",
+      "sigma_after": 24.094776479191495,
+      "sigma_before": 24.094776479191495
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 15,
+      "image": "v2",
+      "item": "v6",
+      "sigma_after": 24.186322398237536,
+      "sigma_before": 24.186322398237536
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 15,
+      "image": "v0",
+      "item": "v7",
+      "sigma_after": 19.18650849724853,
+      "sigma_before": 19.18650849724853
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 15,
+      "image": "v8",
+      "item": "v8",
+      "sigma_after": 22.039280257191546,
+      "sigma_before": 22.039280257191546
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 16,
+      "image": "v2",
+      "item": "v0",
+      "sigma_after": 7.269943603487505,
+      "sigma_before": 7.269943603487505
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 16,
+      "image": "v0",
+      "item": "v1",
+      "sigma_after": 9.255653502538424,
+      "sigma_before": 9.255653502538424
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 16,
+      "image": "v1",
+      "item": "v2",
+      "sigma_after": 9.606363379030698,
+      "sigma_before": 9.606363379030698
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 16,
+      "image": "v3",
+      "item": "v3",
+      "sigma_after": 1.0768292465665044,
+      "sigma_before": 1.0768292465665044
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 17,
+      "image": "v0",
+      "item": "v0",
+      "sigma_after": 9.774516874650885,
+      "sigma_before": 9.774516874650885
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 17,
+      "image": "v2",
+      "item": "v1",
+      "sigma_after": 13.010461155697355,
+      "sigma_before": 13.010461155697355
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 17,
+      "image": "v1",
+      "item": "v2",
+      "sigma_after": 10.00653508860217,
+      "sigma_before": 10.00653508860217
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 17,
+      "image": "v3",
+      "item": "v3",
+      "sigma_after": 5.530349619387657,
+      "sigma_before": 5.530349619387657
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 18,
+      "image": "v1",
+      "item": "v0",
+      "sigma_after": 12.17685309619808,
+      "sigma_before": 12.17685309619808
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 18,
+      "image": "v5",
+      "item": "v1",
+      "sigma_after": 12.173879743411614,
+      "sigma_before": 12.173879743411614
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 18,
+      "image": "v3",
+      "item": "v2",
+      "sigma_after": 7.6733423366849305,
+      "sigma_before": 7.6733423366849305
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 18,
+      "image": "v4",
+      "item": "v3",
+      "sigma_after": 8.87713132694015,
+      "sigma_before": 8.87713132694015
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 18,
+      "image": "v2",
+      "item": "v4",
+      "sigma_after": 4.646311024936086,
+      "sigma_before": 4.646311024936086
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 18,
+      "image": "v0",
+      "item": "v5",
+      "sigma_after": 14.677738131137327,
+      "sigma_before": 14.677738131137327
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 19,
+      "image": "v0",
+      "item": "v0",
+      "sigma_after": 7.135717846887765,
+      "sigma_before": 7.135717846887765
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 19,
+      "image": "v4",
+      "item": "v1",
+      "sigma_after": 9.687121081091318,
+      "sigma_before": 9.687121081091318
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 19,
+      "image": "v1",
+      "item": "v2",
+      "sigma_after": 16.239738928089213,
+      "sigma_before": 16.239738928089213
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 19,
+      "image": "v5",
+      "item": "v3",
+      "sigma_after": 5.935287777187644,
+      "sigma_before": 5.935287777187644
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 19,
+      "image": "v2",
+      "item": "v4",
+      "sigma_after": 8.961630460655817,
+      "sigma_before": 8.961630460655817
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 19,
+      "image": "v3",
+      "item": "v5",
+      "sigma_after": 15.22623556793087,
+      "sigma_before": 15.22623556793087
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 20,
+      "image": "v5",
+      "item": "v0",
+      "sigma_after": 13.953746932805263,
+      "sigma_before": 13.953746932805263
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 20,
+      "image": "v1",
+      "item": "v1",
+      "sigma_after": 15.421224570472999,
+      "sigma_before": 15.421224570472999
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 20,
+      "image": "v4",
+      "item": "v2",
+      "sigma_after": 7.700593105307194,
+      "sigma_before": 7.700593105307194
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 20,
+      "image": "v0",
+      "item": "v3",
+      "sigma_after": 18.275433067303993,
+      "sigma_before": 18.275433067303993
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 20,
+      "image": "v3",
+      "item": "v4",
+      "sigma_after": 20.802944932546634,
+      "sigma_before": 20.802944932546634
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 20,
+      "image": "v6",
+      "item": "v5",
+      "sigma_after": 15.23870726507508,
+      "sigma_before": 15.23870726507508
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 20,
+      "image": "v8",
+      "item": "v6",
+      "sigma_after": 18.562770211190056,
+      "sigma_before": 18.562770211190056
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 20,
+      "image": "v2",
+      "item": "v7",
+      "sigma_after": 18.589792220274877,
+      "sigma_before": 18.589792220274877
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 20,
+      "image": "v7",
+      "item": "v8",
+      "sigma_after": 10.10170549796911,
+      "sigma_before": 10.10170549796911
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 21,
+      "image": "v4",
+      "item": "v0",
+      "sigma_after": 28.298017212428793,
+      "sigma_before": 28.298017212428793
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 21,
+      "image": "v3",
+      "item": "v1",
+      "sigma_after": 16.037348264898714,
+      "sigma_before": 16.037348264898714
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 21,
+      "image": "v1",
+      "item": "v2",
+      "sigma_after": 19.49019908611541,
+      "sigma_before": 19.49019908611541
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 21,
+      "image": "v2",
+      "item": "v3",
+      "sigma_after": 7.99201472058671,
+      "sigma_before": 7.99201472058671
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 21,
+      "image": "v5",
+      "item": "v4",
+      "sigma_after": 23.345096383643973,
+      "sigma_before": 23.345096383643973
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 21,
+      "image": "v0",
+      "item": "v5",
+      "sigma_after": 15.629744260037683,
+      "sigma_before": 15.629744260037683
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 21,
+      "image": "v6",
+      "item": "v6",
+      "sigma_after": 12.741566839231051,
+      "sigma_before": 12.741566839231051
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 22,
+      "image": "v5",
+      "item": "v0",
+      "sigma_after": 3.8657320863106026,
+      "sigma_before": 3.8657320863106026
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 22,
+      "image": "v6",
+      "item": "v1",
+      "sigma_after": 8.627880304956118,
+      "sigma_before": 8.627880304956118
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 22,
+      "image": "v3",
+      "item": "v2",
+      "sigma_after": 7.61374303025792,
+      "sigma_before": 7.61374303025792
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 22,
+      "image": "v1",
+      "item": "v3",
+      "sigma_after": 11.605152426190108,
+      "sigma_before": 11.605152426190108
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 22,
+      "image": "v2",
+      "item": "v4",
+      "sigma_after": 12.32541548010757,
+      "sigma_before": 12.32541548010757
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 22,
+      "image": "v0",
+      "item": "v5",
+      "sigma_after": 2.6747018230683786,
+      "sigma_before": 2.6747018230683786
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 22,
+      "image": "v4",
+      "item": "v6",
+      "sigma_after": 10.107684034973687,
+      "sigma_before": 10.107684034973687
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 23,
+      "image": "v1",
+      "item": "v0",
+      "sigma_after": 11.678927671265205,
+      "sigma_before": 11.678927671265205
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 23,
+      "image": "v8",
+      "item": "v1",
+      "sigma_after": 21.382819118340272,
+      "sigma_before": 21.382819118340272
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 23,
+      "image": "v4",
+      "item": "v2",
+      "sigma_after": 20.662927701883547,
+      "sigma_before": 20.662927701883547
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 23,
+      "image": "v0",
+      "item": "v3",
+      "sigma_after": 9.163669816675498,
+      "sigma_before": 9.163669816675498
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 23,
+      "image": "v2",
+      "item": "v4",
+      "sigma_after": 18.694773849609735,
+      "sigma_before": 18.694773849609735
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 23,
+      "image": "v7",
+      "item": "v5",
+      "sigma_after": 18.526285011872385,
+      "sigma_before": 18.526285011872385
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 23,
+      "image": "v3",
+      "item": "v6",
+      "sigma_after": 25.208022108806865,
+      "sigma_before": 25.208022108806865
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 23,
+      "image": "v5",
+      "item": "v7",
+      "sigma_after": 19.738860581925778,
+      "sigma_before": 19.738860581925778
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 23,
+      "image": "v6",
+      "item": "v8",
+      "sigma_after": 17.143503498406783,
+      "sigma_before": 17.143503498406783
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 24,
+      "image": "v0",
+      "item": "v0",
+      "sigma_after": 9.165225485013984,
+      "sigma_before": 9.165225485013984
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 24,
+      "image": "v1",
+      "item": "v1",
+      "sigma_after": 12.136708576874627,
+      "sigma_before": 12.136708576874627
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 24,
+      "image": "v2",
+      "item": "v2",
+      "sigma_after": 11.340330838094062,
+      "sigma_before": 11.340330838094062
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 24,
+      "image": "v3",
+      "item": "v3",
+      "sigma_after": 21.668857237458035,
+      "sigma_before": 21.668857237458035
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 24,
+      "image": "v5",
+      "item": "v4",
+      "sigma_after": 13.693252836770872,
+      "sigma_before": 13.693252836770872
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 24,
+      "image": "v4",
+      "item": "v5",
+      "sigma_after": 11.943556081935762,
+      "sigma_before": 11.943556081935762
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 24,
+      "image": "v6",
+      "item": "v6",
+      "sigma_after": 3.95174291459043,
+      "sigma_before": 3.95174291459043
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 25,
+      "image": "v0",
+      "item": "v0",
+      "sigma_after": 12.068428707824056,
+      "sigma_before": 12.068428707824056
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 25,
+      "image": "v5",
+      "item": "v1",
+      "sigma_after": 15.95961807393011,
+      "sigma_before": 15.95961807393011
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 25,
+      "image": "v4",
+      "item": "v2",
+      "sigma_after": 9.903173086717995,
+      "sigma_before": 9.903173086717995
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 25,
+      "image": "v2",
+      "item": "v3",
+      "sigma_after": 15.818834325338782,
+      "sigma_before": 15.818834325338782
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 25,
+      "image": "v1",
+      "item": "v4",
+      "sigma_after": 12.6040434663158,
+      "sigma_before": 12.6040434663158
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 25,
+      "image": "v3",
+      "item": "v5",
+      "sigma_after": 15.042410141969526,
+      "sigma_before": 15.042410141969526
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 26,
+      "image": "v2",
+      "item": "v0",
+      "sigma_after": 1.7917267977740117,
+      "sigma_before": 1.7917267977740117
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 26,
+      "image": "v0",
+      "item": "v1",
+      "sigma_after": 2.359282004367694,
+      "sigma_before": 2.359282004367694
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 26,
+      "image": "v1",
+      "item": "v2",
+      "sigma_after": 4.975189711356661,
+      "sigma_before": 4.975189711356661
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 26,
+      "image": "v3",
+      "item": "v3",
+      "sigma_after": 2.03042506433291,
+      "sigma_before": 2.03042506433291
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 27,
+      "image": "v3",
+      "item": "v0",
+      "sigma_after": 17.061664953050915,
+      "sigma_before": 17.061664953050915
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 27,
+      "image": "v8",
+      "item": "v1",
+      "sigma_after": 13.202074090008043,
+      "sigma_before": 13.202074090008043
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 27,
+      "image": "v6",
+      "item": "v2",
+      "sigma_after": 18.212751414133702,
+      "sigma_before": 18.212751414133702
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 27,
+      "image": "v5",
+      "item": "v3",
+      "sigma_after": 19.593152007032213,
+      "sigma_before": 19.593152007032213
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 27,
+      "image": "v4",
+      "item": "v4",
+      "sigma_after": 16.792229555635867,
+      "sigma_before": 16.792229555635867
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 27,
+      "image": "v2",
+      "item": "v5",
+      "sigma_after": 19.511428811197895,
+      "sigma_before": 19.511428811197895
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 27,
+      "image": "v7",
+      "item": "v6",
+      "sigma_after": 18.174046525021843,
+      "sigma_before": 18.174046525021843
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 27,
+      "image": "v0",
+      "item": "v7",
+      "sigma_after": 11.510135431136408,
+      "sigma_before": 11.510135431136408
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 27,
+      "image": "v1",
+      "item": "v8",
+      "sigma_after": 28.892766787811347,
+      "sigma_before": 28.892766787811347
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 28,
+      "image": "v0",
+      "item": "v0",
+      "sigma_after": 9.812578301518307,
+      "sigma_before": 9.812578301518307
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 28,
+      "image": "v4",
+      "item": "v1",
+      "sigma_after": 14.426341829750582,
+      "sigma_before": 14.426341829750582
+    },
+    {
+      "discrepancy": 0.0,
+      "graph": 28,
+      "image": "v3",
+      "item": "v2",
+      "sigma_after": 17.06779027102629,
+      "sigma_before": 17.06779027102629
+    }
+  ],
+  "verdict": "PASS"
+}

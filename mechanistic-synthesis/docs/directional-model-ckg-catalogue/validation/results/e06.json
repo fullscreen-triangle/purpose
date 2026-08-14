@@ -1,0 +1,362 @@
+{
+  "both_properties_found": 0,
+  "claim": "Theorem (no perfect repeatable instrument): no operation is both traceless (requires beta = 0) and leaves the instrument unchanged (requires a static record).",
+  "id": "E06",
+  "instrument_unchanged_found": 0,
+  "n_trials": 200,
+  "note": "A stateless determiner asserts both properties of every application; the search confirms neither is realisable.",
+  "rows": [
+    {
+      "edge_weight": 1.1182993113013482,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 0
+    },
+    {
+      "edge_weight": 4.569763673807759,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 1
+    },
+    {
+      "edge_weight": 4.365373448158065,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 2
+    },
+    {
+      "edge_weight": 5.864366330641861,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 3
+    },
+    {
+      "edge_weight": 4.981257354136916,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 4
+    },
+    {
+      "edge_weight": 3.851339523242234,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 5
+    },
+    {
+      "edge_weight": 2.6954509669261566,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 6
+    },
+    {
+      "edge_weight": 0.4289313257419489,
+      "floor": 0.25,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 7
+    },
+    {
+      "edge_weight": 0.4953591897960078,
+      "floor": 0.25,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 8
+    },
+    {
+      "edge_weight": 1.3190994625576593,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 9
+    },
+    {
+      "edge_weight": 5.644437261748998,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 10
+    },
+    {
+      "edge_weight": 5.8763986183761245,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 11
+    },
+    {
+      "edge_weight": 5.727208411829392,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 12
+    },
+    {
+      "edge_weight": 6.296221064022752,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 13
+    },
+    {
+      "edge_weight": 5.484972165921164,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 14
+    },
+    {
+      "edge_weight": 1.4927853192133225,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 15
+    },
+    {
+      "edge_weight": 4.451833560118192,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 16
+    },
+    {
+      "edge_weight": 3.5925278214239653,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 17
+    },
+    {
+      "edge_weight": 0.38145351071145117,
+      "floor": 0.25,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 18
+    },
+    {
+      "edge_weight": 3.0307390252123243,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 19
+    },
+    {
+      "edge_weight": 3.6720738149874896,
+      "floor": 0.25,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 20
+    },
+    {
+      "edge_weight": 4.580321806115358,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 21
+    },
+    {
+      "edge_weight": 3.6607001722099044,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 22
+    },
+    {
+      "edge_weight": 2.058685944850696,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 23
+    },
+    {
+      "edge_weight": 5.067160858720829,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 24
+    },
+    {
+      "edge_weight": 6.869829743160457,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 25
+    },
+    {
+      "edge_weight": 3.3005873663794754,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 26
+    },
+    {
+      "edge_weight": 2.365084959077276,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 27
+    },
+    {
+      "edge_weight": 1.9045410834847005,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 28
+    },
+    {
+      "edge_weight": 6.873544798957846,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 29
+    },
+    {
+      "edge_weight": 1.6972796900607574,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 30
+    },
+    {
+      "edge_weight": 1.4876523345144759,
+      "floor": 0.25,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 31
+    },
+    {
+      "edge_weight": 5.953880351196405,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 32
+    },
+    {
+      "edge_weight": 0.9428117780416893,
+      "floor": 0.25,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 33
+    },
+    {
+      "edge_weight": 4.243789036203215,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 34
+    },
+    {
+      "edge_weight": 3.791917609091871,
+      "floor": 0.25,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 35
+    },
+    {
+      "edge_weight": 4.523520142724835,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 36
+    },
+    {
+      "edge_weight": 2.3300207641170525,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 37
+    },
+    {
+      "edge_weight": 1.2575217984475087,
+      "floor": 0.25,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 38
+    },
+    {
+      "edge_weight": 4.124249926241589,
+      "floor": 0.25,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 39
+    },
+    {
+      "edge_weight": 3.4435051635848755,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 40
+    },
+    {
+      "edge_weight": 6.07953376193127,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 41
+    },
+    {
+      "edge_weight": 4.897249647698101,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 42
+    },
+    {
+      "edge_weight": 6.346464349984968,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 43
+    },
+    {
+      "edge_weight": 4.334552383327123,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 44
+    },
+    {
+      "edge_weight": 4.34753413934988,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 45
+    },
+    {
+      "edge_weight": 5.1614909660918045,
+      "floor": 0.5,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 46
+    },
+    {
+      "edge_weight": 2.1612885252634815,
+      "floor": 2.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 47
+    },
+    {
+      "edge_weight": 3.102692894755572,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 48
+    },
+    {
+      "edge_weight": 2.8461149186725994,
+      "floor": 1.0,
+      "instrument_unchanged": false,
+      "traceless": false,
+      "trial": 49
+    }
+  ],
+  "traceless_operations_found": 0,
+  "verdict": "PASS"
+}

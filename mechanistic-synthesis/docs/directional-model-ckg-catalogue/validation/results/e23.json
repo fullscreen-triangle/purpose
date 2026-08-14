@@ -1,0 +1,295 @@
+{
+  "claim": "Theorem (coherence requires three): robustness to the failure of any single probe implies a directed support cycle of length >= 3; no 2-member structure is robust.",
+  "exhaustive_2_member_structures": 4,
+  "exhaustive_3_member_acyclic": 49,
+  "exhaustive_3_member_with_cycle": 15,
+  "id": "E23",
+  "implication_violations": 0,
+  "random_structures_tested": 800,
+  "robust_2_member_structures": 0,
+  "robust_3_member_acyclic": 0,
+  "robust_3_member_with_cycle": 1,
+  "rows": [
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 6,
+      "robust": false,
+      "trial": 0
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 1
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 6,
+      "robust": false,
+      "trial": 2
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 5,
+      "robust": false,
+      "trial": 3
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 4,
+      "robust": false,
+      "trial": 4
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 6,
+      "robust": false,
+      "trial": 5
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 4,
+      "robust": false,
+      "trial": 6
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 6,
+      "robust": false,
+      "trial": 7
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 8
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 9
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 10
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 11
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 12
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 5,
+      "robust": false,
+      "trial": 13
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 6,
+      "robust": false,
+      "trial": 14
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 15
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 6,
+      "robust": false,
+      "trial": 16
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 17
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 18
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 6,
+      "robust": false,
+      "trial": 19
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 20
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 6,
+      "robust": false,
+      "trial": 21
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 5,
+      "robust": true,
+      "trial": 22
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 5,
+      "robust": false,
+      "trial": 23
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 24
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 4,
+      "robust": false,
+      "trial": 25
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 6,
+      "robust": false,
+      "trial": 26
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 5,
+      "robust": false,
+      "trial": 27
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 4,
+      "robust": false,
+      "trial": 28
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 29
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 5,
+      "robust": false,
+      "trial": 30
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 6,
+      "robust": false,
+      "trial": 31
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 5,
+      "robust": false,
+      "trial": 32
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 4,
+      "robust": false,
+      "trial": 33
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 5,
+      "robust": false,
+      "trial": 34
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 4,
+      "robust": false,
+      "trial": 35
+    },
+    {
+      "has_cycle_ge_3": true,
+      "implication_holds": true,
+      "n": 4,
+      "robust": false,
+      "trial": 36
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 5,
+      "robust": false,
+      "trial": 37
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 4,
+      "robust": false,
+      "trial": 38
+    },
+    {
+      "has_cycle_ge_3": false,
+      "implication_holds": true,
+      "n": 3,
+      "robust": false,
+      "trial": 39
+    }
+  ],
+  "verdict": "PASS"
+}

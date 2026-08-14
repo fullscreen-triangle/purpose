@@ -1,0 +1,42 @@
+{
+  "claim": "Corollary (saturation dichotomy): the residual is driven to zero iff sum_i kappa_i diverges.",
+  "horizon": 4000,
+  "id": "E21",
+  "mismatches": 0,
+  "rows": [
+    {
+      "drove_residual_to_zero": true,
+      "matches_prediction": true,
+      "partial_sum_at_horizon": 200.00000000001123,
+      "residual_at_horizon": 7.841897391172618e-90,
+      "sequence": "constant_0.05",
+      "sum_diverges_theoretically": true
+    },
+    {
+      "drove_residual_to_zero": true,
+      "matches_prediction": true,
+      "partial_sum_at_horizon": 8.871389299795197,
+      "residual_at_horizon": 2.5000000000718816e-10,
+      "sequence": "harmonic_1/i",
+      "sum_diverges_theoretically": true
+    },
+    {
+      "drove_residual_to_zero": false,
+      "matches_prediction": true,
+      "partial_sum_at_horizon": 1.0,
+      "residual_at_horizon": 0.2887880950866024,
+      "sequence": "geometric_2^-i",
+      "sum_diverges_theoretically": false
+    },
+    {
+      "drove_residual_to_zero": false,
+      "matches_prediction": true,
+      "partial_sum_at_horizon": 1.6446830980956317,
+      "residual_at_horizon": 5.00125000014386e-07,
+      "sequence": "inverse_square",
+      "sum_diverges_theoretically": false
+    }
+  ],
+  "sequences_tested": 4,
+  "verdict": "PASS"
+}

@@ -1,0 +1,333 @@
+{
+  "claim": "Theorem (convergent or contested closure): every determination over a finite probe registry terminates in exactly one of the two states.",
+  "contested_closure": 131,
+  "contested_fraction": 0.43666666666666665,
+  "convergent_closure": 169,
+  "id": "E28",
+  "n_trials": 300,
+  "nonterminating": 0,
+  "rows": [
+    {
+      "classes_reached": 1,
+      "n_probes": 1,
+      "probes_invoked": 1,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 0
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 4,
+      "probes_invoked": 4,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 1
+    },
+    {
+      "classes_reached": 3,
+      "n_probes": 6,
+      "probes_invoked": 6,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 2
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 5,
+      "probes_invoked": 5,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 3
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 1,
+      "probes_invoked": 1,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 4
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 3,
+      "probes_invoked": 3,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 5
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 1,
+      "probes_invoked": 1,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 6
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 2,
+      "probes_invoked": 2,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 7
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 1,
+      "probes_invoked": 1,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 8
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 1,
+      "probes_invoked": 1,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 9
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 3,
+      "probes_invoked": 3,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 10
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 2,
+      "probes_invoked": 2,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 11
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 1,
+      "probes_invoked": 1,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 12
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 4,
+      "probes_invoked": 4,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 13
+    },
+    {
+      "classes_reached": 3,
+      "n_probes": 5,
+      "probes_invoked": 5,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 14
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 6,
+      "probes_invoked": 6,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 15
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 1,
+      "probes_invoked": 1,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 16
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 3,
+      "probes_invoked": 3,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 17
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 6,
+      "probes_invoked": 6,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 18
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 3,
+      "probes_invoked": 3,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 19
+    },
+    {
+      "classes_reached": 3,
+      "n_probes": 3,
+      "probes_invoked": 3,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 20
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 5,
+      "probes_invoked": 5,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 21
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 2,
+      "probes_invoked": 2,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 22
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 4,
+      "probes_invoked": 4,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 23
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 6,
+      "probes_invoked": 6,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 24
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 2,
+      "probes_invoked": 2,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 25
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 1,
+      "probes_invoked": 1,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 26
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 4,
+      "probes_invoked": 4,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 27
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 3,
+      "probes_invoked": 3,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 28
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 4,
+      "probes_invoked": 4,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 29
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 3,
+      "probes_invoked": 3,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 30
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 2,
+      "probes_invoked": 2,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 31
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 4,
+      "probes_invoked": 4,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 32
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 6,
+      "probes_invoked": 6,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 33
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 1,
+      "probes_invoked": 1,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 34
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 5,
+      "probes_invoked": 5,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 35
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 6,
+      "probes_invoked": 6,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 36
+    },
+    {
+      "classes_reached": 2,
+      "n_probes": 6,
+      "probes_invoked": 6,
+      "rounds": 1,
+      "terminal_state": "contested closure",
+      "trial": 37
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 1,
+      "probes_invoked": 1,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 38
+    },
+    {
+      "classes_reached": 1,
+      "n_probes": 4,
+      "probes_invoked": 4,
+      "rounds": 1,
+      "terminal_state": "convergent closure",
+      "trial": 39
+    }
+  ],
+  "states_are_exhaustive_and_exclusive": true,
+  "verdict": "PASS"
+}

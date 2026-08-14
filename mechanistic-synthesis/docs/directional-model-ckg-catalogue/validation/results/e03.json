@@ -1,0 +1,58 @@
+{
+  "claim": "Theorem (identity is a region): the minimising side is in general not the singleton {v}.",
+  "id": "E03",
+  "n_cases": 7,
+  "non_singleton_cases": 7,
+  "rows": [
+    {
+      "cluster_size": 2,
+      "is_region": true,
+      "k": 2,
+      "minimiser_side_size": 2,
+      "sigma": 3.0
+    },
+    {
+      "cluster_size": 3,
+      "is_region": true,
+      "k": 3,
+      "minimiser_side_size": 3,
+      "sigma": 4.0
+    },
+    {
+      "cluster_size": 4,
+      "is_region": true,
+      "k": 4,
+      "minimiser_side_size": 4,
+      "sigma": 5.0
+    },
+    {
+      "cluster_size": 5,
+      "is_region": true,
+      "k": 5,
+      "minimiser_side_size": 5,
+      "sigma": 6.0
+    },
+    {
+      "cluster_size": 6,
+      "is_region": true,
+      "k": 6,
+      "minimiser_side_size": 6,
+      "sigma": 7.0
+    },
+    {
+      "cluster_size": 7,
+      "is_region": true,
+      "k": 7,
+      "minimiser_side_size": 7,
+      "sigma": 8.0
+    },
+    {
+      "cluster_size": 8,
+      "is_region": true,
+      "k": 8,
+      "minimiser_side_size": 8,
+      "sigma": 9.0
+    }
+  ],
+  "verdict": "PASS"
+}

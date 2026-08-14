@@ -1,0 +1,230 @@
+{
+  "backend": "Exact Edmonds-Karp max-flow / min-cut, standard library only; no external numerical dependency.",
+  "determinism": "Every experiment seeds its own RNG from base seed 42; the suite reproduces identically across runs.",
+  "elapsed_seconds": 57.081,
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.3"
+  },
+  "experiments": [
+    {
+      "claim": "Theorem (positive floor): sigma(v) >= beta > 0 for every item.",
+      "id": "E01",
+      "part": "I -- Foundations",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (conserved invariant): sigma is preserved by every weighted isomorphism; the label is not.",
+      "id": "E02",
+      "part": "I -- Foundations",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (identity is a region): the minimising side is in general not the singleton {v}.",
+      "id": "E03",
+      "part": "I -- Foundations",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (monotone non-return): the record never decreases; un-committing is a further committing act; a recurring configuration is a distinct state.",
+      "id": "E04",
+      "part": "I -- Foundations",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (self-blunting): every contact operation strictly reduces the instrument's uncommitted capacity and strictly increases its record.",
+      "id": "E05",
+      "part": "I -- Foundations",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (no perfect repeatable instrument): no operation is both traceless (requires beta = 0) and leaves the instrument unchanged (requires a static record).",
+      "id": "E06",
+      "part": "I -- Foundations",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (continuity of termination): Chi is preserved in all three cases; the record chain and the termination condition separate them.",
+      "id": "E07",
+      "part": "II -- Identity",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Proposition (Chi alone is not an identity criterion): independently authored structures of identical specification share Chi yet are distinct individuals.",
+      "id": "E08",
+      "part": "II -- Identity",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Corollary (snapshot and restore): a restored structure has the same Chi and is a distinct individual, because the chain passes through an open (serialised) stage.",
+      "id": "E09",
+      "part": "II -- Identity",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (no consistent self-verification): for every total verifier V, the diagonal value V(D_V) is self-refuting -- each of the two possible values entails the other.",
+      "id": "E10",
+      "part": "II -- Identity",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (consumer-relativity): the same item registers different cells in consumers with different graphs, and each registration is correct at its own floor; none is privileged.",
+      "id": "E11",
+      "part": "II -- Identity",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (directional identity, forward): the catalogue entry cell(v) is the table evaluated at the trivial process -- the convergent terminal cut of the resting propagation.",
+      "id": "E12",
+      "part": "III -- The Directional Pair",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (directional identity, converse): the table's output under a nontrivial process is an object of the SAME TYPE as a catalogue cell -- an accountable cut of weight >= floor.",
+      "id": "E13",
+      "part": "III -- The Directional Pair",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (path opacity): two propagations sharing seed and target are not distinguished by any invariant computed from the endpoints alone.",
+      "id": "E14",
+      "part": "III -- The Directional Pair",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (representation mobility): the fibre is non-empty and infinite, the mean is exactly preserved, and components may lie outside the range any single admissible item occupies.",
+      "id": "E15",
+      "part": "III -- The Directional Pair",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (the pair blunts): a process-side propagation deposits its residue into the graph, so the pair's record advances and its capacity is consumed -- which neither half alone exhibits.",
+      "id": "E16",
+      "part": "III -- The Directional Pair",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Corollaries (no staleness, no re-presentation): a pair determination is computed against the current graph and is never stale; a committed cut is never re-committed, so no prior propagation is available as content.",
+      "id": "E17",
+      "part": "III -- The Directional Pair",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (correct for any term map): every structural result holds on the induced graph regardless of the quality of the term map; extraction error coarsens, it does not corrupt.",
+      "id": "E18",
+      "part": "IV -- Construction and Probing",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (floor monotonicity): a finer term map induces a system floor at least as large; the realised floor is a ground-truth-free readout of extraction quality.",
+      "id": "E19",
+      "part": "IV -- Construction and Probing",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (multiplicative composition): the composite power of a probe chain is 1 - prod_i (1 - kappa_i).",
+      "id": "E20",
+      "part": "IV -- Construction and Probing",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Corollary (saturation dichotomy): the residual is driven to zero iff sum_i kappa_i diverges.",
+      "id": "E21",
+      "part": "IV -- Construction and Probing",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Corollary (diversify, do not repeat): a chain of distinct probes strictly exceeds the composite power of repeating the weakest member the same number of times.",
+      "id": "E22",
+      "part": "IV -- Construction and Probing",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (coherence requires three): robustness to the failure of any single probe implies a directed support cycle of length >= 3; no 2-member structure is robust.",
+      "id": "E23",
+      "part": "IV -- Construction and Probing",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (selection is a 0/1 knapsack): with values -log(1 - beta_i/Omega), the value-density greedy is within (1 - c_max/B) of the exact optimum and never exceeds it.",
+      "id": "E24",
+      "part": "IV -- Construction and Probing",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (water-filling): the optimum equalises marginal gain at a single price across engaged probes, drops probes whose entry margin is below the price, and the price is nonincreasing in budget and nondecreasing in probe count.",
+      "id": "E25",
+      "part": "IV -- Construction and Probing",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (separation of finding and pruning): seek marks reachable, nec marks load-bearing; they disagree on redundant reachable items, nec is contained in reach, and necessity coincides with domination.",
+      "id": "E26",
+      "part": "IV -- Construction and Probing",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (closure is strictly stronger): a fixed confidence criterion is satisfied after one probe while an uninvoked probe still reaches a distinct equivalence class -- so the determination is not closed.",
+      "id": "E27",
+      "part": "V -- Closure and the Separation",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (convergent or contested closure): every determination over a finite probe registry terminates in exactly one of the two states.",
+      "id": "E28",
+      "part": "V -- Closure and the Separation",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (retrieval cannot express admissibility): two graphs with identical contact relations -- hence identical under every retrieval query -- differ in whether a determination is accountable at eps = 0.",
+      "id": "E29",
+      "part": "V -- Closure and the Separation",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Corollary (attributes do not close the gap): even with numeric attributes on every assertion, a matcher inspecting the queried pair's neighbourhood cannot recover the verdict, because the threshold is a minimum over subsets of the whole domain and no bounded pattern forms such a minimum.",
+      "id": "E30",
+      "part": "V -- Closure and the Separation",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (corpus-determined maps cannot express admissibility): both witness graphs induce the same corpus, so any map that is a function of the corpus alone returns the same determination on both, while the verdicts differ.",
+      "id": "E31",
+      "part": "V -- Closure and the Separation",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (what the pair expresses): admissibility is decided by one pair min-cut and a minimum over items of separation costs, both exactly computable; and the pair separates the witness graphs that no corpus-determined map can.",
+      "id": "E32",
+      "part": "V -- Closure and the Separation",
+      "verdict": "PASS"
+    }
+  ],
+  "n_experiments": 32,
+  "n_fail": 0,
+  "n_pass": 32,
+  "parts": [
+    {
+      "part": "I -- Foundations",
+      "pass_rate": "6/6"
+    },
+    {
+      "part": "II -- Identity",
+      "pass_rate": "5/5"
+    },
+    {
+      "part": "III -- The Directional Pair",
+      "pass_rate": "6/6"
+    },
+    {
+      "part": "IV -- Construction and Probing",
+      "pass_rate": "9/9"
+    },
+    {
+      "part": "V -- Closure and the Separation",
+      "pass_rate": "6/6"
+    }
+  ],
+  "pass_rate": "32/32",
+  "title": "The Directional Pair -- validation suite"
+}

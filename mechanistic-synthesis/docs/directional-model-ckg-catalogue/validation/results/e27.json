@@ -1,0 +1,75 @@
+{
+  "claim": "Theorem (closure is strictly stronger): a fixed confidence criterion is satisfied after one probe while an uninvoked probe still reaches a distinct equivalence class -- so the determination is not closed.",
+  "cluster_sizes_tested": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "id": "E27",
+  "rows": [
+    {
+      "closed_after_one_probe": false,
+      "cluster_size": 2,
+      "confidence_threshold_met_after_one_probe": true,
+      "cut_size_A": 3,
+      "cut_size_B": 3,
+      "sigma_A": 5.0,
+      "sigma_B": 5.0,
+      "terminal_alignment_to_self": 0.0,
+      "threshold_stops_early": true,
+      "uninvoked_probe_reaches_distinct_class": true
+    },
+    {
+      "closed_after_one_probe": false,
+      "cluster_size": 3,
+      "confidence_threshold_met_after_one_probe": true,
+      "cut_size_A": 4,
+      "cut_size_B": 4,
+      "sigma_A": 6.0,
+      "sigma_B": 6.0,
+      "terminal_alignment_to_self": 0.0,
+      "threshold_stops_early": true,
+      "uninvoked_probe_reaches_distinct_class": true
+    },
+    {
+      "closed_after_one_probe": false,
+      "cluster_size": 4,
+      "confidence_threshold_met_after_one_probe": true,
+      "cut_size_A": 5,
+      "cut_size_B": 5,
+      "sigma_A": 7.0,
+      "sigma_B": 7.0,
+      "terminal_alignment_to_self": 0.0,
+      "threshold_stops_early": true,
+      "uninvoked_probe_reaches_distinct_class": true
+    },
+    {
+      "closed_after_one_probe": false,
+      "cluster_size": 5,
+      "confidence_threshold_met_after_one_probe": true,
+      "cut_size_A": 6,
+      "cut_size_B": 6,
+      "sigma_A": 8.0,
+      "sigma_B": 8.0,
+      "terminal_alignment_to_self": 0.0,
+      "threshold_stops_early": true,
+      "uninvoked_probe_reaches_distinct_class": true
+    },
+    {
+      "closed_after_one_probe": false,
+      "cluster_size": 6,
+      "confidence_threshold_met_after_one_probe": true,
+      "cut_size_A": 7,
+      "cut_size_B": 7,
+      "sigma_A": 9.0,
+      "sigma_B": 9.0,
+      "terminal_alignment_to_self": 0.0,
+      "threshold_stops_early": true,
+      "uninvoked_probe_reaches_distinct_class": true
+    }
+  ],
+  "threshold_stops_early_in_all_cases": true,
+  "verdict": "PASS"
+}

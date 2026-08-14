@@ -1,0 +1,209 @@
+{
+  "all_restored_are_distinct_individuals": true,
+  "claim": "Corollary (snapshot and restore): a restored structure has the same Chi and is a distinct individual, because the chain passes through an open (serialised) stage.",
+  "id": "E09",
+  "n_trials": 30,
+  "rows": [
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 5,
+      "record_chain_continuous": false,
+      "record_original": 10,
+      "record_restored": 10,
+      "serialised_form_terminated": false,
+      "trial": 0
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 8,
+      "record_chain_continuous": false,
+      "record_original": 16,
+      "record_restored": 16,
+      "serialised_form_terminated": false,
+      "trial": 1
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 8,
+      "record_chain_continuous": false,
+      "record_original": 16,
+      "record_restored": 16,
+      "serialised_form_terminated": false,
+      "trial": 2
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 5,
+      "record_chain_continuous": false,
+      "record_original": 10,
+      "record_restored": 10,
+      "serialised_form_terminated": false,
+      "trial": 3
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 5,
+      "record_chain_continuous": false,
+      "record_original": 10,
+      "record_restored": 10,
+      "serialised_form_terminated": false,
+      "trial": 4
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 5,
+      "record_chain_continuous": false,
+      "record_original": 10,
+      "record_restored": 10,
+      "serialised_form_terminated": false,
+      "trial": 5
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 8,
+      "record_chain_continuous": false,
+      "record_original": 16,
+      "record_restored": 16,
+      "serialised_form_terminated": false,
+      "trial": 6
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 6,
+      "record_chain_continuous": false,
+      "record_original": 12,
+      "record_restored": 12,
+      "serialised_form_terminated": false,
+      "trial": 7
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 7,
+      "record_chain_continuous": false,
+      "record_original": 14,
+      "record_restored": 14,
+      "serialised_form_terminated": false,
+      "trial": 8
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 8,
+      "record_chain_continuous": false,
+      "record_original": 16,
+      "record_restored": 16,
+      "serialised_form_terminated": false,
+      "trial": 9
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 7,
+      "record_chain_continuous": false,
+      "record_original": 14,
+      "record_restored": 14,
+      "serialised_form_terminated": false,
+      "trial": 10
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 8,
+      "record_chain_continuous": false,
+      "record_original": 16,
+      "record_restored": 16,
+      "serialised_form_terminated": false,
+      "trial": 11
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 8,
+      "record_chain_continuous": false,
+      "record_original": 16,
+      "record_restored": 16,
+      "serialised_form_terminated": false,
+      "trial": 12
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 6,
+      "record_chain_continuous": false,
+      "record_original": 12,
+      "record_restored": 12,
+      "serialised_form_terminated": false,
+      "trial": 13
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 8,
+      "record_chain_continuous": false,
+      "record_original": 16,
+      "record_restored": 16,
+      "serialised_form_terminated": false,
+      "trial": 14
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 6,
+      "record_chain_continuous": false,
+      "record_original": 12,
+      "record_restored": 12,
+      "serialised_form_terminated": false,
+      "trial": 15
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 7,
+      "record_chain_continuous": false,
+      "record_original": 14,
+      "record_restored": 14,
+      "serialised_form_terminated": false,
+      "trial": 16
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 6,
+      "record_chain_continuous": false,
+      "record_original": 12,
+      "record_restored": 12,
+      "serialised_form_terminated": false,
+      "trial": 17
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 7,
+      "record_chain_continuous": false,
+      "record_original": 14,
+      "record_restored": 14,
+      "serialised_form_terminated": false,
+      "trial": 18
+    },
+    {
+      "chi_equal": true,
+      "distinct_individual": true,
+      "n_planks": 4,
+      "record_chain_continuous": false,
+      "record_original": 8,
+      "record_restored": 8,
+      "serialised_form_terminated": false,
+      "trial": 19
+    }
+  ],
+  "verdict": "PASS"
+}

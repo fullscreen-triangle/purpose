@@ -1,0 +1,12 @@
+{
+  "claim": "Theorem (no consistent self-verification): for every total verifier V, the diagonal value V(D_V) is self-refuting -- each of the two possible values entails the other.",
+  "consistent_examples": [],
+  "id": "E10",
+  "n_subsets": 16,
+  "note": "Exhaustive over all 2^(2^n) total verifiers. The theorem predicts zero consistent diagonals; any consistent example would falsify it.",
+  "total_verifiers_enumerated": 65536,
+  "universe_size": 4,
+  "verdict": "PASS",
+  "verifiers_with_consistent_diagonal": 0,
+  "verifiers_with_inconsistent_diagonal": 65536
+}

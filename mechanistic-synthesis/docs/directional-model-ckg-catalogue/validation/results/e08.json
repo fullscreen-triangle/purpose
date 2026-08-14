@@ -1,0 +1,130 @@
+{
+  "chi_collisions": 40,
+  "claim": "Proposition (Chi alone is not an identity criterion): independently authored structures of identical specification share Chi yet are distinct individuals.",
+  "collision_rate": 1.0,
+  "id": "E08",
+  "n_trials": 40,
+  "rows": [
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 7,
+      "trial": 0
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 6,
+      "trial": 1
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 6,
+      "trial": 2
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 5,
+      "trial": 3
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 7,
+      "trial": 4
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 6,
+      "trial": 5
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 4,
+      "trial": 6
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 8,
+      "trial": 7
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 6,
+      "trial": 8
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 5,
+      "trial": 9
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 8,
+      "trial": 10
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 4,
+      "trial": 11
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 5,
+      "trial": 12
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 6,
+      "trial": 13
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 4,
+      "trial": 14
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 6,
+      "trial": 15
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 6,
+      "trial": 16
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 5,
+      "trial": 17
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 5,
+      "trial": 18
+    },
+    {
+      "chi_equal": true,
+      "distinct_individuals": true,
+      "n_planks": 4,
+      "trial": 19
+    }
+  ],
+  "verdict": "PASS"
+}

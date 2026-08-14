@@ -1,0 +1,618 @@
+{
+  "claim": "Theorem (self-blunting): every contact operation strictly reduces the instrument's uncommitted capacity and strictly increases its record.",
+  "id": "E05",
+  "instruments_strictly_blunted": 30,
+  "instruments_with_curve_crossing": 30,
+  "n_instruments": 30,
+  "rows": [
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 5,
+      "initial_capacity": 5,
+      "instrument": 0,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 4,
+          "record": 1
+        },
+        {
+          "capacity": 3,
+          "record": 2
+        },
+        {
+          "capacity": 2,
+          "record": 3
+        },
+        {
+          "capacity": 1,
+          "record": 4
+        },
+        {
+          "capacity": 0,
+          "record": 5
+        }
+      ],
+      "vertex": "v2"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 4,
+      "initial_capacity": 4,
+      "instrument": 1,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 3,
+          "record": 1
+        },
+        {
+          "capacity": 2,
+          "record": 2
+        },
+        {
+          "capacity": 1,
+          "record": 3
+        },
+        {
+          "capacity": 0,
+          "record": 4
+        }
+      ],
+      "vertex": "v4"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 5,
+      "initial_capacity": 5,
+      "instrument": 2,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 4,
+          "record": 1
+        },
+        {
+          "capacity": 3,
+          "record": 2
+        },
+        {
+          "capacity": 2,
+          "record": 3
+        },
+        {
+          "capacity": 1,
+          "record": 4
+        },
+        {
+          "capacity": 0,
+          "record": 5
+        }
+      ],
+      "vertex": "v5"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 4,
+      "initial_capacity": 4,
+      "instrument": 3,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 3,
+          "record": 1
+        },
+        {
+          "capacity": 2,
+          "record": 2
+        },
+        {
+          "capacity": 1,
+          "record": 3
+        },
+        {
+          "capacity": 0,
+          "record": 4
+        }
+      ],
+      "vertex": "v7"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 6,
+      "initial_capacity": 6,
+      "instrument": 4,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 5,
+          "record": 1
+        },
+        {
+          "capacity": 4,
+          "record": 2
+        },
+        {
+          "capacity": 3,
+          "record": 3
+        },
+        {
+          "capacity": 2,
+          "record": 4
+        },
+        {
+          "capacity": 1,
+          "record": 5
+        },
+        {
+          "capacity": 0,
+          "record": 6
+        }
+      ],
+      "vertex": "v5"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 7,
+      "initial_capacity": 7,
+      "instrument": 5,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 6,
+          "record": 1
+        },
+        {
+          "capacity": 5,
+          "record": 2
+        },
+        {
+          "capacity": 4,
+          "record": 3
+        },
+        {
+          "capacity": 3,
+          "record": 4
+        },
+        {
+          "capacity": 2,
+          "record": 5
+        },
+        {
+          "capacity": 1,
+          "record": 6
+        },
+        {
+          "capacity": 0,
+          "record": 7
+        }
+      ],
+      "vertex": "v3"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 2,
+      "initial_capacity": 2,
+      "instrument": 6,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 1,
+          "record": 1
+        },
+        {
+          "capacity": 0,
+          "record": 2
+        }
+      ],
+      "vertex": "v2"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 4,
+      "initial_capacity": 4,
+      "instrument": 7,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 3,
+          "record": 1
+        },
+        {
+          "capacity": 2,
+          "record": 2
+        },
+        {
+          "capacity": 1,
+          "record": 3
+        },
+        {
+          "capacity": 0,
+          "record": 4
+        }
+      ],
+      "vertex": "v2"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 5,
+      "initial_capacity": 5,
+      "instrument": 8,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 4,
+          "record": 1
+        },
+        {
+          "capacity": 3,
+          "record": 2
+        },
+        {
+          "capacity": 2,
+          "record": 3
+        },
+        {
+          "capacity": 1,
+          "record": 4
+        },
+        {
+          "capacity": 0,
+          "record": 5
+        }
+      ],
+      "vertex": "v5"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 5,
+      "initial_capacity": 5,
+      "instrument": 9,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 4,
+          "record": 1
+        },
+        {
+          "capacity": 3,
+          "record": 2
+        },
+        {
+          "capacity": 2,
+          "record": 3
+        },
+        {
+          "capacity": 1,
+          "record": 4
+        },
+        {
+          "capacity": 0,
+          "record": 5
+        }
+      ],
+      "vertex": "v5"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 5,
+      "initial_capacity": 5,
+      "instrument": 10,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 4,
+          "record": 1
+        },
+        {
+          "capacity": 3,
+          "record": 2
+        },
+        {
+          "capacity": 2,
+          "record": 3
+        },
+        {
+          "capacity": 1,
+          "record": 4
+        },
+        {
+          "capacity": 0,
+          "record": 5
+        }
+      ],
+      "vertex": "v7"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 6,
+      "initial_capacity": 6,
+      "instrument": 11,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 5,
+          "record": 1
+        },
+        {
+          "capacity": 4,
+          "record": 2
+        },
+        {
+          "capacity": 3,
+          "record": 3
+        },
+        {
+          "capacity": 2,
+          "record": 4
+        },
+        {
+          "capacity": 1,
+          "record": 5
+        },
+        {
+          "capacity": 0,
+          "record": 6
+        }
+      ],
+      "vertex": "v4"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 2,
+      "initial_capacity": 2,
+      "instrument": 12,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 1,
+          "record": 1
+        },
+        {
+          "capacity": 0,
+          "record": 2
+        }
+      ],
+      "vertex": "v3"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 5,
+      "initial_capacity": 5,
+      "instrument": 13,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 4,
+          "record": 1
+        },
+        {
+          "capacity": 3,
+          "record": 2
+        },
+        {
+          "capacity": 2,
+          "record": 3
+        },
+        {
+          "capacity": 1,
+          "record": 4
+        },
+        {
+          "capacity": 0,
+          "record": 5
+        }
+      ],
+      "vertex": "v3"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 6,
+      "initial_capacity": 6,
+      "instrument": 14,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 5,
+          "record": 1
+        },
+        {
+          "capacity": 4,
+          "record": 2
+        },
+        {
+          "capacity": 3,
+          "record": 3
+        },
+        {
+          "capacity": 2,
+          "record": 4
+        },
+        {
+          "capacity": 1,
+          "record": 5
+        },
+        {
+          "capacity": 0,
+          "record": 6
+        }
+      ],
+      "vertex": "v3"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 5,
+      "initial_capacity": 5,
+      "instrument": 15,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 4,
+          "record": 1
+        },
+        {
+          "capacity": 3,
+          "record": 2
+        },
+        {
+          "capacity": 2,
+          "record": 3
+        },
+        {
+          "capacity": 1,
+          "record": 4
+        },
+        {
+          "capacity": 0,
+          "record": 5
+        }
+      ],
+      "vertex": "v4"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 7,
+      "initial_capacity": 7,
+      "instrument": 16,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 6,
+          "record": 1
+        },
+        {
+          "capacity": 5,
+          "record": 2
+        },
+        {
+          "capacity": 4,
+          "record": 3
+        },
+        {
+          "capacity": 3,
+          "record": 4
+        },
+        {
+          "capacity": 2,
+          "record": 5
+        },
+        {
+          "capacity": 1,
+          "record": 6
+        },
+        {
+          "capacity": 0,
+          "record": 7
+        }
+      ],
+      "vertex": "v2"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 6,
+      "initial_capacity": 6,
+      "instrument": 17,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 5,
+          "record": 1
+        },
+        {
+          "capacity": 4,
+          "record": 2
+        },
+        {
+          "capacity": 3,
+          "record": 3
+        },
+        {
+          "capacity": 2,
+          "record": 4
+        },
+        {
+          "capacity": 1,
+          "record": 5
+        },
+        {
+          "capacity": 0,
+          "record": 6
+        }
+      ],
+      "vertex": "v0"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 4,
+      "initial_capacity": 4,
+      "instrument": 18,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 3,
+          "record": 1
+        },
+        {
+          "capacity": 2,
+          "record": 2
+        },
+        {
+          "capacity": 1,
+          "record": 3
+        },
+        {
+          "capacity": 0,
+          "record": 4
+        }
+      ],
+      "vertex": "v2"
+    },
+    {
+      "curves_cross": true,
+      "final_capacity": 0,
+      "final_record": 4,
+      "initial_capacity": 4,
+      "instrument": 19,
+      "strictly_blunted": true,
+      "trajectory": [
+        {
+          "capacity": 3,
+          "record": 1
+        },
+        {
+          "capacity": 2,
+          "record": 2
+        },
+        {
+          "capacity": 1,
+          "record": 3
+        },
+        {
+          "capacity": 0,
+          "record": 4
+        }
+      ],
+      "vertex": "v1"
+    }
+  ],
+  "verdict": "PASS"
+}

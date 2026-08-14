@@ -1,0 +1,1840 @@
+{
+  "claim": "Theorem (path opacity): two propagations sharing seed and target are not distinguished by any invariant computed from the endpoints alone.",
+  "graphs_with_multiple_walks": 36,
+  "id": "E14",
+  "n_graphs": 40,
+  "pairs_distinguished_by_endpoint_invariants": 0,
+  "rows": [
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v0",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v0",
+        "v2",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v2",
+        "v0",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v2",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v4",
+        "v0",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v0",
+        "v2",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v4",
+        "v0",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v4",
+        "v0",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v2",
+        "v0",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v4",
+        "v0",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v2",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v4",
+        "v0",
+        "v2",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v4",
+        "v0",
+        "v2",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v2",
+        "v0",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.086934171452022,
+        "target": "v1",
+        "target_resting_cut": [
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "v0",
+            "v1"
+          ],
+          [
+            "v1",
+            "v2"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v1",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 0,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v4",
+        "v0",
+        "v2",
+        "v1"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v2",
+        "v1"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v0",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v1",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v0",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v1",
+        "v4",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v0",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v0",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v4",
+        "v1",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v0",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v4",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v1",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v1",
+        "v4",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v1",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v1",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v4",
+        "v1",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v1",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v4",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v1",
+        "v4",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v1",
+        "v4",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v4",
+        "v1",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v2",
+        "sigma_pair": 13.842991596694088,
+        "target": "v3",
+        "target_resting_cut": [
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "v0",
+            "v3"
+          ],
+          [
+            "v1",
+            "v3"
+          ],
+          [
+            "v2",
+            "v3"
+          ],
+          [
+            "v3",
+            "v4"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 1,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v2",
+        "v1",
+        "v4",
+        "v3"
+      ],
+      "walk2": [
+        "v2",
+        "v4",
+        "v3"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v3",
+        "v1",
+        "v5",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v3",
+        "v2",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v3",
+        "v2",
+        "v5",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v3",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v3",
+        "v5",
+        "v1",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v3",
+        "v5",
+        "v2",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v3",
+        "v5",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v5",
+        "v1",
+        "v3",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v5",
+        "v1",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v5",
+        "v2",
+        "v3",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v0",
+        "sigma_pair": 10.933602941730156,
+        "target": "v4",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "m",
+            "v1"
+          ],
+          [
+            "m",
+            "v2"
+          ],
+          [
+            "m",
+            "v3"
+          ],
+          [
+            "m",
+            "v4"
+          ],
+          [
+            "m",
+            "v5"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 2,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v0",
+        "v3",
+        "v1",
+        "v4"
+      ],
+      "walk2": [
+        "v0",
+        "v5",
+        "v2",
+        "v4"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.769971039313821,
+        "target": "v0",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "v0",
+            "v2"
+          ],
+          [
+            "v0",
+            "v3"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 4,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v0"
+      ],
+      "walk2": [
+        "v3",
+        "v1",
+        "v5",
+        "v2",
+        "v0"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.769971039313821,
+        "target": "v0",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "v0",
+            "v2"
+          ],
+          [
+            "v0",
+            "v3"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 4,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v0"
+      ],
+      "walk2": [
+        "v3",
+        "v2",
+        "v0"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.769971039313821,
+        "target": "v0",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "v0",
+            "v2"
+          ],
+          [
+            "v0",
+            "v3"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 4,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v0"
+      ],
+      "walk2": [
+        "v3",
+        "v4",
+        "v2",
+        "v0"
+      ]
+    },
+    {
+      "distinguished_by_endpoint_invariant": false,
+      "endpoint_invariants": {
+        "seed": "v3",
+        "sigma_pair": 12.769971039313821,
+        "target": "v0",
+        "target_resting_cut": [
+          [
+            "m",
+            "v0"
+          ],
+          [
+            "v0",
+            "v2"
+          ],
+          [
+            "v0",
+            "v3"
+          ]
+        ],
+        "terminal_alignment": 0.0
+      },
+      "graph": 4,
+      "interiors_differ": true,
+      "same_endpoints": true,
+      "walk1": [
+        "v3",
+        "v1",
+        "v5",
+        "v2",
+        "v0"
+      ],
+      "walk2": [
+        "v3",
+        "v2",
+        "v0"
+      ]
+    }
+  ],
+  "verdict": "PASS",
+  "walk_pairs_checked": 394
+}

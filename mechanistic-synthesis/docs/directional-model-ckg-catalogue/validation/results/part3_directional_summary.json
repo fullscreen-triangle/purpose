@@ -1,0 +1,36 @@
+{
+  "experiments": [
+    {
+      "claim": "Theorem (directional identity, forward): the catalogue entry cell(v) is the table evaluated at the trivial process -- the convergent terminal cut of the resting propagation.",
+      "id": "E12",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (directional identity, converse): the table's output under a nontrivial process is an object of the SAME TYPE as a catalogue cell -- an accountable cut of weight >= floor.",
+      "id": "E13",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (path opacity): two propagations sharing seed and target are not distinguished by any invariant computed from the endpoints alone.",
+      "id": "E14",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (representation mobility): the fibre is non-empty and infinite, the mean is exactly preserved, and components may lie outside the range any single admissible item occupies.",
+      "id": "E15",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (the pair blunts): a process-side propagation deposits its residue into the graph, so the pair's record advances and its capacity is consumed -- which neither half alone exhibits.",
+      "id": "E16",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Corollaries (no staleness, no re-presentation): a pair determination is computed against the current graph and is never stale; a committed cut is never re-committed, so no prior propagation is available as content.",
+      "id": "E17",
+      "verdict": "PASS"
+    }
+  ],
+  "part": "III -- The Directional Pair",
+  "pass_rate": "6/6"
+}

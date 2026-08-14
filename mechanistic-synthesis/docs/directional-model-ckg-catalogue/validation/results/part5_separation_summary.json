@@ -1,0 +1,36 @@
+{
+  "experiments": [
+    {
+      "claim": "Theorem (closure is strictly stronger): a fixed confidence criterion is satisfied after one probe while an uninvoked probe still reaches a distinct equivalence class -- so the determination is not closed.",
+      "id": "E27",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (convergent or contested closure): every determination over a finite probe registry terminates in exactly one of the two states.",
+      "id": "E28",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (retrieval cannot express admissibility): two graphs with identical contact relations -- hence identical under every retrieval query -- differ in whether a determination is accountable at eps = 0.",
+      "id": "E29",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Corollary (attributes do not close the gap): even with numeric attributes on every assertion, a matcher inspecting the queried pair's neighbourhood cannot recover the verdict, because the threshold is a minimum over subsets of the whole domain and no bounded pattern forms such a minimum.",
+      "id": "E30",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (corpus-determined maps cannot express admissibility): both witness graphs induce the same corpus, so any map that is a function of the corpus alone returns the same determination on both, while the verdicts differ.",
+      "id": "E31",
+      "verdict": "PASS"
+    },
+    {
+      "claim": "Theorem (what the pair expresses): admissibility is decided by one pair min-cut and a minimum over items of separation costs, both exactly computable; and the pair separates the witness graphs that no corpus-determined map can.",
+      "id": "E32",
+      "verdict": "PASS"
+    }
+  ],
+  "part": "V -- Closure and the Separation",
+  "pass_rate": "6/6"
+}
