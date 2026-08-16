@@ -1,3 +1,7 @@
 /target
 Cargo.lock.bak
 *.swp
+
+# purpose: derived caches. lens.toml is a decision and stays versioned.
+.purpose/index.json
+.purpose/ckg.json

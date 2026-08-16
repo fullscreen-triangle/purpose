@@ -1697,34 +1697,63 @@ mod tests {
         // the same set for every goal landing in the same component — and the
         // determination stops depending on the goal.
         //
-        // `a → b → c`, plus a detour `a → d → c` that the goal's seed set
-        // does not enter. Within R = {a, b, c}, `b` is the only route to `c`
-        // and so is load-bearing. Over the whole universe the ablation of `b`
-        // leaves the detour standing, `c` survives, and `b` is scored
-        // redundant — a module the goal genuinely cannot do without.
+        // The two agree on any graph the goal reaches entirely, so a sharp
+        // witness needs R ⊊ V — and needs the excluded part to *matter*. An
+        // unreached module that merely sits there changes nothing: it is
+        // unreachable under every retained set, contributes 0, and scores
+        // redundant either way. What discriminates is an unreached module that
+        // acts as a BRIDGE, offering a detour the goal does not actually have.
+        //
+        //           a ─── b ─── c
+        //            \         /
+        //             ╰── d ──╯          d admitted, but not seeded into
+        //
+        // R is what the goal's *own* seeds reach. Take the goal to seed at `a`
+        // and `c` with `d` outside R — the case where the index admits `d` as a
+        // module but no goal term meets it.
+        //
+        // Within R = {a, b, c}: dropping `b` severs `a` from `c`, so `b` is
+        // load-bearing. Over V = {a, b, c, d}: dropping `b` leaves the detour
+        // through `d` standing, `c` survives, and `b` is scored REDUNDANT —
+        // a module the goal genuinely cannot do without, rescued by a route
+        // through a module the determination never admitted.
         let mut g = ContactGraph::with_vertices([MEDIUM]);
         for v in ["a", "b", "c", "d"] {
             g.add_edge(v, MEDIUM, 1.0).unwrap();
         }
         g.add_edge("a", "b", 2.0).unwrap();
         g.add_edge("b", "c", 2.0).unwrap();
-        g.add_edge("c", "d", 2.0).unwrap();
+        g.add_edge("a", "d", 2.0).unwrap();
+        g.add_edge("d", "c", 2.0).unwrap();
 
         let seeds: BTreeSet<String> = ["a".to_string()].into_iter().collect();
-        let reachable = reach(&g, &seeds);
+        // R is stated directly: the retained set is the determination's, and
+        // here it excludes the detour.
+        let reachable: BTreeSet<String> =
+            ["a", "b", "c"].iter().map(|s| s.to_string()).collect();
         let universe: BTreeSet<String> = g.items().into_iter().map(|s| s.to_string()).collect();
+        assert!(
+            reachable.is_subset(&universe) && reachable.len() < universe.len(),
+            "the witness is only sharp where R ⊊ V"
+        );
 
         let within = necessary(&g, &seeds, &reachable);
-        let over_universe: BTreeSet<String> = necessary(&g, &seeds, &universe)
-            .intersection(&reachable)
-            .cloned()
-            .collect();
+        let over_universe = necessary(&g, &seeds, &universe);
 
         assert!(within.is_subset(&reachable), "nec ⊆ reach");
-        assert!(within.contains("b"), "b is the only route from a to c");
-        assert_eq!(
+        assert!(
+            within.contains("b"),
+            "within R, b is the only route from a to c"
+        );
+
+        // The defect this pins, stated as the disagreement itself.
+        assert!(
+            !over_universe.contains("b"),
+            "over the universe the detour rescues b and it is scored redundant"
+        );
+        assert_ne!(
             within, over_universe,
-            "on a connected graph the two coincide; the fix matters where R ⊊ V"
+            "the two computations must disagree, or the test proves nothing"
         );
     }
 
