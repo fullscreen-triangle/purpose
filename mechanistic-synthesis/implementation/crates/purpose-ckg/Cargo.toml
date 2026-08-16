@@ -1,0 +1,11 @@
+[package]
+name = "purpose-ckg"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Contact graphs, exact minimum cuts, and the primitives of the directional pair."
+
+[dependencies]
+serde = { workspace = true }

@@ -1,0 +1,333 @@
+\begin{thebibliography}{53}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Angles et~al.(2017)Angles, Arenas, Barcel\'o, Hogan, Reutter, and
+  Vrgo\v{c}]{angles2017}
+Renzo Angles, Marcelo Arenas, Pablo Barcel\'o, Aidan Hogan, Juan Reutter, and
+  Domagoj Vrgo\v{c}.
+\newblock Foundations of modern query languages for graph databases.
+\newblock \emph{ACM Computing Surveys}, 50\penalty0 (5):\penalty0 1--40, 2017.
+
+\bibitem[Barcel\'o~Baeza(2013)]{barcelo2013}
+Pablo Barcel\'o~Baeza.
+\newblock Querying graph databases.
+\newblock In \emph{Proceedings of the 32nd ACM SIGMOD-SIGACT-SIGAI Symposium on
+  Principles of Database Systems}, pages 175--188, 2013.
+
+\bibitem[Bender et~al.(2021)Bender, Gebru, McMillan-Major, and
+  Shmitchell]{bender2021}
+Emily~M. Bender, Timnit Gebru, Angelina McMillan-Major, and Shmargaret
+  Shmitchell.
+\newblock On the dangers of stochastic parrots: Can language models be too big?
+\newblock In \emph{Proceedings of the 2021 ACM Conference on Fairness,
+  Accountability, and Transparency}, pages 610--623, 2021.
+
+\bibitem[Borel(1909)]{borel1909}
+\'Emile Borel.
+\newblock Les probabilit\'es d\'enombrables et leurs applications
+  arithm\'etiques.
+\newblock \emph{Rendiconti del Circolo Matematico di Palermo}, 27:\penalty0
+  247--271, 1909.
+
+\bibitem[Boyd and Vandenberghe(2004)]{boyd2004}
+Stephen Boyd and Lieven Vandenberghe.
+\newblock \emph{Convex Optimization}.
+\newblock Cambridge University Press, 2004.
+
+\bibitem[Cantelli(1917)]{cantelli1917}
+Francesco~Paolo Cantelli.
+\newblock Sulla probabilit\`a come limite della frequenza.
+\newblock \emph{Atti della Accademia Nazionale dei Lincei}, 26:\penalty0
+  39--45, 1917.
+
+\bibitem[Cantor(1891)]{cantor1891}
+Georg Cantor.
+\newblock \"uber eine elementare frage der mannigfaltigkeitslehre.
+\newblock \emph{Jahresbericht der Deutschen Mathematiker-Vereinigung},
+  1:\penalty0 75--78, 1891.
+
+\bibitem[Chandra and Merlin(1977)]{chandramerlin1977}
+Ashok~K. Chandra and Philip~M. Merlin.
+\newblock Optimal implementation of conjunctive queries in relational data
+  bases.
+\newblock \emph{Proceedings of the Ninth Annual ACM Symposium on Theory of
+  Computing}, pages 77--90, 1977.
+
+\bibitem[Cormen et~al.(2009)Cormen, Leiserson, Rivest, and Stein]{cormen2009}
+Thomas~H. Cormen, Charles~E. Leiserson, Ronald~L. Rivest, and Clifford Stein.
+\newblock \emph{Introduction to Algorithms}.
+\newblock MIT Press, 3 edition, 2009.
+
+\bibitem[Cover and Thomas(2006)]{cover2006}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock \emph{Elements of Information Theory}.
+\newblock Wiley-Interscience, 2 edition, 2006.
+
+\bibitem[Dantzig(1957)]{dantzig1957}
+George~B. Dantzig.
+\newblock Discrete-variable extremum problems.
+\newblock \emph{Operations Research}, 5\penalty0 (2):\penalty0 266--277, 1957.
+
+\bibitem[Davidson and Freire(2008)]{davidson2008}
+Susan~B. Davidson and Juliana Freire.
+\newblock Provenance and scientific workflows: Challenges and opportunities.
+\newblock \emph{Proceedings of the 2008 ACM SIGMOD International Conference on
+  Management of Data}, pages 1345--1350, 2008.
+
+\bibitem[Dean and Boddy(1988)]{dean1988}
+Thomas Dean and Mark Boddy.
+\newblock An analysis of time-dependent planning.
+\newblock In \emph{Proceedings of the Seventh AAAI National Conference on
+  Artificial Intelligence}, pages 49--54, 1988.
+
+\bibitem[Edmonds and Karp(1972)]{edmondskarp1972}
+Jack Edmonds and Richard~M. Karp.
+\newblock Theoretical improvements in algorithmic efficiency for network flow
+  problems.
+\newblock \emph{Journal of the ACM}, 19\penalty0 (2):\penalty0 248--264, 1972.
+
+\bibitem[Ford and Fulkerson(1956)]{fordfulkerson1956}
+L.~R. Ford and D.~R. Fulkerson.
+\newblock Maximal flow through a network.
+\newblock \emph{Canadian Journal of Mathematics}, 8:\penalty0 399--404, 1956.
+
+\bibitem[G\"odel(1931)]{godel1931}
+Kurt G\"odel.
+\newblock \"uber formal unentscheidbare s\"atze der principia mathematica und
+  verwandter systeme i.
+\newblock \emph{Monatshefte f\"ur Mathematik und Physik}, 38:\penalty0
+  173--198, 1931.
+
+\bibitem[Hewitt et~al.(1973)Hewitt, Bishop, and Steiger]{hewitt1973}
+Carl Hewitt, Peter Bishop, and Richard Steiger.
+\newblock A universal modular {ACTOR} formalism for artificial intelligence.
+\newblock In \emph{Proceedings of the 3rd International Joint Conference on
+  Artificial Intelligence}, pages 235--245, 1973.
+
+\bibitem[Hogan et~al.(2021)Hogan, Blomqvist, Cochez, d'Amato, de~Melo,
+  Gutierrez, Kirrane, Gayo, Navigli, Neumaier, et~al.]{hogan2021}
+Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia d'Amato, Gerard de~Melo,
+  Claudio Gutierrez, Sabrina Kirrane, Jos\'e Emilio~Labra Gayo, Roberto
+  Navigli, Sebastian Neumaier, et~al.
+\newblock Knowledge graphs.
+\newblock \emph{ACM Computing Surveys}, 54\penalty0 (4):\penalty0 1--37, 2021.
+
+\bibitem[Ji et~al.(2023)Ji, Lee, Frieske, Yu, Su, Xu, Ishii, Bang, Madotto, and
+  Fung]{ji2023}
+Ziwei Ji, Nayeon Lee, Rita Frieske, Tiezheng Yu, Dan Su, Yan Xu, Etsuko Ishii,
+  Ye~Jin Bang, Andrea Madotto, and Pascale Fung.
+\newblock Survey of hallucination in natural language generation.
+\newblock \emph{ACM Computing Surveys}, 55\penalty0 (12):\penalty0 1--38, 2023.
+
+\bibitem[Kahn(1974)]{kahn1974}
+Gilles Kahn.
+\newblock The semantics of a simple language for parallel programming.
+\newblock In \emph{Information Processing 74: Proceedings of the IFIP
+  Congress}, pages 471--475, 1974.
+
+\bibitem[Kellerer et~al.(2004)Kellerer, Pferschy, and Pisinger]{kellerer2004}
+Hans Kellerer, Ulrich Pferschy, and David Pisinger.
+\newblock \emph{Knapsack Problems}.
+\newblock Springer, 2004.
+
+\bibitem[Kuhn and Tucker(1951)]{kuhntucker1951}
+H.~W. Kuhn and A.~W. Tucker.
+\newblock Nonlinear programming.
+\newblock In \emph{Proceedings of the Second Berkeley Symposium on Mathematical
+  Statistics and Probability}, pages 481--492, 1951.
+
+\bibitem[Lamport(1978)]{lamport1978}
+Leslie Lamport.
+\newblock Time, clocks, and the ordering of events in a distributed system.
+\newblock \emph{Communications of the ACM}, 21\penalty0 (7):\penalty0 558--565,
+  1978.
+
+\bibitem[Lawvere(1969)]{lawvere1969}
+F.~William Lawvere.
+\newblock Diagonal arguments and cartesian closed categories.
+\newblock In \emph{Category Theory, Homology Theory and Their Applications II},
+  pages 134--145. Springer, 1969.
+
+\bibitem[Lee and Parks(1995)]{lee1995}
+Edward~A. Lee and Thomas~M. Parks.
+\newblock Dataflow process networks.
+\newblock \emph{Proceedings of the IEEE}, 83\penalty0 (5):\penalty0 773--801,
+  1995.
+
+\bibitem[Lengauer and Tarjan(1979)]{lengauer1979}
+Thomas Lengauer and Robert~Endre Tarjan.
+\newblock A fast algorithm for finding dominators in a flowgraph.
+\newblock \emph{ACM Transactions on Programming Languages and Systems},
+  1\penalty0 (1):\penalty0 121--141, 1979.
+
+\bibitem[Lewis(1976)]{lewis1976}
+David Lewis.
+\newblock Survival and identity.
+\newblock \emph{The Identities of Persons}, pages 17--40, 1976.
+
+\bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal,
+  K{\"u}ttler, Lewis, Yih, Rockt{\"a}schel, et~al.]{lewis2020}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K{\"u}ttler, Mike Lewis, Wen-tau Yih, Tim
+  Rockt{\"a}schel, et~al.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock In \emph{Advances in Neural Information Processing Systems 33}, pages
+  9459--9474, 2020.
+
+\bibitem[Liu et~al.(2024)Liu, Lin, Hewitt, Paranjape, Bevilacqua, Petroni, and
+  Liang]{liu2024}
+Nelson~F. Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua,
+  Fabio Petroni, and Percy Liang.
+\newblock Lost in the middle: How language models use long contexts.
+\newblock \emph{Transactions of the Association for Computational Linguistics},
+  12:\penalty0 157--173, 2024.
+
+\bibitem[McMurry et~al.(2017)McMurry, Juty, Blomberg, Burdett, Conlin, Conte,
+  Courtot, Deck, Dumontier, Fellows, et~al.]{mcmurry2017}
+Julie~A. McMurry, Nick Juty, Niklas Blomberg, Tony Burdett, Tom Conlin,
+  Nathalie Conte, M{\'e}lanie Courtot, John Deck, Michel Dumontier, Donal~K.
+  Fellows, et~al.
+\newblock Identifiers for the 21st century: How to design, provision, and reuse
+  persistent identifiers to maximize utility and impact of life science data.
+\newblock \emph{PLoS Biology}, 15\penalty0 (6):\penalty0 e2001414, 2017.
+
+\bibitem[Mendeleev(1869)]{mendeleev1869}
+Dmitri Mendeleev.
+\newblock \"uber die beziehungen der eigenschaften zu den atomgewichten der
+  elemente.
+\newblock \emph{Zeitschrift f\"ur Chemie}, 12:\penalty0 405--406, 1869.
+
+\bibitem[Menger(1927)]{menger1927}
+Karl Menger.
+\newblock Zur allgemeinen kurventheorie.
+\newblock \emph{Fundamenta Mathematicae}, 10:\penalty0 96--115, 1927.
+
+\bibitem[Moreau and Groth(2013)]{moreau2013}
+Luc Moreau and Paul Groth.
+\newblock Provenance: An introduction to {PROV}.
+\newblock \emph{Synthesis Lectures on the Semantic Web}, 3\penalty0
+  (4):\penalty0 1--129, 2013.
+
+\bibitem[{Open Science Collaboration}(2015)]{openscience2015}
+{Open Science Collaboration}.
+\newblock Estimating the reproducibility of psychological science.
+\newblock \emph{Science}, 349\penalty0 (6251):\penalty0 aac4716, 2015.
+
+\bibitem[Peng(2011)]{peng2011}
+Roger~D. Peng.
+\newblock Reproducible research in computational science.
+\newblock \emph{Science}, 334\penalty0 (6060):\penalty0 1226--1227, 2011.
+
+\bibitem[P\'erez et~al.(2009)P\'erez, Arenas, and Gutierrez]{perez2009}
+Jorge P\'erez, Marcelo Arenas, and Claudio Gutierrez.
+\newblock Semantics and complexity of {SPARQL}.
+\newblock \emph{ACM Transactions on Database Systems}, 34\penalty0
+  (3):\penalty0 1--45, 2009.
+
+\bibitem[Plutarch(75)]{plutarch}
+Plutarch.
+\newblock \emph{Life of Theseus}.
+\newblock 75.
+\newblock In \emph{Parallel Lives}; standard translations, e.g.\ Loeb Classical
+  Library.
+
+\bibitem[Sahni(1975)]{sahni1975}
+Sartaj Sahni.
+\newblock Approximate algorithms for the 0/1 knapsack problem.
+\newblock \emph{Journal of the ACM}, 22\penalty0 (1):\penalty0 115--124, 1975.
+
+\bibitem[Sandve et~al.(2013)Sandve, Nekrutenko, Taylor, and Hovig]{sandve2013}
+Geir~Kjetil Sandve, Anton Nekrutenko, James Taylor, and Eivind Hovig.
+\newblock Ten simple rules for reproducible computational research.
+\newblock \emph{PLoS Computational Biology}, 9\penalty0 (10):\penalty0
+  e1003285, 2013.
+
+\bibitem[Scerri(2007)]{scerri2007}
+Eric~R. Scerri.
+\newblock \emph{The Periodic Table: Its Story and Its Significance}.
+\newblock Oxford University Press, 2007.
+
+\bibitem[Shannon(1948)]{shannon1948}
+Claude~E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock \emph{Bell System Technical Journal}, 27\penalty0 (3):\penalty0
+  379--423, 1948.
+
+\bibitem[Simon(1955)]{simon1955}
+Herbert~A. Simon.
+\newblock A behavioral model of rational choice.
+\newblock \emph{Quarterly Journal of Economics}, 69\penalty0 (1):\penalty0
+  99--118, 1955.
+
+\bibitem[Simon(1956)]{simon1956}
+Herbert~A. Simon.
+\newblock Rational choice and the structure of the environment.
+\newblock \emph{Psychological Review}, 63\penalty0 (2):\penalty0 129--138,
+  1956.
+
+\bibitem[Smith et~al.(2007)Smith, Ashburner, Rosse, Bard, Bug, Ceusters,
+  Goldberg, Eilbeck, Ireland, Mungall, et~al.]{smith2007}
+Barry Smith, Michael Ashburner, Cornelius Rosse, Jonathan Bard, William Bug,
+  Werner Ceusters, Louis~J. Goldberg, Karen Eilbeck, Amelia Ireland,
+  Christopher~J. Mungall, et~al.
+\newblock The {OBO} foundry: Coordinated evolution of ontologies to support
+  biomedical data integration.
+\newblock \emph{Nature Biotechnology}, 25\penalty0 (11):\penalty0 1251--1255,
+  2007.
+
+\bibitem[Stoer and Wagner(1997)]{stoer1997}
+Mechthild Stoer and Frank Wagner.
+\newblock A simple min-cut algorithm.
+\newblock \emph{Journal of the ACM}, 44\penalty0 (4):\penalty0 585--591, 1997.
+
+\bibitem[Tarjan(1972)]{tarjan1972}
+Robert Tarjan.
+\newblock Depth-first search and linear graph algorithms.
+\newblock \emph{SIAM Journal on Computing}, 1\penalty0 (2):\penalty0 146--160,
+  1972.
+
+\bibitem[Tarski(1936)]{tarski1936}
+Alfred Tarski.
+\newblock Der wahrheitsbegriff in den formalisierten sprachen.
+\newblock \emph{Studia Philosophica}, 1:\penalty0 261--405, 1936.
+
+\bibitem[Tay et~al.(2022)Tay, Dehghani, Bahri, and Metzler]{tay2022}
+Yi~Tay, Mostafa Dehghani, Dara Bahri, and Donald Metzler.
+\newblock Efficient transformers: A survey.
+\newblock \emph{ACM Computing Surveys}, 55\penalty0 (6):\penalty0 1--28, 2022.
+
+\bibitem[Turing(1936)]{turing1936}
+Alan~M. Turing.
+\newblock On computable numbers, with an application to the
+  entscheidungsproblem.
+\newblock \emph{Proceedings of the London Mathematical Society}, 42:\penalty0
+  230--265, 1936.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez,
+  Kaiser, and Polosukhin]{vaswani2017}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, {\L}ukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock In \emph{Advances in Neural Information Processing Systems 30}, pages
+  5998--6008, 2017.
+
+\bibitem[Wiggins(2001)]{wiggins2001}
+David Wiggins.
+\newblock \emph{Sameness and Substance Renewed}.
+\newblock Cambridge University Press, 2001.
+
+\bibitem[Wren(2008)]{wren2008}
+Jonathan~D. Wren.
+\newblock {URL} decay in {MEDLINE} --- a 4-year follow-up study.
+\newblock \emph{Bioinformatics}, 24\penalty0 (11):\penalty0 1381--1385, 2008.
+
+\bibitem[Zilberstein(1996)]{zilberstein1996}
+Shlomo Zilberstein.
+\newblock Using anytime algorithms in intelligent systems.
+\newblock \emph{AI Magazine}, 17\penalty0 (3):\penalty0 73--83, 1996.
+
+\end{thebibliography}

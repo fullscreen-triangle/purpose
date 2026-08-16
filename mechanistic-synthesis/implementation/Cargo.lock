@@ -657,12 +657,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "purpose-ckg"
+version = "0.1.0"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "purpose-cli"
 version = "0.1.0"
 dependencies = [
  "anyhow",
  "clap",
+ "purpose-ckg",
  "purpose-core",
+ "purpose-domains-ckg",
  "purpose-domains-codebase",
  "purpose-domains-ledger",
  "purpose-domains-protein",
@@ -681,6 +690,20 @@ dependencies = [
  "serde",
  "serde_json",
  "thiserror 1.0.69",
+]
+
+[[package]]
+name = "purpose-domains-ckg"
+version = "0.1.0"
+dependencies = [
+ "async-trait",
+ "purpose-ckg",
+ "purpose-core",
+ "purpose-domains-codebase",
+ "purpose-operations",
+ "serde",
+ "serde_json",
+ "tracing",
 ]
 
 [[package]]

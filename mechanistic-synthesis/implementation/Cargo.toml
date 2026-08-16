@@ -6,6 +6,8 @@ members = [
     "crates/purpose-domains-protein",
     "crates/purpose-domains-codebase",
     "crates/purpose-domains-ledger",
+    "crates/purpose-ckg",
+    "crates/purpose-domains-ckg",
     "crates/purpose-cli",
 ]
 
@@ -35,6 +37,8 @@ purpose-operations = { path = "crates/purpose-operations" }
 purpose-domains-protein = { path = "crates/purpose-domains-protein" }
 purpose-domains-codebase = { path = "crates/purpose-domains-codebase" }
 purpose-domains-ledger = { path = "crates/purpose-domains-ledger" }
+purpose-ckg = { path = "crates/purpose-ckg" }
+purpose-domains-ckg = { path = "crates/purpose-domains-ckg" }
 
 [profile.release]
 lto = "thin"

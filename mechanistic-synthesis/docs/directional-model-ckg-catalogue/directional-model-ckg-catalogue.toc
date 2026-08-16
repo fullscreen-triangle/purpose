@@ -1,0 +1,64 @@
+\contentsline {part}{I\hspace {1em}Foundations}{3}{part.1}%
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}The position this paper attacks}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}The remedy is a direction, not a component}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}What identity turns out to require}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Contributions}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Method}{4}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Contact graphs and the medium}{5}{section.2}%
+\contentsline {section}{\numberline {3}The floor, derived}{5}{section.3}%
+\contentsline {section}{\numberline {4}Individuation by negation}{6}{section.4}%
+\contentsline {section}{\numberline {5}Identity is the invariant cut}{7}{section.5}%
+\contentsline {section}{\numberline {6}The record, and why it cannot be undone}{7}{section.6}%
+\contentsline {section}{\numberline {7}The self-blunting instrument}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}The stateless predictor occupies the forbidden position}{10}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Staleness and reification: two visible symptoms}{11}{subsection.7.2}%
+\contentsline {section}{\numberline {8}What a structure cannot know about itself}{13}{section.8}%
+\contentsline {section}{\numberline {9}The identity criterion}{14}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Neither component suffices alone}{14}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Termination is the operative criterion}{14}{subsection.9.2}%
+\contentsline {part}{II\hspace {1em}The Causal Propagation Table}{15}{part.2}%
+\contentsline {section}{\numberline {10}Alignment, accountability, and propagation}{15}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Alignment}{15}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}The residual, accountability, and the floor of a system}{16}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Processes and propagations}{16}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Representation mobility}{17}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}The table}{17}{subsection.10.5}%
+\contentsline {part}{III\hspace {1em}The Directional Pair}{18}{part.3}%
+\contentsline {section}{\numberline {11}The catalogue is the table at rest}{18}{section.11}%
+\contentsline {subsection}{\numberline {11.1}The resting catalogue}{18}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}The pair}{18}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}What the pair inherits}{19}{subsection.11.3}%
+\contentsline {part}{IV\hspace {1em}Construction and Probing}{21}{part.4}%
+\contentsline {section}{\numberline {12}Construction: the term map is the only declared input}{21}{section.12}%
+\contentsline {subsection}{\numberline {12.1}The term map}{21}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}The floor as a quality readout}{22}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Construction is itself a determination}{22}{subsection.12.3}%
+\contentsline {section}{\numberline {13}Probing: many determiners over one graph}{23}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Probes and probing power}{23}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Composition is multiplicative}{23}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Coherence requires three}{25}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Dividing a finite probing budget}{25}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}Finding and pruning are different operations}{26}{subsection.13.5}%
+\contentsline {section}{\numberline {14}Termination: closure, and the honest decline}{29}{section.14}%
+\contentsline {part}{V\hspace {1em}The Separation}{30}{part.5}%
+\contentsline {section}{\numberline {15}What a store of local content cannot express}{30}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Two kinds of question}{30}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}The separation}{30}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}The separation extends to corpus-trained predictors}{31}{subsection.15.3}%
+\contentsline {section}{\numberline {16}The master equivalence}{32}{section.16}%
+\contentsline {part}{VI\hspace {1em}Architecture, Validation, and Scope}{34}{part.6}%
+\contentsline {section}{\numberline {17}The blueprint}{34}{section.17}%
+\contentsline {section}{\numberline {18}Algorithms}{35}{section.18}%
+\contentsline {section}{\numberline {19}Discussion}{36}{section.19}%
+\contentsline {subsection}{\numberline {19.1}Relation to existing practice}{36}{subsection.19.1}%
+\contentsline {paragraph}{Knowledge graphs and query languages.}{36}{section*.3}%
+\contentsline {paragraph}{Retrieval augmentation.}{36}{section*.4}%
+\contentsline {paragraph}{Long-context architectures.}{36}{section*.5}%
+\contentsline {paragraph}{Hallucination.}{36}{section*.6}%
+\contentsline {paragraph}{Provenance and reproducibility.}{37}{section*.7}%
+\contentsline {paragraph}{Actor and dataflow models.}{37}{section*.8}%
+\contentsline {subsection}{\numberline {19.2}What the development assumes and does not supply}{37}{subsection.19.2}%
+\contentsline {subsection}{\numberline {19.3}Honest limitations}{37}{subsection.19.3}%
+\contentsline {subsection}{\numberline {19.4}The picture in one statement}{38}{subsection.19.4}%
+\contentsline {section}{\numberline {20}Conclusion}{38}{section.20}%

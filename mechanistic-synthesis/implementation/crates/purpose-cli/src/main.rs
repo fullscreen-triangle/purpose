@@ -85,6 +85,81 @@ enum Command {
         #[arg(long)]
         raw: bool,
     },
+
+    /// Determine which modules are load-bearing for a goal, and whether that
+    /// determination is accountable.
+    ///
+    /// `ask` answers "where is X defined" from a scored index. This answers a
+    /// question an index cannot express: given a goal, which modules cannot be
+    /// dropped without changing what the goal resolves — and does the answer
+    /// sit within the system's own floor, or is it contested?
+    Ckg {
+        #[command(subcommand)]
+        cmd: CkgCommand,
+    },
+}
+
+#[derive(Subcommand, Debug)]
+enum CkgCommand {
+    /// Induce the module contact graph from `.purpose/index.json`.
+    Build {
+        /// Project root (defaults to the detected project root).
+        #[arg(long)]
+        root: Option<PathBuf>,
+
+        /// One module per source file, or per directory.
+        #[arg(long, default_value = "file")]
+        granularity: String,
+
+        /// The floor β — the weight of every contact with the medium.
+        #[arg(long, default_value_t = purpose_ckg::FLOOR)]
+        floor: f64,
+
+        /// Print the stored ckg as JSON rather than a summary.
+        #[arg(long)]
+        raw: bool,
+    },
+
+    /// Report the system floor β* and the module that realises it.
+    Floor {
+        #[arg(long)]
+        root: Option<PathBuf>,
+
+        #[arg(long)]
+        raw: bool,
+    },
+
+    /// Determine the load-bearing modules for a goal.
+    Ask {
+        /// The goal (quote if it contains spaces).
+        goal: String,
+
+        /// Tolerance ε in the admissibility test σ ≤ β* + εΩ.
+        #[arg(long, default_value_t = 0.0)]
+        eps: f64,
+
+        #[arg(long)]
+        root: Option<PathBuf>,
+
+        #[arg(long)]
+        raw: bool,
+    },
+
+    /// Report one module's separation cost, resting cut, and what it dominates.
+    Why {
+        /// Module path as it appears in the ckg.
+        module: String,
+
+        /// Optional goal, to report reachability and necessity relative to it.
+        #[arg(long)]
+        goal: Option<String>,
+
+        #[arg(long)]
+        root: Option<PathBuf>,
+
+        #[arg(long)]
+        raw: bool,
+    },
 }
 
 /// Walk up from `start` to find a project root (a dir containing `.git` or
@@ -241,6 +316,82 @@ async fn main() -> Result<()> {
                 println!("{}", serde_json::to_string_pretty(&clip)?);
             } else {
                 print!("{}", purpose_domains_ledger::render(&clip));
+            }
+        }
+
+        Command::Ckg { cmd } => {
+            let cwd = std::env::current_dir().context("cannot read current directory")?;
+            match cmd {
+                CkgCommand::Build {
+                    root,
+                    granularity,
+                    floor,
+                    raw,
+                } => {
+                    let root = root.unwrap_or_else(|| detect_root(&cwd));
+                    let g = purpose_domains_ckg::Granularity::parse(&granularity)
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+                    eprintln!("Inducing contact graph over {} ...", root.display());
+                    let stored = purpose_domains_ckg::build(&root, g, floor)
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+
+                    if raw {
+                        println!("{}", serde_json::to_string_pretty(&stored)?);
+                    } else {
+                        let graph = stored.graph().map_err(|e| anyhow::anyhow!("{e}"))?;
+                        println!(
+                            "{} module(s), {} contact(s) into {}",
+                            stored.items.len(),
+                            stored.edges.len(),
+                            purpose_domains_ckg::ckg_path(&root).display()
+                        );
+                        print!("{}", purpose_domains_ckg::render_floor(&stored, &graph));
+                    }
+                }
+
+                CkgCommand::Floor { root, raw } => {
+                    let root = root.unwrap_or_else(|| detect_root(&cwd));
+                    let stored = purpose_domains_ckg::load(&root)
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+                    let graph = stored.graph().map_err(|e| anyhow::anyhow!("{e}"))?;
+                    if raw {
+                        println!("{}", serde_json::to_string_pretty(&stored)?);
+                    } else {
+                        print!("{}", purpose_domains_ckg::render_floor(&stored, &graph));
+                    }
+                }
+
+                CkgCommand::Ask {
+                    goal,
+                    eps,
+                    root,
+                    raw,
+                } => {
+                    let root = root.unwrap_or_else(|| detect_root(&cwd));
+                    let d = purpose_domains_ckg::determine(&root, &goal, eps)
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+                    if raw {
+                        println!("{}", serde_json::to_string_pretty(&d)?);
+                    } else {
+                        print!("{}", purpose_domains_ckg::render_determination(&d));
+                    }
+                }
+
+                CkgCommand::Why {
+                    module,
+                    goal,
+                    root,
+                    raw,
+                } => {
+                    let root = root.unwrap_or_else(|| detect_root(&cwd));
+                    let w = purpose_domains_ckg::why(&root, &module, goal.as_deref())
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+                    if raw {
+                        println!("{}", serde_json::to_string_pretty(&w)?);
+                    } else {
+                        print!("{}", purpose_domains_ckg::render_why(&w));
+                    }
+                }
             }
         }
 

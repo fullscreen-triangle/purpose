@@ -121,6 +121,776 @@
       "snippet": "## 12. Change management"
     },
     {
+      "name": "FlowNetwork",
+      "kind": "struct",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 25,
+      "snippet": "pub struct FlowNetwork {"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 30,
+      "snippet": "pub fn new() -> Self {"
+    },
+    {
+      "name": "add_undirected",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 36,
+      "snippet": "pub fn add_undirected(&mut self, u: &str, v: &str, w: f64) {"
+    },
+    {
+      "name": "touch",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 52,
+      "snippet": "pub fn touch(&mut self, v: &str) {"
+    },
+    {
+      "name": "bfs",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 57,
+      "snippet": "fn bfs(&self, s: &str, t: &str) -> Option<Vec<String>> {"
+    },
+    {
+      "name": "max_flow",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 91,
+      "snippet": "pub fn max_flow(&mut self, s: &str, t: &str) -> f64 {"
+    },
+    {
+      "name": "min_cut_side",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 117,
+      "snippet": "pub fn min_cut_side(&self, s: &str) -> BTreeSet<String> {"
+    },
+    {
+      "name": "single_edge_flow_is_its_weight",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 141,
+      "snippet": "fn single_edge_flow_is_its_weight() {"
+    },
+    {
+      "name": "bottleneck_governs_a_chain",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 148,
+      "snippet": "fn bottleneck_governs_a_chain() {"
+    },
+    {
+      "name": "parallel_routes_add",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 157,
+      "snippet": "fn parallel_routes_add() {"
+    },
+    {
+      "name": "disconnected_pair_has_zero_flow_and_a_bounded_side",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 168,
+      "snippet": "fn disconnected_pair_has_zero_flow_and_a_bounded_side() {"
+    },
+    {
+      "name": "saturated_side_excludes_the_sink",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/flow.rs",
+      "line": 179,
+      "snippet": "fn saturated_side_excludes_the_sink() {"
+    },
+    {
+      "name": "EdgeKey",
+      "kind": "struct",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 22,
+      "snippet": "pub struct EdgeKey(String, String);"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 25,
+      "snippet": "pub fn new(u: &str, v: &str) -> Self {"
+    },
+    {
+      "name": "left",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 33,
+      "snippet": "pub fn left(&self) -> &str {"
+    },
+    {
+      "name": "right",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 37,
+      "snippet": "pub fn right(&self) -> &str {"
+    },
+    {
+      "name": "contains",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 41,
+      "snippet": "pub fn contains(&self, x: &str) -> bool {"
+    },
+    {
+      "name": "other",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 46,
+      "snippet": "pub fn other(&self, x: &str) -> Option<&str> {"
+    },
+    {
+      "name": "GraphError",
+      "kind": "enum",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 60,
+      "snippet": "pub enum GraphError {"
+    },
+    {
+      "name": "fmt",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 67,
+      "snippet": "fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {"
+    },
+    {
+      "name": "ContactGraph",
+      "kind": "struct",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 86,
+      "snippet": "pub struct ContactGraph {"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 93,
+      "snippet": "pub fn new() -> Self {"
+    },
+    {
+      "name": "with_vertices",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 98,
+      "snippet": "pub fn with_vertices<I, S>(vertices: I) -> Self"
+    },
+    {
+      "name": "add_edge",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 111,
+      "snippet": "pub fn add_edge(&mut self, u: &str, v: &str, w: f64) -> Result<(), GraphError> {"
+    },
+    {
+      "name": "add_vertex",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 128,
+      "snippet": "pub fn add_vertex(&mut self, v: &str) {"
+    },
+    {
+      "name": "vertices",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 134,
+      "snippet": "pub fn vertices(&self) -> &[String] {"
+    },
+    {
+      "name": "items",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 139,
+      "snippet": "pub fn items(&self) -> Vec<String> {"
+    },
+    {
+      "name": "edges",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 148,
+      "snippet": "pub fn edges(&self) -> impl Iterator<Item = (&str, &str, f64)> {"
+    },
+    {
+      "name": "edge_count",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 154,
+      "snippet": "pub fn edge_count(&self) -> usize {"
+    },
+    {
+      "name": "weight",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 158,
+      "snippet": "pub fn weight(&self, u: &str, v: &str) -> Option<f64> {"
+    },
+    {
+      "name": "total_weight",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 163,
+      "snippet": "pub fn total_weight(&self) -> f64 {"
+    },
+    {
+      "name": "min_edge_weight",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 168,
+      "snippet": "pub fn min_edge_weight(&self) -> Option<f64> {"
+    },
+    {
+      "name": "neighbours",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 177,
+      "snippet": "pub fn neighbours(&self, u: &str) -> BTreeSet<String> {"
+    },
+    {
+      "name": "incident",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 186,
+      "snippet": "pub fn incident(&self, u: &str) -> Vec<&EdgeKey> {"
+    },
+    {
+      "name": "network",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 196,
+      "snippet": "pub(crate) fn network(&self) -> FlowNetwork {"
+    },
+    {
+      "name": "relabel",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 210,
+      "snippet": "pub fn relabel(&self, perm: &BTreeMap<String, String>) -> Result<Self, GraphError> {"
+    },
+    {
+      "name": "loops_and_nonpositive_weights_are_refused",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 241,
+      "snippet": "fn loops_and_nonpositive_weights_are_refused() {"
+    },
+    {
+      "name": "edge_keys_are_unordered",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 256,
+      "snippet": "fn edge_keys_are_unordered() {"
+    },
+    {
+      "name": "items_exclude_the_medium",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 267,
+      "snippet": "fn items_exclude_the_medium() {"
+    },
+    {
+      "name": "neighbours_are_symmetric",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 277,
+      "snippet": "fn neighbours_are_symmetric() {"
+    },
+    {
+      "name": "relabelling_rejects_collisions",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/graph.rs",
+      "line": 289,
+      "snippet": "fn relabelling_rejects_collisions() {"
+    },
+    {
+      "name": "TermMap",
+      "kind": "type",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 51,
+      "snippet": "pub type TermMap = BTreeMap<String, BTreeSet<String>>;"
+    },
+    {
+      "name": "induced_graph",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 62,
+      "snippet": "pub fn induced_graph(tau: &TermMap, floor: f64) -> Result<ContactGraph, GraphError> {"
+    },
+    {
+      "name": "induced_graph_with",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 67,
+      "snippet": "pub fn induced_graph_with<F>("
+    },
+    {
+      "name": "refines",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 103,
+      "snippet": "pub fn refines(fine: &TermMap, coarse: &TermMap) -> bool {"
+    },
+    {
+      "name": "tm",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 113,
+      "snippet": "fn tm(pairs: &[(&str, &[&str])]) -> TermMap {"
+    },
+    {
+      "name": "witness_pair",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 131,
+      "snippet": "fn witness_pair(n_y: usize) -> (ContactGraph, ContactGraph) {"
+    },
+    {
+      "name": "the_witness_pair_agrees_locally_and_differs_in_verdict",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 146,
+      "snippet": "fn the_witness_pair_agrees_locally_and_differs_in_verdict() {"
+    },
+    {
+      "name": "the_accountability_margin_is_flat_as_irrelevant_items_accumulate",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 176,
+      "snippet": "fn the_accountability_margin_is_flat_as_irrelevant_items_accumulate() {"
+    },
+    {
+      "name": "induced_contacts_follow_shared_distinctions",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 187,
+      "snippet": "fn induced_contacts_follow_shared_distinctions() {"
+    },
+    {
+      "name": "no_induced_contact_falls_beneath_the_floor",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 202,
+      "snippet": "fn no_induced_contact_falls_beneath_the_floor() {"
+    },
+    {
+      "name": "the_floor_does_not_fall_under_refinement",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 221,
+      "snippet": "fn the_floor_does_not_fall_under_refinement() {"
+    },
+    {
+      "name": "a_degenerate_map_induces_a_high_floor_while_discriminating_worst",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 238,
+      "snippet": "fn a_degenerate_map_induces_a_high_floor_while_discriminating_worst() {"
+    },
+    {
+      "name": "an_empty_term_map_yields_a_graph_with_no_items",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 258,
+      "snippet": "fn an_empty_term_map_yields_a_graph_with_no_items() {"
+    },
+    {
+      "name": "cuts_are_reproducible_across_runs",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 265,
+      "snippet": "fn cuts_are_reproducible_across_runs() {"
+    },
+    {
+      "name": "sigma",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 18,
+      "snippet": "pub fn sigma(g: &ContactGraph, u: &str, target: &str) -> f64 {"
+    },
+    {
+      "name": "sigma_medium",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 26,
+      "snippet": "pub fn sigma_medium(g: &ContactGraph, u: &str) -> f64 {"
+    },
+    {
+      "name": "resting_cut",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 35,
+      "snippet": "pub fn resting_cut(g: &ContactGraph, u: &str) -> BTreeSet<EdgeKey> {"
+    },
+    {
+      "name": "min_cut_side",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 46,
+      "snippet": "pub fn min_cut_side(g: &ContactGraph, u: &str) -> BTreeSet<String> {"
+    },
+    {
+      "name": "system_floor",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 62,
+      "snippet": "pub fn system_floor(g: &ContactGraph) -> Option<f64> {"
+    },
+    {
+      "name": "floor_witness",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 75,
+      "snippet": "pub fn floor_witness(g: &ContactGraph) -> Option<(String, f64)> {"
+    },
+    {
+      "name": "alignment",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 90,
+      "snippet": "pub fn alignment(g: &ContactGraph, x: &str, target: &str) -> f64 {"
+    },
+    {
+      "name": "align_score",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 95,
+      "snippet": "pub fn align_score(g: &ContactGraph, x: &str, target: &str) -> f64 {"
+    },
+    {
+      "name": "capacity",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 109,
+      "snippet": "pub fn capacity(g: &ContactGraph, u: &str, committed: &BTreeSet<EdgeKey>) -> usize {"
+    },
+    {
+      "name": "is_accountable",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 119,
+      "snippet": "pub fn is_accountable(g: &ContactGraph, v0: &str, target: &str, eps: f64) -> bool {"
+    },
+    {
+      "name": "accountability_margin",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 127,
+      "snippet": "pub fn accountability_margin(g: &ContactGraph, v0: &str, target: &str, eps: f64) -> Option<f64> {"
+    },
+    {
+      "name": "character",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 138,
+      "snippet": "pub fn character(g: &ContactGraph) -> Vec<f64> {"
+    },
+    {
+      "name": "star",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 150,
+      "snippet": "fn star(n: usize, w: f64) -> ContactGraph {"
+    },
+    {
+      "name": "sigma_against_self_is_zero",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 159,
+      "snippet": "fn sigma_against_self_is_zero() {"
+    },
+    {
+      "name": "floor_is_positive_and_never_below_beta",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 165,
+      "snippet": "fn floor_is_positive_and_never_below_beta() {"
+    },
+    {
+      "name": "floor_witness_names_the_cheapest_item",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 174,
+      "snippet": "fn floor_witness_names_the_cheapest_item() {"
+    },
+    {
+      "name": "resting_cut_is_never_empty_for_a_contacted_item",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 185,
+      "snippet": "fn resting_cut_is_never_empty_for_a_contacted_item() {"
+    },
+    {
+      "name": "character_is_conserved_under_relabelling",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 193,
+      "snippet": "fn character_is_conserved_under_relabelling() {"
+    },
+    {
+      "name": "capacity_falls_as_the_record_takes_contacts",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 213,
+      "snippet": "fn capacity_falls_as_the_record_takes_contacts() {"
+    },
+    {
+      "name": "alignment_score_is_bounded_by_total_weight",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 228,
+      "snippet": "fn alignment_score_is_bounded_by_total_weight() {"
+    },
+    {
+      "name": "empty_graph_has_no_floor",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/primitives.rs",
+      "line": 238,
+      "snippet": "fn empty_graph_has_no_floor() {"
+    },
+    {
+      "name": "reach",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 20,
+      "snippet": "pub fn reach(g: &ContactGraph, seeds: &BTreeSet<String>) -> BTreeSet<String> {"
+    },
+    {
+      "name": "reach_within",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 36,
+      "snippet": "pub fn reach_within("
+    },
+    {
+      "name": "resolution",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 63,
+      "snippet": "pub fn resolution("
+    },
+    {
+      "name": "contribution",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 81,
+      "snippet": "pub fn contribution("
+    },
+    {
+      "name": "necessary",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 102,
+      "snippet": "pub fn necessary("
+    },
+    {
+      "name": "dominates",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 119,
+      "snippet": "pub fn dominates("
+    },
+    {
+      "name": "dominated_by",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 142,
+      "snippet": "pub fn dominated_by("
+    },
+    {
+      "name": "seeds",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 158,
+      "snippet": "fn seeds(xs: &[&str]) -> BTreeSet<String> {"
+    },
+    {
+      "name": "diamond",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 168,
+      "snippet": "fn diamond(k: usize) -> ContactGraph {"
+    },
+    {
+      "name": "chain",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 182,
+      "snippet": "fn chain(n: usize) -> ContactGraph {"
+    },
+    {
+      "name": "reach_excludes_the_medium",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 195,
+      "snippet": "fn reach_excludes_the_medium() {"
+    },
+    {
+      "name": "seek_grows_while_nec_stays_flat_on_the_diamond",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 203,
+      "snippet": "fn seek_grows_while_nec_stays_flat_on_the_diamond() {"
+    },
+    {
+      "name": "the_gap_between_seek_and_nec_is_the_over_retention",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 235,
+      "snippet": "fn the_gap_between_seek_and_nec_is_the_over_retention() {"
+    },
+    {
+      "name": "on_a_chain_interiors_are_necessary_and_the_leaf_is_redundant",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 250,
+      "snippet": "fn on_a_chain_interiors_are_necessary_and_the_leaf_is_redundant() {"
+    },
+    {
+      "name": "contribution_excludes_the_dropped_item_from_both_sides",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 275,
+      "snippet": "fn contribution_excludes_the_dropped_item_from_both_sides() {"
+    },
+    {
+      "name": "an_isolated_seed_is_necessary_though_it_dominates_nothing",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 287,
+      "snippet": "fn an_isolated_seed_is_necessary_though_it_dominates_nothing() {"
+    },
+    {
+      "name": "necessity_coincides_with_domination_on_non_seed_items",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 302,
+      "snippet": "fn necessity_coincides_with_domination_on_non_seed_items() {"
+    },
+    {
+      "name": "resolution_grows_with_the_retained_set",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/reach.rs",
+      "line": 325,
+      "snippet": "fn resolution_grows_with_the_retained_set() {"
+    },
+    {
+      "name": "Entry",
+      "kind": "struct",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 21,
+      "snippet": "pub struct Entry {"
+    },
+    {
+      "name": "Record",
+      "kind": "struct",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 29,
+      "snippet": "pub struct Record {"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 36,
+      "snippet": "pub fn new() -> Self {"
+    },
+    {
+      "name": "resume",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 43,
+      "snippet": "pub fn resume(count: u64, committed: BTreeSet<EdgeKey>) -> Self {"
+    },
+    {
+      "name": "count",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 52,
+      "snippet": "pub fn count(&self) -> u64 {"
+    },
+    {
+      "name": "committed",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 57,
+      "snippet": "pub fn committed(&self) -> &BTreeSet<EdgeKey> {"
+    },
+    {
+      "name": "log",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 62,
+      "snippet": "pub fn log(&self) -> &[Entry] {"
+    },
+    {
+      "name": "is_committed",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 66,
+      "snippet": "pub fn is_committed(&self, u: &str, v: &str) -> bool {"
+    },
+    {
+      "name": "commit",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 71,
+      "snippet": "pub fn commit(&mut self, u: &str, v: &str, note: &str) -> u64 {"
+    },
+    {
+      "name": "uncommit",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 86,
+      "snippet": "pub fn uncommit(&mut self, u: &str, v: &str) -> u64 {"
+    },
+    {
+      "name": "commit_raises_the_count_and_holds_the_contact",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 104,
+      "snippet": "fn commit_raises_the_count_and_holds_the_contact() {"
+    },
+    {
+      "name": "uncommit_still_increments",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 113,
+      "snippet": "fn uncommit_still_increments() {"
+    },
+    {
+      "name": "uncommitting_something_never_committed_still_increments",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 127,
+      "snippet": "fn uncommitting_something_never_committed_still_increments() {"
+    },
+    {
+      "name": "recommitting_the_same_contact_advances_the_record",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 134,
+      "snippet": "fn recommitting_the_same_contact_advances_the_record() {"
+    },
+    {
+      "name": "the_log_is_append_only_and_positions_are_dense",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 144,
+      "snippet": "fn the_log_is_append_only_and_positions_are_dense() {"
+    },
+    {
+      "name": "a_resumed_record_continues_its_lineage",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/record.rs",
+      "line": 155,
+      "snippet": "fn a_resumed_record_continues_its_lineage() {"
+    },
+    {
       "name": "Cli",
       "kind": "struct",
       "file": "crates/purpose-cli/src/main.rs",
@@ -135,17 +905,24 @@
       "snippet": "enum Command {"
     },
     {
+      "name": "CkgCommand",
+      "kind": "enum",
+      "file": "crates/purpose-cli/src/main.rs",
+      "line": 103,
+      "snippet": "enum CkgCommand {"
+    },
+    {
       "name": "detect_root",
       "kind": "fn",
       "file": "crates/purpose-cli/src/main.rs",
-      "line": 92,
+      "line": 167,
       "snippet": "fn detect_root(start: &Path) -> PathBuf {"
     },
     {
       "name": "main",
       "kind": "fn",
       "file": "crates/purpose-cli/src/main.rs",
-      "line": 104,
+      "line": 179,
       "snippet": "async fn main() -> Result<()> {"
     },
     {
@@ -331,6 +1108,419 @@
       "snippet": "fn unresolved_hole_detected() {"
     },
     {
+      "name": "Granularity",
+      "kind": "enum",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 53,
+      "snippet": "pub enum Granularity {"
+    },
+    {
+      "name": "parse",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 61,
+      "snippet": "pub fn parse(s: &str) -> Result<Self, Error> {"
+    },
+    {
+      "name": "as_str",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 71,
+      "snippet": "pub fn as_str(&self) -> &'static str {"
+    },
+    {
+      "name": "module_of",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 79,
+      "snippet": "fn module_of(&self, file: &str) -> String {"
+    },
+    {
+      "name": "is_function_word",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 107,
+      "snippet": "fn is_function_word(t: &str) -> bool {"
+    },
+    {
+      "name": "terms_of",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 119,
+      "snippet": "fn terms_of(entry: &SymbolEntry) -> BTreeSet<String> {"
+    },
+    {
+      "name": "term_map",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 151,
+      "snippet": "pub fn term_map(index: &Index, granularity: Granularity) -> TermMap {"
+    },
+    {
+      "name": "StoredEdge",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 172,
+      "snippet": "pub struct StoredEdge {"
+    },
+    {
+      "name": "StoredCkg",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 184,
+      "snippet": "pub struct StoredCkg {"
+    },
+    {
+      "name": "graph",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 200,
+      "snippet": "pub fn graph(&self) -> Result<ContactGraph, Error> {"
+    },
+    {
+      "name": "record",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 214,
+      "snippet": "pub fn record(&self) -> Record {"
+    },
+    {
+      "name": "from_graph",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 223,
+      "snippet": "fn from_graph("
+    },
+    {
+      "name": "ckg_path",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 255,
+      "snippet": "pub fn ckg_path(root: &Path) -> PathBuf {"
+    },
+    {
+      "name": "load_index",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 259,
+      "snippet": "fn load_index(root: &Path) -> Result<Index, Error> {"
+    },
+    {
+      "name": "load",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 271,
+      "snippet": "pub fn load(root: &Path) -> Result<StoredCkg, Error> {"
+    },
+    {
+      "name": "load_ckg",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 275,
+      "snippet": "fn load_ckg(root: &Path) -> Result<StoredCkg, Error> {"
+    },
+    {
+      "name": "save_ckg",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 295,
+      "snippet": "fn save_ckg(root: &Path, stored: &StoredCkg) -> Result<(), Error> {"
+    },
+    {
+      "name": "build",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 311,
+      "snippet": "pub fn build(root: &Path, granularity: Granularity, floor: f64) -> Result<StoredCkg, Error> {"
+    },
+    {
+      "name": "Verdict",
+      "kind": "enum",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 340,
+      "snippet": "pub enum Verdict {"
+    },
+    {
+      "name": "as_str",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 350,
+      "snippet": "pub fn as_str(&self) -> &'static str {"
+    },
+    {
+      "name": "ModuleReport",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 361,
+      "snippet": "pub struct ModuleReport {"
+    },
+    {
+      "name": "Determination",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 373,
+      "snippet": "pub struct Determination {"
+    },
+    {
+      "name": "goal_terms",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 400,
+      "snippet": "fn goal_terms(goal: &str) -> BTreeSet<String> {"
+    },
+    {
+      "name": "term_meets",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 418,
+      "snippet": "fn term_meets(goal: &str, term: &str) -> bool {"
+    },
+    {
+      "name": "seeds_for",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 437,
+      "snippet": "fn seeds_for(tau: &TermMap, goal: &BTreeSet<String>) -> BTreeSet<String> {"
+    },
+    {
+      "name": "determine",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 453,
+      "snippet": "pub fn determine(root: &Path, goal: &str, eps: f64) -> Result<Determination, Error> {"
+    },
+    {
+      "name": "pick",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 603,
+      "snippet": "fn pick(set: &BTreeSet<String>, g: &ContactGraph, greatest: bool) -> Option<String> {"
+    },
+    {
+      "name": "persist_record",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 621,
+      "snippet": "fn persist_record(root: &Path, stored: &StoredCkg, record: &Record) -> Result<(), Error> {"
+    },
+    {
+      "name": "Why",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 638,
+      "snippet": "pub struct Why {"
+    },
+    {
+      "name": "why",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 654,
+      "snippet": "pub fn why(root: &Path, module: &str, goal: Option<&str>) -> Result<Why, Error> {"
+    },
+    {
+      "name": "render_determination",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 716,
+      "snippet": "pub fn render_determination(d: &Determination) -> String {"
+    },
+    {
+      "name": "render_why",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 792,
+      "snippet": "pub fn render_why(w: &Why) -> String {"
+    },
+    {
+      "name": "render_floor",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 839,
+      "snippet": "pub fn render_floor(stored: &StoredCkg, g: &ContactGraph) -> String {"
+    },
+    {
+      "name": "CkgProvider",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 867,
+      "snippet": "pub struct CkgProvider {"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 872,
+      "snippet": "pub fn new(root: PathBuf) -> Self {"
+    },
+    {
+      "name": "to_value",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 877,
+      "snippet": "fn to_value<T: Serialize>(v: &T) -> Result<Value, Error> {"
+    },
+    {
+      "name": "from_value",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 884,
+      "snippet": "fn from_value<T: for<'de> Deserialize<'de>>(v: &Value) -> Result<T, Error> {"
+    },
+    {
+      "name": "invoke",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 892,
+      "snippet": "async fn invoke(&self, op: &str, args: &BTreeMap<String, Value>) -> Result<Value, Error> {"
+    },
+    {
+      "name": "CkgResolver",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 963,
+      "snippet": "pub struct CkgResolver;"
+    },
+    {
+      "name": "compile",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 967,
+      "snippet": "async fn compile(&self, utterance: &str) -> Result<VaHera, Error> {"
+    },
+    {
+      "name": "domain",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 998,
+      "snippet": "pub fn domain() -> Domain {"
+    },
+    {
+      "name": "operations",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1007,
+      "snippet": "pub fn operations() -> Vec<Operation> {"
+    },
+    {
+      "name": "register_providers",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1062,
+      "snippet": "pub fn register_providers(registry: &mut OperationRegistry, root: PathBuf) {"
+    },
+    {
+      "name": "module_character",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1077,
+      "snippet": "pub fn module_character(g: &ContactGraph) -> Vec<f64> {"
+    },
+    {
+      "name": "entry",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1085,
+      "snippet": "fn entry(name: &str, kind: &str, file: &str) -> SymbolEntry {"
+    },
+    {
+      "name": "index",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1095,
+      "snippet": "fn index(entries: Vec<SymbolEntry>) -> Index {"
+    },
+    {
+      "name": "a_symbol_draws_its_name_and_its_kinded_name",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1103,
+      "snippet": "fn a_symbol_draws_its_name_and_its_kinded_name() {"
+    },
+    {
+      "name": "same_name_different_kind_shares_one_term_and_differs_on_another",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1111,
+      "snippet": "fn same_name_different_kind_shares_one_term_and_differs_on_another() {"
+    },
+    {
+      "name": "a_heading_contributes_its_content_words",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1121,
+      "snippet": "fn a_heading_contributes_its_content_words() {"
+    },
+    {
+      "name": "granularity_dir_collapses_files_in_one_directory",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1128,
+      "snippet": "fn granularity_dir_collapses_files_in_one_directory() {"
+    },
+    {
+      "name": "modules_are_in_contact_when_they_share_a_symbol_name",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1142,
+      "snippet": "fn modules_are_in_contact_when_they_share_a_symbol_name() {"
+    },
+    {
+      "name": "a_module_with_no_indexed_symbols_does_not_become_an_item",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1155,
+      "snippet": "fn a_module_with_no_indexed_symbols_does_not_become_an_item() {"
+    },
+    {
+      "name": "goal_terms_match_by_substring_in_both_directions",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1165,
+      "snippet": "fn goal_terms_match_by_substring_in_both_directions() {"
+    },
+    {
+      "name": "a_short_goal_term_must_match_exactly",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1178,
+      "snippet": "fn a_short_goal_term_must_match_exactly() {"
+    },
+    {
+      "name": "a_goal_naming_a_symbol_meets_its_kinded_term",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1190,
+      "snippet": "fn a_goal_naming_a_symbol_meets_its_kinded_term() {"
+    },
+    {
+      "name": "the_character_is_conserved_when_modules_are_renamed",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1199,
+      "snippet": "fn the_character_is_conserved_when_modules_are_renamed() {"
+    },
+    {
+      "name": "the_stored_form_round_trips_the_graph",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1221,
+      "snippet": "fn the_stored_form_round_trips_the_graph() {"
+    },
+    {
+      "name": "the_stored_form_has_nowhere_to_put_a_determination",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1238,
+      "snippet": "fn the_stored_form_has_nowhere_to_put_a_determination() {"
+    },
+    {
+      "name": "the_record_resumes_rather_than_restarting",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1255,
+      "snippet": "fn the_record_resumes_rather_than_restarting() {"
+    },
+    {
       "name": "SymbolEntry",
       "kind": "struct",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
@@ -390,92 +1580,113 @@
       "name": "looks_generated",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 210,
+      "line": 218,
       "snippet": "fn looks_generated(text: &str) -> bool {"
     },
     {
       "name": "is_indexable",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 225,
+      "line": 233,
       "snippet": "fn is_indexable(path: &Path) -> bool {"
     },
     {
       "name": "CodebaseProvider",
       "kind": "struct",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 240,
+      "line": 248,
       "snippet": "pub struct CodebaseProvider {"
     },
     {
       "name": "new",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 245,
+      "line": 253,
       "snippet": "pub fn new(root: PathBuf) -> Self {"
     },
     {
       "name": "load_index",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 249,
+      "line": 257,
       "snippet": "fn load_index(&self) -> Result<Index, Error> {"
     },
     {
       "name": "invoke",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 264,
+      "line": 272,
       "snippet": "async fn invoke("
     },
     {
       "name": "CodebaseResolver",
       "kind": "struct",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 370,
+      "line": 378,
       "snippet": "pub struct CodebaseResolver;"
     },
     {
       "name": "compile",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 374,
+      "line": 382,
       "snippet": "async fn compile(&self, utterance: &str) -> Result<VaHera, Error> {"
     },
     {
       "name": "extract_query",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 400,
+      "line": 408,
       "snippet": "fn extract_query(utterance: &str) -> String {"
     },
     {
       "name": "is_question_word",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 409,
+      "line": 417,
       "snippet": "fn is_question_word(w: &str) -> bool {"
     },
     {
       "name": "domain",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 425,
+      "line": 433,
       "snippet": "pub fn domain() -> Domain {"
     },
     {
       "name": "operations",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 434,
+      "line": 442,
       "snippet": "pub fn operations() -> Vec<Operation> {"
     },
     {
       "name": "register_providers",
       "kind": "fn",
       "file": "crates/purpose-domains-codebase/src/lib.rs",
-      "line": 460,
+      "line": 468,
       "snippet": "pub fn register_providers(registry: &mut OperationRegistry, root: PathBuf) {"
+    },
+    {
+      "name": "skips_fetched_dependency_sources",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 486,
+      "snippet": "fn skips_fetched_dependency_sources() {"
+    },
+    {
+      "name": "skips_agent_worktree_copies",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 493,
+      "snippet": "fn skips_agent_worktree_copies() {"
+    },
+    {
+      "name": "keeps_real_project_sources",
+      "kind": "fn",
+      "file": "crates/purpose-domains-codebase/src/lib.rs",
+      "line": 498,
+      "snippet": "fn keeps_real_project_sources() {"
     },
     {
       "name": "Turn",

@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: directional-model-ckg-catalogue.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+Warning--empty publisher in plutarch
+You've used 53 entries,
+            2773 wiz_defined-function locations,
+            908 strings with 12853 characters,
+and the built_in function-call counts, 26394 in all, are:
+= -- 2380
+> -- 1453
+< -- 50
++ -- 503
+- -- 450
+* -- 2074
+:= -- 3992
+add.period$ -- 161
+call.type$ -- 53
+change.case$ -- 300
+chr.to.int$ -- 53
+cite$ -- 107
+duplicate$ -- 1211
+empty$ -- 2185
+format.name$ -- 527
+if$ -- 5565
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 60
+newline$ -- 274
+num.names$ -- 212
+pop$ -- 614
+preamble$ -- 1
+purify$ -- 252
+quote$ -- 0
+skip$ -- 955
+stack$ -- 0
+substring$ -- 1277
+swap$ -- 169
+text.length$ -- 12
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 548
+warning$ -- 1
+while$ -- 260
+width$ -- 0
+write$ -- 693
+(There was 1 warning)

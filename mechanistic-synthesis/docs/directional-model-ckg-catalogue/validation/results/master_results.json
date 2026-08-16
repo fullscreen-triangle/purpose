@@ -1,7 +1,7 @@
 {
   "backend": "Exact Edmonds-Karp max-flow / min-cut, standard library only; no external numerical dependency.",
   "determinism": "Every experiment seeds its own RNG from base seed 42; the suite reproduces identically across runs.",
-  "elapsed_seconds": 57.081,
+  "elapsed_seconds": 1.421,
   "environment": {
     "platform": "Windows-11-10.0.26200-SP0",
     "python": "3.14.3"
