@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "root": "C:\\Users\\kunda\\Documents\\semantics\\purpose\\mechanistic-synthesis\\implementation",
   "granularity": "file",
   "floor": 1.0,
@@ -20,7 +20,9 @@
     "crates/purpose-core/src/types.rs",
     "crates/purpose-core/src/vahera.rs",
     "crates/purpose-core/tests/vahera_roundtrip.rs",
+    "crates/purpose-domains-ckg/src/lens.rs",
     "crates/purpose-domains-ckg/src/lib.rs",
+    "crates/purpose-domains-ckg/tests/invariant.rs",
     "crates/purpose-domains-codebase/src/lib.rs",
     "crates/purpose-domains-ledger/src/lib.rs",
     "crates/purpose-domains-protein/src/lib.rs",
@@ -37,11 +39,6 @@
     {
       "u": "README.md",
       "v": "buhera-specifications.md",
-      "w": 2.0
-    },
-    {
-      "u": "README.md",
-      "v": "crates/purpose-core/src/domain.rs",
       "w": 1.0
     },
     {
@@ -57,54 +54,29 @@
     {
       "u": "README.md",
       "v": "crates/purpose-domains-ckg/src/lib.rs",
+      "w": 1.0
+    },
+    {
+      "u": "README.md",
+      "v": "integration.md",
+      "w": 1.0
+    },
+    {
+      "u": "README.md",
+      "v": "m",
+      "w": 1.0
+    },
+    {
+      "u": "buhera-specifications.md",
+      "v": "graffiti.md",
       "w": 3.0
     },
     {
-      "u": "README.md",
-      "v": "crates/purpose-domains-codebase/src/lib.rs",
-      "w": 2.0
-    },
-    {
-      "u": "README.md",
-      "v": "crates/purpose-domains-protein/src/lib.rs",
-      "w": 2.0
-    },
-    {
-      "u": "README.md",
-      "v": "crates/purpose-operations/src/registry.rs",
-      "w": 1.0
-    },
-    {
-      "u": "README.md",
-      "v": "graffiti.md",
-      "w": 1.0
-    },
-    {
-      "u": "README.md",
+      "u": "buhera-specifications.md",
       "v": "integration.md",
       "w": 4.0
     },
     {
-      "u": "README.md",
-      "v": "m",
-      "w": 1.0
-    },
-    {
-      "u": "README.md",
-      "v": "purpose-reconciliation.md",
-      "w": 1.0
-    },
-    {
-      "u": "buhera-specifications.md",
-      "v": "graffiti.md",
-      "w": 7.0
-    },
-    {
-      "u": "buhera-specifications.md",
-      "v": "integration.md",
-      "w": 10.0
-    },
-    {
       "u": "buhera-specifications.md",
       "v": "m",
       "w": 1.0
@@ -112,56 +84,56 @@
     {
       "u": "buhera-specifications.md",
       "v": "purpose-reconciliation.md",
-      "w": 5.0
+      "w": 2.0
     },
     {
       "u": "crates/purpose-ckg/src/flow.rs",
       "v": "crates/purpose-ckg/src/graph.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/flow.rs",
       "v": "crates/purpose-ckg/src/primitives.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/flow.rs",
       "v": "crates/purpose-ckg/src/record.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/flow.rs",
       "v": "crates/purpose-core/src/operation.rs",
-      "w": 2.0
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-ckg/src/flow.rs",
+      "v": "crates/purpose-domains-ckg/src/lens.rs",
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/flow.rs",
       "v": "crates/purpose-domains-ckg/src/lib.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/flow.rs",
       "v": "crates/purpose-domains-codebase/src/lib.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/flow.rs",
       "v": "crates/purpose-operations/src/executor.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/flow.rs",
       "v": "crates/purpose-operations/src/providers/uniprot.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/flow.rs",
       "v": "crates/purpose-operations/src/registry.rs",
-      "w": 2.0
-    },
-    {
-      "u": "crates/purpose-ckg/src/flow.rs",
-      "v": "integration.md",
       "w": 1.0
     },
     {
@@ -172,41 +144,41 @@
     {
       "u": "crates/purpose-ckg/src/graph.rs",
       "v": "crates/purpose-ckg/src/record.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/graph.rs",
       "v": "crates/purpose-core/src/operation.rs",
-      "w": 2.0
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-ckg/src/graph.rs",
+      "v": "crates/purpose-domains-ckg/src/lens.rs",
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/graph.rs",
       "v": "crates/purpose-domains-ckg/src/lib.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/graph.rs",
       "v": "crates/purpose-domains-codebase/src/lib.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/graph.rs",
       "v": "crates/purpose-operations/src/executor.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/graph.rs",
       "v": "crates/purpose-operations/src/providers/uniprot.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/graph.rs",
       "v": "crates/purpose-operations/src/registry.rs",
-      "w": 2.0
-    },
-    {
-      "u": "crates/purpose-ckg/src/graph.rs",
-      "v": "integration.md",
       "w": 1.0
     },
     {
@@ -237,56 +209,46 @@
     {
       "u": "crates/purpose-ckg/src/reach.rs",
       "v": "purpose-reconciliation.md",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/record.rs",
       "v": "crates/purpose-core/src/operation.rs",
-      "w": 2.0
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-ckg/src/record.rs",
+      "v": "crates/purpose-domains-ckg/src/lens.rs",
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/record.rs",
       "v": "crates/purpose-domains-ckg/src/lib.rs",
-      "w": 4.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/record.rs",
       "v": "crates/purpose-domains-codebase/src/lib.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/record.rs",
       "v": "crates/purpose-operations/src/executor.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/record.rs",
       "v": "crates/purpose-operations/src/providers/uniprot.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/record.rs",
       "v": "crates/purpose-operations/src/registry.rs",
-      "w": 2.0
-    },
-    {
-      "u": "crates/purpose-ckg/src/record.rs",
-      "v": "integration.md",
       "w": 1.0
     },
     {
       "u": "crates/purpose-ckg/src/record.rs",
       "v": "m",
-      "w": 1.0
-    },
-    {
-      "u": "crates/purpose-ckg/src/record.rs",
-      "v": "purpose-reconciliation.md",
-      "w": 1.0
-    },
-    {
-      "u": "crates/purpose-cli/src/main.rs",
-      "v": "integration.md",
       "w": 1.0
     },
     {
@@ -297,22 +259,22 @@
     {
       "u": "crates/purpose-core/src/domain.rs",
       "v": "crates/purpose-domains-ckg/src/lib.rs",
-      "w": 3.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/domain.rs",
       "v": "crates/purpose-domains-codebase/src/lib.rs",
-      "w": 3.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/domain.rs",
       "v": "crates/purpose-domains-protein/src/lib.rs",
-      "w": 3.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/domain.rs",
       "v": "integration.md",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/domain.rs",
@@ -327,37 +289,42 @@
     {
       "u": "crates/purpose-core/src/error.rs",
       "v": "m",
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-core/src/operation.rs",
+      "v": "crates/purpose-domains-ckg/src/lens.rs",
       "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/operation.rs",
       "v": "crates/purpose-domains-ckg/src/lib.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/operation.rs",
       "v": "crates/purpose-domains-codebase/src/lib.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/operation.rs",
       "v": "crates/purpose-operations/src/executor.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/operation.rs",
       "v": "crates/purpose-operations/src/providers/uniprot.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/operation.rs",
       "v": "crates/purpose-operations/src/registry.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/operation.rs",
       "v": "integration.md",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/operation.rs",
@@ -376,13 +343,18 @@
     },
     {
       "u": "crates/purpose-core/src/vahera.rs",
+      "v": "crates/purpose-domains-ckg/src/lens.rs",
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-core/src/vahera.rs",
       "v": "crates/purpose-domains-ckg/src/lib.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/vahera.rs",
       "v": "integration.md",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-core/src/vahera.rs",
@@ -395,49 +367,79 @@
       "w": 1.0
     },
     {
+      "u": "crates/purpose-domains-ckg/src/lens.rs",
+      "v": "crates/purpose-domains-ckg/src/lib.rs",
+      "w": 4.25
+    },
+    {
+      "u": "crates/purpose-domains-ckg/src/lens.rs",
+      "v": "crates/purpose-domains-codebase/src/lib.rs",
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-domains-ckg/src/lens.rs",
+      "v": "crates/purpose-domains-ledger/src/lib.rs",
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-domains-ckg/src/lens.rs",
+      "v": "crates/purpose-operations/src/executor.rs",
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-domains-ckg/src/lens.rs",
+      "v": "crates/purpose-operations/src/providers/uniprot.rs",
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-domains-ckg/src/lens.rs",
+      "v": "crates/purpose-operations/src/registry.rs",
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-domains-ckg/src/lens.rs",
+      "v": "m",
+      "w": 1.0
+    },
+    {
       "u": "crates/purpose-domains-ckg/src/lib.rs",
       "v": "crates/purpose-domains-codebase/src/lib.rs",
-      "w": 15.0
+      "w": 3.75
     },
     {
       "u": "crates/purpose-domains-ckg/src/lib.rs",
       "v": "crates/purpose-domains-ledger/src/lib.rs",
-      "w": 3.0
+      "w": 3.5
     },
     {
       "u": "crates/purpose-domains-ckg/src/lib.rs",
       "v": "crates/purpose-domains-protein/src/lib.rs",
-      "w": 8.0
+      "w": 2.0
     },
     {
       "u": "crates/purpose-domains-ckg/src/lib.rs",
       "v": "crates/purpose-operations/src/executor.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-ckg/src/lib.rs",
       "v": "crates/purpose-operations/src/provider.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-ckg/src/lib.rs",
       "v": "crates/purpose-operations/src/providers/summary.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-ckg/src/lib.rs",
       "v": "crates/purpose-operations/src/providers/uniprot.rs",
-      "w": 4.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-ckg/src/lib.rs",
       "v": "crates/purpose-operations/src/registry.rs",
-      "w": 4.0
-    },
-    {
-      "u": "crates/purpose-domains-ckg/src/lib.rs",
-      "v": "integration.md",
-      "w": 3.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-ckg/src/lib.rs",
@@ -447,42 +449,42 @@
     {
       "u": "crates/purpose-domains-ckg/src/lib.rs",
       "v": "purpose-reconciliation.md",
-      "w": 2.0
+      "w": 1.0
+    },
+    {
+      "u": "crates/purpose-domains-ckg/tests/invariant.rs",
+      "v": "m",
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-codebase/src/lib.rs",
       "v": "crates/purpose-domains-protein/src/lib.rs",
-      "w": 8.0
+      "w": 2.0
     },
     {
       "u": "crates/purpose-domains-codebase/src/lib.rs",
       "v": "crates/purpose-operations/src/executor.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-codebase/src/lib.rs",
       "v": "crates/purpose-operations/src/provider.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-codebase/src/lib.rs",
       "v": "crates/purpose-operations/src/providers/summary.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-codebase/src/lib.rs",
       "v": "crates/purpose-operations/src/providers/uniprot.rs",
-      "w": 4.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-codebase/src/lib.rs",
       "v": "crates/purpose-operations/src/registry.rs",
-      "w": 4.0
-    },
-    {
-      "u": "crates/purpose-domains-codebase/src/lib.rs",
-      "v": "integration.md",
-      "w": 3.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-codebase/src/lib.rs",
@@ -497,12 +499,7 @@
     {
       "u": "crates/purpose-domains-protein/src/lib.rs",
       "v": "crates/purpose-operations/src/registry.rs",
-      "w": 2.0
-    },
-    {
-      "u": "crates/purpose-domains-protein/src/lib.rs",
-      "v": "integration.md",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-domains-protein/src/lib.rs",
@@ -512,17 +509,17 @@
     {
       "u": "crates/purpose-operations/src/executor.rs",
       "v": "crates/purpose-operations/src/providers/uniprot.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-operations/src/executor.rs",
       "v": "crates/purpose-operations/src/registry.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-operations/src/executor.rs",
       "v": "integration.md",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-operations/src/executor.rs",
@@ -532,12 +529,12 @@
     {
       "u": "crates/purpose-operations/src/provider.rs",
       "v": "crates/purpose-operations/src/providers/summary.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-operations/src/provider.rs",
       "v": "crates/purpose-operations/src/providers/uniprot.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-operations/src/provider.rs",
@@ -552,7 +549,7 @@
     {
       "u": "crates/purpose-operations/src/providers/summary.rs",
       "v": "crates/purpose-operations/src/providers/uniprot.rs",
-      "w": 2.0
+      "w": 1.0
     },
     {
       "u": "crates/purpose-operations/src/providers/summary.rs",
@@ -562,11 +559,6 @@
     {
       "u": "crates/purpose-operations/src/providers/uniprot.rs",
       "v": "crates/purpose-operations/src/registry.rs",
-      "w": 4.0
-    },
-    {
-      "u": "crates/purpose-operations/src/providers/uniprot.rs",
-      "v": "integration.md",
       "w": 1.0
     },
     {
@@ -576,27 +568,17 @@
     },
     {
       "u": "crates/purpose-operations/src/registry.rs",
-      "v": "integration.md",
-      "w": 2.0
-    },
-    {
-      "u": "crates/purpose-operations/src/registry.rs",
       "v": "m",
       "w": 1.0
     },
     {
       "u": "graffiti.md",
       "v": "integration.md",
-      "w": 6.0
+      "w": 2.5
     },
     {
       "u": "graffiti.md",
       "v": "m",
-      "w": 1.0
-    },
-    {
-      "u": "graffiti.md",
-      "v": "purpose-reconciliation.md",
       "w": 1.0
     },
     {
@@ -607,7 +589,7 @@
     {
       "u": "integration.md",
       "v": "purpose-reconciliation.md",
-      "w": 3.0
+      "w": 1.0
     },
     {
       "u": "m",
@@ -615,47 +597,115 @@
       "w": 1.0
     }
   ],
-  "record": 26,
+  "record": 1,
   "committed": [
-    [
-      "README.md",
-      "buhera-specifications.md"
-    ],
-    [
-      "README.md",
-      "crates/purpose-cli/src/main.rs"
-    ],
-    [
-      "README.md",
-      "crates/purpose-core/src/domain.rs"
-    ],
-    [
-      "README.md",
-      "graffiti.md"
-    ],
-    [
-      "crates/purpose-cli/src/main.rs",
-      "crates/purpose-domains-ckg/src/lib.rs"
-    ],
     [
       "crates/purpose-core/src/domain.rs",
       "crates/purpose-domains-ckg/src/lib.rs"
-    ],
-    [
-      "crates/purpose-domains-ckg/src/lib.rs",
-      "crates/purpose-operations/src/providers/summary.rs"
-    ],
-    [
-      "crates/purpose-domains-ckg/src/lib.rs",
-      "graffiti.md"
-    ],
-    [
-      "crates/purpose-domains-ckg/src/lib.rs",
-      "purpose-reconciliation.md"
-    ],
-    [
-      "goal",
-      "m"
     ]
-  ]
+  ],
+  "lens_digest": "4e648440738eacbd",
+  "lens_source": ".purpose/lens.toml",
+  "lens": {
+    "granularity": "file",
+    "floor": 1.0,
+    "paths": [],
+    "kinds": null,
+    "stopwords": [
+      "about",
+      "all",
+      "also",
+      "and",
+      "any",
+      "are",
+      "as_str",
+      "but",
+      "can",
+      "compile",
+      "default",
+      "did",
+      "does",
+      "domain",
+      "entry",
+      "for",
+      "from",
+      "had",
+      "has",
+      "have",
+      "how",
+      "into",
+      "invoke",
+      "its",
+      "new",
+      "not",
+      "operations",
+      "our",
+      "out",
+      "over",
+      "parse",
+      "per",
+      "purpose",
+      "register_providers",
+      "than",
+      "that",
+      "the",
+      "then",
+      "there",
+      "this",
+      "use",
+      "used",
+      "using",
+      "via",
+      "was",
+      "were",
+      "what",
+      "when",
+      "where",
+      "which",
+      "who",
+      "why",
+      "will",
+      "with",
+      "you",
+      "your"
+    ],
+    "min_len": 4,
+    "split_camel_case": false,
+    "prose_kinds": [
+      "heading",
+      "section"
+    ],
+    "alias": {},
+    "weight": [
+      [
+        "trait:*",
+        4.0
+      ],
+      [
+        "struct:*",
+        3.0
+      ],
+      [
+        "enum:*",
+        3.0
+      ],
+      [
+        "type:*",
+        2.0
+      ],
+      [
+        "heading:*",
+        0.5
+      ],
+      [
+        "section:*",
+        0.5
+      ],
+      [
+        "fn:*",
+        0.25
+      ]
+    ],
+    "edges": "sum"
+  }
 }

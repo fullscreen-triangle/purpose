@@ -13,6 +13,7 @@ purpose-operations = { workspace = true }
 purpose-ckg = { workspace = true }
 purpose-domains-codebase = { workspace = true }
 async-trait = { workspace = true }
+regex = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 tracing = { workspace = true }

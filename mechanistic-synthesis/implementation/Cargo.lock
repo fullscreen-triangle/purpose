@@ -701,6 +701,7 @@ dependencies = [
  "purpose-core",
  "purpose-domains-codebase",
  "purpose-operations",
+ "regex",
  "serde",
  "serde_json",
  "tracing",

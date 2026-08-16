@@ -415,94 +415,108 @@
       "snippet": "pub type TermMap = BTreeMap<String, BTreeSet<String>>;"
     },
     {
+      "name": "WeightedTermMap",
+      "kind": "type",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 64,
+      "snippet": "pub type WeightedTermMap = BTreeMap<String, BTreeMap<String, f64>>;"
+    },
+    {
       "name": "induced_graph",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 62,
+      "line": 75,
       "snippet": "pub fn induced_graph(tau: &TermMap, floor: f64) -> Result<ContactGraph, GraphError> {"
     },
     {
       "name": "induced_graph_with",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 67,
+      "line": 80,
       "snippet": "pub fn induced_graph_with<F>("
+    },
+    {
+      "name": "induced_graph_weighted",
+      "kind": "fn",
+      "file": "crates/purpose-ckg/src/lib.rs",
+      "line": 109,
+      "snippet": "pub fn induced_graph_weighted<F>("
     },
     {
       "name": "refines",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 103,
+      "line": 144,
       "snippet": "pub fn refines(fine: &TermMap, coarse: &TermMap) -> bool {"
     },
     {
       "name": "tm",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 113,
+      "line": 154,
       "snippet": "fn tm(pairs: &[(&str, &[&str])]) -> TermMap {"
     },
     {
       "name": "witness_pair",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 131,
+      "line": 172,
       "snippet": "fn witness_pair(n_y: usize) -> (ContactGraph, ContactGraph) {"
     },
     {
       "name": "the_witness_pair_agrees_locally_and_differs_in_verdict",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 146,
+      "line": 187,
       "snippet": "fn the_witness_pair_agrees_locally_and_differs_in_verdict() {"
     },
     {
       "name": "the_accountability_margin_is_flat_as_irrelevant_items_accumulate",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 176,
+      "line": 217,
       "snippet": "fn the_accountability_margin_is_flat_as_irrelevant_items_accumulate() {"
     },
     {
       "name": "induced_contacts_follow_shared_distinctions",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 187,
+      "line": 228,
       "snippet": "fn induced_contacts_follow_shared_distinctions() {"
     },
     {
       "name": "no_induced_contact_falls_beneath_the_floor",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 202,
+      "line": 243,
       "snippet": "fn no_induced_contact_falls_beneath_the_floor() {"
     },
     {
       "name": "the_floor_does_not_fall_under_refinement",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 221,
+      "line": 262,
       "snippet": "fn the_floor_does_not_fall_under_refinement() {"
     },
     {
       "name": "a_degenerate_map_induces_a_high_floor_while_discriminating_worst",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 238,
+      "line": 279,
       "snippet": "fn a_degenerate_map_induces_a_high_floor_while_discriminating_worst() {"
     },
     {
       "name": "an_empty_term_map_yields_a_graph_with_no_items",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 258,
+      "line": 299,
       "snippet": "fn an_empty_term_map_yields_a_graph_with_no_items() {"
     },
     {
       "name": "cuts_are_reproducible_across_runs",
       "kind": "fn",
       "file": "crates/purpose-ckg/src/lib.rs",
-      "line": 265,
+      "line": 306,
       "snippet": "fn cuts_are_reproducible_across_runs() {"
     },
     {
@@ -908,21 +922,21 @@
       "name": "CkgCommand",
       "kind": "enum",
       "file": "crates/purpose-cli/src/main.rs",
-      "line": 103,
+      "line": 109,
       "snippet": "enum CkgCommand {"
     },
     {
       "name": "detect_root",
       "kind": "fn",
       "file": "crates/purpose-cli/src/main.rs",
-      "line": 167,
+      "line": 208,
       "snippet": "fn detect_root(start: &Path) -> PathBuf {"
     },
     {
       "name": "main",
       "kind": "fn",
       "file": "crates/purpose-cli/src/main.rs",
-      "line": 179,
+      "line": 220,
       "snippet": "async fn main() -> Result<()> {"
     },
     {
@@ -1108,417 +1122,1047 @@
       "snippet": "fn unresolved_hole_detected() {"
     },
     {
+      "name": "LensError",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 70,
+      "snippet": "pub struct LensError {"
+    },
+    {
+      "name": "LensErrorKind",
+      "kind": "enum",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 77,
+      "snippet": "pub enum LensErrorKind {"
+    },
+    {
+      "name": "fmt",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 88,
+      "snippet": "fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {"
+    },
+    {
+      "name": "from",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 127,
+      "snippet": "fn from(e: LensError) -> Self {"
+    },
+    {
+      "name": "err",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 132,
+      "snippet": "fn err(line: usize, kind: LensErrorKind) -> LensError {"
+    },
+    {
+      "name": "EdgeWeight",
+      "kind": "enum",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 143,
+      "snippet": "pub enum EdgeWeight {"
+    },
+    {
+      "name": "parse",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 156,
+      "snippet": "pub fn parse(s: &str) -> Option<Self> {"
+    },
+    {
+      "name": "as_str",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 165,
+      "snippet": "pub fn as_str(&self) -> &'static str {"
+    },
+    {
+      "name": "PathPattern",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 177,
+      "snippet": "pub struct PathPattern {"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 183,
+      "snippet": "pub fn new(source: &str) -> Result<Self, LensError> {"
+    },
+    {
+      "name": "matches",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 193,
+      "snippet": "pub fn matches(&self, path: &str) -> bool {"
+    },
+    {
+      "name": "glob_to_regex",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 202,
+      "snippet": "fn glob_to_regex(glob: &str) -> String {"
+    },
+    {
+      "name": "Include",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 243,
+      "snippet": "pub struct Include {"
+    },
+    {
+      "name": "Terms",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 252,
+      "snippet": "pub struct Terms {"
+    },
+    {
+      "name": "Lens",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 267,
+      "snippet": "pub struct Lens {"
+    },
+    {
+      "name": "default",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 278,
+      "snippet": "fn default() -> Self {"
+    },
+    {
+      "name": "camel_pieces",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 305,
+      "snippet": "fn camel_pieces(tok: &str) -> Vec<String> {"
+    },
+    {
+      "name": "admits",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 332,
+      "snippet": "fn admits(&self, entry: &SymbolEntry) -> bool {"
+    },
+    {
+      "name": "admits_path",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 342,
+      "snippet": "pub fn admits_path(&self, entry: &SymbolEntry) -> bool {"
+    },
+    {
+      "name": "admits_kind",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 351,
+      "snippet": "pub fn admits_kind(&self, entry: &SymbolEntry) -> bool {"
+    },
+    {
+      "name": "alias",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 359,
+      "snippet": "fn alias(&self, t: &str) -> String {"
+    },
+    {
+      "name": "weight_of",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 371,
+      "snippet": "pub fn weight_of(&self, term: &str, origin_kind: &str) -> f64 {"
+    },
+    {
+      "name": "terms_of",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 391,
+      "snippet": "pub fn terms_of(&self, entry: &SymbolEntry) -> BTreeMap<String, f64> {"
+    },
+    {
+      "name": "term_map",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 470,
+      "snippet": "pub fn term_map(&self, index: &Index) -> WeightedTermMap {"
+    },
+    {
+      "name": "edge_weight",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 499,
+      "snippet": "pub fn edge_weight("
+    },
+    {
+      "name": "unweighted",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 530,
+      "snippet": "pub fn unweighted(tau: &WeightedTermMap) -> purpose_ckg::TermMap {"
+    },
+    {
+      "name": "suggest",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 549,
+      "snippet": "fn suggest(got: &str, known: &[&str]) -> Option<String> {"
+    },
+    {
+      "name": "Val",
+      "kind": "enum",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 566,
+      "snippet": "enum Val {"
+    },
+    {
+      "name": "type_name",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 574,
+      "snippet": "fn type_name(&self) -> &'static str {"
+    },
+    {
+      "name": "strip_comment",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 585,
+      "snippet": "fn strip_comment(s: &str) -> &str {"
+    },
+    {
+      "name": "parse_string",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 603,
+      "snippet": "fn parse_string(raw: &str, line: usize) -> Result<String, LensError> {"
+    },
+    {
+      "name": "parse_value",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 639,
+      "snippet": "fn parse_value(raw: &str, line: usize) -> Result<Val, LensError> {"
+    },
+    {
+      "name": "split_top_level",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 684,
+      "snippet": "fn split_top_level(s: &str) -> Vec<String> {"
+    },
+    {
+      "name": "parse_lens",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 718,
+      "snippet": "pub fn parse_lens(text: &str) -> Result<Lens, LensError> {"
+    },
+    {
+      "name": "apply",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 831,
+      "snippet": "fn apply("
+    },
+    {
+      "name": "load_lens",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1013,
+      "snippet": "pub fn load_lens(root: &Path, explicit: Option<&Path>) -> Result<Lens, purpose_core::Error> {"
+    },
+    {
+      "name": "default_lens_toml",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1047,
+      "snippet": "pub fn default_lens_toml() -> String {"
+    },
+    {
+      "name": "StoredLens",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1140,
+      "snippet": "pub struct StoredLens {"
+    },
+    {
+      "name": "of",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1155,
+      "snippet": "pub fn of(lens: &Lens) -> Self {"
+    },
+    {
+      "name": "to_lens",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1176,
+      "snippet": "pub fn to_lens(&self) -> Result<Lens, purpose_core::Error> {"
+    },
+    {
+      "name": "digest",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1207,
+      "snippet": "pub fn digest(&self) -> String {"
+    },
+    {
+      "name": "entry",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1228,
+      "snippet": "fn entry(name: &str, kind: &str, file: &str) -> SymbolEntry {"
+    },
+    {
+      "name": "lens_from",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1238,
+      "snippet": "fn lens_from(src: &str) -> Lens {"
+    },
+    {
+      "name": "a_misspelled_key_is_refused_with_the_key_it_resembles",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1245,
+      "snippet": "fn a_misspelled_key_is_refused_with_the_key_it_resembles() {"
+    },
+    {
+      "name": "a_quoted_key_carries_a_colon_and_a_star",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1261,
+      "snippet": "fn a_quoted_key_carries_a_colon_and_a_star() {"
+    },
+    {
+      "name": "a_stopword_list_may_span_several_lines",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1273,
+      "snippet": "fn a_stopword_list_may_span_several_lines() {"
+    },
+    {
+      "name": "a_string_containing_a_hash_keeps_it",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1286,
+      "snippet": "fn a_string_containing_a_hash_keeps_it() {"
+    },
+    {
+      "name": "a_floor_of_zero_is_refused_before_the_graph_is_built",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1294,
+      "snippet": "fn a_floor_of_zero_is_refused_before_the_graph_is_built() {"
+    },
+    {
+      "name": "an_inline_table_is_refused_by_name_not_by_syntax_error",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1306,
+      "snippet": "fn an_inline_table_is_refused_by_name_not_by_syntax_error() {"
+    },
+    {
+      "name": "a_double_star_crosses_directories_and_a_single_star_does_not",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1320,
+      "snippet": "fn a_double_star_crosses_directories_and_a_single_star_does_not() {"
+    },
+    {
+      "name": "an_alias_is_applied_before_the_kinded_term_is_formed",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1332,
+      "snippet": "fn an_alias_is_applied_before_the_kinded_term_is_formed() {"
+    },
+    {
+      "name": "a_term_contributed_by_two_kinds_takes_the_greater_weight",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1345,
+      "snippet": "fn a_term_contributed_by_two_kinds_takes_the_greater_weight() {"
+    },
+    {
+      "name": "a_latex_section_draws_its_content_words",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1359,
+      "snippet": "fn a_latex_section_draws_its_content_words() {"
+    },
+    {
+      "name": "tmap",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1371,
+      "snippet": "fn tmap(pairs: &[(&str, &[(&str, f64)])]) -> WeightedTermMap {"
+    },
+    {
+      "name": "the_sum_of_unit_weights_is_the_shared_count",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1381,
+      "snippet": "fn the_sum_of_unit_weights_is_the_shared_count() {"
+    },
+    {
+      "name": "a_shared_term_is_worth_what_the_weaker_module_gives_it",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1396,
+      "snippet": "fn a_shared_term_is_worth_what_the_weaker_module_gives_it() {"
+    },
+    {
+      "name": "count_ignores_the_term_weights_entirely",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1407,
+      "snippet": "fn count_ignores_the_term_weights_entirely() {"
+    },
+    {
+      "name": "every_weight_function_respects_the_floor",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1417,
+      "snippet": "fn every_weight_function_respects_the_floor() {"
+    },
+    {
+      "name": "reformatting_the_lens_file_does_not_change_its_digest",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1443,
+      "snippet": "fn reformatting_the_lens_file_does_not_change_its_digest() {"
+    },
+    {
+      "name": "changing_one_setting_changes_the_digest",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1455,
+      "snippet": "fn changing_one_setting_changes_the_digest() {"
+    },
+    {
+      "name": "the_stored_lens_round_trips",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lens.rs",
+      "line": 1462,
+      "snippet": "fn the_stored_lens_round_trips() {"
+    },
+    {
       "name": "Granularity",
       "kind": "enum",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 53,
+      "line": 59,
       "snippet": "pub enum Granularity {"
     },
     {
       "name": "parse",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 61,
+      "line": 67,
       "snippet": "pub fn parse(s: &str) -> Result<Self, Error> {"
     },
     {
       "name": "as_str",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 71,
+      "line": 77,
       "snippet": "pub fn as_str(&self) -> &'static str {"
     },
     {
       "name": "module_of",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 79,
-      "snippet": "fn module_of(&self, file: &str) -> String {"
-    },
-    {
-      "name": "is_function_word",
-      "kind": "fn",
-      "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 107,
-      "snippet": "fn is_function_word(t: &str) -> bool {"
+      "line": 85,
+      "snippet": "pub fn module_of(&self, file: &str) -> String {"
     },
     {
       "name": "terms_of",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 119,
-      "snippet": "fn terms_of(entry: &SymbolEntry) -> BTreeSet<String> {"
+      "line": 110,
+      "snippet": "pub fn terms_of(lens: &Lens, entry: &SymbolEntry) -> BTreeSet<String> {"
+    },
+    {
+      "name": "weighted_term_map",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 115,
+      "snippet": "pub fn weighted_term_map(index: &Index, lens: &Lens) -> WeightedTermMap {"
     },
     {
       "name": "term_map",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 151,
-      "snippet": "pub fn term_map(index: &Index, granularity: Granularity) -> TermMap {"
+      "line": 125,
+      "snippet": "pub fn term_map(index: &Index, lens: &Lens) -> TermMap {"
     },
     {
       "name": "StoredEdge",
       "kind": "struct",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 172,
+      "line": 135,
       "snippet": "pub struct StoredEdge {"
     },
     {
       "name": "StoredCkg",
       "kind": "struct",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 184,
+      "line": 147,
       "snippet": "pub struct StoredCkg {"
     },
     {
       "name": "graph",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 200,
+      "line": 178,
       "snippet": "pub fn graph(&self) -> Result<ContactGraph, Error> {"
     },
     {
       "name": "record",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 214,
+      "line": 192,
       "snippet": "pub fn record(&self) -> Record {"
+    },
+    {
+      "name": "lens",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 207,
+      "snippet": "pub fn lens(&self) -> Result<Lens, Error> {"
     },
     {
       "name": "from_graph",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 223,
+      "line": 216,
       "snippet": "fn from_graph("
     },
     {
       "name": "ckg_path",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 255,
+      "line": 251,
       "snippet": "pub fn ckg_path(root: &Path) -> PathBuf {"
     },
     {
       "name": "load_index",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 259,
+      "line": 255,
       "snippet": "fn load_index(root: &Path) -> Result<Index, Error> {"
     },
     {
       "name": "load",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 271,
+      "line": 267,
       "snippet": "pub fn load(root: &Path) -> Result<StoredCkg, Error> {"
     },
     {
       "name": "load_ckg",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 275,
+      "line": 271,
       "snippet": "fn load_ckg(root: &Path) -> Result<StoredCkg, Error> {"
     },
     {
       "name": "save_ckg",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 295,
+      "line": 291,
       "snippet": "fn save_ckg(root: &Path, stored: &StoredCkg) -> Result<(), Error> {"
     },
     {
       "name": "build",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 311,
-      "snippet": "pub fn build(root: &Path, granularity: Granularity, floor: f64) -> Result<StoredCkg, Error> {"
+      "line": 307,
+      "snippet": "pub fn build(root: &Path, lens: &Lens) -> Result<StoredCkg, Error> {"
+    },
+    {
+      "name": "induce",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 326,
+      "snippet": "pub fn induce(index: &Index, lens: &Lens) -> Result<ContactGraph, Error> {"
     },
     {
       "name": "Verdict",
       "kind": "enum",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 340,
+      "line": 356,
       "snippet": "pub enum Verdict {"
     },
     {
       "name": "as_str",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 350,
+      "line": 366,
       "snippet": "pub fn as_str(&self) -> &'static str {"
     },
     {
       "name": "ModuleReport",
       "kind": "struct",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 361,
+      "line": 377,
       "snippet": "pub struct ModuleReport {"
     },
     {
       "name": "Determination",
       "kind": "struct",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 373,
+      "line": 389,
       "snippet": "pub struct Determination {"
     },
     {
       "name": "goal_terms",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 400,
+      "line": 416,
       "snippet": "fn goal_terms(goal: &str) -> BTreeSet<String> {"
     },
     {
       "name": "term_meets",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 418,
+      "line": 434,
       "snippet": "fn term_meets(goal: &str, term: &str) -> bool {"
     },
     {
       "name": "seeds_for",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 437,
+      "line": 453,
       "snippet": "fn seeds_for(tau: &TermMap, goal: &BTreeSet<String>) -> BTreeSet<String> {"
+    },
+    {
+      "name": "tau_as_built",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 472,
+      "snippet": "fn tau_as_built(root: &Path, stored: &StoredCkg) -> Result<TermMap, Error> {"
     },
     {
       "name": "determine",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 453,
+      "line": 495,
       "snippet": "pub fn determine(root: &Path, goal: &str, eps: f64) -> Result<Determination, Error> {"
     },
     {
       "name": "pick",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 603,
+      "line": 649,
       "snippet": "fn pick(set: &BTreeSet<String>, g: &ContactGraph, greatest: bool) -> Option<String> {"
     },
     {
       "name": "persist_record",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 621,
+      "line": 667,
       "snippet": "fn persist_record(root: &Path, stored: &StoredCkg, record: &Record) -> Result<(), Error> {"
     },
     {
       "name": "Why",
       "kind": "struct",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 638,
+      "line": 684,
       "snippet": "pub struct Why {"
     },
     {
       "name": "why",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 654,
+      "line": 700,
       "snippet": "pub fn why(root: &Path, module: &str, goal: Option<&str>) -> Result<Why, Error> {"
     },
     {
       "name": "render_determination",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 716,
+      "line": 763,
       "snippet": "pub fn render_determination(d: &Determination) -> String {"
     },
     {
       "name": "render_why",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 792,
+      "line": 839,
       "snippet": "pub fn render_why(w: &Why) -> String {"
     },
     {
       "name": "render_floor",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 839,
+      "line": 886,
       "snippet": "pub fn render_floor(stored: &StoredCkg, g: &ContactGraph) -> String {"
+    },
+    {
+      "name": "Coverage",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 928,
+      "snippet": "pub struct Coverage {"
+    },
+    {
+      "name": "TermSpread",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 938,
+      "snippet": "pub struct TermSpread {"
+    },
+    {
+      "name": "Hub",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 947,
+      "snippet": "pub struct Hub {"
+    },
+    {
+      "name": "GoalSaturation",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 955,
+      "snippet": "pub struct GoalSaturation {"
+    },
+    {
+      "name": "LensReport",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 968,
+      "snippet": "pub struct LensReport {"
+    },
+    {
+      "name": "lens_report",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 999,
+      "snippet": "pub fn lens_report(root: &Path, lens: &Lens, goals: &[String]) -> Result<LensReport, Error> {"
+    },
+    {
+      "name": "render_lens_report",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1180,
+      "snippet": "pub fn render_lens_report(r: &LensReport) -> String {"
     },
     {
       "name": "CkgProvider",
       "kind": "struct",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 867,
+      "line": 1309,
       "snippet": "pub struct CkgProvider {"
     },
     {
       "name": "new",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 872,
+      "line": 1314,
       "snippet": "pub fn new(root: PathBuf) -> Self {"
     },
     {
       "name": "to_value",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 877,
+      "line": 1319,
       "snippet": "fn to_value<T: Serialize>(v: &T) -> Result<Value, Error> {"
     },
     {
       "name": "from_value",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 884,
+      "line": 1326,
       "snippet": "fn from_value<T: for<'de> Deserialize<'de>>(v: &Value) -> Result<T, Error> {"
     },
     {
       "name": "invoke",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 892,
+      "line": 1334,
       "snippet": "async fn invoke(&self, op: &str, args: &BTreeMap<String, Value>) -> Result<Value, Error> {"
     },
     {
       "name": "CkgResolver",
       "kind": "struct",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 963,
+      "line": 1415,
       "snippet": "pub struct CkgResolver;"
     },
     {
       "name": "compile",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 967,
+      "line": 1419,
       "snippet": "async fn compile(&self, utterance: &str) -> Result<VaHera, Error> {"
     },
     {
       "name": "domain",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 998,
+      "line": 1450,
       "snippet": "pub fn domain() -> Domain {"
     },
     {
       "name": "operations",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1007,
+      "line": 1459,
       "snippet": "pub fn operations() -> Vec<Operation> {"
     },
     {
       "name": "register_providers",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1062,
+      "line": 1526,
       "snippet": "pub fn register_providers(registry: &mut OperationRegistry, root: PathBuf) {"
     },
     {
       "name": "module_character",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1077,
+      "line": 1541,
       "snippet": "pub fn module_character(g: &ContactGraph) -> Vec<f64> {"
     },
     {
       "name": "entry",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1085,
+      "line": 1549,
       "snippet": "fn entry(name: &str, kind: &str, file: &str) -> SymbolEntry {"
     },
     {
       "name": "index",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1095,
+      "line": 1559,
       "snippet": "fn index(entries: Vec<SymbolEntry>) -> Index {"
+    },
+    {
+      "name": "def",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1570,
+      "snippet": "fn def() -> Lens {"
+    },
+    {
+      "name": "lens_from",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1575,
+      "snippet": "fn lens_from(src: &str) -> Lens {"
+    },
+    {
+      "name": "tmap",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1579,
+      "snippet": "fn tmap(idx: &Index) -> TermMap {"
+    },
+    {
+      "name": "graph_of",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1583,
+      "snippet": "fn graph_of(idx: &Index) -> ContactGraph {"
+    },
+    {
+      "name": "Scratch",
+      "kind": "struct",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1592,
+      "snippet": "struct Scratch(std::path::PathBuf);"
+    },
+    {
+      "name": "new",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1595,
+      "snippet": "fn new(tag: &str, idx: &Index) -> Scratch {"
+    },
+    {
+      "name": "root",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1607,
+      "snippet": "fn root(&self) -> &Path {"
+    },
+    {
+      "name": "drop",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1613,
+      "snippet": "fn drop(&mut self) {"
     },
     {
       "name": "a_symbol_draws_its_name_and_its_kinded_name",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1103,
+      "line": 1619,
       "snippet": "fn a_symbol_draws_its_name_and_its_kinded_name() {"
     },
     {
       "name": "same_name_different_kind_shares_one_term_and_differs_on_another",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1111,
+      "line": 1627,
       "snippet": "fn same_name_different_kind_shares_one_term_and_differs_on_another() {"
     },
     {
       "name": "a_heading_contributes_its_content_words",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1121,
+      "line": 1637,
       "snippet": "fn a_heading_contributes_its_content_words() {"
     },
     {
       "name": "granularity_dir_collapses_files_in_one_directory",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1128,
+      "line": 1645,
       "snippet": "fn granularity_dir_collapses_files_in_one_directory() {"
     },
     {
       "name": "modules_are_in_contact_when_they_share_a_symbol_name",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1142,
+      "line": 1659,
       "snippet": "fn modules_are_in_contact_when_they_share_a_symbol_name() {"
     },
     {
       "name": "a_module_with_no_indexed_symbols_does_not_become_an_item",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1155,
+      "line": 1671,
       "snippet": "fn a_module_with_no_indexed_symbols_does_not_become_an_item() {"
     },
     {
       "name": "goal_terms_match_by_substring_in_both_directions",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1165,
+      "line": 1681,
       "snippet": "fn goal_terms_match_by_substring_in_both_directions() {"
+    },
+    {
+      "name": "necessity_is_relative_to_what_the_goal_reached",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1694,
+      "snippet": "fn necessity_is_relative_to_what_the_goal_reached() {"
+    },
+    {
+      "name": "a_heading_of_function_words_draws_no_distinction",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1732,
+      "snippet": "fn a_heading_of_function_words_draws_no_distinction() {"
+    },
+    {
+      "name": "a_function_word_is_still_a_name_when_a_symbol_carries_it",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1753,
+      "snippet": "fn a_function_word_is_still_a_name_when_a_symbol_carries_it() {"
     },
     {
       "name": "a_short_goal_term_must_match_exactly",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1178,
+      "line": 1767,
       "snippet": "fn a_short_goal_term_must_match_exactly() {"
     },
     {
       "name": "a_goal_naming_a_symbol_meets_its_kinded_term",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1190,
+      "line": 1779,
       "snippet": "fn a_goal_naming_a_symbol_meets_its_kinded_term() {"
     },
     {
       "name": "the_character_is_conserved_when_modules_are_renamed",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1199,
+      "line": 1788,
       "snippet": "fn the_character_is_conserved_when_modules_are_renamed() {"
     },
     {
       "name": "the_stored_form_round_trips_the_graph",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1221,
+      "line": 1810,
       "snippet": "fn the_stored_form_round_trips_the_graph() {"
     },
     {
       "name": "the_stored_form_has_nowhere_to_put_a_determination",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1238,
+      "line": 1827,
       "snippet": "fn the_stored_form_has_nowhere_to_put_a_determination() {"
     },
     {
       "name": "the_record_resumes_rather_than_restarting",
       "kind": "fn",
       "file": "crates/purpose-domains-ckg/src/lib.rs",
-      "line": 1255,
+      "line": 1844,
       "snippet": "fn the_record_resumes_rather_than_restarting() {"
+    },
+    {
+      "name": "the_default_lens_reproduces_the_hard_coded_term_map",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1862,
+      "snippet": "fn the_default_lens_reproduces_the_hard_coded_term_map() {"
+    },
+    {
+      "name": "the_diagnostics_report_no_aggregate_score",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1898,
+      "snippet": "fn the_diagnostics_report_no_aggregate_score() {"
+    },
+    {
+      "name": "keys",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1913,
+      "snippet": "fn keys(v: &serde_json::Value, out: &mut Vec<String>) {"
+    },
+    {
+      "name": "a_degenerate_lens_shows_one_component_and_the_highest_floor",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1939,
+      "snippet": "fn a_degenerate_lens_shows_one_component_and_the_highest_floor() {"
+    },
+    {
+      "name": "running_the_lens_command_does_not_write_the_ckg",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1976,
+      "snippet": "fn running_the_lens_command_does_not_write_the_ckg() {"
+    },
+    {
+      "name": "a_determination_uses_the_lens_the_graph_was_built_with",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 1990,
+      "snippet": "fn a_determination_uses_the_lens_the_graph_was_built_with() {"
+    },
+    {
+      "name": "jaccard_at_the_default_floor_flattens_every_contact",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/src/lib.rs",
+      "line": 2031,
+      "snippet": "fn jaccard_at_the_default_floor_flattens_every_contact() {"
+    },
+    {
+      "name": "the_character_is_conserved_under_relabelling_the_real_repository",
+      "kind": "fn",
+      "file": "crates/purpose-domains-ckg/tests/invariant.rs",
+      "line": 7,
+      "snippet": "fn the_character_is_conserved_under_relabelling_the_real_repository() {"
     },
     {
       "name": "SymbolEntry",

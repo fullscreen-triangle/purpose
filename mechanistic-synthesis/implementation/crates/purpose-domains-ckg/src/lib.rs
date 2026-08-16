@@ -31,17 +31,23 @@ use serde::{Deserialize, Serialize};
 use tracing::debug;
 
 use purpose_ckg::{
-    align_score, character, dominated_by, floor_witness, induced_graph, necessary, reach,
-    resting_cut, sigma_medium, system_floor, ContactGraph, EdgeKey, Record, TermMap, FLOOR,
-    MEDIUM,
+    align_score, character, dominated_by, floor_witness, induced_graph_weighted, necessary,
+    reach, resting_cut, sigma_medium, system_floor, ContactGraph, EdgeKey, Record, TermMap,
+    WeightedTermMap, MEDIUM,
 };
 use purpose_core::{Domain, Error, Operation, Resolver, Type, VaHera, Value};
 use purpose_domains_codebase::{index_path, Index, SymbolEntry};
 use purpose_operations::{OperationRegistry, Provider};
 
-/// Schema version of `.purpose/ckg.json`. The symbol index carries no version
-/// field; that omission is not repeated here.
-pub const CKG_VERSION: u32 = 1;
+pub mod lens;
+pub use lens::{load_lens, Lens, StoredLens};
+
+/// Schema version of `.purpose/ckg.json`.
+///
+/// Bumped to 2 when the lens arrived: edge weights are sums over weighted terms
+/// rather than shared counts, so a v1 graph read by this binary would be
+/// silently reinterpreted rather than merely be out of date.
+pub const CKG_VERSION: u32 = 2;
 
 // ---------------------------------------------------------------------------
 // Granularity
@@ -76,7 +82,7 @@ impl Granularity {
     }
 
     /// The module an index entry belongs to.
-    fn module_of(&self, file: &str) -> String {
+    pub fn module_of(&self, file: &str) -> String {
         match self {
             Granularity::File => file.to_string(),
             Granularity::Dir => match file.rfind('/') {
@@ -91,81 +97,33 @@ impl Granularity {
 // Term map: what distinctions a module draws
 // ---------------------------------------------------------------------------
 
-/// Distinctions drawn by one index entry.
+/// Distinctions drawn by one index entry, under a lens.
 ///
 /// The bare name is the distinction itself; `kind:name` is the same
 /// distinction drawn *as* a kind, so a `struct Resolver` and a `trait Resolver`
 /// share one term and differ on another. Prose contributes heading tokens,
 /// because a heading is where a document draws its distinctions.
 ///
-/// Function words, which draw no distinction.
-///
-/// A heading token like `the` or `with` appears across most documents in most
-/// repositories, so admitting it puts every prose module in contact with every
-/// other. That is the degenerate map: it raises the floor while discriminating
-/// worst. Excluding these does not make the map *correct* — no extraction is —
-/// it stops one known artefact from dominating the contact structure.
-fn is_function_word(t: &str) -> bool {
-    matches!(
-        t,
-        "the" | "and" | "not" | "for" | "with" | "from" | "that" | "this"
-            | "what" | "when" | "where" | "which" | "how" | "why" | "who"
-            | "are" | "was" | "were" | "has" | "have" | "had" | "can" | "will"
-            | "its" | "into" | "out" | "over" | "than" | "then" | "there"
-            | "does" | "did" | "you" | "your" | "our" | "all" | "any" | "but"
-            | "use" | "using" | "used" | "via" | "per" | "about" | "also"
-    )
+/// Which of those the lens admits, and what each is worth, is the lens's to
+/// decide — see [`lens`]. The default lens reproduces the map this tool drew
+/// before lenses existed, save that `section` now counts as prose.
+pub fn terms_of(lens: &Lens, entry: &SymbolEntry) -> BTreeSet<String> {
+    lens.terms_of(entry).into_keys().collect()
 }
 
-/// Distinctions drawn by one index entry.
-fn terms_of(entry: &SymbolEntry) -> BTreeSet<String> {
-    let mut out = BTreeSet::new();
-    let name = entry.name.trim().to_lowercase();
-    if name.is_empty() {
-        return out;
-    }
-    let kind = entry.kind.trim().to_lowercase();
-
-    if kind == "heading" {
-        // A heading is a phrase, not an identifier: split it and keep the
-        // content words. Single characters and digits distinguish nothing.
-        for tok in name.split(|c: char| !c.is_alphanumeric() && c != '_') {
-            if tok.len() > 2
-                && !tok.chars().all(|c| c.is_ascii_digit())
-                && !is_function_word(tok)
-            {
-                out.insert(tok.to_string());
-            }
-        }
-        return out;
-    }
-
-    out.insert(name.clone());
-    if !kind.is_empty() {
-        out.insert(format!("{kind}:{name}"));
-    }
-    out
+/// Build the weighted term map over modules under a lens.
+pub fn weighted_term_map(index: &Index, lens: &Lens) -> WeightedTermMap {
+    lens.term_map(index)
 }
 
-/// Build the term map over modules at the requested granularity.
+/// Build the term map over modules under a lens, discarding weights.
 ///
 /// A module with no indexed symbols does not appear. It draws no distinctions
 /// this index can see, so it has no contacts, and an item joined to nothing but
 /// the medium would sit at the floor and drag `β*` down for a reason that is an
 /// artefact of extraction rather than a fact about the repository.
-pub fn term_map(index: &Index, granularity: Granularity) -> TermMap {
-    let mut tau: TermMap = BTreeMap::new();
-    for entry in &index.symbols {
-        let terms = terms_of(entry);
-        if terms.is_empty() {
-            continue;
-        }
-        tau.entry(granularity.module_of(&entry.file))
-            .or_default()
-            .extend(terms);
-    }
-    tau.retain(|_, ts| !ts.is_empty());
-    tau
+pub fn term_map(index: &Index, lens: &Lens) -> TermMap {
+    lens::unweighted(&lens.term_map(index))
 }
 
 // ---------------------------------------------------------------------------
@@ -198,6 +156,21 @@ pub struct StoredCkg {
     /// Edges standing committed, as `[u, v]` pairs.
     #[serde(default)]
     pub committed: Vec<[String; 2]>,
+    /// A stable digest of the lens that induced this graph.
+    #[serde(default)]
+    pub lens_digest: String,
+    /// Where that lens was read from, if not the built-in defaults.
+    #[serde(default)]
+    pub lens_source: Option<String>,
+    /// The lens itself.
+    ///
+    /// Kept in full rather than as a digest alone, for two reasons. A
+    /// determination must run against the lens the graph was built with, so it
+    /// needs the lens and not merely a way to notice it moved; and a stale
+    /// graph can then say *which* setting changed rather than only that
+    /// something did.
+    #[serde(default)]
+    pub lens: Option<StoredLens>,
 }
 
 impl StoredCkg {
@@ -225,18 +198,33 @@ impl StoredCkg {
         Record::resume(self.record, committed)
     }
 
+    /// The lens this graph was built with.
+    ///
+    /// Determinations must reconstruct τ from here rather than from
+    /// `lens.toml` on disk. If the file has been edited since the build, the
+    /// two disagree, and seeding against one τ while cutting a graph induced by
+    /// another is not a determination about anything.
+    pub fn lens(&self) -> Result<Lens, Error> {
+        match &self.lens {
+            Some(s) => s.to_lens(),
+            // A graph stored before lenses existed, or one written by a build
+            // that could not record its lens: the defaults are what it used.
+            None => Ok(Lens::default()),
+        }
+    }
+
     fn from_graph(
         root: &Path,
-        granularity: Granularity,
-        floor: f64,
+        lens: &Lens,
         g: &ContactGraph,
         record: &Record,
     ) -> Self {
+        let stored_lens = StoredLens::of(lens);
         StoredCkg {
             version: CKG_VERSION,
             root: root.display().to_string(),
-            granularity,
-            floor,
+            granularity: lens.granularity,
+            floor: lens.floor,
             items: g.items().into_iter().map(|s| s.to_string()).collect(),
             edges: g
                 .edges()
@@ -252,6 +240,9 @@ impl StoredCkg {
                 .iter()
                 .map(|e| [e.left().to_string(), e.right().to_string()])
                 .collect(),
+            lens_digest: stored_lens.digest(),
+            lens_source: lens.source.clone(),
+            lens: Some(stored_lens),
         }
     }
 }
@@ -313,16 +304,9 @@ fn save_ckg(root: &Path, stored: &StoredCkg) -> Result<(), Error> {
 ///
 /// Rebuilding does not reset the record. The record counts what has been
 /// committed, and rebuilding the graph commits nothing away.
-pub fn build(root: &Path, granularity: Granularity, floor: f64) -> Result<StoredCkg, Error> {
+pub fn build(root: &Path, lens: &Lens) -> Result<StoredCkg, Error> {
     let index = load_index(root)?;
-    let tau = term_map(&index, granularity);
-    if tau.is_empty() {
-        return Err(Error::Provider(
-            "the index yielded no modules with distinctions — is it empty?".into(),
-        ));
-    }
-    let g = induced_graph(&tau, floor)
-        .map_err(|e| Error::Provider(format!("cannot induce contact graph: {e}")))?;
+    let g = induce(&index, lens)?;
 
     // Carry the existing record forward if there is one.
     let record = match load_ckg(root) {
@@ -330,9 +314,36 @@ pub fn build(root: &Path, granularity: Granularity, floor: f64) -> Result<Stored
         Err(_) => Record::new(),
     };
 
-    let stored = StoredCkg::from_graph(root, granularity, floor, &g, &record);
+    let stored = StoredCkg::from_graph(root, lens, &g, &record);
     save_ckg(root, &stored)?;
     Ok(stored)
+}
+
+/// Induce the contact graph from an index under a lens, without writing it.
+///
+/// Shared by `build` and the lens diagnostics, so what the diagnostics report
+/// is what a build would produce and not an approximation of it.
+pub fn induce(index: &Index, lens: &Lens) -> Result<ContactGraph, Error> {
+    let tau = lens.term_map(index);
+    if tau.is_empty() {
+        return Err(Error::Provider(
+            "the index yielded no modules with distinctions — is it empty?".into(),
+        ));
+    }
+    // Jaccard lands in (0, 1]; a floor at or above 1 clamps every contact to β
+    // and the graph goes flat, so every determination comes out accountable and
+    // nothing has been learned. Warn rather than refuse: it is a coherent graph,
+    // just an uninformative one, and the choice is the operator's.
+    if lens.edges == lens::EdgeWeight::Jaccard && lens.floor >= 1.0 {
+        eprintln!(
+            "warning: edges = \"jaccard\" with floor = {} — Jaccard weights are at most 1, \
+             so every contact will clamp to the floor and the graph will be uniform. \
+             Try floor = 0.01.",
+            lens.floor
+        );
+    }
+    induced_graph_weighted(&tau, lens.floor, lens.edge_weight())
+        .map_err(|e| Error::Provider(format!("cannot induce contact graph: {e}")))
 }
 
 // ---------------------------------------------------------------------------
@@ -450,6 +461,32 @@ fn seeds_for(tau: &TermMap, goal: &BTreeSet<String>) -> BTreeSet<String> {
         .collect()
 }
 
+/// The term map the stored graph was actually built with.
+///
+/// Deliberately *not* whatever `.purpose/lens.toml` says now. Seeding against
+/// one τ while cutting a graph induced by another is not a determination about
+/// anything: a goal could seed a module the graph has no edges for. If the file
+/// on disk has moved, say so and carry on — the determination against the
+/// stored graph is still sound (`thm:tau-agnostic`: it is *a* graph, correctly
+/// determined), it is simply about a τ the operator has since revised.
+fn tau_as_built(root: &Path, stored: &StoredCkg) -> Result<TermMap, Error> {
+    let lens = stored.lens()?;
+    if let Ok(on_disk) = load_lens(root, None) {
+        let d = StoredLens::of(&on_disk).digest();
+        if !stored.lens_digest.is_empty() && d != stored.lens_digest {
+            eprintln!(
+                "note: {} has changed since this graph was built ({} → {}); \
+                 determining against the stored lens. Run `purpose ckg build` to adopt it.",
+                lens::LENS_FILE,
+                &stored.lens_digest,
+                &d
+            );
+        }
+    }
+    let index = load_index(root)?;
+    Ok(term_map(&index, &lens))
+}
+
 /// Run Algorithm 2 against the stored graph.
 ///
 /// Every cut here is recomputed from the graph as it currently stands. Nothing
@@ -458,8 +495,7 @@ fn seeds_for(tau: &TermMap, goal: &BTreeSet<String>) -> BTreeSet<String> {
 pub fn determine(root: &Path, goal: &str, eps: f64) -> Result<Determination, Error> {
     let stored = load_ckg(root)?;
     let g = stored.graph()?;
-    let index = load_index(root)?;
-    let tau = term_map(&index, stored.granularity);
+    let tau = tau_as_built(root, &stored)?;
 
     let terms = goal_terms(goal);
     let goal_list: Vec<String> = terms.iter().cloned().collect();
@@ -697,8 +733,7 @@ pub fn why(root: &Path, module: &str, goal: Option<&str>) -> Result<Why, Error> 
     };
 
     if let Some(goal) = goal {
-        let index = load_index(root)?;
-        let tau = term_map(&index, stored.granularity);
+        let tau = tau_as_built(root, &stored)?;
         let terms = goal_terms(goal);
         let seeds = seeds_for(&tau, &terms);
         // Necessity and domination are relative to what the goal reached, not
@@ -872,6 +907,401 @@ pub fn render_floor(stored: &StoredCkg, g: &ContactGraph) -> String {
 }
 
 // ---------------------------------------------------------------------------
+// Lens diagnostics
+// ---------------------------------------------------------------------------
+
+/// What the diagnostics must always say, whatever the numbers are.
+///
+/// Shared with `render_floor` in substance so the two never drift into
+/// disagreeing about what the floor means.
+pub const FLOOR_CAVEAT: &str = "\
+β* is a monotonicity signal, not a score. Refining the term map cannot lower it, so a
+floor that is not rising under attempted refinement means the map is not being refined.
+It does not follow that a higher floor is better: a lens under which every module draws
+identical distinctions induces among the highest floors while discriminating worst. Read
+it alongside the component sizes and term spread above. There is deliberately no
+aggregate score here, because a scalar to maximise would be optimised, and optimising
+this one produces the degenerate lens.";
+
+/// How much of the index a lens admits.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct Coverage {
+    pub entries_indexed: usize,
+    pub admitted_by_paths: usize,
+    pub admitted_by_kinds: usize,
+    pub yielded_no_terms: usize,
+    pub modules: usize,
+}
+
+/// One term, and how far it spreads.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct TermSpread {
+    pub term: String,
+    pub modules: usize,
+    pub fraction: f64,
+    pub weight: f64,
+}
+
+/// One module, by degree.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct Hub {
+    pub module: String,
+    pub degree: usize,
+    pub sigma: f64,
+}
+
+/// How far a goal seeds.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct GoalSaturation {
+    pub goal: String,
+    pub seeds: usize,
+    pub fraction: f64,
+}
+
+/// What a lens does to the structure of a repository.
+///
+/// Note what is absent, and note it deliberately: there is no score, rating, or
+/// overall figure. `rem:quality-honest` is the reason — a scalar to maximise
+/// would be maximised, and the maximum of every scalar available here is the
+/// degenerate lens under which no module can be told from any other.
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct LensReport {
+    pub lens: StoredLens,
+    pub lens_source: Option<String>,
+    pub lens_digest: String,
+    pub coverage: Coverage,
+    /// Component sizes, largest first, **ignoring the medium** — with it every
+    /// graph is one component and the number says nothing.
+    pub components: Vec<usize>,
+    pub singletons: usize,
+    pub density: f64,
+    pub edge_count: usize,
+    pub mean_weight: f64,
+    pub median_weight: f64,
+    pub floor: f64,
+    pub system_floor: Option<f64>,
+    pub floor_witness: Option<String>,
+    pub omega: f64,
+    pub hubs: Vec<Hub>,
+    pub distinct_terms: usize,
+    pub terms_in_one_module: usize,
+    pub mean_terms_per_module: f64,
+    pub spread: Vec<TermSpread>,
+    pub goals: Vec<GoalSaturation>,
+    pub caveat: String,
+}
+
+/// Measure what a lens does, without writing anything.
+///
+/// A dry run by construction: it induces the graph in memory and never touches
+/// `ckg.json`. "Let me see what this does" must not be destructive, or nobody
+/// will try anything.
+pub fn lens_report(root: &Path, lens: &Lens, goals: &[String]) -> Result<LensReport, Error> {
+    let index = load_index(root)?;
+
+    // Coverage, counted while walking rather than inferred, so a lens that
+    // quietly drops most of the index shows it as a number.
+    let mut admitted_by_paths = 0usize;
+    let mut admitted_by_kinds = 0usize;
+    let mut yielded_no_terms = 0usize;
+    for e in &index.symbols {
+        if !lens.admits_path(e) {
+            continue;
+        }
+        admitted_by_paths += 1;
+        if !lens.admits_kind(e) {
+            continue;
+        }
+        admitted_by_kinds += 1;
+        if lens.terms_of(e).is_empty() {
+            yielded_no_terms += 1;
+        }
+    }
+
+    let tau = lens.term_map(&index);
+    let g = induce(&index, lens)?;
+    let items: Vec<String> = g.items();
+    let n = items.len();
+
+    // Components over the item-induced subgraph. The medium is adjacent to
+    // everything, so leaving it in would make every graph connected.
+    let mut adj: BTreeMap<&str, BTreeSet<&str>> = BTreeMap::new();
+    for i in &items {
+        adj.entry(i).or_default();
+    }
+    let mut weights: Vec<f64> = Vec::new();
+    let mut edge_count = 0usize;
+    for (u, v, w) in g.edges() {
+        if u == MEDIUM || v == MEDIUM {
+            continue;
+        }
+        edge_count += 1;
+        weights.push(w);
+        adj.entry(u).or_default().insert(v);
+        adj.entry(v).or_default().insert(u);
+    }
+
+    let mut seen: BTreeSet<&str> = BTreeSet::new();
+    let mut components: Vec<usize> = Vec::new();
+    for i in &items {
+        let start: &str = i;
+        if seen.contains(start) {
+            continue;
+        }
+        let mut stack = vec![start];
+        let mut size = 0usize;
+        seen.insert(start);
+        while let Some(x) = stack.pop() {
+            size += 1;
+            for y in adj.get(x).into_iter().flatten() {
+                if seen.insert(y) {
+                    stack.push(y);
+                }
+            }
+        }
+        components.push(size);
+    }
+    components.sort_unstable_by(|a, b| b.cmp(a));
+    let singletons = components.iter().filter(|c| **c == 1).count();
+
+    weights.sort_by(|a, b| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal));
+    let mean_weight = if weights.is_empty() {
+        0.0
+    } else {
+        weights.iter().sum::<f64>() / weights.len() as f64
+    };
+    let median_weight = if weights.is_empty() {
+        0.0
+    } else {
+        weights[weights.len() / 2]
+    };
+    let density = if n > 1 {
+        2.0 * edge_count as f64 / (n as f64 * (n as f64 - 1.0))
+    } else {
+        0.0
+    };
+
+    let mut hubs: Vec<Hub> = items
+        .iter()
+        .map(|m| Hub {
+            module: m.clone(),
+            degree: adj.get(m.as_str()).map(|s| s.len()).unwrap_or(0),
+            sigma: sigma_medium(&g, m),
+        })
+        .collect();
+    hubs.sort_by(|a, b| b.degree.cmp(&a.degree).then_with(|| a.module.cmp(&b.module)));
+    hubs.truncate(10);
+
+    // Term spread. The head of this list is the actionable output of the whole
+    // command: a term carried by most modules is what put them all in contact.
+    let mut carriers: BTreeMap<&str, usize> = BTreeMap::new();
+    let mut weight_of: BTreeMap<&str, f64> = BTreeMap::new();
+    let mut total_terms = 0usize;
+    for ts in tau.values() {
+        total_terms += ts.len();
+        for (t, w) in ts {
+            *carriers.entry(t).or_insert(0) += 1;
+            let slot = weight_of.entry(t).or_insert(*w);
+            if *w > *slot {
+                *slot = *w;
+            }
+        }
+    }
+    let modules = tau.len();
+    let terms_in_one_module = carriers.values().filter(|c| **c == 1).count();
+    let mut spread: Vec<TermSpread> = carriers
+        .iter()
+        .map(|(t, c)| TermSpread {
+            term: (*t).to_string(),
+            modules: *c,
+            fraction: if modules > 0 { *c as f64 / modules as f64 } else { 0.0 },
+            weight: weight_of.get(*t).copied().unwrap_or(1.0),
+        })
+        .collect();
+    spread.sort_by(|a, b| b.modules.cmp(&a.modules).then_with(|| a.term.cmp(&b.term)));
+    spread.truncate(20);
+
+    // Per goal, never averaged: a mean over goals would hide the one goal that
+    // seeds the whole repository, which is the only one worth acting on.
+    let unweighted = lens::unweighted(&tau);
+    let goal_reports = goals
+        .iter()
+        .map(|goal| {
+            let seeds = seeds_for(&unweighted, &goal_terms(goal));
+            GoalSaturation {
+                goal: goal.clone(),
+                seeds: seeds.len(),
+                fraction: if modules > 0 {
+                    seeds.len() as f64 / modules as f64
+                } else {
+                    0.0
+                },
+            }
+        })
+        .collect();
+
+    let stored_lens = StoredLens::of(lens);
+    Ok(LensReport {
+        lens_digest: stored_lens.digest(),
+        lens: stored_lens,
+        lens_source: lens.source.clone(),
+        coverage: Coverage {
+            entries_indexed: index.symbols.len(),
+            admitted_by_paths,
+            admitted_by_kinds,
+            yielded_no_terms,
+            modules,
+        },
+        components,
+        singletons,
+        density,
+        edge_count,
+        mean_weight,
+        median_weight,
+        floor: lens.floor,
+        system_floor: system_floor(&g),
+        floor_witness: floor_witness(&g).map(|(m, _)| m),
+        omega: g.total_weight(),
+        hubs,
+        distinct_terms: carriers.len(),
+        terms_in_one_module,
+        mean_terms_per_module: if modules > 0 {
+            total_terms as f64 / modules as f64
+        } else {
+            0.0
+        },
+        spread,
+        goals: goal_reports,
+        caveat: FLOOR_CAVEAT.to_string(),
+    })
+}
+
+/// Render a lens report for a reader.
+pub fn render_lens_report(r: &LensReport) -> String {
+    let mut out = String::new();
+    let l = &r.lens;
+
+    out.push_str("LENS\n");
+    out.push_str(&format!(
+        "  source          {}\n  digest          {}\n",
+        r.lens_source.as_deref().unwrap_or("(built-in defaults)"),
+        r.lens_digest
+    ));
+    out.push_str(&format!(
+        "  granularity     {}\n  floor (β)       {:.2}\n  edges           {}\n",
+        l.granularity.as_str(),
+        l.floor,
+        l.edges.as_str()
+    ));
+    out.push_str(&format!(
+        "  paths           {}\n  kinds           {}\n",
+        if l.paths.is_empty() {
+            "(all)".to_string()
+        } else {
+            l.paths.join(", ")
+        },
+        match &l.kinds {
+            Some(k) => k.iter().cloned().collect::<Vec<_>>().join(", "),
+            None => "(all)".to_string(),
+        }
+    ));
+    out.push_str(&format!(
+        "  min_len         {}\n  split_camel     {}\n  prose_kinds     {}\n  stopwords       {}\n  aliases         {}\n  weights         {}\n",
+        l.min_len,
+        l.split_camel_case,
+        l.prose_kinds.iter().cloned().collect::<Vec<_>>().join(", "),
+        l.stopwords.len(),
+        l.alias.len(),
+        l.weight.len()
+    ));
+
+    let c = &r.coverage;
+    out.push_str("\nCOVERAGE\n");
+    out.push_str(&format!(
+        "  {} entries indexed\n  {} admitted by paths\n  {} admitted by kinds\n  {} yielded no terms\n  {} modules in τ\n",
+        c.entries_indexed, c.admitted_by_paths, c.admitted_by_kinds, c.yielded_no_terms, c.modules
+    ));
+
+    out.push_str("\nCOMPONENTS (medium excluded)\n");
+    let shown: Vec<String> = r.components.iter().take(12).map(|s| s.to_string()).collect();
+    out.push_str(&format!(
+        "  {} component(s): {}{}\n  {} singleton(s)\n",
+        r.components.len(),
+        shown.join(", "),
+        if r.components.len() > 12 { ", …" } else { "" },
+        r.singletons
+    ));
+    if let Some(largest) = r.components.first() {
+        let n: usize = r.components.iter().sum();
+        if n > 0 && *largest as f64 / n as f64 > 0.5 {
+            out.push_str(&format!(
+                "  {}% of modules are in one component — τ is not discriminating between them\n",
+                (100.0 * *largest as f64 / n as f64).round() as u64
+            ));
+        }
+    }
+
+    out.push_str("\nDENSITY\n");
+    let n: usize = r.components.iter().sum();
+    out.push_str(&format!(
+        "  n = {}, e = {}, density = {:.3}\n  weight mean {:.2}, median {:.2}\n  β = {:.2}",
+        n, r.edge_count, r.density, r.mean_weight, r.median_weight, r.floor
+    ));
+    match (r.system_floor, &r.floor_witness) {
+        (Some(b), Some(m)) => out.push_str(&format!(", β* = {b:.2} at {m}\n")),
+        (Some(b), None) => out.push_str(&format!(", β* = {b:.2}\n")),
+        _ => out.push_str(", β* undefined\n"),
+    }
+    out.push_str(&format!("  Ω = {:.2}\n", r.omega));
+
+    out.push_str("\nDEGREE HUBS\n");
+    for h in &r.hubs {
+        out.push_str(&format!(
+            "  {:>4}  σ {:>7.2}  {}\n",
+            h.degree, h.sigma, h.module
+        ));
+    }
+
+    out.push_str("\nTERM SPREAD\n");
+    out.push_str(&format!(
+        "  {} distinct terms, {} in exactly one module, {:.1} per module\n",
+        r.distinct_terms, r.terms_in_one_module, r.mean_terms_per_module
+    ));
+    out.push_str("  the terms at the top of this list are the stopword candidates:\n");
+    for s in &r.spread {
+        out.push_str(&format!(
+            "  {:>4} ({:>3.0}%)  w {:.2}  {}\n",
+            s.modules,
+            100.0 * s.fraction,
+            s.weight,
+            s.term
+        ));
+    }
+
+    if !r.goals.is_empty() {
+        out.push_str("\nGOAL SATURATION\n");
+        for g in &r.goals {
+            out.push_str(&format!(
+                "  {:>4} module(s) ({:>3.0}%)  {}{}\n",
+                g.seeds,
+                100.0 * g.fraction,
+                g.goal,
+                if g.fraction > 0.5 {
+                    "   ← seeds most of the repository; the graph cannot discriminate here"
+                } else {
+                    ""
+                }
+            ));
+        }
+    }
+
+    out.push_str("\n");
+    out.push_str(&r.caveat);
+    out.push('\n');
+    out
+}
+
+// ---------------------------------------------------------------------------
 // Provider
 // ---------------------------------------------------------------------------
 
@@ -903,22 +1333,32 @@ fn from_value<T: for<'de> Deserialize<'de>>(v: &Value) -> Result<T, Error> {
 impl Provider for CkgProvider {
     async fn invoke(&self, op: &str, args: &BTreeMap<String, Value>) -> Result<Value, Error> {
         match op {
+            // `granularity` and `floor` remain accepted here, and still
+            // override, so every vaHera script written against the pre-lens
+            // surface keeps working. What changed is where they come from when
+            // the caller says nothing: the lens, not a constant.
             "build_ckg" => {
-                let granularity = args
-                    .get("granularity")
-                    .and_then(|v| v.as_str())
-                    .map(Granularity::parse)
-                    .transpose()?
-                    .unwrap_or(Granularity::File);
-                let floor = args
-                    .get("floor")
-                    .and_then(|v| match v {
-                        Value::Num(n) => Some(*n),
-                        _ => None,
-                    })
-                    .unwrap_or(FLOOR);
-                let stored = build(&self.root, granularity, floor)?;
+                let mut lens = load_lens(&self.root, args.get("lens").and_then(|v| v.as_str()).map(Path::new))?;
+                if let Some(g) = args.get("granularity").and_then(|v| v.as_str()) {
+                    lens.granularity = Granularity::parse(g)?;
+                }
+                if let Some(Value::Num(f)) = args.get("floor") {
+                    lens.floor = *f;
+                }
+                let stored = build(&self.root, &lens)?;
                 to_value(&stored)
+            }
+            "lens_report" => {
+                let lens = load_lens(&self.root, args.get("lens").and_then(|v| v.as_str()).map(Path::new))?;
+                let goals: Vec<String> = match args.get("goal") {
+                    Some(Value::Str(s)) => vec![s.clone()],
+                    Some(Value::List(xs)) => {
+                        xs.iter().filter_map(|v| v.as_str().map(str::to_string)).collect()
+                    }
+                    _ => Vec::new(),
+                };
+                let r = lens_report(&self.root, &lens, &goals)?;
+                Ok(Value::Str(render_lens_report(&r)))
             }
             "module_floor" => {
                 let stored = load_ckg(&self.root)?;
@@ -1024,10 +1464,22 @@ pub fn operations() -> Vec<Operation> {
                 let mut inputs = BTreeMap::new();
                 inputs.insert("granularity".into(), Type::Str);
                 inputs.insert("floor".into(), Type::Num);
+                inputs.insert("lens".into(), Type::Str);
                 inputs
             },
             Type::named("Ckg"),
             "Induce the module contact graph from the symbol index and store it.",
+        ),
+        Operation::new(
+            "lens_report",
+            {
+                let mut inputs = BTreeMap::new();
+                inputs.insert("lens".into(), Type::Str);
+                inputs.insert("goal".into(), Type::Str);
+                inputs
+            },
+            Type::Str,
+            "Report what a lens does to the structure of the graph, without building it.",
         ),
         Operation::new(
             "module_floor",
@@ -1075,8 +1527,8 @@ pub fn register_providers(registry: &mut OperationRegistry, root: PathBuf) {
     let provider = Arc::new(CkgProvider::new(root));
     for op in operations() {
         match op.name.as_str() {
-            "build_ckg" | "module_floor" | "determine" | "format_determination"
-            | "explain_module" => {
+            "build_ckg" | "lens_report" | "module_floor" | "determine"
+            | "format_determination" | "explain_module" => {
                 registry.register(op, provider.clone());
             }
             _ => {}
@@ -1111,9 +1563,61 @@ mod tests {
         }
     }
 
+    /// The default lens, which by construction reproduces the map this tool
+    /// drew before lenses existed. Every pre-lens test routes through it, with
+    /// its assertions unchanged — that is the compatibility claim, checked once
+    /// per behaviour rather than asserted once in prose.
+    fn def() -> Lens {
+        Lens::default()
+    }
+
+    /// A lens parsed from a fragment, for the tests that are about parsing.
+    fn lens_from(src: &str) -> Lens {
+        lens::parse_lens(src).expect("fixture lens must parse")
+    }
+
+    fn tmap(idx: &Index) -> TermMap {
+        term_map(idx, &def())
+    }
+
+    fn graph_of(idx: &Index) -> ContactGraph {
+        induce(idx, &def()).unwrap()
+    }
+
+    /// A scratch repository holding one index, removed when the test ends.
+    ///
+    /// `lens_report` reads `.purpose/index.json` from disk by design — it must
+    /// measure what the tool will actually see — so the tests that exercise it
+    /// need a real directory rather than an in-memory `Index`.
+    struct Scratch(std::path::PathBuf);
+
+    impl Scratch {
+        fn new(tag: &str, idx: &Index) -> Scratch {
+            let dir = std::env::temp_dir().join(format!("purpose-ckg-test-{tag}"));
+            let _ = std::fs::remove_dir_all(&dir);
+            std::fs::create_dir_all(dir.join(".purpose")).unwrap();
+            std::fs::write(
+                dir.join(".purpose").join("index.json"),
+                serde_json::to_string(idx).unwrap(),
+            )
+            .unwrap();
+            Scratch(dir)
+        }
+
+        fn root(&self) -> &Path {
+            &self.0
+        }
+    }
+
+    impl Drop for Scratch {
+        fn drop(&mut self) {
+            let _ = std::fs::remove_dir_all(&self.0);
+        }
+    }
+
     #[test]
     fn a_symbol_draws_its_name_and_its_kinded_name() {
-        let t = terms_of(&entry("Resolver", "trait", "a.rs"));
+        let t = terms_of(&def(), &entry("Resolver", "trait", "a.rs"));
         assert!(t.contains("resolver"));
         assert!(t.contains("trait:resolver"));
         assert_eq!(t.len(), 2);
@@ -1123,15 +1627,15 @@ mod tests {
     fn same_name_different_kind_shares_one_term_and_differs_on_another() {
         // A struct Resolver and a trait Resolver are in contact — they draw the
         // same distinction — but they are not the same distinction drawn.
-        let a = terms_of(&entry("Resolver", "trait", "a.rs"));
-        let b = terms_of(&entry("Resolver", "struct", "b.rs"));
+        let a = terms_of(&def(), &entry("Resolver", "trait", "a.rs"));
+        let b = terms_of(&def(), &entry("Resolver", "struct", "b.rs"));
         assert_eq!(a.intersection(&b).count(), 1);
         assert_ne!(a, b);
     }
 
     #[test]
     fn a_heading_contributes_its_content_words() {
-        let t = terms_of(&entry("The Directional Pair 2", "heading", "d.md"));
+        let t = terms_of(&def(), &entry("The Directional Pair 2", "heading", "d.md"));
         assert!(t.contains("directional") && t.contains("pair"));
         assert!(!t.contains("2"), "a bare digit distinguishes nothing");
         assert!(!t.contains("the"), "a function word distinguishes nothing");
@@ -1144,8 +1648,8 @@ mod tests {
             entry("beta", "fn", "src/core/b.rs"),
             entry("gamma", "fn", "src/cli/c.rs"),
         ]);
-        let by_file = term_map(&idx, Granularity::File);
-        let by_dir = term_map(&idx, Granularity::Dir);
+        let by_file = tmap(&idx);
+        let by_dir = term_map(&idx, &Lens { granularity: Granularity::Dir, ..def() });
         assert_eq!(by_file.len(), 3);
         assert_eq!(by_dir.len(), 2);
         assert!(by_dir["src/core"].contains("alpha") && by_dir["src/core"].contains("beta"));
@@ -1158,8 +1662,7 @@ mod tests {
             entry("Resolver", "struct", "impl.rs"),
             entry("Unrelated", "fn", "other.rs"),
         ]);
-        let tau = term_map(&idx, Granularity::File);
-        let g = induced_graph(&tau, FLOOR).unwrap();
+        let g = graph_of(&idx);
         assert_eq!(g.weight("core.rs", "impl.rs"), Some(1.0));
         assert_eq!(g.weight("core.rs", "other.rs"), None);
     }
@@ -1169,7 +1672,7 @@ mod tests {
         // It would sit alone at the floor and drag β* down for a reason that is
         // about extraction, not about the repository.
         let idx = index(vec![entry("", "fn", "empty.rs"), entry("x", "fn", "a.rs")]);
-        let tau = term_map(&idx, Granularity::File);
+        let tau = tmap(&idx);
         assert!(!tau.contains_key("empty.rs"));
         assert!(tau.contains_key("a.rs"));
     }
@@ -1180,7 +1683,7 @@ mod tests {
             entry("CodebaseResolver", "struct", "a.rs"),
             entry("unrelated", "fn", "b.rs"),
         ]);
-        let tau = term_map(&idx, Granularity::File);
+        let tau = tmap(&idx);
         let wide = seeds_for(&tau, &goal_terms("resolver"));
         assert!(wide.contains("a.rs") && !wide.contains("b.rs"));
         let narrow = seeds_for(&tau, &goal_terms("codebaseresolver detail"));
@@ -1239,7 +1742,7 @@ mod tests {
             line: 1,
             snippet: String::new(),
         };
-        let terms = terms_of(&e);
+        let terms = terms_of(&def(), &e);
         assert_eq!(
             terms,
             ["framework".to_string()].into_iter().collect::<BTreeSet<_>>()
@@ -1257,7 +1760,7 @@ mod tests {
             line: 1,
             snippet: String::new(),
         };
-        assert!(terms_of(&e).contains("over"));
+        assert!(terms_of(&def(), &e).contains("over"));
     }
 
     #[test]
@@ -1291,7 +1794,7 @@ mod tests {
             entry("other", "fn", "b.rs"),
             entry("other", "fn", "c.rs"),
         ]);
-        let g = induced_graph(&term_map(&idx, Granularity::File), FLOOR).unwrap();
+        let g = graph_of(&idx);
         let before = module_character(&g);
 
         let mut perm = BTreeMap::new();
@@ -1310,9 +1813,9 @@ mod tests {
             entry("shared", "fn", "b.rs"),
             entry("solo", "fn", "c.rs"),
         ]);
-        let g = induced_graph(&term_map(&idx, Granularity::File), FLOOR).unwrap();
+        let g = graph_of(&idx);
         let record = Record::new();
-        let stored = StoredCkg::from_graph(Path::new("."), Granularity::File, FLOOR, &g, &record);
+        let stored = StoredCkg::from_graph(Path::new("."), &def(), &g, &record);
         let back = stored.graph().unwrap();
 
         assert_eq!(back.items(), g.items());
@@ -1326,8 +1829,8 @@ mod tests {
         // could be served from cache, and a cached verdict goes stale beneath
         // a moving graph.
         let idx = index(vec![entry("x", "fn", "a.rs")]);
-        let g = induced_graph(&term_map(&idx, Granularity::File), FLOOR).unwrap();
-        let stored = StoredCkg::from_graph(Path::new("."), Granularity::File, FLOOR, &g, &Record::new());
+        let g = graph_of(&idx);
+        let stored = StoredCkg::from_graph(Path::new("."), &def(), &g, &Record::new());
         let json = serde_json::to_string(&stored).unwrap();
         for forbidden in ["verdict", "accountable", "necessary", "determination"] {
             assert!(
@@ -1343,13 +1846,210 @@ mod tests {
         r.commit("a", "b", "first");
         r.commit("b", "c", "second");
         let idx = index(vec![entry("x", "fn", "a.rs")]);
-        let g = induced_graph(&term_map(&idx, Granularity::File), FLOOR).unwrap();
-        let stored = StoredCkg::from_graph(Path::new("."), Granularity::File, FLOOR, &g, &r);
+        let g = graph_of(&idx);
+        let stored = StoredCkg::from_graph(Path::new("."), &def(), &g, &r);
         assert_eq!(stored.record, 2);
 
         let mut resumed = stored.record();
         assert_eq!(resumed.count(), 2);
         resumed.commit("c", "d", "third");
         assert_eq!(resumed.count(), 3, "the record never restarts");
+    }
+
+    // -- Compatibility ------------------------------------------------------
+
+    #[test]
+    fn the_default_lens_reproduces_the_hard_coded_term_map() {
+        // The whole compatibility requirement in one assertion: against a
+        // frozen expectation, not against a second computation, so a change to
+        // the lens machinery cannot move both sides at once.
+        //
+        // The `section` entry is the single deliberate departure. Before
+        // lenses, only `heading` counted as prose, so this title was taken
+        // whole as an identifier and yielded `the directional pair` plus
+        // `section:the directional pair`.
+        let idx = index(vec![
+            entry("Resolver", "trait", "a.rs"),
+            entry("compile", "fn", "a.rs"),
+            entry("What the framework does not do", "heading", "README.md"),
+            entry("The Directional Pair", "section", "paper.tex"),
+        ]);
+
+        let expected: TermMap = [
+            (
+                "a.rs",
+                vec!["resolver", "trait:resolver", "compile", "fn:compile"],
+            ),
+            ("README.md", vec!["framework"]),
+            ("paper.tex", vec!["directional", "pair"]),
+        ]
+        .into_iter()
+        .map(|(m, ts)| {
+            (m.to_string(), ts.into_iter().map(String::from).collect::<BTreeSet<_>>())
+        })
+        .collect();
+
+        assert_eq!(tmap(&idx), expected);
+    }
+
+    // -- Diagnostics --------------------------------------------------------
+
+    #[test]
+    fn the_diagnostics_report_no_aggregate_score() {
+        // rem:quality-honest, made mechanically checkable. A scalar to maximise
+        // would be maximised, and the maximum of every scalar available here is
+        // the degenerate lens under which no module can be told from any other.
+        // In the spirit of `the_stored_form_has_nowhere_to_put_a_determination`:
+        // the absence is structural, not a matter of what the renderer prints.
+        let idx = index(vec![
+            entry("shared", "fn", "a.rs"),
+            entry("shared", "fn", "b.rs"),
+            entry("solo", "fn", "c.rs"),
+        ]);
+        let s = Scratch::new("no-score", &idx);
+        let r = lens_report(s.root(), &def(), &["shared".to_string()]).unwrap();
+        let json = serde_json::to_value(&r).unwrap();
+
+        fn keys(v: &serde_json::Value, out: &mut Vec<String>) {
+            match v {
+                serde_json::Value::Object(m) => {
+                    for (k, x) in m {
+                        out.push(k.clone());
+                        keys(x, out);
+                    }
+                }
+                serde_json::Value::Array(xs) => xs.iter().for_each(|x| keys(x, out)),
+                _ => {}
+            }
+        }
+        let mut ks = Vec::new();
+        keys(&json, &mut ks);
+        for k in &ks {
+            let l = k.to_lowercase();
+            for forbidden in ["score", "quality", "rating", "grade", "overall"] {
+                assert!(
+                    !l.contains(forbidden),
+                    "the diagnostics must carry no aggregate figure, found key '{k}'"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn a_degenerate_lens_shows_one_component_and_the_highest_floor() {
+        // The paper's argument in a single test. A lens admitting every token
+        // puts every module in contact with every other: the floor rises, the
+        // components collapse to one, and a term appears in every module. That
+        // is the worst possible map and it maximises the one number available,
+        // which is why there is no score to raise.
+        let idx = index(vec![
+            entry("What the parser does", "heading", "a.md"),
+            entry("What the emitter does", "heading", "b.md"),
+            entry("What the loader does", "heading", "c.md"),
+        ]);
+        let s = Scratch::new("degenerate", &idx);
+
+        let sharp = lens_report(s.root(), &def(), &[]).unwrap();
+        let blunt = lens_from("[terms]\nstopwords = []\nmin_len = 1\n");
+        let blunt = lens_report(s.root(), &blunt, &[]).unwrap();
+
+        assert_eq!(blunt.components, vec![3], "one component, everything in it");
+        assert!(
+            sharp.components.len() > blunt.components.len(),
+            "the discriminating lens must leave the modules apart: {:?} vs {:?}",
+            sharp.components,
+            blunt.components
+        );
+        assert!(
+            blunt.system_floor > sharp.system_floor,
+            "the degenerate lens induces the higher floor ({:?} vs {:?})",
+            blunt.system_floor,
+            sharp.system_floor
+        );
+        assert!(
+            blunt.spread.iter().any(|t| t.modules == 3),
+            "a term carried by every module is exactly what went wrong"
+        );
+    }
+
+    #[test]
+    fn running_the_lens_command_does_not_write_the_ckg() {
+        // "Let me see what this does" must not be destructive, or nobody will
+        // try anything and the instrument goes unused.
+        let idx = index(vec![entry("x", "fn", "a.rs")]);
+        let s = Scratch::new("dry-run", &idx);
+        lens_report(s.root(), &def(), &[]).unwrap();
+        assert!(
+            !ckg_path(s.root()).exists(),
+            "`ckg lens` must never write {}",
+            ckg_path(s.root()).display()
+        );
+    }
+
+    #[test]
+    fn a_determination_uses_the_lens_the_graph_was_built_with() {
+        // Design risk 2, pinned. If `determine` rebuilt τ from `lens.toml` on
+        // disk while the graph came from an older lens, seeds and cuts would
+        // disagree and the determination would be incoherent. The stored lens
+        // is the authority.
+        let idx = index(vec![
+            entry("resolver", "fn", "a.rs"),
+            entry("resolver", "fn", "b.rs"),
+            entry("emit", "fn", "c.rs"),
+        ]);
+        let s = Scratch::new("stored-lens", &idx);
+        build(s.root(), &def()).unwrap();
+
+        // Now move the on-disk lens somewhere that would seed nothing at all:
+        // `resolver` becomes a stopword and only headings are admitted.
+        std::fs::write(
+            s.root().join(lens::LENS_FILE),
+            "[include]\nkinds = [\"heading\"]\n[terms]\nstopwords = [\"resolver\"]\n",
+        )
+        .unwrap();
+
+        // `Determination` carries no seed list, so read the reachable set —
+        // which is exactly what seeding produced. Under the edited lens
+        // `resolver` is a stopword and no `.rs` file is admitted, so seeds
+        // would be empty and nothing would be reachable.
+        let d = determine(s.root(), "resolver", 0.0).unwrap();
+        assert!(
+            !d.necessary.is_empty() || !d.redundant.is_empty(),
+            "the determination must seed against the stored lens, not the edited file"
+        );
+
+        // And the graph it ran against still records the lens it was built with.
+        let stored = load(s.root()).unwrap();
+        assert_eq!(
+            stored.lens_digest,
+            StoredLens::of(&def()).digest(),
+            "the stored graph must say which lens induced it"
+        );
+    }
+
+    #[test]
+    fn jaccard_at_the_default_floor_flattens_every_contact() {
+        // Design risk 1, pinned rather than merely warned about. Jaccard lands
+        // in (0, 1], so at β = 1 every contact clamps to the floor: the graph
+        // is uniform and every determination comes out accountable for a reason
+        // that is an artefact of the weight function.
+        let idx = index(vec![
+            entry("shared", "fn", "a.rs"),
+            entry("shared", "fn", "b.rs"),
+            entry("other", "fn", "b.rs"),
+        ]);
+        let l = lens_from("[edges]\nweight = \"jaccard\"\n");
+        let g = induce(&idx, &l).unwrap();
+        for (_, _, w) in g.edges() {
+            assert_eq!(w, 1.0, "every contact clamped to β — the graph is flat");
+        }
+
+        // Below the floor the same lens discriminates again.
+        let l = lens_from("[lens]\nfloor = 0.01\n[edges]\nweight = \"jaccard\"\n");
+        let g = induce(&idx, &l).unwrap();
+        assert!(
+            g.edges().any(|(_, _, w)| w < 1.0 && w > 0.01),
+            "at a floor beneath the Jaccard range the weights survive"
+        );
     }
 }

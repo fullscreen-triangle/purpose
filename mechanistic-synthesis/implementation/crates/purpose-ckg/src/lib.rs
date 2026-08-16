@@ -50,6 +50,19 @@ pub const FLOOR: f64 = 1.0;
 /// A term map: what distinctions each source draws.
 pub type TermMap = BTreeMap<String, BTreeSet<String>>;
 
+/// A term map in which each distinction carries a weight.
+///
+/// The catalogue defines τ as a map to *sets* (`def:term-map`). This is a
+/// strict generalisation: a weight says how much a distinction is worth when
+/// telling two sources apart. Unit weights recover the set-valued construction
+/// exactly, so nothing is lost by building on this one.
+///
+/// `thm:tau-agnostic` still covers it. That theorem's premise is only that the
+/// result is a contact graph with a medium and every weight at or above the
+/// floor — which `induced_graph_weighted` guarantees by construction — and no
+/// theorem downstream inspects where an edge came from.
+pub type WeightedTermMap = BTreeMap<String, BTreeMap<String, f64>>;
+
 /// Build the contact graph induced by a term map.
 ///
 /// Two sources are in contact when they draw a distinction in common, weighted
@@ -72,6 +85,35 @@ pub fn induced_graph_with<F>(
 where
     F: Fn(usize) -> f64,
 {
+    // A set-valued map is a weighted one whose weights are all 1.
+    let weighted: WeightedTermMap = tau
+        .iter()
+        .map(|(s, ts)| (s.clone(), ts.iter().map(|t| (t.clone(), 1.0)).collect()))
+        .collect();
+    induced_graph_weighted(&weighted, floor, |a, b| {
+        let shared = a.keys().filter(|t| b.contains_key(*t)).count();
+        (shared > 0).then(|| f(shared))
+    })
+}
+
+/// Build the contact graph induced by a *weighted* term map.
+///
+/// `f` decides both questions at once: `None` means the two sources are not in
+/// contact, and `Some(w)` is the weight before the floor is applied. It sees
+/// both term maps rather than a count, so a weight may depend on *which*
+/// distinctions are shared and not merely how many.
+///
+/// Two guarantees hold whatever `f` returns, and they are the premise
+/// `thm:tau-agnostic` needs: every contact carries at least the floor, and
+/// every source is in contact with the medium.
+pub fn induced_graph_weighted<F>(
+    tau: &WeightedTermMap,
+    floor: f64,
+    f: F,
+) -> Result<ContactGraph, GraphError>
+where
+    F: Fn(&BTreeMap<String, f64>, &BTreeMap<String, f64>) -> Option<f64>,
+{
     let sources: Vec<&String> = tau.keys().collect();
     let mut g = ContactGraph::new();
     for s in &sources {
@@ -81,9 +123,8 @@ where
 
     for (i, u) in sources.iter().enumerate() {
         for v in sources.iter().skip(i + 1) {
-            let shared = tau[*u].intersection(&tau[*v]).count();
-            if shared > 0 {
-                g.add_edge(u, v, floor.max(f(shared)))?;
+            if let Some(w) = f(&tau[*u], &tau[*v]) {
+                g.add_edge(u, v, floor.max(w))?;
             }
         }
     }

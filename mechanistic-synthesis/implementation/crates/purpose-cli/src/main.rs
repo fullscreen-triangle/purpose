@@ -93,6 +93,12 @@ enum Command {
     /// question an index cannot express: given a goal, which modules cannot be
     /// dropped without changing what the goal resolves — and does the answer
     /// sit within the system's own floor, or is it contested?
+    ///
+    /// The graph is induced by a term map τ, and τ is yours to choose. Write
+    /// `.purpose/lens.toml` (start with `purpose ckg lens --init`) to decide
+    /// what counts as a distinction in this repository, and run
+    /// `purpose ckg lens` to see what that choice did to the structure before
+    /// committing it with `purpose ckg build`.
     Ckg {
         #[command(subcommand)]
         cmd: CkgCommand,
@@ -107,15 +113,50 @@ enum CkgCommand {
         #[arg(long)]
         root: Option<PathBuf>,
 
-        /// One module per source file, or per directory.
-        #[arg(long, default_value = "file")]
-        granularity: String,
+        /// Lens file (defaults to `.purpose/lens.toml`, or built-in defaults).
+        #[arg(long)]
+        lens: Option<PathBuf>,
+
+        /// One module per source file, or per directory. Overrides the lens.
+        #[arg(long)]
+        granularity: Option<String>,
 
         /// The floor β — the weight of every contact with the medium.
-        #[arg(long, default_value_t = purpose_ckg::FLOOR)]
-        floor: f64,
+        /// Overrides the lens.
+        #[arg(long)]
+        floor: Option<f64>,
 
         /// Print the stored ckg as JSON rather than a summary.
+        #[arg(long)]
+        raw: bool,
+    },
+
+    /// Report what a lens does to the structure of the graph.
+    ///
+    /// A dry run: it induces the graph in memory and never writes
+    /// `.purpose/ckg.json`, so trying a lens costs nothing. There is
+    /// deliberately no score to raise — read the components, the term spread,
+    /// and the goal saturation.
+    Lens {
+        #[arg(long)]
+        root: Option<PathBuf>,
+
+        /// Lens file (defaults to `.purpose/lens.toml`, or built-in defaults).
+        #[arg(long)]
+        lens: Option<PathBuf>,
+
+        /// Goals to report seed saturation for. Repeatable.
+        #[arg(long)]
+        goal: Vec<String>,
+
+        /// Write a commented default lens to `.purpose/lens.toml` and exit.
+        #[arg(long)]
+        init: bool,
+
+        /// Overwrite an existing lens file when used with `--init`.
+        #[arg(long)]
+        force: bool,
+
         #[arg(long)]
         raw: bool,
     },
@@ -324,15 +365,39 @@ async fn main() -> Result<()> {
             match cmd {
                 CkgCommand::Build {
                     root,
+                    lens,
                     granularity,
                     floor,
                     raw,
                 } => {
                     let root = root.unwrap_or_else(|| detect_root(&cwd));
-                    let g = purpose_domains_ckg::Granularity::parse(&granularity)
+                    let mut l = purpose_domains_ckg::load_lens(&root, lens.as_deref())
                         .map_err(|e| anyhow::anyhow!("{e}"))?;
+
+                    // CLI over lens over built-in — and say so. Silently
+                    // overriding a checked-in file is how an afternoon is lost
+                    // to wondering why an edit had no effect.
+                    if let Some(g) = granularity {
+                        let g = purpose_domains_ckg::Granularity::parse(&g)
+                            .map_err(|e| anyhow::anyhow!("{e}"))?;
+                        if g != l.granularity {
+                            eprintln!(
+                                "note: --granularity {} overrides the lens ({})",
+                                g.as_str(),
+                                l.granularity.as_str()
+                            );
+                        }
+                        l.granularity = g;
+                    }
+                    if let Some(f) = floor {
+                        if f != l.floor {
+                            eprintln!("note: --floor {f} overrides the lens ({})", l.floor);
+                        }
+                        l.floor = f;
+                    }
+
                     eprintln!("Inducing contact graph over {} ...", root.display());
-                    let stored = purpose_domains_ckg::build(&root, g, floor)
+                    let stored = purpose_domains_ckg::build(&root, &l)
                         .map_err(|e| anyhow::anyhow!("{e}"))?;
 
                     if raw {
@@ -345,7 +410,52 @@ async fn main() -> Result<()> {
                             stored.edges.len(),
                             purpose_domains_ckg::ckg_path(&root).display()
                         );
+                        println!(
+                            "lens: {} ({})",
+                            stored.lens_source.as_deref().unwrap_or("built-in defaults"),
+                            stored.lens_digest
+                        );
                         print!("{}", purpose_domains_ckg::render_floor(&stored, &graph));
+                    }
+                }
+
+                CkgCommand::Lens {
+                    root,
+                    lens,
+                    goal,
+                    init,
+                    force,
+                    raw,
+                } => {
+                    let root = root.unwrap_or_else(|| detect_root(&cwd));
+                    if init {
+                        let path = root.join(purpose_domains_ckg::lens::LENS_FILE);
+                        if path.exists() && !force {
+                            anyhow::bail!(
+                                "{} already exists — pass --force to overwrite it",
+                                path.display()
+                            );
+                        }
+                        if let Some(dir) = path.parent() {
+                            std::fs::create_dir_all(dir)?;
+                        }
+                        std::fs::write(&path, purpose_domains_ckg::lens::default_lens_toml())?;
+                        println!("wrote {}", path.display());
+                        println!(
+                            "edit it, then run `purpose ckg lens` to see what it does before \
+                             `purpose ckg build`"
+                        );
+                        return Ok(());
+                    }
+
+                    let l = purpose_domains_ckg::load_lens(&root, lens.as_deref())
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+                    let report = purpose_domains_ckg::lens_report(&root, &l, &goal)
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+                    if raw {
+                        println!("{}", serde_json::to_string_pretty(&report)?);
+                    } else {
+                        print!("{}", purpose_domains_ckg::render_lens_report(&report));
                     }
                 }
 
