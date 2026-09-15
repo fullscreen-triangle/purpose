@@ -1,0 +1,19 @@
+{
+  "name": "absicht-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Interactive web tool for Absicht — landing page presents Accountable Compilation.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "d3": "^7.9.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0",
+    "vite": "^5.4.0"
+  }
+}
