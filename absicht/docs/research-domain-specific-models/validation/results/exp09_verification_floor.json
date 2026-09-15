@@ -1,0 +1,66 @@
+{
+  "experiment": "verification_floor",
+  "theorem": "Theorem 9.2 (Verification-Floor)",
+  "claim": "On the quiescent portion of the query space, flo(R_AB) <= flo(R_A) + flo(R_B) exactly, and the theorem's disagreement rate eta_AB is not smoothed into that bound but reported separately as a decline rate (Definition 8.4): the architecture never silently averages a decline into a lower aggregate floor.",
+  "n_trials": 150,
+  "bound_satisfaction_rate": 1.0,
+  "tightness_gap_at_zero_disagreement": 0.8564625850340135,
+  "trials_by_eta_target": {
+    "0.0": {
+      "n": 30,
+      "mean": 0.8877551020408162,
+      "std": 0.028232634941474342,
+      "sem": 0.005154550338418014,
+      "ci95_lo": 0.8776521833775169,
+      "ci95_hi": 0.8978580207041155,
+      "min": 0.8367346938775511,
+      "max": 0.9387755102040817,
+      "median": 0.8775510204081632
+    },
+    "0.05": {
+      "n": 30,
+      "mean": 0.8884353741496599,
+      "std": 0.02922413858416598,
+      "sem": 0.005335573308734931,
+      "ci95_lo": 0.8779776504645395,
+      "ci95_hi": 0.8988930978347803,
+      "min": 0.8367346938775511,
+      "max": 0.9387755102040817,
+      "median": 0.8877551020408163
+    },
+    "0.15": {
+      "n": 30,
+      "mean": 0.8843537414965985,
+      "std": 0.0368725746622164,
+      "sem": 0.006731980298596451,
+      "ci95_lo": 0.8711590601113495,
+      "ci95_hi": 0.8975484228818476,
+      "min": 0.7959183673469388,
+      "max": 0.9387755102040817,
+      "median": 0.8979591836734694
+    },
+    "0.3": {
+      "n": 30,
+      "mean": 0.8721088435374149,
+      "std": 0.03671644449867785,
+      "sem": 0.006703474961104106,
+      "ci95_lo": 0.8589700326136509,
+      "ci95_hi": 0.8852476544611789,
+      "min": 0.7959183673469388,
+      "max": 0.9387755102040817,
+      "median": 0.8775510204081632
+    },
+    "0.5": {
+      "n": 30,
+      "mean": 0.8319727891156462,
+      "std": 0.12553961806496514,
+      "sem": 0.02292029355825482,
+      "ci95_lo": 0.7870490137414667,
+      "ci95_hi": 0.8768965644898257,
+      "min": 0.22448979591836735,
+      "max": 0.9387755102040817,
+      "median": 0.8367346938775511
+    }
+  },
+  "verdict": "CONFIRMED"
+}

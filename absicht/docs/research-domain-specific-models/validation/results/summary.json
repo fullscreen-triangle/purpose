@@ -1,0 +1,55 @@
+{
+  "suite": "accountable-compilation-validation",
+  "generated": "2026-09-13T00:54:15Z",
+  "n_experiments": 9,
+  "n_confirmed": 9,
+  "n_failed": 0,
+  "experiments": [
+    {
+      "experiment": "inclusion_downward",
+      "theorem": "Theorem 3.1 (Inclusion)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "noninclusion_upward",
+      "theorem": "Theorem 3.2 (Non-inclusion upward)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "sample_complexity_separation",
+      "theorem": "Theorem 3.3 (Sample-complexity separation)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "federation_floor",
+      "theorem": "Theorems 6.2 (Federation), 6.3 (Multiplicative composition law)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "cascade_knapsack",
+      "theorem": "Theorem 6.4 (Cascade)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "minimum_certifying_loop",
+      "theorem": "Theorems 7.1 (No acyclic certification below terminal floor), 7.2 (A three-cycle suffices)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "quiescence_dichotomy",
+      "theorem": "Theorem 8.2 (Dichotomy)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "route_audit",
+      "theorem": "Theorem 8.3 (Route-Audit)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "verification_floor",
+      "theorem": "Theorem 9.2 (Verification-Floor)",
+      "verdict": "CONFIRMED"
+    }
+  ],
+  "elapsed_seconds": 1.226839542388916
+}

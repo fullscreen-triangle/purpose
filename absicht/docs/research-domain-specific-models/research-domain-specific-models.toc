@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}The problem as usually posed, and why it is posed wrongly}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}What this paper contributes}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Method and scope}{3}{subsection.1.3}%
+\contentsline {part}{I\hspace {1em}Acquisition: Where Competence Should Be Trained}{3}{part.1}%
+\contentsline {section}{\numberline {2}Task domains and the extremal regime}{3}{section.2}%
+\contentsline {section}{\numberline {3}The Inclusion Theorem}{4}{section.3}%
+\contentsline {section}{\numberline {4}Sample complexity and the Domain Contract}{5}{section.4}%
+\contentsline {part}{II\hspace {1em}Composition: How Several Models Should Be Combined}{6}{part.2}%
+\contentsline {section}{\numberline {5}Bounded receivers and the floor}{6}{section.5}%
+\contentsline {section}{\numberline {6}The Federation Theorem}{6}{section.6}%
+\contentsline {section}{\numberline {7}The Cascade Theorem}{7}{section.7}%
+\contentsline {section}{\numberline {8}The Minimum Loop Theorem}{7}{section.8}%
+\contentsline {part}{III\hspace {1em}Verification Without Disclosure}{8}{part.3}%
+\contentsline {section}{\numberline {9}Opaque pairs}{8}{section.9}%
+\contentsline {section}{\numberline {10}The Quiescence Theorem}{9}{section.10}%
+\contentsline {section}{\numberline {11}The Route-Audit Theorem}{9}{section.11}%
+\contentsline {part}{IV\hspace {1em}The New Result: Verification Is a Receiver}{10}{part.4}%
+\contentsline {section}{\numberline {12}The Verification-Floor Theorem}{10}{section.12}%
+\contentsline {part}{V\hspace {1em}Architecture}{11}{part.5}%
+\contentsline {section}{\numberline {13}Accountable Compilation}{11}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Layer 1: acquisition}{11}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Layer 2: composition}{11}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Layer 3: cross-domain verification}{11}{subsection.13.3}%
+\contentsline {section}{\numberline {14}Worked instantiation}{12}{section.14}%
+\contentsline {section}{\numberline {15}Validation}{12}{section.15}%
+\contentsline {section}{\numberline {16}Discussion, scope, and limitations}{14}{section.16}%
+\contentsline {subsection}{\numberline {16.1}Scope conditions}{14}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}What the verification-floor result does not claim}{14}{subsection.16.2}%
+\contentsline {subsection}{\numberline {16.3}Open problems}{14}{subsection.16.3}%
+\contentsline {subsection}{\numberline {16.4}Conclusion}{14}{subsection.16.4}%

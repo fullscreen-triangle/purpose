@@ -1,0 +1,85 @@
+{
+  "experiment": "cascade_knapsack",
+  "theorem": "Theorem 6.4 (Cascade)",
+  "claim": "Value-density greedy allocation achieves >= (1-1/e) of the exact 0-1 knapsack optimum for floor-minimizing cascade routing.",
+  "worst_case_bound": 0.6321205588285577,
+  "trials": [
+    {
+      "budget": 1.5,
+      "greedy_to_optimal_ratio_stats": {
+        "n": 30,
+        "mean": 0.9773191846762171,
+        "std": 0.06713018391692364,
+        "sem": 0.012256238673589862,
+        "ci95_lo": 0.953296956875981,
+        "ci95_hi": 1.0013414124764533,
+        "min": 0.7388099880831447,
+        "max": 1.0,
+        "median": 1.0
+      },
+      "min_ratio_observed": 0.7388099880831447
+    },
+    {
+      "budget": 2.5,
+      "greedy_to_optimal_ratio_stats": {
+        "n": 30,
+        "mean": 0.9590921486293724,
+        "std": 0.08388464777728716,
+        "sem": 0.01531517127199859,
+        "ci95_lo": 0.9290744129362551,
+        "ci95_hi": 0.9891098843224897,
+        "min": 0.6581748347311583,
+        "max": 1.0,
+        "median": 1.0
+      },
+      "min_ratio_observed": 0.6581748347311583
+    },
+    {
+      "budget": 3.5,
+      "greedy_to_optimal_ratio_stats": {
+        "n": 30,
+        "mean": 0.9742656837775648,
+        "std": 0.05373898055168499,
+        "sem": 0.009811350621829761,
+        "ci95_lo": 0.9550354365587785,
+        "ci95_hi": 0.9934959309963511,
+        "min": 0.8032636133268838,
+        "max": 1.0000000000000002,
+        "median": 1.0
+      },
+      "min_ratio_observed": 0.8032636133268838
+    },
+    {
+      "budget": 5.0,
+      "greedy_to_optimal_ratio_stats": {
+        "n": 30,
+        "mean": 0.9841928701538366,
+        "std": 0.03257302568497577,
+        "sem": 0.005946993644618798,
+        "ci95_lo": 0.9725367626103838,
+        "ci95_hi": 0.9958489776972894,
+        "min": 0.8602118881219537,
+        "max": 1.0000000000000002,
+        "median": 1.0
+      },
+      "min_ratio_observed": 0.8602118881219537
+    },
+    {
+      "budget": 8.0,
+      "greedy_to_optimal_ratio_stats": {
+        "n": 30,
+        "mean": 0.9851349341011875,
+        "std": 0.030838949267386548,
+        "sem": 0.005630396054501676,
+        "ci95_lo": 0.9740993578343642,
+        "ci95_hi": 0.9961705103680107,
+        "min": 0.8675761696642184,
+        "max": 1.0000000000000002,
+        "median": 1.0
+      },
+      "min_ratio_observed": 0.8675761696642184
+    }
+  ],
+  "min_ratio_over_all_trials": 0.6581748347311583,
+  "verdict": "CONFIRMED"
+}

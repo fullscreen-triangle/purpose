@@ -1,0 +1,982 @@
+{
+  "experiment": "noninclusion_upward",
+  "theorem": "Theorem 3.2 (Non-inclusion upward)",
+  "claim": "A model trained only on a proper restriction exhibits a strictly positive out-of-support loss gap Delta > 0, growing with the measure of the uncovered region.",
+  "n_trials": 120,
+  "delta_stats": {
+    "n": 120,
+    "mean": 0.34023307604010616,
+    "std": 0.0710298109284734,
+    "sem": 0.006484104950141974,
+    "ci95_lo": 0.3275242303378279,
+    "ci95_hi": 0.3529419217423844,
+    "min": 0.2223505212317911,
+    "max": 0.4296274844835664,
+    "median": 0.3515435147348436
+  },
+  "positive_gap_rate": 1.0,
+  "correlation_gap_vs_uncovered_measure": 0.9917279242586826,
+  "trials": [
+    {
+      "seed": 0,
+      "box_radius": 0.3,
+      "loss_in_support": 0.003948258133345959,
+      "loss_out_of_support": 0.4211480350502434,
+      "gap_delta": 0.4171997769168974,
+      "out_of_support_measure": 0.9883333333333333
+    },
+    {
+      "seed": 0,
+      "box_radius": 0.5,
+      "loss_in_support": 0.017116819090001765,
+      "loss_out_of_support": 0.39137232996530424,
+      "gap_delta": 0.37425551087530246,
+      "out_of_support_measure": 0.9361666666666667
+    },
+    {
+      "seed": 0,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04296762282553328,
+      "loss_out_of_support": 0.36278894993016,
+      "gap_delta": 0.3198213271046267,
+      "out_of_support_measure": 0.8266666666666667
+    },
+    {
+      "seed": 0,
+      "box_radius": 0.9,
+      "loss_in_support": 0.0933182750969351,
+      "loss_out_of_support": 0.32638594687547434,
+      "gap_delta": 0.23306767177853924,
+      "out_of_support_measure": 0.6234999999999999
+    },
+    {
+      "seed": 1,
+      "box_radius": 0.3,
+      "loss_in_support": 0.003463411344374176,
+      "loss_out_of_support": 0.42702955683274285,
+      "gap_delta": 0.4235661454883687,
+      "out_of_support_measure": 0.9861666666666666
+    },
+    {
+      "seed": 1,
+      "box_radius": 0.5,
+      "loss_in_support": 0.015657526101664945,
+      "loss_out_of_support": 0.39934703595804416,
+      "gap_delta": 0.38368950985637923,
+      "out_of_support_measure": 0.9365
+    },
+    {
+      "seed": 1,
+      "box_radius": 0.7,
+      "loss_in_support": 0.044672350552122236,
+      "loss_out_of_support": 0.3664923579307748,
+      "gap_delta": 0.3218200073786526,
+      "out_of_support_measure": 0.8166666666666667
+    },
+    {
+      "seed": 1,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09513627836265812,
+      "loss_out_of_support": 0.3311072454749391,
+      "gap_delta": 0.23597096711228097,
+      "out_of_support_measure": 0.611
+    },
+    {
+      "seed": 2,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0033296954826898106,
+      "loss_out_of_support": 0.4311890822846367,
+      "gap_delta": 0.4278593868019469,
+      "out_of_support_measure": 0.9841666666666666
+    },
+    {
+      "seed": 2,
+      "box_radius": 0.5,
+      "loss_in_support": 0.015921401098203954,
+      "loss_out_of_support": 0.40137223696356195,
+      "gap_delta": 0.385450835865358,
+      "out_of_support_measure": 0.9338333333333333
+    },
+    {
+      "seed": 2,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04378575270022066,
+      "loss_out_of_support": 0.37042585673630246,
+      "gap_delta": 0.3266401040360818,
+      "out_of_support_measure": 0.8181666666666667
+    },
+    {
+      "seed": 2,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09363656984501909,
+      "loss_out_of_support": 0.3324090795618113,
+      "gap_delta": 0.23877250971679223,
+      "out_of_support_measure": 0.6218333333333333
+    },
+    {
+      "seed": 3,
+      "box_radius": 0.3,
+      "loss_in_support": 0.003457519795109564,
+      "loss_out_of_support": 0.4264046264009071,
+      "gap_delta": 0.42294710660579754,
+      "out_of_support_measure": 0.9876666666666667
+    },
+    {
+      "seed": 3,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016751599317041198,
+      "loss_out_of_support": 0.39542248692319837,
+      "gap_delta": 0.3786708876061572,
+      "out_of_support_measure": 0.9328333333333333
+    },
+    {
+      "seed": 3,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04547165313273496,
+      "loss_out_of_support": 0.3614963477854892,
+      "gap_delta": 0.3160246946527543,
+      "out_of_support_measure": 0.821
+    },
+    {
+      "seed": 3,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09386727642327777,
+      "loss_out_of_support": 0.3259020592323855,
+      "gap_delta": 0.23203478280910775,
+      "out_of_support_measure": 0.6248333333333334
+    },
+    {
+      "seed": 4,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0035923296232525633,
+      "loss_out_of_support": 0.42786562695882413,
+      "gap_delta": 0.42427329733557156,
+      "out_of_support_measure": 0.9858333333333333
+    },
+    {
+      "seed": 4,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016073293125501088,
+      "loss_out_of_support": 0.40176393543101746,
+      "gap_delta": 0.38569064230551636,
+      "out_of_support_measure": 0.9311666666666667
+    },
+    {
+      "seed": 4,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04375900213674728,
+      "loss_out_of_support": 0.37110401891633366,
+      "gap_delta": 0.3273450167795864,
+      "out_of_support_measure": 0.8166666666666667
+    },
+    {
+      "seed": 4,
+      "box_radius": 0.9,
+      "loss_in_support": 0.0948372866406804,
+      "loss_out_of_support": 0.3326554244207086,
+      "gap_delta": 0.2378181377800282,
+      "out_of_support_measure": 0.6143333333333334
+    },
+    {
+      "seed": 5,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0036480550895053253,
+      "loss_out_of_support": 0.42536197959804983,
+      "gap_delta": 0.4217139245085445,
+      "out_of_support_measure": 0.9866666666666667
+    },
+    {
+      "seed": 5,
+      "box_radius": 0.5,
+      "loss_in_support": 0.01629005084478365,
+      "loss_out_of_support": 0.39616598391212726,
+      "gap_delta": 0.37987593306734363,
+      "out_of_support_measure": 0.9365
+    },
+    {
+      "seed": 5,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04317247131602852,
+      "loss_out_of_support": 0.36699672149096985,
+      "gap_delta": 0.3238242501749413,
+      "out_of_support_measure": 0.821
+    },
+    {
+      "seed": 5,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09372055275079529,
+      "loss_out_of_support": 0.33060747101373955,
+      "gap_delta": 0.23688691826294428,
+      "out_of_support_measure": 0.6208333333333333
+    },
+    {
+      "seed": 6,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0037284973577733018,
+      "loss_out_of_support": 0.4245869736477535,
+      "gap_delta": 0.4208584762899802,
+      "out_of_support_measure": 0.986
+    },
+    {
+      "seed": 6,
+      "box_radius": 0.5,
+      "loss_in_support": 0.015861303228411894,
+      "loss_out_of_support": 0.3981666337578129,
+      "gap_delta": 0.382305330529401,
+      "out_of_support_measure": 0.9293333333333333
+    },
+    {
+      "seed": 6,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04431109640686679,
+      "loss_out_of_support": 0.3700183380262182,
+      "gap_delta": 0.3257072416193514,
+      "out_of_support_measure": 0.8048333333333333
+    },
+    {
+      "seed": 6,
+      "box_radius": 0.9,
+      "loss_in_support": 0.0933819730571017,
+      "loss_out_of_support": 0.33159425125236214,
+      "gap_delta": 0.23821227819526042,
+      "out_of_support_measure": 0.619
+    },
+    {
+      "seed": 7,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0034478286974415706,
+      "loss_out_of_support": 0.42601851988112566,
+      "gap_delta": 0.42257069118368407,
+      "out_of_support_measure": 0.9843333333333333
+    },
+    {
+      "seed": 7,
+      "box_radius": 0.5,
+      "loss_in_support": 0.01579386217503528,
+      "loss_out_of_support": 0.4013064104754623,
+      "gap_delta": 0.385512548300427,
+      "out_of_support_measure": 0.9256666666666666
+    },
+    {
+      "seed": 7,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04407029802931399,
+      "loss_out_of_support": 0.36768300005237636,
+      "gap_delta": 0.32361270202306236,
+      "out_of_support_measure": 0.8141666666666667
+    },
+    {
+      "seed": 7,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09598537490047071,
+      "loss_out_of_support": 0.328183681510762,
+      "gap_delta": 0.23219830661029128,
+      "out_of_support_measure": 0.6061666666666667
+    },
+    {
+      "seed": 8,
+      "box_radius": 0.3,
+      "loss_in_support": 0.00344432289890103,
+      "loss_out_of_support": 0.4293642046816135,
+      "gap_delta": 0.4259198817827125,
+      "out_of_support_measure": 0.9868333333333333
+    },
+    {
+      "seed": 8,
+      "box_radius": 0.5,
+      "loss_in_support": 0.01745339874755221,
+      "loss_out_of_support": 0.3975290703170661,
+      "gap_delta": 0.3800756715695139,
+      "out_of_support_measure": 0.9345
+    },
+    {
+      "seed": 8,
+      "box_radius": 0.7,
+      "loss_in_support": 0.044045748651354764,
+      "loss_out_of_support": 0.370728026036954,
+      "gap_delta": 0.32668227738559924,
+      "out_of_support_measure": 0.8175
+    },
+    {
+      "seed": 8,
+      "box_radius": 0.9,
+      "loss_in_support": 0.0940183252013974,
+      "loss_out_of_support": 0.33544875502686095,
+      "gap_delta": 0.24143042982546353,
+      "out_of_support_measure": 0.6186666666666667
+    },
+    {
+      "seed": 9,
+      "box_radius": 0.3,
+      "loss_in_support": 0.003311131283635067,
+      "loss_out_of_support": 0.431385687182079,
+      "gap_delta": 0.4280745558984439,
+      "out_of_support_measure": 0.9876666666666667
+    },
+    {
+      "seed": 9,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016482035501632575,
+      "loss_out_of_support": 0.40048481059918234,
+      "gap_delta": 0.38400277509754976,
+      "out_of_support_measure": 0.9339999999999999
+    },
+    {
+      "seed": 9,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04429767819147832,
+      "loss_out_of_support": 0.37093640105764,
+      "gap_delta": 0.32663872286616163,
+      "out_of_support_measure": 0.8203333333333334
+    },
+    {
+      "seed": 9,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09422979218505641,
+      "loss_out_of_support": 0.3357281006375359,
+      "gap_delta": 0.2414983084524795,
+      "out_of_support_measure": 0.6183333333333334
+    },
+    {
+      "seed": 10,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0036277588461750467,
+      "loss_out_of_support": 0.4231003967636295,
+      "gap_delta": 0.4194726379174544,
+      "out_of_support_measure": 0.9858333333333333
+    },
+    {
+      "seed": 10,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016672295193503807,
+      "loss_out_of_support": 0.3936427226799709,
+      "gap_delta": 0.3769704274864671,
+      "out_of_support_measure": 0.9288333333333333
+    },
+    {
+      "seed": 10,
+      "box_radius": 0.7,
+      "loss_in_support": 0.043136785487720646,
+      "loss_out_of_support": 0.3651280067153275,
+      "gap_delta": 0.32199122122760687,
+      "out_of_support_measure": 0.8141666666666667
+    },
+    {
+      "seed": 10,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09335036456329149,
+      "loss_out_of_support": 0.3273076955911026,
+      "gap_delta": 0.23395733102781113,
+      "out_of_support_measure": 0.6123333333333334
+    },
+    {
+      "seed": 11,
+      "box_radius": 0.3,
+      "loss_in_support": 0.003070037506996139,
+      "loss_out_of_support": 0.43269752199056255,
+      "gap_delta": 0.4296274844835664,
+      "out_of_support_measure": 0.9828333333333333
+    },
+    {
+      "seed": 11,
+      "box_radius": 0.5,
+      "loss_in_support": 0.015559436043998402,
+      "loss_out_of_support": 0.403031476081429,
+      "gap_delta": 0.3874720400374306,
+      "out_of_support_measure": 0.9278333333333333
+    },
+    {
+      "seed": 11,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04368472020812805,
+      "loss_out_of_support": 0.37037478760588277,
+      "gap_delta": 0.32669006739775475,
+      "out_of_support_measure": 0.8161666666666667
+    },
+    {
+      "seed": 11,
+      "box_radius": 0.9,
+      "loss_in_support": 0.093240559410959,
+      "loss_out_of_support": 0.33574213745045217,
+      "gap_delta": 0.24250157803949318,
+      "out_of_support_measure": 0.6134999999999999
+    },
+    {
+      "seed": 12,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0033609335518975723,
+      "loss_out_of_support": 0.429206044550573,
+      "gap_delta": 0.4258451109986754,
+      "out_of_support_measure": 0.9878333333333333
+    },
+    {
+      "seed": 12,
+      "box_radius": 0.5,
+      "loss_in_support": 0.01725097764213835,
+      "loss_out_of_support": 0.3969023690690676,
+      "gap_delta": 0.3796513914269293,
+      "out_of_support_measure": 0.9365
+    },
+    {
+      "seed": 12,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04394331538814597,
+      "loss_out_of_support": 0.3664665584359572,
+      "gap_delta": 0.3225232430478112,
+      "out_of_support_measure": 0.8256666666666667
+    },
+    {
+      "seed": 12,
+      "box_radius": 0.9,
+      "loss_in_support": 0.0936479095364338,
+      "loss_out_of_support": 0.33031146933946,
+      "gap_delta": 0.23666355980302617,
+      "out_of_support_measure": 0.6261666666666666
+    },
+    {
+      "seed": 13,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0035330196792534027,
+      "loss_out_of_support": 0.4244178887663817,
+      "gap_delta": 0.4208848690871283,
+      "out_of_support_measure": 0.986
+    },
+    {
+      "seed": 13,
+      "box_radius": 0.5,
+      "loss_in_support": 0.0169488061656518,
+      "loss_out_of_support": 0.39350699650995796,
+      "gap_delta": 0.37655819034430615,
+      "out_of_support_measure": 0.9323333333333333
+    },
+    {
+      "seed": 13,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04446956626503571,
+      "loss_out_of_support": 0.3613368092717695,
+      "gap_delta": 0.31686724300673375,
+      "out_of_support_measure": 0.8215
+    },
+    {
+      "seed": 13,
+      "box_radius": 0.9,
+      "loss_in_support": 0.0938951637785873,
+      "loss_out_of_support": 0.32660256983589897,
+      "gap_delta": 0.23270740605731166,
+      "out_of_support_measure": 0.6143333333333334
+    },
+    {
+      "seed": 14,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0035398565813730765,
+      "loss_out_of_support": 0.42137753891481744,
+      "gap_delta": 0.41783768233344437,
+      "out_of_support_measure": 0.9823333333333333
+    },
+    {
+      "seed": 14,
+      "box_radius": 0.5,
+      "loss_in_support": 0.015157498999793515,
+      "loss_out_of_support": 0.3954833472468479,
+      "gap_delta": 0.3803258482470544,
+      "out_of_support_measure": 0.9318333333333333
+    },
+    {
+      "seed": 14,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04389549910064795,
+      "loss_out_of_support": 0.35833942747328523,
+      "gap_delta": 0.3144439283726373,
+      "out_of_support_measure": 0.8208333333333333
+    },
+    {
+      "seed": 14,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09571758924051273,
+      "loss_out_of_support": 0.32244713901444644,
+      "gap_delta": 0.22672954977393373,
+      "out_of_support_measure": 0.6088333333333333
+    },
+    {
+      "seed": 15,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0034135033214829375,
+      "loss_out_of_support": 0.4284415211986312,
+      "gap_delta": 0.4250280178771483,
+      "out_of_support_measure": 0.9841666666666666
+    },
+    {
+      "seed": 15,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016451628660397906,
+      "loss_out_of_support": 0.39893932718843594,
+      "gap_delta": 0.38248769852803804,
+      "out_of_support_measure": 0.9331666666666667
+    },
+    {
+      "seed": 15,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04440071712406055,
+      "loss_out_of_support": 0.3631795642917398,
+      "gap_delta": 0.31877884716767924,
+      "out_of_support_measure": 0.8216666666666667
+    },
+    {
+      "seed": 15,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09360456617720239,
+      "loss_out_of_support": 0.33136268323479484,
+      "gap_delta": 0.23775811705759245,
+      "out_of_support_measure": 0.613
+    },
+    {
+      "seed": 16,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0034786918020335077,
+      "loss_out_of_support": 0.42728752458203206,
+      "gap_delta": 0.42380883277999853,
+      "out_of_support_measure": 0.9865
+    },
+    {
+      "seed": 16,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016642540817001332,
+      "loss_out_of_support": 0.3957697467108954,
+      "gap_delta": 0.37912720589389404,
+      "out_of_support_measure": 0.9353333333333333
+    },
+    {
+      "seed": 16,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04413785195127852,
+      "loss_out_of_support": 0.3631554401711915,
+      "gap_delta": 0.319017588219913,
+      "out_of_support_measure": 0.8240000000000001
+    },
+    {
+      "seed": 16,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09796513693582698,
+      "loss_out_of_support": 0.3203156581676181,
+      "gap_delta": 0.2223505212317911,
+      "out_of_support_measure": 0.6193333333333333
+    },
+    {
+      "seed": 17,
+      "box_radius": 0.3,
+      "loss_in_support": 0.003121817024932603,
+      "loss_out_of_support": 0.43045910404285487,
+      "gap_delta": 0.4273372870179223,
+      "out_of_support_measure": 0.9858333333333333
+    },
+    {
+      "seed": 17,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016520501426748935,
+      "loss_out_of_support": 0.39988561891169955,
+      "gap_delta": 0.3833651174849506,
+      "out_of_support_measure": 0.9325
+    },
+    {
+      "seed": 17,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04282963590171788,
+      "loss_out_of_support": 0.37166115449610265,
+      "gap_delta": 0.32883151859438475,
+      "out_of_support_measure": 0.8138333333333333
+    },
+    {
+      "seed": 17,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09432627451646268,
+      "loss_out_of_support": 0.32952321872613877,
+      "gap_delta": 0.23519694420967607,
+      "out_of_support_measure": 0.6226666666666667
+    },
+    {
+      "seed": 18,
+      "box_radius": 0.3,
+      "loss_in_support": 0.003900622913352622,
+      "loss_out_of_support": 0.4225669389687133,
+      "gap_delta": 0.41866631605536064,
+      "out_of_support_measure": 0.9873333333333333
+    },
+    {
+      "seed": 18,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016600891457367418,
+      "loss_out_of_support": 0.3937354551411541,
+      "gap_delta": 0.37713456368378667,
+      "out_of_support_measure": 0.935
+    },
+    {
+      "seed": 18,
+      "box_radius": 0.7,
+      "loss_in_support": 0.0450295884357002,
+      "loss_out_of_support": 0.36182008423392714,
+      "gap_delta": 0.31679049579822693,
+      "out_of_support_measure": 0.8178333333333333
+    },
+    {
+      "seed": 18,
+      "box_radius": 0.9,
+      "loss_in_support": 0.0928162702646198,
+      "loss_out_of_support": 0.3314893140646359,
+      "gap_delta": 0.23867304380001608,
+      "out_of_support_measure": 0.6151666666666666
+    },
+    {
+      "seed": 19,
+      "box_radius": 0.3,
+      "loss_in_support": 0.003294193979599386,
+      "loss_out_of_support": 0.42888025985237194,
+      "gap_delta": 0.42558606587277253,
+      "out_of_support_measure": 0.9843333333333333
+    },
+    {
+      "seed": 19,
+      "box_radius": 0.5,
+      "loss_in_support": 0.015286678720852688,
+      "loss_out_of_support": 0.3999733230141018,
+      "gap_delta": 0.3846866442932491,
+      "out_of_support_measure": 0.9338333333333333
+    },
+    {
+      "seed": 19,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04408873021222308,
+      "loss_out_of_support": 0.36534105729932514,
+      "gap_delta": 0.32125232708710205,
+      "out_of_support_measure": 0.8171666666666667
+    },
+    {
+      "seed": 19,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09472665903605547,
+      "loss_out_of_support": 0.3300494600136288,
+      "gap_delta": 0.2353228009775733,
+      "out_of_support_measure": 0.6121666666666667
+    },
+    {
+      "seed": 20,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0034491524212325163,
+      "loss_out_of_support": 0.4320569591571784,
+      "gap_delta": 0.4286078067359459,
+      "out_of_support_measure": 0.9865
+    },
+    {
+      "seed": 20,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016290464001882894,
+      "loss_out_of_support": 0.4020268553699548,
+      "gap_delta": 0.3857363913680719,
+      "out_of_support_measure": 0.9381666666666667
+    },
+    {
+      "seed": 20,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04408721038015275,
+      "loss_out_of_support": 0.36870614846366095,
+      "gap_delta": 0.3246189380835082,
+      "out_of_support_measure": 0.8241666666666667
+    },
+    {
+      "seed": 20,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09115420448678911,
+      "loss_out_of_support": 0.34032709045720105,
+      "gap_delta": 0.24917288597041193,
+      "out_of_support_measure": 0.6203333333333334
+    },
+    {
+      "seed": 21,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0032547441375206407,
+      "loss_out_of_support": 0.42294831410864675,
+      "gap_delta": 0.4196935699711261,
+      "out_of_support_measure": 0.9845
+    },
+    {
+      "seed": 21,
+      "box_radius": 0.5,
+      "loss_in_support": 0.015174635360835433,
+      "loss_out_of_support": 0.39628313992907327,
+      "gap_delta": 0.38110850456823786,
+      "out_of_support_measure": 0.9339999999999999
+    },
+    {
+      "seed": 21,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04397940203906188,
+      "loss_out_of_support": 0.3615610990885698,
+      "gap_delta": 0.31758169704950795,
+      "out_of_support_measure": 0.8158333333333333
+    },
+    {
+      "seed": 21,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09653290061325032,
+      "loss_out_of_support": 0.3210003734794829,
+      "gap_delta": 0.2244674728662326,
+      "out_of_support_measure": 0.6113333333333333
+    },
+    {
+      "seed": 22,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0033543743405966705,
+      "loss_out_of_support": 0.4302010240014928,
+      "gap_delta": 0.42684664966089614,
+      "out_of_support_measure": 0.984
+    },
+    {
+      "seed": 22,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016001986991527724,
+      "loss_out_of_support": 0.3998102887977947,
+      "gap_delta": 0.38380830180626696,
+      "out_of_support_measure": 0.9356666666666666
+    },
+    {
+      "seed": 22,
+      "box_radius": 0.7,
+      "loss_in_support": 0.043753423423410716,
+      "loss_out_of_support": 0.3653588132801966,
+      "gap_delta": 0.3216053898567859,
+      "out_of_support_measure": 0.8240000000000001
+    },
+    {
+      "seed": 22,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09523648880418897,
+      "loss_out_of_support": 0.33049434497309205,
+      "gap_delta": 0.23525785616890307,
+      "out_of_support_measure": 0.6121666666666667
+    },
+    {
+      "seed": 23,
+      "box_radius": 0.3,
+      "loss_in_support": 0.003428878330688765,
+      "loss_out_of_support": 0.42391094592881373,
+      "gap_delta": 0.42048206759812495,
+      "out_of_support_measure": 0.9856666666666667
+    },
+    {
+      "seed": 23,
+      "box_radius": 0.5,
+      "loss_in_support": 0.01492397977536297,
+      "loss_out_of_support": 0.3974691487099659,
+      "gap_delta": 0.38254516893460294,
+      "out_of_support_measure": 0.9348333333333333
+    },
+    {
+      "seed": 23,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04326359184618156,
+      "loss_out_of_support": 0.3671820631194685,
+      "gap_delta": 0.32391847127328693,
+      "out_of_support_measure": 0.8128333333333333
+    },
+    {
+      "seed": 23,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09504077154971513,
+      "loss_out_of_support": 0.32716065574709713,
+      "gap_delta": 0.232119884197382,
+      "out_of_support_measure": 0.6113333333333333
+    },
+    {
+      "seed": 24,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0031154950457372953,
+      "loss_out_of_support": 0.42656418208474195,
+      "gap_delta": 0.4234486870390047,
+      "out_of_support_measure": 0.9875
+    },
+    {
+      "seed": 24,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016951496242883182,
+      "loss_out_of_support": 0.3928438306419463,
+      "gap_delta": 0.3758923343990631,
+      "out_of_support_measure": 0.9368333333333333
+    },
+    {
+      "seed": 24,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04541603925128236,
+      "loss_out_of_support": 0.3602639262076159,
+      "gap_delta": 0.31484788695633353,
+      "out_of_support_measure": 0.8181666666666667
+    },
+    {
+      "seed": 24,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09481773939116485,
+      "loss_out_of_support": 0.32644359126607975,
+      "gap_delta": 0.2316258518749149,
+      "out_of_support_measure": 0.6118333333333333
+    },
+    {
+      "seed": 25,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0033710537277119213,
+      "loss_out_of_support": 0.4254483537129676,
+      "gap_delta": 0.42207729998525567,
+      "out_of_support_measure": 0.9863333333333333
+    },
+    {
+      "seed": 25,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016474942536816767,
+      "loss_out_of_support": 0.3918038225178801,
+      "gap_delta": 0.37532887998106335,
+      "out_of_support_measure": 0.9355
+    },
+    {
+      "seed": 25,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04580669753303292,
+      "loss_out_of_support": 0.3563572409397526,
+      "gap_delta": 0.31055054340671967,
+      "out_of_support_measure": 0.8221666666666667
+    },
+    {
+      "seed": 25,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09464695902369148,
+      "loss_out_of_support": 0.32575136986760767,
+      "gap_delta": 0.2311044108439162,
+      "out_of_support_measure": 0.61
+    },
+    {
+      "seed": 26,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0036767424483437105,
+      "loss_out_of_support": 0.42342697912009114,
+      "gap_delta": 0.41975023667174743,
+      "out_of_support_measure": 0.9848333333333333
+    },
+    {
+      "seed": 26,
+      "box_radius": 0.5,
+      "loss_in_support": 0.015724899494543833,
+      "loss_out_of_support": 0.3966981678121045,
+      "gap_delta": 0.3809732683175607,
+      "out_of_support_measure": 0.9326666666666666
+    },
+    {
+      "seed": 26,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04316151184752186,
+      "loss_out_of_support": 0.3676556368408944,
+      "gap_delta": 0.32449412499337255,
+      "out_of_support_measure": 0.8109999999999999
+    },
+    {
+      "seed": 26,
+      "box_radius": 0.9,
+      "loss_in_support": 0.0934305667323584,
+      "loss_out_of_support": 0.3302954711481204,
+      "gap_delta": 0.23686490441576202,
+      "out_of_support_measure": 0.6173333333333333
+    },
+    {
+      "seed": 27,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0039416598333599845,
+      "loss_out_of_support": 0.4229898023341267,
+      "gap_delta": 0.4190481425007667,
+      "out_of_support_measure": 0.9858333333333333
+    },
+    {
+      "seed": 27,
+      "box_radius": 0.5,
+      "loss_in_support": 0.01652454900921377,
+      "loss_out_of_support": 0.39651644616403764,
+      "gap_delta": 0.37999189715482384,
+      "out_of_support_measure": 0.9316666666666666
+    },
+    {
+      "seed": 27,
+      "box_radius": 0.7,
+      "loss_in_support": 0.04578216739245954,
+      "loss_out_of_support": 0.3596982637839575,
+      "gap_delta": 0.3139160963914979,
+      "out_of_support_measure": 0.8171666666666667
+    },
+    {
+      "seed": 27,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09526444536214837,
+      "loss_out_of_support": 0.3242578989610002,
+      "gap_delta": 0.22899345359885184,
+      "out_of_support_measure": 0.6113333333333333
+    },
+    {
+      "seed": 28,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0035377566488523477,
+      "loss_out_of_support": 0.42301880291294924,
+      "gap_delta": 0.4194810462640969,
+      "out_of_support_measure": 0.9835
+    },
+    {
+      "seed": 28,
+      "box_radius": 0.5,
+      "loss_in_support": 0.015934148532261792,
+      "loss_out_of_support": 0.3969547567009953,
+      "gap_delta": 0.3810206081687335,
+      "out_of_support_measure": 0.9293333333333333
+    },
+    {
+      "seed": 28,
+      "box_radius": 0.7,
+      "loss_in_support": 0.044111319413093056,
+      "loss_out_of_support": 0.3660966610301073,
+      "gap_delta": 0.32198534161701425,
+      "out_of_support_measure": 0.8141666666666667
+    },
+    {
+      "seed": 28,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09429396884587508,
+      "loss_out_of_support": 0.33011433566073095,
+      "gap_delta": 0.23582036681485585,
+      "out_of_support_measure": 0.6094999999999999
+    },
+    {
+      "seed": 29,
+      "box_radius": 0.3,
+      "loss_in_support": 0.0034881014618263683,
+      "loss_out_of_support": 0.4283799780295359,
+      "gap_delta": 0.42489187656770955,
+      "out_of_support_measure": 0.9848333333333333
+    },
+    {
+      "seed": 29,
+      "box_radius": 0.5,
+      "loss_in_support": 0.016493489576732585,
+      "loss_out_of_support": 0.4003017780253788,
+      "gap_delta": 0.38380828844864623,
+      "out_of_support_measure": 0.9286666666666666
+    },
+    {
+      "seed": 29,
+      "box_radius": 0.7,
+      "loss_in_support": 0.045201447431599026,
+      "loss_out_of_support": 0.36740107295143754,
+      "gap_delta": 0.3221996255198385,
+      "out_of_support_measure": 0.813
+    },
+    {
+      "seed": 29,
+      "box_radius": 0.9,
+      "loss_in_support": 0.09304687993770078,
+      "loss_out_of_support": 0.3338894705130486,
+      "gap_delta": 0.24084259057534785,
+      "out_of_support_measure": 0.6174999999999999
+    }
+  ],
+  "verdict": "CONFIRMED"
+}

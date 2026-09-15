@@ -1,0 +1,136 @@
+{
+  "experiment": "minimum_certifying_loop",
+  "theorem": "Theorems 7.1 (No acyclic certification below terminal floor), 7.2 (A three-cycle suffices)",
+  "claim": "The certified error (distance of the check graph's agreed value from the true answer, under a single corrupted member with probability 0.4) drops sharply at check-graph size 3, because a median-based fixed point is outlier-robust while a pairwise mean (size <= 2, no independent third opinion) is not.",
+  "trials": [
+    {
+      "loop_size": 1,
+      "certified_error_stats": {
+        "n": 30,
+        "mean": 4.514734835855242,
+        "std": 5.526139992726465,
+        "sem": 1.0089305099825732,
+        "ci95_lo": 2.5372310362893984,
+        "ci95_hi": 6.492238635421085,
+        "min": 0.015236773841877493,
+        "max": 14.92055674643499,
+        "median": 1.2180740571979776
+      },
+      "baseline_best_individual_error_stats": {
+        "n": 30,
+        "mean": 4.514734835855242,
+        "std": 5.526139992726465,
+        "sem": 1.0089305099825732,
+        "ci95_lo": 2.5372310362893984,
+        "ci95_hi": 6.492238635421085,
+        "min": 0.015236773841877493,
+        "max": 14.92055674643499,
+        "median": 1.2180740571979776
+      }
+    },
+    {
+      "loop_size": 2,
+      "certified_error_stats": {
+        "n": 30,
+        "mean": 3.375710506980427,
+        "std": 2.7907032712393742,
+        "sem": 0.5095103776537544,
+        "ci95_lo": 2.3770701667790686,
+        "ci95_hi": 4.374350847181786,
+        "min": 0.09598809250920581,
+        "max": 8.291736395382962,
+        "median": 4.172376268847404
+      },
+      "baseline_best_individual_error_stats": {
+        "n": 30,
+        "mean": 0.6823196436049035,
+        "std": 0.6416360551644897,
+        "sem": 0.11714618037407339,
+        "ci95_lo": 0.45271313007171965,
+        "ci95_hi": 0.9119261571380873,
+        "min": 0.015236773841877493,
+        "max": 2.251499611656996,
+        "median": 0.4031999755913045
+      }
+    },
+    {
+      "loop_size": 3,
+      "certified_error_stats": {
+        "n": 30,
+        "mean": 0.672567447451101,
+        "std": 0.5962323787273941,
+        "sem": 0.10885664111465236,
+        "ci95_lo": 0.45920843086638236,
+        "ci95_hi": 0.8859264640358195,
+        "min": 0.015236773841877493,
+        "max": 2.251499611656996,
+        "median": 0.4471827001197646
+      },
+      "baseline_best_individual_error_stats": {
+        "n": 30,
+        "mean": 0.4188552379613183,
+        "std": 0.3626550951959758,
+        "sem": 0.06621145874433977,
+        "ci95_lo": 0.28908077882241234,
+        "ci95_hi": 0.5486296971002242,
+        "min": 0.015236773841877493,
+        "max": 1.4270295669788666,
+        "median": 0.32162707753346176
+      }
+    },
+    {
+      "loop_size": 4,
+      "certified_error_stats": {
+        "n": 30,
+        "mean": 0.5409192508726066,
+        "std": 0.3898704670719002,
+        "sem": 0.07118028310678494,
+        "ci95_lo": 0.4014058959833081,
+        "ci95_hi": 0.6804326057619051,
+        "min": 0.0330336934419293,
+        "max": 1.4747743143473144,
+        "median": 0.6096010925962148
+      },
+      "baseline_best_individual_error_stats": {
+        "n": 30,
+        "mean": 0.2530924974147071,
+        "std": 0.218041661285102,
+        "sem": 0.03980877878725041,
+        "ci95_lo": 0.17506729099169627,
+        "ci95_hi": 0.3311177038377179,
+        "min": 0.015236773841877493,
+        "max": 0.8624455328405389,
+        "median": 0.18233792868809573
+      }
+    },
+    {
+      "loop_size": 5,
+      "certified_error_stats": {
+        "n": 30,
+        "mean": 0.475035976716336,
+        "std": 0.346501084401368,
+        "sem": 0.06326215337554357,
+        "ci95_lo": 0.3510421561002706,
+        "ci95_hi": 0.5990297973324015,
+        "min": 0.01591362002748653,
+        "max": 1.2883748130032764,
+        "median": 0.39501923628258595
+      },
+      "baseline_best_individual_error_stats": {
+        "n": 30,
+        "mean": 0.2138671343541284,
+        "std": 0.14848940963228627,
+        "sem": 0.027110333068742692,
+        "ci95_lo": 0.16073088153939274,
+        "ci95_hi": 0.26700338716886407,
+        "min": 0.015236773841877493,
+        "max": 0.5495153862663997,
+        "median": 0.18233792868809573
+      }
+    }
+  ],
+  "mean_certified_error_at_loop_2": 3.375710506980427,
+  "mean_certified_error_at_loop_3": 0.672567447451101,
+  "relative_drop_2_to_3": 0.8007626998641206,
+  "verdict": "CONFIRMED"
+}

@@ -1,0 +1,121 @@
+{
+  "experiment": "sample_complexity_separation",
+  "theorem": "Theorem 3.3 (Sample-complexity separation)",
+  "claim": "m_forward / m_backward = N + 1 for a cascade of N nested restrictions.",
+  "trials": [
+    {
+      "N": 1,
+      "empirical_ratio_stats": {
+        "n": 30,
+        "mean": 2.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 2.0,
+        "ci95_hi": 2.0,
+        "min": 2.0,
+        "max": 2.0,
+        "median": 2.0
+      },
+      "theoretical_ratio": 2,
+      "relative_error": 0.0
+    },
+    {
+      "N": 2,
+      "empirical_ratio_stats": {
+        "n": 30,
+        "mean": 3.0000000000000004,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 3.0000000000000004,
+        "ci95_hi": 3.0000000000000004,
+        "min": 3.0000000000000004,
+        "max": 3.0000000000000004,
+        "median": 3.0000000000000004
+      },
+      "theoretical_ratio": 3,
+      "relative_error": 1.4802973661668753e-16
+    },
+    {
+      "N": 3,
+      "empirical_ratio_stats": {
+        "n": 30,
+        "mean": 4.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 4.0,
+        "ci95_hi": 4.0,
+        "min": 4.0,
+        "max": 4.0,
+        "median": 4.0
+      },
+      "theoretical_ratio": 4,
+      "relative_error": 0.0
+    },
+    {
+      "N": 4,
+      "empirical_ratio_stats": {
+        "n": 30,
+        "mean": 5.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 5.0,
+        "ci95_hi": 5.0,
+        "min": 5.0,
+        "max": 5.0,
+        "median": 5.0
+      },
+      "theoretical_ratio": 5,
+      "relative_error": 0.0
+    },
+    {
+      "N": 5,
+      "empirical_ratio_stats": {
+        "n": 30,
+        "mean": 6.000000000000001,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 6.000000000000001,
+        "ci95_hi": 6.000000000000001,
+        "min": 6.000000000000001,
+        "max": 6.000000000000001,
+        "median": 6.000000000000001
+      },
+      "theoretical_ratio": 6,
+      "relative_error": 1.4802973661668753e-16
+    },
+    {
+      "N": 6,
+      "empirical_ratio_stats": {
+        "n": 30,
+        "mean": 7.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 7.0,
+        "ci95_hi": 7.0,
+        "min": 7.0,
+        "max": 7.0,
+        "median": 7.0
+      },
+      "theoretical_ratio": 7,
+      "relative_error": 0.0
+    },
+    {
+      "N": 8,
+      "empirical_ratio_stats": {
+        "n": 30,
+        "mean": 9.0,
+        "std": 0.0,
+        "sem": 0.0,
+        "ci95_lo": 9.0,
+        "ci95_hi": 9.0,
+        "min": 9.0,
+        "max": 9.0,
+        "median": 9.0
+      },
+      "theoretical_ratio": 9,
+      "relative_error": 0.0
+    }
+  ],
+  "max_relative_error": 1.4802973661668753e-16,
+  "verdict": "CONFIRMED"
+}

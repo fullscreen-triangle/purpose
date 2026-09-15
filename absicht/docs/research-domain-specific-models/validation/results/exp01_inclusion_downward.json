@@ -1,0 +1,202 @@
+{
+  "experiment": "inclusion_downward",
+  "theorem": "Theorem 3.1 (Inclusion)",
+  "claim": "In expectation, a model eps-competent on the extremal regime is eps-competent (E[loss ratio] <= 1) on every non-expansively-projected restriction, without retraining. (The theorem bounds expectations, not individual draws, so the test is on the mean ratio and its 95% CI, not a per-seed inequality.)",
+  "n_trials": 30,
+  "ratio_stats": {
+    "n": 30,
+    "mean": 0.9828932134229204,
+    "std": 0.019641730342242255,
+    "sem": 0.0035860729256265832,
+    "ci95_lo": 0.9758645104886923,
+    "ci95_hi": 0.9899219163571484,
+    "min": 0.9282186974524544,
+    "max": 1.0146131997298093,
+    "median": 0.9869369328748057
+  },
+  "mean_ratio_le_1_within_ci": true,
+  "per_seed_pass_rate_informational_only": 0.8666666666666667,
+  "trials": [
+    {
+      "seed": 0,
+      "loss_extremal": 0.018403274047414462,
+      "loss_restricted": 0.018672204766751747,
+      "ratio": 1.0146131997298093
+    },
+    {
+      "seed": 1,
+      "loss_extremal": 0.018432439726426286,
+      "loss_restricted": 0.018270684789512912,
+      "ratio": 0.9912244423790808
+    },
+    {
+      "seed": 2,
+      "loss_extremal": 0.01851437362920116,
+      "loss_restricted": 0.01792414504138108,
+      "ratio": 0.9681205208644401
+    },
+    {
+      "seed": 3,
+      "loss_extremal": 0.01840417406359541,
+      "loss_restricted": 0.01825956341675026,
+      "ratio": 0.9921425081970291
+    },
+    {
+      "seed": 4,
+      "loss_extremal": 0.01838850450394964,
+      "loss_restricted": 0.018015231469619707,
+      "ratio": 0.9797007399786233
+    },
+    {
+      "seed": 5,
+      "loss_extremal": 0.01830448139443526,
+      "loss_restricted": 0.018045852709680496,
+      "ratio": 0.9858707450278603
+    },
+    {
+      "seed": 6,
+      "loss_extremal": 0.018398428907724196,
+      "loss_restricted": 0.01818692878904555,
+      "ratio": 0.9885044467797002
+    },
+    {
+      "seed": 7,
+      "loss_extremal": 0.01848321039107192,
+      "loss_restricted": 0.017718234371301406,
+      "ratio": 0.9586123836939049
+    },
+    {
+      "seed": 8,
+      "loss_extremal": 0.01845960933550348,
+      "loss_restricted": 0.018616876948381603,
+      "ratio": 1.008519552609147
+    },
+    {
+      "seed": 9,
+      "loss_extremal": 0.018421607312097556,
+      "loss_restricted": 0.018087916787053775,
+      "ratio": 0.9818859169349113
+    },
+    {
+      "seed": 10,
+      "loss_extremal": 0.01847668113661279,
+      "loss_restricted": 0.018417456972485483,
+      "ratio": 0.9967946535587525
+    },
+    {
+      "seed": 11,
+      "loss_extremal": 0.01845176512492239,
+      "loss_restricted": 0.018263122798495193,
+      "ratio": 0.989776461755824
+    },
+    {
+      "seed": 12,
+      "loss_extremal": 0.018537372556872836,
+      "loss_restricted": 0.018280142256760838,
+      "ratio": 0.986123691514382
+    },
+    {
+      "seed": 13,
+      "loss_extremal": 0.01849981697832527,
+      "loss_restricted": 0.018376901158852623,
+      "ratio": 0.99335583591899
+    },
+    {
+      "seed": 14,
+      "loss_extremal": 0.018401162736159642,
+      "loss_restricted": 0.01830132300592296,
+      "ratio": 0.9945742705682131
+    },
+    {
+      "seed": 15,
+      "loss_extremal": 0.018495173154089925,
+      "loss_restricted": 0.01822470340944921,
+      "ratio": 0.9853761982984784
+    },
+    {
+      "seed": 16,
+      "loss_extremal": 0.01854865283872855,
+      "loss_restricted": 0.018321435073282908,
+      "ratio": 0.9877501742352294
+    },
+    {
+      "seed": 17,
+      "loss_extremal": 0.01833628855147368,
+      "loss_restricted": 0.01852439200953545,
+      "ratio": 1.0102585350101645
+    },
+    {
+      "seed": 18,
+      "loss_extremal": 0.018518605282205947,
+      "loss_restricted": 0.018709956485037767,
+      "ratio": 1.0103329165407335
+    },
+    {
+      "seed": 19,
+      "loss_extremal": 0.018454667719930904,
+      "loss_restricted": 0.01774940665659757,
+      "ratio": 0.9617841364560763
+    },
+    {
+      "seed": 20,
+      "loss_extremal": 0.018387175375250767,
+      "loss_restricted": 0.01767044911948752,
+      "ratio": 0.9610203176324752
+    },
+    {
+      "seed": 21,
+      "loss_extremal": 0.01839166206291668,
+      "loss_restricted": 0.018370499143267785,
+      "ratio": 0.9988493198941729
+    },
+    {
+      "seed": 22,
+      "loss_extremal": 0.01866272047705811,
+      "loss_restricted": 0.018083001600846683,
+      "ratio": 0.9689370648333897
+    },
+    {
+      "seed": 23,
+      "loss_extremal": 0.01843017375046101,
+      "loss_restricted": 0.017739769755202604,
+      "ratio": 0.9625394744180783
+    },
+    {
+      "seed": 24,
+      "loss_extremal": 0.01830207091004432,
+      "loss_restricted": 0.017405500097719854,
+      "ratio": 0.9510126030692831
+    },
+    {
+      "seed": 25,
+      "loss_extremal": 0.018193847056828118,
+      "loss_restricted": 0.017534215030472523,
+      "ratio": 0.963744224940704
+    },
+    {
+      "seed": 26,
+      "loss_extremal": 0.0185364038360632,
+      "loss_restricted": 0.018153053914600054,
+      "ratio": 0.9793190780232502
+    },
+    {
+      "seed": 27,
+      "loss_extremal": 0.018320019554039717,
+      "loss_restricted": 0.01810288655037679,
+      "ratio": 0.9881477744593866
+    },
+    {
+      "seed": 28,
+      "loss_extremal": 0.018516873613413865,
+      "loss_restricted": 0.017187708306334742,
+      "ratio": 0.9282186974524544
+    },
+    {
+      "seed": 29,
+      "loss_extremal": 0.018532418716946896,
+      "loss_restricted": 0.018526609135651597,
+      "ratio": 0.9996865179130673
+    }
+  ],
+  "verdict": "CONFIRMED"
+}

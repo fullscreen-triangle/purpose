@@ -1,0 +1,463 @@
+{
+  "experiment": "route_audit",
+  "theorem": "Theorem 8.3 (Route-Audit)",
+  "claim": "False-friend instances (central agreement, provoked disagreement) are detected by the four-column route-audit but missed by a central-only comparison; genuine agreement produces no false alarm.",
+  "n_trials": 30,
+  "false_friend_detection_rate_route_audit": 1.0,
+  "false_friend_detection_rate_central_only": 0.0,
+  "control_false_alarm_rate_route_audit": 0.0,
+  "detection_gap": 1.0,
+  "trials": [
+    {
+      "seed": 0,
+      "false_friend": {
+        "central_gap": 0.004905409724997536,
+        "provoked_gap": 0.4569758510540784,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.011290494607943314,
+        "provoked_gap": 0.0385532672538225,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 1,
+      "false_friend": {
+        "central_gap": 0.011150035817542498,
+        "provoked_gap": 0.4856728197957261,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.018489685476347585,
+        "provoked_gap": 0.044265902136773234,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 2,
+      "false_friend": {
+        "central_gap": 2.3431461325424953e-05,
+        "provoked_gap": 0.5818678950368559,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.005322634913453186,
+        "provoked_gap": 0.014558200784246383,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 3,
+      "false_friend": {
+        "central_gap": 0.014087932790404425,
+        "provoked_gap": 0.37052876417829383,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.015247691718278207,
+        "provoked_gap": 0.013112451639739332,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 4,
+      "false_friend": {
+        "central_gap": 0.006221216481155458,
+        "provoked_gap": 0.4498238998420142,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.013239798175482844,
+        "provoked_gap": 0.04813767813692972,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 5,
+      "false_friend": {
+        "central_gap": 0.018657928148204942,
+        "provoked_gap": 0.5666009134509695,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.01091699677130611,
+        "provoked_gap": 0.049335879848794305,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 6,
+      "false_friend": {
+        "central_gap": 0.000326176429082965,
+        "provoked_gap": 0.32902591407695064,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.016947557104380423,
+        "provoked_gap": 0.010030211854402928,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 7,
+      "false_friend": {
+        "central_gap": 0.005934672801058214,
+        "provoked_gap": 0.641866195807373,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.01636145476024653,
+        "provoked_gap": 0.00209900198210245,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 8,
+      "false_friend": {
+        "central_gap": 0.0011364966859936333,
+        "provoked_gap": 0.394338332340127,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.004733845703970161,
+        "provoked_gap": 0.03958879493441289,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 9,
+      "false_friend": {
+        "central_gap": 0.014934826855644024,
+        "provoked_gap": 0.3344643603052537,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.010260562547248395,
+        "provoked_gap": 0.01273289490972583,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 10,
+      "false_friend": {
+        "central_gap": 0.0182145865240356,
+        "provoked_gap": 0.6549828861476873,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.00910290224953192,
+        "provoked_gap": 0.036291725884927,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 11,
+      "false_friend": {
+        "central_gap": 0.01776106241531813,
+        "provoked_gap": 0.5644447889050064,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.018404975284829487,
+        "provoked_gap": 0.032570769458854794,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 12,
+      "false_friend": {
+        "central_gap": 0.00038884606830439153,
+        "provoked_gap": 0.6548551952444973,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.01762410780660764,
+        "provoked_gap": 0.04172859729197198,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 13,
+      "false_friend": {
+        "central_gap": 0.009358194441529835,
+        "provoked_gap": 0.5953335662128598,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.008576949986003958,
+        "provoked_gap": 0.03524931031653934,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 14,
+      "false_friend": {
+        "central_gap": 0.019215723602782304,
+        "provoked_gap": 0.37451724440293666,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.011981827009332875,
+        "provoked_gap": 0.03206152933655817,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 15,
+      "false_friend": {
+        "central_gap": 0.001268594704509176,
+        "provoked_gap": 0.6828419136263253,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.016165740735813366,
+        "provoked_gap": 0.027670097425631895,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 16,
+      "false_friend": {
+        "central_gap": 0.01864528274250449,
+        "provoked_gap": 0.4498301540229326,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.009050889819877181,
+        "provoked_gap": 0.04805630455027351,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 17,
+      "false_friend": {
+        "central_gap": 0.01336827191346079,
+        "provoked_gap": 0.5281212950595566,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.007318747215123583,
+        "provoked_gap": 0.04574327499885694,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 18,
+      "false_friend": {
+        "central_gap": 0.000684851043864263,
+        "provoked_gap": 0.360199156494319,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.01157287270402672,
+        "provoked_gap": 0.0023826371113805037,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 19,
+      "false_friend": {
+        "central_gap": 0.0025452908581195333,
+        "provoked_gap": 0.6498432183734375,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.015860602512428792,
+        "provoked_gap": 0.033196544827433803,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 20,
+      "false_friend": {
+        "central_gap": 0.01353174483521522,
+        "provoked_gap": 0.6153846219740224,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.00577106352264785,
+        "provoked_gap": 0.04423796214081538,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 21,
+      "false_friend": {
+        "central_gap": 0.002911701603473704,
+        "provoked_gap": 0.3313364107540053,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.0012477332631678517,
+        "provoked_gap": 0.023324220606876025,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 22,
+      "false_friend": {
+        "central_gap": 0.004450267790727111,
+        "provoked_gap": 0.6483575751519619,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.014337952022594903,
+        "provoked_gap": 0.015902916279905283,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 23,
+      "false_friend": {
+        "central_gap": 0.01392954669505414,
+        "provoked_gap": 0.5063117628219447,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.017405775616200953,
+        "provoked_gap": 0.031839187042205036,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 24,
+      "false_friend": {
+        "central_gap": 0.011858779243038995,
+        "provoked_gap": 0.4975774356300473,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.008812343826480128,
+        "provoked_gap": 0.021412378512656673,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 25,
+      "false_friend": {
+        "central_gap": 0.004533212516432097,
+        "provoked_gap": 0.4956562539024097,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.018980932275965683,
+        "provoked_gap": 0.02562343908153078,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 26,
+      "false_friend": {
+        "central_gap": 0.005508255921898664,
+        "provoked_gap": 0.4976234428811571,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.00114009709197894,
+        "provoked_gap": 0.04919516648908869,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 27,
+      "false_friend": {
+        "central_gap": 0.0015593049512875722,
+        "provoked_gap": 0.4724292393887872,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.006702148222178319,
+        "provoked_gap": 0.015517223509284939,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 28,
+      "false_friend": {
+        "central_gap": 0.00996846791137701,
+        "provoked_gap": 0.46100432490045257,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.016412678570251162,
+        "provoked_gap": 0.022077430521310667,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    },
+    {
+      "seed": 29,
+      "false_friend": {
+        "central_gap": 0.012761509525323442,
+        "provoked_gap": 0.44889179348569547,
+        "central_only_detects_problem": false,
+        "route_audit_detects_problem": true
+      },
+      "genuine_agreement_control": {
+        "central_gap": 0.005811769776423439,
+        "provoked_gap": 0.018580510169809366,
+        "central_only_false_alarm": false,
+        "route_audit_false_alarm": false
+      }
+    }
+  ],
+  "verdict": "CONFIRMED"
+}
