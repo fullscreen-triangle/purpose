@@ -1,0 +1,32 @@
+{
+  "name": "purpose-profile-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Personal knowledge-profile UI: add papers, CSVs, JSON, and links to a named profile, then train a purpose-factory model from it.",
+  "type": "module",
+  "scripts": {
+    "predev": "npm run --prefix ../purpose-factory-ts build",
+    "prebuild": "npm run --prefix ../purpose-factory-ts build",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@buhera/purpose-factory-client": "file:../purpose-factory-ts",
+    "next": "^14.2.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^18.3.17",
+    "@types/react-dom": "^18.3.5",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.18",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  }
+}

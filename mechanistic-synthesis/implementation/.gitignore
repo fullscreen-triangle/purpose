@@ -6,3 +6,6 @@ Cargo.lock.bak
 .purpose/index.json
 .purpose/ckg.json
 .purpose/factory/
+
+# profile-web: per-profile uploaded sources and trained models (runtime state).
+.purpose-profiles/

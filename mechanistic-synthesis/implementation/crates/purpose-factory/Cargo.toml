@@ -18,6 +18,7 @@ thiserror = { workspace = true }
 tracing = { workspace = true }
 regex = { workspace = true }
 walkdir = "2"
+csv = "1"
 pdf-extract = "0.7"
 html2text = "0.12"
 imap = "3.0.0-alpha.15"

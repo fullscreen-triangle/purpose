@@ -31,7 +31,8 @@ pub async fn fetch_all(sources: &[Box<dyn SourceProvider>]) -> Result<Vec<Docume
 // Local files
 // =====================================================================
 
-/// Walks a filesystem root, extracting text from `.tex`, `.pdf`, `.md`, `.txt`.
+/// Walks a filesystem root, extracting text from `.tex`, `.pdf`, `.md`,
+/// `.txt`, `.csv`, `.json`.
 pub struct LocalFileSource {
     pub root: PathBuf,
     /// Optional glob-like suffix filter, e.g. only "*.tex". Empty = all supported extensions.
@@ -42,7 +43,14 @@ impl LocalFileSource {
     pub fn new(root: impl Into<PathBuf>) -> Self {
         Self {
             root: root.into(),
-            extensions: vec!["tex".into(), "pdf".into(), "md".into(), "txt".into()],
+            extensions: vec![
+                "tex".into(),
+                "pdf".into(),
+                "md".into(),
+                "txt".into(),
+                "csv".into(),
+                "json".into(),
+            ],
         }
     }
 }
@@ -81,6 +89,8 @@ fn walk_and_extract(root: &PathBuf, extensions: &[String]) -> Result<Vec<Documen
             "tex" => std::fs::read_to_string(path).ok().map(|raw| strip_tex(&raw)),
             "pdf" => pdf_extract::extract_text(path).ok(),
             "md" | "txt" => std::fs::read_to_string(path).ok(),
+            "csv" => std::fs::read_to_string(path).ok().map(|raw| flatten_csv(&raw)),
+            "json" => std::fs::read_to_string(path).ok().and_then(|raw| flatten_json_str(&raw)),
             _ => None,
         };
 
@@ -143,6 +153,98 @@ fn strip_tex(raw: &str) -> String {
     let text = collapse_ws.replace_all(&text, " ");
     let collapse_blank = regex::Regex::new(r"\n{3,}").unwrap();
     collapse_blank.replace_all(&text, "\n\n").trim().to_string()
+}
+
+/// Renders a CSV's rows as `col1: val1, col2: val2, ...` lines, one row per
+/// line, using the header row for column names (falling back to positional
+/// `col0`, `col1`, ... if the file has none `csv` can detect, i.e. is
+/// malformed enough that even the header read fails). Deterministic, no
+/// schema configuration required — good enough for corpus text without
+/// modeling the CSV's actual structure.
+fn flatten_csv(raw: &str) -> String {
+    let mut reader = csv::ReaderBuilder::new()
+        .flexible(true)
+        .from_reader(raw.as_bytes());
+
+    let headers: Vec<String> = match reader.headers() {
+        Ok(h) => h.iter().map(str::to_string).collect(),
+        Err(_) => Vec::new(),
+    };
+
+    let mut lines = Vec::new();
+    for result in reader.records() {
+        let Ok(record) = result else { continue };
+        let cells: Vec<String> = record
+            .iter()
+            .enumerate()
+            .map(|(i, val)| {
+                let col = headers.get(i).cloned().unwrap_or_else(|| format!("col{i}"));
+                format!("{col}: {val}")
+            })
+            .collect();
+        if !cells.is_empty() {
+            lines.push(cells.join(", "));
+        }
+    }
+    lines.join("\n")
+}
+
+/// Parses a JSON document and flattens it to `key: value` lines. Objects
+/// recurse with dot-joined paths (`a.b.c: 1`); arrays of scalars render
+/// inline (`tags: [x, y, z]`); arrays of objects render one flattened block
+/// per element, blank-line separated, so each element reads like one
+/// record. Falls back to the raw pretty-printed JSON if parsing fails
+/// (malformed JSON is still text a model can learn some structure from)
+/// or the value is empty.
+fn flatten_json_str(raw: &str) -> Option<String> {
+    match serde_json::from_str::<serde_json::Value>(raw) {
+        Ok(value) => {
+            let mut out = String::new();
+            flatten_json(&value, "", &mut out);
+            let out = out.trim().to_string();
+            if out.is_empty() { None } else { Some(out) }
+        }
+        Err(_) => {
+            let trimmed = raw.trim();
+            if trimmed.is_empty() { None } else { Some(trimmed.to_string()) }
+        }
+    }
+}
+
+fn flatten_json(value: &serde_json::Value, prefix: &str, out: &mut String) {
+    match value {
+        serde_json::Value::Object(map) => {
+            for (k, v) in map {
+                let path = if prefix.is_empty() { k.clone() } else { format!("{prefix}.{k}") };
+                flatten_json(v, &path, out);
+            }
+        }
+        serde_json::Value::Array(items) => {
+            let all_scalar = items
+                .iter()
+                .all(|v| !matches!(v, serde_json::Value::Object(_) | serde_json::Value::Array(_)));
+            if all_scalar {
+                let rendered: Vec<String> = items.iter().map(scalar_to_string).collect();
+                out.push_str(&format!("{prefix}: [{}]\n", rendered.join(", ")));
+            } else {
+                for item in items {
+                    flatten_json(item, prefix, out);
+                    out.push('\n');
+                }
+            }
+        }
+        other => {
+            out.push_str(&format!("{prefix}: {}\n", scalar_to_string(other)));
+        }
+    }
+}
+
+fn scalar_to_string(value: &serde_json::Value) -> String {
+    match value {
+        serde_json::Value::String(s) => s.clone(),
+        serde_json::Value::Null => "null".to_string(),
+        other => other.to_string(),
+    }
 }
 
 // =====================================================================
@@ -288,5 +390,68 @@ impl SourceProvider for UrlSource {
             });
         }
         Ok(docs)
+    }
+}
+
+#[cfg(test)]
+mod format_tests {
+    use super::*;
+
+    #[test]
+    fn flattens_csv_rows_with_header() {
+        let csv = "name,age\nAda,36\nGrace,85\n";
+        let text = flatten_csv(csv);
+        assert_eq!(text, "name: Ada, age: 36\nname: Grace, age: 85");
+    }
+
+    #[test]
+    fn flattens_csv_with_quoted_commas() {
+        let csv = "name,note\nAda,\"loves, algebra\"\n";
+        let text = flatten_csv(csv);
+        assert_eq!(text, "name: Ada, note: loves, algebra");
+    }
+
+    #[test]
+    fn flattens_json_object_to_key_value_lines() {
+        let json = r#"{"name": "Ada", "born": 1815}"#;
+        let text = flatten_json_str(json).unwrap();
+        assert!(text.contains("name: Ada"));
+        assert!(text.contains("born: 1815"));
+    }
+
+    #[test]
+    fn flattens_nested_json_with_dot_paths() {
+        let json = r#"{"person": {"name": "Ada", "field": "math"}}"#;
+        let text = flatten_json_str(json).unwrap();
+        assert!(text.contains("person.name: Ada"));
+        assert!(text.contains("person.field: math"));
+    }
+
+    #[test]
+    fn flattens_array_of_objects_as_separate_blocks() {
+        let json = r#"[{"name": "Ada"}, {"name": "Grace"}]"#;
+        let text = flatten_json_str(json).unwrap();
+        assert!(text.contains("name: Ada"));
+        assert!(text.contains("name: Grace"));
+    }
+
+    #[test]
+    fn flattens_scalar_array_inline() {
+        let json = r#"{"tags": ["math", "computing"]}"#;
+        let text = flatten_json_str(json).unwrap();
+        assert!(text.contains("tags: [math, computing]"));
+    }
+
+    #[test]
+    fn falls_back_to_raw_text_on_malformed_json() {
+        let malformed = "{not valid json";
+        let text = flatten_json_str(malformed).unwrap();
+        assert_eq!(text, malformed);
+    }
+
+    #[test]
+    fn empty_json_yields_none() {
+        assert!(flatten_json_str("").is_none());
+        assert!(flatten_json_str("{}").is_none());
     }
 }
