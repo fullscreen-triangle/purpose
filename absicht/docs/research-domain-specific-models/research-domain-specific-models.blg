@@ -4,47 +4,59 @@ The top-level auxiliary file: research-domain-specific-models.aux
 Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: plainnat.bst
 Reallocating 'name_of_file' (item size: 1) to 11 items.
-I found no \citation commands---while reading file research-domain-specific-models.aux
 Database file #1: references.bib
-You've used 0 entries,
+Warning--empty publisher in banach1922
+Warning--empty journal in bengio2009curriculum
+Warning--can't use both volume and number fields in blumer1989
+Warning--empty publisher in blumer1989
+Warning--empty journal in diestel2017
+Warning--empty booktitle in edmondskarp1972
+Warning--can't use both volume and number fields in edmondskarp1972
+Warning--empty journal in grice1975
+Warning--empty journal in kuhntucker1951
+Warning--empty journal in quine1960
+Warning--empty journal in ross2011
+Warning--can't use both volume and number fields in simon1956
+Warning--empty publisher in simon1956
+You've used 50 entries,
             2773 wiz_defined-function locations,
-            592 strings with 4884 characters,
-and the built_in function-call counts, 33 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 10
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+            866 strings with 11979 characters,
+and the built_in function-call counts, 23584 in all, are:
+= -- 2039
+> -- 1472
+< -- 43
++ -- 509
+- -- 459
+* -- 1896
+:= -- 3701
+add.period$ -- 150
+call.type$ -- 50
+change.case$ -- 292
+chr.to.int$ -- 50
+cite$ -- 113
+duplicate$ -- 1048
+empty$ -- 1850
+format.name$ -- 525
+if$ -- 4843
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 8
-num.names$ -- 0
-pop$ -- 0
+missing$ -- 59
+newline$ -- 258
+num.names$ -- 200
+pop$ -- 608
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 250
 quote$ -- 0
-skip$ -- 1
+skip$ -- 823
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 873
+swap$ -- 92
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
+type$ -- 505
+warning$ -- 13
+while$ -- 216
 width$ -- 0
-write$ -- 7
-(There was 1 error message)
+write$ -- 635
+(There were 13 warnings)

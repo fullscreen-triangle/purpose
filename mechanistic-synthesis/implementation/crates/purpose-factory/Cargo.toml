@@ -1,0 +1,31 @@
+[package]
+name = "purpose-factory"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Theme-LLM factory: ingest sources (files, email, web), build a training corpus, fine-tune and export a domain model. The purpose-factory crate reserved by integration.md."
+
+[dependencies]
+purpose-core = { workspace = true }
+async-trait = { workspace = true }
+tokio = { workspace = true }
+reqwest = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+regex = { workspace = true }
+walkdir = "2"
+pdf-extract = "0.7"
+html2text = "0.12"
+imap = "3.0.0-alpha.15"
+mail-parser = "0.9"
+toml = "0.8"
+
+candle-core = "0.11"
+candle-nn = "0.11"
+rand = "0.8"
+hf-hub = "1.0"
+tokenizers = "0.23"

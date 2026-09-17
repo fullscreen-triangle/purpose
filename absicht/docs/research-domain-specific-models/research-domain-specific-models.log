@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.20)  15 SEP 2026 18:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.20)  15 SEP 2026 21:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -718,12 +718,18 @@ nda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
 \openout4 = `research-domain-specific-models.toc'.
 
  [2]
-Underfull \hbox (badness 1057) in paragraph at lines 236--236
+Underfull \vbox (badness 1199) has occurred while \output is active []
+
+ [3{C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{
+C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{
+C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
+
+Underfull \hbox (badness 1057) in paragraph at lines 264--264
 []\T1/lmr/bx/n/14.4 (+20) Task do-mains and the ex-
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-241.
+284.
 (C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -731,11 +737,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [3{C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{
-C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{
-C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-
-Overfull \hbox (110.36128pt too wide) detected at line 367
+ [4]
+Overfull \hbox (110.36128pt too wide) detected at line 414
 \U/msb/m/n/10.95 E[]\OT1/lmr/m/n/10.95 [\OML/lmm/m/it/10.95 J\OT1/lmr/m/n/10.95
  (\OML/lmm/m/it/10.95 x; P[]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 f\OT1/lmr/m
 /n/10.95 (\OML/lmm/m/it/10.95 x\OT1/lmr/m/n/10.95 )))]  \OMS/lmsy/m/n/10.95 ^^T
@@ -747,22 +750,42 @@ Overfull \hbox (110.36128pt too wide) detected at line 367
 L/lmm/m/it/10.95 ";
  []
 
-[4]
-Underfull \hbox (badness 1983) in paragraph at lines 431--439
+<figures/panel_1_inclusion.png, id=370, 1127.412pt x 281.853pt>
+File: figures/panel_1_inclusion.png Graphic file (type png)
+<use figures/panel_1_inclusion.png>
+Package pdftex.def Info: figures/panel_1_inclusion.png  used on input line 425.
+
+(pdftex.def)             Requested size: 478.00598pt x 119.49994pt.
+[5] [6 <./figures/panel_1_inclusion.png>]
+<figures/panel_2_noninclusion.png, id=398, 1127.412pt x 281.853pt>
+File: figures/panel_2_noninclusion.png Graphic file (type png)
+<use figures/panel_2_noninclusion.png>
+Package pdftex.def Info: figures/panel_2_noninclusion.png  used on input line 4
+93.
+(pdftex.def)             Requested size: 478.00598pt x 119.49994pt.
+
+Underfull \hbox (badness 1983) in paragraph at lines 555--563
 []\T1/lmr/m/n/10.95 (+20) By The-o-rem [][]3.2[][], a sin-gle model $\OML/lmm/m
 /it/10.95 "$\T1/lmr/m/n/10.95 (+20) -
  []
 
-[5{C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.en
-c}]
-Underfull \hbox (badness 2790) in paragraph at lines 524--530
+<figures/panel_3_sample_complexity.png, id=425, 1127.412pt x 281.853pt>
+File: figures/panel_3_sample_complexity.png Graphic file (type png)
+<use figures/panel_3_sample_complexity.png>
+Package pdftex.def Info: figures/panel_3_sample_complexity.png  used on input l
+ine 612.
+(pdftex.def)             Requested size: 478.00598pt x 119.49994pt.
+[7{C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.en
+c}] [8 <./figures/panel_2_noninclusion.png> <./figures/panel_3_sample_complexit
+y.png>]
+Underfull \hbox (badness 2790) in paragraph at lines 684--690
 []\T1/lmr/bx/n/10.95 (+20) Definition 5.2 \T1/lmr/m/n/10.95 (+20) (Re-ceiver)\T
 1/lmr/bx/n/10.95 (+20) . []\T1/lmr/m/n/10.95 (+20) A \T1/lmr/m/it/10.95 (+20) r
 e-ceiver \T1/lmr/m/n/10.95 (+20) on
  []
 
-[6]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 596
+[9]
+LaTeX Font Info:    Trying to load font information for U+euf on input line 770
 .
  (C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
@@ -771,14 +794,14 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 
 )
-Overfull \hbox (40.16255pt too wide) detected at line 615
+Overfull \hbox (40.16255pt too wide) detected at line 789
 [] \OML/lmm/m/it/10.95 d\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 x; x[]\OT1/lmr/
 m/n/10.95 )  \OMS/lmsy/m/n/10.95 ^^T  [] \OML/lmm/m/it/10.95 d\OT1/lmr/m/n/10.9
 5 (\OML/lmm/m/it/10.95 x; x[]\OT1/lmr/m/n/10.95 ) []\OML/lmm/m/it/10.95 j;
  []
 
 
-Overfull \hbox (214.49254pt too wide) detected at line 623
+Overfull \hbox (214.49254pt too wide) detected at line 797
 \OML/lmm/m/it/10.95 ^^L\OT1/lmr/m/n/10.95 (\U/euf/m/n/10.95 F\OT1/lmr/m/n/10.95
  ) = [] [] \OML/lmm/m/it/10.95 d\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 x; \OMS
 /lmsy/m/n/10.95 ^^A\OT1/lmr/m/n/10.95 )  \OMS/lmsy/m/n/10.95 ^^T  [] [] [] \OML
@@ -789,61 +812,101 @@ n/10.95 ) = [] \OML/lmm/m/it/10.95 ^^L\OT1/lmr/m/n/10.95 (\OMS/lmsy/m/n/10.95 R
 []\OT1/lmr/m/n/10.95 )\OML/lmm/m/it/10.95 ;
  []
 
+<figures/panel_4_federation.png, id=507, 1127.412pt x 281.853pt>
+File: figures/panel_4_federation.png Graphic file (type png)
+<use figures/panel_4_federation.png>
+Package pdftex.def Info: figures/panel_4_federation.png  used on input line 837
+.
+(pdftex.def)             Requested size: 478.00598pt x 119.49994pt.
 
-Overfull \hbox (91.71645pt too wide) detected at line 674
+Overfull \hbox (91.71645pt too wide) detected at line 888
 \OML/lmm/m/it/10.95 [] \OT1/lmr/m/n/10.95 = [] [] \OML/lmm/m/it/10.95 []v[] [
 ]  [] []c[] \OMS/lmsy/m/n/10.95 ^^T \OML/lmm/m/it/10.95 B;  v[] \OT1/lmr/m/n/1
 0.95 := [] []\OML/lmm/m/it/10.95 ;
  []
 
-[7]
-Underfull \hbox (badness 1314) in paragraph at lines 807--811
+<figures/panel_5_cascade.png, id=520, 1127.412pt x 281.853pt>
+File: figures/panel_5_cascade.png Graphic file (type png)
+<use figures/panel_5_cascade.png>
+Package pdftex.def Info: figures/panel_5_cascade.png  used on input line 908.
+(pdftex.def)             Requested size: 478.00598pt x 119.49994pt.
+[10] [11 <./figures/panel_4_federation.png> <./figures/panel_5_cascade.png>]
+<figures/panel_6_minimum_loop.png, id=559, 1127.412pt x 281.853pt>
+File: figures/panel_6_minimum_loop.png Graphic file (type png)
+<use figures/panel_6_minimum_loop.png>
+Package pdftex.def Info: figures/panel_6_minimum_loop.png  used on input line 1
+022.
+(pdftex.def)             Requested size: 478.00598pt x 119.49994pt.
+
+[12]
+Underfull \hbox (badness 1314) in paragraph at lines 1093--1097
 \OT1/lmr/m/n/10.95 (+20) ^^A[]$ \T1/lmr/m/n/10.95 (+20) can-not be com-puted by
  de-cod-ing $\OML/lmm/m/it/10.95 a$
  []
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 890--893
+[13 <./figures/panel_6_minimum_loop.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1185
 []\T1/lmr/bx/n/10.95 (+20) Definition 10.4 \T1/lmr/m/n/10.95 (+20) (De-cline)\T
 1/lmr/bx/n/10.95 (+20) . []\T1/lmr/m/n/10.95 (+20) When The-o-
  []
 
 
-Underfull \hbox (badness 2253) in paragraph at lines 890--893
+Underfull \hbox (badness 2253) in paragraph at lines 1182--1185
 \T1/lmr/m/n/10.95 (+20) to cer-tify agree-ment on $\OML/lmm/m/it/10.95 x$\T1/lm
 r/m/n/10.95 (+20) , re-port-ing non-
  []
 
-[9] [10]
-Underfull \vbox (badness 6825) has occurred while \output is active []
+<figures/panel_7_quiescence_routeaudit.png, id=613, 1127.412pt x 281.853pt>
+File: figures/panel_7_quiescence_routeaudit.png Graphic file (type png)
+<use figures/panel_7_quiescence_routeaudit.png>
+Package pdftex.def Info: figures/panel_7_quiescence_routeaudit.png  used on inp
+ut line 1189.
+(pdftex.def)             Requested size: 478.00598pt x 119.49994pt.
+[14] [15 <./figures/panel_7_quiescence_routeaudit.png>] [16]
+<figures/panel_8_verification_floor.png, id=682, 1127.412pt x 281.853pt>
+File: figures/panel_8_verification_floor.png Graphic file (type png)
+<use figures/panel_8_verification_floor.png>
+Package pdftex.def Info: figures/panel_8_verification_floor.png  used on input 
+line 1397.
+(pdftex.def)             Requested size: 478.00598pt x 119.49994pt.
 
- [11]
-Underfull \hbox (badness 10000) in paragraph at lines 1109--1110
+Underfull \vbox (badness 1281) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1478--1479
 []|\T1/lmr/m/n/10.95 (+20) Inclusion The-o-rem
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 1112--1112
+Underfull \hbox (badness 1178) in paragraph at lines 1481--1481
 []|\T1/lmr/m/n/10.95 (+20) Cross-domain agree-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1112--1113
+Underfull \hbox (badness 10000) in paragraph at lines 1481--1482
 []|\T1/lmr/m/n/10.95 (+20) Quiescence, Route-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1113--1113
+Underfull \hbox (badness 10000) in paragraph at lines 1482--1482
 []|\T1/lmr/m/n/10.95 (+20) Whole-architecture
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1113--1114
+Underfull \hbox (badness 10000) in paragraph at lines 1482--1483
 []|\T1/lmr/m/n/10.95 (+20) Verification-Floor
  []
 
+[17]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [18 <./figures/panel_8_verification_floor.png>]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-166.
+538.
+
 (C:\Users\kunda\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -852,109 +915,57 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-
-LaTeX Warning: Reference `fig:panel-inclusion' on page 1 undefined on input lin
-e 1173.
-
-
-LaTeX Warning: Reference `fig:panel-noninclusion' on page 1 undefined on input 
-line 1181.
-
-
-LaTeX Warning: Reference `fig:panel-sample-complexity' on page 1 undefined on i
-nput line 1188.
-
-[12]
-
-LaTeX Warning: Reference `fig:panel-federation' on page 1 undefined on input li
-ne 1196.
-
-
-LaTeX Warning: Reference `fig:panel-cascade' on page 1 undefined on input line 
-1204.
-
-
-LaTeX Warning: Reference `fig:panel-minloop' on page 1 undefined on input line 
-1211.
-
-
-LaTeX Warning: Reference `fig:panel-quiescence-routeaudit' on page 1 undefined 
-on input line 1218.
-
-
-LaTeX Warning: Reference `fig:panel-quiescence-routeaudit' on page 1 undefined 
-on input line 1225.
-
-
-LaTeX Warning: Reference `fig:panel-verification-floor' on page 1 undefined on 
-input line 1233.
-
-
-Underfull \hbox (badness 2990) in paragraph at lines 1233--1240
-\T1/lmr/m/n/10.95 (+20) ($\OT1/lmr/m/n/10.95 (+20) 30$ \T1/lmr/m/n/10.95 (+20) 
-tri-als each, $\OT1/lmr/m/n/10.95 (+20) 150$ \T1/lmr/m/n/10.95 (+20) to-tal); t
-he bound
+Underfull \hbox (badness 10000) in paragraph at lines 1560--1567
+[]\T1/lmr/bx/n/10.95 (+20) Sample-complexity sep-a-ra-tion (Fig-
  []
 
 
-LaTeX Warning: Reference `fig:panel-verification-floor' on page 1 undefined on 
-input line 1276.
+Underfull \hbox (badness 7869) in paragraph at lines 1560--1567
+\T1/lmr/m/n/10.95 (+20) are mea-sured for extremal-only ver-sus
+ []
 
 
-LaTeX Warning: Reference `fig:panel-quiescence-routeaudit' on page 1 undefined 
-on input line 1276.
+Underfull \hbox (badness 3189) in paragraph at lines 1560--1567
+\T1/lmr/m/n/10.95 (+20) per-restriction train-ing across a cas-cade
+ []
 
 
-LaTeX Warning: Reference `fig:panel-minloop' on page 1 undefined on input line 
-1276.
+Underfull \hbox (badness 1117) in paragraph at lines 1560--1567
+\T1/lmr/m/n/10.95 (+20) seeds each); the em-pir-i-cal ra-tio matches
+ []
 
+[19]
+Underfull \hbox (badness 3525) in paragraph at lines 1605--1612
+[]\T1/lmr/bx/n/10.95 (+20) Verification-floor bound holds (Fig-
+ []
 
-LaTeX Warning: Reference `fig:panel-cascade' on page 1 undefined on input line 
-1276.
+[20] (research-domain-specific-models.bbl [21]
+Underfull \hbox (badness 1831) in paragraph at lines 149--152
+[]\T1/lmr/m/n/10.95 (+20) Hans Kellerer, Ul-rich Pfer-schy, and David
+ []
 
+[22]
+Underfull \hbox (badness 2253) in paragraph at lines 299--303
+\T1/lmr/m/n/10.95 (+20) Siyuan Zhuang, Zhang-hao Wu, Yong-hao
+ []
 
-LaTeX Warning: Reference `fig:panel-federation' on page 1 undefined on input li
-ne 1276.
-
-
-LaTeX Warning: Reference `fig:panel-sample-complexity' on page 1 undefined on i
-nput line 1276.
-
-
-LaTeX Warning: Reference `fig:panel-noninclusion' on page 1 undefined on input 
-line 1276.
-
-
-LaTeX Warning: Reference `fig:panel-inclusion' on page 1 undefined on input lin
-e 1276.
-
-[13] [14] (research-domain-specific-models.bbl
-
-Package natbib Warning: Empty `thebibliography' environment on input line 8.
-
-) [15
-
-] (research-domain-specific-models.aux)
+) [23] (research-domain-specific-models.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `research-domain-specific-models.out' has not
  changed.
 (rerunfilecheck)             Checksum: F9FE4672E0C822FCE273B57BB7BD892C;6048.
  ) 
 Here is how much of TeX's memory you used:
- 17719 strings out of 467867
- 291898 string characters out of 5418334
- 774657 words of memory out of 5000000
- 45882 multiletter control sequences out of 15000+600000
- 734715 words of font info for 274 fonts, out of 8000000 for 9000
+ 18029 strings out of 467867
+ 298629 string characters out of 5418334
+ 779657 words of memory out of 5000000
+ 46098 multiletter control sequences out of 15000+600000
+ 736178 words of font info for 288 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,1030b,632s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,2142b,644s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/eul
 er/eufm10.pfb><C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 lm/lmbx10.pfb><C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/
@@ -976,10 +987,10 @@ fb><C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pf
 b><C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pf
 b><C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on research-domain-specific-models.pdf (15 pages, 477061 bytes).
-
+Output written on research-domain-specific-models.pdf (23 pages, 2269134 bytes)
+.
 PDF statistics:
- 557 PDF objects out of 1000 (max. 8388607)
- 108 named destinations out of 1000 (max. 500000)
- 54009 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 928 PDF objects out of 1000 (max. 8388607)
+ 174 named destinations out of 1000 (max. 500000)
+ 54049 words of extra memory for PDF output out of 61914 (max. 10000000)
 

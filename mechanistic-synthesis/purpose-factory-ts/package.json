@@ -1,0 +1,36 @@
+{
+  "name": "@buhera/purpose-factory-client",
+  "version": "0.1.0",
+  "description": "TypeScript client for purpose-factory: build and discover theme-specific models produced by the `purpose factory` Rust CLI. No training here — this package builds (via subprocess) and discovers models; loading/serving an exported model is left to whatever inference stack the consuming framework already uses.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test \"dist/test/**/*.test.js\"",
+    "smoke": "node dist/test/smoke.js"
+  },
+  "keywords": [
+    "domain-specific-model",
+    "lora",
+    "theme-model",
+    "candle",
+    "model-factory"
+  ],
+  "author": "Kundai Farai Sachikonye",
+  "license": "MIT",
+  "sideEffects": false,
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "@types/node": "^22.10.5"
+  }
+}

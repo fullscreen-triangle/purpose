@@ -19,7 +19,7 @@ Everything else — the kernel, the interceptor, cascade routing, the factory, t
 
 ### 1.1 What Purpose deliberately does not provide
 
-- A training loop (belongs in `purpose-factory`, future work).
+- ~~A training loop (belongs in `purpose-factory`, future work).~~ **Landed.** `purpose-factory` ingests sources (local files, IMAP email, web pages) for a named theme, builds a verified training corpus, and trains + exports a from-scratch LoRA-adapted Candle model — see §14.
 - A blank-screen UI (belongs in `purpose-interceptor`, future work).
 - A kernel scheduler (belongs in `purpose-kernel`, future work).
 - Model weights (live on disk, loaded by providers on demand).
@@ -777,4 +777,78 @@ When you are deciding how to add something new, check whether your integration p
 
 ---
 
-*This document will be updated as new crates, providers, and domains are added. The current revision covers the MVP workspace (`implementation/` with four crates: `purpose-core`, `purpose-operations`, `purpose-domains-protein`, `purpose-cli`). Each future crate — `purpose-kernel`, `purpose-interceptor`, `purpose-cascade`, `purpose-factory`, `purpose-aperture` — will add its own integration section here as it comes online.*
+*This document will be updated as new crates, providers, and domains are added. The current revision covers the MVP workspace (`implementation/` with `purpose-core`, `purpose-operations`, `purpose-domains-protein`, `purpose-domains-codebase`, `purpose-domains-ledger`, `purpose-ckg`, `purpose-domains-ckg`, `purpose-factory`, `purpose-cli`). Each future crate — `purpose-kernel`, `purpose-interceptor`, `purpose-cascade`, `purpose-aperture` — will add its own integration section here as it comes online.*
+
+---
+
+## 14. Integrating with `purpose-factory`
+
+`purpose-factory` is the training loop reserved in §1.1. It produces a
+model, not a `Resolver`/`Provider` pair — a domain does not get `domain()`
+and `register_providers()` from it directly. What it does produce is a
+model directory (`model.safetensors`, `config.json`, `tokenizer.json`)
+that a later `Provider` implementation can load, following the "local
+Candle model provider" pattern in §4.4 verbatim: construct the provider by
+loading these files at startup, dispatch inference in `invoke`. Wiring a
+produced model back into a `Resolver`/`Provider` pair is deliberately not
+part of this crate — it is the next integration to write, once a specific
+consuming domain needs it.
+
+### 14.1 The contract a theme declares
+
+A `theme.toml` (scaffolded by `purpose factory init <name>`) is this
+crate's Domain Contract: a name, a set of sources (local files, IMAP
+email, URLs), a from-scratch model shape, and training hyperparameters.
+There is no `Verd` supplied by the caller in v1 — a default
+`HeuristicVerifier` (length/repetition checks) admits or rejects generated
+training examples; callers with a real domain oracle can supply their own
+`Verifier` impl when embedding the crate directly rather than via the CLI.
+
+### 14.2 Two training paths
+
+`[model]` in `theme.toml` selects one of two paths:
+
+- **From scratch** (default): a small GPT-2-style model trained entirely on
+  the theme's own corpus, including a fresh word-level tokenizer. No network
+  access needed, no dependency on any pretrained-model zoo.
+- **Pretrained** (`[model.pretrained]` with a `repo = "owner/name"`):
+  downloads a real LLaMA-family checkpoint (config.json + tokenizer.json +
+  an unsharded model.safetensors) from the HuggingFace Hub via `hf-hub`, and
+  LoRA-adapts it — `q_proj`, `v_proj`, and `gate_proj` in every transformer
+  block are trainable low-rank adapters over otherwise-frozen pretrained
+  weights (`crates/purpose-factory/src/pretrained_model.rs`). Because
+  `candle-transformers`' own `Llama` type keeps its attention projections
+  private, this crate vendors the LLaMA architecture directly against public
+  `candle_core`/`candle_nn` primitives rather than depending on that crate,
+  specifically so `LoraLinear` can be spliced into `q_proj`/`v_proj`. The
+  merged export uses the checkpoint's own tensor names
+  (`model.layers.{i}.self_attn.q_proj.weight`, …), so the output
+  `model.safetensors` is a drop-in replacement for the original checkpoint
+  in any HF-compatible loader — verified by round-tripping a real download
+  (`Xenova/tiny-random-LlamaForCausalLM-optimized`) through Candle's own
+  safetensors loader.
+
+### 14.2.1 What it does not do
+
+- Does not support sharded checkpoints (`model-00001-of-*.safetensors`) —
+  only a single `model.safetensors` file. Small model families (the ones
+  this factory is meant to adapt) fit in one shard.
+- Does not serve or answer queries — see the note above.
+- Does not perform an OAuth consent flow for the IMAP/Gmail path — it
+  accepts a pre-obtained app-password or token via `theme.toml`.
+
+### 14.3 CLI surface
+
+```
+purpose factory init <name>              # scaffold theme.toml
+purpose factory build <theme.toml>       # fetch, train, export
+purpose factory list                     # list built models from the registry
+```
+
+### 14.4 TypeScript consumption
+
+`mechanistic-synthesis/purpose-factory-ts` (`@buhera/purpose-factory-client`)
+wraps `purpose factory build`/`list` as a subprocess (per §5's non-Rust-host
+pattern) and reads `.purpose/factory/registry.json` directly for cheaper
+repeated discovery. It does not load or serve models; that is left to
+whatever inference stack the consuming framework already uses.

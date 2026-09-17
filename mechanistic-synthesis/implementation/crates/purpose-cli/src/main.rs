@@ -103,6 +103,60 @@ enum Command {
         #[command(subcommand)]
         cmd: CkgCommand,
     },
+
+    /// Build a theme-specific model: ingest sources (local files, email, web
+    /// pages), form a verified training corpus, train and export a model.
+    Factory {
+        #[command(subcommand)]
+        cmd: FactoryCommand,
+    },
+}
+
+#[derive(Subcommand, Debug)]
+enum FactoryCommand {
+    /// Scaffold a starter `theme.toml` for a new theme.
+    Init {
+        /// Theme name.
+        name: String,
+
+        /// Where to write the scaffolded file (defaults to `<name>.theme.toml`).
+        #[arg(long)]
+        out: Option<PathBuf>,
+
+        /// Overwrite an existing file.
+        #[arg(long)]
+        force: bool,
+    },
+
+    /// Fetch sources, train, and export a theme model.
+    Build {
+        /// Path to a `theme.toml`.
+        config: PathBuf,
+
+        /// Output directory for the exported model (defaults to
+        /// `.purpose/factory/<name>`).
+        #[arg(long)]
+        out: Option<PathBuf>,
+
+        /// Registry file to record the build in (defaults to
+        /// `.purpose/factory/registry.json`).
+        #[arg(long)]
+        registry: Option<PathBuf>,
+
+        /// Print the resulting `ThemeModel` as JSON rather than a summary.
+        #[arg(long)]
+        raw: bool,
+    },
+
+    /// List theme models recorded in the local registry.
+    List {
+        /// Registry file (defaults to `.purpose/factory/registry.json`).
+        #[arg(long)]
+        registry: Option<PathBuf>,
+
+        #[arg(long)]
+        raw: bool,
+    },
 }
 
 #[derive(Subcommand, Debug)]
@@ -500,6 +554,96 @@ async fn main() -> Result<()> {
                         println!("{}", serde_json::to_string_pretty(&w)?);
                     } else {
                         print!("{}", purpose_domains_ckg::render_why(&w));
+                    }
+                }
+            }
+        }
+
+        Command::Factory { cmd } => {
+            let cwd = std::env::current_dir().context("cannot read current directory")?;
+            let root = detect_root(&cwd);
+
+            match cmd {
+                FactoryCommand::Init { name, out, force } => {
+                    let out = out.unwrap_or_else(|| PathBuf::from(format!("{name}.theme.toml")));
+                    if out.exists() && !force {
+                        anyhow::bail!(
+                            "{} already exists — pass --force to overwrite it",
+                            out.display()
+                        );
+                    }
+                    let scaffold = purpose_factory::theme_config::scaffold(&name);
+                    std::fs::write(&out, scaffold.as_bytes())
+                        .with_context(|| format!("cannot write {}", out.display()))?;
+                    println!("wrote {}", out.display());
+                    println!("edit it, then run `purpose factory build {}`", out.display());
+                }
+
+                FactoryCommand::Build {
+                    config,
+                    out,
+                    registry,
+                    raw,
+                } => {
+                    let theme_config = purpose_factory::ThemeConfig::from_file(&config)
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+                    let name = theme_config.name.clone();
+                    let contract = theme_config
+                        .into_contract()
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+
+                    let out_dir = out.unwrap_or_else(|| {
+                        root.join(".purpose").join("factory").join(&name)
+                    });
+
+                    eprintln!("Building theme '{name}' -> {} ...", out_dir.display());
+                    let model = purpose_factory::Factory::build(contract, &out_dir)
+                        .await
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+
+                    let registry_path = registry.unwrap_or_else(|| {
+                        root.join(".purpose").join("factory").join("registry.json")
+                    });
+                    purpose_factory::Registry::new(&registry_path)
+                        .record(&model)
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+
+                    if raw {
+                        println!("{}", serde_json::to_string_pretty(&model)?);
+                    } else {
+                        println!(
+                            "Built '{}': {} document(s), {} example(s), vocab {} -> {}",
+                            model.name,
+                            model.document_count,
+                            model.example_count,
+                            model.vocab_size,
+                            model.path.display()
+                        );
+                    }
+                }
+
+                FactoryCommand::List { registry, raw } => {
+                    let registry_path = registry.unwrap_or_else(|| {
+                        root.join(".purpose").join("factory").join("registry.json")
+                    });
+                    let models = purpose_factory::Registry::new(&registry_path)
+                        .load()
+                        .map_err(|e| anyhow::anyhow!("{e}"))?;
+
+                    if raw {
+                        println!("{}", serde_json::to_string_pretty(&models)?);
+                    } else if models.is_empty() {
+                        println!("no theme models recorded in {}", registry_path.display());
+                    } else {
+                        for m in models {
+                            println!(
+                                "{}  {} doc(s), {} example(s)  {}",
+                                m.name,
+                                m.document_count,
+                                m.example_count,
+                                m.path.display()
+                            );
+                        }
                     }
                 }
             }

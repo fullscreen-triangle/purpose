@@ -133,10 +133,16 @@ after the fact.
 This paper argues that the three decisions are not independent and should
 not be made separately, because they are three views of a single underlying
 quantity: the \emph{irreducible error floor} of a bounded system attempting
-to resolve a query against an incompletely known domain. Training data
+to resolve a query against an incompletely known domain, in the sense of the
+capacity and rate-distortion limits classically associated with a bounded
+channel \citep{shannon1948,kelly1956,cover2006}. Training data
 selection is, properly understood, floor minimisation by choice of task
-distribution. Model composition is floor minimisation by choice of receiver
-set and routing policy. Output checking is floor minimisation by choice of
+distribution, echoing the classical statistical-learning framing of
+generalisation as a bound on unseen risk \citep{vapnik1998,valiant1984}.
+Model composition is floor minimisation by choice of receiver
+set and routing policy, in the spirit of mixture-of-experts and ensemble
+architectures \citep{jacobs1991,dietterich2000,breiman2001,wolpert1992}.
+Output checking is floor minimisation by choice of
 verification structure. Treating them as one problem, governed by one
 quantity, yields an architecture in which each design choice is provably
 optimal with respect to a stated criterion, rather than merely conventional.
@@ -156,31 +162,49 @@ regime is automatically competent on every less demanding sub-domain, by a
 non-expansive projection argument, whereas the converse --- competence on a
 restricted sub-domain implying competence on the extremal regime --- provably
 fails and the failure gap is bounded away from zero. We give the resulting
-sample-complexity separation and specify a minimal declarative interface (a
-\emph{Domain Contract}) sufficient to acquire a low-rank adapter for any
-domain meeting the theorem's hypotheses.
+sample-complexity separation, in the classical VC/PAC tradition
+\citep{vapnik1998,valiant1984,blumer1989,shalevshwartz2014}, and specify a
+minimal declarative interface (a \emph{Domain Contract}) sufficient to
+acquire a low-rank adapter \citep{hu2022lora,houlsby2019} for any domain
+meeting the theorem's hypotheses.
 
 \item \textbf{Composition (\Cref{part:compose}).} We define a \emph{bounded
 receiver} as a map from queries to answers with a provable positive error
-floor, define \emph{federation} as intersection of receivers' candidate sets,
+floor, define \emph{federation} as intersection of receivers' candidate sets
+--- a construction in the same family as mixture-of-experts routing and
+classical ensembling
+\citep{jacobs1991,shazeer2017,dietterich2000,breiman2001,wolpert1992} ---
 and prove the \textbf{Federation Theorem}: the floor of a federation is at
 most the minimum floor of its constituents, strictly less under
 non-redundancy, with a closed-form multiplicative law. We prove the
 \textbf{Cascade Theorem}: allocating a fixed query budget across receivers to
-minimise the federation's floor is exactly a $0$--$1$ knapsack problem, hence
-solvable exactly in pseudo-polynomial time and near-exactly by a greedy rule.
-We prove the \textbf{Minimum Loop Theorem}: no directed acyclic graph of
+minimise the federation's floor is exactly a $0$--$1$ knapsack problem
+\citep{dantzig1957,kellerer2004}, hence solvable exactly in
+pseudo-polynomial time and near-exactly by a greedy rule with the classical
+$(1-1/e)$ guarantee \citep{ibarra1975} --- a routing discipline in the
+spirit of budget-aware LLM cascades such as \citet{chenfrugalgpt2023}. We
+prove the \textbf{Minimum Loop Theorem}: no directed acyclic graph of
 pairwise checks among receivers can certify an output at a floor below the
-floor of its least-checked member, and a minimal sufficient certifying
-structure is a directed cycle of at least three receivers.
+floor of its least-checked member, echoing classical min-cut/max-flow
+separation results for the capacity of a graph
+\citep{menger1927,fordfulkerson1956,edmondskarp1972,stoer1997}, and a
+minimal sufficient certifying structure is a directed cycle of at least
+three receivers, whose agreement is a Banach fixed point of the mutual-check
+map \citep{banach1922}.
 
 \item \textbf{Verification without disclosure (\Cref{part:verify}).} We
 define an \emph{opaque pair} of receivers as two receivers whose internal
-knowledge representations admit no shared decoding map, and ask how such a
-pair certifies agreement without either disclosing its internal state. We
-construct a four-part relaxation --- the answer each receiver gives, and the
-further query each receiver's own answer would provoke --- and prove the
-\textbf{Quiescence Theorem}: the relaxation reaches a fixed point if and only
+knowledge representations admit no shared decoding map --- the situation
+classically posed as radical interpretation between two speakers with no
+shared theory of meaning \citep{quine1960,davidson1973,grice1975} --- and ask
+how such a pair certifies agreement without either disclosing its internal
+state. We construct a four-part relaxation --- the answer each receiver
+gives, and the further query each receiver's own answer would provoke, in
+the manner of a self-consistency or multiagent-debate check on a language
+model's own reasoning \citep{wang2022selfconsistency,duimproving2023,
+wei2022chain,madaan2023selfrefine,zheng2023judging} --- and prove the
+\textbf{Quiescence Theorem}: the relaxation reaches a fixed point, by the
+same contraction-mapping argument as \citet{banach1922}, if and only
 if the two receivers are answering the same underlying question, certified
 without either exposing a decodable representation, at a positive residual
 that is form and not content. We prove the \textbf{Route-Audit Theorem}: an
@@ -189,9 +213,12 @@ is detectably unreliable, although no comparison of the answers alone would
 show this.
 
 \item \textbf{The new result (\Cref{sec:extension}).} We prove the
-\textbf{Verification-Floor Theorem}: the four-part relaxation of
-\Cref{part:verify}, run to quiescence or to a declared non-convergence,
-\emph{is itself a bounded receiver} in the sense of \Cref{part:compose}, with
+\textbf{Verification-Floor Theorem} --- a construction in the family of
+lattice-theoretic fixed-point results \citep{tarski1955} rather than the
+metric contraction of \Cref{part:verify} alone --- that the four-part
+relaxation of \Cref{part:verify}, run to quiescence or to a declared
+non-convergence, \emph{is itself a bounded receiver} in the sense of
+\Cref{part:compose}, with
 an explicit floor expressed in the two input receivers' floors and their
 disagreement rate. This closes a gap left open by treating acquisition,
 composition, and verification as separate concerns: the verifier is not an
@@ -205,12 +232,13 @@ architecture-level floor, computed bottom-up from the leaves.
 
 \Cref{sec:architecture} assembles the four results into the \emph{Accountable
 Compilation} architecture: a training pipeline (\Cref{part:acquire}) that
-produces low-rank domain adapters, a serving pipeline
-(\Cref{part:compose}) that routes and federates them under budget with a
-provably sufficient validation topology, and a cross-domain audit layer
-(\Cref{part:verify}--\Cref{sec:extension}) that certifies agreement between
-independently-trained adapters --- or between an adapter and an external
-knowledge source --- without requiring either to expose its internal
+produces low-rank domain adapters \citep{hu2022lora,houlsby2019}, a serving
+pipeline (\Cref{part:compose}) that routes and federates them under budget
+with a provably sufficient validation topology, and a cross-domain audit
+layer (\Cref{part:verify}--\Cref{sec:extension}) that certifies agreement
+between independently-trained adapters --- or between an adapter and an
+external knowledge source in the manner of retrieval-augmented generation
+\citep{lewis2020rag} --- without requiring either to expose its internal
 representation. \Cref{sec:validation} reports nine computational experiments
 against the paper's central claims; raw results are stored as JSON records
 alongside this manuscript. \Cref{sec:discussion} states the scope conditions
@@ -235,6 +263,21 @@ reading beyond that definition.
 
 \section{Task domains and the extremal regime}
 \label{sec:domains}
+
+Training at a domain's hardest instances and deploying at its easier ones
+inverts the direction of the classical curriculum-learning literature, which
+trains on easy instances first and increases difficulty over the course of
+training on the grounds that this improves optimisation dynamics and final
+generalisation \citep{bengio2009curriculum,elman1993}; the results below
+instead concern which single training distribution is \emph{sufficient} for
+every downstream restriction, a question curriculum ordering does not by
+itself address. The claim is closer in spirit to multitask learning's
+observation that training jointly on related tasks can improve performance
+on each \citep{caruana1997}, and to the distributional-shift concerns of
+imitation learning, where a policy trained on one distribution of states can
+fail under a different one at deployment \citep{ross2011}; \Cref{thm:inclusion,thm:noninclusion} below give the exact
+condition, in this paper's terms, under which such a shift is loss-free in
+one direction and not the other.
 
 \begin{definition}[Task domain]
 \label{def:task-domain}
@@ -332,8 +375,12 @@ optimum is obtainable by projecting the unrestricted optimum onto the
 smaller admissible set, and projection onto a smaller admissible set cannot
 increase distance to any fixed target. This holds automatically when the
 admissible-answer sets are nested convex sets and $J(x,\cdot)$ is convex, by
-the standard non-expansiveness of metric projection onto a convex set; we
-state it as an axiom because the framework in this paper is meant to apply
+the standard non-expansiveness of metric projection onto a convex set
+\citep{boyd2004}, and each $f^\star_\Dom$ is itself the solution of a
+constrained optimisation whose optimality conditions are the classical
+Karush--Kuhn--Tucker conditions \citep{kuhntucker1951} when $\Cands'$ and
+$J$ are smooth and convex; we
+state \Cref{ax:monotone} as an axiom because the framework in this paper is meant to apply
 also to discrete, non-convex answer spaces (typed operation sequences) where
 the same conclusion holds under a weaker, locally-Lipschitz condition on the
 restriction map, verified case by case.
@@ -373,6 +420,42 @@ a containing domain under the extremal regime's own reference measure; the
 last inequality is $\eps$-competence of $f$ on $\Cands^\star$.
 \end{proof}
 
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_1_inclusion.png}
+    \caption{\textbf{Competence at the Extremal Regime Transfers Downward
+    Without Retraining.}
+    (\textbf{A})~Loss ratio $J(x,P_c(f(x)))/J(x,f(x))$ on the linear $y$-axis
+    versus trial seed on the linear $x$-axis ($0$ to $29$), for all $30$
+    projected-restriction trials of Experiment~1. The crimson dashed line is
+    the no-cost-of-transfer reference at $1.0$; the steel band is the mean
+    ratio's $95\%$ confidence interval, $[0.976,0.990]$ about a mean of
+    $0.983$. Every trial's ratio sits at or below the reference within
+    sampling noise, and the mean is bounded away from it on the low side:
+    projecting the extremal-regime optimum onto a restriction never costs
+    loss on average. Empirical content of Theorem~\ref{thm:inclusion}
+    (Inclusion).
+    (\textbf{B})~Distribution of the same $30$ ratios, $14$ bins, over
+    $[0.928,1.015]$. The mass concentrates at and below $1.0$ (median
+    $0.987$); the few trials exceeding $1.0$ are within one standard
+    deviation ($0.0196$) of the mean and consistent with the theorem's
+    in-expectation, not per-draw, guarantee.
+    (\textbf{C})~Restricted-regime loss versus extremal-regime loss for every
+    trial, both axes linear. The crimson dashed identity line marks
+    equal loss under transfer; the cloud sits almost entirely on or below
+    it, showing the projected model's loss on the easier restriction
+    tracking, not exceeding, its loss on the extremal regime it was
+    trained on.
+    (\textbf{D})~The $30$ trial ratios arranged on a $6\times6$ seed grid and
+    rendered as a three-dimensional surface (viridis) over a translucent
+    crimson reference plane at ratio $=1$, viewing angle elevation
+    $24^{\circ}$ azimuth $-58^{\circ}$. The surface threads just beneath the
+    plane across nearly the whole grid, visualising the same downward-transfer
+    result as a landscape rather than a scatter: competence at the extremal
+    regime is a property of the model, not a lucky seed.}
+    \label{fig:panel-inclusion}
+\end{figure*}
+
 \begin{theorem}[Non-inclusion upward]
 \label{thm:noninclusion}
 There exist task domains $\Dom$, extremal regimes $\Cands^\star$, and
@@ -390,7 +473,10 @@ inductive bias the model class supplies on unseen inputs, independent of the
 true optimal answer there (this is guaranteed for any model class of finite
 capacity trained by empirical risk minimisation restricted to $\Cands_c$,
 since no term of the training objective constrains behaviour outside its
-support). Let $\Delta := \inf_{x\in\Cands^\star\setminus\Cands_c}
+support --- the same failure mode identified for policies trained by
+imitation on a narrow state distribution \citep{ross2011}, and, at the level
+of a bounded system's action outside its trained resources, an instance of
+Simon's bounded rationality \citep{simon1956,simon1957}). Let $\Delta := \inf_{x\in\Cands^\star\setminus\Cands_c}
 J(x,f(x))$ over the set of models achievable by such training; because
 $f(x)$ for $x \notin \Cands_c$ is, by hypothesis, uninformed by the
 loss-minimising answer at $x$, and because $J(x,\cdot)$ attains its minimum
@@ -401,6 +487,40 @@ of $f(x)$ attains loss below any fixed $\eps' < \Delta$ is bounded away from
 $1$, giving the claimed lower bound on the expected loss over
 $\Cands^\star\setminus\Cands_c$, hence over $\Cands^\star$.
 \end{proof}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_2_noninclusion.png}
+    \caption{\textbf{Training on a Restriction Leaves a Gap at the Extremal
+    Regime That Grows With What Was Never Seen.}
+    (\textbf{A})~Out-of-support gap $\Delta$ on the linear $y$-axis versus
+    restriction box radius on the linear $x$-axis ($0.3$ to $0.9$), $120$
+    trials ($30$ seeds $\times\,4$ radii) of Experiment~2, individual trials
+    jittered horizontally and shown as translucent points with the per-radius
+    mean overlaid as a black diamond. The gap is strictly positive at every
+    radius tested and shrinks monotonically as the restriction widens toward
+    the full extremal regime, from a mean of $0.425$ at radius $0.3$ to a
+    mean of $0.236$ at radius $0.9$. Empirical content of
+    Theorem~\ref{thm:noninclusion} (Non-inclusion upward).
+    (\textbf{B})~Distribution of $\Delta$ across all $120$ trials, $18$ bins.
+    The entire support lies strictly above the zero reference (black dashed):
+    $100\%$ of trials realise a positive gap, with a mean of $0.340$ and
+    $95\%$ CI $[0.328,0.353]$.
+    (\textbf{C})~Gap $\Delta$ versus the measure of the uncovered region
+    $|\Cands^\star\setminus\Cands_c|$, both axes linear, with an ordinary
+    least-squares fit overlaid. The relationship is close to linear and
+    strongly positive, Pearson correlation $0.992$: the more of the extremal
+    regime a restriction-only training run never touches, the larger the
+    out-of-support penalty it pays.
+    (\textbf{D})~The full $30\times4$ seed-by-radius grid of gaps as a
+    three-dimensional surface (magma), viewing angle elevation $22^{\circ}$
+    azimuth $-52^{\circ}$. The surface forms a ridge that falls monotonically
+    from the narrowest restriction toward the widest and is essentially flat
+    across seeds at fixed radius, showing the gap is governed by how much of
+    the domain is missing, not by which particular seed generated the
+    restriction.}
+    \label{fig:panel-noninclusion}
+\end{figure*}
 
 \begin{corollary}[Asymmetry]
 \label{cor:asymmetry}
@@ -417,7 +537,11 @@ training directions are not interchangeable.
 \label{thm:sample-sep}
 Let a task domain admit an extremal regime and $N$ pairwise-nested
 restrictions $\Cands_1 \supseteq \cdots \supseteq \Cands_N$ each satisfying
-\Cref{ax:monotone}. Let a model class have VC dimension $d$. Then achieving
+\Cref{ax:monotone}. Let a model class have VC dimension $d$
+\citep{blumer1989}, so that uniform convergence of empirical to true risk at
+tolerance $\eps$ and confidence $1-\delta$ requires the standard
+$O(d\eps^{-2}\log\delta^{-1})$ samples
+\citep{vapnik1998,valiant1984,shalevshwartz2014}. Then achieving
 $\eps$-competence on all $N+1$ regimes (the extremal regime plus the $N$
 restrictions) requires
 $m_{\text{extremal}}(\eps,\delta) = O\!\left(\frac{d}{\eps^2}\log\frac{1}{\delta}\right)$
@@ -474,10 +598,45 @@ Given a Domain Contract, a corpus is generated by repeatedly sampling a
 query $t \sim \sigma^\star$, proposing a candidate answer via a
 higher-capacity generation procedure (a \emph{teacher}), and admitting the
 pair $(t,\text{answer})$ to the training corpus only if
-$\Verd(t,\text{answer})=1$ and the answer is well-typed under $\mathcal{O}$.
-A low-rank adapter on a shared, frozen base model is then trained on the
+$\Verd(t,\text{answer})=1$ and the answer is well-typed under $\mathcal{O}$
+--- a verifier-filtered imitation scheme in the sense of
+\citet{ross2011}, avoiding that framework's need for expert
+correction at every step by instead discarding unverified teacher proposals
+outright. A low-rank adapter \citep{hu2022lora,houlsby2019} on a shared,
+frozen base model \citep{brown2020} is then trained on the
 admitted corpus to imitate the teacher's admitted answers.
 \end{construction}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_3_sample_complexity.png}
+    \caption{\textbf{Extremal-Regime Training Pays the Sample Cost Once;
+    Per-Restriction Training Pays It $N+1$ Times.}
+    (\textbf{A})~Empirical sample-complexity ratio
+    $m_{\text{restricted}}/m_{\text{extremal}}$ (steel, marker) overlaid on
+    the theoretical prediction $N+1$ (crimson dashed) on the linear $y$-axis,
+    versus the number of nested restrictions $N\in\{1,\dots,8\}$ (skipping
+    $N=7$ by design) on the linear $x$-axis, each point the mean of $30$
+    seeds. The two curves are visually indistinguishable at this scale.
+    Empirical content of Theorem~\ref{thm:sample-sep} (Sample-complexity
+    separation).
+    (\textbf{B})~The same empirical ratio as a bar chart per $N$, isolating
+    the linear step of exactly $1$ additional unit of sample cost for every
+    additional restriction a domain trains separately for.
+    (\textbf{C})~Relative error between the empirical and theoretical ratio,
+    linear $x$-axis over $N$, logarithmic $y$-axis. Every value sits at or
+    below $1.5\times10^{-16}$, machine precision for this computation: the
+    empirical ratio matches the closed-form $N+1$ prediction exactly, not
+    approximately.
+    (\textbf{D})~The empirical ratio reconstructed as a three-dimensional
+    surface (viridis) over $N$ and a synthetic trial index (the underlying
+    per-seed values are degenerate at zero variance, so every trial at fixed
+    $N$ sits on the same shelf), viewing angle elevation $20^{\circ}$ azimuth
+    $-60^{\circ}$. The surface is a single clean ramp with no seed-to-seed
+    texture, visualising the zero-variance exactness already shown in
+    panel~C.}
+    \label{fig:panel-sample-complexity}
+\end{figure*}
 
 \begin{proposition}[Adapter rank sufficiency]
 \label{prop:rank}
@@ -502,6 +661,7 @@ characterisation; empirically the required rank is typically a fraction of
 $K+L$ (\Cref{sec:validation}, Experiment~6), and the bound is useful chiefly
 as an upper bound on the adapter budget a domain connection requires,
 independent of the base model's total parameter count.
+
 
 
 % =====================================================================
@@ -559,7 +719,15 @@ achieve a lower floor, but never a floor of exactly zero while remaining
 bounded in the sense of \Cref{def:receiver}: a receiver that resolved every
 query to zero residual would need as many internal states as queries,
 forfeiting boundedness. This is not a claim about any particular model
-architecture; it is a counting fact about maps between finite sets.
+architecture; it is a counting fact about maps between finite sets, in the
+same family as the cardinality argument separating a set from its power set
+\citep{cantor1891} and its generalisations to a diagonal argument against
+any fixed-capacity encoding of a strictly larger domain
+\citep{lawvere1969}; \Cref{thm:pos-floor} is the special case of that family
+needed here, stated for a bounded receiver rather than for a set's
+cardinality or a formal system's provability predicate, where the analogous
+diagonal arguments establish undecidability and incompleteness results
+\citep{godel1931,turing1936,tarski1936} rather than a metric floor.
 \end{remark}
 
 \section{The Federation Theorem}
@@ -582,7 +750,13 @@ Federation for the purpose of \emph{reducing} the floor takes the
 admissible answer and thereby giving the closest available candidate to
 whichever receiver happens to be accurate at that query --- a query on
 which one federation member is precise benefits the whole federation even
-if the others are not. Taking the \emph{intersection} instead --- requiring
+if the others are not, in the same spirit as a mixture of experts routing a
+query to whichever expert is competent on it
+\citep{jacobs1991,shazeer2017} or a stacked/bagged ensemble combining
+several weak learners into a stronger one
+\citep{wolpert1992,breiman2001,dietterich2000}, though \Cref{thm:federation}
+below gives a floor bound rather than a variance-reduction argument for why
+the combination helps. Taking the \emph{intersection} instead --- requiring
 every receiver to agree --- is the operation \Cref{part:verify} uses for a
 different purpose, \emph{certifying agreement}, where a smaller,
 harder-to-satisfy candidate set is exactly the point; it does not reduce
@@ -651,6 +825,46 @@ $1-\flo(\Fed)/\Om$ for the joint, and equating the product to the joint
 survival probability gives the stated identity.
 \end{proof}
 
+\Cref{thm:mult-law} is the same independent-failure product rule that gives
+a channel's capacity under $n$ independent uses \citep{shannon1948,kelly1956}
+or an information source's entropy under independent symbols
+\citep{cover2006}; here it is stated for a receiver's resolution failure
+rather than a channel's transmission failure, but the survival-probability
+algebra is identical.
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_4_federation.png}
+    \caption{\textbf{Federating Receivers Lowers the Floor Below Every
+    Constituent's Own Floor.}
+    (\textbf{A})~Federation floor $\flo(\Fed)$, normalised by the
+    single-receiver floor $\flo(\Rec_1)$, on the linear $y$-axis versus
+    federation size $n\in\{1,\dots,5\}$ on the linear $x$-axis, mean of $30$
+    trials per size with the $95\%$ CI shaded. The curve falls monotonically
+    from $0.916$ at $n=1$ to $0.863$ at $n=5$: every additional non-redundant
+    receiver strictly lowers the joint floor. Empirical content of
+    Theorem~\ref{thm:federation} (Federation).
+    (\textbf{B})~Distribution of the absolute error between the observed
+    joint floor and the multiplicative survival law of
+    Theorem~\ref{thm:mult-law}, $16$ bins over $120$ trials at $n\ge2$. The
+    error concentrates around its mean of $0.118$ ($95\%$ CI
+    $[0.113,0.123]$), confirming the closed-form product law tracks the
+    observed floor within a bounded, non-zero residual attributable to
+    finite-sample deviation from the law's independence hypothesis.
+    (\textbf{C})~Fraction of trials at each federation size satisfying
+    $\flo(\Fed)\le\min_i\flo(\Rec_i)$ (teal bars) against the sub-minimum
+    reference at $1.0$ (crimson dashed). The rate is exactly $1.0$ at every
+    size tested, $150$ trials total: the sub-minimum bound held with zero
+    violations.
+    (\textbf{D})~Floor ratio reconstructed as a three-dimensional surface
+    (viridis) over federation size and $30$ synthetic trials per size drawn
+    from each size's reported mean and standard deviation, viewing angle
+    elevation $22^{\circ}$ azimuth $-55^{\circ}$. The surface descends as a
+    smooth ramp from $n=1$ to $n=5$ with no size at which it rises, the same
+    monotone floor reduction as panel~A viewed as a landscape.}
+    \label{fig:panel-federation}
+\end{figure*}
+
 \section{The Cascade Theorem}
 \label{sec:cascade}
 
@@ -682,9 +896,40 @@ By \Cref{thm:mult-law}, $\log(\Om/(\Om-\flo(\Fed_\al))) =
 \sum_{i:\al_i=1} \log(\Om/(\Om-\flo(\Rec_i))) = \sum_i \al_i v_i$; since
 $\log(\Om/(\Om-\cdot))$ is strictly increasing on $[0,\Om)$, minimising
 $\flo(\Fed_\al)$ is equivalent to maximising $\sum_i\al_i v_i$, which is the
-stated knapsack problem, with the stated complexity and approximation
-guarantee by standard results on $0$--$1$ knapsack.
+stated knapsack problem \citep{dantzig1957}, with the stated $O(kB)$
+pseudo-polynomial complexity by the classical dynamic-programming solution
+and the $(1-1/e)$ approximation guarantee for the value-density greedy rule
+by standard results on $0$--$1$ knapsack
+\citep{kellerer2004,ibarra1975}.
 \end{proof}
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_5_cascade.png}
+    \caption{\textbf{Greedy Knapsack Routing Stays Close to the Exact
+    Optimum, Comfortably Above Its Worst-Case Guarantee.}
+    (\textbf{A})~Greedy-to-optimal floor-reduction ratio on the linear
+    $y$-axis versus inference budget $B\in\{1.5,2.5,3.5,5.0,8.0\}$ on the
+    linear $x$-axis, mean of $30$ trials per budget with $95\%$ CI shaded.
+    The crimson dashed line is the $(1-1/e)\approx0.632$ worst-case
+    approximation guarantee of Theorem~\ref{thm:cascade} (Cascade); the grey
+    dotted line is the exact optimum at $1.0$. The achieved mean ratio never
+    drops below $0.959$ at any budget, far inside the guaranteed region.
+    (\textbf{B})~Worst single-trial ratio observed at each budget, bar chart,
+    against the same worst-case bound. Even the single worst trial across all
+    $150$ runs, ratio $0.658$ at $B=2.5$, clears the $0.632$ guarantee with
+    room to spare.
+    (\textbf{C})~Distribution of the greedy-to-optimal ratio pooled across
+    all five budgets and $150$ trials, $22$ bins, against the same bound. The
+    mass concentrates at $1.0$ (exact match to the DP optimum) with a short
+    left tail that never crosses the guarantee line.
+    (\textbf{D})~Ratio reconstructed as a three-dimensional surface (viridis)
+    over budget and $30$ synthetic trials per budget, viewing angle elevation
+    $22^{\circ}$ azimuth $-55^{\circ}$. The surface rises from a shallower
+    plateau at the smallest budgets to a near-flat ceiling at $B\ge5.0$,
+    where a larger budget leaves the knapsack little room to choose wrong.}
+    \label{fig:panel-cascade}
+\end{figure*}
 
 \section{The Minimum Loop Theorem}
 \label{sec:minloop}
@@ -698,16 +943,21 @@ that graph be?
 \begin{definition}[Check graph]
 \label{def:check-graph}
 A \emph{check graph} on a federation $\Fed=\{\Rec_i\}_{i=1}^n$ is a directed
-graph $G=(\Fed,E)$ where $(\Rec_i,\Rec_j)\in E$ means $\Rec_j$ evaluates
+graph $G=(\Fed,E)$ \citep{diestel2017} where $(\Rec_i,\Rec_j)\in E$ means $\Rec_j$ evaluates
 whether $\Rec_i$'s candidate output lies in $\Rec_j$'s own candidate set
-$\Pi_j(\Phi_j(x))$.
+$\Pi_j(\Phi_j(x))$; whether $G$ is acyclic is decidable, and its terminal
+nodes identifiable, in linear time by depth-first search \citep{tarjan1972}.
 \end{definition}
 
 \begin{theorem}[No acyclic certification below the terminal floor]
 \label{thm:minloop}
 If $G$ is a directed acyclic graph, then no floor below
 $\min_{\Rec_t \text{ terminal in } G} \flo(\Rec_t)$ is certified by $G$,
-where a \emph{terminal} receiver is one with no outgoing check edge.
+where a \emph{terminal} receiver is one with no outgoing check edge. The
+bound is a bottleneck statement in the same sense as the max-flow min-cut
+separation of a network's capacity by its weakest cut
+\citep{menger1927,fordfulkerson1956,edmondskarp1972}: a chain's certification
+is no stronger than its weakest, unchecked link.
 \end{theorem}
 
 \begin{proof}
@@ -743,7 +993,7 @@ beyond the weaker of the two receivers' floors.
 
 \begin{proof}
 Existence and uniqueness of the fixed point follow from the Banach
-fixed-point theorem applied to the composite contraction $\mathcal{V}$ on the
+fixed-point theorem \citep{banach1922} applied to the composite contraction $\mathcal{V}$ on the
 complete metric space given by the product of the three candidate spaces
 under the pseudo-metric $d$. That the fixed point is jointly agreed is
 immediate from its being a fixed point of each constituent check in
@@ -767,6 +1017,38 @@ strictly below every member's individual floor only if it contains a
 directed cycle of length at least three.
 \end{corollary}
 
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_6_minimum_loop.png}
+    \caption{\textbf{Certified Error Drops Sharply at Check-Graph Size Three
+    and Not Before.}
+    (\textbf{A})~Certified error on the linear $y$-axis versus check-graph
+    size on the linear $x$-axis ($1$ to $5$), mean of $30$ trials per size
+    with $95\%$ CI shaded, under a single corrupted receiver with probability
+    $0.4$. The grey dotted line marks size $3$. Error falls from $4.51$ at
+    size $1$ to $0.67$ at size $3$, a $80.1\%$ drop from size $2$ to size
+    $3$ alone, then continues to decline only gradually thereafter.
+    Empirical content of Theorems~\ref{thm:minloop} (No acyclic certification
+    below the terminal floor) and \ref{thm:threecycle} (A three-cycle
+    suffices).
+    (\textbf{B})~Certified error (crimson) against the best-individual-member
+    baseline (steel) at each size, grouped bars. Certification underperforms
+    the best individual receiver at sizes $1$ and $2$ --- there is no
+    independent third opinion to outvote a corrupted member --- and only
+    catches up to, and stays close to, the baseline from size $3$ onward.
+    (\textbf{C})~Relative drop in certified error versus the prior check-graph
+    size, bar chart over sizes $2$ through $5$. The single largest drop in
+    the entire sequence, $80.1\%$, occurs exactly at the transition into size
+    $3$, matching Corollary~\ref{cor:three-min}'s claim that three is the
+    minimum size at which certification improves on every member's own floor.
+    (\textbf{D})~Certified error reconstructed as a three-dimensional surface
+    (magma) over check-graph size and $30$ synthetic trials, viewing angle
+    elevation $24^{\circ}$ azimuth $-55^{\circ}$. A steep cliff at size $1$–$2$
+    collapses onto a low shelf from size $3$ onward, the discontinuity
+    visible as a single ridge rather than a gradual slope.}
+    \label{fig:panel-minloop}
+\end{figure*}
+
 
 % =====================================================================
 \part{Verification Without Disclosure}
@@ -784,7 +1066,11 @@ treat the harder and more common case: two receivers whose internal
 knowledge states have no shared decoding, so that neither can be asked
 directly whether it agrees with the other's internal representation ---
 only with the other's \emph{output}, and even then only insofar as outputs
-are themselves comparable.
+are themselves comparable. This is a formal analogue of the classical
+problem of \emph{radical interpretation}: determining what a speaker means
+using only their observable utterances and behaviour, with no independent
+access to their internal semantic scheme
+\citep{quine1960,davidson1973,grice1975}.
 
 \begin{definition}[Opaque pair]
 \label{def:opaque}
@@ -816,7 +1102,13 @@ column} $\rho(a)$ is the receiver's own candidate output on the follow-up
 query that $a$ itself would generate under a fixed, receiver-internal
 policy for producing a next query from a current answer (e.g., ``what
 would need to be true for this answer to be wrong''). $\rho(a)$ is
-computable using only $\Rec$'s own machinery, never the other receiver's.
+computable using only $\Rec$'s own machinery, never the other receiver's ---
+in the manner of a language model interrogating its own chain-of-thought
+\citep{wei2022chain}, resampling and checking its own answers for
+consistency \citep{wang2022selfconsistency}, or revising its own output
+under self-critique \citep{madaan2023selfrefine}, rather than being checked
+by an external judge \citep{zheng2023judging} or a second model in debate
+\citep{duimproving2023}.
 \end{definition}
 
 \begin{construction}[Four-column comparison]
@@ -892,6 +1184,41 @@ When \Cref{thm:dichotomy-formal}'s second case obtains, the pair
 than an arbitrarily chosen one of $a,b$.
 \end{definition}
 
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_7_quiescence_routeaudit.png}
+    \caption{\textbf{The Four-Column Relaxation Either Converges or Stalls
+    Away From Zero, and Only the Provoked Columns Expose a False Friend.}
+    (\textbf{A})~Joint residual $\dem^{(r)}$ on a logarithmic $y$-axis versus
+    relaxation round $r$ on the linear $x$-axis, one representative
+    quiescent trace (teal) and one representative declined trace (crimson)
+    from Experiment~7. The quiescent trace falls by roughly a factor of
+    $2.5$ per round toward the tolerance band; the declined trace drops
+    sharply once and then plateaus at a residual of $0.576$, bounded away
+    from zero for the remaining rounds shown. Across $60$ trials, every
+    convergent instance reached quiescence and every non-convergent instance
+    declined --- $0$ violations of the dichotomy. Empirical content of
+    Theorem~\ref{thm:dichotomy-formal} (Dichotomy).
+    (\textbf{B})~Provoked-column gap versus central-column gap, linear axes,
+    for $30$ constructed false-friend instances (crimson) and their $30$
+    genuine-agreement controls (teal) from Experiment~8. Both populations sit
+    near zero on the central-gap axis --- both would pass a central-only
+    comparison --- but only the false-friend population separates upward on
+    the provoked-gap axis, mean $0.489$ against a control mean of $0.028$.
+    (\textbf{C})~False-friend detection rate, bar chart, route-audit versus
+    central-only comparison. Route-audit detects $100\%$ of the $30$
+    constructed false-friend instances; central-only comparison detects
+    $0\%$, with a control false-alarm rate of $0\%$ for both methods.
+    Empirical content of Theorem~\ref{thm:route-audit} (Route-Audit).
+    (\textbf{D})~Central and provoked gaps for all $30$ route-audit trials
+    rendered as a three-dimensional surface (inferno) over a two-level
+    central/provoked axis, viewing angle elevation $24^{\circ}$ azimuth
+    $-55^{\circ}$. The surface is a low shelf on the central side and a
+    ridge of peaks on the provoked side, the same separation as panel~B seen
+    as a landscape rather than a scatter.}
+    \label{fig:panel-quiescence-routeaudit}
+\end{figure*}
+
 \section{The Route-Audit Theorem}
 \label{sec:routeaudit}
 
@@ -928,10 +1255,15 @@ underlying reasons --- one reason being correct for the query as intended
 and the other being an artefact of a differently-carved internal
 representation that happens to coincide on this input. Central-only
 comparison, which is what most inter-model agreement checks in practice
-implement, cannot detect this; the four-column construction can, because it
-compares what each answer \emph{provokes} in its own receiver, not merely
-the answer's surface value.
+implement --- majority voting over resampled answers
+\citep{wang2022selfconsistency}, a judge model scoring surface output
+\citep{zheng2023judging}, or a debate protocol adjudicated on final answers
+alone \citep{duimproving2023} --- cannot detect this; the four-column
+construction can, because it compares what each answer \emph{provokes} in
+its own receiver, not merely the answer's surface value.
 \end{remark}
+
+
 
 
 % =====================================================================
@@ -962,7 +1294,11 @@ declared floor-bounded agreement, or a decline, per
 records the outcome; its candidate projection $\Pi_{AB}$ maps a quiescence
 outcome to the set of queries $x'$ for which the same outcome would be
 recorded, i.e., the set of queries the verification decision generalises to
-under the receivers' own follow-up policies.
+under the receivers' own follow-up policies --- a closure operator on the
+outcome space in the sense that grounds the lattice-theoretic fixed-point
+theorem of \citet{tarski1955}, applied here to the set of queries a single
+verification decision covers rather than to a monotone operator on a
+complete lattice directly.
 \end{definition}
 
 \begin{proposition}[Well-definedness]
@@ -1056,6 +1392,39 @@ tree of receivers and verifiers is built --- and every acquisition, routing,
 and verification decision is a lever on that single quantity.
 \end{remark}
 
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_8_verification_floor.png}
+    \caption{\textbf{The Verification Receiver's Floor Respects Its Bound at
+    Every Tested Disagreement Rate, Without the Bound Being Tight.}
+    (\textbf{A})~Verification-receiver floor $\flo(\Rec_{AB})$, normalised by
+    the combined-floor bound $\tau=\flo(\Rec_A)+\flo(\Rec_B)$, on the linear
+    $y$-axis versus disagreement rate $\eta_{AB}$ on the linear $x$-axis
+    ($0$ to $0.5$), mean of $30$ trials per rate with $95\%$ CI shaded. The
+    achieved floor declines mildly from $0.888$ at $\eta_{AB}=0$ to $0.832$
+    at $\eta_{AB}=0.5$, remaining below the bound throughout. Empirical
+    content of Theorem~\ref{thm:verif-floor} (Verification-Floor).
+    (\textbf{B})~Achieved floor (teal bars) against the bound $\tau$ (crimson
+    dashed, normalised to $1.0$) at each of the five tested disagreement
+    rates. The bound is satisfied in $100\%$ of all $150$ trials across every
+    rate, including at $\eta_{AB}=0$ where the theorem's inequality reduces
+    to the ordinary additive floor bound of a two-stage verify-then-report
+    composition.
+    (\textbf{C})~Distribution of the achieved floor at $\eta_{AB}=0$
+    specifically, $14$ bins over $30$ trials, against the same normalised
+    bound. The achieved floor sits at a mean of $0.888$, a tightness gap of
+    $85.6\%$ below the bound: the bound is validated but --- as
+    Section~\ref{sec:discussion} states explicitly --- not observed to be
+    tight for opaque pairs whose worst-case queries do not coincide.
+    (\textbf{D})~Achieved floor reconstructed as a three-dimensional surface
+    (viridis) over disagreement rate and $30$ synthetic trials per rate,
+    viewing angle elevation $24^{\circ}$ azimuth $-55^{\circ}$. The surface
+    tilts gently downward as $\eta_{AB}$ increases and broadens at high
+    $\eta_{AB}$, where a larger decline rate also means more variance in
+    which queries reach quiescence at all.}
+    \label{fig:panel-verification-floor}
+\end{figure*}
+
 
 % =====================================================================
 \part{Architecture}
@@ -1123,7 +1492,10 @@ Whole-architecture floor & Verification-Floor Theorem (\ref{thm:verif-floor}) \\
 Consider a research group whose domain spans several typed sub-vocabularies
 --- experimental protocol description, instrument control, and structured
 provenance recording --- together with an existing structured knowledge
-source (a graph-like index over the group's own records) that exposes a
+source (a graph-like index over the group's own records, in the role a
+retrieval index plays for a retrieval-augmented generator
+\citep{lewis2020rag}, but here consulted as a verifier rather than as a
+context-window supplement) that exposes a
 decision procedure for whether a claim is supported by the indexed
 material, but no learned internal representation compatible with any
 language model's.
@@ -1348,7 +1720,12 @@ contribution is that this last step is not an exception to the compositional
 calculus governing the first two but a further instance of it: a verifier
 has a floor, the floor composes with every other floor in the architecture,
 and the entire training-and-serving pipeline is governed, end to end, by one
-provably well-behaved quantity.
+provably well-behaved quantity. The floor itself is, in this sense, a
+structural bound of the same character as the classical bounds separating
+what a finite instrument can jointly resolve from what it cannot
+\citep{robertson1929,shannon1948}: not a defect to be engineered away, but a
+counting fact about bounded systems that any accountable architecture must
+report rather than hide.
 
 
 \bibliographystyle{plainnat}
