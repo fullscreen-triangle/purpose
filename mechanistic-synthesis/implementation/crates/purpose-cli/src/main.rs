@@ -110,6 +110,23 @@ enum Command {
         #[command(subcommand)]
         cmd: FactoryCommand,
     },
+
+    /// Run the theme factory as an HTTP server, so a caller on a different
+    /// machine (no shared filesystem, no local `purpose` binary) can upload
+    /// sources, trigger a build, and download the resulting model over the
+    /// network. Requires the `PURPOSE_SERVE_TOKEN` environment variable;
+    /// every request must present it as `Authorization: Bearer <token>`.
+    Serve {
+        /// Port to listen on.
+        #[arg(long, default_value_t = 8420)]
+        port: u16,
+
+        /// Working directory for themes (sources + trained models) and the
+        /// build registry. Defaults to `.purpose/factory-server` under the
+        /// detected project root.
+        #[arg(long)]
+        root: Option<PathBuf>,
+    },
 }
 
 #[derive(Subcommand, Debug)]
@@ -647,6 +664,33 @@ async fn main() -> Result<()> {
                     }
                 }
             }
+        }
+
+        Command::Serve { port, root } => {
+            let cwd = std::env::current_dir().context("cannot read current directory")?;
+            let root_dir = root.unwrap_or_else(|| {
+                detect_root(&cwd).join(".purpose").join("factory-server")
+            });
+            std::fs::create_dir_all(&root_dir)
+                .with_context(|| format!("cannot create {}", root_dir.display()))?;
+
+            let token = std::env::var("PURPOSE_SERVE_TOKEN").map_err(|_| {
+                anyhow::anyhow!(
+                    "PURPOSE_SERVE_TOKEN must be set — refusing to start a server with no auth"
+                )
+            })?;
+
+            let listener = tokio::net::TcpListener::bind(("0.0.0.0", port))
+                .await
+                .with_context(|| format!("cannot bind port {port}"))?;
+            println!(
+                "purpose serve: listening on :{port}, themes under {}",
+                root_dir.display()
+            );
+            let app = purpose_factory::server::app(root_dir, token);
+            axum::serve(listener, app)
+                .await
+                .context("server error")?;
         }
 
         Command::Operations => {

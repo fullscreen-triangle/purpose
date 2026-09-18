@@ -1,8 +1,10 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { basename, join } from "node:path";
 import { NextRequest, NextResponse } from "next/server";
+import { http } from "@buhera/purpose-factory-client";
 import { loadProfile, ProfileNotFoundError, saveProfile, sourcesDir } from "@/lib/profile-store";
 import { isSupportedExtension } from "@/lib/types";
+import { remoteServerConfig } from "@/lib/remote-config";
 
 const MAX_UPLOAD_BYTES = 25 * 1024 * 1024; // 25MB per file
 
@@ -36,6 +38,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
 
   const accepted: string[] = [];
   const rejected: { filename: string; reason: string }[] = [];
+  const validated: { filename: string; bytes: Buffer }[] = [];
 
   for (const file of files) {
     const filename = sanitizeFilename(file.name);
@@ -53,8 +56,13 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     }
 
     const bytes = Buffer.from(await file.arrayBuffer());
-    await writeFile(join(dir, filename), bytes);
+    validated.push({ filename, bytes });
+  }
 
+  // Local copy always stays the source of truth for the profile UI's own
+  // file list, whether or not a remote server is configured.
+  for (const { filename, bytes } of validated) {
+    await writeFile(join(dir, filename), bytes);
     profile.sources.files = profile.sources.files.filter((f) => f.filename !== filename);
     profile.sources.files.push({
       filename,
@@ -62,6 +70,22 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
       sizeBytes: bytes.byteLength,
     });
     accepted.push(filename);
+  }
+
+  const remote = remoteServerConfig();
+  if (remote && validated.length > 0) {
+    const remoteResult = await http.uploadSources(
+      profile.id,
+      validated.map((v) => ({ filename: v.filename, data: v.bytes })),
+      remote,
+    );
+    // Anything the remote server rejects (e.g. a stricter future check)
+    // is surfaced too, even though the local write already succeeded —
+    // the profile's file list reflects what's usable for training, which
+    // in remote mode means what the server accepted.
+    for (const r of remoteResult.rejected) {
+      rejected.push({ filename: r.filename, reason: `remote server: ${r.reason}` });
+    }
   }
 
   await saveProfile(profile);

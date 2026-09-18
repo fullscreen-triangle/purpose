@@ -16,6 +16,7 @@ pub mod hf;
 pub mod lora;
 pub mod model;
 pub mod pretrained_model;
+pub mod server;
 pub mod source;
 pub mod theme_config;
 pub mod tokenizer;
