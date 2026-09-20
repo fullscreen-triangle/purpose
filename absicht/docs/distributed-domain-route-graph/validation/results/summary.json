@@ -1,0 +1,40 @@
+{
+  "suite": "distributed-domain-route-graph-validation",
+  "generated": "2026-09-20T15:09:57Z",
+  "n_experiments": 6,
+  "n_confirmed": 6,
+  "n_failed": 0,
+  "experiments": [
+    {
+      "experiment": "route_receiver",
+      "theorem": "Theorem (The route graph is a bounded receiver)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "waterfill_limit",
+      "theorem": "Theorem (Water-filling solves the linear-relaxation cascade)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "phaselock_floor",
+      "theorem": "Theorem (Federated phase-lock floor)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "generate_test",
+      "theorem": "Construction (Generate-and-test on exhausted negation)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "seam_end_to_end",
+      "theorem": "Theorem (The Seam Theorem)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "crowd_routing",
+      "theorem": "Corollary (Crowd-sharpening survives route-graph selection)",
+      "verdict": "CONFIRMED"
+    }
+  ],
+  "elapsed_seconds": 13.063786268234253
+}

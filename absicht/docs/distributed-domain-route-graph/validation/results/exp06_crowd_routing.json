@@ -1,0 +1,34 @@
+{
+  "experiment": "crowd_routing",
+  "theorem": "Corollary (Crowd-sharpening survives route-graph selection)",
+  "claim": "A route-graph-selected subset's joint failure probability is never worse than, and typically better than, a uniformly-sampled subset of the same size, and both decrease as more receivers are consulted.",
+  "n_trials": 150,
+  "ratio_stats": {
+    "n": 150,
+    "mean": 0.8176077051435062,
+    "std": 0.07426517886907208,
+    "sem": 0.006063726462858336,
+    "ci95_lo": 0.8057228012763039,
+    "ci95_hi": 0.8294926090107085,
+    "min": 0.5820903700772524,
+    "max": 0.9555555555555554,
+    "median": 0.8134769921436587
+  },
+  "never_worse_rate": 1.0,
+  "geometric_decrease_routed": true,
+  "q_routed_by_n_consult": {
+    "2": 0.6972927946688879,
+    "4": 0.5075713512631803,
+    "6": 0.3820795889092781,
+    "8": 0.29328525862546845,
+    "10": 0.23507660920227585
+  },
+  "q_uniform_by_n_consult": {
+    "2": 0.7779536304317646,
+    "4": 0.6116899611972729,
+    "6": 0.4765700426949282,
+    "8": 0.3805307394648734,
+    "10": 0.30272490356080045
+  },
+  "verdict": "CONFIRMED"
+}

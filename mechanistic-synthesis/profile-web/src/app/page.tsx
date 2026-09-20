@@ -1,96 +1,69 @@
-"use client";
+import { ArchitectureGraph } from "@/components/explainer/ArchitectureGraph";
+import { Hero } from "@/components/explainer/Hero";
+import { HonestyPanel } from "@/components/explainer/HonestyPanel";
+import { LayerCards } from "@/components/explainer/LayerCards";
+import { QueryFlowStepper } from "@/components/explainer/QueryFlowStepper";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { createProfile, listProfiles } from "@/lib/api-client";
-import type { Profile } from "@/lib/types";
-
-export default function ProfileListPage() {
-  const [profiles, setProfiles] = useState<Profile[] | null>(null);
-  const [newName, setNewName] = useState("");
-  const [creating, setCreating] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    listProfiles().then(setProfiles).catch((e: Error) => setError(e.message));
-  }, []);
-
-  async function handleCreate(e: React.FormEvent) {
-    e.preventDefault();
-    if (!newName.trim()) return;
-    setCreating(true);
-    setError(null);
-    try {
-      const profile = await createProfile(newName.trim());
-      setProfiles((prev) => (prev ? [profile, ...prev] : [profile]));
-      setNewName("");
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setCreating(false);
-    }
-  }
-
+export default function LandingPage() {
   return (
-    <main>
-      <h1 className="text-2xl font-semibold">Profiles</h1>
-      <p className="mt-1 text-sm opacity-70">
-        A profile is a personal knowledge theme: add papers, CSVs, JSON, and links, then train a
-        model from it.
-      </p>
+    <div className="-mx-6 -my-10 bg-dark px-6 py-10 text-light">
+      <div className="mx-auto max-w-5xl">
+        <Hero />
 
-      <form onSubmit={handleCreate} className="mt-6 flex gap-2">
-        <input
-          value={newName}
-          onChange={(e) => setNewName(e.target.value)}
-          placeholder="New profile name"
-          className="flex-1 rounded border border-dark/20 bg-transparent px-3 py-2 text-sm outline-none focus:border-primary dark:border-light/20"
-        />
-        <button
-          type="submit"
-          disabled={creating || !newName.trim()}
-          className="rounded bg-primary px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
-        >
-          {creating ? "Creating…" : "Create"}
-        </button>
-      </form>
-      {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+        <section id="how-it-works" className="mt-8">
+          <h2 className="text-xl font-semibold">The problem with content-store RAG</h2>
+          <p className="mt-2 max-w-2xl text-sm text-light/60">
+            Most systems make one big model swallow everyone&rsquo;s documents, or retrieve raw
+            text from them at query time. Drag the nodes below — only the diagram on the right
+            keeps content where it belongs.
+          </p>
+          <div className="mt-6">
+            <ArchitectureGraph />
+          </div>
+        </section>
 
-      <ul className="mt-8 space-y-3">
-        {profiles === null && <li className="text-sm opacity-60">Loading…</li>}
-        {profiles?.length === 0 && (
-          <li className="text-sm opacity-60">No profiles yet — create one above.</li>
-        )}
-        {profiles?.map((p) => (
-          <li key={p.id}>
-            <Link
-              href={`/profiles/${p.id}`}
-              className="block rounded border border-dark/10 p-4 transition hover:border-primary dark:border-light/10"
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-medium">{p.displayName}</span>
-                <StatusBadge profile={p} />
-              </div>
-              <p className="mt-1 text-xs opacity-60">
-                {p.sources.files.length} file(s), {p.sources.links.length} link(s)
-              </p>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </main>
+        <section className="mt-16">
+          <h2 className="text-xl font-semibold">How a query flows</h2>
+          <p className="mt-2 max-w-2xl text-sm text-light/60">
+            Step through what happens between you asking a question and getting an answer.
+          </p>
+          <div className="mt-6 max-w-md">
+            <QueryFlowStepper />
+          </div>
+        </section>
+
+        <section className="mt-16">
+          <h2 className="text-xl font-semibold">The three layers</h2>
+          <p className="mt-2 max-w-2xl text-sm text-light/60">
+            Each layer is a proven theorem, not a heuristic. Click a card for the detail.
+          </p>
+          <div className="mt-6">
+            <LayerCards />
+          </div>
+        </section>
+
+        <section className="mt-16">
+          <h2 className="text-xl font-semibold">Why this is honest, not magic</h2>
+          <div className="mt-6 max-w-lg">
+            <HonestyPanel />
+          </div>
+        </section>
+
+        <footer className="mt-20 border-t border-white/10 pt-8 pb-4 text-sm text-light/50">
+          <p>
+            Read the paper:{" "}
+            <span className="text-light/70">
+              absicht/docs/distributed-domain-route-graph/distributed-domain-route-graph.tex
+            </span>
+          </p>
+          <p className="mt-2">
+            Ready to try it?{" "}
+            <a href="/profiles" className="text-primaryDark hover:underline">
+              Create a profile →
+            </a>
+          </p>
+        </footer>
+      </div>
+    </div>
   );
-}
-
-function StatusBadge({ profile }: { profile: Profile }) {
-  const status = profile.lastBuild?.status;
-  if (!status) {
-    return <span className="text-xs opacity-50">not trained</span>;
-  }
-  const styles: Record<string, string> = {
-    running: "text-amber-500",
-    done: "text-emerald-500",
-    error: "text-red-500",
-  };
-  return <span className={`text-xs ${styles[status]}`}>{status}</span>;
 }

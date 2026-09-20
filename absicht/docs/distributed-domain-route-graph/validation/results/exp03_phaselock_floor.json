@@ -1,0 +1,20 @@
+{
+  "experiment": "phaselock_floor",
+  "theorem": "Theorem (Federated phase-lock floor)",
+  "claim": "A locked sub-federation's floor is bounded by the minimum individual locked floor (sub-minimum, inherited from the Federation Theorem), the locked population's joint failure probability (a product over only locked members) decreases as more receivers lock, and is lower than the naive full-population mean failure rate when corrupted (unlocked) receivers are present and correctly excluded.",
+  "n_trials": 180,
+  "mean_R_final_above_Kc": 0.9993373476041963,
+  "mean_R_final_below_Kc": 0.6036022151728202,
+  "locking_separates_by_coupling": true,
+  "sub_minimum_satisfaction_rate": 1.0,
+  "crowd_sharpening_monotone_decrease": true,
+  "locked_beats_naive_rate": 1.0,
+  "mean_q_locked_when_corrupted_present": 8.27163371915356e-08,
+  "mean_q_naive_when_corrupted_present": 0.01845299200450517,
+  "q_joint_by_n_locked_above_Kc": {
+    "6": 3.7220082913734334e-11,
+    "8": 1.1983036934820802e-14,
+    "10": 3.940471643572045e-18
+  },
+  "verdict": "CONFIRMED"
+}

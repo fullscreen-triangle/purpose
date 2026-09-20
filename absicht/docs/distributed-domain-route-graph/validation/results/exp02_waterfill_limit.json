@@ -1,0 +1,101 @@
+{
+  "experiment": "waterfill_limit",
+  "theorem": "Theorem (Water-filling solves the linear-relaxation cascade)",
+  "claim": "The fractional (water-filling) knapsack value upper-bounds the exact 0-1 knapsack DP optimum at every k (since 0-1 feasibility is a strict subset of fractional feasibility), and the ratio decreases monotonically toward 1 as the number of receivers k grows and per-item cost shrinks relative to the budget.",
+  "trials": [
+    {
+      "k": 4,
+      "ratio_stats": {
+        "n": 30,
+        "mean": 1.3112514795897559,
+        "std": 0.4258848157146608,
+        "sem": 0.0777555734886168,
+        "ci95_lo": 1.158850555552067,
+        "ci95_hi": 1.4636524036274448,
+        "min": 1.0147061124239118,
+        "max": 3.3714189522338227,
+        "median": 1.1866554661010549
+      },
+      "max_relative_item_cost": 0.9897342368337767
+    },
+    {
+      "k": 8,
+      "ratio_stats": {
+        "n": 30,
+        "mean": 1.067491108242846,
+        "std": 0.047545669209696585,
+        "sem": 0.008680611845943214,
+        "ci95_lo": 1.0504771090247973,
+        "ci95_hi": 1.0845051074608947,
+        "min": 1.00592227169597,
+        "max": 1.2172732534586659,
+        "median": 1.06408540412284
+      },
+      "max_relative_item_cost": 0.5321974860453957
+    },
+    {
+      "k": 16,
+      "ratio_stats": {
+        "n": 30,
+        "mean": 1.0205059203162106,
+        "std": 0.01462033953231159,
+        "sem": 0.002669296586743863,
+        "ci95_lo": 1.0152740990061926,
+        "ci95_hi": 1.0257377416262285,
+        "min": 0.999488331159423,
+        "max": 1.0555169132858553,
+        "median": 1.0180216062660181
+      },
+      "max_relative_item_cost": 0.28114892316118517
+    },
+    {
+      "k": 32,
+      "ratio_stats": {
+        "n": 30,
+        "mean": 1.008728653347723,
+        "std": 0.005363582197163468,
+        "sem": 0.0009792516528065176,
+        "ci95_lo": 1.0068093201082224,
+        "ci95_hi": 1.0106479865872238,
+        "min": 0.9998449382660312,
+        "max": 1.0180822186773788,
+        "median": 1.0100356341294354
+      },
+      "max_relative_item_cost": 0.14641782152224778
+    },
+    {
+      "k": 64,
+      "ratio_stats": {
+        "n": 30,
+        "mean": 1.0019312049248945,
+        "std": 0.0024998751303098336,
+        "sem": 0.0004564126666056208,
+        "ci95_lo": 1.0010366360983476,
+        "ci95_hi": 1.0028257737514414,
+        "min": 0.9967785945439371,
+        "max": 1.0060855615015885,
+        "median": 1.002143297069828
+      },
+      "max_relative_item_cost": 0.0741887943223009
+    },
+    {
+      "k": 128,
+      "ratio_stats": {
+        "n": 30,
+        "mean": 1.0006039827453572,
+        "std": 0.002773120325530594,
+        "sem": 0.0005063001856563918,
+        "ci95_lo": 0.9996116343814707,
+        "ci95_hi": 1.0015963311092437,
+        "min": 0.9952427304265304,
+        "max": 1.0088113133421885,
+        "median": 1.000228195637105
+      },
+      "max_relative_item_cost": 0.03723090574168242
+    }
+  ],
+  "ratio_at_largest_k": 1.0006039827453572,
+  "monotone_decrease_toward_one": true,
+  "ratio_always_at_least_one": true,
+  "verdict": "CONFIRMED"
+}

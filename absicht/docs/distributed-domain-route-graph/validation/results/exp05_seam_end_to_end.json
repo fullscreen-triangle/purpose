@@ -1,0 +1,70 @@
+{
+  "experiment": "seam_end_to_end",
+  "theorem": "Theorem (The Seam Theorem)",
+  "claim": "The end-to-end composed system (route, water-fill, phase-lock, combine) satisfies flo(R_Sigma) <= min_locked flo(R_i) + eta_Sigma at every tested population size, on the non-declined portion of trials; declines are correctly reported rather than silently averaged into a lower floor.",
+  "n_trials": 120,
+  "bound_satisfaction_rate": 1.0,
+  "decline_rate": 0.0,
+  "trials_by_N": {
+    "4": {
+      "mean_achieved_floor": 0.8639455782312926,
+      "decline_rate": 0.0
+    },
+    "8": {
+      "mean_achieved_floor": 0.8455782312925171,
+      "decline_rate": 0.0
+    },
+    "16": {
+      "mean_achieved_floor": 0.8387755102040818,
+      "decline_rate": 0.0
+    },
+    "24": {
+      "mean_achieved_floor": 0.834013605442177,
+      "decline_rate": 0.0
+    }
+  },
+  "tightness_gap_at_N24": [
+    0.04081632653061218,
+    0.04081632653061229,
+    0.08163265306122447,
+    0.020408163265306145,
+    0.020408163265306145,
+    0.04081632653061218,
+    0.061224489795918324,
+    0.08163265306122447,
+    0.020408163265306145,
+    0.061224489795918324,
+    0.061224489795918324,
+    0.08163265306122447,
+    0.08163265306122447,
+    0.061224489795918324,
+    0.061224489795918324,
+    0.04081632653061229,
+    0.061224489795918324,
+    0.061224489795918324,
+    0.0,
+    0.04081632653061218,
+    0.04081632653061229,
+    0.04081632653061229,
+    0.04081632653061229,
+    0.020408163265306145,
+    0.04081632653061218,
+    0.04081632653061218,
+    0.061224489795918324,
+    0.04081632653061218,
+    0.061224489795918324,
+    0.0
+  ],
+  "tightness_gap_at_N24_stats": {
+    "n": 30,
+    "mean": 0.04693877551020407,
+    "std": 0.022194838080923752,
+    "sem": 0.004052204492365537,
+    "ci95_lo": 0.03899645470516762,
+    "ci95_hi": 0.05488109631524052,
+    "min": 0.0,
+    "max": 0.08163265306122447,
+    "median": 0.04081632653061229
+  },
+  "verdict": "CONFIRMED"
+}
