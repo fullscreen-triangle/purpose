@@ -65,9 +65,11 @@ under federation, cascade allocation, and cross-verification with a
 provable, non-zero floor. It does not say which receivers to consult, nor
 what to do when the receivers consulted number more than a handful and must
 be combined \emph{live}, at query time, rather than composed once, offline,
-into a fixed architecture. Two independent manuscripts by the same author
+into a fixed architecture, nor — most fundamentally — how much agreement
+between two receivers is \emph{sufficient} to certify a lock, as opposed to
+a hand-chosen tolerance. Three independent manuscripts by the same author
 supply, without citing one another or the receiver formalism directly,
-exactly the missing pieces: \emph{Federated Context Closure}
+the missing pieces: \emph{Federated Context Closure}
 \citep{sachikonye-federated-context-closure} shows that a router can be
 built to record only the \emph{shape} of what closed a question, never the
 content that closed it, so that a central coordinator never needs the
@@ -76,17 +78,26 @@ Synchronised Agents} \citep{sachikonye-split-attention} shows that a bounded
 capacity budget divided by water-filling across concurrently-consulted
 agents, and a population of such agents driven toward Kuramoto phase-lock
 \citep{kuramoto1975}, both obey closed-form laws with an exact optimum and a
-provable synchronisation threshold. This paper proves that these three
-results compose: that a route graph is itself a bounded receiver in the
-sense of \citet{sachikonye-accountable-compilation}, that water-filling is
-the continuous relaxation of the Cascade Theorem's discrete knapsack as the
-number of consulted receivers grows, that a federation of phase-locked,
-individually-opaque receivers inherits a floor that sharpens geometrically
-in the number of \emph{locked} members while correctly excluding, rather
-than averaging in, members that fail to lock, and that the whole assembly is
-again a bounded receiver — closing the loop, so that a federation of
-federations is not a new kind of object. Six computational experiments
-validate each composed claim against exact or simulated ground truth.
+provable synchronisation threshold; and \emph{Coordination Regimes of
+Synchronised Agents} \citep{sachikonye-coordination-regimes} shows that the
+stopping criterion for agreement is not a graded residual at all but a
+\emph{binary} categorical-distinguishability condition — partition
+extinction — whose transition is provably discontinuous, replacing a
+tunable tolerance with a quantity derived from the model's own finite
+resolution. This paper proves that these results compose: that a route
+graph is itself a bounded receiver in the sense of
+\citet{sachikonye-accountable-compilation}, that water-filling is the
+continuous relaxation of the Cascade Theorem's discrete knapsack as the
+number of consulted receivers grows, that a federation of
+extinction-locked, individually-opaque receivers inherits a floor that
+sharpens geometrically in the number of \emph{locked} members while
+\emph{necessarily} — not merely by design choice — excluding, rather than
+averaging in, members that fail to lock, that this exclusion is licensed by
+an observable-commutation result separating functional lock from internal
+opacity, and that the whole assembly is again a bounded receiver — closing
+the loop, so that a federation of federations is not a new kind of object.
+Eight computational experiments validate each composed claim against exact
+or simulated ground truth.
 \end{abstract}
 
 % =====================================================================
@@ -136,8 +147,12 @@ recording only closure-shape, not content, is itself a bounded receiver.
 continuous limit of the Cascade Theorem's discrete knapsack.
 \Cref{sec:phaselock} answers Combination by proving a phase-locked
 federation's floor sharpens geometrically in the number of \emph{locked}
-members and by making the exclusion of unlocked members precise. Sections
-\ref{sec:elimination} and~\ref{sec:seam} close the loop: a receiver in this
+members and by making the exclusion of unlocked members precise;
+\Cref{sec:extinction} then sharpens Combination's own stopping criterion,
+replacing the hand-set lock tolerance with a derived, binary one and
+showing the exclusion of unlocked members is forced rather than chosen.
+Sections \ref{sec:elimination} and~\ref{sec:seam} close the loop: a
+receiver in this
 population is required to expose only a negation set, never a decoded
 value, and the whole three-layer assembly — route, allocate, combine — is
 itself a bounded receiver, so a federation of federations is governed by
@@ -569,6 +584,229 @@ mechanical extension using only results already stated
 (\Cref{sec:discussion}).
 \end{remark}
 
+\section{Partition Extinction as the Lock Predicate}
+\label{sec:extinction}
+
+\Cref{thm:phaselock-floor} defines ``locked'' by a soft pair of hand-set
+tolerances — $R\ge R_{\min}$ and $|\varphi_i-\psi|\le\theta$ — inherited
+unchanged from \citet[Thm.~10.3]{sachikonye-split-attention}'s Kuramoto
+threshold. Neither tolerance is derived: the theory does not say how large
+$\theta$ must be, only that some $\theta$ was chosen. A third, independent
+manuscript by the same author, written to correct exactly this kind of
+underived threshold in an earlier draft of itself, supplies the missing
+derivation. \citet{sachikonye-coordination-regimes} proves that the correct
+notion of ``locked'' is not a residual falling below a line at all, but a
+\emph{binary} condition — categorical indistinguishability under a
+finite-resolution axiom — whose transition is provably discontinuous,
+not graded. We import this notion here as the replacement for
+\Cref{thm:phaselock-floor}'s soft predicate; nothing else in
+\Cref{part:selection,part:allocation} changes.
+
+\subsection{Binary Distinguishability and Discontinuous Lag}
+
+\begin{definition}[Categorical distinguishability, restated]
+\label{def:categorical-distinguishability}
+Under a finite-resolution axiom (states closer than a resolution
+$\delta>0$ are indistinguishable), two constituents $i,j$ are
+\emph{categorically distinguishable} if some partition operation assigns
+them to different resolution cells; otherwise they are \emph{categorically
+indistinguishable}. This is a binary property: there is no partial
+distinguishability below $\delta$
+\citep[Ax.~3, Def.~14]{sachikonye-coordination-regimes}.
+\end{definition}
+
+\begin{definition}[Partition extinction, restated]
+\label{def:partition-extinction}
+\emph{Partition extinction} between $i,j$ is the condition that $i,j$ are
+categorically indistinguishable (\Cref{def:categorical-distinguishability}):
+no partition operation exists, and the operation's lag $\tau_p^{(ij)}$ is
+consequently undefined; by convention $\tau_p^{(ij)}:=0$ to keep quantities
+in which $\tau_p$ appears multiplicatively well defined
+\citep[Def.~13, 15]{sachikonye-coordination-regimes}.
+\end{definition}
+
+\begin{theorem}[Partition extinction is discontinuous, restated]
+\label{thm:extinction-discontinuous}
+Let a control parameter drive a pair from distinguishable to phase-locked
+($\varphi_i=\varphi_j$ identically). The lag $\tau_p^{(ij)}$ is positive
+while distinguishable and exactly $0$ once phase-locked, with no
+intermediate value at any point of the drive: distinguishability is binary
+(\Cref{def:categorical-distinguishability}), so there is no state of
+``partial'' distinction for $\tau_p$ to graduate through
+\citep[Thm.~8]{sachikonye-coordination-regimes}.
+\end{theorem}
+
+\begin{remark}[What Theorem~\ref{thm:extinction-discontinuous} is a
+statement about]
+\label{rem:extinction-model-property}
+As \citet[Rem.~16]{sachikonye-coordination-regimes} makes explicit for its
+own model, the exact zero of \Cref{thm:extinction-discontinuous} is a
+property of the idealised categorical model, in which distinguishability is
+strictly binary by axiom. Any realisation with residual distinguishing
+channels — network latency, floating-point comparison, finite-precision
+embeddings — retains a small positive $\tau_p$; the defensible claim for a
+deployed instance of this architecture is that the residual falls below any
+operationally detectable bound, not that it reaches an exact, measured
+zero. We inherit this caveat without softening it: nothing below claims
+more than \citet{sachikonye-coordination-regimes} itself claims.
+\end{remark}
+
+\subsection{Extinction-Locking Replaces the Soft Predicate}
+
+\begin{definition}[Extinction-locked]
+\label{def:extinction-locked}
+Receivers $\Rec_i,\Rec_j$ are \emph{extinction-locked} at query $x$ if their
+answer phases (\Cref{def:answer-phase}) are categorically indistinguishable
+in the sense of \Cref{def:categorical-distinguishability}: no partition
+operation on $(\varphi_i(x),\varphi_j(x))$ separates them at the model's
+finite resolution $\delta$. Operationally this is $\varphi_i(x)=\varphi_j(x)$
+within $\delta$ — a single parameter fixed by the axiom governing what
+counts as a resolvable difference, not a tolerance chosen to make the
+combination step behave well. A population is \emph{extinction-locked} to a
+representative phase $\psi(x)$ if every pair within it is pairwise
+extinction-locked to $\psi(x)$.
+\end{definition}
+
+\begin{remark}[Relation to the soft predicate]
+\label{rem:soft-vs-binary}
+\Cref{def:extinction-locked} replaces \Cref{thm:phaselock-floor}'s pair
+$(R\ge R_{\min},\,|\varphi_i-\psi|\le\theta)$ with a single derived quantity
+$\delta$. The two are not merely notational variants: $\theta$ was a free
+parameter of \Cref{thm:phaselock-floor}'s statement, chosen by whoever
+deploys the architecture, whereas $\delta$ is fixed by
+\citet{sachikonye-coordination-regimes}'s Axiom~3 as the model's own
+resolution limit — the same limit that already governs
+\Cref{def:receiver-recap}'s boundedness (a receiver's $\Know$ is finite
+\emph{because} $\Cands$ is resolved into finitely many distinguishable
+cells). Extinction-locking is therefore not an additional assumption
+layered onto the receiver formalism; it is the same finite-resolution
+structure already implicit in every $\flo(\Rec)$ computation in this paper,
+made explicit and applied to the combination step.
+\end{remark}
+
+\begin{theorem}[Extinction-locked federation floor]
+\label{thm:extinction-floor}
+\Cref{thm:phaselock-floor} holds verbatim with $\Fed_{\mathrm{locked}}(x)$
+redefined as the union-federation of receivers pairwise extinction-locked
+(\Cref{def:extinction-locked}) to the population's representative phase, in
+place of the soft $(R_{\min},\theta)$ predicate:
+$\flo(\Fed_{\mathrm{locked}}(x))\le\min_{i\text{ locked}}\flo(\Rec_i)$ and
+the joint failure probability over locked members is
+$\prod_{i\text{ locked}}q_i$. Moreover, the exclusion of unlocked receivers
+(\Cref{cor:combination}) is now \emph{forced}, not merely the better design
+choice among alternatives: by \Cref{thm:extinction-discontinuous}'s binary
+structure, an unlocked receiver is not partially trustworthy to some
+degree that a weighted average could discount — it stands in the
+distinguishable state, for which $\tau_p^{(ij)}>0$ is the only admissible
+value, and there is no intermediate state $\tau_p^{(ij)}\in(0,\tau_p)$ for
+a partial-inclusion rule to act on.
+\end{theorem}
+
+\begin{proof}
+The floor and failure-probability claims are \Cref{thm:federation-recap}
+and the independent-product argument of \Cref{thm:mult-law-recap}'s proof,
+applied verbatim to $\Fed_{\mathrm{locked}}(x)$ under
+\Cref{def:extinction-locked} in place of the soft predicate — neither
+argument used any property of $(R_{\min},\theta)$ beyond partitioning the
+population into two sets, which \Cref{def:extinction-locked} does equally
+well. The forcing claim follows from
+\Cref{thm:extinction-discontinuous}: because $\tau_p^{(ij)}$ takes only the
+two values $\{0,\tau_p^{(ij)}{>}0\}$ with no value between them, any
+combination rule that is a non-trivial function of $\tau_p^{(ij)}$ on an
+interval must be constant on $\{0\}$ and constant on the (single) positive
+value actually realised, which is exactly the exclude/include rule of
+\Cref{cor:combination}; a genuinely graded weighting scheme would require a
+continuum of $\tau_p^{(ij)}$ values to weight against, and
+\Cref{thm:extinction-discontinuous}'s discontinuity removes that continuum
+entirely, leaving no intermediate value for a graded rule to act on — the
+soft predicate merely approximated, with a tunable $\theta$, a distinction
+that was binary all along.
+\end{proof}
+
+\begin{theorem}[Observable-commutation and opacity]
+\label{thm:commutation-opacity}
+Let $\hat O_{\mathrm{cat}}$ be an observable computed only from a
+receiver's column and phase (a function of the partition coordinates in
+the sense of \citet[Def.~16]{sachikonye-coordination-regimes}), and let
+$\hat O_{\mathrm{phys}}$ be a function of the receiver's internal knowledge
+state $\Know_i$ alone. Then
+$[\hat O_{\mathrm{cat}},\hat O_{\mathrm{phys}}]=0$ in the sense that the
+value of either is unchanged by conditioning on the other
+\citep[Thm.~9]{sachikonye-coordination-regimes}. Consequently, two
+extinction-locked receivers (equal on every $\hat O_{\mathrm{cat}}$) may
+remain fully opaque to one another (\Cref{def:opaque-recap}) on every
+$\hat O_{\mathrm{phys}}$: extinction-locking certifies functional
+equivalence on the coordination dynamics' own observables without
+certifying, or requiring, equality of internal representation.
+\end{theorem}
+
+\begin{proof}
+$\hat O_{\mathrm{cat}}$ and $\hat O_{\mathrm{phys}}$ are functions of
+disjoint argument sets — column/phase coordinates versus the internal
+state $\Know_i$ — that \Cref{def:opaque-recap}'s hypothesis already takes
+to vary independently (no computable $h$ relates them); a function of one
+set is unaffected by variation of the other, giving commutation by the
+same argument as \citet[Thm.~9]{sachikonye-coordination-regimes}. Equality
+on all $\hat O_{\mathrm{cat}}$ (extinction-locking,
+\Cref{def:extinction-locked}) therefore places no constraint on
+$\hat O_{\mathrm{phys}}$, so two extinction-locked receivers may realise
+any relation, including full opacity, on $\Know_A,\Know_B$.
+\end{proof}
+
+\begin{remark}[Why this strengthens, rather than merely restates, opacity]
+\label{rem:strengthens-opacity}
+\Cref{def:opaque-recap} \emph{postulates} that no computable map relates
+two receivers' internal states. \Cref{thm:commutation-opacity} shows this
+postulate is compatible with, rather than contradicted by, the strongest
+form of agreement the architecture ever certifies (extinction-locking): the
+two are not in tension because they are claims about disjoint observable
+classes. This is independent support for a hypothesis \Cref{part:problem}
+introduced without proof, obtained from a formalism
+(\citet{sachikonye-coordination-regimes}'s categorical/physical observable
+split) that was not built with this paper's opaque-pair definition in
+mind.
+\end{remark}
+
+\begin{remark}[Operation-set exhaustion, and what a round cap now means]
+\label{rem:operation-exhaustion}
+\Cref{con:generate-test} fires when a receiver's existing column cannot
+reach quiescence with the locked cluster after a round cap. Read through
+\Cref{def:categorical-distinguishability}, exhaustion is better stated as:
+the finite set of partition operations available to $\Rec_i$ relative to
+the target — its existing column, and whatever re-expressions its fixed
+follow-up policy can generate from it — has been tried and none achieves
+extinction. The round cap is then a computational bound on \emph{how long
+to search a finite operation-set for a member that achieves extinction},
+not a threshold on a decreasing residual that might, with more patience,
+eventually cross a line. Under this reading, generating a fresh candidate
+column (\Cref{con:generate-test}) is not a fallback selected among
+alternatives once patience runs out: it is the only next move available
+once the current, finite operation-set is shown to contain no separator
+that fails to distinguish — manufacturing a new operation is the only way
+to extend a set that has been exhausted, since exhaustion (not a residual
+size) is what has actually been established.
+\end{remark}
+
+\begin{remark}[What we do not import]
+\label{rem:extinction-scope}
+Following \citet[\S{}1.5, Rem.~17--18]{sachikonye-coordination-regimes}'s
+own discipline — that paper's preliminary version overstated a structural
+correspondence with superconductivity as an identity, and its published
+version explicitly retracts the overreach — we import only the
+information-theoretic content of partition extinction (binary
+distinguishability, discontinuous lag, the categorical/physical observable
+split) and none of the physical apparatus it is a structural correspondence
+\emph{to}. No claim here depends on exchange statistics, Cooper pairing,
+Bose–Einstein condensation, or any quantum-mechanical mechanism; two
+extinction-locked receivers are functionally equivalent on
+$\hat O_{\mathrm{cat}}$, nothing more and nothing to do with the ontological
+status of a physical particle. Nor do we import
+\citet{sachikonye-coordination-regimes}'s five operational $R$-bands or any
+claim that a band boundary is a phase transition — that paper's own
+Proposition~1 retracts exactly this for its own model, and
+\Cref{def:extinction-locked} does not reintroduce it here.
+\end{remark}
+
 % =====================================================================
 \part{Elimination and the Seam}
 \label{part:seam}
@@ -805,13 +1043,13 @@ rather than three incommensurable ones.
 \section{Computational Experiments}
 \label{sec:validation}
 
-Six experiments, following the exact discipline of
+Eight experiments, following the exact discipline of
 \citet[\S{}Validation]{sachikonye-accountable-compilation}: every quantity
 computed exactly where the underlying object is finite, every claim
 labelled by the theorem it empirically exercises, every result stored to
 JSON with a machine-checked verdict. Full code and results accompany this
 manuscript (\texttt{validation/run\_validation.py},
-\texttt{validation/results/*.json}). The six experiments and their panels
+\texttt{validation/results/*.json}). The eight experiments and their panels
 are: the route graph's boundedness (\Cref{thm:route-receiver},
 \Cref{fig:panel-route-receiver}), water-filling's convergence to the
 knapsack optimum (\Cref{thm:waterfill-cascade},
@@ -819,8 +1057,13 @@ knapsack optimum (\Cref{thm:waterfill-cascade},
 (\Cref{thm:phaselock-floor}, \Cref{fig:panel-phaselock}),
 generate-and-test on exhausted negation (\Cref{con:generate-test},
 \Cref{fig:panel-generate-test}), the Seam Theorem's end-to-end bound
-(\Cref{thm:seam}, \Cref{fig:panel-seam}), and crowd-sharpening under
-route-graph selection (\Cref{fig:panel-crowd-routing}).
+(\Cref{thm:seam}, \Cref{fig:panel-seam}), crowd-sharpening under
+route-graph selection (\Cref{fig:panel-crowd-routing}), the discontinuity
+of the partition lag under a binary extinction-locking predicate
+(\Cref{thm:extinction-discontinuous,thm:extinction-floor},
+\Cref{fig:panel-binary-lock}), and operation-set exhaustion for
+generate-and-test (\Cref{rem:operation-exhaustion},
+\Cref{fig:panel-operation-exhaustion}).
 
 \begin{figure*}[!htbp]
     \centering
@@ -1053,6 +1296,99 @@ population size grows: the routed subset is never worse in $150/150$
 trials and both curves decrease geometrically as more receivers are
 consulted.
 
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_7_binary_lock.png}
+    \caption{\textbf{The Partition Lag Is a Genuine Dichotomy, Not a
+    Relabelled Continuum.}
+    (\textbf{A})~Sample of $500$ partition-lag observations $\tau_p$
+    (\Cref{def:partition-extinction}), a spike of $397$ observations at
+    exactly $0$ (extinct, teal) and a separate population of $103$
+    positive observations (distinguishable, steel) with none falling below
+    the closed-form minimum $\delta/\max(\text{angular distance})$
+    (crimson dashed) that \Cref{def:categorical-distinguishability}'s
+    construction of $\tau_p$ predicts. Note this is $\tau_p$ — the cost of
+    a distinguishing operation — not the raw, genuinely continuous
+    Kuramoto angular distance the operation is computed from; the
+    discontinuity is a property of the derived lag, exactly as
+    Theorem~\ref{thm:extinction-discontinuous} states it.
+    (\textbf{B})~Fraction of all $1800$ lag observations landing in each
+    branch: $36.8\%$ extinct, $63.2\%$ distinguishable, confirming the
+    dichotomy is exercised non-degenerately rather than collapsing to one
+    outcome.
+    (\textbf{C})~Joint failure probability of the extinction-locked
+    sub-population on a logarithmic $y$-axis versus number of
+    extinction-locked receivers on the linear $x$-axis, falling from
+    $6.3\times10^{-6}$ at $3$ locked receivers to $3.8\times10^{-18}$ at
+    $9$: the same geometric-decrease conclusion as
+    \Cref{fig:panel-phaselock}, reproduced under the binary predicate of
+    \Cref{def:extinction-locked} in place of the soft $(R_{\min},\theta)$
+    pair.
+    (\textbf{D})~Closed-form lag surface $\tau_p(\text{angular
+    distance},\delta)$ evaluated directly from
+    \Cref{def:partition-extinction}'s construction (viridis), viewing
+    angle elevation $24^{\circ}$ azimuth $-55^{\circ}$: a cliff at
+    angular distance $=\delta$, not a slope — the surface is flat at $0$
+    below the resolution and rises steeply, diverging as angular distance
+    approaches $\delta$ from above.}
+    \label{fig:panel-binary-lock}
+\end{figure*}
+
+\subsection*{Experiment 7: Binary lock predicate vs.\ soft threshold
+(\Cref{thm:extinction-discontinuous,thm:extinction-floor})}
+Kuramoto phase evolution is simulated exactly as in Experiment~3; the
+partition lag $\tau_p$ is then computed as the cost of a distinguishing
+operation (\Cref{def:partition-extinction}) — $0$ once the model's finite
+resolution $\delta$ is reached, and otherwise $\delta$ divided by the
+angular distance, diverging as that distance shrinks toward $\delta$ —
+rather than the raw angular distance itself, which is not the quantity
+either theorem claims is discontinuous. The resulting binary lock predicate
+is substituted for Experiment~3's soft $(R_{\min},\theta)$ pair and
+reproduces its sub-minimum floor bound, geometric crowd-sharpening, and
+locked-beats-naive conclusions, confirming those conclusions were not an
+artefact of the particular tolerance chosen.
+
+\begin{figure*}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_8_operation_exhaustion.png}
+    \caption{\textbf{Operation-Set Exhaustion Is Reported If and Only If
+    the Set Genuinely Contains No Separator, and Generation Never Guesses
+    on Failure.}
+    (\textbf{A})~Outcome counts across $30$ trials, each receiver holding a
+    finite set of $6$ candidate partition operations: $12$ trials resolved
+    by an operation already in the original set, $10$ resolved only after
+    generating a fresh operation (\Cref{con:generate-test}), and $8$
+    correctly declined after the generated operation also failed.
+    (\textbf{B})~False-exhaustion rate (exhaustion reported despite the
+    original set containing a working separator) against the reference at
+    $0$, and correct-exhaustion rate (exhaustion reported exactly when the
+    set genuinely contains none) against the reference at $1$: both exact,
+    $0$ and $1$ respectively, over every trial.
+    (\textbf{C})~Among the $18$ trials whose original operation-set was
+    genuinely exhausted, $55.6\%$ were resolved by a freshly generated
+    operation and $44.4\%$ declined — generation is not guaranteed to
+    succeed, and the architecture reports a decline rather than accepting
+    an unverified guess when it does not.
+    (\textbf{D})~Dichotomy-violation count: $0$ trials across all $30$ left
+    in a state other than the three outcomes of panel~A, confirming
+    \Cref{rem:operation-exhaustion}'s claim that exhaustion and generation
+    together exhibit no undefined outcome.}
+    \label{fig:panel-operation-exhaustion}
+\end{figure*}
+
+\subsection*{Experiment 8: Operation-set exhaustion for generate-and-test
+(\Cref{rem:operation-exhaustion})}
+Each receiver is given a finite, enumerable set of six candidate partition
+operations rather than a single ongoing relaxation with a round cap;
+exhaustion is reported only when every operation in the set has been tried
+and none achieves extinction, matching \Cref{rem:operation-exhaustion}'s
+reading of \Cref{con:generate-test} as a search over a finite operation-set
+rather than a residual crossing a numeric line. The false-exhaustion rate
+(reporting exhaustion despite a working operation being present) is exactly
+$0$ and the correct-exhaustion rate exactly $1$ across all $30$ trials;
+generation resolves a majority of genuinely exhausted cases and correctly
+declines the remainder, with zero trials left in an undefined outcome.
+
 \section{Discussion}
 \label{sec:discussion}
 
@@ -1078,15 +1414,30 @@ Several questions remain open. \Cref{rem:route-audit-relation}'s
 population-level route-audit — locking provoked columns, not merely central
 ones — is stated but not developed into a theorem with its own floor bound;
 doing so is the natural next step and would close a gap structurally
-identical to the one \Cref{thm:route-audit} closes for a pair. The
-phase-lock threshold $K_c$ is treated here as a fixed parameter of the
-Kuramoto model; whether it should instead be learned per-domain, and what
-happens to \Cref{thm:phaselock-floor}'s bound if $K_c$ is itself estimated
-rather than known, is not addressed. Finally, \Cref{thm:waterfill-cascade}'s
-convergence to the discrete knapsack optimum is asymptotic in the number of
-receivers and the relative smallness of per-item cost; a non-asymptotic,
-finite-$k$ characterisation of the gap — rather than the limiting argument
-given here — would sharpen \Cref{cor:when-waterfill}'s practical guidance on
+identical to the one \Cref{thm:route-audit} closes for a pair, and
+\Cref{sec:extinction} suggests the natural predicate for it: pairwise
+extinction-locking (\Cref{def:extinction-locked}) applied to provoked, not
+merely central, phases. An earlier version of this discussion treated the
+Kuramoto threshold $K_c$ as an unmotivated fixed parameter and asked
+whether it should be learned; \citet[Thm.~5]{sachikonye-coordination-regimes}
+resolves this for the unimodal-symmetric case, deriving
+$K_c=2/[\pi g(0)]$ directly from the population's frequency-law density
+$g$ rather than treating it as free — a corrected coefficient relative to
+that paper's own preliminary version, reported there as
+\citet[Rem.~11]{sachikonye-coordination-regimes}. What remains open is
+narrower: whether \Cref{thm:extinction-floor}'s bound is affected when
+$g$ itself is estimated from a finite sample of receivers rather than
+known exactly, which \citet{sachikonye-coordination-regimes} does not
+address either. \Cref{thm:commutation-opacity} is stated only for a
+pairwise opaque pair; whether observable-commutation extends to a full
+locked population — i.e., whether the whole $\Fed_{\mathrm{locked}}$ is
+simultaneously opaque on $\hat O_{\mathrm{phys}}$ while extinction-locked
+on $\hat O_{\mathrm{cat}}$, rather than this holding only pairwise — is not
+proved here. Finally, \Cref{thm:waterfill-cascade}'s convergence to the
+discrete knapsack optimum is asymptotic in the number of receivers and the
+relative smallness of per-item cost; a non-asymptotic, finite-$k$
+characterisation of the gap — rather than the limiting argument given
+here — would sharpen \Cref{cor:when-waterfill}'s practical guidance on
 which regime a given deployment is actually in.
 
 \bibliographystyle{plainnat}

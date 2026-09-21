@@ -1,0 +1,17 @@
+{
+  "experiment": "operation_exhaustion",
+  "theorem": "Remark (Operation-set exhaustion, and what a round cap now means)",
+  "claim": "Exhaustion (every operation in a finite operation-set tried, none achieving extinction) is reported if and only if the operation-set genuinely contains no working separator; when exhausted, generating a fresh operation either resolves the query or correctly declines, with no trial left in an undefined state.",
+  "n_trials": 30,
+  "n_operations_per_receiver": 6,
+  "false_exhaustion_rate": 0.0,
+  "correct_exhaustion_rate": 1.0,
+  "dichotomy_violations": 0,
+  "resolved_by_generation_rate_among_exhausted": 0.5555555555555556,
+  "outcome_counts": {
+    "declined": 8,
+    "resolved_by_existing_operation": 12,
+    "resolved_by_generation": 10
+  },
+  "verdict": "CONFIRMED"
+}

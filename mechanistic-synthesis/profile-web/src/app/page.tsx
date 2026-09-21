@@ -1,7 +1,11 @@
+import { ArchitectureFlowDiagram } from "@/components/explainer/ArchitectureFlowDiagram";
 import { ArchitectureGraph } from "@/components/explainer/ArchitectureGraph";
+import { ConnectMainModelExample } from "@/components/explainer/ConnectMainModelExample";
 import { Hero } from "@/components/explainer/Hero";
 import { HonestyPanel } from "@/components/explainer/HonestyPanel";
 import { LayerCards } from "@/components/explainer/LayerCards";
+import { PartitionExtinctionScene } from "@/components/explainer/PartitionExtinctionScene";
+import { PhaseLockOrderSurface } from "@/components/explainer/PhaseLockOrderSurface";
 import { QueryFlowStepper } from "@/components/explainer/QueryFlowStepper";
 
 export default function LandingPage() {
@@ -46,6 +50,43 @@ export default function LandingPage() {
           <h2 className="text-xl font-semibold">Why this is honest, not magic</h2>
           <div className="mt-6 max-w-lg">
             <HonestyPanel />
+          </div>
+        </section>
+
+        <section className="mt-16">
+          <h2 className="text-xl font-semibold">Why locking is binary, not a threshold</h2>
+          <p className="mt-2 max-w-2xl text-sm text-light/60">
+            Earlier we said profiles either lock or they don&rsquo;t. Here&rsquo;s
+            why that&rsquo;s not a design choice — it&rsquo;s a discontinuity in the
+            underlying quantity, so there was never an intermediate state to
+            average against.
+          </p>
+          <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <PartitionExtinctionScene />
+            <PhaseLockOrderSurface />
+          </div>
+        </section>
+
+        <section className="mt-16">
+          <h2 className="text-xl font-semibold">The full architecture</h2>
+          <p className="mt-2 max-w-2xl text-sm text-light/60">
+            Every stage below is an ordinary receiver operation, governed by
+            the same composable floor. Hover or click a stage for the theorem
+            behind it.
+          </p>
+          <div className="mt-6">
+            <ArchitectureFlowDiagram />
+          </div>
+        </section>
+
+        <section className="mt-16">
+          <h2 className="text-xl font-semibold">Connecting to the main model</h2>
+          <p className="mt-2 max-w-2xl text-sm text-light/60">
+            A minimal, worked example: one query, three illustrative
+            profiles, and what actually gets combined.
+          </p>
+          <div className="mt-6 max-w-2xl">
+            <ConnectMainModelExample />
           </div>
         </section>
 

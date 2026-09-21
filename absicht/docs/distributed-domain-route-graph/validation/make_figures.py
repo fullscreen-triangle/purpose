@@ -388,6 +388,129 @@ def make_panel_6():
     plt.close(fig)
 
 
+# ---------------------------------------------------------------------
+# Panel 7: Binary lock predicate vs. soft threshold.
+# ---------------------------------------------------------------------
+
+def make_panel_7():
+    d = _load("exp07_binary_lock")
+    fig, axes = plt.subplots(1, 4, figsize=(16, 3.6), constrained_layout=True)
+    delta = d["delta"]
+
+    # A: histogram of the real lag sample, showing the extinct spike at 0
+    # and the distinguishable branch bounded away from 0.
+    ax = axes[0]
+    lags = np.array(d["lag_distribution_sample"])
+    zero_count = int(np.sum(lags == 0.0))
+    positive = lags[lags > 0]
+    ax.bar([0], [zero_count], width=0.01, color=TEAL, label="extinct (tau_p=0)")
+    if len(positive):
+        counts, bins = np.histogram(positive, bins=20)
+        ax.bar(bins[:-1], counts, width=np.diff(bins), align="edge", color=STEEL,
+               label="distinguishable (tau_p>0)")
+    ax.axvline(d["theoretical_min_positive_lag"], color=CRIMSON, linestyle="--", lw=1,
+               label="min positive lag (theory)")
+    ax.set_xlabel("partition lag tau_p")
+    ax.set_ylabel("count (sample of 500)")
+    ax.set_title("(A) Extinct spike vs. bounded-away positive branch")
+    ax.legend(fontsize=6)
+
+    # B: fraction extinct vs distinguishable, bar chart.
+    ax = axes[1]
+    ax.bar(["extinct", "distinguishable"],
+           [d["fraction_extinct"], d["fraction_distinguishable"]],
+           color=[TEAL, STEEL])
+    ax.set_ylim(0, 1.0)
+    ax.set_ylabel("fraction of observations")
+    ax.set_title("(B) Non-degenerate dichotomy")
+
+    # C: joint failure probability under the binary predicate, same shape
+    # as panel 3's geometric-decrease check, now under extinction-locking.
+    ax = axes[2]
+    qbn = d["q_joint_by_n_locked_above_Kc"]
+    ns = sorted(int(k) for k in qbn.keys())
+    vals = [qbn[str(n)] for n in ns]
+    ax.plot(ns, vals, "o-", color=STEEL, lw=1.6)
+    ax.set_yscale("log")
+    ax.set_xlabel("number of extinction-locked receivers")
+    ax.set_ylabel("joint failure probability")
+    ax.set_title("(C) Geometric decrease under binary lock")
+
+    # D: 3D surface of the lag as a function of angular distance and delta
+    # multiples, evaluated directly from partition_lag()'s closed form --
+    # real math, not reconstructed data.
+    ax = fig.add_axes(axes[3].get_position(), projection="3d")
+    axes[3].remove()
+    angular = np.linspace(0.001, 0.3, 60)
+    delta_mult = np.linspace(0.5, 3.0, 60)
+    A, Dm = np.meshgrid(angular, delta_mult)
+    Delta = delta * Dm
+    Z = np.where(A <= Delta, 0.0, Delta / np.maximum(A, 1e-9))
+    ax.plot_surface(A, Dm, Z, cmap="viridis", edgecolor="none", alpha=0.9)
+    ax.view_init(elev=24, azim=-55)
+    ax.set_xlabel("angular distance")
+    ax.set_ylabel("delta multiple")
+    ax.set_zlabel("tau_p")
+    ax.set_title("(D) Lag surface: cliff, not slope", fontsize=9)
+
+    _panel_title(fig, "The Partition Lag Is Discontinuous, Not a Smoothed Threshold")
+    fig.savefig(FIGURES_DIR / "panel_7_binary_lock.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
+# ---------------------------------------------------------------------
+# Panel 8: Operation-set exhaustion for generate-and-test.
+# ---------------------------------------------------------------------
+
+def make_panel_8():
+    d = _load("exp08_operation_exhaustion")
+    fig, axes = plt.subplots(1, 4, figsize=(16, 3.6), constrained_layout=True)
+
+    # A: outcome counts, three-way bar chart.
+    ax = axes[0]
+    counts = d["outcome_counts"]
+    labels = list(counts.keys())
+    vals = [counts[k] for k in labels]
+    colors = [TEAL if l == "resolved_by_existing_operation" else
+              STEEL if l == "resolved_by_generation" else CRIMSON for l in labels]
+    ax.bar([l.replace("_", "\n") for l in labels], vals, color=colors)
+    ax.set_ylabel("trial count")
+    ax.set_title("(A) Three-way outcome split")
+
+    # B: false/correct exhaustion rates, against the 0.0/1.0 reference.
+    ax = axes[1]
+    ax.bar(["false exhaustion\n(should be 0)", "correct exhaustion\n(should be 1)"],
+           [d["false_exhaustion_rate"], d["correct_exhaustion_rate"]],
+           color=[CRIMSON, TEAL])
+    ax.axhline(0.0, color="grey", linestyle=":", lw=1)
+    ax.axhline(1.0, color="grey", linestyle=":", lw=1)
+    ax.set_ylim(-0.05, 1.05)
+    ax.set_title("(B) Exhaustion reported iff genuinely exhausted")
+
+    # C: resolution rate among exhausted trials (generation success rate).
+    ax = axes[2]
+    rate = d["resolved_by_generation_rate_among_exhausted"]
+    ax.bar(["resolved by\ngeneration", "declined"], [rate, 1 - rate], color=[STEEL, CRIMSON])
+    ax.set_ylim(0, 1.0)
+    ax.set_ylabel("fraction of exhausted trials")
+    ax.set_title("(C) Generation resolves most, never guesses on failure")
+
+    # D: dichotomy-violations summary panel (text, since the quantity is a
+    # single integer count, matching panel_4's style for a scalar summary).
+    ax = axes[3]
+    ax.text(0.5, 0.5, f"Dichotomy violations: {d['dichotomy_violations']}\n"
+                        f"(n={d['n_trials']} trials, "
+                        f"{d['n_operations_per_receiver']} operations/receiver)",
+            ha="center", va="center", fontsize=11, transform=ax.transAxes)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_title("(D) Zero undefined-outcome trials")
+
+    _panel_title(fig, "Exhaustion Is Reported Iff the Operation-Set Genuinely Contains No Separator")
+    fig.savefig(FIGURES_DIR / "panel_8_operation_exhaustion.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
 def main():
     make_panel_1()
     print("  saved -> panel_1_route_receiver.png")
@@ -401,6 +524,10 @@ def main():
     print("  saved -> panel_5_seam.png")
     make_panel_6()
     print("  saved -> panel_6_crowd_routing.png")
+    make_panel_7()
+    print("  saved -> panel_7_binary_lock.png")
+    make_panel_8()
+    print("  saved -> panel_8_operation_exhaustion.png")
     print("Done.")
 
 

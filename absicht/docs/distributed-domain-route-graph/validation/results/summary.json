@@ -1,8 +1,8 @@
 {
   "suite": "distributed-domain-route-graph-validation",
-  "generated": "2026-09-20T15:09:57Z",
-  "n_experiments": 6,
-  "n_confirmed": 6,
+  "generated": "2026-09-21T22:40:12Z",
+  "n_experiments": 8,
+  "n_confirmed": 8,
   "n_failed": 0,
   "experiments": [
     {
@@ -34,7 +34,17 @@
       "experiment": "crowd_routing",
       "theorem": "Corollary (Crowd-sharpening survives route-graph selection)",
       "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "binary_lock",
+      "theorem": "Theorem (Partition extinction is discontinuous), Theorem (Extinction-locked federation floor)",
+      "verdict": "CONFIRMED"
+    },
+    {
+      "experiment": "operation_exhaustion",
+      "theorem": "Remark (Operation-set exhaustion, and what a round cap now means)",
+      "verdict": "CONFIRMED"
     }
   ],
-  "elapsed_seconds": 13.063786268234253
+  "elapsed_seconds": 8.222644805908203
 }
