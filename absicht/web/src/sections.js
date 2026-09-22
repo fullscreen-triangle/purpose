@@ -373,7 +373,7 @@ export const SECTIONS_HTML = `
 <footer>
   <div class="wrap fline">
     <div>Accountable Compilation — Research Note, Domain-Specific Model Synthesis</div>
-    <div class="mono">validation/results/summary.json · 9/9 confirmed</div>
+    <div class="mono">validation/results/summary.json · 9/9 confirmed · <a href="./route-graph.html">a federated extension →</a></div>
   </div>
 </footer>
 

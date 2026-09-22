@@ -17,7 +17,7 @@ export const COL = {
   accent: '#ff7a45', accent2: '#4fd1c5', decline: '#e0645f', line: '#242a35', grid: '#ffffff10',
 };
 
-function makeSvg(sel, w, h, margin) {
+export function makeSvg(sel, w, h, margin) {
   const el = d3.select(sel);
   el.selectAll('*').remove();
   const svg = el.append('svg')
@@ -27,7 +27,7 @@ function makeSvg(sel, w, h, margin) {
   return svg.append('g').attr('transform', `translate(${margin.l},${margin.t})`);
 }
 
-function axisStyle(g) {
+export function axisStyle(g) {
   g.selectAll('path').attr('stroke', COL.line);
   g.selectAll('line').attr('stroke', COL.line);
   g.selectAll('text').attr('fill', COL.inkDim);
