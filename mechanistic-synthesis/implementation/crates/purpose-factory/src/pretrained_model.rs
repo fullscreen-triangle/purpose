@@ -11,7 +11,7 @@
 use std::path::Path;
 
 use candle_core::{DType, Device, Module, Result, Tensor, D};
-use candle_nn::{embedding, linear_no_bias, rms_norm, Embedding, Linear, RmsNorm, VarBuilder};
+use candle_nn::{embedding, linear, linear_no_bias, rms_norm, Embedding, Linear, RmsNorm, VarBuilder};
 use serde::Deserialize;
 
 use crate::lora::LoraLinear;
@@ -36,6 +36,13 @@ pub struct HfLlamaConfig {
     pub max_position_embeddings: usize,
     #[serde(default)]
     pub tie_word_embeddings: bool,
+    /// `"llama"`, `"qwen2"`, `"mistral"`, ... — decides architecture
+    /// defaults the config does not state explicitly (see `qkv_bias`).
+    #[serde(default)]
+    pub model_type: Option<String>,
+    /// Explicit q/k/v bias flag, when the config carries one.
+    #[serde(default)]
+    pub attention_bias: Option<bool>,
 }
 
 fn default_rms_eps() -> f64 {
@@ -55,6 +62,22 @@ impl HfLlamaConfig {
 
     pub fn head_dim(&self) -> usize {
         self.hidden_size / self.num_attention_heads
+    }
+
+    /// Whether q/k/v projections carry biases. Qwen2 checkpoints have them
+    /// but their config.json does not say so, hence the `model_type` default.
+    pub fn qkv_bias(&self) -> bool {
+        self.attention_bias
+            .unwrap_or(self.model_type.as_deref() == Some("qwen2"))
+    }
+}
+
+/// q/k/v projection: biased for architectures that have q/k/v biases.
+fn qkv_linear(cfg: &HfLlamaConfig, in_dim: usize, out_dim: usize, vb: VarBuilder) -> Result<Linear> {
+    if cfg.qkv_bias() {
+        linear(in_dim, out_dim, vb)
+    } else {
+        linear_no_bias(in_dim, out_dim, vb)
     }
 }
 
@@ -114,12 +137,12 @@ impl Attention {
         let size_q = cfg.hidden_size;
         let size_kv = cfg.head_dim() * cfg.num_key_value_heads();
 
-        let q_base = linear_no_bias(cfg.hidden_size, size_q, frozen_vb.pp("q_proj"))?;
-        let v_base = linear_no_bias(cfg.hidden_size, size_kv, frozen_vb.pp("v_proj"))?;
+        let q_base = qkv_linear(cfg, cfg.hidden_size, size_q, frozen_vb.pp("q_proj"))?;
+        let v_base = qkv_linear(cfg, cfg.hidden_size, size_kv, frozen_vb.pp("v_proj"))?;
 
         Ok(Self {
             q: LoraLinear::from_frozen_base(q_base, lora_rank, lora_alpha, lora_vb.pp("q_proj"))?,
-            k: linear_no_bias(cfg.hidden_size, size_kv, frozen_vb.pp("k_proj"))?,
+            k: qkv_linear(cfg, cfg.hidden_size, size_kv, frozen_vb.pp("k_proj"))?,
             v: LoraLinear::from_frozen_base(v_base, lora_rank, lora_alpha, lora_vb.pp("v_proj"))?,
             o: linear_no_bias(size_q, cfg.hidden_size, frozen_vb.pp("o_proj"))?,
             n_head: cfg.num_attention_heads,
@@ -487,7 +510,9 @@ impl MergedLoraLlama {
 
     /// Every named tensor, in the same `model.layers.{i}.*` naming HF
     /// checkpoints use, so the exported file is a drop-in replacement for
-    /// the base checkpoint (only these tensors' values differ).
+    /// the base checkpoint (only these tensors' values differ). A tied
+    /// `lm_head` is not written, and q/k/v biases are, when the checkpoint
+    /// has them — so the tensor set matches the checkpoint's exactly.
     pub fn named_tensors(&self) -> Vec<(String, Tensor)> {
         let mut out = vec![
             (
@@ -495,8 +520,10 @@ impl MergedLoraLlama {
                 self.embed.embeddings().clone(),
             ),
             ("model.norm.weight".to_string(), self.ln_f.weight().clone()),
-            ("lm_head.weight".to_string(), self.lm_head.weight().clone()),
         ];
+        if !self.cfg.tie_word_embeddings {
+            out.push(("lm_head.weight".to_string(), self.lm_head.weight().clone()));
+        }
 
         for (i, block) in self.blocks.iter().enumerate() {
             let p = format!("model.layers.{i}");
@@ -512,6 +539,11 @@ impl MergedLoraLlama {
             out.push((format!("{p}.self_attn.k_proj.weight"), block.attn.k.weight().clone()));
             out.push((format!("{p}.self_attn.v_proj.weight"), block.attn.v.weight().clone()));
             out.push((format!("{p}.self_attn.o_proj.weight"), block.attn.o.weight().clone()));
+            for (name, lin) in [("q_proj", &block.attn.q), ("k_proj", &block.attn.k), ("v_proj", &block.attn.v)] {
+                if let Some(bias) = lin.bias() {
+                    out.push((format!("{p}.self_attn.{name}.bias"), bias.clone()));
+                }
+            }
             out.push((format!("{p}.mlp.gate_proj.weight"), block.mlp.gate.weight().clone()));
             out.push((format!("{p}.mlp.up_proj.weight"), block.mlp.up.weight().clone()));
             out.push((format!("{p}.mlp.down_proj.weight"), block.mlp.down.weight().clone()));
