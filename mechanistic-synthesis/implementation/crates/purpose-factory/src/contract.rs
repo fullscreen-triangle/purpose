@@ -31,7 +31,12 @@ pub struct PretrainedConfig {
     /// `"owner/name"`, e.g. `"TinyLlama/TinyLlama-1.1B-Chat-v1.0"`.
     pub repo: String,
     pub revision: Option<String>,
+    /// Training sequence length in tokens; corpus windows are sized to fit.
+    pub block_size: usize,
 }
+
+/// Default training sequence length for pretrained themes.
+pub const DEFAULT_PRETRAINED_BLOCK_SIZE: usize = 512;
 
 #[derive(Debug, Clone)]
 pub struct ScratchConfig {

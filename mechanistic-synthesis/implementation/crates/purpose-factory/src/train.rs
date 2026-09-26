@@ -421,6 +421,36 @@ mod tests {
     }
 
     #[test]
+    fn lora_training_reduces_the_loss() {
+        let dir = std::env::temp_dir().join(format!("pf-qwen2-train-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let (weights, config_path, _) = tiny_qwen2_checkpoint(&dir);
+        let cfg = pretrained_model::load_config(&config_path).unwrap();
+        let device = Device::Cpu;
+        let frozen = unsafe { pretrained_model::load_frozen_weights(&[weights], DType::F32, &device).unwrap() };
+        let varmap = VarMap::new();
+        let lora_vb = VarBuilder::from_varmap(&varmap, DType::F32, &device);
+        let model = LoraLlama::load(frozen, lora_vb, &cfg, 4, 8.0, &device).unwrap();
+        let mut opt = AdamW::new(varmap.all_vars(), ParamsAdamW { lr: 1e-2, ..ParamsAdamW::default() }).unwrap();
+        let ex = vec![1u32, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let batch = [&ex];
+        let (inp, tgt) = build_batch(&batch, 0, &device).unwrap();
+        let mask = target_mask(&batch, &device).unwrap();
+        let mut losses = vec![];
+        for _ in 0..20 {
+            let loss = masked_sequence_cross_entropy(&model.forward_train(&inp).unwrap(), &tgt, &mask).unwrap();
+            losses.push(loss.to_scalar::<f32>().unwrap());
+            opt.backward_step(&loss).unwrap();
+        }
+        std::fs::remove_dir_all(&dir).ok();
+        // Regression guard: candle-nn's fused RmsNorm/rope kernels detach
+        // their outputs, which once left every step's loss bit-identical.
+        // The tiny random checkpoint's activations are near zero, so the
+        // drop is small in absolute terms — but it must be strict every step.
+        assert!(losses.windows(2).all(|w| w[1] < w[0]), "loss must fall every step: {losses:?}");
+    }
+
+    #[test]
     fn padding_does_not_change_masked_loss() {
         let device = Device::Cpu;
         let short = vec![1u32, 2, 3];

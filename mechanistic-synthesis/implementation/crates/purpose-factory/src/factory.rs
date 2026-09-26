@@ -65,10 +65,10 @@ impl Factory {
             }
             BaseModelSpec::Pretrained(pretrained) => {
                 tracing::info!(document_count, repo = %pretrained.repo, "building corpus (pretrained)");
-                // Pretrained models use a fixed context window as the corpus
-                // window size too; a reasonable default when the checkpoint's
-                // own max_position_embeddings isn't known before download.
-                let admitted = corpus::admitted_texts(&docs, contract.verifier.as_ref(), 2048);
+                // ~4 chars per token, so windows fill the training block
+                // without much truncation.
+                let admitted =
+                    corpus::admitted_texts(&docs, contract.verifier.as_ref(), pretrained.block_size * 4);
                 if admitted.is_empty() {
                     return Err(Error::Corpus(format!(
                         "theme '{}' produced no admissible training examples; verifier rejected everything",
@@ -77,7 +77,7 @@ impl Factory {
                 }
 
                 let trained =
-                    train::run_pretrained(pretrained, &contract.training, 512, &admitted).await?;
+                    train::run_pretrained(pretrained, &contract.training, pretrained.block_size, &admitted).await?;
                 let example_count = admitted.len();
                 let vocab_size = trained.vocab_size;
 

@@ -267,7 +267,11 @@ async fn build_theme(
     let base_model = match body.model {
         BuildModelChoice::Scratch => BaseModelSpec::Scratch(ScratchConfig::default()),
         BuildModelChoice::Pretrained { repo, revision } => {
-            BaseModelSpec::Pretrained(PretrainedConfig { repo, revision })
+            BaseModelSpec::Pretrained(PretrainedConfig {
+                repo,
+                revision,
+                block_size: crate::contract::DEFAULT_PRETRAINED_BLOCK_SIZE,
+            })
         }
     };
 

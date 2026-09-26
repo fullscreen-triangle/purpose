@@ -96,7 +96,7 @@ impl GptModel {
             x = block.forward(&x, &mask)?;
         }
 
-        let x = self.ln_f.forward(&x)?;
+        let x = layer_norm_train(&self.ln_f, &x)?;
         self.lm_head.forward(&x)
     }
 
@@ -136,11 +136,27 @@ impl GptModel {
     }
 }
 
+/// Differentiable LayerNorm (eps 1e-5, as every norm here is built).
+/// candle-nn's `LayerNorm::forward` uses a fused `apply_op3_no_bwd` kernel
+/// for contiguous input with a bias, which detaches its output — on the
+/// training path that cut gradients to everything before each norm.
+fn layer_norm_train(ln: &LayerNorm, x: &Tensor) -> Result<Tensor> {
+    let hidden = x.dim(candle_core::D::Minus1)? as f64;
+    let mean = (x.sum_keepdim(candle_core::D::Minus1)? / hidden)?;
+    let centered = x.broadcast_sub(&mean)?;
+    let var = (centered.sqr()?.sum_keepdim(candle_core::D::Minus1)? / hidden)?;
+    let normed = centered.broadcast_div(&(var + 1e-5)?.sqrt()?)?.broadcast_mul(ln.weight())?;
+    match ln.bias() {
+        Some(b) => normed.broadcast_add(b),
+        None => Ok(normed),
+    }
+}
+
 impl Block {
     fn forward(&self, x: &Tensor, mask: &Tensor) -> Result<Tensor> {
-        let attn_out = self.attn.forward(&self.ln1.forward(x)?, mask)?;
+        let attn_out = self.attn.forward(&layer_norm_train(&self.ln1, x)?, mask)?;
         let x = (x + attn_out)?;
-        let mlp_hidden = self.mlp_up.forward(&self.ln2.forward(&x)?)?.gelu_erf()?;
+        let mlp_hidden = self.mlp_up.forward(&layer_norm_train(&self.ln2, &x)?)?.gelu_erf()?;
         let mlp_out = self.mlp_down.forward(&mlp_hidden)?;
         x + mlp_out
     }

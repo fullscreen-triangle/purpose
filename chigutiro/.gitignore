@@ -1,0 +1,6 @@
+target/
+node_modules/
+bridge-ts/dist/
+# Personal data — never commit a data directory.
+data/
+.chigutiro/

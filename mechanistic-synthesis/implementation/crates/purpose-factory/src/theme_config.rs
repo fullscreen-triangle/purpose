@@ -93,6 +93,11 @@ pub struct PretrainedModelConfig {
     pub repo: String,
     #[serde(default)]
     pub revision: Option<String>,
+    /// Training sequence length in tokens (default 512). Memory for the
+    /// logits and backward activations scales with it — lower it on small
+    /// machines rather than the batch size alone.
+    #[serde(default)]
+    pub block_size: Option<usize>,
 }
 
 impl Default for ModelConfig {
@@ -226,6 +231,7 @@ impl ThemeConfig {
             Some(p) => BaseModelSpec::Pretrained(PretrainedConfig {
                 repo: p.repo,
                 revision: p.revision,
+                block_size: p.block_size.unwrap_or(crate::contract::DEFAULT_PRETRAINED_BLOCK_SIZE),
             }),
             None => BaseModelSpec::Scratch(ScratchConfig {
                 vocab_size: self.model.vocab_size,

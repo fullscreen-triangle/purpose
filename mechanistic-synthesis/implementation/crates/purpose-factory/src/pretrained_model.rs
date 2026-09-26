@@ -72,6 +72,14 @@ impl HfLlamaConfig {
     }
 }
 
+/// Differentiable RMSNorm. candle-nn's `RmsNorm::forward` dispatches to a
+/// fused kernel built with `apply_op2_no_bwd` on contiguous input, whose
+/// output is detached from the graph — so on the training path every norm
+/// (and above all `ln_f`) silently cut all gradients to the LoRA adapters.
+fn rms_norm_train(ln: &RmsNorm, x: &Tensor, eps: f64) -> Result<Tensor> {
+    candle_nn::ops::rms_norm_slow(x, ln.weight(), eps as f32)
+}
+
 /// q/k/v projection: biased for architectures that have q/k/v biases.
 fn qkv_linear(cfg: &HfLlamaConfig, in_dim: usize, out_dim: usize, vb: VarBuilder) -> Result<Linear> {
     if cfg.qkv_bias() {
@@ -173,9 +181,11 @@ impl Attention {
             .transpose(1, 2)?
             .contiguous()?;
 
+        // `rope_slow`, not `rope`: the fused kernel has no backward (see
+        // `rms_norm_train`), which would detach q/k from the graph.
         let (cos, sin) = rotary.slice(t)?;
-        let q = candle_nn::rotary_emb::rope(&q, &cos, &sin)?;
-        let k = candle_nn::rotary_emb::rope(&k, &cos, &sin)?;
+        let q = candle_nn::rotary_emb::rope_slow(&q, &cos, &sin)?;
+        let k = candle_nn::rotary_emb::rope_slow(&k, &cos, &sin)?;
 
         let n_rep = self.n_head / self.n_kv_head;
         let k = repeat_kv(k, n_rep)?;
@@ -264,6 +274,7 @@ struct Block {
     attn: Attention,
     post_attn_ln: RmsNorm,
     mlp: Mlp,
+    eps: f64,
 }
 
 impl Block {
@@ -289,15 +300,16 @@ impl Block {
                 frozen_vb.pp("post_attention_layernorm"),
             )?,
             mlp: Mlp::load(frozen_vb.pp("mlp"), lora_vb.pp("mlp"), cfg, lora_rank, lora_alpha)?,
+            eps: cfg.rms_norm_eps,
         })
     }
 
     fn forward(&self, x: &Tensor, rotary: &RotaryCache, mask: &Tensor) -> Result<Tensor> {
         let residual = x;
-        let x = self.attn.forward(&self.input_ln.forward(x)?, rotary, mask)?;
+        let x = self.attn.forward(&rms_norm_train(&self.input_ln, x, self.eps)?, rotary, mask)?;
         let x = (x + residual)?;
         let residual = &x;
-        let mlp_out = self.mlp.forward(&self.post_attn_ln.forward(&x)?)?;
+        let mlp_out = self.mlp.forward(&rms_norm_train(&self.post_attn_ln, &x, self.eps)?)?;
         mlp_out + residual
     }
 }
@@ -378,7 +390,7 @@ impl LoraLlama {
         for block in &self.blocks {
             x = block.forward(&x, &self.rotary, &mask)?;
         }
-        let x = self.ln_f.forward(&x)?;
+        let x = rms_norm_train(&self.ln_f, &x, self.cfg.rms_norm_eps)?;
         self.lm_head.forward(&x)
     }
 
