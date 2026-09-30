@@ -111,15 +111,27 @@ enum Command {
         cmd: FactoryCommand,
     },
 
-    /// Run the theme factory as an HTTP server, so a caller on a different
-    /// machine (no shared filesystem, no local `purpose` binary) can upload
-    /// sources, trigger a build, and download the resulting model over the
-    /// network. Requires the `PURPOSE_SERVE_TOKEN` environment variable;
-    /// every request must present it as `Authorization: Bearer <token>`.
+    /// Run the theme factory as an HTTP server: the local end of the model
+    /// platform. A browser page (or another machine, with `--host 0.0.0.0`)
+    /// plans where to train, uploads sources, runs and watches build jobs,
+    /// and downloads the resulting model. Every request must present the
+    /// token as `Authorization: Bearer <token>`: `PURPOSE_SERVE_TOKEN` if set,
+    /// otherwise one generated once and kept in `<root>/serve-token`.
     Serve {
         /// Port to listen on.
         #[arg(long, default_value_t = 8420)]
         port: u16,
+
+        /// Address to bind. The default serves this machine only; use
+        /// `0.0.0.0` to accept connections from other machines.
+        #[arg(long, default_value = "127.0.0.1")]
+        host: String,
+
+        /// Web origins allowed to call from a browser, comma-separated
+        /// (e.g. the platform site's URL). Also read from
+        /// `PURPOSE_SERVE_ORIGINS`; `http://localhost:3000` is always allowed.
+        #[arg(long)]
+        origins: Option<String>,
 
         /// Working directory for themes (sources + trained models) and the
         /// build registry. Defaults to `.purpose/factory-server` under the
@@ -170,6 +182,43 @@ enum FactoryCommand {
         /// Registry file (defaults to `.purpose/factory/registry.json`).
         #[arg(long)]
         registry: Option<PathBuf>,
+
+        #[arg(long)]
+        raw: bool,
+    },
+
+    /// Rank every place to train a model (laptop, Apphub, rented and
+    /// academic GPUs) by feasibility, cost and time, with the method to use.
+    Plan {
+        /// Model size in billions of parameters (0.5, 1.5, 3, 7, ...).
+        #[arg(long)]
+        params: f64,
+
+        /// Training tokens per epoch (accepts k/M suffixes: 400k, 1.2M).
+        #[arg(long)]
+        tokens: String,
+
+        #[arg(long, default_value_t = 3.0)]
+        epochs: f64,
+
+        #[arg(long, default_value_t = 1024.0)]
+        seq_len: f64,
+
+        /// public | internal | private
+        #[arg(long, default_value = "internal")]
+        privacy: String,
+
+        /// vocabulary | tasks | facts
+        #[arg(long, default_value = "vocabulary")]
+        goal: String,
+
+        /// auto | lora | qlora | full
+        #[arg(long, default_value = "auto")]
+        method: String,
+
+        /// A `places.toml` overriding the built-in catalogue.
+        #[arg(long)]
+        places: Option<PathBuf>,
 
         #[arg(long)]
         raw: bool,
@@ -639,6 +688,54 @@ async fn main() -> Result<()> {
                     }
                 }
 
+                FactoryCommand::Plan {
+                    params,
+                    tokens,
+                    epochs,
+                    seq_len,
+                    privacy,
+                    goal,
+                    method,
+                    places,
+                    raw,
+                } => {
+                    use purpose_factory::placement::{self, Catalog, PlanRequest};
+                    let req: PlanRequest = serde_json::from_value(serde_json::json!({
+                        "params_b": params,
+                        "tokens": parse_count(&tokens)?,
+                        "epochs": epochs,
+                        "seq_len": seq_len,
+                        "privacy": privacy.to_lowercase(),
+                        "goal": goal.to_lowercase(),
+                        "method": method.to_lowercase(),
+                    }))
+                    .context("invalid --privacy, --goal or --method")?;
+                    let catalog = match places {
+                        Some(p) => Catalog::load(&p).map_err(|e| anyhow::anyhow!("{e}"))?,
+                        None => Catalog::default(),
+                    };
+                    let plan = placement::plan(&req, &catalog);
+                    if raw {
+                        println!("{}", serde_json::to_string_pretty(&plan)?);
+                    } else {
+                        println!("approach: {}", plan.advice.approach);
+                        for r in &plan.advice.reasons {
+                            println!("  - {r}");
+                        }
+                        println!();
+                        for o in &plan.options {
+                            let mark = if o.feasible { "ok " } else { "-- " };
+                            println!(
+                                "{mark}{:<48} {:>6?} {:>7.1} GB {:>8.2} h  EUR {:>7.2}",
+                                o.name, o.method, o.memory_gb, o.hours, o.cost_eur
+                            );
+                            for w in &o.why_not {
+                                println!("      {w}");
+                            }
+                        }
+                    }
+                }
+
                 FactoryCommand::List { registry, raw } => {
                     let registry_path = registry.unwrap_or_else(|| {
                         root.join(".purpose").join("factory").join("registry.json")
@@ -666,7 +763,7 @@ async fn main() -> Result<()> {
             }
         }
 
-        Command::Serve { port, root } => {
+        Command::Serve { port, host, origins, root } => {
             let cwd = std::env::current_dir().context("cannot read current directory")?;
             let root_dir = root.unwrap_or_else(|| {
                 detect_root(&cwd).join(".purpose").join("factory-server")
@@ -674,20 +771,23 @@ async fn main() -> Result<()> {
             std::fs::create_dir_all(&root_dir)
                 .with_context(|| format!("cannot create {}", root_dir.display()))?;
 
-            let token = std::env::var("PURPOSE_SERVE_TOKEN").map_err(|_| {
-                anyhow::anyhow!(
-                    "PURPOSE_SERVE_TOKEN must be set — refusing to start a server with no auth"
-                )
-            })?;
+            let token = match std::env::var("PURPOSE_SERVE_TOKEN") {
+                Ok(t) if !t.trim().is_empty() => t.trim().to_string(),
+                _ => serve_token(&purpose_factory::workspace::Workspace::new(&root_dir))?,
+            };
 
-            let listener = tokio::net::TcpListener::bind(("0.0.0.0", port))
+            let mut allowed = vec!["http://localhost:3000".to_string()];
+            for list in [origins, std::env::var("PURPOSE_SERVE_ORIGINS").ok()].into_iter().flatten() {
+                allowed.extend(list.split(',').map(str::trim).filter(|o| !o.is_empty()).map(String::from));
+            }
+
+            let listener = tokio::net::TcpListener::bind((host.as_str(), port))
                 .await
-                .with_context(|| format!("cannot bind port {port}"))?;
-            println!(
-                "purpose serve: listening on :{port}, themes under {}",
-                root_dir.display()
-            );
-            let app = purpose_factory::server::app(root_dir, token);
+                .with_context(|| format!("cannot bind {host}:{port}"))?;
+            let app = purpose_factory::server::app(&root_dir, token, &allowed)
+                .map_err(|e| anyhow::anyhow!("{e}"))?;
+            println!("purpose serve: listening on {host}:{port}, themes under {}", root_dir.display());
+            println!("browser origins allowed: {}", allowed.join(", "));
             axum::serve(listener, app)
                 .await
                 .context("server error")?;
@@ -709,4 +809,33 @@ async fn main() -> Result<()> {
     }
 
     Ok(())
+}
+
+/// Reads the server token from `<root>/serve-token`, generating and saving a
+/// random one the first time, and prints it so it can be pasted into the
+/// platform page once.
+fn serve_token(ws: &purpose_factory::workspace::Workspace) -> anyhow::Result<String> {
+    let path = ws.token_path();
+    if let Ok(existing) = std::fs::read_to_string(&path) {
+        if !existing.trim().is_empty() {
+            println!("token: {} (from {})", existing.trim(), path.display());
+            return Ok(existing.trim().to_string());
+        }
+    }
+    let token: String = (0..32).map(|_| format!("{:02x}", rand::random::<u8>())).collect();
+    std::fs::write(&path, &token).with_context(|| format!("cannot write {}", path.display()))?;
+    println!("token: {token}  (new; saved to {}; paste it into the platform page once)", path.display());
+    Ok(token)
+}
+
+/// `400000`, `400k`, `1.2M` or `2e6` as a number.
+fn parse_count(s: &str) -> anyhow::Result<f64> {
+    let t = s.trim().to_lowercase();
+    let (num, mul) = match t.chars().last() {
+        Some('k') => (&t[..t.len() - 1], 1e3),
+        Some('m') => (&t[..t.len() - 1], 1e6),
+        Some('b') => (&t[..t.len() - 1], 1e9),
+        _ => (t.as_str(), 1.0),
+    };
+    Ok(num.parse::<f64>().with_context(|| format!("not a count: {s}"))? * mul)
 }

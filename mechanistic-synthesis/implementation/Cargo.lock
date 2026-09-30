@@ -2764,6 +2764,7 @@ dependencies = [
  "purpose-domains-protein",
  "purpose-factory",
  "purpose-operations",
+ "rand 0.8.8",
  "serde_json",
  "tokio",
  "tracing",
@@ -2853,6 +2854,8 @@ dependencies = [
  "tokenizers 0.23.2",
  "tokio",
  "toml",
+ "tower",
+ "tower-http",
  "tracing",
  "walkdir",
 ]

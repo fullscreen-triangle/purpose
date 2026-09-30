@@ -17,6 +17,9 @@ pub enum Error {
     #[error("config error: {0}")]
     Config(String),
 
+    #[error("cancelled")]
+    Cancelled,
+
     #[error("io error: {0}")]
     Io(#[from] std::io::Error),
 }

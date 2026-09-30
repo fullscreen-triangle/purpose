@@ -6,6 +6,7 @@ use crate::contract::{BaseModelSpec, ThemeContract};
 use crate::corpus;
 use crate::error::Error;
 use crate::source::fetch_all;
+use crate::progress::{NoProgress, ProgressSink};
 use crate::train;
 
 /// Metadata about a built theme model, written to the local registry so
@@ -27,7 +28,18 @@ impl Factory {
     /// (from scratch, or LoRA-adapting a downloaded pretrained checkpoint,
     /// per the theme's `BaseModelSpec`), merge and export it.
     pub async fn build(contract: ThemeContract, out_dir: &Path) -> Result<ThemeModel, Error> {
+        Self::build_with_progress(contract, out_dir, &NoProgress).await
+    }
+
+    /// `build`, reporting stages and steps to `progress` and stopping with
+    /// `Error::Cancelled` between steps once `progress.cancelled()` is true.
+    pub async fn build_with_progress(
+        contract: ThemeContract,
+        out_dir: &Path,
+        progress: &dyn ProgressSink,
+    ) -> Result<ThemeModel, Error> {
         tracing::info!(theme = %contract.name, sources = contract.sources.len(), "fetching sources");
+        progress.stage("fetching sources");
         let docs = fetch_all(&contract.sources).await?;
         if docs.is_empty() {
             return Err(Error::Source(format!(
@@ -40,6 +52,7 @@ impl Factory {
         let (example_count, vocab_size) = match &contract.base_model {
             BaseModelSpec::Scratch(cfg) => {
                 tracing::info!(document_count, "building corpus (from scratch)");
+                progress.stage("building corpus");
                 let corpus = corpus::build(
                     &docs,
                     contract.verifier.as_ref(),
@@ -56,15 +69,18 @@ impl Factory {
                 let vocab_size = corpus.tokenizer.vocab_size();
 
                 tracing::info!(example_count, vocab_size, "training (from scratch)");
-                let trained = train::run_scratch(cfg, &contract.training, corpus)?;
+                progress.stage("training");
+                let trained = train::run_scratch(cfg, &contract.training, corpus, progress)?;
 
                 tracing::info!(out_dir = %out_dir.display(), "exporting");
+                progress.stage("exporting");
                 train::export_scratch(&trained, out_dir)?;
 
                 (example_count, vocab_size)
             }
             BaseModelSpec::Pretrained(pretrained) => {
                 tracing::info!(document_count, repo = %pretrained.repo, "building corpus (pretrained)");
+                progress.stage("building corpus");
                 // ~4 chars per token, so windows fill the training block
                 // without much truncation.
                 let admitted =
@@ -77,11 +93,13 @@ impl Factory {
                 }
 
                 let trained =
-                    train::run_pretrained(pretrained, &contract.training, pretrained.block_size, &admitted).await?;
+                    train::run_pretrained(pretrained, &contract.training, pretrained.block_size, &admitted, progress)
+                        .await?;
                 let example_count = admitted.len();
                 let vocab_size = trained.vocab_size;
 
                 tracing::info!(out_dir = %out_dir.display(), "exporting");
+                progress.stage("exporting");
                 train::export_pretrained(&trained, out_dir)?;
 
                 (example_count, vocab_size)

@@ -13,6 +13,7 @@ use crate::error::Error;
 use crate::hf;
 use crate::model::GptModel;
 use crate::pretrained_model::{self, LoraLlama};
+use crate::progress::{ProgressSink, StepProgress};
 use crate::tokenizer::Tokenizer;
 
 pub struct TrainedScratchModel {
@@ -28,6 +29,7 @@ pub fn run_scratch(
     cfg: &ScratchConfig,
     training: &TrainingSpec,
     corpus: Corpus,
+    progress: &dyn ProgressSink,
 ) -> Result<TrainedScratchModel, Error> {
     if corpus.examples.is_empty() {
         return Err(Error::Train(
@@ -54,6 +56,7 @@ pub fn run_scratch(
     let eos_id = corpus.tokenizer.eos_id;
     let mut indices: Vec<usize> = (0..corpus.examples.len()).collect();
     let mut rng = thread_rng();
+    let steps_per_epoch = corpus.examples.len().div_ceil(training.batch_size.max(1));
 
     for epoch in 0..training.epochs {
         indices.shuffle(&mut rng);
@@ -61,6 +64,9 @@ pub fn run_scratch(
         let mut n_batches = 0usize;
 
         for batch_idx in indices.chunks(training.batch_size.max(1)) {
+            if progress.cancelled() {
+                return Err(Error::Cancelled);
+            }
             let batch: Vec<&Vec<u32>> = batch_idx
                 .iter()
                 .map(|&i| &corpus.examples[i].token_ids)
@@ -81,6 +87,13 @@ pub fn run_scratch(
                 .to_scalar::<f32>()
                 .map_err(|e| Error::Train(format!("read loss: {e}")))?;
             n_batches += 1;
+            progress.step(StepProgress {
+                epoch,
+                epochs: training.epochs,
+                step: n_batches,
+                steps_per_epoch,
+                loss: total_loss / n_batches as f32,
+            });
         }
 
         let avg_loss = if n_batches > 0 {
@@ -197,6 +210,7 @@ pub async fn run_pretrained(
     training: &TrainingSpec,
     block_size: usize,
     admitted_texts: &[String],
+    progress: &dyn ProgressSink,
 ) -> Result<TrainedPretrainedModel, Error> {
     if admitted_texts.is_empty() {
         return Err(Error::Train(
@@ -205,6 +219,7 @@ pub async fn run_pretrained(
     }
 
     tracing::info!(repo = %pretrained.repo, "downloading pretrained checkpoint");
+    progress.stage("downloading base model");
     let files = hf::fetch(&pretrained.repo, pretrained.revision.as_deref()).await?;
 
     let cfg = pretrained_model::load_config(&files.config)
@@ -267,6 +282,7 @@ pub async fn run_pretrained(
     let steps_per_epoch = examples.len().div_ceil(training.batch_size.max(1));
     tracing::info!(examples = examples.len(), steps_per_epoch, "pretrained training start");
     let started = std::time::Instant::now();
+    progress.stage("training");
 
     for epoch in 0..training.epochs {
         indices.shuffle(&mut rng);
@@ -274,6 +290,9 @@ pub async fn run_pretrained(
         let mut n_batches = 0usize;
 
         for batch_idx in indices.chunks(training.batch_size.max(1)) {
+            if progress.cancelled() {
+                return Err(Error::Cancelled);
+            }
             let batch: Vec<&Vec<u32>> = batch_idx.iter().map(|&i| &examples[i]).collect();
             let Some((input_ids, targets)) = build_batch(&batch, pad_id, &device) else {
                 continue;
@@ -302,6 +321,13 @@ pub async fn run_pretrained(
                 elapsed_s = started.elapsed().as_secs(),
                 "pretrained step"
             );
+            progress.step(StepProgress {
+                epoch,
+                epochs: training.epochs,
+                step: n_batches,
+                steps_per_epoch,
+                loss: total_loss / n_batches as f32,
+            });
         }
 
         let avg_loss = if n_batches > 0 {

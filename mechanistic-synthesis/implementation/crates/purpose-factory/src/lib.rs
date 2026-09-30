@@ -14,13 +14,17 @@ pub mod error;
 pub mod factory;
 pub mod hf;
 pub mod lora;
+pub mod jobs;
 pub mod model;
+pub mod placement;
 pub mod pretrained_model;
+pub mod progress;
 pub mod server;
 pub mod source;
 pub mod theme_config;
 pub mod tokenizer;
 pub mod train;
+pub mod workspace;
 
 pub use contract::{
     BaseModelSpec, HeuristicVerifier, PretrainedConfig, ScratchConfig, ThemeContract, TrainingSpec,
@@ -28,5 +32,6 @@ pub use contract::{
 };
 pub use error::Error;
 pub use factory::{Factory, Registry, ThemeModel};
+pub use progress::{NoProgress, ProgressSink, StepProgress};
 pub use source::{Document, ImapSource, LocalFileSource, SourceProvider, UrlSource};
 pub use theme_config::ThemeConfig;
