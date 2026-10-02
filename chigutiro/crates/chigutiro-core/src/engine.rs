@@ -11,8 +11,10 @@ use crate::error::Error;
 use crate::receivers::{calendar::Calendar, ledger::Ledger, people::People, places::Places, series::Series, text::TextIndex};
 use crate::record::{Record, Stored};
 use crate::router::{route, RouteShape};
+use crate::scope::{Scope, ScopePolicy};
 use crate::terms::query_terms;
 use crate::voice::{voice_doc, VoiceDoc};
+use crate::work::{work_doc, WorkDoc};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct EngineConfig {
@@ -23,14 +25,19 @@ pub struct EngineConfig {
     /// Relative spread at which same-day readings from different sources are
     /// reported as contested.
     pub contest_tolerance: f64,
+    /// Which source channels are work; see `scope`.
+    #[serde(default)]
+    pub scope: ScopePolicy,
 }
 
 impl Default for EngineConfig {
     fn default() -> Self {
-        EngineConfig { budget: 8, decay: 0.5, contest_tolerance: 0.15 }
+        EngineConfig { budget: 8, decay: 0.5, contest_tolerance: 0.15, scope: ScopePolicy::default() }
     }
 }
 
+// Returned once per ingest and consumed immediately; boxing would buy nothing.
+#[allow(clippy::large_enum_variant)]
 pub enum Ingested {
     Accepted(Stored),
     Duplicate(String),
@@ -85,6 +92,10 @@ pub struct Stats {
     pub people: usize,
     pub events: usize,
     pub voice_docs: usize,
+    /// Records in the work scope, and the passages they index into.
+    pub work_records: usize,
+    pub work_passages: usize,
+    pub work_docs: usize,
 }
 
 pub struct Engine {
@@ -98,6 +109,9 @@ pub struct Engine {
     places: Places,
     people: People,
     calendar: Calendar,
+    /// The text receiver over work-scope records only. Work is prose, so the
+    /// text receiver is the whole of the work view.
+    work_text: TextIndex,
 }
 
 impl Engine {
@@ -114,6 +128,7 @@ impl Engine {
             places: Places::default(),
             people: People::default(),
             calendar: Calendar::default(),
+            work_text: TextIndex::default(),
         }
     }
 
@@ -138,6 +153,9 @@ impl Engine {
         self.places.add(s);
         self.people.add(s);
         self.calendar.add(s);
+        if self.cfg.scope.scope_of(&s.record) == Scope::Work {
+            self.work_text.add(s);
+        }
     }
 
     pub fn committed(&self) -> u64 {
@@ -163,15 +181,26 @@ impl Engine {
     }
 
     pub fn ask(&self, query: &str, now: DateTime<Utc>, budget: Option<usize>) -> Retrieval {
+        self.ask_scoped(query, now, budget, None)
+    }
+
+    /// `scope: Some(Work)` answers from work-scope records only — the view an
+    /// absicht federation gets of this profile. `None` asks over everything
+    /// (the owner's own view). There is no personal-only view.
+    pub fn ask_scoped(&self, query: &str, now: DateTime<Utc>, budget: Option<usize>, scope: Option<Scope>) -> Retrieval {
         let q = query_terms(query);
-        let offers = vec![
+        let offers = if scope == Some(Scope::Work) {
+            vec![("text", self.work_text.candidates(&q, 32))]
+        } else {
+            vec![
             ("text", self.text.candidates(&q, 32)),
             ("series", self.series.candidates(&q, now)),
             ("ledger", self.ledger.candidates(&q, now)),
             ("places", self.places.candidates(&q, now)),
             ("people", self.people.candidates(&q, now)),
             ("calendar", self.calendar.candidates(&q, now)),
-        ];
+            ]
+        };
         let (claims, route) = route(offers, q.len(), budget.unwrap_or(self.cfg.budget), self.cfg.decay, now);
         Retrieval { grade: route.grade, claims, route }
     }
@@ -196,6 +225,15 @@ impl Engine {
         self.records.iter().filter_map(voice_doc).collect()
     }
 
+    pub fn scope_of(&self, record: &Record) -> Scope {
+        self.cfg.scope.scope_of(record)
+    }
+
+    /// The redacted work corpus, in commit order.
+    pub fn work_docs(&self) -> Vec<WorkDoc> {
+        self.records.iter().filter_map(|s| work_doc(s, &self.cfg.scope)).collect()
+    }
+
     pub fn stats(&self) -> Stats {
         let mut by_kind = BTreeMap::new();
         for s in &self.records {
@@ -213,6 +251,9 @@ impl Engine {
             people: self.people.len(),
             events: self.calendar.len(),
             voice_docs: self.voice_docs().len(),
+            work_records: self.records.iter().filter(|s| self.scope_of(&s.record) == Scope::Work).count(),
+            work_passages: self.work_text.len(),
+            work_docs: self.work_docs().len(),
         }
     }
 }
@@ -271,5 +312,36 @@ mod tests {
         assert_eq!(e.committed(), 2);
         // Other people's prose never entered the voice corpus in the first place.
         assert!(e.voice_docs().is_empty());
+    }
+
+    #[test]
+    fn the_work_view_sees_only_work_channels_and_follows_erasure() {
+        let now: DateTime<Utc> = "2026-10-02T12:00:00Z".parse().unwrap();
+        let mut e = Engine::new(EngineConfig::default());
+        let prose = |text: &str| Body::Prose { text: text.into(), title: None, authored_by_owner: false };
+        e.ingest(rec("upload:paper", "2026-10-01T00:00:00Z", None, prose(
+            "Transaminase kinetics: aspartate aminotransferase follows a ping-pong mechanism with PLP.",
+        )))
+        .unwrap();
+        e.ingest(rec("chat:assistant", "2026-10-01T01:00:00Z", None, prose(
+            "We discussed why the transaminase screen needs a PLP control in every plate.",
+        )))
+        .unwrap();
+        e.ingest(rec("gmail", "2026-10-01T02:00:00Z", None, prose(
+            "Private: transaminase joke for the birthday card, and the flat viewing on Friday.",
+        )))
+        .unwrap();
+
+        let all = e.ask_scoped("transaminase", now, None, None);
+        let work = e.ask_scoped("transaminase", now, None, Some(Scope::Work));
+        assert_eq!(all.claims.len(), 3);
+        assert_eq!(work.claims.len(), 2);
+        assert!(work.claims.iter().all(|c| !c.text.contains("birthday")), "{:?}", work.claims);
+        assert_eq!(e.work_docs().len(), 2);
+        assert_eq!(e.stats().work_records, 2);
+
+        e.erase(&Erase { source: Some("upload:paper".into()), ..Default::default() });
+        assert_eq!(e.ask_scoped("ping-pong mechanism", now, None, Some(Scope::Work)).grade, Grade::Declined);
+        assert_eq!(e.work_docs().len(), 1);
     }
 }

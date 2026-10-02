@@ -6,7 +6,7 @@ use std::path::{Path, PathBuf};
 use chigutiro_core::consolidate::{self, Consolidation, ConsolidationConfig, Plan, Status};
 use chigutiro_core::crypto::Cipher;
 use chigutiro_core::voice::voice_doc;
-use chigutiro_core::{Engine, EngineConfig, Erase, Error, Ingested, Record, Retrieval, State, Stats, Store};
+use chigutiro_core::{Engine, EngineConfig, Erase, Error, Ingested, Record, Retrieval, Scope, State, Stats, Store, WorkDoc};
 use chrono::Utc;
 use serde::Serialize;
 
@@ -111,12 +111,20 @@ impl Service {
         Ok(())
     }
 
-    pub fn ask(&self, query: &str, budget: Option<usize>) -> Retrieval {
-        let r = self.engine.ask(query, Utc::now(), budget);
+    pub fn ask(&self, query: &str, budget: Option<usize>, scope: Option<Scope>) -> Retrieval {
+        let r = self.engine.ask_scoped(query, Utc::now(), budget, scope);
         if let Err(e) = self.store.append_route(&r.route) {
             tracing::warn!("route log: {e}");
         }
         r
+    }
+
+    pub fn work_docs(&self) -> Vec<WorkDoc> {
+        self.engine.work_docs()
+    }
+
+    pub fn engine_config(&self) -> &EngineConfig {
+        &self.engine_cfg
     }
 
     pub fn erase(&mut self, criteria: &Erase) -> Result<EraseReport, Error> {

@@ -10,7 +10,7 @@ use std::sync::{Arc, Mutex};
 
 use chigutiro_core::consolidate::{self, ConsolidationConfig};
 use chigutiro_core::crypto::{random_hex, Cipher};
-use chigutiro_core::{EngineConfig, Erase};
+use chigutiro_core::{EngineConfig, Erase, Scope, ScopePolicy};
 use clap::{Args, Parser, Subcommand};
 
 use crate::answer::{extractive, Ollama};
@@ -32,6 +32,22 @@ struct DataArgs {
     /// Store records unencrypted. Without this, CHIGUTIRO_KEY is required.
     #[arg(long)]
     plaintext: bool,
+    /// Source channels that count as work, comma-separated. Default: chat,
+    /// academic, upload:lab-report, upload:paper, upload:presentation.
+    #[arg(long, env = "CHIGUTIRO_WORK_CHANNELS")]
+    work_channels: Option<String>,
+}
+
+impl DataArgs {
+    fn engine_config(&self) -> EngineConfig {
+        let scope = match &self.work_channels {
+            Some(list) => ScopePolicy {
+                work_channels: list.split(',').map(str::trim).filter(|c| !c.is_empty()).map(String::from).collect(),
+            },
+            None => ScopePolicy::default(),
+        };
+        EngineConfig { scope, ..EngineConfig::default() }
+    }
 }
 
 #[derive(Args, Clone)]
@@ -102,6 +118,19 @@ enum Cmd {
         budget: Option<usize>,
         #[arg(long)]
         json: bool,
+        /// Answer from the work scope only.
+        #[arg(long)]
+        work: bool,
+    },
+    /// Write the redacted work corpus (`corpus.jsonl` + `manifest.json`) for
+    /// training a work model elsewhere, e.g. on AppHub. Plaintext: ship it,
+    /// then delete it.
+    ExportWork {
+        #[command(flatten)]
+        data: DataArgs,
+        /// Directory to write into (created if missing).
+        #[arg(long)]
+        out: PathBuf,
     },
     /// Counts, voice corpus, and consolidation state.
     Status {
@@ -150,7 +179,7 @@ fn cipher(data: &DataArgs) -> Result<Option<Cipher>, String> {
 }
 
 fn open(data: &DataArgs, consolidation: ConsolidationConfig, read_only: bool) -> Result<Service, String> {
-    Service::open(&data.data, cipher(data)?, EngineConfig::default(), consolidation, read_only).map_err(|e| e.to_string())
+    Service::open(&data.data, cipher(data)?, data.engine_config(), consolidation, read_only).map_err(|e| e.to_string())
 }
 
 fn print_json(v: &impl serde::Serialize) {
@@ -220,14 +249,44 @@ async fn run(cli: Cli) -> Result<ExitCode, String> {
             let report = service.ingest(values).map_err(|e| e.to_string())?;
             print_json(&report);
         }
-        Cmd::Ask { data, query, budget, json } => {
+        Cmd::Ask { data, query, budget, json, work } => {
             let service = open(&data, ConsolidationConfig::default(), true)?;
-            let r = service.ask(&query, budget);
+            let r = service.ask(&query, budget, work.then_some(Scope::Work));
             if json {
                 print_json(&r);
             } else {
                 println!("grade: {:?}\n{}", r.grade, extractive(&r));
             }
+        }
+        Cmd::ExportWork { data, out } => {
+            let service = open(&data, ConsolidationConfig::default(), true)?;
+            let docs = service.work_docs();
+            std::fs::create_dir_all(&out).map_err(|e| format!("{}: {e}", out.display()))?;
+            let mut lines = String::new();
+            let mut by_channel = std::collections::BTreeMap::<String, usize>::new();
+            for d in &docs {
+                lines.push_str(&serde_json::json!({ "text": d.text, "source": d.source }).to_string());
+                lines.push('\n');
+                let channel = d.source.split(':').take(2).collect::<Vec<_>>().join(":");
+                *by_channel.entry(channel).or_insert(0) += 1;
+            }
+            std::fs::write(out.join("corpus.jsonl"), lines).map_err(|e| e.to_string())?;
+            let manifest = serde_json::json!({
+                "created": chrono::Utc::now(),
+                "work_channels": service.engine_config().scope.work_channels,
+                "docs": docs.len(),
+                "chars": docs.iter().map(|d| d.text.chars().count()).sum::<usize>(),
+                "by_channel": by_channel,
+                "highest_seq": docs.iter().map(|d| d.seq).max(),
+                "ids": docs.iter().map(|d| &d.id).collect::<Vec<_>>(),
+            });
+            std::fs::write(out.join("manifest.json"), serde_json::to_string_pretty(&manifest).expect("serializes"))
+                .map_err(|e| e.to_string())?;
+            eprintln!(
+                "wrote {} work documents to {} (plaintext, redacted): ship it, then delete it",
+                docs.len(),
+                out.display()
+            );
         }
         Cmd::Status { data, consolidation } => {
             let service = open(&data, consolidation.config(), true)?;

@@ -11,6 +11,7 @@ import type {
   PositionRecord,
   ProseRecord,
   TransactionRecord,
+  UploadKind,
 } from "./types.js";
 
 type When = Date | string;
@@ -23,6 +24,63 @@ function iso(when: When): string {
 
 function dayOf(when: When): string {
   return iso(when).slice(0, 10);
+}
+
+// ---------------------------------------------------------------- work scope
+//
+// The only records chigutiro treats as work: their `source` channel puts them
+// there (chat:*, academic:*, upload:<kind>). Work is what an absicht
+// federation may consult and what a work model is trained on off this machine.
+
+export interface ChatTurn {
+  role: "user" | "assistant";
+  text: string;
+  ts: When;
+}
+
+/** One chat session as one record per turn; the user's own turns count as their writing. */
+export function chatSession(app: string, sessionId: string, turns: ChatTurn[]): ProseRecord[] {
+  return turns
+    .filter((t) => t.text.trim())
+    .map((t, i) => ({
+      kind: "prose",
+      source: `chat:${app}`,
+      id: `${sessionId}:${i}`,
+      ts: iso(t.ts),
+      text: t.text,
+      title: `${t.role} turn ${i + 1}`,
+      authored_by_owner: t.role === "user",
+      tags: [`session:${sessionId}`],
+    }));
+}
+
+/** An academic search (query plus the results read) or a conversation about it. */
+export function academic(engine: string, ts: When, text: string, opts: { title?: string; id?: string } = {}): ProseRecord {
+  return {
+    kind: "prose",
+    source: `academic:${engine}`,
+    ts: iso(ts),
+    text,
+    ...(opts.title ? { title: opts.title } : {}),
+    ...(opts.id ? { id: opts.id } : {}),
+  };
+}
+
+/**
+ * An uploaded lab report, paper or presentation, as extracted text. `ownWork`
+ * marks a document the user wrote (their lab report, their slides); a paper
+ * they read is not.
+ */
+export function upload(kind: UploadKind, ts: When, title: string, text: string, opts: { id?: string; ownWork?: boolean } = {}): ProseRecord {
+  return {
+    kind: "prose",
+    source: `upload:${kind}`,
+    ts: iso(ts),
+    title,
+    text,
+    authored_by_owner: opts.ownWork ?? kind !== "paper",
+    ...(opts.id ? { id: opts.id } : {}),
+  };
 }
 
 // ---------------------------------------------------------------- generic

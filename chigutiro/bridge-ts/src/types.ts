@@ -166,6 +166,10 @@ export interface Status {
     people: number;
     events: number;
     voice_docs: number;
+    /** Records in the work scope (see `work` adapters), their passages, and exportable docs. */
+    work_records: number;
+    work_passages: number;
+    work_docs: number;
   };
   consolidation: {
     available: boolean;
@@ -176,3 +180,13 @@ export interface Status {
     tainted: boolean;
   };
 }
+
+/**
+ * `work` asks the work scope only (chat sessions, academic searches and
+ * conversations, uploaded lab reports, papers and presentations): the view an
+ * absicht federation gets. Omit it to ask over the whole profile.
+ */
+export type Scope = "work";
+
+/** Documents a user can upload into the work scope. */
+export type UploadKind = "lab-report" | "paper" | "presentation";

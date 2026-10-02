@@ -11,7 +11,7 @@ use axum::response::{IntoResponse, Response};
 use axum::routing::{get, post};
 use axum::{Json, Router};
 use chigutiro_core::consolidate;
-use chigutiro_core::Erase;
+use chigutiro_core::{Erase, Scope};
 use serde::Deserialize;
 use serde_json::json;
 
@@ -109,6 +109,9 @@ struct AskBody {
     budget: Option<usize>,
     #[serde(default = "yes")]
     generate: bool,
+    /// `"work"` answers from the work scope only; omitted, from everything.
+    #[serde(default)]
+    scope: Option<Scope>,
 }
 
 fn yes() -> bool {
@@ -119,11 +122,17 @@ async fn ask(State(state): State<AppState>, Json(body): Json<AskBody>) -> Result
     if body.query.trim().is_empty() {
         return Err(ApiError(StatusCode::UNPROCESSABLE_ENTITY, "query is empty".into()));
     }
+    if body.scope == Some(Scope::Personal) {
+        return Err(ApiError(
+            StatusCode::UNPROCESSABLE_ENTITY,
+            "there is no personal-only view: pass scope \"work\", or omit scope to ask over everything".into(),
+        ));
+    }
     // Retrieve under the lock; phrase outside it, so a slow model never
     // blocks ingestion.
     let (retrieval, model_version, model_tainted) = {
         let s = lock(&state);
-        let r = s.ask(&body.query, body.budget.map(|b| b.clamp(1, 64)));
+        let r = s.ask(&body.query, body.budget.map(|b| b.clamp(1, 64)), body.scope);
         (r, consolidate::latest_succeeded(s.state()).map(|c| c.version), consolidate::tainted(s.state()))
     };
     let mut answer = Answer {
@@ -224,6 +233,31 @@ mod tests {
         let status = resp.status();
         let bytes = resp.into_body().collect().await.unwrap().to_bytes();
         (status, serde_json::from_slice(&bytes).unwrap_or(serde_json::Value::Null))
+    }
+
+    #[tokio::test]
+    async fn the_work_scope_is_a_separate_view() {
+        let dir = tempfile::tempdir().unwrap();
+        let app = test_app(dir.path());
+        let today = chrono::Utc::now().format("%Y-%m-%dT06:00:00Z").to_string();
+        let (_, report) = call(&app, "POST", "/ingest", Some("secret"), json!({ "records": [
+            { "source": "upload:lab-report", "ts": today, "kind": "prose", "title": "Run 14",
+              "text": "Transaminase run 14: conversion stalled at 40% without added PLP." },
+            { "source": "gmail", "ts": today, "kind": "prose",
+              "text": "Transaminase pun for the birthday card, and the flat viewing on Friday." },
+        ]})).await;
+        assert_eq!(report["accepted"], 2);
+
+        let (_, all) = call(&app, "POST", "/ask", Some("secret"), json!({ "query": "transaminase" })).await;
+        let (_, work) = call(&app, "POST", "/ask", Some("secret"), json!({ "query": "transaminase", "scope": "work" })).await;
+        assert_eq!(all["claims"].as_array().unwrap().len(), 2);
+        assert_eq!(work["claims"].as_array().unwrap().len(), 1, "{work}");
+        assert!(!work.to_string().contains("birthday"));
+
+        let (code, _) = call(&app, "POST", "/ask", Some("secret"), json!({ "query": "x", "scope": "personal" })).await;
+        assert_eq!(code, StatusCode::UNPROCESSABLE_ENTITY);
+        let (_, status) = call(&app, "GET", "/status", Some("secret"), json!(null)).await;
+        assert_eq!(status["stats"]["work_records"], 1);
     }
 
     #[tokio::test]

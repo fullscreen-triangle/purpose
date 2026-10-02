@@ -119,7 +119,7 @@ fn luhn(digits: &[u32]) -> bool {
         .enumerate()
         .map(|(i, &d)| if i % 2 == 1 { let x = d * 2; if x > 9 { x - 9 } else { x } } else { d })
         .sum();
-    sum % 10 == 0
+    sum.is_multiple_of(10)
 }
 
 #[cfg(test)]

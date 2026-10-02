@@ -35,6 +35,41 @@ are redacted. Everything else stays in receivers:
 Weights can't be asked for a current value, can't be kept current, and can't
 forget one person. Receivers can do all three.
 
+## Scopes: what of the profile is work
+
+A chigutiro profile is one person's whole life. In absicht it is that
+person's account, and only a narrow **work** slice of it ever takes part:
+the slice an absicht federation may consult, and the only material that may
+be trained into a model off this machine (e.g. on AppHub). Everything else is
+**personal** and never leaves.
+
+The scope is decided by the record's **source channel**, never by its
+content, and is worked out when a record is read, so narrowing the policy
+applies at once to everything already in the log. For now, work is exactly:
+
+| Channel (`source`) | What it is |
+|---|---|
+| `chat:<app>` | chat session history with an assistant |
+| `academic:<engine>` | academic searches and conversations about them |
+| `upload:lab-report`, `upload:paper`, `upload:presentation` | documents the user uploaded (extracted text) |
+
+Only prose counts. A measurement or a contact is personal whatever its
+source. University email, notes and everything else stay personal until
+their channel is added (`--work-channels` / `CHIGUTIRO_WORK_CHANNELS`). The
+host must label channels honestly; the bridge's `chatSession`, `academic` and
+`upload` adapters do.
+
+- **Ask the work view:** `POST /ask { query, scope: "work" }`, or
+  `chigutiro ask --work "…"`. It searches work records only. There is no
+  personal-only view.
+- **Export the work corpus:** `chigutiro export-work --out DIR` writes
+  `corpus.jsonl` (`{text, source}` per document) and `manifest.json` (counts
+  per channel, record ids). It is redacted like the voice corpus, but unlike
+  it, it includes text others wrote, such as a paper's authors or an
+  assistant's replies. That is right for a model of the field, and why it is
+  a separate corpus from the voice corpus. It is plaintext: ship it, then
+  delete it.
+
 ## Answers are graded
 
 A claim's grade is the number of independent sources behind it:
@@ -81,8 +116,9 @@ export CHIGUTIRO_KEY=... CHIGUTIRO_TOKEN=...
 | `CHIGUTIRO_PURPOSE_BIN` | A `purpose` binary with the `factory` subcommand; enables consolidation. |
 | `CHIGUTIRO_BASE_MODEL` | Checkpoint each round retrains from (default `Qwen/Qwen2.5-0.5B-Instruct`; must be a single unsharded `model.safetensors`). |
 | `CHIGUTIRO_MIN_NEW_DOCS`, `CHIGUTIRO_AUTO_CONSOLIDATE` | New voice documents that make a round due (50); start rounds automatically after ingest. |
+| `CHIGUTIRO_WORK_CHANNELS` | Source channels that count as work, comma-separated (default `chat,academic,upload:lab-report,upload:paper,upload:presentation`). |
 
-CLI: `ingest FILE|-`, `ask "…"`, `status`, `erase --subject …`,
+CLI: `ingest FILE|-`, `ask [--work] "…"`, `export-work --out DIR`, `status`, `erase --subject …`,
 `consolidate [--force]`, and `verify`. `verify` checks the log decodes, ids
 are unique, sequence numbers increase, the committed count covers every
 record, superseded models are deleted and no plaintext corpus is left behind.
@@ -98,7 +134,7 @@ There is no CORS: call chigutiro from a server, never from a browser.
 | `GET /health` | `{ ok, version }` |
 | `GET /status` | counts per receiver, voice corpus size, consolidation state |
 | `POST /ingest` | `{ records: [...] }` → `{ accepted, duplicates, rejected: [{index, reason}], committed }` |
-| `POST /ask` | `{ query, budget?, generate? }` → `{ answer, generated, grade, claims, route, model_version, model_tainted }` |
+| `POST /ask` | `{ query, budget?, generate?, scope? }` (`scope: "work"`: work records only) → `{ answer, generated, grade, claims, route, model_version, model_tainted }` |
 | `POST /erase` | `{ ids?, subject?, source?, before? }` (all given must match) → `{ removed, voice_material_removed, model_tainted }` |
 | `POST /consolidate` | `{ force? }` → 202 `{ started, version }` or 409 `{ started: false, reason }` |
 | `GET /consolidations` | round history |

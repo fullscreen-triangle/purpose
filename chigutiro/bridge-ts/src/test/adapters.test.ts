@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { fromBankTransactions, fromGarminSummary, fromGmailMessages, measurements, parseBankDate } from "../index.js";
+import { academic, chatSession, fromBankTransactions, fromGarminSummary, fromGmailMessages, measurements, parseBankDate, upload } from "../index.js";
 
 test("garmin summary: one measurement per present metric, ids per day", () => {
   const recs = fromGarminSummary({ sleep_hours: 7.2, hrv: 58, body_battery: null, steps: 10412 }, "2026-09-25T18:00:00Z");
@@ -45,4 +45,18 @@ test("measurements: athletics session with units, non-finite skipped, stable ids
   assert.equal(recs.length, 3);
   assert.equal(recs[0]?.id, "session-42:100m time");
   assert.equal(recs[2]?.unit, undefined);
+});
+
+test("work adapters: channels put records in the work scope, authorship follows who wrote them", () => {
+  const turns = chatSession("assistant", "s1", [
+    { role: "user", text: "Why does run 14 stall at 40%?", ts: "2026-10-02T09:00:00Z" },
+    { role: "assistant", text: "Likely PLP depletion; add 0.1 mM.", ts: "2026-10-02T09:00:05Z" },
+    { role: "user", text: "  ", ts: "2026-10-02T09:01:00Z" },
+  ]);
+  assert.equal(turns.length, 2);
+  assert.deepEqual(turns.map((t) => [t.source, t.authored_by_owner]), [["chat:assistant", true], ["chat:assistant", false]]);
+  assert.equal(academic("semantic-scholar", "2026-10-02", "transaminase PLP kinetics").source, "academic:semantic-scholar");
+  assert.equal(upload("paper", "2026-10-02", "Kinetics", "...").authored_by_owner, false);
+  assert.equal(upload("lab-report", "2026-10-02", "Run 14", "...").source, "upload:lab-report");
+  assert.equal(upload("lab-report", "2026-10-02", "Run 14", "...").authored_by_owner, true);
 });

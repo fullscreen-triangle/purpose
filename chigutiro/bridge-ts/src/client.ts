@@ -5,6 +5,7 @@ import type {
   EraseCriteria,
   EraseReport,
   IngestReport,
+  Scope,
   Status,
 } from "./types.js";
 
@@ -95,7 +96,7 @@ export class ChigutiroClient {
     return total;
   }
 
-  ask(query: string, opts: { budget?: number; generate?: boolean } = {}): Promise<Answer> {
+  ask(query: string, opts: { budget?: number; generate?: boolean; scope?: Scope } = {}): Promise<Answer> {
     return this.call("POST", "/ask", { query, ...opts });
   }
 
