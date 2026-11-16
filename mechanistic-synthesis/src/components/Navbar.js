@@ -8,6 +8,7 @@ import { useThemeSwitch } from "./Hooks/useThemeSwitch";
 const LINKS = [
   { href: "/", label: "Synthesis" },
   { href: "/platform", label: "Platform" },
+  { href: "/board", label: "Board" },
 ];
 
 export default function Navbar() {

@@ -10,6 +10,7 @@ const nextConfig = {
     outputFileTracingIncludes: {
       "/api/synthesize": ["./knowledge-packs/**/*"],
       "/api/triage": ["./knowledge-packs/**/*"],
+      "/api/board": ["./board/**/*"],
     },
   },
 };

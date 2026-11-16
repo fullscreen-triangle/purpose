@@ -1,11 +1,7 @@
 // The board: coalition's answers to the questions the group submitted, for
 // reading and checking. Nobody types a question here; the answers are made on
-// Kundai's machine and published with scripts/board-publish.mjs.
-//
-// The answers quote papers and the repository is public, so the file the page
-// loads (public/board/answers.enc) is encrypted. The key comes from the shared
-// link's fragment (#k=...), which the browser never sends to the server, and is
-// remembered in this browser so the page opens again without the link.
+// Kundai's machine and published with scripts/board-publish.mjs. Readers log
+// in with the site's password; /api/board decrypts the answers for them.
 
 import Head from "next/head";
 import { useEffect, useMemo, useState } from "react";
@@ -51,35 +47,20 @@ const VERB = {
   answers: "says",
 };
 
-const KEY_STORE = "board-key";
-
-function fromB64url(s) {
-  const b = atob(s.replace(/-/g, "+").replace(/_/g, "/") + "===".slice((s.length + 3) % 4));
-  return Uint8Array.from(b, (c) => c.charCodeAt(0));
-}
-
-function keyFromLink() {
-  const m = (window.location.hash || "").match(/[#&]k=([A-Za-z0-9_-]{43})/);
-  if (m) {
-    try {
-      window.localStorage.setItem(KEY_STORE, m[1]);
-    } catch {}
-    return m[1];
-  }
-  try {
-    return window.localStorage.getItem(KEY_STORE);
-  } catch {
+async function load() {
+  const res = await fetch("/api/board", { cache: "no-store" });
+  if (res.status === 401) {
+    window.location.assign("/login?next=/board");
     return null;
   }
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(body.error || `the answers could not be loaded (${res.status})`);
+  return body;
 }
 
-async function open(k) {
-  const res = await fetch("/board/answers.enc", { cache: "no-store" });
-  if (!res.ok) throw new Error(`the answers could not be loaded (${res.status})`);
-  const box = await res.json();
-  const key = await crypto.subtle.importKey("raw", fromB64url(k), "AES-GCM", false, ["decrypt"]);
-  const plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv: fromB64url(box.iv) }, key, fromB64url(box.data));
-  return JSON.parse(new TextDecoder().decode(plain));
+async function logOut() {
+  await fetch("/api/auth/logout", { method: "POST" }).catch(() => {});
+  window.location.assign("/login");
 }
 
 function date(iso) {
@@ -243,19 +224,13 @@ export default function Board() {
   const [pick, setPick] = useState(null);
 
   useEffect(() => {
-    const k = keyFromLink();
-    if (!k) return setState({ phase: "nokey" });
-    open(k)
+    load()
       .then((board) => {
+        if (!board) return;
         setState({ phase: "ok", board });
         setPick(board.entries[0]?.id || null);
       })
-      .catch(() => {
-        try {
-          window.localStorage.removeItem(KEY_STORE);
-        } catch {}
-        setState({ phase: "nokey" });
-      });
+      .catch((e) => setState({ phase: "failed", error: e.message }));
   }, []);
 
   const entries = useMemo(() => (state.board ? state.board.entries : []), [state.board]);
@@ -274,7 +249,12 @@ export default function Board() {
         <title>Answers board</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div className="mx-auto w-full max-w-6xl px-8 pb-24 pt-14 text-dark dark:text-light sm:px-4 sm:pt-8">
+      <div className="mx-auto w-full max-w-6xl px-8 pb-24 pt-8 text-dark dark:text-light sm:px-4 sm:pt-8">
+        <div className="mb-6 flex justify-end">
+          <button type="button" onClick={logOut} className="text-xs text-neutral-500 hover:text-primary dark:text-neutral-400 dark:hover:text-primaryDark">
+            Log out
+          </button>
+        </div>
         <header className="max-w-3xl">
           <h1 className="text-3xl font-bold md:text-2xl">Answers to the submitted questions</h1>
           <p className="mt-3 text-[15px] leading-relaxed text-neutral-600 dark:text-neutral-400">
@@ -286,9 +266,9 @@ export default function Board() {
         </header>
 
         {state.phase === "loading" ? <p className="mt-12 text-sm text-neutral-500">Opening the answers…</p> : null}
-        {state.phase === "nokey" ? (
+        {state.phase === "failed" ? (
           <p className="mt-12 max-w-xl rounded-lg bg-white p-4 text-sm leading-relaxed shadow-sm dark:bg-white/[0.04]">
-            This page opens only from the link it was shared with. Open that link again, or ask Kundai for it.
+            {state.error}
           </p>
         ) : null}
 

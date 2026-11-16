@@ -20,8 +20,6 @@ export async function middleware(req) {
 }
 
 export const config = {
-  // Everything except the login page, the auth API, static assets, and the
-  // board (src/pages/board.js), which is readable only with the key its shared
-  // link carries, because the answers it loads are encrypted.
-  matcher: ["/((?!login|board|api/auth|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|svg|ico|webp|woff2?)$).*)"],
+  // Everything except the login page, the auth API, and static assets.
+  matcher: ["/((?!login|api/auth|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|svg|ico|webp|woff2?)$).*)"],
 };

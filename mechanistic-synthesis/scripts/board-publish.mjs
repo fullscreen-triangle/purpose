@@ -5,27 +5,24 @@
 //   node scripts/board-publish.mjs remove <run-dir>... drop runs and rebuild
 //   node scripts/board-publish.mjs                    rebuild from the list
 //   node scripts/board-publish.mjs list               the runs on the board
-//   node scripts/board-publish.mjs link               the link to send
+//   node scripts/board-publish.mjs key                the key, for BOARD_KEY on Vercel
 //
 // A run is a directory coalition filed for one question (answer.json and
 // question.txt; the chat files them in %LOCALAPPDATA%\coalition-chat\runs).
 //
 // The answers quote the papers, and this repository is public, so the board
-// is written encrypted (AES-256-GCM) to public/board/answers.enc. The key
-// never enters the repository or the server: it lives beside the run list in
-// %LOCALAPPDATA%\coalition-chat\board\ and travels only in the link's
-// fragment (#k=...), which browsers do not send to the server. Whoever has the
-// link can read the board; to withdraw it, delete board.key and rebuild, which
-// makes a new key and so a new link.
+// is written encrypted (AES-256-GCM) to board/answers.enc. The key lives beside
+// the run list in %LOCALAPPDATA%\coalition-chat\board\ and, on Vercel, in the
+// BOARD_KEY environment variable, never in the repository. The site decrypts
+// it in /api/board, which only logged-in readers reach.
 //
-// Commit public/board/answers.enc and push; Vercel deploys the site from main.
+// Commit board/answers.enc and push; Vercel deploys the site from main.
 
 import { createCipheriv, randomBytes } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const SITE = "https://mechanistic-synthesis.vercel.app";
 const HOME = path.join(
   process.env.LOCALAPPDATA || path.join(process.env.HOME || ".", ".local", "share"),
   "coalition-chat",
@@ -33,7 +30,7 @@ const HOME = path.join(
 );
 const KEY_FILE = path.join(HOME, "board.key");
 const RUNS_FILE = path.join(HOME, "runs.txt");
-const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "public", "board", "answers.enc");
+const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "board", "answers.enc");
 
 const b64url = (buf) => Buffer.from(buf).toString("base64url");
 
@@ -143,13 +140,13 @@ switch (cmd) {
   case "list":
     for (const r of runs()) console.log(r);
     break;
-  case "link":
-    console.log(`${SITE}/board#k=${b64url(key())}`);
+  case "key":
+    console.log(b64url(key()));
     break;
   case undefined:
     build();
     break;
   default:
-    console.error("usage: board-publish.mjs [add|remove <run-dir>... | list | link]");
+    console.error("usage: board-publish.mjs [add|remove <run-dir>... | list | key]");
     process.exit(2);
 }

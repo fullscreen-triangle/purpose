@@ -12,7 +12,7 @@ const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-mont" });
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  // The board is shared outside the login; it shows no links into the site.
+  // The board is what most people who log in come for; it stands alone.
   const bare = router.pathname === "/board";
 
   return (

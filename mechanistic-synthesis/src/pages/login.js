@@ -22,7 +22,7 @@ export default function Login() {
       if (!res.ok) throw new Error(body.error || `login failed (${res.status})`);
       const next = typeof router.query.next === "string" && router.query.next.startsWith("/")
         ? router.query.next
-        : "/platform";
+        : "/board";
       window.location.assign(next);
     } catch (err) {
       setError(err.message);
