@@ -17,9 +17,11 @@ export default function handler(req, res) {
     res.setHeader("Allow", "GET");
     return res.status(405).json({ error: "method not allowed" });
   }
-  const key = Buffer.from(process.env.BOARD_KEY || "", "base64url");
+  // Pasted values often carry spaces, a newline or quotes; the key is 43 base64url characters.
+  const given = (process.env.BOARD_KEY || "").trim().replace(/^["']|["']$/g, "").replace(/^BOARD_KEY=/, "");
+  const key = Buffer.from(given, "base64url");
   if (key.length !== 32) {
-    return res.status(503).json({ error: "The board is not configured: set BOARD_KEY." });
+    return res.status(503).json({ error: process.env.BOARD_KEY ? "BOARD_KEY is set but is not the board key (43 characters from `node scripts/board-publish.mjs key`)." : "The board is not configured: set BOARD_KEY." });
   }
   let box;
   try {

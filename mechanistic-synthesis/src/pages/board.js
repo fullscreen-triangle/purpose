@@ -3,7 +3,7 @@
 // /api/board decrypts the answers (made on Kundai's machine and published with
 // scripts/board-publish.mjs).
 //
-// Readers add to it through /api/board/notes: a question they want answered
+// Readers add to it through /api/notes: a question they want answered
 // (with the answer they know), their own answer to any question, a mark
 // (right, partly right, wrong, can't tell) and a note on any claim, and a
 // comment on the whole answer. Notes are signed with the name a reader gives,
@@ -79,7 +79,7 @@ async function getJson(url) {
 }
 
 async function postNote(event) {
-  const res = await fetch("/api/board/notes", {
+  const res = await fetch("/api/notes", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(event),
@@ -593,7 +593,7 @@ export default function Board() {
         setPick((p) => p || board.entries[0]?.id || null);
       })
       .catch((e) => setState({ phase: "failed", error: e.message }));
-    getJson("/api/board/notes")
+    getJson("/api/notes")
       .then((n) => {
         if (!n) return;
         setEvents(n.events || []);
@@ -741,7 +741,7 @@ export default function Board() {
                 {store.configured && !store.error ? (
                   // A file download from the API, not a page to navigate to.
                   // eslint-disable-next-line @next/next/no-html-link-for-pages
-                  <a href="/api/board/notes?download=1" download className={`${link} mt-6 inline-block`}>
+                  <a href="/api/notes?download=1" download className={`${link} mt-6 inline-block`}>
                     Download all notes (JSON)
                   </a>
                 ) : null}

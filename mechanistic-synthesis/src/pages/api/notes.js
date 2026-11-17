@@ -6,9 +6,9 @@
 // page reads them all and keeps each reader's latest per item. So nothing a
 // reader wrote is ever lost, and two readers saving at once cannot collide.
 //
-//   GET  /api/board/notes              {configured, events}
-//   GET  /api/board/notes?download=1   the same, as a file
-//   POST /api/board/notes              one event; answers it with id and time
+//   GET  /api/notes              {configured, events}
+//   GET  /api/notes?download=1   the same, as a file
+//   POST /api/notes              one event; answers it with id and time
 
 import { randomBytes } from "node:crypto";
 import { z } from "zod";
